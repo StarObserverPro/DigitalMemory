@@ -2,7 +2,15 @@
 
 Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Current architecture foundation — DM-0007
+## Current visible map review — DM-0008
+
+PR5 and PR6 are merged. The consumer overview now uses the map assembly planner, three zoom stops, separate pale context / roads / solid places, no overview avatar and immediate entry on the modeled Xinhua street slice. New tower/slab candidates use broad pencil/watercolor marks designed for small display; the detailed architecture-render attempts are not active assets. Main, service and walking corridors plus schematic retaining walls are reserved independently. The street camera is moderately elevated; street figure and facade assets remain previous candidates rather than a completed new chibi scene.
+
+Thirty automated tests and the static build pass. Native SVG renders at three tiers are recorded in `evidence/layered-view-results.json`; these are not browser screenshots. Managed browser QA is skipped because control-browser is unavailable, following the Sites skill. Final merge/deployment provenance is recorded by the integration PR and Sites saved version.
+
+Limits: contextual geometry uses contemporary orientation; individual facade/entrance/site layouts and the tall wall profile are not historically verified. No private memories or durable authoring backend were added. This is a visual review release, not acceptance of all local geography or art.
+
+## Previous architecture foundation — DM-0007
 
 The latest target is captured in [MAP_ASSEMBLY](MAP_ASSEMBLY.md): three overview tiers without a character, pale replaceable background patches, solid roads and selected memory/landmark objects, separate compound/road assets, road-owned underpass walls and explicit vertical relationships. The previously deployed half-body street framing is superseded by elevated chibi framing as a target, not yet migrated.
 

@@ -1,0 +1,38 @@
+{
+  "kind": "native SVG render, not browser screenshots",
+  "views": [
+    {
+      "id": "town",
+      "zoom": 1,
+      "center": [
+        600,
+        600
+      ]
+    },
+    {
+      "id": "neighborhood",
+      "zoom": 1.8,
+      "center": [
+        700,
+        770
+      ]
+    },
+    {
+      "id": "street-map",
+      "zoom": 2.7,
+      "center": [
+        720,
+        770
+      ]
+    }
+  ],
+  "period": "window-2000",
+  "objects": 6,
+  "roadParts": 260,
+  "tests": 30,
+  "limits": [
+    "No managed control-browser available; browser QA skipped per Sites skill",
+    "Wall profile and historical site layout remain schematic",
+    "Street character/scenery still use previous candidate assets; camera framing improved"
+  ]
+}

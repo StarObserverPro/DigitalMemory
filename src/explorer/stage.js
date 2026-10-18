@@ -22,7 +22,7 @@ export async function createStage({ container, session, mapping, transform, asse
  const origin=transform.toWorld(mapping.locate(mapping.atDistance(STAGE.min)).geo),end=transform.toWorld(mapping.locate(mapping.atDistance(STAGE.max)).geo),angle=Math.atan2(end[1]-origin[1],end[0]-origin[0]);
  function frame(distance,lateral=0){const p=transform.toWorld(mapping.locate(mapping.atDistance(distance)).geo),q=transform.toWorld(mapping.locate(mapping.atDistance(distance+.05)).geo),theta=Math.atan2(q[1]-p[1],q[0]-p[0]),east=p[0]+Math.sin(theta)*lateral-origin[0],north=p[1]-Math.cos(theta)*lateral-origin[1];return{x:east*Math.sin(angle)-north*Math.cos(angle),z:-(east*Math.cos(angle)+north*Math.sin(angle)),yaw:theta-angle};}
  function strip(left,right,y,color){const v=[],idx=[];for(let s=STAGE.min-10;s<=STAGE.max+10;s+=2)for(const x of[left,right]){const p=frame(s,x);v.push(p.x,y,p.z);}for(let i=0;i<v.length/6-1;i++){const a=i*2;idx.push(a,a+1,a+2,a+1,a+3,a+2);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setIndex(idx);g.computeVertexNormals();allGeometries.add(g);roadGroup.add(new T.Mesh(g,basic(color)));}
- strip(-40,40,-.04,'#e5dfce');strip(-4.1,4.1,0,'#b9b9ad');strip(4.1,10.8,.16,'#e4d8bf');strip(-12,-4.1,.16,'#e4d8bf');
+ strip(-40,40,-.04,'#e5dfce');strip(-4.1,4.1,0,'#5e625c');strip(4.1,10.8,.16,'#e4d8bf');strip(-12,-4.1,.16,'#e4d8bf');
  for(let d=350;d<510;d+=4)for(const side of[-1,1]){const p=frame(d,side*4.15),curb=box(roadGroup,p.x,.1,p.z,.14,.20,4.04,'#f5e8cb');curb.rotation.y=p.yaw;}
  for(let d=355;d<505;d+=12){const p=frame(d);box(roadGroup,p.x,.013,p.z,.1,.02,2.2,'#eee7d0').rotation.y=p.yaw;}
  for(let d=STAGE.min-10;d<=STAGE.max+10;d+=2.4){for(const side of[-1,1]){const a=frame(d,side*4.24),b=frame(d,side*10.4),v=new T.BufferGeometry().setFromPoints([new T.Vector3(a.x,.165,a.z),new T.Vector3(b.x,.165,b.z)]);allGeometries.add(v);const m=new T.LineBasicMaterial({color:'#c8bea8',transparent:true,opacity:.35});allMaterials.add(m);roadGroup.add(new T.Line(v,m));}}
@@ -89,13 +89,13 @@ export async function createStage({ container, session, mapping, transform, asse
   const state=session.get(),d=mapping.locate(state.route).distance,p=frame(d,state.street.lateral),heading=state.street.heading-p.yaw,profile=CHARACTER_PROFILES[state.characterId]||CHARACTER_PROFILES.child;
   roadGroup.visible=state.layers.roads;shellGroup.visible=state.layers.buildings;frontGroup.visible=state.layers.buildings&&state.layers.frontages;person.visible=shadow.visible=state.layers.person;
   syncOccupants(state);
-  // Feet remain on the pavement; the near camera deliberately crops below the torso.
+  // Feet remain on the pavement in a moderately elevated street composition.
   person.scale.set(profile.width/CHARACTER_PROFILES.child.width,profile.height/CHARACTER_PROFILES.child.height,1);
   person.position.set(p.x,.17+profile.height/2,p.z);person.rotation.set(0,-heading,0);shadow.position.set(p.x,.168,p.z);
-  const dx=Math.sin(heading),dz=-Math.cos(heading),follow=camera.aspect<.8?1.65:1.0;
-  const eye=profile.eye+(camera.aspect<.8?.39:.03);
+  const dx=Math.sin(heading),dz=-Math.cos(heading),follow=camera.aspect<.8?6.6:5.8;
+  const eye=profile.eye+3.0;
   camera.position.set(p.x-dx*follow,eye,p.z-dz*follow);
-  camera.lookAt(camera.position.x+dx*10,eye+.25,camera.position.z+dz*10);
+  camera.lookAt(p.x+dx*3,.65,p.z+dz*3);
   const nowNear=Math.hypot(d-doorDistance,state.street.lateral-doorBuilding.setback)<3.5;if(nowNear!==near){near=nowNear;onNear(near);}
   if(state.view==='street'&&state.sceneId==='map'){renderer.render(scene,camera);globalThis.__VISUAL_READY__=true;}
   camera.updateMatrixWorld();const right=new T.Vector3().setFromMatrixColumn(camera.matrixWorld,0),lower=new T.Vector3(p.x,.17,p.z),upper=lower.clone().add(new T.Vector3(0,profile.height,0));
