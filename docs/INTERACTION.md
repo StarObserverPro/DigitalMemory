@@ -1,6 +1,8 @@
 # Interaction contract
 
-Status: desired behavior for later implementation and user review; no UI has been produced.
+Status: interaction contract; a first planar explorer now implements a subset for user review.
+
+Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
 ## One dominant scene
 

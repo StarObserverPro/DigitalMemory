@@ -10,6 +10,10 @@ This is a network of routes associated with different periods, not the asserted 
 
 The two residential-area labels identify project anchors only. Precise homes, unit numbers, and private biographical associations belong in the private archive, not the public repository.
 
+## Construction canvas — 2026-10-17 request
+
+The user authorized a first construction pass using an approximate square around 新华街, the southwest/west Fourth Ring section, 丰台大桥 and 丰台影剧院. The current 1.8 km orientation canvas uses contemporary OSM vectors; it is not a historical source package or an asserted walking route. Four public orientation points are implemented, and both old school-site identities remain unplaced. Three board candidates share the same spatial frame. See [runtime](RUNTIME.md). This explicit task activates the bounded work in DM-0002; it does not activate the entire sequence below.
+
 ## Initial anchor register
 
 These are planning aliases, not geocoded runtime IDs. Coordinates remain unset until a registration task supplies evidence.

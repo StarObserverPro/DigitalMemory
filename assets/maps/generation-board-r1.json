@@ -1,0 +1,22 @@
+{
+  "id": "generation-board-r1",
+  "tool": "built-in image_gen.imagegen",
+  "createdAt": "2026-10-17",
+  "taxonomy": "style-transfer",
+  "reference": "fengtai-board-r1.svg",
+  "referenceSha256": "7216de111b330d34defe5a7423bc81f33b06b13cf0819c86a8f6ed57065ebd64",
+  "output": "fengtai-board-generated-r1.png",
+  "outputSha256": "b007965dd93e82b8d014bb9b2cef77cadc9a49506cac1f27bc14b34acc05f352",
+  "privacy": "public",
+  "sourceRefs": [
+    "osm-2026-10-18"
+  ],
+  "approval": "candidate",
+  "registrationApproval": "pending",
+  "prompt": "Edit the provided exact top-down geographic map reference into a restrained tabletop board-game map. Keep exact road/rail intersections, endpoints and north-up framing in their original image positions. Turn existing orange footprints into low-relief slab houses with matte terracotta roofs, cream walls and subtle southeast shadows, only at their existing footprints. Preserve sage parcels, cream streets and large empty areas. Tactile warm off-white paper ground and thin rounded sage edge. No new roads, route cells, dice, symbols, people, cars, trees, props, named shops, landmark buildings, writing, labels, title, compass, perspective tilt or global isometric projection. One square board, not a comparison collage. A style candidate, not a historical reconstruction.",
+  "notes": [
+    "External black matte is clipped in the presentation adapter without modifying image pixels.",
+    "Generated raster follows the reference visually but is not accepted as authoritative registration.",
+    "The SVG reference remains available for exact geometry overlays and reproducible regeneration."
+  ]
+}

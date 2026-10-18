@@ -1,6 +1,8 @@
 # Core architecture
 
-Status: v1 implementation contract. Logical boundaries are defined here; no runtime has been built. Framework, renderer, storage provider, and hosting choices remain implementation decisions recorded in [DECISIONS](DECISIONS.md).
+Status: v1 implementation contract; the first planar runtime subset is implemented in DM-0002. Private storage and hosting remain deferred. See [DECISIONS](DECISIONS.md).
+
+Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
 ## Shape of the system
 

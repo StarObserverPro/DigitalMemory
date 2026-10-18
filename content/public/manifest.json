@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "phase1-public-prototype-r1",
+  "revision": 1,
+  "privacy": "public",
+  "geometry": "orientation.json",
+  "geometryRevision": "fengtai-orientation-r1",
+  "transformRevision": "local-equirectangular-r1",
+  "places": "places.json",
+  "placeIds": [
+    "place-theatre",
+    "place-bridge",
+    "place-nankai",
+    "place-xinhua",
+    "site-primary-old",
+    "site-middle-old"
+  ],
+  "periods": [
+    {
+      "id": "window-2000",
+      "label": "约 2000–2005",
+      "kind": "window",
+      "start": 2000,
+      "end": 2005
+    },
+    {
+      "id": "window-1995",
+      "label": "约 1995",
+      "kind": "window",
+      "start": 1993,
+      "end": 1997
+    },
+    {
+      "id": "stage-preschool",
+      "label": "学龄前",
+      "kind": "stage",
+      "stageId": "preschool"
+    },
+    {
+      "id": "stage-primary",
+      "label": "小学",
+      "kind": "stage",
+      "stageId": "primary"
+    },
+    {
+      "id": "stage-middle",
+      "label": "初中",
+      "kind": "stage",
+      "stageId": "middle"
+    },
+    {
+      "id": "unknown",
+      "label": "时间未定",
+      "kind": "unknown"
+    }
+  ],
+  "assets": [
+    {
+      "id": "paper",
+      "label": "A · 纸上街区",
+      "revision": "paper-r1",
+      "url": "../../assets/maps/fengtai-paper-r1.svg",
+      "sha256": "7eb9748f039bdb90dcc3e86dad407ab00174663c1e92cec90d6349a4de54281e",
+      "kind": "procedural-cartographic-illustration",
+      "sourceRefs": [
+        "osm-2026-10-18"
+      ],
+      "geometryRevision": "fengtai-orientation-r1",
+      "transformRevision": "local-equirectangular-r1",
+      "width": 2400,
+      "height": 2400,
+      "approval": "candidate",
+      "privacy": "public",
+      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution."
+    },
+    {
+      "id": "board",
+      "label": "B · 立体纸板",
+      "revision": "board-generated-r1",
+      "url": "../../assets/maps/fengtai-board-generated-r1.png",
+      "sha256": "b007965dd93e82b8d014bb9b2cef77cadc9a49506cac1f27bc14b34acc05f352",
+      "kind": "generated-map-style-candidate",
+      "sourceRefs": [
+        "osm-2026-10-18"
+      ],
+      "geometryRevision": "fengtai-orientation-r1",
+      "transformRevision": "local-equirectangular-r1",
+      "width": 1254,
+      "height": 1254,
+      "approval": "candidate",
+      "privacy": "public",
+      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution.",
+      "referenceAsset": "../../assets/maps/fengtai-board-r1.svg",
+      "registrationApproval": "pending",
+      "displayClip": "inset(2.15% 2.55% 3.8% 2.55% round 2.2%)",
+      "generationRecord": "../../assets/maps/generation-board-r1.json",
+      "referenceSha256": "7216de111b330d34defe5a7423bc81f33b06b13cf0819c86a8f6ed57065ebd64"
+    },
+    {
+      "id": "ink",
+      "label": "C · 蓝墨地图",
+      "revision": "ink-r1",
+      "url": "../../assets/maps/fengtai-ink-r1.svg",
+      "sha256": "8aa5df3e8197b46b28250fddf51a56e7c2e0f9362f1a39fe689cb8879b9aa801",
+      "kind": "procedural-cartographic-illustration",
+      "sourceRefs": [
+        "osm-2026-10-18"
+      ],
+      "geometryRevision": "fengtai-orientation-r1",
+      "transformRevision": "local-equirectangular-r1",
+      "width": 2400,
+      "height": 2400,
+      "approval": "candidate",
+      "privacy": "public",
+      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution."
+    }
+  ],
+  "memoryChunks": [
+    {
+      "path": "demo-memories.json",
+      "placeIds": [
+        "place-xinhua"
+      ]
+    }
+  ],
+  "scenes": {
+    "demo-courtyard": "demo-courtyard.json",
+    "demo-room": "demo-room.json"
+  },
+  "environmentStates": [],
+  "notice": "Public orientation draft and explicitly synthetic interaction fixtures only; no private memories."
+}

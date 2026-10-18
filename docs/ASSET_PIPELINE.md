@@ -1,6 +1,8 @@
 # Map, image and scene asset pipeline
 
-Status: production contract for later tasks. No imagery has been acquired, registered, generated, or licensed by this architecture change.
+Status: production contract; DM-0002 adds a contemporary OSM orientation extract, two vector map candidates and one generated style candidate. Historical imagery and accepted production tiles remain open.
+
+Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
 ## Two products, not one flattened picture
 

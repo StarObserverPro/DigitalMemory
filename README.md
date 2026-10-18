@@ -4,6 +4,12 @@ A geographically registered, time-layered memory application: a stylized map bec
 
 The purpose is to preserve impressions of living in an environment, not to produce a survey-grade reconstruction, a conventional content website, or a complete 3D city. Historical maps and satellite images support registration behind the scenes; they are not the default visual surface.
 
+## Run the Phase 1 prototype
+
+Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
+
+The prototype provides a map-dominant explorer, three switchable board candidates, separate place/registration/time/session modules, and an explicitly synthetic nested-portal example. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [map candidates](assets/maps/README.md).
+
 ## Start here
 
 | Question | Canonical document |
@@ -32,4 +38,4 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-There is no deployed application, implemented renderer, acquired historical base-map package, or activated implementation task in this architecture deliverable. Consult [status](docs/STATUS.md) rather than inferring implementation from specification detail.
+This branch adds a runnable planar prototype and map candidates. No deployed application, acquired historical base-map package, private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.

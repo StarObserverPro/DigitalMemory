@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "privacy": "public",
+  "revision": "places-r1",
+  "records": [
+    {
+      "id": "place-theatre",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "丰台影剧院",
+      "kind": "landmark",
+      "geometryRevision": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.2782027,
+          39.8506563
+        ]
+      },
+      "registration": "orientation-only",
+      "sourceRefs": [
+        "osm-2026-10-18:node/9579771903"
+      ],
+      "historicalApproval": "unverified",
+      "privacy": "public",
+      "summary": "作为北侧的地标入口，具体年代的样貌待补。"
+    },
+    {
+      "id": "place-bridge",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "丰台大桥",
+      "kind": "landmark",
+      "geometryRevision": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.27759698571428,
+          39.84562054285714
+        ]
+      },
+      "registration": "orientation-only",
+      "sourceRefs": [
+        "osm-2026-10-18:way/608978968"
+      ],
+      "historicalApproval": "unverified",
+      "privacy": "public",
+      "summary": "作为这张地图上的方向参照。"
+    },
+    {
+      "id": "place-nankai",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "南开西里",
+      "kind": "neighborhood",
+      "geometryRevision": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.27504054090909,
+          39.84022055
+        ]
+      },
+      "registration": "orientation-only",
+      "sourceRefs": [
+        "osm-2026-10-18:way/897762342"
+      ],
+      "historicalApproval": "unverified",
+      "privacy": "public",
+      "summary": "保留为片区入口；这里标示的是社区大致位置。"
+    },
+    {
+      "id": "place-xinhua",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "新华街",
+      "kind": "street",
+      "geometryRevision": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.285,
+          39.84213
+        ]
+      },
+      "registration": "orientation-only",
+      "sourceRefs": [
+        "osm-2026-10-18:way/176437964"
+      ],
+      "historicalApproval": "unverified",
+      "privacy": "public",
+      "summary": "先从这条街开始，慢慢补回沿街的地点与不同年代的印象。"
+    },
+    {
+      "id": "site-primary-old",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "丰台一小旧址",
+      "kind": "historic-site",
+      "geometryRevision": 0,
+      "geometry": null,
+      "registration": "unresolved",
+      "sourceRefs": [],
+      "privacy": "public",
+      "institutionId": "institution-primary",
+      "summary": "旧校址与校门位置待核对，暂不落点。"
+    },
+    {
+      "id": "site-middle-old",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "十二中初中旧址",
+      "kind": "historic-site",
+      "geometryRevision": 0,
+      "geometry": null,
+      "registration": "unresolved",
+      "sourceRefs": [],
+      "privacy": "public",
+      "institutionId": "institution-middle",
+      "summary": "旧校址与校门位置待核对，暂不落点。"
+    }
+  ],
+  "institutions": [
+    {
+      "id": "institution-primary",
+      "label": "丰台一小"
+    },
+    {
+      "id": "institution-middle",
+      "label": "十二中"
+    }
+  ],
+  "occupancies": []
+}

@@ -21,6 +21,13 @@ This is the concise record of decisions and their authority, not a second copy o
 
 User-defined requirements above are established project constraints. Technical choices are the v1 architecture proposed by this deliverable, not claims of separate user aesthetic acceptance or implemented behavior. Already authorized ordinary implementation choices do not need a new product-alignment meeting for every file.
 
+## First runtime decisions — DM-0002
+
+- Native ES modules and Node built-ins keep the first runtime install-free. SVG/bitmap layers share one transform; no renderer or dependency is imported from Crystal Garden.
+- The first canvas is an approximately 1.8 km square supported by contemporary OSM vectors, not a historical satellite slice. School registration remains unresolved.
+- A/C are reproducible vector candidates; B uses one built-in imagegen style-transfer result from the same skeleton. B remains a registration/art candidate and does not become geographic evidence.
+- Keep the few assets in `assets/maps/` with revision/checksum manifest; defer a separate image repository and private backend.
+
 ## Explicitly deferred
 
 Exact historical school coordinates, entrances and walking segments; evidence-backed base-map acquisitions; exact life-stage date mapping; final illustration style, fonts and camera pitch; renderer/UI framework and versions; private storage/authentication/hosting provider; measured performance targets; later cycling/transit interaction; and any deployment or public-content release.
