@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "id": "fengtai-journal-mapping-r2",
+  "privacy": "public",
+  "geometryRevision": "fengtai-orientation-r1",
+  "transformRevision": "local-equirectangular-r1",
+  "artboard": {
+    "width": 1200,
+    "height": 1200
+  },
+  "notice": "Illustration layout is intentionally non-metric. Anchors are orientation references; doors are not surveyed historical entrances.",
+  "nodes": [
+    {
+      "id": "xinhua-0",
+      "kind": "segment-end",
+      "geo": [
+        116.2800827,
+        39.8404049
+      ],
+      "art": [
+        529.54,
+        900.773
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-1",
+      "kind": "shape-control",
+      "geo": [
+        116.2801915,
+        39.8404432
+      ],
+      "art": [
+        534.949,
+        898.293
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-2",
+      "kind": "shape-control",
+      "geo": [
+        116.2812656,
+        39.8408362
+      ],
+      "art": [
+        588.347,
+        872.846
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-3",
+      "kind": "shape-control",
+      "geo": [
+        116.2817534,
+        39.8410158
+      ],
+      "art": [
+        612.598,
+        861.217
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-4",
+      "kind": "shape-control",
+      "geo": [
+        116.2836387,
+        39.8417229
+      ],
+      "art": [
+        706.324,
+        815.432
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-5",
+      "kind": "shape-control",
+      "geo": [
+        116.2849081,
+        39.8421715
+      ],
+      "art": [
+        769.431,
+        786.385
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-6",
+      "kind": "shape-control",
+      "geo": [
+        116.2856357,
+        39.8424415
+      ],
+      "art": [
+        805.603,
+        768.902
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-7",
+      "kind": "shape-control",
+      "geo": [
+        116.287373,
+        39.8430964
+      ],
+      "art": [
+        891.972,
+        726.497
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-8",
+      "kind": "shape-control",
+      "geo": [
+        116.2874412,
+        39.8431172
+      ],
+      "art": [
+        895.363,
+        725.15
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-9",
+      "kind": "shape-control",
+      "geo": [
+        116.2884788,
+        39.8434023
+      ],
+      "art": [
+        946.946,
+        706.69
+      ],
+      "evidence": "contemporary-osm-orientation"
+    },
+    {
+      "id": "xinhua-10",
+      "kind": "segment-end",
+      "geo": [
+        116.2895559,
+        39.8436807
+      ],
+      "art": [
+        1000.493,
+        688.663
+      ],
+      "evidence": "contemporary-osm-orientation"
+    }
+  ],
+  "edges": [
+    {
+      "id": "xinhua-edge-0",
+      "from": "xinhua-0",
+      "to": "xinhua-1",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2800827,
+          39.8404049
+        ],
+        [
+          116.2801915,
+          39.8404432
+        ]
+      ],
+      "art": [
+        [
+          529.54,
+          900.773
+        ],
+        [
+          534.949,
+          898.293
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-1",
+      "from": "xinhua-1",
+      "to": "xinhua-2",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2801915,
+          39.8404432
+        ],
+        [
+          116.2812656,
+          39.8408362
+        ]
+      ],
+      "art": [
+        [
+          534.949,
+          898.293
+        ],
+        [
+          588.347,
+          872.846
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-2",
+      "from": "xinhua-2",
+      "to": "xinhua-3",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2812656,
+          39.8408362
+        ],
+        [
+          116.2817534,
+          39.8410158
+        ]
+      ],
+      "art": [
+        [
+          588.347,
+          872.846
+        ],
+        [
+          612.598,
+          861.217
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-3",
+      "from": "xinhua-3",
+      "to": "xinhua-4",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2817534,
+          39.8410158
+        ],
+        [
+          116.2836387,
+          39.8417229
+        ]
+      ],
+      "art": [
+        [
+          612.598,
+          861.217
+        ],
+        [
+          706.324,
+          815.432
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-4",
+      "from": "xinhua-4",
+      "to": "xinhua-5",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2836387,
+          39.8417229
+        ],
+        [
+          116.2849081,
+          39.8421715
+        ]
+      ],
+      "art": [
+        [
+          706.324,
+          815.432
+        ],
+        [
+          769.431,
+          786.385
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-5",
+      "from": "xinhua-5",
+      "to": "xinhua-6",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2849081,
+          39.8421715
+        ],
+        [
+          116.2856357,
+          39.8424415
+        ]
+      ],
+      "art": [
+        [
+          769.431,
+          786.385
+        ],
+        [
+          805.603,
+          768.902
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-6",
+      "from": "xinhua-6",
+      "to": "xinhua-7",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2856357,
+          39.8424415
+        ],
+        [
+          116.287373,
+          39.8430964
+        ]
+      ],
+      "art": [
+        [
+          805.603,
+          768.902
+        ],
+        [
+          891.972,
+          726.497
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-7",
+      "from": "xinhua-7",
+      "to": "xinhua-8",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.287373,
+          39.8430964
+        ],
+        [
+          116.2874412,
+          39.8431172
+        ]
+      ],
+      "art": [
+        [
+          891.972,
+          726.497
+        ],
+        [
+          895.363,
+          725.15
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-8",
+      "from": "xinhua-8",
+      "to": "xinhua-9",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2874412,
+          39.8431172
+        ],
+        [
+          116.2884788,
+          39.8434023
+        ]
+      ],
+      "art": [
+        [
+          895.363,
+          725.15
+        ],
+        [
+          946.946,
+          706.69
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    },
+    {
+      "id": "xinhua-edge-9",
+      "from": "xinhua-9",
+      "to": "xinhua-10",
+      "sourceRoadId": "osm-way-176437964",
+      "geo": [
+        [
+          116.2884788,
+          39.8434023
+        ],
+        [
+          116.2895559,
+          39.8436807
+        ]
+      ],
+      "art": [
+        [
+          946.946,
+          706.69
+        ],
+        [
+          1000.493,
+          688.663
+        ]
+      ],
+      "traversal": "prototype-only",
+      "historicalWalk": "unverified"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "place-theatre",
+      "art": [
+        436,
+        237
+      ],
+      "label": [
+        508,
+        282
+      ],
+      "entrance": [
+        365,
+        286
+      ],
+      "hit": [
+        260,
+        130,
+        460,
+        295
+      ],
+      "entranceArt": null,
+      "hitRegion": null
+    },
+    {
+      "id": "place-bridge",
+      "art": [
+        406,
+        563
+      ],
+      "label": [
+        406,
+        595
+      ],
+      "entrance": [
+        335,
+        585
+      ],
+      "hit": [
+        255,
+        520,
+        425,
+        630
+      ],
+      "entranceArt": null,
+      "hitRegion": null
+    },
+    {
+      "id": "place-nankai",
+      "art": [
+        279,
+        913
+      ],
+      "label": [
+        277,
+        1013
+      ],
+      "entrance": [
+        210,
+        1020
+      ],
+      "hit": [
+        100,
+        880,
+        290,
+        1040
+      ],
+      "entranceArt": null,
+      "hitRegion": null
+    },
+    {
+      "id": "place-xinhua",
+      "art": [
+        774,
+        789
+      ],
+      "label": [
+        774,
+        824
+      ],
+      "entrance": [
+        786,
+        820
+      ],
+      "hit": [
+        735,
+        750,
+        875,
+        855
+      ],
+      "entranceArt": null,
+      "hitRegion": null
+    }
+  ],
+  "spawn": {
+    "edgeId": "xinhua-edge-4",
+    "t": 0.7,
+    "direction": 1
+  },
+  "portals": [
+    {
+      "id": "demo-street-door",
+      "placeId": "place-xinhua",
+      "edgeId": "xinhua-edge-4",
+      "t": 0.82,
+      "artDoor": [
+        769.7790113348021,
+        817.0484712619067
+      ],
+      "sceneId": "demo-courtyard",
+      "synthetic": true,
+      "realEntrance": null,
+      "slotId": "south-entry-door"
+    }
+  ],
+  "unplaced": [
+    "site-primary-old",
+    "site-middle-old"
+  ],
+  "stage": {
+    "revision": "xinhua-modules-r2",
+    "distanceRangeMeters": [
+      360,
+      500
+    ],
+    "sidewalkLateralMeters": [
+      4.65,
+      7.05
+    ],
+    "classification": "fictional-scenic-flats",
+    "historicalApproval": "unverified"
+  },
+  "revision": 2
+}

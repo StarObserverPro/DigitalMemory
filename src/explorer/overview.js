@@ -1,0 +1,20 @@
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const path=points=>'M'+points.map(p=>p.join(',')).join(' L');
+function cutout(asset,x,y,w,h){const [cx,cy,cw,ch]=asset.crop||[0,0,asset.width,asset.height];return `<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${cx} ${cy} ${cw} ${ch}" preserveAspectRatio="none" overflow="hidden"><image href="${esc(asset.url)}" width="${asset.width}" height="${asset.height}" filter="url(#cutout-alpha)"/></svg>`;}
+/** Renderer only: all ground coordinates and grouping IDs come from the composition registry. */
+export function overviewMarkup(composition,assets,state){
+ const data=composition.data,resolved=composition.resolve(state.periodId,state.frontagePreview),show=state.layers;
+ const roads=data.roads;
+ const roadLayer=`<g data-layer="roads" opacity="${show.roads?1:0}" stroke-linecap="round" stroke-linejoin="round">${(data.rails||[]).map(r=>`<path d="${path(r.art)}" fill="none" stroke="#a5a393" stroke-width="9" stroke-dasharray="2 5"/><path d="${path(r.art)}" fill="none" stroke="#faf1dc" stroke-width="3"/>`).join('')}${roads.map(r=>`<path d="${path(r.art)}" fill="none" stroke="#9c927d" stroke-width="${r.width+2.2}" opacity=".7"/>`).join('')}${roads.map(r=>`<path d="${path(r.art)}" fill="none" stroke="${r.class==='focus'?'#e3cda5':r.class==='ring'?'#dad5c5':'#eae0c9'}" stroke-width="${r.width}"/>`).join('')}<path d="${path(roads.find(r=>r.class==='focus').art)}" fill="none" stroke="#a1855c" stroke-width="1.2" stroke-dasharray="2 11" opacity=".6"/></g>`;
+ const buildings=data.overview.toSorted((a,b)=>a.ground[1]-b.ground[1]).map(g=>{
+   const[x,y,w,d]=g.ground,h=g.height,foot=y+d;
+   let shape='';
+   if(g.kind==='apartment')shape=cutout(assets.mapApartment||assets.apartment,x,y-h+d,w,h);
+   else if(g.kind==='service')shape=`<path d="M${x},${foot}v-${h}h${w}v${h}Z" fill="#cfbda0" stroke="#827762" stroke-width="1.4"/><path d="M${x-2},${foot-h}l6,-7h${w}l-4,7Z" fill="#9e9e8a" stroke="#827762" stroke-width="1"/>`;
+   else shape=`<path d="M${x},${foot}v-${h}h${w}v${h}Z" fill="#ddd2bb" stroke="#7e7869" stroke-width="1.5"/><path d="M${x},${foot-h}l12,-10h${w}l-12,10Z" fill="#bbb7a5" stroke="#7e7869" stroke-width="1.5"/><path d="M${x+w},${foot}l12,-10v-${h}l-12,10Z" fill="#beb9a5"/><rect x="${x+w*.35}" y="${foot-28}" width="${w*.3}" height="28" fill="#6c7b70"/><text x="${x+w/2}" y="${foot-h+17}" text-anchor="middle" fill="#827055" font-size="10">影 剧 院</text>`;
+   let frontage='';
+   if(g.kind!=='theatre'&&show.frontages){frontage=cutout(assets.shop,x+w*.13,foot-h*.18,w*.58,h*.18);const occupied=resolved.frontages.find(f=>g.buildingIds.includes(f.buildingId)&&f.occupant);if(occupied)frontage+=`<rect x="${x+w*.12}" y="${foot-14}" width="${w*.75}" height="14" rx="2" fill="${occupied.occupant.fixture==='repair'?'#965d43':'#426855'}"/><text x="${x+w*.5}" y="${foot-4}" text-anchor="middle" fill="#fff7df" font-size="8">${esc(occupied.occupant.label)}</text>`;}
+   return `<g data-building-group="${g.id}" data-buildings="${g.buildingIds.join(' ')}"><ellipse cx="${x+w/2+5}" cy="${foot+1}" rx="${w*.57}" ry="${d*.65}" fill="#afa48a" opacity=".14"/>${shape}${frontage}</g>`;
+ }).join('');
+ return `<defs><filter id="cutout-alpha" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="discrete" tableValues="0 0 0 0 1 1"/></feComponentTransfer></filter></defs>${roadLayer}<g data-layer="buildings" opacity="${show.buildings?1:0}">${buildings}</g>`;
+}

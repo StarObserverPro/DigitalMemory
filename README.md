@@ -4,6 +4,14 @@ A geographically registered, time-layered memory application: a stylized map bec
 
 The purpose is to preserve impressions of living in an environment, not to produce a survey-grade reconstruction, a conventional content website, or a complete 3D city. Historical maps and satellite images support registration behind the scenes; they are not the default visual surface.
 
+## Run the Phase 1 prototype
+
+Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
+
+The prototype opens a hand-drawn overview. Choose “走进新华街” to place a character on its sidewalk, surrounded by upright illustrated film-set facades, with fog beyond the modeled segment. Walk, turn, approach a courtyard door and return to the same map position. “查看位置对应” compares real and illustration nodes. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping and scenic-flat design](docs/ILLUSTRATION_MAPPING.md).
+
+The “图层与拼装” control lets you inspect roads, buildings, frontages and the child separately, then try two synthetic shop occupants in a single slot. Building form now follows [local photo observations](docs/LOCAL_VISUAL_REFERENCES.md); [layer composition](docs/LAYER_COMPOSITION.md) explains short modules and independent time layers.
+
 ## Start here
 
 | Question | Canonical document |
@@ -32,4 +40,4 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-There is no deployed application, implemented renderer, acquired historical base-map package, or activated implementation task in this architecture deliverable. Consult [status](docs/STATUS.md) rather than inferring implementation from specification detail.
+This branch adds a runnable illustrated overview and a 140 m scenic-flat sidewalk sample. The previous flat board candidates were rejected as the main experience. The current layered revision is tracked through PR3 and the configured Sites deployment; exact release state is in the status ledger. No private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.

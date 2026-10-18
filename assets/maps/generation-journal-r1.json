@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "revision": "journal-art-r1",
+  "generator": "built-in image_gen.imagegen",
+  "createdUtc": "2026-10-18",
+  "privacy": "public",
+  "outputs": {
+    "assets/maps/fengtai-journal-r1.png": {
+      "sha256": "ac10c6ef19004ccbfc7e540f95fe94f83c430183923b07b6f20a5fee74bb5be7",
+      "approval": "candidate",
+      "historicalEvidence": false
+    },
+    "assets/scenes/street-flats-r1.png": {
+      "sha256": "d3829e356e560c266ee8408012c64a6ee73b3fb3b9316baac0897bc9457b1418",
+      "approval": "candidate",
+      "historicalEvidence": false
+    },
+    "assets/scenes/walker-r1.png": {
+      "sha256": "44a26e4467e5894770946e18c1ea5faf3b577a22d3c97c9246401c7ff50fafda",
+      "approval": "candidate",
+      "historicalEvidence": false
+    }
+  },
+  "reference": {
+    "path": "assets/maps/fengtai-journal-guide-r1.svg",
+    "role": "Original project road and landmark composition guide; not a style target",
+    "sha256": "b3aaaa4ee870c4aa0d9c702a7facf6fd7ac91155902bb2c549468edbba82f2d2"
+  },
+  "prompts": {
+    "map": "Original hand-drawn illustrated old-Beijing Fengtai neighborhood travel-journal map. Wobbly ink and colored pencil, watercolor paper, warm cream/sage/brick-red/ochre. Preserve guide road centerlines and Xinhua Street diagonal from (480,1000) through (710,861),(786,820),(930,720) to (1070,650). Selected enlarged cinema, road overpass (no river), modest apartments, courtyard gate and few shopfronts. Front facades and small roofs in flattened oblique perspective. Keep quiet space; omit arbitrary tourist details and baked-in controllable people. Cinema sign only: 丰台影剧院. Artistic concept, not certified history.",
+    "flats": "Transparent PNG scenic facade texture. One continuous perfectly front-on row of four modest old-Beijing facades: cream shop/red awning/green door; gray brick courtyard and wooden double gate; ochre shop/sage awning; two-storey cream house/green windows. Ink, colored pencil, watercolor within surfaces. Shared door baseline. Transparent silhouette, no ground, sky, trees, people or perspective side faces; blank signboards. Approximately 3:1. Not volumetric 3D.",
+    "walker": "Single anonymous full-body adult seen from behind, ink/colored-pencil watercolor. Short dark hair, dusty rust jacket, blue-gray trousers, sage backpack and cream shoes. Grounded on one baseline, relaxed ready-to-walk stance. Transparent portrait cutout, no environment, text or baked shadow. No visible face or identifying details. Intended as an upright 1.7 m scene sprite."
+  },
+  "promptNote": "Recorded production specifications; generator calls included additional compositional/negative wording. No third-party artist image was supplied as a generation reference. Map used only the project layout guide."
+}

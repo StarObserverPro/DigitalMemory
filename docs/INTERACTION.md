@@ -1,6 +1,8 @@
 # Interaction contract
 
-Status: desired behavior for later implementation and user review; no UI has been produced.
+Status: interaction contract; the illustrated-overview / scenic-flat-street prototype implements a bounded subset for user review.
+
+Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
 ## One dominant scene
 
@@ -14,9 +16,13 @@ Controls need readable labels when focused or expanded, keyboard access, adequat
 
 Use a coherent stylized ground surface derived from registered historical references and user descriptions. Preserve street continuity and significant ground positions. Allow modest cartographic simplification, but record it and keep hit targets registered.
 
-The initial view is fixed or tightly controlled oblique/orthographic. Important street-edge buildings can be boxes or simple silhouettes that rise from the map, with a transition rather than abrupt popping. Nearby meaningful places receive detail; distant blocks remain quiet. Resolve opaque foreground obstruction with an appropriate fade/cutaway or label treatment without shifting the actual place.
+The initial overview is an illustrated travel-journal map: individual building vignettes, readable streets, selective enlargement of meaningful places and generous quiet areas. A visible character is grounded on the drawn route. Arrow keys or clicking the drawn street move the character along the path. Landmarks and route progress retain stable IDs even when illustration proportions change.
 
-The board-game analogy is about a readable map with raised places. There are no equal-sized route cells, dice, turns, property prices, or mandatory avatar. The precise movement control and camera pitch remain visual-prototype choices. Avoid unrestricted camera controls that turn recollection into navigating a technical model viewer.
+Selecting a modeled street transitions to a close third-person sidewalk view. Nearby facades, courtyard gates and small props stand up as painted film-set flats, with perspective, foreground/background occlusion and restrained shallow geometry. The person remains grounded and can walk forward/backward and turn; pointer drag turns the view. Fog, faded silhouettes and arrows mark unbuilt extents. Do not replace this with a generic full-3D block city or a floating orbital view.
+
+The prototype controls are arrows/WASD in the street and on-screen hold buttons. Release, cancel, blur and inactive scenes stop movement. A door becomes actionable only at close range. Returning to the overview restores the same edge/progress; returning from an interior also restores sidewalk position, heading, period and selection.
+
+The board-game reference supplies readable spatial relationships and character movement. There are no route cells, dice, property prices or compulsory turns. Geographic nodes, illustration anchors and actual historical entrances have distinct approval states.
 
 ## Current time and other-time entrances
 

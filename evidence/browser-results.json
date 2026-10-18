@@ -1,0 +1,31 @@
+{
+  "browser": "151.0.7922.34",
+  "viewports": [
+    "1440x1000",
+    "390x844"
+  ],
+  "checks": [
+    "Map opens with four registered orientation anchors and collapsed controls",
+    "All three assets switch without moving the same spatial marker",
+    "Two nested portals return exact origin period/place/camera/selection and reopen place panel",
+    "Other-time entrance changes the period deliberately and retains location/camera",
+    "Unresolved historical campuses remain searchable but have no fabricated map point",
+    "Missing raster preserves independent place hit layer and a usable panel",
+    "Reload restores valid public browsing preference and a usable map origin",
+    "390px view has reachable map controls, readable panel, picker, Escape and life-stage selection",
+    "Reduced-motion preference uses the same immediate scene navigation"
+  ],
+  "consoleErrors": [],
+  "expectedFailureRequests": [
+    {
+      "url": "http://127.0.0.1:39023/assets/maps/fengtai-board-generated-r1.png",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "http://127.0.0.1:39023/assets/maps/fengtai-board-generated-r1.png",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "unexpectedRequestFailures": [],
+  "responses": 34
+}
