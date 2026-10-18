@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#e9eee7" />
+  <title>丰台镇 · 记忆地图</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232f5749'/%3E%3Cpath d='M8 24L20 12 32 24M13 21v11h14V21' fill='none' stroke='%23fff7df' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./src/explorer/styles.css" />
+  <script type="module" src="./src/explorer/main.js"></script>
+</head>
+<body>
+  <main id="app" aria-label="丰台镇记忆地图">
+    <header class="identity"><span class="eyebrow">DIGITAL MEMORY / 01</span><h1>丰台镇</h1><p>从新华街，慢慢走回去。</p></header>
+    <nav class="top-controls" aria-label="浏览控制"><button id="period-button" class="pill" aria-haspopup="dialog"><span class="small-icon">◷</span><span id="period-label">约 2000–2005</span><span class="chevron">⌄</span></button><button id="find-button" class="round" aria-label="查找地点" aria-haspopup="dialog">⌕</button></nav>
+    <section id="map-viewport" aria-label="可平移与缩放的风格化地图"><div id="board" class="board"><div id="map-camera" class="map-camera"><img id="map-art" alt="丰台街区风格化地理底盘" draggable="false" /><svg id="road-labels" viewBox="0 0 1200 1200" aria-hidden="true"></svg><div id="markers"></div></div></div></section>
+    <div class="bottom-left"><button id="style-button" class="pill" aria-haspopup="dialog"><span class="small-icon">▧</span><span id="style-label">底盘 A</span></button><button id="help-button" class="text-button" aria-label="地图说明" aria-haspopup="dialog">地图说明</button></div>
+    <div class="map-caption"><span class="caption-dot"></span>地理示意底盘 · 年代场景待补</div>
+    <div class="map-tools"><div class="compass" aria-label="上北"><span>N</span><svg width="21" height="28" viewBox="0 0 21 28" aria-hidden="true"><path d="M10.5 2L18 25 10.5 20 3 25Z" fill="currentColor"/></svg></div><div class="zoom-controls"><button id="zoom-in" aria-label="放大地图">+</button><button id="reset-view" aria-label="恢复全图">⊙</button><button id="zoom-out" aria-label="缩小地图">−</button></div></div>
+    <div id="status" role="status" aria-live="polite" class="status"></div>
+    <footer class="attribution">地理参照 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></footer>
+    <section id="scene" hidden aria-label="场景入口"></section>
+    <dialog id="place-dialog" class="place-dialog" aria-labelledby="place-title"></dialog>
+    <dialog id="period-dialog" aria-labelledby="period-title"><div class="dialog-heading"><div><span class="eyebrow">TIME LAYERS</span><h2 id="period-title">想回到哪段时间？</h2></div><button class="close" aria-label="关闭">×</button></div><p class="muted">同一个地点，可以留下不同时间的片段。</p><div id="period-options" class="option-grid"></div><p class="fine-print">生活阶段保留原来的说法，不自动换算为年份。</p></dialog>
+    <dialog id="style-dialog" class="style-dialog" aria-labelledby="style-title"><div class="dialog-heading"><div><span class="eyebrow">CHOOSE A MAP</span><h2 id="style-title">先挑一张底盘</h2></div><button class="close" aria-label="关闭">×</button></div><p class="muted">同一片街区，三种画法。地点和入口随时接着用。</p><div id="style-options" class="style-options"></div><p class="fine-print">候选稿 · 道路与地标共用位置骨架；建筑仅保留少量轮廓。</p></dialog>
+    <dialog id="find-dialog" aria-labelledby="find-title"><div class="dialog-heading"><div><span class="eyebrow">PLACES</span><h2 id="find-title">找一个地方</h2></div><button class="close" aria-label="关闭">×</button></div><label class="search-label" for="place-search">地点名称</label><input id="place-search" type="search" placeholder="新华街、丰台大桥……" autocomplete="off" /><div id="place-results" class="place-results"></div></dialog>
+    <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><div><span class="eyebrow">ABOUT THIS MAP</span><h2 id="help-title">地图还在慢慢长出来</h2></div><button class="close" aria-label="关闭">×</button></div><p>点选地点，可以打开它的入口；拖动地图或用右下角按钮调整视野。左下角可以切换底盘。</p><p>这一版保留新华街、四环、铁路、桥和影剧院的大致位置关系。底盘依据当代地理参照绘制，尚未复原某一年的街景。两处旧校址核对后再落点。</p><p>地图中的少量建筑用于表达街区的疏密。它们的样貌与数量不代表童年时的实际情况。</p><label class="toggle"><input id="demo-toggle" type="checkbox" /> 显示交互样例</label><p class="fine-print">样例文字和空间均为虚构，用于体验不同年代与场景入口。</p></dialog>
+  </main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "privacy": "public",
+  "records": [
+    {
+      "id": "demo-current",
+      "title": "一处街边入口",
+      "text": "这是可替换的交互样例。以后可以在这里放一段与你选中地点有关的文字或图片。",
+      "time": {
+        "kind": "window",
+        "start": 2001,
+        "end": 2003,
+        "originalExpression": "Synthetic 2001–2003 fixture"
+      },
+      "portalId": "demo-courtyard",
+      "schemaVersion": 1,
+      "revision": 1,
+      "placeIds": [
+        "place-xinhua"
+      ],
+      "synthetic": true,
+      "privacy": "public",
+      "provenance": "synthetic-fixture",
+      "wordingApproval": "fixture-only"
+    },
+    {
+      "id": "demo-earlier",
+      "title": "同一地点，另一段时间",
+      "text": "这是较早年代的演示片段。选择“切到这段时间”，地点和地图视角会保留。",
+      "time": {
+        "kind": "window",
+        "start": 1994,
+        "end": 1996,
+        "originalExpression": "Synthetic 1994–1996 fixture"
+      },
+      "portalId": null,
+      "schemaVersion": 1,
+      "revision": 1,
+      "placeIds": [
+        "place-xinhua"
+      ],
+      "synthetic": true,
+      "privacy": "public",
+      "provenance": "synthetic-fixture",
+      "wordingApproval": "fixture-only"
+    },
+    {
+      "id": "demo-unknown",
+      "title": "只记得是小学时",
+      "text": "这是生活阶段的演示片段。未提供年份，所以不会自动换算成年代。",
+      "time": {
+        "kind": "stage",
+        "stageId": "primary",
+        "originalExpression": "Synthetic primary-school stage fixture"
+      },
+      "portalId": null,
+      "schemaVersion": 1,
+      "revision": 1,
+      "placeIds": [
+        "place-xinhua"
+      ],
+      "synthetic": true,
+      "privacy": "public",
+      "provenance": "synthetic-fixture",
+      "wordingApproval": "fixture-only"
+    }
+  ]
+}
