@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-journal-readability-r6",
-  "revision": 6,
+  "id": "phase1-grounded-street-r7",
+  "revision": 7,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",

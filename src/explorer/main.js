@@ -179,8 +179,8 @@ async function enterStreet() {
     if (!stage) {
       const { createStage } = await import('./stage.js');
       stage = await createStage({ container: $('stage-canvas'), session, mapping, transform: registry.transform,
-        assets: Object.fromEntries(Object.entries(manifest.stageAssets).map(([k,a]) => [k,{...a,url:assetURL(a)}])), composition,
-        blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onError: notify });
+        composition,
+        blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onEnter: enterDoor, onError: notify });
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' }); notify();
