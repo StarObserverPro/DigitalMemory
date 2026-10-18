@@ -60,6 +60,6 @@ Official reference: [GitHub image rendering and visual diffs](https://docs.githu
 
 ## Current dual-scale sample
 
-Use “走进新华街” on the illustrated overview. The close scene puts a person on the sidewalk; arrows/WASD or on-screen hold buttons walk and turn, and dragging turns the view. Approach the labeled courtyard gate to enter the synthetic courtyard/room fixture. “回到手绘图” preserves the updated geographic/art route location. The mapping inspector compares both locations explicitly.
+The three-tier overview remains unchanged in DM-0010. Street entry now uses a grounded volumetric child, neutral building volumes and an elevated camera. Click the sidewalk to walk, drag to orbit, or use arrow keys/WASD. Click the gate to approach and enter the existing imagined courtyard; return restores the same street state. All permanent controls remain in the closed menu.
 
-The street sample spans 140 m of the contemporary reference centreline. Its facade strip repeats as economical theatrical scenery. The character is a static cutout with light motion sway; articulated walk-cycle animation is not implemented. No period-specific real facade package, measured sidewalk geometry, verified historical gate or production private archive is implied. See [mapping contract](ILLUSTRATION_MAPPING.md).
+The sample remains the same 140 m reference centerline. It does not establish exact historical sidewalk widths, facades or a real gate. Details and native-vs-browser evidence limits are in [STREET_PROTOTYPE](STREET_PROTOTYPE.md). Additional overview candidates are stored separately in `assets/candidates/overview-r1/`; they are not automatically placed on the map.

@@ -1,6 +1,6 @@
 # Interaction contract
 
-Status: current interaction target, corrected by the later user requests. The deployed prototype has not yet been migrated to the no-character overview, three-tier map and elevated chibi street view. See [MAP_ASSEMBLY](MAP_ASSEMBLY.md).
+Status: the three-tier overview is implemented. The current grounded street prototype and its verification limits are in [STREET_PROTOTYPE](STREET_PROTOTYPE.md).
 
 Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
@@ -20,7 +20,7 @@ The initial overview is an illustrated travel-journal map: individual building v
 
 Selecting a modeled street transitions to a close third-person sidewalk view. Nearby facades, courtyard gates and small props stand up as painted film-set flats, with perspective, foreground/background occlusion and restrained shallow geometry. The person appears only after street entry, as a grounded big-headed chibi figure in a moderately elevated board-game-like composition. A brief fog/rotation/approach transition preserves orientation. The earlier near-eye-height half-body framing is superseded. The person can walk forward/backward and turn; pointer drag turns the view. Fog, faded silhouettes and arrows mark unbuilt extents. Do not replace this with a generic full-3D block city or a floating orbital view.
 
-The prototype controls are arrows/WASD in the street and direct dragging: horizontal displacement turns, vertical displacement beyond a dead zone walks until release. There is no persistent control pad. Release, cancel, blur and inactive scenes stop movement. A door becomes actionable only at close range. Returning to the overview restores the same edge/progress; returning from an interior also restores sidewalk position, heading, period and selection.
+The current prototype uses click/tap destinations on the sidewalk, camera-relative arrow/WASD movement and horizontal drag to orbit. Character facing and camera orbit are independent. Clicking the gate approaches it first and enters only at close range. Opening a menu, blur, visibility change and inactive scenes stop movement. There is no persistent control pad. See STREET_PROTOTYPE for the bounded volumetric replacement of the earlier paper character. Returning to the overview restores the same edge/progress; returning from an interior also restores sidewalk position, heading, period and selection.
 
 The board-game reference supplies readable spatial relationships and character movement. There are no route cells, dice, property prices or compulsory turns. Geographic nodes, illustration anchors and actual historical entrances have distinct approval states.
 
