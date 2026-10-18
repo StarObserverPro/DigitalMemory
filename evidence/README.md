@@ -1,6 +1,6 @@
 # DM-0004 — layered scene evidence
 
-The current screenshots come from the built static application, not an image mockup. The exact implementation commit/tree will be bound in the delivery closure; `street-browser-results.json` records the built-file SHA-256, initial session, camera/renderer state and all fourteen journey checks.
+The current screenshots come from the built static application, not an image mockup. Tested implementation: `0c337176842b3f21d7121f366e46a5c36a2f18d1`; tree `1a39e03e26ff3e5bab0d68e517b8ebc04a0f83ca`, identical to the local verified tree. Built-file SHA-256: `73d5df63607a77932ff31738d5f4415720f0ea3ebb82dd38a177987b8c3b25f2`. The delivery closure changes documentation/routing only. `street-browser-results.json` records initial session, camera/renderer state and all fourteen journey checks. The final merged revision and deployment result are recorded in [PR3](https://github.com/StarObserverPro/DigitalMemory/pull/3).
 
 - `journal-overview.png` / `journal-mobile.png`: independent paper, registered road layer, off-road building groups, labels and child.
 - `roads-only.png`: building layer disabled without changing geographic registration.

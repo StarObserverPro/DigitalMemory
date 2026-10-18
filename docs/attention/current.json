@@ -2,5 +2,5 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": [{"id":"DM-0004","path":"docs/attention/tasks/DM-0004.md","scope":"layered street composition and deployment"}]
+  "active": []
 }

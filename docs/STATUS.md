@@ -1,6 +1,6 @@
 # Repository status
 
-Status date: 2026-10-17 (America/New_York). This is an observed delivery ledger, not task activation.
+Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
 ## Current correction — DM-0004
 
@@ -8,7 +8,7 @@ Independent roads, shells, shops, entrances and character layers replace the all
 
 Seventeen domain tests and fourteen actual-browser checks pass. The temporary single-slot shop preview demonstrates replacement without road/shell/route changes. This is not a durable private authoring backend.
 
-PR3 will carry all PR2 changes plus this correction. The user explicitly authorized superseding PR2, merging PR3 and deployment. Integration/deployment are in progress; exact outcome will be attached at delivery. Active carrier: `agent/layered-street-pr3`, base `c12bf01eea443687863d930a3f0ac99d057c45e0`. The old delivery records below describe their historical state, not today's deployment state.
+PR3 carries all PR2 changes plus this correction. The user explicitly authorized superseding PR2, merging PR3 and deployment. The final merge SHA and deployment outcome are recorded in the [PR3 integration section](https://github.com/StarObserverPro/DigitalMemory/pull/3). Tested implementation: `0c337176842b3f21d7121f366e46a5c36a2f18d1`; carrier `agent/layered-street-pr3`, base `c12bf01eea443687863d930a3f0ac99d057c45e0`. Active task routing is closed. The old delivery records below describe their historical state, not today's integration state.
 
 ## Previous correction — DM-0003
 
