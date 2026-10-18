@@ -2,11 +2,5 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": [
-    {
-      "taskId": "DM-0002",
-      "packet": "tasks/DM-0002.md",
-      "status": "executing"
-    }
-  ]
+  "active": []
 }

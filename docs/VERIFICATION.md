@@ -1,6 +1,6 @@
 # Verification and acceptance
 
-Status: acceptance contract. Most scenarios below are **future runtime tests**, not implemented tests or passing results. The bootstrap packet records the checks actually performed for this documentation delivery.
+Status: acceptance contract. DM-0002 now implements and verifies a bounded subset; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
 
 ## Evidence levels
 
