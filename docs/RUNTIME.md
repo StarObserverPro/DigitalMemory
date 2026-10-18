@@ -1,6 +1,6 @@
 # Phase 1 runtime foundation
 
-The first application is a dependency-free native ES-module application with SVG/bitmap presentation and a small static public repository adapter. It implements the basic contracts without choosing a private archive, authentication service or hosting provider.
+The application uses native ES modules, original illustrated PNGs and a small static public repository adapter. The close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. It implements the basic contracts without choosing a private archive, authentication service or hosting provider.
 
 ## Run and check
 
@@ -14,7 +14,7 @@ npm run build
 
 Open `http://localhost:4173`. `npm run build` verifies map checksums and public package envelopes, then produces `dist/`. `node scripts/serve.mjs --dist` serves the built files. Relative asset URLs support hosting under a repository subpath as well as a domain root.
 
-Optional browser checks use Playwright installed separately. Run `node scripts/browser-check.mjs`; set `CHROMIUM_EXECUTABLE` if using an existing Chromium binary. `CODEX_PRIMARY_RUNTIME_NODE_MODULES` is supported as a dependency lookup fallback. These checks start their own static server, exercise real UI controls, and save screenshots/results under `evidence/`.
+Optional browser checks use Playwright installed separately. Run `node scripts/browser-check.mjs`; set `CHROMIUM_EXECUTABLE` if using an existing Chromium binary. `CODEX_PRIMARY_RUNTIME_NODE_MODULES` is supported as a dependency lookup fallback. These checks start their own static server, exercise real UI controls in one Chromium shared over CDP 9333, and save screenshots/results under `evidence/`. The gate verifies a WebGL2 non-black pixel and actual app frames. SwiftShader execution does not establish hardware-device performance.
 
 ## Implemented ownership
 
@@ -25,10 +25,11 @@ Optional browser checks use Playwright installed separately. Run `node scripts/b
 | Session and portals | `src/application/session.js` | One place/period/camera/selection/scene owner; nested return snapshots; rejected stale loads |
 | Data connection | `src/adapters/public-repository.js` | Manifest-directed public records; place-filtered lazy chunks; paginated memory results; lazy scene loading; errors preserve origin |
 | Browsing persistence | `src/adapters/session-storage.js` | Best-effort local session preferences only; validation and usable map origin on restore |
-| Map and controls | `src/explorer/` | Independent image, label and hit layers; pan/zoom, period selector, searchable places, candidate picker, synthetic nested scene demonstration |
+| Overview and street | `src/explorer/` | Hand-drawn overview; enter a sidewalk scene of upright scenic flats, minimal ground and fog; near-door interaction, exact return and opt-in mapping inspector |
+| Illustration mapping | `src/domain/illustration.js` | Real-node / drawing-node correspondence, stable route edge/progress, metre-based street movement; one ordered Xinhua chain |
 | Resources and references | `content/public/manifest.json`, `assets/maps/` | Revision/checksum-pinned candidates and explicit provenance; exact transform for vector candidates; B raster alignment still reviewable |
 
-The raster is not an identity store. Switching A/B/C changes only the asset reference. School names are not geocoders: old campus identities remain registered with `geometry: null` until the specific sites are researched. Correcting a place geometry never changes its ID or rewrites linked memory records.
+The raster is not an identity store. The initial A/B/C boards were rejected as the primary visual experience; their assets remain as provenance/reference, not active choices. The new journal image and geographic map have independently authored coordinates linked by stable IDs. School names are not geocoders: old campus identities remain registered with `geometry: null` until the specific sites are researched. Correcting a place geometry never changes its ID or rewrites linked memory records.
 
 ## Current frame and uncertainty
 
@@ -54,3 +55,9 @@ If assets later warrant a separate public repository, preserve the same manifest
 There is no need to create another repository for three candidates. Moving storage changes resource URLs, not place IDs, map registration, memory associations or hit testing. Keep bulk originals/private sources outside public Git. Large changing raster collections eventually belong in object storage rather than growing the code checkout indefinitely.
 
 Official reference: [GitHub image rendering and visual diffs](https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files).
+
+## Current dual-scale sample
+
+Use “走进新华街” on the illustrated overview. The close scene puts a person on the sidewalk; arrows/WASD or on-screen hold buttons walk and turn, and dragging turns the view. Approach the labeled courtyard gate to enter the synthetic courtyard/room fixture. “回到手绘图” preserves the updated geographic/art route location. The mapping inspector compares both locations explicitly.
+
+The street sample spans 140 m of the contemporary reference centreline. Its facade strip repeats as economical theatrical scenery. The character is a static cutout with light motion sway; articulated walk-cycle animation is not implemented. No period-specific real facade package, measured sidewalk geometry, verified historical gate or production private archive is implied. See [mapping contract](ILLUSTRATION_MAPPING.md).

@@ -1,6 +1,11 @@
-export const initialSession = Object.freeze({ schemaVersion: 1, placeId: null, periodId: 'window-2000', styleId: 'paper', sceneId: 'map', selectedMemoryId: null, camera: { x: 0, y: 0, zoom: 1 }, mode: 'walking', returnStack: [] });
-export function reduceSession(state, command) {
+import { advanceStage } from '../domain/illustration.js';
+export const initialSession = Object.freeze({ schemaVersion: 1, placeId: null, periodId: 'window-2000', styleId: 'journal', sceneId: 'map', selectedMemoryId: null, camera: { x: 0, y: 0, zoom: 1 }, mode: 'walking', view: 'map', route: { edgeId: 'xinhua-edge-4', t: .70, direction: 1 }, street: { lateral: 5.5, heading: 0 }, returnStack: [] });
+export function reduceSession(state, command, mapping) {
   switch (command.type) {
+    case 'route': return mapping?.valid(command.route) ? { ...state, route: { ...command.route } } : state;
+    case 'walk': { if (!mapping || state.sceneId !== 'map') return state; return state.view === 'street' ? { ...state, ...advanceStage(state.route, state.street, command.input, command.dt, mapping) } : { ...state, route: mapping.advance(state.route, (command.input.forward || 0) * Math.min(command.dt, .05) * 35) }; }
+    case 'street-heading': return Number.isFinite(command.heading) ? { ...state, street: { ...state.street, heading: command.heading } } : state;
+    case 'view': return ['map', 'street'].includes(command.view) ? { ...state, view: command.view } : state;
     case 'select-place': return { ...state, placeId: command.id, selectedMemoryId: null };
     case 'select-memory': return { ...state, placeId: command.placeId, selectedMemoryId: command.id };
     case 'period': return { ...state, periodId: command.id, selectedMemoryId: null };
@@ -11,10 +16,10 @@ export function reduceSession(state, command) {
     default: throw new Error(`Unknown command: ${command.type}`);
   }
 }
-export function createSession(saved = null) {
-  let state = structuredClone(saved ?? initialSession);
+export function createSession(saved = null, mapping = null) {
+  let state = structuredClone({ ...initialSession, ...saved });
   const listeners = new Set();
-  return { get: () => structuredClone(state), dispatch(command) { state = reduceSession(state, command); for (const fn of listeners) fn(structuredClone(state)); return structuredClone(state); }, subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); } };
+  return { get: () => structuredClone(state), dispatch(command) { state = reduceSession(state, command, mapping); for (const fn of listeners) fn(structuredClone(state)); return structuredClone(state); }, subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); } };
 }
 /** Late responses cannot change a navigation that has been superseded or cancelled. */
 export function createPortalController(session, repository) {

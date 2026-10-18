@@ -69,3 +69,11 @@ Review **registration**, **appearance**, **text**, and **publication** separatel
 ## Publication package
 
 Publish only selected revisions and the required derivatives, with source-type labels and usage metadata appropriate to the audience. Keep originals, intermediate masks, prompts, and high-volume generation output outside public Git unless explicitly cleared. The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
+
+## Dual-scale illustration assets — DM-0003 correction
+
+The overview is an original hand-drawn map with deliberately simplified proportions. It is not the street renderer's ground texture. Store node/edge correspondences in a separately revised mapping file. Place/door footprints and clickable regions remain structured records.
+
+For the close scene, prepare front-elevation PNGs with real alpha and a shared ground baseline. Stand them upright along a metric sidewalk, with shallow returns only where the view needs them. Character feet and occlusion are renderer concerns. Do not bake the controllable person into the map or bake a second incompatible perspective into facade planes. Fog and direction signs bound unfinished areas.
+
+Current art is a candidate: the cinema, houses, shopfronts and gate are generic reconstructions, not observed historical facades. Reference artists are linked for visual research; their artwork is not redistributed in the app. Original generated assets and provenance are in `assets/scenes/README.md` and `assets/maps/generation-journal-r1.json`.

@@ -8,7 +8,7 @@ The purpose is to preserve impressions of living in an environment, not to produ
 
 Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
 
-The prototype provides a map-dominant explorer, three switchable board candidates, separate place/registration/time/session modules, and an explicitly synthetic nested-portal example. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [map candidates](assets/maps/README.md).
+The prototype opens a hand-drawn overview. Choose “走进新华街” to place a character on its sidewalk, surrounded by upright illustrated film-set facades, with fog beyond the modeled segment. Walk, turn, approach a courtyard door and return to the same map position. “查看位置对应” compares real and illustration nodes. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping and scenic-flat design](docs/ILLUSTRATION_MAPPING.md).
 
 ## Start here
 
@@ -38,4 +38,4 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-This branch adds a runnable planar prototype and map candidates. No deployed application, acquired historical base-map package, private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.
+This branch adds a runnable illustrated overview and a 140 m scenic-flat sidewalk sample. The previous flat board candidates were rejected as the main experience. No deployed application, acquired historical base-map package, private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.

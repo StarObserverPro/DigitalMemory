@@ -1,6 +1,6 @@
 # Verification and acceptance
 
-Status: acceptance contract. DM-0002 now implements and verifies a bounded subset; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
+Status: acceptance contract. DM-0003 implements the corrected illustrated-map/scenic-flat subset; DM-0002 is earlier rejected visual history; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
 
 ## Evidence levels
 

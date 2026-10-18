@@ -43,3 +43,7 @@ Read-only reference snapshot: `StarObserverPro/crystal-garden` at commit `d60044
 - [Context policy](https://github.com/StarObserverPro/crystal-garden/blob/d60044a8bbe5682573bb518841baa3418d9d6efa/docs/control/context-policy.json): bounded local attention without a global execution cap.
 
 Adopt the principles, not the full implementation. Do not import Crystal Garden's renderer, save keys, economy, deployment integration, gate manifests, artifact schedule, historical worklets, or gate-maintenance bureaucracy. It is not a dependency and was not modified for this task.
+
+## D-010 — Illustrated overview, scenic-flat street, shared route identity (2026-10-17)
+
+User correction supersedes the earlier fixed map-camera assumption. Far view: hand-drawn, cartoon/cute or travel-journal map with explicit real-node correspondence. Close view: enter a street, put the person on its sidewalk, erect illustrated cinematic scenic flats; use fog and arrows beyond built scope. One `{edgeId,t}` location feeds both consumers, with separate art and geographic coordinates. DM-0003 implements an initial example; art and historical approvals remain separate.

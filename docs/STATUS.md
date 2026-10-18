@@ -2,7 +2,19 @@
 
 Status date: 2026-10-17 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Phase 1 construction — DM-0002
+## Current correction — DM-0003
+
+The user explicitly clarified a hand-drawn/cartoon/travel-journal overview with real-node mapping, then a close sidewalk scene built like cinematic scenery. This replaces the earlier aerial-board visual assumption.
+
+Implemented: original illustrated map; 11 contemporary-reference shape/end nodes and 10 Xinhua Street edges mapped into an independent artboard; one shared route position; a 140 m close street of transparent facade flats, shallow returns, procedural pavement, a grounded pedestrian, follow camera, fog and directional signs; keyboard/pointer/hold-button movement; nearby synthetic gate; nested scene return; optional geographic/illustration comparison.
+
+Verification: 13 domain tests and static build; 12 actual-browser journey checks on built files at 1440 × 1000 and 390 × 844; WebGL2 probe and actual app rendering with SwiftShader. Exact evidence binding is in [evidence](../evidence/README.md) and `evidence/street-browser-results.json`. Browser testing found and fixed Escape handling inside the search input; visual inspection corrected camera distance when turning near the facade so the character's feet remain visible.
+
+Current gaps: art and registration still need user approval; no historically verified facades/entrances, real private memories, full network routing, skeletal walk cycle, private authentication/archive or durable write backend. One ordered street chain is implemented. The sprite sways while translating. Original A/B/C candidates remain cold provenance/reference, not active choices.
+
+Delivery stays in PR #2 on `agent/phase1-map-foundation`; main is unchanged and no deployment is performed. The final delivery record identifies the tested source revision.
+
+## Earlier Phase 1 construction — DM-0002 (visual approach rejected)
 
 Branch: `agent/phase1-map-foundation`. Tested implementation commit: `9487c95f0b208b966bd13eea69ff9a9e9ab43863`. The closure change updates delivery documentation/routing only. Integration and user art/registration review remain pending. Main is unchanged by this task; no deployment or hosting publication was performed.
 
@@ -39,4 +51,4 @@ The documentation baseline was delivered in PR #1 and is present at base `002390
 
 ## Next action
 
-User selects or revises the map style. Historical street/campus registration and the private archive provider can then be addressed in separately authorized bounded work. No successor task or recurring automation is activated.
+Review the illustrated-overview → scenic-flat-street sample and the real/art node correspondence. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.

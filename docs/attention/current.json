@@ -2,5 +2,12 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": []
+  "active": [
+    {
+      "id": "DM-0003",
+      "packet": "tasks/DM-0003.md",
+      "status": "in_progress",
+      "outcome": "Illustrated map \u2194 registered sidewalk scenic-flat scene"
+    }
+  ]
 }

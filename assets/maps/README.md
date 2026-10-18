@@ -1,3 +1,11 @@
+# Current visual direction
+
+The user rejected the earlier planar A/B/C boards as the primary experience. They remain below as provenance and geography references. The active candidate is `fengtai-journal-r1.png`: an original hand-drawn overview with a separately registered artboard, paired with the close scenic-flat street assets in `../scenes/`.
+
+Mapping: `../../content/public/illustration-mapping.json`. Provenance: `generation-journal-r1.json`. Detailed design: `../../docs/ILLUSTRATION_MAPPING.md`. User art approval and historical facade/entrance verification remain pending.
+
+---
+
 # Fengtai map candidates, revision 1
 
 All maps cover the same approximate north-up 1.8 km square: WGS84 bounds `[116.271, 39.837, 116.292, 39.8531]`. The contemporary orientation extract is in [orientation.json](../../content/public/orientation.json). Four public geographic anchors are registered for orientation only. Historical school sites are deliberately unresolved.
