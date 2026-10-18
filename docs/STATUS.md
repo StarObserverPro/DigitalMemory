@@ -12,7 +12,7 @@ Verification: 13 domain tests and static build; 12 actual-browser journey checks
 
 Current gaps: art and registration still need user approval; no historically verified facades/entrances, real private memories, full network routing, skeletal walk cycle, private authentication/archive or durable write backend. One ordered street chain is implemented. The sprite sways while translating. Original A/B/C candidates remain cold provenance/reference, not active choices.
 
-Delivery stays in PR #2 on `agent/phase1-map-foundation`; main is unchanged and no deployment is performed. The final delivery record identifies the tested source revision.
+Delivery stays in PR #2 on `agent/phase1-map-foundation`; main is unchanged and no deployment is performed. Tested implementation: `845b05d327fadec71dca37415462a8d1398c075e`; closure changes delivery documentation and routing only.
 
 ## Earlier Phase 1 construction — DM-0002 (visual approach rejected)
 
