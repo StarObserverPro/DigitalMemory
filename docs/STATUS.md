@@ -2,7 +2,15 @@
 
 Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Current visible map review — DM-0008
+## Current overview correction — DM-0009
+
+Soft paper-compatible roads replace the heavy black overview bars. Context continuations and Four Ring service roads use public source geometry. All feature anchors now share the road projection; the three Sanli symbols remain inside Sanli instead of being spread across Wuli. Thumbnail art retains aspect ratio. A local pen-like handwritten font and screen-pixel label placement keep names readable at all three tiers and on narrow screens; label budgets and collision checks suppress excess names.
+
+Thirty-four automated tests pass. Native consumer SVG renders cover the submitted screenshot size, two closer tiers and a narrow phone view. These verify composition/label geometry, not browser gestures or WebGL. The Sites skill requires skipping managed browser QA without control-browser. Deployment provenance is recorded in the integration PR.
+
+Limits: public contemporary geographic references are not historical proof; tower roof picks have stated uncertainty, and Nankai symbols are not individual-building registrations. Exact historic facade/entrance details and the tall underpass wall are still unresolved. Street artwork and the existing short walking slice are unchanged.
+
+## Previous visible map review — DM-0008
 
 PR5 and PR6 are merged. The consumer overview now uses the map assembly planner, three zoom stops, separate pale context / roads / solid places, no overview avatar and immediate entry on the modeled Xinhua street slice. New tower/slab candidates use broad pencil/watercolor marks designed for small display; the detailed architecture-render attempts are not active assets. Main, service and walking corridors plus schematic retaining walls are reserved independently. The street camera is moderately elevated; street figure and facade assets remain previous candidates rather than a completed new chibi scene.
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "privacy": "public",
-  "revision": "places-r1",
+  "revision": "places-r2",
   "records": [
     {
       "id": "place-theatre",
@@ -118,6 +118,28 @@
       "privacy": "public",
       "institutionId": "institution-middle",
       "summary": "旧校址与校门位置待核对，暂不落点。"
+    },
+    {
+      "id": "place-sanli",
+      "schemaVersion": 1,
+      "revision": 1,
+      "label": "新华街三里",
+      "kind": "neighborhood",
+      "geometryRevision": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.285456875,
+          39.843870075
+        ]
+      },
+      "registration": "orientation-only",
+      "sourceRefs": [
+        "osm-2026-10-18:way/897762350"
+      ],
+      "historicalApproval": "unverified",
+      "privacy": "public",
+      "summary": "沿街的塔楼与院子，留在各自的位置上，慢慢补回记忆。"
     }
   ],
   "institutions": [
