@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
+  "globalConcurrencyLimit": null,
+  "active": []
+}
