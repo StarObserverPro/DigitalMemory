@@ -1,0 +1,25 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Private memory/source material: never commit these trees
+/private/
+/local-archive/
+/raw-inputs/
+/local-evidence/
+
+# Generated caches/builds, not the durable archive
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.next/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Ignore rules are not a security boundary. Review staged paths and content.
