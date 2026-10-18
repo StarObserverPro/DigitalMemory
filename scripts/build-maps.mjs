@@ -43,6 +43,6 @@ for (let i = 0; i < assets.length; i++) {
   const generated = previous.assets.find(a => a.id === assets[i].id && a.kind === 'generated-map-style-candidate');
   if (generated && generated.geometryRevision === geo.revision && generated.referenceSha256 === assets[i].sha256) assets[i] = generated;
 }
-manifest.assets = assets;
+manifest.assets = [...previous.assets.filter(a => !['paper', 'board', 'ink'].includes(a.id)), ...assets.map(a => ({ ...a, approval: previous.assets.find(p => p.id === a.id)?.approval || a.approval, selectable: previous.assets.find(p => p.id === a.id)?.selectable ?? false }))];
 await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
 console.log(`Built ${assets.length} registered map candidates, 2400 × 2400 SVG.`);

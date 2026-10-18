@@ -1,6 +1,6 @@
 # Core architecture
 
-Status: v1 implementation contract; the first planar runtime subset is implemented in DM-0002. Private storage and hosting remain deferred. See [DECISIONS](DECISIONS.md).
+Status: v1 implementation contract; the initial planar subset (DM-0002) is superseded visually by illustrated overview and scenic-flat street prototype DM-0003. Private storage and hosting remain deferred. See [DECISIONS](DECISIONS.md).
 
 Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
@@ -48,7 +48,9 @@ A renderer may own implementation resources such as its frame loop and GPU lifec
 
 ## Runtime composition
 
-Use a planar, registered ground in a local metric frame. The initial visual camera is fixed or tightly controlled oblique/orthographic, with a coherent relationship between map registration, raised footprints, labels, and hit testing. Ground art is flat; important street-edge volumes can rise above it. Farther areas stay light and planar. This is selective 2.5D, not a requirement for a continuous first-person city.
+The overview is a hand-drawn/cartoon/travel-journal illustration with a separate drawing-space layout. Stable node and edge IDs connect that layout to WGS84 source geometry. A route location is `{ edgeId, t, direction }`; geographic and illustration coordinates are derived views, not competing session positions. Do not force an artistic map into one global affine transform or infer a geographic address from an arbitrary illustration pixel.
+
+Entering a modeled street preserves that route position and puts the character on its sidewalk. The close scene uses a perspective camera, upright textured facade planes (cinematic scenic flats), shallow returns and minimal ground geometry. Fog and arrows terminate the visible sample. The renderer does not recreate a full city or promote painted buildings into historical evidence. The same session owns sidewalk offset, heading, active period and portal stack. See [illustration mapping](ILLUSTRATION_MAPPING.md).
 
 Map illustrations, vectors, boxes, sprites, and portal images all reference the same scene manifest and transform revision. A pixel-to-world mapping cannot be independently re-created in the click handler. Foreground silhouettes and visual offsets must not alter the ground-space identity of a memory anchor.
 

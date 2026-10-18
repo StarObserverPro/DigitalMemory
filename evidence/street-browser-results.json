@@ -1,0 +1,112 @@
+{
+  "target": "dist/",
+  "buildSha256": "0dfa3caa08b944b733368c1d553771a4ed01c406b14572a0f244c4992997f34f",
+  "browser": "151.0.7922.34",
+  "cdp": "http://127.0.0.1:9333",
+  "url": "http://127.0.0.1:43733",
+  "viewport": [
+    "1440x1000",
+    "390x844"
+  ],
+  "dpr": 1,
+  "seed": "deterministic static scenery",
+  "probe": {
+    "ok": true,
+    "webgl2": true,
+    "pixel": [
+      51,
+      128,
+      179,
+      255
+    ],
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "renderer": {
+    "webgl2": true,
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "initial": {
+    "schemaVersion": 1,
+    "placeId": null,
+    "periodId": "window-2000",
+    "styleId": "journal",
+    "sceneId": "map",
+    "selectedMemoryId": null,
+    "camera": {
+      "x": 0,
+      "y": 0,
+      "zoom": 1
+    },
+    "mode": "walking",
+    "view": "map",
+    "route": {
+      "edgeId": "xinhua-edge-4",
+      "t": 0.7,
+      "direction": 1
+    },
+    "street": {
+      "lateral": 5.5,
+      "heading": 0
+    },
+    "returnStack": []
+  },
+  "initialStage": {
+    "avatarNdc": {
+      "left": -0.1609816332712541,
+      "right": 0.16098163327125456,
+      "bottom": -0.6484932766969911,
+      "top": 0.03996609517613285
+    },
+    "revision": "xinhua-scenic-flats-r1",
+    "route": {
+      "edgeId": "xinhua-edge-4",
+      "t": 0.7,
+      "direction": 1
+    },
+    "geo": [
+      116.28452727999999,
+      39.84203692
+    ],
+    "street": {
+      "lateral": 5.5,
+      "heading": 0
+    },
+    "feet": [
+      5.855525361621574,
+      0.17,
+      -60.59441610621019
+    ],
+    "camera": [
+      5.829130055847805,
+      2.65,
+      -56.094493519339046
+    ],
+    "doorDistance": 434.94393589218873,
+    "nearEntrance": false,
+    "renderer": {
+      "webgl2": true,
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "drawCalls": 140
+  },
+  "checks": [
+    "Illustrated overview is default, with independent registered position",
+    "Mapping inspector shows geographic and drawing-space correspondence for current route and place IDs",
+    "Entering street keeps the exact route coordinate and puts feet on the sidewalk",
+    "Keyboard walking reaches registered door; key release stops movement",
+    "Turning changes heading without leaving the sidewalk or putting camera behind the scenery",
+    "Nested courtyard/room return restores exact street route, heading, side, time and selection; dormant street ignores input",
+    "Returning to illustration and switching period preserve the same geographic node/edge position",
+    "Overview keyboard walk follows the illustration edge while updating real coordinate",
+    "Unresolved old campuses remain unplaced and searchable",
+    "390px viewport supports hold/release movement and return without clipping controls",
+    "Reload resumes a usable overview and stored route; reduced-motion uses immediate transitions",
+    "Failed scenic texture leaves the original map and location usable"
+  ],
+  "consoleErrors": [],
+  "unexpectedRequestFailures": [],
+  "httpErrors": [],
+  "note": "SwiftShader validates rendering, not target-device performance. Skill plugin doctor/ab.sh are absent from this environment; this replay implements the equivalent WebGL2 pixel + screenshot + shared-CDP gate. No Spector escalation was needed."
+}

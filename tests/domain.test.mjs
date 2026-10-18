@@ -63,7 +63,7 @@ test('public adapter rejects non-public packages', async () => {
   await assert.rejects(repo.init(),/Non-public/);
 });
 test('session restore tolerates corrupt or unavailable storage, drops stale scene and unknown place', () => {
-  const manifest={periods:[{id:'window-2000'}],assets:[{id:'paper'}],placeIds:['p']};let saved;
+  const manifest={periods:[{id:'window-2000'}],assets:[{id:'journal'}],placeIds:['p']};let saved;
   const storage={setItem:(key,value)=>saved=value,getItem:()=>saved};const session=createSession();
   session.dispatch({type:'select-place',id:'p'});session.dispatch({type:'enter',sceneId:'unloaded'});assert.equal(saveSession(storage,session.get()),true);
   assert.equal(restoreSession(storage,manifest).sceneId,'map');saved='broken';assert.equal(restoreSession(storage,manifest),null);

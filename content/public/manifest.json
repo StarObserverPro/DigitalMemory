@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-public-prototype-r1",
-  "revision": 1,
+  "id": "phase1-illustrated-prototype-r2",
+  "revision": 2,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -56,6 +56,21 @@
   ],
   "assets": [
     {
+      "id": "journal",
+      "label": "手绘街区",
+      "revision": "journal-r1",
+      "url": "../../assets/maps/fengtai-journal-r1.png",
+      "sha256": "ac10c6ef19004ccbfc7e540f95fe94f83c430183923b07b6f20a5fee74bb5be7",
+      "kind": "generated-illustrated-map",
+      "mappingRevision": "fengtai-journal-mapping-r1",
+      "width": 1254,
+      "height": 1254,
+      "approval": "candidate",
+      "privacy": "public",
+      "selectable": true,
+      "rights": "Project generated illustration; OSM reference data retains ODbL attribution."
+    },
+    {
       "id": "paper",
       "label": "A · 纸上街区",
       "revision": "paper-r1",
@@ -69,9 +84,10 @@
       "transformRevision": "local-equirectangular-r1",
       "width": 2400,
       "height": 2400,
-      "approval": "candidate",
+      "approval": "rejected-as-primary-experience",
       "privacy": "public",
-      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution."
+      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution.",
+      "selectable": false
     },
     {
       "id": "board",
@@ -87,14 +103,15 @@
       "transformRevision": "local-equirectangular-r1",
       "width": 1254,
       "height": 1254,
-      "approval": "candidate",
+      "approval": "rejected-as-primary-experience",
       "privacy": "public",
       "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution.",
       "referenceAsset": "../../assets/maps/fengtai-board-r1.svg",
       "registrationApproval": "pending",
       "displayClip": "inset(2.15% 2.55% 3.8% 2.55% round 2.2%)",
       "generationRecord": "../../assets/maps/generation-board-r1.json",
-      "referenceSha256": "7216de111b330d34defe5a7423bc81f33b06b13cf0819c86a8f6ed57065ebd64"
+      "referenceSha256": "7216de111b330d34defe5a7423bc81f33b06b13cf0819c86a8f6ed57065ebd64",
+      "selectable": false
     },
     {
       "id": "ink",
@@ -110,9 +127,10 @@
       "transformRevision": "local-equirectangular-r1",
       "width": 2400,
       "height": 2400,
-      "approval": "candidate",
+      "approval": "rejected-as-primary-experience",
       "privacy": "public",
-      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution."
+      "rights": "Project styling: MIT; underlying OSM extract: ODbL-1.0; retain attribution.",
+      "selectable": false
     }
   ],
   "memoryChunks": [
@@ -128,5 +146,24 @@
     "demo-room": "demo-room.json"
   },
   "environmentStates": [],
-  "notice": "Public orientation draft and explicitly synthetic interaction fixtures only; no private memories."
+  "notice": "Public orientation draft and explicitly synthetic interaction fixtures only; no private memories.",
+  "illustrationMapping": "illustration-mapping.json",
+  "stageAssets": {
+    "flats": {
+      "url": "../../assets/scenes/street-flats-r1.png",
+      "sha256": "d3829e356e560c266ee8408012c64a6ee73b3fb3b9316baac0897bc9457b1418",
+      "revision": "street-flats-r1",
+      "privacy": "public",
+      "kind": "generated-scenic-flat",
+      "approval": "candidate"
+    },
+    "walker": {
+      "url": "../../assets/scenes/walker-r1.png",
+      "sha256": "44a26e4467e5894770946e18c1ea5faf3b577a22d3c97c9246401c7ff50fafda",
+      "revision": "walker-r1",
+      "privacy": "public",
+      "kind": "generated-scenic-flat",
+      "approval": "candidate"
+    }
+  }
 }
