@@ -81,3 +81,7 @@ The overview is an original hand-drawn map with deliberately simplified proporti
 For the close scene, prepare front-elevation PNGs with real alpha and a shared ground baseline. Stand them upright along a metric sidewalk, with shallow returns only where the view needs them. Character feet and occlusion are renderer concerns. Do not bake the controllable person into the map or bake a second incompatible perspective into facade planes. Fog and direction signs bound unfinished areas.
 
 Current art is a candidate: the cinema, houses, shopfronts and gate are generic reconstructions, not observed historical facades. Reference artists are linked for visual research; their artwork is not redistributed in the app. Original generated assets and provenance are in `assets/scenes/README.md` and `assets/maps/generation-journal-r1.json`.
+
+## DM-0010 candidate batch
+
+Two original transparent sheets and fifteen cropped small-scale compound/building motifs are retained in `assets/candidates/overview-r1/`. Their catalog has no geographic registration and does not replace active overview assets. The new street prototype uses original procedural geometry to settle scale and movement first; these overview sprites are not used as street people or facade strips.

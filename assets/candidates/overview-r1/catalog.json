@@ -1,0 +1,436 @@
+{
+  "revision": "overview-batch-r1",
+  "kind": "original-generated-typology-candidates",
+  "privacy": "public",
+  "historicalStatus": "unverified; not place-specific reconstructions",
+  "automaticOverviewPlacement": false,
+  "sheets": [
+    {
+      "id": "compounds",
+      "url": "compounds-atlas.webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "6cd6718512bf6495496b0c0f42ba003611e4c59dd7a40b16a67ea55e6f09613d",
+      "generationSourceSha256": "35046158f3dacce4f30d6d935594699f5eb156d79bcedf532be653915a019503"
+    },
+    {
+      "id": "buildings",
+      "url": "buildings-atlas.webp",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "sha256": "e21333e17fada09ea733458ab781fda30d8ae64899b0b816437d61149f96a9be",
+      "generationSourceSha256": "85de14979d08bd51300b578794468ef4dd37ec1ce1243a48839d06984de49a12"
+    }
+  ],
+  "assets": [
+    {
+      "id": "three-towers",
+      "type": "compound",
+      "url": "three-towers.webp",
+      "width": 225,
+      "height": 220,
+      "sheet": "compounds",
+      "sourceCell": [
+        0,
+        0,
+        490,
+        512
+      ],
+      "trim": [
+        42,
+        57,
+        463,
+        468
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "fe061f03b9b68fb483e388b663bebe9eb817a460d3242e9f05301c8e3eee3c8c"
+    },
+    {
+      "id": "parallel-slabs",
+      "type": "compound",
+      "url": "parallel-slabs.webp",
+      "width": 256,
+      "height": 193,
+      "sheet": "compounds",
+      "sourceCell": [
+        490,
+        0,
+        1040,
+        512
+      ],
+      "trim": [
+        11,
+        81,
+        550,
+        487
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "0e2864966aa2a1592bc6d31caad87324d44d948b55f030dc91a45e779331570a"
+    },
+    {
+      "id": "corner-slabs",
+      "type": "compound",
+      "url": "corner-slabs.webp",
+      "width": 256,
+      "height": 220,
+      "sheet": "compounds",
+      "sourceCell": [
+        1040,
+        0,
+        1536,
+        512
+      ],
+      "trim": [
+        10,
+        92,
+        455,
+        475
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "90d8625795d47a696874e9ed401d8ab373fdbddf23a402dda4b239a3990bf19e"
+    },
+    {
+      "id": "mixed-compound",
+      "type": "compound",
+      "url": "mixed-compound.webp",
+      "width": 236,
+      "height": 220,
+      "sheet": "compounds",
+      "sourceCell": [
+        0,
+        512,
+        500,
+        1024
+      ],
+      "trim": [
+        29,
+        10,
+        486,
+        436
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "abed71c6860f83580ce89b31c86598416d502f63336097cc8338a57dfa074158"
+    },
+    {
+      "id": "walkup-rows",
+      "type": "compound",
+      "url": "walkup-rows.webp",
+      "width": 256,
+      "height": 202,
+      "sheet": "compounds",
+      "sourceCell": [
+        500,
+        512,
+        1050,
+        1024
+      ],
+      "trim": [
+        10,
+        32,
+        550,
+        458
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "9c66afbb7ad76b0e251973b6be1f1d9cf8c0a64b954829e25886084a3a00e510"
+    },
+    {
+      "id": "detached-shops-compound",
+      "type": "compound",
+      "url": "detached-shops-compound.webp",
+      "width": 256,
+      "height": 206,
+      "sheet": "compounds",
+      "sourceCell": [
+        1050,
+        512,
+        1536,
+        1024
+      ],
+      "trim": [
+        0,
+        49,
+        470,
+        427
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "2cb2f6d4f755806e50933ace0079f4aa5814605374e0270f18c7d8faf9603ac6"
+    },
+    {
+      "id": "tower-blue",
+      "type": "building",
+      "url": "tower-blue.webp",
+      "width": 102,
+      "height": 180,
+      "sheet": "buildings",
+      "sourceCell": [
+        0,
+        0,
+        512,
+        500
+      ],
+      "trim": [
+        173,
+        41,
+        422,
+        480
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "036f6021f0ccb4c90a4723bef55761b0cb09a45660a6f8399d0d79e5babf72ea"
+    },
+    {
+      "id": "tower-gray",
+      "type": "building",
+      "url": "tower-gray.webp",
+      "width": 102,
+      "height": 180,
+      "sheet": "buildings",
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        500
+      ],
+      "trim": [
+        140,
+        40,
+        390,
+        483
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "c808ba15bacabd5f525323e1217dda6f87cca330676be95e2cd5c11aae23e82c"
+    },
+    {
+      "id": "tower-sage",
+      "type": "building",
+      "url": "tower-sage.webp",
+      "width": 102,
+      "height": 180,
+      "sheet": "buildings",
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        500
+      ],
+      "trim": [
+        96,
+        38,
+        348,
+        482
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "a36d3a511dd4a33fcda8d85339532879c6dcae60904d5fa825d017bcd5b82855"
+    },
+    {
+      "id": "slab-coral",
+      "type": "building",
+      "url": "slab-coral.webp",
+      "width": 180,
+      "height": 85,
+      "sheet": "buildings",
+      "sourceCell": [
+        0,
+        500,
+        512,
+        774
+      ],
+      "trim": [
+        29,
+        28,
+        512,
+        256
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "b1920058a9bb0b4692da111c7dd87e39fda581a94488dadb95f279decc24b2d3"
+    },
+    {
+      "id": "slab-gray",
+      "type": "building",
+      "url": "slab-gray.webp",
+      "width": 180,
+      "height": 87,
+      "sheet": "buildings",
+      "sourceCell": [
+        512,
+        500,
+        1024,
+        774
+      ],
+      "trim": [
+        24,
+        30,
+        504,
+        262
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "086bcfe5eeda25b9a4c7206e894ae795ac9b712644dfe032183666b7f8fafb09"
+    },
+    {
+      "id": "slab-corner",
+      "type": "building",
+      "url": "slab-corner.webp",
+      "width": 180,
+      "height": 88,
+      "sheet": "buildings",
+      "sourceCell": [
+        1024,
+        500,
+        1536,
+        774
+      ],
+      "trim": [
+        16,
+        7,
+        483,
+        235
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "b1bfb5aee680ebb4258b978f516419258250b607f4ebb10024cab6ad9aaa7659"
+    },
+    {
+      "id": "shop-sage",
+      "type": "building",
+      "url": "shop-sage.webp",
+      "width": 180,
+      "height": 111,
+      "sheet": "buildings",
+      "sourceCell": [
+        0,
+        774,
+        512,
+        1024
+      ],
+      "trim": [
+        114,
+        14,
+        436,
+        213
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "80b05f25fd1d3e2ab60a270479edbf8cd72524d3b55dac6f586d2ad3a5f2128f"
+    },
+    {
+      "id": "shop-red",
+      "type": "building",
+      "url": "shop-red.webp",
+      "width": 180,
+      "height": 115,
+      "sheet": "buildings",
+      "sourceCell": [
+        512,
+        774,
+        1024,
+        1024
+      ],
+      "trim": [
+        103,
+        15,
+        413,
+        213
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "765c2942b2d2af321be5fe338cc9bf38471e4e4f1932aadd68e4e304cc36538a"
+    },
+    {
+      "id": "shop-pair",
+      "type": "building",
+      "url": "shop-pair.webp",
+      "width": 180,
+      "height": 88,
+      "sheet": "buildings",
+      "sourceCell": [
+        1024,
+        774,
+        1536,
+        1024
+      ],
+      "trim": [
+        56,
+        15,
+        466,
+        215
+      ],
+      "groundAnchor": [
+        0.5,
+        0.96
+      ],
+      "registration": null,
+      "approval": "candidate",
+      "sha256": "c325102db155268a5d01f3896877ba71a7dbc4cc4ada4c59fcf221bca2fcf950"
+    }
+  ]
+}
