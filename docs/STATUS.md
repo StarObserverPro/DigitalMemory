@@ -6,11 +6,13 @@ Status date: 2026-10-17 (America/New_York). This is an observed delivery ledger,
 
 The repository was public, writable through the connected GitHub tool, and contained only `LICENSE` at base commit `cf4d5d15cdde816c37edd90b5670cdfb73c3744d`. No open pull requests were observed before this documentation work. The original license is retained.
 
-## This change
+## Architecture delivery
 
-Core architecture, Phase 1 boundaries, interaction and asset/content contracts, verification criteria, a small attention router, and a reusable task packet are being authored on `agent/core-architecture-v1`.
+Core architecture, Phase 1 boundaries, interaction and asset/content contracts, verification criteria, a small attention router, and a reusable task packet are delivered on `agent/core-architecture-v1` in [PR #1](https://github.com/StarObserverPro/DigitalMemory/pull/1). At handoff, integration and user review are pending; no merge is authorized or performed by this task.
 
-At this document's initial authoring point, validation and PR delivery are pending. The [bootstrap packet](attention/tasks/DM-0001.md) records the current verification outcome and delivery evidence. GitHub branch/PR state, not this prose, determines whether a change has landed.
+The [bootstrap packet](attention/tasks/DM-0001.md) records the tested authoring revision, checks, limitations and final closure scope. GitHub branch/PR state, not this prose, determines what has landed. The active task list is empty at delivery; proposed map work has not been activated.
+
+Validation used the complete connector-returned PR diff and Git tree. A manually extracted inventory of 47 local Markdown links resolved to existing files, and the copied routing JSON matched its remote blob SHA before parsing. LICENSE retained its original blob. Full checkout-based lint was unavailable because the container could not resolve github.com; no such lint pass is claimed.
 
 ## Not implemented or acquired
 

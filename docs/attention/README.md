@@ -12,7 +12,7 @@ This is a small routing system for keeping intent intact across many chats, task
 
 ## Activation and lifecycle
 
-The current user request activates this documentation task. A roadmap, branch, old capsule, recurring topic, or Agent suggestion does not activate follow-up implementation, image generation, content publication, merge, or deployment.
+A current explicit user request can activate a bounded task. A roadmap, branch, old capsule, recurring topic, or Agent suggestion does not activate follow-up implementation, image generation, content publication, merge, or deployment.
 
 A lightweight task lifecycle is `executing`, `delivered`, `parked`, `cancelled`, or `superseded`. Only executing tasks belong in `current.json`. Implementation phase may be `planning`, `authoring`, `verification`, or `blocked` while executing. Keep review, user approval and integration status as separate facts: delivered does not mean approved or merged.
 

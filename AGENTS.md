@@ -30,7 +30,7 @@ One primary work item and up to two genuine dependencies are the default attenti
 
 ## Construction boundaries
 
-Read the current branch/head and relevant open PRs before writes. Discover tool capabilities read-only; a permission denial is not a reason to switch identity or bypass protection. Prefer an exact-base `agent/<task>` branch and a reviewable PR. Do not merge or deploy without authorization covering that effect. This architecture task authorizes documents, not a production release.
+Read the current branch/head and relevant open PRs before writes. Discover tool capabilities read-only; a permission denial is not a reason to switch identity or bypass protection. Prefer an exact-base `agent/<task>` branch and a reviewable PR. Do not merge or deploy without authorization covering that effect. A documentation request alone does not authorize a production release.
 
 Keep stable place identity separate from editable coordinates. Only the spatial registry controls registration; only the time resolver selects time-layer visibility; only the application session owns the current location, period, camera and portal stack. Generated visuals never become historical evidence. Detailed ownership is in [architecture](docs/ARCHITECTURE.md).
 
