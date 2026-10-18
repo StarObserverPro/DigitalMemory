@@ -1,0 +1,367 @@
+{
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "canvasScale": [
+    1.045,
+    1.045
+  ],
+  "alphaThreshold": 32,
+  "policy": {
+    "preferredGenerationToDisplayMax": 1.5,
+    "hardGenerationToDisplayMax": 1.5,
+    "minimumGeneratedToDisplay": 0.8,
+    "noNonuniformResize": true,
+    "largeOpaqueYardForbidden": true
+  },
+  "results": [
+    {
+      "id": "qili-0",
+      "cellNative": [
+        2,
+        2,
+        412,
+        412
+      ],
+      "trimInCell": [
+        176,
+        204,
+        235,
+        305
+      ],
+      "nativeSubjectSize": [
+        59,
+        101
+      ],
+      "finalBudget": [
+        50.578071428568876,
+        91.11110739238339
+      ],
+      "generationToDisplay": [
+        1.1665134382066222,
+        1.1085366306111135
+      ],
+      "aspectDrift": 1.052300308347544,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.1665134382066222,
+      "finalDisplaySize": [
+        51,
+        87
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-0",
+      "cellNative": [
+        420,
+        2,
+        830,
+        412
+      ],
+      "trimInCell": [
+        149,
+        216,
+        261,
+        300
+      ],
+      "nativeSubjectSize": [
+        112,
+        84
+      ],
+      "finalBudget": [
+        100.16807142947141,
+        72.34612116968191
+      ],
+      "generationToDisplay": [
+        1.118120758458043,
+        1.161085053931017
+      ],
+      "aspectDrift": 0.9629964270683598,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.161085053931017,
+      "finalDisplaySize": [
+        96,
+        72
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-0",
+      "cellNative": [
+        838,
+        2,
+        1248,
+        412
+      ],
+      "trimInCell": [
+        143,
+        205,
+        271,
+        314
+      ],
+      "nativeSubjectSize": [
+        128,
+        109
+      ],
+      "finalBudget": [
+        113.01714285774642,
+        93.65473716499719
+      ],
+      "generationToDisplay": [
+        1.132571544133905,
+        1.1638492968910708
+      ],
+      "aspectDrift": 0.9731255989579438,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.1638492968910708,
+      "finalDisplaySize": [
+        110,
+        94
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "qili-1",
+      "cellNative": [
+        2,
+        420,
+        412,
+        830
+      ],
+      "trimInCell": [
+        149,
+        158,
+        259,
+        343
+      ],
+      "nativeSubjectSize": [
+        110,
+        185
+      ],
+      "finalBudget": [
+        91.04052857142398,
+        163.9999933062901
+      ],
+      "generationToDisplay": [
+        1.2082530904211717,
+        1.128048826529461
+      ],
+      "aspectDrift": 1.0710999931966296,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.2082530904211717,
+      "finalDisplaySize": [
+        91,
+        153
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-1",
+      "cellNative": [
+        420,
+        420,
+        830,
+        830
+      ],
+      "trimInCell": [
+        106,
+        176,
+        307,
+        329
+      ],
+      "nativeSubjectSize": [
+        201,
+        153
+      ],
+      "finalBudget": [
+        180.30252857304845,
+        130.2230181054275
+      ],
+      "generationToDisplay": [
+        1.11479301810549,
+        1.1749074950492426
+      ],
+      "aspectDrift": 0.9488347149055908,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.1749074950492426,
+      "finalDisplaySize": [
+        171,
+        130
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-1",
+      "cellNative": [
+        838,
+        420,
+        1248,
+        830
+      ],
+      "trimInCell": [
+        92,
+        162,
+        323,
+        357
+      ],
+      "nativeSubjectSize": [
+        231,
+        195
+      ],
+      "finalBudget": [
+        203.43085714394374,
+        168.57852689699484
+      ],
+      "generationToDisplay": [
+        1.1355209491967526,
+        1.1567309525675784
+      ],
+      "aspectDrift": 0.9816638403911071,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.1567309525675784,
+      "finalDisplaySize": [
+        200,
+        169
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "qili-2",
+      "cellNative": [
+        2,
+        838,
+        412,
+        1248
+      ],
+      "trimInCell": [
+        122,
+        90,
+        292,
+        375
+      ],
+      "nativeSubjectSize": [
+        170,
+        285
+      ],
+      "finalBudget": [
+        136.56079285713594,
+        245.9999899594352
+      ],
+      "generationToDisplay": [
+        1.2448668204339348,
+        1.1585366326518787
+      ],
+      "aspectDrift": 1.0745165800967789,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.2448668204339348,
+      "finalDisplaySize": [
+        137,
+        229
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-2",
+      "cellNative": [
+        420,
+        838,
+        830,
+        1248
+      ],
+      "trimInCell": [
+        54,
+        121,
+        361,
+        356
+      ],
+      "nativeSubjectSize": [
+        307,
+        235
+      ],
+      "finalBudget": [
+        270.45379285957273,
+        195.334527158141
+      ],
+      "generationToDisplay": [
+        1.1351292091488734,
+        1.2030643195493351
+      ],
+      "aspectDrift": 0.9435316056701689,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.2030643195493351,
+      "finalDisplaySize": [
+        255,
+        195
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-2",
+      "cellNative": [
+        838,
+        838,
+        1248,
+        1248
+      ],
+      "trimInCell": [
+        29,
+        99,
+        387,
+        395
+      ],
+      "nativeSubjectSize": [
+        358,
+        296
+      ],
+      "finalBudget": [
+        305.1462857159154,
+        252.8677903454925
+      ],
+      "generationToDisplay": [
+        1.1732077916664871,
+        1.1705721776410356
+      ],
+      "aspectDrift": 1.0022515604554714,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "uniformSourcePixelsPerDisplayPixel": 1.1732077916664871,
+      "finalDisplaySize": [
+        305,
+        252
+      ],
+      "cropOffsetMustBeRetained": true
+    }
+  ],
+  "limits": [
+    "A size pass does not establish correct floor geometry, composition, topology or historical identity.",
+    "Transparent pixels and padding do not count as subject size.",
+    "No nonuniform fitting or production replacement."
+  ]
+}

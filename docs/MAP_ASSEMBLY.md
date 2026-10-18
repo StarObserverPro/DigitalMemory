@@ -1,5 +1,7 @@
 # A layered map that can be completed one memory at a time
 
+> DM-0013: [validated asset workflow](ASSET_WORKFLOW_VALIDATION.md) supersedes whole-compound affine fitting and whole-image road masking as the production method. Current r3 runtime remains a historical trial; this workflow change does not repair that deployed map. Ground bounds, visual bounds and standing-art occlusion must be distinct.
+
 DM-0009, 2026-10-18. The composition planner is connected to the visible overview. Geometry, visual acceptance and historical verification remain separate. Current implementation and gaps are recorded in STATUS and the active/recent task packet.
 
 ## The picture we are assembling

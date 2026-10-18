@@ -1,0 +1,517 @@
+{
+  "fixture": {
+    "canvas": [
+      1024,
+      1024
+    ],
+    "viewport": [
+      1200,
+      900
+    ],
+    "mapSide": 900,
+    "zooms": [
+      1,
+      1.8,
+      2.7
+    ],
+    "source": "retained Esri extent plus OSM/manual candidate geometry; Liuli roof offset unresolved"
+  },
+  "policy": {
+    "preferredGenerationToDisplayMax": 1.5,
+    "hardGenerationToDisplayMax": 2,
+    "minimumGeneratedToDisplay": 0.8,
+    "noNonuniformResize": true,
+    "largeOpaqueYardForbidden": true
+  },
+  "items": [
+    {
+      "id": "qili-0",
+      "compoundId": "qili",
+      "level": 0,
+      "zoom": 1,
+      "cell": [
+        2,
+        2,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        142.71096428571556,
+        183.14644099410665,
+        193.28903571428444,
+        274.25754838649004
+      ],
+      "displaySize": [
+        50.578071428568876,
+        91.11110739238339
+      ],
+      "guideGroundAnchor": [
+        168,
+        237
+      ],
+      "worldCenter": [
+        -63.5220464303839,
+        386.8921621645321
+      ],
+      "groundSizeMetres": [
+        115.8089590542045,
+        170.61773111079492
+      ],
+      "worldBounds": [
+        [
+          -121.42652595748615,
+          301.58329660913466
+        ],
+        [
+          -5.617566903281652,
+          472.2010277199296
+        ]
+      ],
+      "metresToScreen": 0.43673712156324407,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924276",
+        "osm-978924277",
+        "osm-978924278",
+        "osm-978924279"
+      ]
+    },
+    {
+      "id": "wuli-west-0",
+      "compoundId": "wuli-west",
+      "level": 0,
+      "zoom": 1,
+      "cell": [
+        342,
+        2,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        457.9159642852643,
+        195.58609395640013,
+        558.0840357147357,
+        267.93221512608204
+      ],
+      "displaySize": [
+        100.16807142947141,
+        72.34612116968191
+      ],
+      "guideGroundAnchor": [
+        508,
+        237
+      ],
+      "worldCenter": [
+        77.89038245098719,
+        345.43307649928875
+      ],
+      "groundSizeMetres": [
+        229.35552414443893,
+        141.65141270961425
+      ],
+      "worldBounds": [
+        [
+          -36.78737962123227,
+          274.60737014448165
+        ],
+        [
+          192.56814452320666,
+          416.2587828540959
+        ]
+      ],
+      "metresToScreen": 0.43673712156324407,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924280",
+        "osm-978924281",
+        "osm-978924282",
+        "osm-978924283",
+        "osm-978924285",
+        "osm-978924286"
+      ]
+    },
+    {
+      "id": "liuli-0",
+      "compoundId": "liuli",
+      "level": 0,
+      "zoom": 1,
+      "cell": [
+        682,
+        2,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        791.4914285711268,
+        187.55220868812194,
+        904.5085714288732,
+        281.2069458531191
+      ],
+      "displaySize": [
+        113.01714285774642,
+        93.65473716499719
+      ],
+      "guideGroundAnchor": [
+        848,
+        237
+      ],
+      "worldCenter": [
+        166.3831872727568,
+        459.4523212313727
+      ],
+      "groundSizeMetres": [
+        258.776131630891,
+        202.4418977479454
+      ],
+      "worldBounds": [
+        [
+          36.9951214573113,
+          358.2313723574
+        ],
+        [
+          295.7712530882023,
+          560.6732701053454
+        ]
+      ],
+      "metresToScreen": 0.43673712156324407,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "liuli-roof-segment-1",
+        "liuli-roof-segment-2",
+        "liuli-roof-segment-3",
+        "liuli-roof-segment-4",
+        "liuli-roof-segment-5",
+        "liuli-roof-segment-6",
+        "liuli-roof-segment-7",
+        "liuli-roof-segment-8",
+        "liuli-roof-segment-9"
+      ]
+    },
+    {
+      "id": "qili-1",
+      "compoundId": "qili",
+      "level": 1,
+      "zoom": 1.8,
+      "cell": [
+        2,
+        342,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        122.47973571428801,
+        480.063593789392,
+        213.520264285712,
+        644.0635870956821
+      ],
+      "displaySize": [
+        91.04052857142398,
+        163.99999330629015
+      ],
+      "guideGroundAnchor": [
+        168,
+        577
+      ],
+      "worldCenter": [
+        -63.5220464303839,
+        386.8921621645321
+      ],
+      "groundSizeMetres": [
+        115.8089590542045,
+        170.61773111079492
+      ],
+      "worldBounds": [
+        [
+          -121.42652595748615,
+          301.58329660913466
+        ],
+        [
+          -5.617566903281652,
+          472.2010277199296
+        ]
+      ],
+      "metresToScreen": 0.7861268188138394,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924276",
+        "osm-978924277",
+        "osm-978924278",
+        "osm-978924279"
+      ]
+    },
+    {
+      "id": "wuli-west-1",
+      "compoundId": "wuli-west",
+      "level": 1,
+      "zoom": 1.8,
+      "cell": [
+        342,
+        342,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        417.8487357134758,
+        502.45496912152026,
+        598.1512642865242,
+        632.6779872269477
+      ],
+      "displaySize": [
+        180.30252857304845,
+        130.22301810542746
+      ],
+      "guideGroundAnchor": [
+        508,
+        577
+      ],
+      "worldCenter": [
+        77.89038245098719,
+        345.43307649928875
+      ],
+      "groundSizeMetres": [
+        229.35552414443893,
+        141.65141270961425
+      ],
+      "worldBounds": [
+        [
+          -36.78737962123227,
+          274.60737014448165
+        ],
+        [
+          192.56814452320666,
+          416.2587828540959
+        ]
+      ],
+      "metresToScreen": 0.7861268188138394,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924280",
+        "osm-978924281",
+        "osm-978924282",
+        "osm-978924283",
+        "osm-978924285",
+        "osm-978924286"
+      ]
+    },
+    {
+      "id": "liuli-1",
+      "compoundId": "liuli",
+      "level": 1,
+      "zoom": 1.8,
+      "cell": [
+        682,
+        342,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        746.2845714280281,
+        487.9939756386195,
+        949.7154285719719,
+        656.5725025356144
+      ],
+      "displaySize": [
+        203.43085714394374,
+        168.5785268969949
+      ],
+      "guideGroundAnchor": [
+        848,
+        577
+      ],
+      "worldCenter": [
+        166.3831872727568,
+        459.4523212313727
+      ],
+      "groundSizeMetres": [
+        258.776131630891,
+        202.4418977479454
+      ],
+      "worldBounds": [
+        [
+          36.9951214573113,
+          358.2313723574
+        ],
+        [
+          295.7712530882023,
+          560.6732701053454
+        ]
+      ],
+      "metresToScreen": 0.7861268188138394,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "liuli-roof-segment-1",
+        "liuli-roof-segment-2",
+        "liuli-roof-segment-3",
+        "liuli-roof-segment-4",
+        "liuli-roof-segment-5",
+        "liuli-roof-segment-6",
+        "liuli-roof-segment-7",
+        "liuli-roof-segment-8",
+        "liuli-roof-segment-9"
+      ]
+    },
+    {
+      "id": "qili-2",
+      "compoundId": "qili",
+      "level": 2,
+      "zoom": 2.7,
+      "cell": [
+        2,
+        682,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        99.71960357143205,
+        771.595390684088,
+        236.28039642856797,
+        1017.5953806435232
+      ],
+      "displaySize": [
+        136.56079285713594,
+        245.9999899594352
+      ],
+      "guideGroundAnchor": [
+        168,
+        917
+      ],
+      "worldCenter": [
+        -63.5220464303839,
+        386.8921621645321
+      ],
+      "groundSizeMetres": [
+        115.8089590542045,
+        170.61773111079492
+      ],
+      "worldBounds": [
+        [
+          -121.42652595748615,
+          301.58329660913466
+        ],
+        [
+          -5.617566903281652,
+          472.2010277199296
+        ]
+      ],
+      "metresToScreen": 1.179190228220759,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924276",
+        "osm-978924277",
+        "osm-978924278",
+        "osm-978924279"
+      ]
+    },
+    {
+      "id": "wuli-west-2",
+      "compoundId": "wuli-west",
+      "level": 2,
+      "zoom": 2.7,
+      "cell": [
+        342,
+        682,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        372.77310357021366,
+        805.1824536822804,
+        643.2268964297864,
+        1000.5169808404215
+      ],
+      "displaySize": [
+        270.45379285957273,
+        195.3345271581411
+      ],
+      "guideGroundAnchor": [
+        508,
+        917
+      ],
+      "worldCenter": [
+        77.89038245098719,
+        345.43307649928875
+      ],
+      "groundSizeMetres": [
+        229.35552414443893,
+        141.65141270961425
+      ],
+      "worldBounds": [
+        [
+          -36.78737962123227,
+          274.60737014448165
+        ],
+        [
+          192.56814452320666,
+          416.2587828540959
+        ]
+      ],
+      "metresToScreen": 1.179190228220759,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "osm-978924280",
+        "osm-978924281",
+        "osm-978924282",
+        "osm-978924283",
+        "osm-978924285",
+        "osm-978924286"
+      ]
+    },
+    {
+      "id": "liuli-2",
+      "compoundId": "liuli",
+      "level": 2,
+      "zoom": 2.7,
+      "cell": [
+        682,
+        682,
+        332,
+        332
+      ],
+      "guideVisualBounds": [
+        695.4268571420423,
+        783.4909634579292,
+        1000.5731428579577,
+        1036.3587538034217
+      ],
+      "displaySize": [
+        305.1462857159154,
+        252.8677903454925
+      ],
+      "guideGroundAnchor": [
+        848,
+        917
+      ],
+      "worldCenter": [
+        166.3831872727568,
+        459.4523212313727
+      ],
+      "groundSizeMetres": [
+        258.776131630891,
+        202.4418977479454
+      ],
+      "worldBounds": [
+        [
+          36.9951214573113,
+          358.2313723574
+        ],
+        [
+          295.7712530882023,
+          560.6732701053454
+        ]
+      ],
+      "metresToScreen": 1.179190228220759,
+      "heightPolicy": "illustrative reduced height; not physical survey",
+      "sourceIds": [
+        "liuli-roof-segment-1",
+        "liuli-roof-segment-2",
+        "liuli-roof-segment-3",
+        "liuli-roof-segment-4",
+        "liuli-roof-segment-5",
+        "liuli-roof-segment-6",
+        "liuli-roof-segment-7",
+        "liuli-roof-segment-8",
+        "liuli-roof-segment-9"
+      ]
+    }
+  ]
+}
