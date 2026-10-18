@@ -1,5 +1,7 @@
 # Map, image and scene asset pipeline
 
+> DM-0013: [scale-budgeted workflow and measured validation](ASSET_WORKFLOW_VALIDATION.md) owns the satellite → final-size SVG → packed imagegen → crop/geometry/assembly gates. Define final display dimensions before generation; default native subject/display ratio ≤1.5 per axis. Never repair raised art with unrestricted affine fitting.
+
 > DM-0007: follow [MAP_ASSEMBLY](MAP_ASSEMBLY.md) for three overview tiers, independently replaceable pale context, compound children, and road-only bridge/retaining-wall parts. The same style must hold across scales. Accepted general style is not approval of a specific asset, location or chronology.
 
 > DM-0004 uses original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. The prior all-in-one illustration and long street strip are superseded. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
