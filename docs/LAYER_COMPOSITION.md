@@ -33,3 +33,7 @@ The child is physically 1.4 m high. The close follow camera and target height de
 The current public modules are versioned beside code under `assets/modules/`; the release manifest pins filenames, revisions and SHA-256. The app loads the deployed same-origin assets. GitHub stores the sources and review history; mutable `main` raw URLs are not the runtime asset registry.
 
 A separate image repository can later export the same immutable asset manifest. `assetId` and revision remain the interface: changing storage location updates the manifest/base URL, not building identity or route data. Large original photos belong in permission-appropriate storage; only cleared derivatives go into public Git. No private-photo upload or extra asset repository is required for this prototype.
+
+## Consumer presentation correction (DM-0005)
+
+The composition contracts remain internal. Their previous layer switches, sample storefront controls and geographic mapping inspector are removed from the consumer UI. `map-context.json` supplies display-only roads, district washes and building-symbol centroids from the retained OSM extract; it cannot register places or resolve historical occupants. `scripts/build-context.py` reproduces it from that source, whose checksum is recorded. Street secondary-row flats are subdued contextual scenery, not newly asserted historical buildings. The one closed menu owns all explicit controls; the visible map or street contains only the scene.
