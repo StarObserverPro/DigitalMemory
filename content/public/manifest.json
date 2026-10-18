@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-layered-review-r5",
-  "revision": 5,
+  "id": "phase1-journal-readability-r6",
+  "revision": 6,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -13,7 +13,8 @@
     "place-nankai",
     "place-xinhua",
     "site-primary-old",
-    "site-middle-old"
+    "site-middle-old",
+    "place-sanli"
   ],
   "periods": [
     {
@@ -313,7 +314,28 @@
       "privacy": "public",
       "kind": "generated-thumbnail-illustration",
       "approval": "candidate"
+    },
+    "towerGlyph": {
+      "id": "towerGlyph",
+      "revision": "towerGlyph-r1",
+      "url": "../../assets/modules/towerGlyph-r1.webp",
+      "width": 200,
+      "height": 320,
+      "sha256": "94107b08a7ae728bf37653f8529a7c71c60aa98132c8930223899b564fabc151",
+      "kind": "generated-thumbnail-glyph",
+      "historicalApproval": "unverified"
+    },
+    "slabGlyph": {
+      "id": "slabGlyph",
+      "revision": "slabGlyph-r1",
+      "url": "../../assets/modules/slabGlyph-r1.webp",
+      "width": 320,
+      "height": 140,
+      "sha256": "e10b40875441c88021c921bfb4f89e74931abecac9d207c4453eacbeb9ba3c65",
+      "kind": "generated-thumbnail-glyph",
+      "historicalApproval": "unverified"
     }
   },
-  "context": "map-context.json"
+  "context": "map-context.json",
+  "overviewRegistration": "overview-registration.json"
 }

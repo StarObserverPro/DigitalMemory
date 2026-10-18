@@ -22,3 +22,10 @@ These remain candidate drawings. Merge/deployment approval is not a claim of his
 The tower family has cream walls, a muted red roof edge and suggested enclosed balcony bands; the slab has a flat roof, pale plaster and coral balcony strokes. Floor marks are deliberately symbolic, not a literal floor count. These are drawing-family candidates, not confirmed facades or individual registered addresses. Rejected detailed tower/slab attempts are not active assets.
 
 Generated with the built-in image tool. Prompt direction: one isolated tiny map building; casual warm travel-journal/picture-book drawing; large irregular crayon/pencil and watercolor marks; no window frames, tiny grids, technical precision, ground, roads, shops, people or glow. Buildings remain separate from roads and yards.
+
+
+## r6 map-scale glyphs
+
+`towerGlyph-r1.webp` and `slabGlyph-r1.webp` are original built-in image_gen edits of the r1 tower/slab sketches, with real transparency. Town/neighborhood tiers use four broad blue balcony marks and a few coral slab bands; the nearest overview tier uses the existing more detailed sketches. Each image is scaled proportionally from the same geographic ground anchor. Small nominal story marks are typographic simplification, not a surveyed floor count. They are not historical evidence or accepted final art.
+
+Full prompts and original generated filenames are retained in `generation-r6.json`. Project-bound derivatives use ordinary proportional WebP sizing, retain generated alpha, and are pinned in the manifest. No photograph or third-party map illustration is distributed.
