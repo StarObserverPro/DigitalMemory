@@ -6,10 +6,10 @@ const require=createRequire(import.meta.url),sharp=require(path.join(process.env
 const read=async f=>JSON.parse(await fs.readFile('content/public/'+f+'.json'));
 const manifest=await read('manifest'),assembly=createOverviewAssembly(await read('scene-composition'),await read('map-context'),await read('overview-registration'),createTransform((await read('orientation')).bounds),manifest.moduleAssets);
 const assets=Object.fromEntries(Object.entries(manifest.moduleAssets).map(([k,v])=>[k,{...v,url:new URL(v.url,new URL('file://'+process.cwd()+'/content/public/manifest.json')).href}]));
-const resourceKeys=['towerSketch','slabSketch','towerGlyph','slabGlyph'],symbols=[];
+const resourceKeys=['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(assets).filter(k=>k.startsWith('compound-'))],symbols=[];
 for(const k of resourceKeys){const a=assets[k],data=await sharp(await fs.readFile(new URL(a.url))).png().toBuffer();symbols.push(`<symbol id="qa-${k}" viewBox="0 0 ${a.width} ${a.height}" preserveAspectRatio="xMidYMax meet"><image width="${a.width}" height="${a.height}" href="data:image/png;base64,${data.toString('base64')}"/></symbol>`);}
 const paper=await fs.readFile('assets/modules/paper-r2.png'),pm=await sharp(paper).metadata();
-const views=[{id:'town',width:1011,height:810,zoom:1,center:[600,600]},{id:'neighborhood',width:1440,height:900,zoom:1.8,center:[680,740]},{id:'street-map',width:1440,height:900,zoom:2.7,center:[770,710]},{id:'mobile',width:390,height:844,zoom:1,center:[600,600]}];
+const views=[{id:'town',width:1011,height:810,zoom:1,center:[600,600]},{id:'neighborhood',width:1440,height:900,zoom:1.8,center:[680,740]},{id:'street-map',width:1440,height:900,zoom:2.7,center:[770,710]},{id:'compound-trial',width:1200,height:900,zoom:2.7,center:[650,810]},{id:'mobile',width:390,height:844,zoom:1,center:[600,600]}];
 const results=[];
 for(const view of views){
  const {width,height,zoom,center}=view,side=width<=560?height*1.05:Math.max(height,width*.7),camera={zoom,x:(600-center[0])*zoom/12,y:(600-center[1])*zoom/12};

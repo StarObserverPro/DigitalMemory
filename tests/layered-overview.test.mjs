@@ -4,7 +4,7 @@ import{mapMetrics,placeMapLabels}from'../src/explorer/map-labels.js';
 import{createTransform}from'../src/domain/spatial.js';import{overlaps}from'../src/domain/map-assembly.js';
 const read=n=>JSON.parse(fs.readFileSync('content/public/'+n+'.json'));
 const transform=createTransform(read('orientation').bounds),registration=read('overview-registration');
-const assets=read('manifest').moduleAssets,loaded=['towerSketch','slabSketch','towerGlyph','slabGlyph'];
+const assets=read('manifest').moduleAssets,loaded=['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(assets).filter(k=>k.startsWith('compound-'))];
 const assembly=createOverviewAssembly(read('scene-composition'),read('map-context'),registration,transform,assets);
 test('consumer uses separate road/context/solid groups and no overview person',()=>{
  assert.deepEqual([1,1.8,2.7].map(mapLevel),[0,1,2]);

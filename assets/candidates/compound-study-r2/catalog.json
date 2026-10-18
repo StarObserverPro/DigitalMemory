@@ -1,0 +1,62 @@
+[
+  {
+    "id": "qili",
+    "generatedOriginal": "exec-ddac71b2-51b1-4168-9b08-8b50d9a56e39.png",
+    "asset": "qili-illustrated.webp",
+    "cutout": "qili-cutout.webp",
+    "alphaBounds": [
+      0,
+      18,
+      1174,
+      1000
+    ],
+    "canvas": [
+      1200,
+      1000
+    ],
+    "sha256": "4d86896caf7cec43a9c0c4536bd6bfabe3a9fea015811787f7ddd37f6bbb7b72",
+    "registration": "not integrated; generated pixels do not replace SVG anchors",
+    "status": "candidate",
+    "review": "overall arrangement retained; output reframes spacing, facade bands stylized; no measured storeys; trees speculative"
+  },
+  {
+    "id": "wuli-west",
+    "generatedOriginal": "exec-755d3b9b-1f5d-4008-aedf-3873a8005076.png",
+    "asset": "wuli-west-illustrated.webp",
+    "cutout": "wuli-west-cutout.webp",
+    "alphaBounds": [
+      34,
+      60,
+      1183,
+      967
+    ],
+    "canvas": [
+      1200,
+      1000
+    ],
+    "sha256": "cd4a00bd7bd533578c0b9253a27e0675ce6ce87a13713c085f3c679682fdad94",
+    "registration": "not integrated; generated pixels do not replace SVG anchors",
+    "status": "candidate",
+    "review": "overall arrangement retained; output reframes spacing, facade bands stylized; no measured storeys; trees speculative"
+  },
+  {
+    "id": "liuli",
+    "generatedOriginal": "exec-6b2dedc0-d135-464f-8187-19dafb338506.png",
+    "asset": "liuli-illustrated.webp",
+    "cutout": "liuli-cutout.webp",
+    "alphaBounds": [
+      20,
+      34,
+      1160,
+      1000
+    ],
+    "canvas": [
+      1200,
+      1000
+    ],
+    "sha256": "b0ed574e3975cd8317a91fb3274c9840a4eec3300637e11e59ca1b685189f12d",
+    "registration": "not integrated; generated pixels do not replace SVG anchors",
+    "status": "candidate",
+    "review": "overall arrangement retained; output reframes spacing, facade bands stylized; no measured storeys; trees speculative"
+  }
+]

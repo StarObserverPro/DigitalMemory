@@ -856,5 +856,380 @@
       ],
       "sourceRef": "osm-way-1034917347"
     }
+  ],
+  "trialCompounds": [
+    {
+      "id": "qili",
+      "label": "新华街七里",
+      "assetRef": "compound-qili",
+      "revision": "compound-study-r3",
+      "periodIds": [
+        "window-2000",
+        "window-1995"
+      ],
+      "periodStatus": "visual-trial-only; not confirmed for selected date",
+      "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
+      "controlPoints": [
+        {
+          "pixel": [
+            0,
+            0
+          ],
+          "geo": [
+            116.27960598839532,
+            39.84417783740264
+          ]
+        },
+        {
+          "pixel": [
+            1374,
+            0
+          ],
+          "geo": [
+            116.28325455777866,
+            39.84366794618816
+          ]
+        },
+        {
+          "pixel": [
+            0,
+            1145
+          ],
+          "geo": [
+            116.27954562689163,
+            39.840057226120145
+          ]
+        }
+      ],
+      "fitControlPoints": [
+        {
+          "pixel": [
+            280,
+            600
+          ],
+          "geo": [
+            116.28032611111111,
+            39.84193158083866
+          ]
+        },
+        {
+          "pixel": [
+            490,
+            510
+          ],
+          "geo": [
+            116.28087611111113,
+            39.84215211397411
+          ]
+        },
+        {
+          "pixel": [
+            280,
+            755
+          ],
+          "geo": [
+            116.28030166666666,
+            39.841340360853316
+          ]
+        },
+        {
+          "pixel": [
+            500,
+            820
+          ],
+          "geo": [
+            116.28089444444444,
+            39.84104944121409
+          ]
+        }
+      ],
+      "fitRmsReferencePixels": 3.0,
+      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "contextMaskGeo": [
+        [
+          116.28002881111111,
+          39.842375337382926
+        ],
+        [
+          116.2814830888889,
+          39.842375337382926
+        ],
+        [
+          116.2814830888889,
+          39.84076586175774
+        ],
+        [
+          116.28002881111111,
+          39.84076586175774
+        ]
+      ],
+      "geo": [
+        116.28075595,
+        39.84157060428586
+      ],
+      "publicRoadsBaked": false
+    },
+    {
+      "id": "wuli-west",
+      "label": "新华街五里西区",
+      "assetRef": "compound-wuli-west",
+      "revision": "compound-study-r3",
+      "periodIds": [
+        "window-2000",
+        "window-1995"
+      ],
+      "periodStatus": "visual-trial-only; not confirmed for selected date",
+      "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
+      "controlPoints": [
+        {
+          "pixel": [
+            0,
+            0
+          ],
+          "geo": [
+            116.28051306279731,
+            39.84373121086755
+          ]
+        },
+        {
+          "pixel": [
+            1374,
+            0
+          ],
+          "geo": [
+            116.28420598937716,
+            39.8438915403495
+          ]
+        },
+        {
+          "pixel": [
+            0,
+            1145
+          ],
+          "geo": [
+            116.28050911133688,
+            39.84044269629813
+          ]
+        }
+      ],
+      "fitControlPoints": [
+        {
+          "pixel": [
+            500,
+            800
+          ],
+          "geo": [
+            116.28187222222225,
+            39.841471743512194
+          ]
+        },
+        {
+          "pixel": [
+            710,
+            735
+          ],
+          "geo": [
+            116.28243444444445,
+            39.84166412480914
+          ]
+        },
+        {
+          "pixel": [
+            880,
+            540
+          ],
+          "geo": [
+            116.282905,
+            39.84228818725753
+          ]
+        },
+        {
+          "pixel": [
+            420,
+            480
+          ],
+          "geo": [
+            116.28164,
+            39.84238672291513
+          ]
+        },
+        {
+          "pixel": [
+            295,
+            800
+          ],
+          "geo": [
+            116.28127333333335,
+            39.841513973599156
+          ]
+        },
+        {
+          "pixel": [
+            1130,
+            540
+          ],
+          "geo": [
+            116.2835161111111,
+            39.84233510901688
+          ]
+        }
+      ],
+      "fitRmsReferencePixels": 7.16,
+      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "contextMaskGeo": [
+        [
+          116.2810202111111,
+          39.84261793725029
+        ],
+        [
+          116.2838044888889,
+          39.84261793725029
+        ],
+        [
+          116.2838044888889,
+          39.84126896203277
+        ],
+        [
+          116.2810202111111,
+          39.84126896203277
+        ]
+      ],
+      "geo": [
+        116.28241235,
+        39.84194345295418
+      ],
+      "publicRoadsBaked": false
+    },
+    {
+      "id": "liuli",
+      "label": "新华街六里",
+      "assetRef": "compound-liuli",
+      "revision": "compound-study-r3",
+      "periodIds": [
+        "window-2000",
+        "window-1995"
+      ],
+      "periodStatus": "visual-trial-only; not confirmed for selected date",
+      "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
+      "controlPoints": [
+        {
+          "pixel": [
+            0,
+            0
+          ],
+          "geo": [
+            116.28157548862107,
+            39.84272589293592
+          ]
+        },
+        {
+          "pixel": [
+            1374,
+            0
+          ],
+          "geo": [
+            116.2854583501967,
+            39.84298413568509
+          ]
+        },
+        {
+          "pixel": [
+            0,
+            1145
+          ],
+          "geo": [
+            116.28137994550619,
+            39.83912650313698
+          ]
+        }
+      ],
+      "fitControlPoints": [
+        {
+          "pixel": [
+            320,
+            580
+          ],
+          "geo": [
+            116.28239166666668,
+            39.8409509036375
+          ]
+        },
+        {
+          "pixel": [
+            630,
+            505
+          ],
+          "geo": [
+            116.28330222222222,
+            39.84124182369418
+          ]
+        },
+        {
+          "pixel": [
+            965,
+            445
+          ],
+          "geo": [
+            116.28420666666666,
+            39.841546819204396
+          ]
+        },
+        {
+          "pixel": [
+            440,
+            860
+          ],
+          "geo": [
+            116.28266666666669,
+            39.84015321328823
+          ]
+        },
+        {
+          "pixel": [
+            720,
+            725
+          ],
+          "geo": [
+            116.28343666666667,
+            39.840528598136274
+          ]
+        },
+        {
+          "pixel": [
+            1060,
+            850
+          ],
+          "geo": [
+            116.28445722222223,
+            39.84024705969262
+          ]
+        }
+      ],
+      "fitRmsReferencePixels": 8.72,
+      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "contextMaskGeo": [
+        [
+          116.28188444444446,
+          39.84186588998056
+        ],
+        [
+          116.28501333333334,
+          39.84186588998056
+        ],
+        [
+          116.28501333333334,
+          39.8399702124308
+        ],
+        [
+          116.28188444444446,
+          39.8399702124308
+        ]
+      ],
+      "geo": [
+        116.2834488888889,
+        39.840918057747224
+      ],
+      "publicRoadsBaked": false
+    }
   ]
 }
