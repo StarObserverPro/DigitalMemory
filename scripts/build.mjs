@@ -1,3 +1,4 @@
+import {createOverviewAssembly} from '../src/explorer/layered-overview.js';
 import {createComposition} from '../src/domain/composition.js';
 import {createIllustrationMapping} from '../src/domain/illustration.js';
 import {createTransform} from '../src/domain/spatial.js';
@@ -14,6 +15,7 @@ for (const file of [manifest.context, manifest.places, manifest.illustrationMapp
 }
 const geometry=JSON.parse(await readFile('content/public/'+manifest.geometry));
 createComposition(JSON.parse(await readFile('content/public/'+manifest.composition)),createIllustrationMapping(JSON.parse(await readFile('content/public/'+manifest.illustrationMapping)),createTransform(geometry.bounds)));
+createOverviewAssembly(JSON.parse(await readFile('content/public/'+manifest.composition)),JSON.parse(await readFile('content/public/'+manifest.context)));
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist');
 for (const file of ['index.html', 'src', 'assets', 'content']) await cp(file, `dist/${file}`, { recursive: true });
