@@ -213,7 +213,7 @@ async function start() {
   const overviewRegistration=await repository.read(manifest.overviewRegistration);
   if(overviewRegistration.geometryRevision!==geometry.revision)throw new Error('地图暂时无法载入，请刷新重试。');
   overviewAssembly=createOverviewAssembly(composition.data,mapContext,overviewRegistration,transform,moduleAssets);
-  await Promise.allSettled(['towerSketch','slabSketch','towerGlyph','slabGlyph'].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
+  await Promise.allSettled(['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(moduleAssets).filter(k=>k.startsWith('compound-'))].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
   let saved = restoreSession(localStorage, manifest);
   if(saved && saved.mapRevision!=='journal-r6'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
   if(saved)saved.mapRevision='journal-r6';

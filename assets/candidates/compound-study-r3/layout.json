@@ -1,0 +1,535 @@
+[
+  {
+    "id": "qili",
+    "name": "新华街七里",
+    "buildings": [
+      {
+        "id": "osm-978924276",
+        "shape": [
+          [
+            198.03272727401654,
+            1141.431440815081
+          ],
+          [
+            176.350909090273,
+            1098.530881059444
+          ],
+          [
+            228.96000000094625,
+            1071.9337495623085
+          ],
+          [
+            250.6418181792137,
+            1114.8556990508273
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924277",
+        "shape": [
+          [
+            202.23818181612288,
+            1018.2917916183835
+          ],
+          [
+            178.70727272593254,
+            972.108828040385
+          ],
+          [
+            231.72545454743783,
+            945.1065386243021
+          ],
+          [
+            255.2563636348901,
+            991.2682754768658
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924278",
+        "shape": [
+          [
+            295.1672727272211,
+            975.0925033744068
+          ],
+          [
+            267.3163636392343,
+            922.3239841741212
+          ],
+          [
+            320.15454545307364,
+            894.4264954819811
+          ],
+          [
+            348.0054545465365,
+            947.1951152735053
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924279",
+        "shape": [
+          [
+            382.84363636316857,
+            1114.2589697284168
+          ],
+          [
+            222.57818181989424,
+            1187.5712467391968
+          ],
+          [
+            238.0909090911804,
+            1221.4354274339696
+          ],
+          [
+            398.3236363653119,
+            1148.102008360484
+          ]
+        ],
+        "kind": "high-slab",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      }
+    ],
+    "note": "三塔 + 一条高板；楼号未逐栋匹配。西侧相邻短楼不并入本四栋样组。",
+    "sourcePixelCrop": [
+      160,
+      860,
+      420,
+      1240
+    ],
+    "registrationStatus": "candidate-only",
+    "historicalDate": null,
+    "projection": {
+      "planScale": 0.8947368421052632,
+      "yCompression": 0.72,
+      "offset": [
+        70,
+        150
+      ],
+      "source": "Esri export EPSG3857 extent retained in source.json; pixel traces not production anchors"
+    }
+  },
+  {
+    "id": "wuli-west",
+    "name": "新华街五里西区",
+    "buildings": [
+      {
+        "id": "osm-978924280",
+        "shape": [
+          [
+            438.0054545462627,
+            1112.340911041897
+          ],
+          [
+            440.0509090894708,
+            1044.7185257070753
+          ],
+          [
+            502.2981818168529,
+            1046.593969537028
+          ],
+          [
+            500.2690909082161,
+            1114.2163462059743
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924281",
+        "shape": [
+          [
+            528.8236363621769,
+            1070.932093825778
+          ],
+          [
+            528.3490909103211,
+            1007.4227177833621
+          ],
+          [
+            596.3563636365905,
+            1006.9112317547313
+          ],
+          [
+            596.8309090884462,
+            1070.4206100190613
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924282",
+        "shape": [
+          [
+            608.6127272722199,
+            935.3243236129401
+          ],
+          [
+            607.7454545468415,
+            875.4800423558571
+          ],
+          [
+            669.3218181801304,
+            874.5849337292391
+          ],
+          [
+            670.1890909082468,
+            934.4505306704607
+          ]
+        ],
+        "kind": "tower",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924283",
+        "shape": [
+          [
+            742.4999999977412,
+            945.8311468842084
+          ],
+          [
+            700.1836363632983,
+            860.3910610150242
+          ],
+          [
+            735.8400000015946,
+            842.7232933130523
+          ],
+          [
+            778.1890909106562,
+            928.142170304672
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924285",
+        "shape": [
+          [
+            357.6109090886264,
+            878.9326036966075
+          ],
+          [
+            503.8527272736338,
+            864.0354350552722
+          ],
+          [
+            506.830909091458,
+            889.0984740240863
+          ],
+          [
+            359.09999999890755,
+            905.2530291129146
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      },
+      {
+        "id": "osm-978924286",
+        "shape": [
+          [
+            372.0600000005109,
+            1111.7015580875227
+          ],
+          [
+            338.57999999842235,
+            1044.633278251485
+          ],
+          [
+            372.6163636361759,
+            1027.6264015300249
+          ],
+          [
+            406.1127272728359,
+            1094.7160710989442
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+      }
+    ],
+    "note": "三塔 + 外围较高现代板楼的试绘；具体楼层未核对，旧资料六层说法保留在 r2，五里东区另留。",
+    "sourcePixelCrop": [
+      325,
+      820,
+      800,
+      1150
+    ],
+    "registrationStatus": "candidate-only",
+    "historicalDate": null,
+    "projection": {
+      "planScale": 0.9263157894736842,
+      "yCompression": 0.72,
+      "offset": [
+        70,
+        150
+      ],
+      "source": "Esri export EPSG3857 extent retained in source.json; pixel traces not production anchors"
+    }
+  },
+  {
+    "id": "liuli",
+    "name": "新华街六里",
+    "buildings": [
+      {
+        "id": "liuli-roof-segment-1",
+        "shape": [
+          [
+            480,
+            1182
+          ],
+          [
+            620,
+            1124
+          ],
+          [
+            631,
+            1153
+          ],
+          [
+            490,
+            1213
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-2",
+        "shape": [
+          [
+            636,
+            1118
+          ],
+          [
+            758,
+            1065
+          ],
+          [
+            770,
+            1098
+          ],
+          [
+            650,
+            1149
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-3",
+        "shape": [
+          [
+            783,
+            1051
+          ],
+          [
+            910,
+            1003
+          ],
+          [
+            921,
+            1035
+          ],
+          [
+            797,
+            1082
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-4",
+        "shape": [
+          [
+            518,
+            1253
+          ],
+          [
+            644,
+            1201
+          ],
+          [
+            660,
+            1231
+          ],
+          [
+            533,
+            1284
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-5",
+        "shape": [
+          [
+            663,
+            1193
+          ],
+          [
+            781,
+            1142
+          ],
+          [
+            797,
+            1175
+          ],
+          [
+            676,
+            1227
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-6",
+        "shape": [
+          [
+            816,
+            1157
+          ],
+          [
+            949,
+            1135
+          ],
+          [
+            953,
+            1168
+          ],
+          [
+            822,
+            1192
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-7",
+        "shape": [
+          [
+            534,
+            1286
+          ],
+          [
+            569,
+            1274
+          ],
+          [
+            587,
+            1349
+          ],
+          [
+            668,
+            1328
+          ],
+          [
+            677,
+            1362
+          ],
+          [
+            558,
+            1391
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-8",
+        "shape": [
+          [
+            673,
+            1256
+          ],
+          [
+            738,
+            1245
+          ],
+          [
+            728,
+            1207
+          ],
+          [
+            761,
+            1199
+          ],
+          [
+            779,
+            1275
+          ],
+          [
+            678,
+            1295
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      },
+      {
+        "id": "liuli-roof-segment-9",
+        "shape": [
+          [
+            806,
+            1299
+          ],
+          [
+            839,
+            1293
+          ],
+          [
+            847,
+            1326
+          ],
+          [
+            968,
+            1301
+          ],
+          [
+            976,
+            1334
+          ],
+          [
+            818,
+            1369
+          ]
+        ],
+        "kind": "slab",
+        "evidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+      }
+    ],
+    "note": "长条与折角板楼；九个可见屋面段不等于九栋楼，资料七栋尚未逐一配号。",
+    "sourcePixelCrop": [
+      470,
+      970,
+      1000,
+      1400
+    ],
+    "registrationStatus": "candidate-only",
+    "historicalDate": null,
+    "projection": {
+      "planScale": 0.7906976744186046,
+      "yCompression": 0.72,
+      "offset": [
+        70,
+        150
+      ],
+      "source": "Esri export EPSG3857 extent retained in source.json; pixel traces not production anchors"
+    }
+  }
+]
