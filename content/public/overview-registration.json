@@ -859,90 +859,14 @@
     {
       "id": "qili",
       "label": "新华街七里",
-      "assetRef": "compound-qili",
-      "revision": "compound-study-r3",
+      "revision": "modular-overview-r4",
       "periodIds": [
         "window-2000",
         "window-1995"
       ],
       "periodStatus": "visual-trial-only; not confirmed for selected date",
       "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
-      "controlPoints": [
-        {
-          "pixel": [
-            0,
-            0
-          ],
-          "geo": [
-            116.27960598839532,
-            39.84417783740264
-          ]
-        },
-        {
-          "pixel": [
-            1374,
-            0
-          ],
-          "geo": [
-            116.28325455777866,
-            39.84366794618816
-          ]
-        },
-        {
-          "pixel": [
-            0,
-            1145
-          ],
-          "geo": [
-            116.27954562689163,
-            39.840057226120145
-          ]
-        }
-      ],
-      "fitControlPoints": [
-        {
-          "pixel": [
-            280,
-            600
-          ],
-          "geo": [
-            116.28032611111111,
-            39.84193158083866
-          ]
-        },
-        {
-          "pixel": [
-            490,
-            510
-          ],
-          "geo": [
-            116.28087611111113,
-            39.84215211397411
-          ]
-        },
-        {
-          "pixel": [
-            280,
-            755
-          ],
-          "geo": [
-            116.28030166666666,
-            39.841340360853316
-          ]
-        },
-        {
-          "pixel": [
-            500,
-            820
-          ],
-          "geo": [
-            116.28089444444444,
-            39.84104944121409
-          ]
-        }
-      ],
-      "fitRmsReferencePixels": 3.0,
-      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "registrationStatus": "independent candidate footprints; no whole-image affine",
       "contextMaskGeo": [
         [
           116.28002881111111,
@@ -965,115 +889,303 @@
         116.28075595,
         39.84157060428586
       ],
-      "publicRoadsBaked": false
+      "publicRoadsBaked": false,
+      "parts": [
+        {
+          "id": "qili-osm-978924276",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.28021020000001,
+              39.84117880000003
+            ],
+            [
+              116.2800777,
+              39.8413801
+            ],
+            [
+              116.28039920000002,
+              39.84150489999999
+            ],
+            [
+              116.2805317,
+              39.84130349999999
+            ]
+          ],
+          "anchorGeo": [
+            116.2803047,
+            39.841341850000006
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-qili-osm-978924276-1",
+              "modelUnitsPerPixel": 0.5015619047515328,
+              "sourceAnchor": [
+                23.5,
+                62.9505536830672
+              ],
+              "sourceNativeSize": [
+                45,
+                83
+              ],
+              "displayBudget": [
+                34.12627199929429,
+                65.38374098410334
+              ],
+              "sizeRatio": [
+                1.3186321670568228,
+                1.269428741010394
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-qili-osm-978924276-2",
+              "modelUnitsPerPixel": 0.358258503393952,
+              "sourceAnchor": [
+                32.5,
+                82.53077515629407
+              ],
+              "sourceNativeSize": [
+                63,
+                111
+              ],
+              "displayBudget": [
+                51.18940799894153,
+                98.07561147615513
+              ],
+              "sizeRatio": [
+                1.2307233559196988,
+                1.1317798413827596
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "qili-osm-978924277",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.28023589999998,
+              39.8417566
+            ],
+            [
+              116.28009209999999,
+              39.8419733
+            ],
+            [
+              116.28041610000001,
+              39.842099999999995
+            ],
+            [
+              116.2805599,
+              39.8418834
+            ]
+          ],
+          "anchorGeo": [
+            116.280326,
+            39.84192829999999
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-qili-osm-978924277-1",
+              "modelUnitsPerPixel": 0.5055726708180136,
+              "sourceAnchor": [
+                24.0,
+                62.009701630227
+              ],
+              "sourceNativeSize": [
+                46,
+                83
+              ],
+              "displayBudget": [
+                35.163590400734506,
+                67.07746369848384
+              ],
+              "sizeRatio": [
+                1.3081713066205873,
+                1.2373753481957617
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-qili-osm-978924277-2",
+              "modelUnitsPerPixel": 0.38125152225620695,
+              "sourceAnchor": [
+                31.5,
+                81.83895216182276
+              ],
+              "sourceNativeSize": [
+                61,
+                110
+              ],
+              "displayBudget": [
+                52.745385601101816,
+                100.61619554772585
+              ],
+              "sizeRatio": [
+                1.156499271070373,
+                1.0932633598516759
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "qili-osm-978924278",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.28080379999999,
+              39.8419593
+            ],
+            [
+              116.28063360000002,
+              39.842206900000015
+            ],
+            [
+              116.2809565,
+              39.8423378
+            ],
+            [
+              116.2811267,
+              39.8420902
+            ]
+          ],
+          "anchorGeo": [
+            116.28088015000002,
+            39.842148550000005
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-qili-osm-978924278-1",
+              "modelUnitsPerPixel": 0.5329155279348371,
+              "sourceAnchor": [
+                24.0,
+                61.00560804160031
+              ],
+              "sourceNativeSize": [
+                46,
+                83
+              ],
+              "displayBudget": [
+                37.065340798923785,
+                70.51386064359166
+              ],
+              "sizeRatio": [
+                1.2410515864280314,
+                1.177073546143202
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-qili-osm-978924278-2",
+              "modelUnitsPerPixel": 0.3771402197692693,
+              "sourceAnchor": [
+                33.5,
+                80.50792440660913
+              ],
+              "sourceNativeSize": [
+                65,
+                112
+              ],
+              "displayBudget": [
+                55.59801119838585,
+                105.7707909653875
+              ],
+              "sizeRatio": [
+                1.1691065669249536,
+                1.0588934712292257
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "qili-osm-978924279",
+          "kind": "high-slab",
+          "groundGeo": [
+            [
+              116.28133960000001,
+              39.84130630000001
+            ],
+            [
+              116.28036020000002,
+              39.840962299999994
+            ],
+            [
+              116.28045500000002,
+              39.8408034
+            ],
+            [
+              116.28143420000002,
+              39.841147499999984
+            ]
+          ],
+          "anchorGeo": [
+            116.28089720000001,
+            39.841054850000006
+          ],
+          "height": 15.140220214192464,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-qili-osm-978924279-1",
+              "modelUnitsPerPixel": 0.5680121580561092,
+              "sourceAnchor": [
+                48.0,
+                55.33589243764639
+              ],
+              "sourceNativeSize": [
+                94,
+                83
+              ],
+              "displayBudget": [
+                80.73043200019868,
+                72.12745522787961
+              ],
+              "sizeRatio": [
+                1.164368846679387,
+                1.1507407233177664
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-qili-osm-978924279-2",
+              "modelUnitsPerPixel": 0.4340905923355631,
+              "sourceAnchor": [
+                62.5,
+                72.49271031734581
+              ],
+              "sourceNativeSize": [
+                123,
+                109
+              ],
+              "displayBudget": [
+                121.09564800029807,
+                108.19118284181945
+              ],
+              "sizeRatio": [
+                1.0157260151884009,
+                1.0074758139890483
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        }
+      ],
+      "projectionId": "north-up-orthographic-rise-r1",
+      "groundStyle": "worn-hardscape-and-patchy-grass"
     },
     {
       "id": "wuli-west",
       "label": "新华街五里西区",
-      "assetRef": "compound-wuli-west",
-      "revision": "compound-study-r3",
+      "revision": "modular-overview-r4",
       "periodIds": [
         "window-2000",
         "window-1995"
       ],
       "periodStatus": "visual-trial-only; not confirmed for selected date",
       "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
-      "controlPoints": [
-        {
-          "pixel": [
-            0,
-            0
-          ],
-          "geo": [
-            116.28051306279731,
-            39.84373121086755
-          ]
-        },
-        {
-          "pixel": [
-            1374,
-            0
-          ],
-          "geo": [
-            116.28420598937716,
-            39.8438915403495
-          ]
-        },
-        {
-          "pixel": [
-            0,
-            1145
-          ],
-          "geo": [
-            116.28050911133688,
-            39.84044269629813
-          ]
-        }
-      ],
-      "fitControlPoints": [
-        {
-          "pixel": [
-            500,
-            800
-          ],
-          "geo": [
-            116.28187222222225,
-            39.841471743512194
-          ]
-        },
-        {
-          "pixel": [
-            710,
-            735
-          ],
-          "geo": [
-            116.28243444444445,
-            39.84166412480914
-          ]
-        },
-        {
-          "pixel": [
-            880,
-            540
-          ],
-          "geo": [
-            116.282905,
-            39.84228818725753
-          ]
-        },
-        {
-          "pixel": [
-            420,
-            480
-          ],
-          "geo": [
-            116.28164,
-            39.84238672291513
-          ]
-        },
-        {
-          "pixel": [
-            295,
-            800
-          ],
-          "geo": [
-            116.28127333333335,
-            39.841513973599156
-          ]
-        },
-        {
-          "pixel": [
-            1130,
-            540
-          ],
-          "geo": [
-            116.2835161111111,
-            39.84233510901688
-          ]
-        }
-      ],
-      "fitRmsReferencePixels": 7.16,
-      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "registrationStatus": "independent candidate footprints; no whole-image affine",
       "contextMaskGeo": [
         [
           116.2810202111111,
@@ -1096,115 +1208,443 @@
         116.28241235,
         39.84194345295418
       ],
-      "publicRoadsBaked": false
+      "publicRoadsBaked": false,
+      "parts": [
+        {
+          "id": "wuli-west-osm-978924280",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.28167670000002,
+              39.8413153
+            ],
+            [
+              116.2816892,
+              39.8416326
+            ],
+            [
+              116.2820696,
+              39.8416238
+            ],
+            [
+              116.2820572,
+              39.8413065
+            ]
+          ],
+          "anchorGeo": [
+            116.28187315000001,
+            39.84146955
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924280-1",
+              "modelUnitsPerPixel": 0.514019548846055,
+              "sourceAnchor": [
+                20.0,
+                54.46070258701755
+              ],
+              "sourceNativeSize": [
+                38,
+                74
+              ],
+              "displayBudget": [
+                29.53350719849891,
+                65.38374098758162
+              ],
+              "sizeRatio": [
+                1.2866741408189886,
+                1.1317798413225526
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924280-2",
+              "modelUnitsPerPixel": 0.434060952358891,
+              "sourceAnchor": [
+                23.5,
+                76.67714780041553
+              ],
+              "sourceNativeSize": [
+                45,
+                100
+              ],
+              "displayBudget": [
+                44.30026079774848,
+                98.07561148137245
+              ],
+              "sizeRatio": [
+                1.015795374330778,
+                1.0196214786689661
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "wuli-west-osm-978924281",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.2822317,
+              39.841509599999995
+            ],
+            [
+              116.28222880000001,
+              39.841807599999996
+            ],
+            [
+              116.28264440000001,
+              39.841809999999995
+            ],
+            [
+              116.2826473,
+              39.84151199999999
+            ]
+          ],
+          "anchorGeo": [
+            116.28243805,
+            39.841659799999995
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924281-1",
+              "modelUnitsPerPixel": 0.5475112781703226,
+              "sourceAnchor": [
+                20.0,
+                56.236796974073464
+              ],
+              "sourceNativeSize": [
+                38,
+                73
+              ],
+              "displayBudget": [
+                31.457807998554017,
+                62.867632683923915
+              ],
+              "sizeRatio": [
+                1.2079671921752049,
+                1.1611698561486803
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924281-2",
+              "modelUnitsPerPixel": 0.4522919254450491,
+              "sourceAnchor": [
+                24.0,
+                75.49717528440472
+              ],
+              "sourceNativeSize": [
+                46,
+                96
+              ],
+              "displayBudget": [
+                47.18671199783108,
+                94.30144902588597
+              ],
+              "sizeRatio": [
+                0.9748507164922695,
+                1.0180119286782938
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "wuli-west-osm-978924282",
+          "kind": "tower",
+          "groundGeo": [
+            [
+              116.2827193,
+              39.842145900000006
+            ],
+            [
+              116.28271400000001,
+              39.8424267
+            ],
+            [
+              116.2830903,
+              39.84243089999998
+            ],
+            [
+              116.2830956,
+              39.84215
+            ]
+          ],
+          "anchorGeo": [
+            116.2829048,
+            39.842288399999994
+          ],
+          "height": 22.128014159204373,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924282-1",
+              "modelUnitsPerPixel": 0.4992360902032978,
+              "sourceAnchor": [
+                20.0,
+                56.51781523367771
+              ],
+              "sourceNativeSize": [
+                38,
+                74
+              ],
+              "displayBudget": [
+                28.6841087987209,
+                61.35992576004578
+              ],
+              "sizeRatio": [
+                1.3247753404733467,
+                1.2059988515857158
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924282-2",
+              "modelUnitsPerPixel": 0.4124124223418547,
+              "sourceAnchor": [
+                24.0,
+                74.62682896708354
+              ],
+              "sourceNativeSize": [
+                46,
+                96
+              ],
+              "displayBudget": [
+                43.02616319808101,
+                92.03988864006863
+              ],
+              "sizeRatio": [
+                1.069116941434639,
+                1.043026033803863
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "wuli-west-osm-978924283",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.2835375,
+              39.84209659999999
+            ],
+            [
+              116.28327890000001,
+              39.84249750000001
+            ],
+            [
+              116.28349680000001,
+              39.8425804
+            ],
+            [
+              116.28375560000002,
+              39.842179599999994
+            ]
+          ],
+          "anchorGeo": [
+            116.28351725000002,
+            39.8423385
+          ],
+          "height": 15.140220214192464,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924283-1",
+              "modelUnitsPerPixel": 0.5266400000079481,
+              "sourceAnchor": [
+                23.5,
+                51.25825519697541
+              ],
+              "sourceNativeSize": [
+                45,
+                80
+              ],
+              "displayBudget": [
+                35.832585600540824,
+                70.25750703336202
+              ],
+              "sizeRatio": [
+                1.2558401590568113,
+                1.138668355568206
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924283-2",
+              "modelUnitsPerPixel": 0.39498000000596106,
+              "sourceAnchor": [
+                31.0,
+                64.34434026263389
+              ],
+              "sourceNativeSize": [
+                60,
+                103
+              ],
+              "displayBudget": [
+                53.74887840081118,
+                105.38626055004295
+              ],
+              "sizeRatio": [
+                1.1163023636060558,
+                0.9773570051960443
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "wuli-west-osm-978924285",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28118539999998,
+              39.84241049999999
+            ],
+            [
+              116.28207910000002,
+              39.84248039999999
+            ],
+            [
+              116.2820973,
+              39.8423628
+            ],
+            [
+              116.2811945,
+              39.842287
+            ]
+          ],
+          "anchorGeo": [
+            116.28164135,
+            39.8423837
+          ],
+          "height": 15.140220214192464,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924285-1",
+              "modelUnitsPerPixel": 0.5528592334614167,
+              "sourceAnchor": [
+                42.0,
+                46.674527669170004
+              ],
+              "sourceNativeSize": [
+                82,
+                57
+              ],
+              "displayBudget": [
+                68.54569920148032,
+                41.82646222492639
+              ],
+              "sizeRatio": [
+                1.196282202315461,
+                1.3627736358259575
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924285-2",
+              "modelUnitsPerPixel": 0.42768355796071866,
+              "sourceAnchor": [
+                54.0,
+                58.359755279658785
+              ],
+              "sourceNativeSize": [
+                106,
+                72
+              ],
+              "displayBudget": [
+                102.81854880222045,
+                62.73969333738944
+              ],
+              "sizeRatio": [
+                1.0309423857352755,
+                1.1475988512218616
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        },
+        {
+          "id": "wuli-west-osm-978924286",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.2812737,
+              39.841318300000005
+            ],
+            [
+              116.2810691,
+              39.84163300000001
+            ],
+            [
+              116.2812771,
+              39.841712799999996
+            ],
+            [
+              116.2814818,
+              39.841398
+            ]
+          ],
+          "anchorGeo": [
+            116.28127545,
+            39.841515550000004
+          ],
+          "height": 15.140220214192464,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-wuli-west-osm-978924286-1",
+              "modelUnitsPerPixel": 0.5129271428549714,
+              "sourceAnchor": [
+                21.0,
+                48.09963306389358
+              ],
+              "sourceNativeSize": [
+                40,
+                72
+              ],
+              "displayBudget": [
+                31.021833599868614,
+                61.514764947237325
+              ],
+              "sizeRatio": [
+                1.2894144335868467,
+                1.1704507049934452
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-wuli-west-osm-978924286-2",
+              "modelUnitsPerPixel": 0.37994603174442326,
+              "sourceAnchor": [
+                28.0,
+                62.384504636256324
+              ],
+              "sourceNativeSize": [
+                54,
+                95
+              ],
+              "displayBudget": [
+                46.532750399803035,
+                92.27214742085596
+              ],
+              "sizeRatio": [
+                1.1604729902281592,
+                1.0295631201331235
+              ]
+            }
+          },
+          "sourceEvidence": "Approximate spatial result; historical validity unresolved"
+        }
+      ],
+      "projectionId": "north-up-orthographic-rise-r1",
+      "groundStyle": "worn-hardscape-and-patchy-grass"
     },
     {
       "id": "liuli",
       "label": "新华街六里",
-      "assetRef": "compound-liuli",
-      "revision": "compound-study-r3",
+      "revision": "modular-overview-r4",
       "periodIds": [
         "window-2000",
         "window-1995"
       ],
       "periodStatus": "visual-trial-only; not confirmed for selected date",
       "appearanceBasis": "user correction 2026-10-18; inferred visual height, not exact floors",
-      "controlPoints": [
-        {
-          "pixel": [
-            0,
-            0
-          ],
-          "geo": [
-            116.28157548862107,
-            39.84272589293592
-          ]
-        },
-        {
-          "pixel": [
-            1374,
-            0
-          ],
-          "geo": [
-            116.2854583501967,
-            39.84298413568509
-          ]
-        },
-        {
-          "pixel": [
-            0,
-            1145
-          ],
-          "geo": [
-            116.28137994550619,
-            39.83912650313698
-          ]
-        }
-      ],
-      "fitControlPoints": [
-        {
-          "pixel": [
-            320,
-            580
-          ],
-          "geo": [
-            116.28239166666668,
-            39.8409509036375
-          ]
-        },
-        {
-          "pixel": [
-            630,
-            505
-          ],
-          "geo": [
-            116.28330222222222,
-            39.84124182369418
-          ]
-        },
-        {
-          "pixel": [
-            965,
-            445
-          ],
-          "geo": [
-            116.28420666666666,
-            39.841546819204396
-          ]
-        },
-        {
-          "pixel": [
-            440,
-            860
-          ],
-          "geo": [
-            116.28266666666669,
-            39.84015321328823
-          ]
-        },
-        {
-          "pixel": [
-            720,
-            725
-          ],
-          "geo": [
-            116.28343666666667,
-            39.840528598136274
-          ]
-        },
-        {
-          "pixel": [
-            1060,
-            850
-          ],
-          "geo": [
-            116.28445722222223,
-            39.84024705969262
-          ]
-        }
-      ],
-      "fitRmsReferencePixels": 8.72,
-      "registrationStatus": "approximate-trial; Liuli roof-to-ground uncertainty remains",
+      "registrationStatus": "independent candidate footprints; no whole-image affine",
       "contextMaskGeo": [
         [
           116.28188444444446,
@@ -1227,7 +1667,654 @@
         116.2834488888889,
         39.840918057747224
       ],
-      "publicRoadsBaked": false
+      "publicRoadsBaked": false,
+      "parts": [
+        {
+          "id": "liuli-liuli-roof-segment-1",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28193333333333,
+              39.84098844177859
+            ],
+            [
+              116.2827888888889,
+              39.841260592687775
+            ],
+            [
+              116.28285611111112,
+              39.841124517368016
+            ],
+            [
+              116.28199444444444,
+              39.840842981367565
+            ]
+          ],
+          "anchorGeo": [
+            116.28239472222222,
+            39.841051787027666
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-1-1",
+              "modelUnitsPerPixel": 0.588144078150597,
+              "sourceAnchor": [
+                40.0,
+                43.01190649770329
+              ],
+              "sourceNativeSize": [
+                78,
+                65
+              ],
+              "displayBudget": [
+                69.36336000076881,
+                51.450965094374396
+              ],
+              "sizeRatio": [
+                1.124512999357809,
+                1.2633387902592919
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-1-2",
+              "modelUnitsPerPixel": 0.4369070294833006,
+              "sourceAnchor": [
+                53.5,
+                52.05448951613905
+              ],
+              "sourceNativeSize": [
+                105,
+                82
+              ],
+              "displayBudget": [
+                104.04504000115332,
+                77.17644764156171
+              ],
+              "sizeRatio": [
+                1.009178332757007,
+                1.0625003159103772
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-2",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28288666666667,
+              39.84128874616856
+            ],
+            [
+              116.28363222222222,
+              39.84153743474736
+            ],
+            [
+              116.28370555555556,
+              39.84138259102106
+            ],
+            [
+              116.28297222222224,
+              39.84114328639366
+            ]
+          ],
+          "anchorGeo": [
+            116.28329611111111,
+            39.84134036057051
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-2-1",
+              "modelUnitsPerPixel": 0.5219291819277703,
+              "sourceAnchor": [
+                40.0,
+                40.5509179406466
+              ],
+              "sourceNativeSize": [
+                78,
+                64
+              ],
+              "displayBudget": [
+                61.5542399998335,
+                49.15386918478271
+              ],
+              "sizeRatio": [
+                1.267175096308735,
+                1.302033818729644
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-2-2",
+              "modelUnitsPerPixel": 0.39524734165403963,
+              "sourceAnchor": [
+                52.5,
+                50.714673690853836
+              ],
+              "sourceNativeSize": [
+                103,
+                82
+              ],
+              "displayBudget": [
+                92.33135999975048,
+                73.73080377717406
+              ],
+              "sizeRatio": [
+                1.1155473070068322,
+                1.1121538868315708
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-3",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28378500000001,
+              39.841603125919704
+            ],
+            [
+              116.28456111111113,
+              39.84182835231915
+            ],
+            [
+              116.28462833333336,
+              39.84167820146825
+            ],
+            [
+              116.28387055555558,
+              39.84145766681077
+            ]
+          ],
+          "anchorGeo": [
+            116.28420666666668,
+            39.841643009564955
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-3-1",
+              "modelUnitsPerPixel": 0.5375091575197337,
+              "sourceAnchor": [
+                40.0,
+                42.67280521535778
+              ],
+              "sourceNativeSize": [
+                78,
+                64
+              ],
+              "displayBudget": [
+                63.39168000124732,
+                46.85678514007748
+              ],
+              "sizeRatio": [
+                1.2304453833447109,
+                1.365864085823925
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-3-2",
+              "modelUnitsPerPixel": 0.41103641457391404,
+              "sourceAnchor": [
+                52.0,
+                53.80289912777557
+              ],
+              "sourceNativeSize": [
+                102,
+                82
+              ],
+              "displayBudget": [
+                95.08752000187087,
+                70.28517771011616
+              ],
+              "sizeRatio": [
+                1.0726959752235954,
+                1.166675573307937
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-4",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28216555555557,
+              39.840655290059345
+            ],
+            [
+              116.28293555555554,
+              39.84089928866
+            ],
+            [
+              116.28303333333332,
+              39.84075852034237
+            ],
+            [
+              116.28225722222224,
+              39.840509828942615
+            ]
+          ],
+          "anchorGeo": [
+            116.28259944444444,
+            39.840704558801306
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-4-1",
+              "modelUnitsPerPixel": 0.5530891330754705,
+              "sourceAnchor": [
+                40.0,
+                43.20278266155529
+              ],
+              "sourceNativeSize": [
+                78,
+                65
+              ],
+              "displayBudget": [
+                65.22911999838857,
+                48.694837403800534
+              ],
+              "sizeRatio": [
+                1.1957849500641267,
+                1.3348437630254184
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-4-2",
+              "modelUnitsPerPixel": 0.41884419786297766,
+              "sourceAnchor": [
+                52.5,
+                49.89598223256661
+              ],
+              "sourceNativeSize": [
+                103,
+                79
+              ],
+              "displayBudget": [
+                97.84367999758305,
+                73.04225610570074
+              ],
+              "sizeRatio": [
+                1.0526995714239726,
+                1.0815657156821348
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-5",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28305166666667,
+              39.84093682682931
+            ],
+            [
+              116.2837727777778,
+              39.8411761321762
+            ],
+            [
+              116.28387055555558,
+              39.84102128763522
+            ],
+            [
+              116.28313111111112,
+              39.84077728946804
+            ]
+          ],
+          "anchorGeo": [
+            116.28346111111112,
+            39.840976710822126
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-5-1",
+              "modelUnitsPerPixel": 0.5219291819458843,
+              "sourceAnchor": [
+                40.0,
+                41.259726423628805
+              ],
+              "sourceNativeSize": [
+                78,
+                65
+              ],
+              "displayBudget": [
+                61.5542400019699,
+                49.61346078932837
+              ],
+              "sizeRatio": [
+                1.2671750962647543,
+                1.3101283193286368
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-5-2",
+              "modelUnitsPerPixel": 0.3991223156056763,
+              "sourceAnchor": [
+                52.0,
+                48.64733455397614
+              ],
+              "sourceNativeSize": [
+                102,
+                80
+              ],
+              "displayBudget": [
+                92.33136000295474,
+                74.42019118399253
+              ],
+              "sizeRatio": [
+                1.1047167505897872,
+                1.0749770825260614
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-6",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28398666666668,
+              39.84110574833722
+            ],
+            [
+              116.28479944444445,
+              39.84120897794305
+            ],
+            [
+              116.28482388888891,
+              39.841054133476106
+            ],
+            [
+              116.28402333333335,
+              39.84094151909901
+            ]
+          ],
+          "anchorGeo": [
+            116.2844052777778,
+            39.84107524852103
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": null,
+              "fallback": "controlled-footprint-sketch",
+              "reason": "native subject/display ratio exceeds limit",
+              "sizeRatio": [
+                1.3029870819824112,
+                1.5782063768598193
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-6-2",
+              "modelUnitsPerPixel": 0.40021062271460894,
+              "sourceAnchor": [
+                53.0,
+                43.36371107195574
+              ],
+              "sourceNativeSize": [
+                104,
+                64
+              ],
+              "displayBudget": [
+                94.39848000094025,
+                55.12587027629752
+              ],
+              "sizeRatio": [
+                1.101712654684314,
+                1.1609794036669947
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-7",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28226333333333,
+              39.84050044434385
+            ],
+            [
+              116.28247722222224,
+              39.84055675191718
+            ],
+            [
+              116.28258722222222,
+              39.84020482882653
+            ],
+            [
+              116.28308222222225,
+              39.8403033674737
+            ],
+            [
+              116.28313722222222,
+              39.84014382864075
+            ],
+            [
+              116.28241,
+              39.840007751107976
+            ]
+          ],
+          "anchorGeo": [
+            116.28270027777778,
+            39.840282251512576
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-7-1",
+              "modelUnitsPerPixel": 0.5642176870754941,
+              "sourceAnchor": [
+                39.5,
+                40.49781270722066
+              ],
+              "sourceNativeSize": [
+                77,
+                71
+              ],
+              "displayBudget": [
+                65.68848000007733,
+                64.3143963913626
+              ],
+              "sizeRatio": [
+                1.172199448060137,
+                1.1039518985446821
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-7-2",
+              "modelUnitsPerPixel": 0.417738095238587,
+              "sourceAnchor": [
+                53.0,
+                56.45159118897336
+              ],
+              "sourceNativeSize": [
+                104,
+                98
+              ],
+              "displayBudget": [
+                98.53272000011611,
+                96.47159458704391
+              ],
+              "sizeRatio": [
+                1.055486948902633,
+                1.0158430615716323
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-8",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28311277777779,
+              39.84064121319055
+            ],
+            [
+              116.28351,
+              39.84069282836203
+            ],
+            [
+              116.28344888888888,
+              39.840871135019555
+            ],
+            [
+              116.28365055555558,
+              39.84090867320426
+            ],
+            [
+              116.28376055555557,
+              39.84055205962116
+            ],
+            [
+              116.28314333333334,
+              39.84045821363358
+            ]
+          ],
+          "anchorGeo": [
+            116.28343666666669,
+            39.840683443418925
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-8-1",
+              "modelUnitsPerPixel": 0.5458272800714906,
+              "sourceAnchor": [
+                30.5,
+                40.28131979794425
+              ],
+              "sourceNativeSize": [
+                59,
+                66
+              ],
+              "displayBudget": [
+                48.69216000061755,
+                54.666908899225064
+              ],
+              "sizeRatio": [
+                1.2116940386142598,
+                1.207311723471813
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-8-2",
+              "modelUnitsPerPixel": 0.3879977051110596,
+              "sourceAnchor": [
+                42.5,
+                48.412704122531736
+              ],
+              "sourceNativeSize": [
+                83,
+                85
+              ],
+              "displayBudget": [
+                73.0382400009263,
+                82.00036334883771
+              ],
+              "sizeRatio": [
+                1.1363910192653515,
+                1.0365807726778178
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        },
+        {
+          "id": "liuli-liuli-roof-segment-9",
+          "kind": "slab",
+          "groundGeo": [
+            [
+              116.28392555555557,
+              39.84043944442068
+            ],
+            [
+              116.28412722222224,
+              39.84046759823812
+            ],
+            [
+              116.28417611111112,
+              39.840312752099386
+            ],
+            [
+              116.28491555555557,
+              39.8404300598123
+            ],
+            [
+              116.28496444444446,
+              39.84027521358894
+            ],
+            [
+              116.28399888888887,
+              39.84011098236443
+            ]
+          ],
+          "anchorGeo": [
+            116.28444500000002,
+            39.84028929030127
+          ],
+          "height": 6.987793945011907,
+          "representations": {
+            "1": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-9-1",
+              "modelUnitsPerPixel": 0.5869047619028138,
+              "sourceAnchor": [
+                45.0,
+                45.32804789762628
+              ],
+              "sourceNativeSize": [
+                88,
+                64
+              ],
+              "displayBudget": [
+                78.09119999974081,
+                45.47932503603511
+              ],
+              "sizeRatio": [
+                1.1268875366275852,
+                1.407232845898443
+              ]
+            },
+            "2": {
+              "assetRef": "map-part-liuli-liuli-roof-segment-9-2",
+              "modelUnitsPerPixel": 0.41989934184916766,
+              "sourceAnchor": [
+                62.5,
+                51.50397603872763
+              ],
+              "sourceNativeSize": [
+                123,
+                78
+              ],
+              "displayBudget": [
+                117.13679999961118,
+                68.21898755405255
+              ],
+              "sizeRatio": [
+                1.0500542954938865,
+                1.143376687292487
+              ]
+            }
+          },
+          "sourceEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+        }
+      ],
+      "projectionId": "north-up-orthographic-rise-r1",
+      "groundStyle": "worn-hardscape-and-patchy-grass"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-compound-trial-r8",
-  "revision": 8,
+  "id": "phase1-modular-overview-r9",
+  "revision": 9,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -358,6 +358,302 @@
       "height": 1145,
       "sha256": "cdcc2f5724c95a49200178fb1398d1fc8c301a344fe30cbb21fa586a69242606",
       "revision": 3
+    },
+    "map-part-qili-osm-978924276-1": {
+      "id": "map-part-qili-osm-978924276-1",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924276-1.webp",
+      "width": 47,
+      "height": 85,
+      "sha256": "f7af25dd376ab93829c40fb02f1aeea8ea016be135a60c1511d050577210354a",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924277-1": {
+      "id": "map-part-qili-osm-978924277-1",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924277-1.webp",
+      "width": 48,
+      "height": 85,
+      "sha256": "1244a99e62b44a86ecd6034ab471d4887642b30d3196c52734e951ee6b070e64",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924278-1": {
+      "id": "map-part-qili-osm-978924278-1",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924278-1.webp",
+      "width": 48,
+      "height": 85,
+      "sha256": "c92a8e73d523596c629f8cf6f92b1015ad4d80e9a60405d5ef3c2244f976b155",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924279-1": {
+      "id": "map-part-qili-osm-978924279-1",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924279-1.webp",
+      "width": 96,
+      "height": 85,
+      "sha256": "0f2efbf6aad4bfd2e55e6aebb2a0fcef53989baaceefba6983b84e20132b0e57",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924280-1": {
+      "id": "map-part-wuli-west-osm-978924280-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924280-1.webp",
+      "width": 40,
+      "height": 76,
+      "sha256": "7b4bacecf9a7ea9afcd520da94f4f76a67eeae9c33a698799fa96ce02a9679f9",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924281-1": {
+      "id": "map-part-wuli-west-osm-978924281-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924281-1.webp",
+      "width": 40,
+      "height": 75,
+      "sha256": "bb22da2d0339be3a300468ff45834e50ce8e35256534f275dbb373acf8d38935",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924282-1": {
+      "id": "map-part-wuli-west-osm-978924282-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924282-1.webp",
+      "width": 40,
+      "height": 76,
+      "sha256": "51b2f93730ec5bd6ffa6d222893cb3ff4a2065481bc6b373bbfad1ebb3ff7f2e",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924283-1": {
+      "id": "map-part-wuli-west-osm-978924283-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924283-1.webp",
+      "width": 47,
+      "height": 82,
+      "sha256": "55d37ffe0de4453e13a1a093f744dad7ccb5965b3291a938bb3aedf3461ed643",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924285-1": {
+      "id": "map-part-wuli-west-osm-978924285-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924285-1.webp",
+      "width": 84,
+      "height": 59,
+      "sha256": "756398cf8c328ed596726d8c3fc441fb697820e1f2eb3a7ef5a0c25d9dec4e5d",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924286-1": {
+      "id": "map-part-wuli-west-osm-978924286-1",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924286-1.webp",
+      "width": 42,
+      "height": 74,
+      "sha256": "7c536c604f80e35d668047d961ceff951058e0e433b928ea010821a0a8151633",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-1-1": {
+      "id": "map-part-liuli-liuli-roof-segment-1-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-1-1.webp",
+      "width": 80,
+      "height": 67,
+      "sha256": "ea506afa0e102d3be7f439f57b1063abe5d9b7192e608d401e516bbf19e531ae",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-2-1": {
+      "id": "map-part-liuli-liuli-roof-segment-2-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-2-1.webp",
+      "width": 80,
+      "height": 66,
+      "sha256": "ca925b351d4558f1bb9c4123b79be53c48772ce9b2d1a7cb4ace877204e7c575",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-3-1": {
+      "id": "map-part-liuli-liuli-roof-segment-3-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-3-1.webp",
+      "width": 80,
+      "height": 66,
+      "sha256": "d1112a8690b659d5dab6cb18c81942afc9c0a0b670aeea7222663343847a62f1",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-4-1": {
+      "id": "map-part-liuli-liuli-roof-segment-4-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-4-1.webp",
+      "width": 80,
+      "height": 67,
+      "sha256": "473792ee182ddbac5f0ffe0024c6ef34130f01feec88c3e3b1b83c5537b9ebab",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-5-1": {
+      "id": "map-part-liuli-liuli-roof-segment-5-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-5-1.webp",
+      "width": 80,
+      "height": 67,
+      "sha256": "f1e0d1fc9870ebec45c31b599501e35f73e6ac4ea4f15071053e051ed36441c4",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-7-1": {
+      "id": "map-part-liuli-liuli-roof-segment-7-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-7-1.webp",
+      "width": 79,
+      "height": 73,
+      "sha256": "013118009facc6d66ee5e273ab7ce5589d6fb915c59b19c3724aeca2ed9957e0",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-8-1": {
+      "id": "map-part-liuli-liuli-roof-segment-8-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-8-1.webp",
+      "width": 61,
+      "height": 68,
+      "sha256": "ff241cf35adbd8aaed3107de59f628ddd5dfe341bcd11d8bb66bd8e9507424f0",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-9-1": {
+      "id": "map-part-liuli-liuli-roof-segment-9-1",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-9-1.webp",
+      "width": 90,
+      "height": 66,
+      "sha256": "d51f105e8edb5c685b8ce521aaa185693ad2d4c9f008435af5c12329fb030838",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924276-2": {
+      "id": "map-part-qili-osm-978924276-2",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924276-2.webp",
+      "width": 65,
+      "height": 113,
+      "sha256": "aeadddf55ae6b29ed4e1e0ea8ba70293cf57d4b0687406aad1c1dac2bc24a749",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924277-2": {
+      "id": "map-part-qili-osm-978924277-2",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924277-2.webp",
+      "width": 63,
+      "height": 112,
+      "sha256": "165e5a92bb4b1f73bc939481b0340a0c9ac69ccd7489d5488203f6cc034455eb",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924278-2": {
+      "id": "map-part-qili-osm-978924278-2",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924278-2.webp",
+      "width": 67,
+      "height": 114,
+      "sha256": "7cc36c59d11bce13e710ff0d1eee0b24a22d7431433c954b0ee68b3e04f442bf",
+      "revision": 4
+    },
+    "map-part-qili-osm-978924279-2": {
+      "id": "map-part-qili-osm-978924279-2",
+      "url": "../../assets/modules/overview-r4/qili-osm-978924279-2.webp",
+      "width": 125,
+      "height": 111,
+      "sha256": "aa91672046f52ba8db2f5f3d533a345ccb8689abf7cba30bbe02c6a8d51f5bb1",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924280-2": {
+      "id": "map-part-wuli-west-osm-978924280-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924280-2.webp",
+      "width": 47,
+      "height": 102,
+      "sha256": "b2fc26eeb6f046d363023fabe10d3fb095497e230fe3ec42f68bf7b8289120d4",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924281-2": {
+      "id": "map-part-wuli-west-osm-978924281-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924281-2.webp",
+      "width": 48,
+      "height": 98,
+      "sha256": "98e5805c3c587a37b2fbb63e80ec131cc33605071d1828ea62cc018bd8abc474",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924282-2": {
+      "id": "map-part-wuli-west-osm-978924282-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924282-2.webp",
+      "width": 48,
+      "height": 98,
+      "sha256": "cbed3d58cf381707c71ae274efbb385556a2b8d20ef42564c55c6db84dd722aa",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924283-2": {
+      "id": "map-part-wuli-west-osm-978924283-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924283-2.webp",
+      "width": 62,
+      "height": 105,
+      "sha256": "f75482474915f0d1b9a2cb6e6b210be27257c61849dd5a5ec53116203eb39892",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924285-2": {
+      "id": "map-part-wuli-west-osm-978924285-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924285-2.webp",
+      "width": 108,
+      "height": 74,
+      "sha256": "7578242fb904690f666c9c4c0f9735c0284da1d963b8551a7ba8ab300960138a",
+      "revision": 4
+    },
+    "map-part-wuli-west-osm-978924286-2": {
+      "id": "map-part-wuli-west-osm-978924286-2",
+      "url": "../../assets/modules/overview-r4/wuli-west-osm-978924286-2.webp",
+      "width": 56,
+      "height": 97,
+      "sha256": "5ac9a91a62d9e3bb937ef026f23302af62f541ad7e1e2d148e98a9bb56127437",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-1-2": {
+      "id": "map-part-liuli-liuli-roof-segment-1-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-1-2.webp",
+      "width": 107,
+      "height": 84,
+      "sha256": "72b4a9788bdf01514f7938c9445d87455c347d6248b1440ab8fe68675fe4a311",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-2-2": {
+      "id": "map-part-liuli-liuli-roof-segment-2-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-2-2.webp",
+      "width": 105,
+      "height": 84,
+      "sha256": "e3c913573c6d66151c9cde35008ec786e3b0a83b052c6660bcf6d1f16addfd2f",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-3-2": {
+      "id": "map-part-liuli-liuli-roof-segment-3-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-3-2.webp",
+      "width": 104,
+      "height": 84,
+      "sha256": "e1127f65a89f253db5203f823b9a47f62fdc9c7e321a73dde6714794b133e5b9",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-4-2": {
+      "id": "map-part-liuli-liuli-roof-segment-4-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-4-2.webp",
+      "width": 105,
+      "height": 81,
+      "sha256": "02624474696e50593c77014c45f04777644392607cfd54bffab78ab453cd649b",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-5-2": {
+      "id": "map-part-liuli-liuli-roof-segment-5-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-5-2.webp",
+      "width": 104,
+      "height": 82,
+      "sha256": "a7a00d741ad389896a8a8fc6937edd4d846507b7eb7473fd603f996d476269bb",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-6-2": {
+      "id": "map-part-liuli-liuli-roof-segment-6-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-6-2.webp",
+      "width": 106,
+      "height": 66,
+      "sha256": "b5378f202c45a222a8221610cde3e32ad8a3f05f6e3aa8d04f589724a78c8989",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-7-2": {
+      "id": "map-part-liuli-liuli-roof-segment-7-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-7-2.webp",
+      "width": 106,
+      "height": 100,
+      "sha256": "378ff6512537bbd225be17764bbf6335dc74362b133322307ae5e17820acbb17",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-8-2": {
+      "id": "map-part-liuli-liuli-roof-segment-8-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-8-2.webp",
+      "width": 85,
+      "height": 87,
+      "sha256": "269995988924a5ab126e92a7ef8f0e4bc291146b861daa3e21a26b1207cad819",
+      "revision": 4
+    },
+    "map-part-liuli-liuli-roof-segment-9-2": {
+      "id": "map-part-liuli-liuli-roof-segment-9-2",
+      "url": "../../assets/modules/overview-r4/liuli-liuli-roof-segment-9-2.webp",
+      "width": 125,
+      "height": 80,
+      "sha256": "38551f3bd0249572c5875f4736cdb49d8b999ce2a25e8a28b489110e50d70027",
+      "revision": 4
     }
   },
   "context": "map-context.json",

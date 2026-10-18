@@ -1,5 +1,5 @@
 {
-  "revision": "phase1-compound-trial-r8",
+  "revision": "phase1-modular-overview-r9",
   "kind": "native SVG render of consumer markup, not browser screenshots",
   "views": [
     {
@@ -36,8 +36,8 @@
           "text": "新华街",
           "fontPx": 19,
           "screenBounds": [
-            441.10148749999996,
-            603.22859375,
+            658.5063312499999,
+            498.7163187500001,
             59,
             25.650000000000002
           ]
@@ -57,7 +57,7 @@
           "fontPx": 23,
           "screenBounds": [
             336.35203285715255,
-            173.44203054400546,
+            176.14203054400545,
             117,
             31.05
           ]
@@ -67,7 +67,7 @@
           "fontPx": 23,
           "screenBounds": [
             218.56642857157954,
-            640.3792584638754,
+            643.4167584638755,
             94,
             31.05
           ]
@@ -77,7 +77,7 @@
           "fontPx": 23,
           "screenBounds": [
             588.6857135402074,
-            364.74786512439994,
+            394.17245556693695,
             117,
             31.05
           ]
@@ -86,8 +86,8 @@
           "text": "丰台南路",
           "fontPx": 19,
           "screenBounds": [
-            463.72558125,
-            641.7716,
+            490.8388125,
+            635.447525,
             78,
             25.650000000000002
           ]
@@ -180,7 +180,7 @@
           "fontPx": 23,
           "screenBounds": [
             14.588800000338388,
-            750.1005389590806,
+            756.9045389590806,
             94,
             31.05
           ]
@@ -190,7 +190,7 @@
           "fontPx": 23,
           "screenBounds": [
             857.9159983300648,
-            203.36621787865568,
+            269.2773004699386,
             117,
             31.05
           ]
@@ -230,7 +230,7 @@
           "fontPx": 23,
           "screenBounds": [
             932.3043408006706,
-            124.9495774520677,
+            218.9669908681139,
             117,
             31.05
           ]
@@ -303,7 +303,7 @@
           "fontPx": 23,
           "screenBounds": [
             752.0039974950971,
-            192.80794471272017,
+            264.1524463924513,
             117,
             31.05
           ]
@@ -343,7 +343,7 @@
           "fontPx": 23,
           "screenBounds": [
             863.5865112010059,
-            52.72686617810162,
+            179.25298630217085,
             117,
             31.05
           ]
@@ -446,7 +446,7 @@
           "fontPx": 23,
           "screenBounds": [
             865.3071406206224,
-            343.98296896688845,
+            76.79414856468837,
             117,
             31.05
           ]
@@ -472,6 +472,16 @@
           ]
         },
         {
+          "text": "建国街二里",
+          "fontPx": 23,
+          "screenBounds": [
+            964.9343850008983,
+            120.17509502342864,
+            117,
+            31.05
+          ]
+        },
+        {
           "text": "新华街二里",
           "fontPx": 23,
           "screenBounds": [
@@ -492,7 +502,7 @@
           ]
         }
       ],
-      "characters": 44
+      "characters": 49
     },
     {
       "id": "mobile",
@@ -549,18 +559,8 @@
           "fontPx": 21,
           "screenBounds": [
             20.44292780001055,
-            168.74078082481188,
+            171.69478082481186,
             107,
-            28.35
-          ]
-        },
-        {
-          "text": "南开西里",
-          "fontPx": 21,
-          "screenBounds": [
-            19.300050000069575,
-            619.5830341288632,
-            86,
             28.35
           ]
         },
@@ -568,10 +568,20 @@
           "text": "新华街三里",
           "fontPx": 21,
           "screenBounds": [
-            180.09746585121397,
-            466.09840562102596,
+            189.40256585121398,
+            484.04099639273977,
             107,
             28.35
+          ]
+        },
+        {
+          "text": "丰台南路",
+          "fontPx": 18,
+          "screenBounds": [
+            180.09610462499998,
+            675.7479190000001,
+            74,
+            24.3
           ]
         }
       ],
@@ -582,8 +592,10 @@
   "objects": 6,
   "roadParts": 385,
   "limits": [
-    "No managed control-browser available; browser QA skipped per Sites skill",
-    "Satellite roof picks are approximate; capture date and individual tower identity remain unverified",
-    "Street scene unchanged"
-  ]
+    "Native SVG view review; no managed control-browser walkthrough",
+    "Source footprint/roof uncertainty retained; illustrated height is not a floor survey"
+  ],
+  "buildingParts": 19,
+  "acceptedRasterVariants": 37,
+  "projection": "north-up-orthographic-rise-r1"
 }
