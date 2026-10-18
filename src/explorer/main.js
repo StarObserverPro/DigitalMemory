@@ -9,7 +9,7 @@ import { restoreSession, saveSession } from '../adapters/session-storage.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
-let composition, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
+let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
 const assetURL = asset => new URL(asset.url, repository.baseURL).href;
 function notify(message = '') { $('status').textContent = message; }
@@ -25,9 +25,9 @@ function render() {
   const location = mapping.locate(state.route);
   $('map-person').style.left = `${location.art[0] / 12}%`;
   $('map-person').style.top = `${location.art[1] / 12}%`;
-  $('street-entry').style.left = `${location.art[0] / 12}%`;
-  $('street-entry').style.top = `${location.art[1] / 12}%`;
-  $('stage-limit').hidden = location.distance > STAGE.min + .3 && location.distance < STAGE.max - .3;
+
+
+
   clearTimeout(saveTimer); saveTimer = setTimeout(() => saveSession(localStorage, session.get()), 200);
   const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId]);
   if (key === lastRenderKey) return;
@@ -35,33 +35,35 @@ function render() {
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
   $('period-label').textContent = currentPeriod().label;
   const asset = manifest.assets.find(a => a.id === state.styleId);
-  const letter = asset.label[0];
-  $('style-label').textContent = `底盘 ${letter}`;
-  $('map-art').src = assetURL(asset);
-  $('map-composition').innerHTML = overviewMarkup(composition,moduleAssets,state);
+
+  const artKey=JSON.stringify([state.styleId,state.periodId,state.layers,state.frontagePreview]);
+  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-art').src=assetURL(asset);$('map-composition').innerHTML=overviewMarkup(composition,moduleAssets,state,mapContext);}
   $('map-person').hidden = !state.layers.person;
   $('map-person').src = moduleAssets.walker.url;
   $('map-person').style.height = state.characterId==='youth'?'53px':'46px';
-  for(const input of document.querySelectorAll('[data-layer-toggle]')) input.checked=state.layers[input.dataset.layerToggle];
-  for(const b of document.querySelectorAll('[data-frontage-preview]')) b.setAttribute('aria-pressed',String(state.frontagePreview===b.dataset.frontagePreview));
+
   $('map-art').style.clipPath = asset.displayClip || 'none';
-  $('map-camera').style.transform = `translate(${state.camera.x}%,${state.camera.y}%) scale(${state.camera.zoom})`;
+  $('map-camera').style.transform = `translate(calc(-50% + ${state.camera.x}%),calc(-58% + ${state.camera.y}%)) scale(${state.camera.zoom})`;
+  $('street-entry').hidden = state.view === 'street' || state.sceneId !== 'map';
+  $('leave-street').hidden = state.view !== 'street' || state.sceneId !== 'map';
+  $('scene-back').hidden = state.sceneId === 'map';
+  $('scene-next').hidden = !sceneData?.nextSceneId || state.sceneId === 'map';
+  $('door-action').hidden = state.view !== 'street' || state.sceneId !== 'map' || !stage?.inspect()?.nearEntrance;
+  document.querySelector('.menu-zoom').hidden = state.view !== 'map' || state.sceneId !== 'map';
   $('zoom-out').disabled = state.camera.zoom <= 1;
   $('zoom-in').disabled = state.camera.zoom >= 3;
-  for (const button of document.querySelectorAll('.marker')) button.setAttribute('aria-pressed', String(button.dataset.id === state.placeId));
+
   for (const button of document.querySelectorAll('[data-period]')) button.setAttribute('aria-pressed', String(button.dataset.period === state.periodId));
-  for (const button of document.querySelectorAll('[data-style]')) button.setAttribute('aria-pressed', String(button.dataset.style === state.styleId));
+
   const scene = $('scene');
   if (state.sceneId === 'map') { scene.hidden = true; scene.replaceChildren(); }
 
 }
 function renderMarkers() {
-  const icons = { 'place-xinhua': '⌂', 'place-theatre': '▣', 'place-bridge': '≋', 'place-nankai': '⌂' };
   $('markers').innerHTML = registry.all().filter(p => registry.anchor(p.id)).map(place => {
-    const [x, y] = mapping.data.anchors.find(a => a.id === place.id)?.label || registry.anchor(place.id);
-    return `<button class="marker" data-id="${escape(place.id)}" aria-pressed="false" style="left:${x / 12}%;top:${y / 12}%"><span class="marker-dot" aria-hidden="true">${icons[place.id]}</span>${escape(place.label)}${place.id === 'place-xinhua' ? '<small>从这里开始</small>' : ''}${includeDemo && place.id === 'place-xinhua' ? '<span class="marker-demo" aria-label="有交互样例"></span>' : ''}</button>`;
+    const [x,y] = mapping.data.anchors.find(a=>a.id===place.id)?.label || registry.anchor(place.id);
+    return `<span class="place-label" style="left:${x/12}%;top:${y/12}%">${escape(place.label)}</span>`;
   }).join('');
-  for (const marker of document.querySelectorAll('.marker')) marker.addEventListener('click', () => openPlace(marker.dataset.id));
 }
 function renderRoadLabels(transform) {
   const labels = [ ['西四环南路', [355,415], 90], ['正阳大街', [686,438], -26], ['新华街', [892,781], -26], ['建国街',[753,633],-21],['铁路',[760,500],-22],['丰台南路',[752,966],-10] ];
@@ -78,7 +80,7 @@ async function openPlace(id, { preserveSelection = false } = {}) {
   if (!place) return;
   showDialog('place-dialog');
   const generation = ++queryGeneration;
-  $('place-dialog').innerHTML = `<div class="dialog-heading"><div><span class="eyebrow">A PLACE IN TIME</span><h2 id="place-title">${escape(place.label)}</h2></div><button class="close" aria-label="关闭">×</button></div><p>${escape(place.summary)}</p><div class="place-empty"><p class="loading-note">正在找这段时间的片段……</p></div>`;
+  $('place-dialog').innerHTML = `<div class="dialog-heading"><div><h2 id="place-title">${escape(place.label)}</h2></div><button class="close" aria-label="关闭">×</button></div><p>${escape(place.summary)}</p><div class="place-empty"><p class="loading-note">正在找这段时间的片段……</p></div>`;
   $('place-dialog').querySelector('.close').addEventListener('click', () => { queryGeneration++; $('place-dialog').close(); });
   try {
     const page = await repository.memories({ placeIds: [id], period: currentPeriod(), includeDemo });
@@ -86,8 +88,8 @@ async function openPlace(id, { preserveSelection = false } = {}) {
     const target = $('place-dialog').querySelector('.place-empty');
     const environment = resolveEnvironment(manifest.environmentStates, id, currentPeriod());
     target.dataset.environment = environment.status;
-    target.innerHTML = page.records.length ? `<span class="time-tag">交互样例 · 均为虚构</span><div class="memory-list">${page.records.map(m => `<article class="memory-card" data-relation="${m.timeRelation}"><span class="time-tag">${relationLabels[m.timeRelation]}</span><h3>${escape(m.title)}</h3><p>${escape(m.text)}</p>${m.timeRelation !== 'current' ? `<button class="outline-button" data-switch="${escape(m.id)}">切到这段时间</button>` : ''}${m.portalId ? `<button class="primary-button" data-portal="${escape(m.portalId)}" data-memory="${escape(m.id)}">进入样例空间 ↗</button>` : ''}</article>`).join('')}</div>` : `<p>${place.geometry ? '这段时间还没有放入记忆片段。' : '先保留地点身份，核对旧址后再放到地图上。'}</p>${id === 'place-xinhua' && !includeDemo ? '<button class="outline-button" id="enable-demo">试走一个交互样例</button>' : ''}`;
-    target.querySelector('#enable-demo')?.addEventListener('click', () => { includeDemo = true; $('demo-toggle').checked = true; renderMarkers(); render(); openPlace(id); });
+    target.innerHTML = page.records.length ? `<span class="time-tag">想象片段</span><div class="memory-list">${page.records.map(m => `<article class="memory-card" data-relation="${m.timeRelation}"><span class="time-tag">${relationLabels[m.timeRelation]}</span><h3>${escape(m.title)}</h3><p>${escape(m.text)}</p>${m.timeRelation !== 'current' ? `<button class="outline-button" data-switch="${escape(m.id)}">切到这段时间</button>` : ''}${m.portalId ? `<button class="primary-button" data-portal="${escape(m.portalId)}" data-memory="${escape(m.id)}">走进去 ↗</button>` : ''}</article>`).join('')}</div>` : `<p>${place.geometry ? '这段时间还没有放入记忆片段。' : '这处旧址的位置还没有确定。'}</p>`;
+
     for (const b of target.querySelectorAll('[data-switch]')) b.addEventListener('click', () => {
       const memory = page.records.find(m => m.id === b.dataset.switch);
       const period = manifest.periods.find(p => memory.time.kind === 'stage' ? p.kind === 'stage' && p.stageId === memory.time.stageId : p.kind === 'window' && memory.time.start >= p.start && memory.time.end <= p.end);
@@ -97,7 +99,7 @@ async function openPlace(id, { preserveSelection = false } = {}) {
       session.dispatch({ type: 'select-memory', id: b.dataset.memory, placeId: id });
       enterScene(b.dataset.portal);
     });
-  } catch (error) { if (generation === queryGeneration) $('place-dialog').querySelector('.place-empty').textContent = error.message; }
+  } catch (error) { if (generation === queryGeneration) $('place-dialog').querySelector('.place-empty').textContent = '这段记忆暂时打不开，请稍后再试。'; }
 }
 async function enterScene(id) {
   if (loading) return;
@@ -115,10 +117,8 @@ async function enterScene(id) {
 function showScene(scene) {
   const element = $('scene');
   element.hidden = false;
-  element.innerHTML = `<div class="scene-shell"><button class="pill scene-back" id="scene-back">← 返回${session.get().returnStack.length > 1 ? '上一处' : (session.get().view === 'street' ? '街边' : '地图')}</button><div class="scene-stage"><span class="eyebrow">A LITTLE FURTHER INSIDE</span><h2>${escape(scene.label)}</h2><div class="courtyard ${scene.id === 'demo-room' ? 'room' : ''}">${scene.nextSceneId ? '<button class="pill" id="scene-next">打开下一处入口 ↗</button>' : ''}</div><span class="scene-note">${escape(scene.provenanceLabel)}</span><p>${escape(scene.description)}</p></div></div>`;
-  $('scene-next')?.addEventListener('click', () => enterScene(scene.nextSceneId));
-  $('scene-back').addEventListener('click', back);
-  $('scene-back').focus({ preventScroll: true });
+  element.innerHTML = `<div class="scene-shell"><div class="scene-stage"><div class="courtyard ${scene.id === 'demo-room' ? 'room' : ''}" aria-label="${scene.id === 'demo-room' ? '屋内' : '院内'}"></div></div></div>`;
+  lastRenderKey=''; render();
 }
 async function back() {
   portals.cancel();
@@ -128,24 +128,24 @@ async function back() {
     try { const scene = await repository.loadScene(state.sceneId); if (token === queryGeneration && state.sceneId === session.get().sceneId) showScene(scene); } catch { notify('场景无法载入，可以继续返回。'); }
   } else {
     sceneData = null;
-    if (state.placeId && state.view !== 'street') await openPlace(state.placeId, { preserveSelection: true });
+    lastRenderKey=''; render();
   }
 }
 function wireControls() {
-  for(const id of ['layers-button','street-layers-button']) $(id).addEventListener('click',()=>showDialog('layers-dialog'));
-  for(const input of document.querySelectorAll('[data-layer-toggle]')) input.addEventListener('change',()=>session.dispatch({type:'layer',id:input.dataset.layerToggle,visible:input.checked}));
-  for(const b of document.querySelectorAll('[data-frontage-preview]')) b.addEventListener('click',()=>session.dispatch({type:'frontage-preview',id:b.dataset.frontagePreview}));
-  $('street-entry').addEventListener('click', enterStreet);
-  $('leave-street').addEventListener('click', () => { stage?.clear(); portals.cancel(); loading=false; notify(); session.dispatch({ type: 'view', view: 'map' }); });
-  $('mapping-button').addEventListener('click', () => { renderMapping(); showDialog('mapping-dialog'); });
-  $('door-action').addEventListener('click', enterDoor);
-  document.addEventListener('keydown', e => { if (e.code === 'KeyE' && !e.repeat && session.get().view === 'street' && session.get().sceneId === 'map' && !document.querySelector('dialog[open]') && !$('door-action').hidden) enterDoor(); });
+  const closeMenu=()=> $('menu-dialog').close();
+  $('menu-button').addEventListener('click',()=>{lastRenderKey='';render();showDialog('menu-dialog');$('menu-button').setAttribute('aria-expanded','true');});
+  $('menu-dialog').addEventListener('close',()=> $('menu-button').setAttribute('aria-expanded','false'));
+  $('street-entry').addEventListener('click',async()=>{closeMenu();await enterStreet();});
+  $('leave-street').addEventListener('click',()=>{closeMenu();stage?.clear();portals.cancel();loading=false;notify();session.dispatch({type:'view',view:'map'});});
+  $('door-action').addEventListener('click',()=>{closeMenu();enterDoor();});
+  $('scene-back').addEventListener('click',()=>{closeMenu();back();});
+  $('scene-next').addEventListener('click',()=>{closeMenu();if(sceneData?.nextSceneId)enterScene(sceneData.nextSceneId);});
   $('period-button').addEventListener('click', () => showDialog('period-dialog'));
-  $('style-button').addEventListener('click', () => showDialog('style-dialog'));
+
   $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
   $('place-search').addEventListener('input', e => renderPlaces(e.target.value));
-  $('demo-toggle').addEventListener('change', e => { includeDemo = e.target.checked; renderMarkers(); render(); });
+
   for (const dialog of document.querySelectorAll('dialog')) {
     dialog.querySelector('.close')?.addEventListener('click', () => { queryGeneration++; dialog.close(); });
     dialog.addEventListener('cancel', () => { queryGeneration++; portals.cancel(); loading = false; notify(); });
@@ -159,8 +159,8 @@ function wireControls() {
   viewport.addEventListener('pointerdown', e => { if (e.target.closest('button') || e.button !== 0) return; drag = { id: e.pointerId, x: e.clientX, y: e.clientY, camera: session.get().camera }; viewport.setPointerCapture(e.pointerId); });
   viewport.addEventListener('pointermove', e => {
     if (!drag || drag.id !== e.pointerId) return;
-    const side = $('board').clientWidth;
-    session.dispatch({ type: 'camera', camera: { x: Math.max(-65, Math.min(65, drag.camera.x + (e.clientX - drag.x) / side * 100)), y: Math.max(-65, Math.min(65, drag.camera.y + (e.clientY - drag.y) / side * 100)) } });
+    const side = $('map-camera').clientWidth;
+    session.dispatch({ type: 'camera', camera: { x: Math.max(-22, Math.min(22, drag.camera.x + (e.clientX - drag.x) / side * 100)), y: Math.max(-22, Math.min(22, drag.camera.y + (e.clientY - drag.y) / side * 100)) } });
   });
   viewport.addEventListener('pointerup', () => { drag = null; });
   viewport.addEventListener('pointercancel', () => { drag = null; });
@@ -173,13 +173,13 @@ async function enterStreet() {
   mapDestination = null; mapKeys.clear();
   const d = mapping.locate(session.get().route).distance;
   if (d < STAGE.min || d > STAGE.max) { notify('这段街景还在绘制，请先点新华街院门附近的路。'); return; }
-  startingStage = true; notify('正在展开街边布景……');
+  startingStage = true; notify('正在走到街上……');
   try {
     if (!stage) {
       const { createStage } = await import('./stage.js');
       stage = await createStage({ container: $('stage-canvas'), session, mapping, transform: registry.transform,
         assets: Object.fromEntries(Object.entries(manifest.stageAssets).map(([k,a]) => [k,{...a,url:assetURL(a)}])), composition,
-        blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near; }, onError: notify });
+        blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onError: notify });
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' }); notify();
@@ -192,18 +192,6 @@ async function enterDoor() {
   session.dispatch({ type: 'select-memory', id: 'demo-current', placeId: 'place-xinhua' });
   await enterScene('demo-courtyard');
 }
-function renderMapping(selected = 'walker') {
-  const geoImage = new URL('../../assets/maps/fengtai-ink-r1.svg', import.meta.url).href;
-  const artImage = assetURL(manifest.assets.find(a => a.id === 'journal'));
-  const selectedAnchor = mapping.data.anchors.find(a => a.id === selected);
-  const position = selected === 'walker' ? mapping.locate(session.get().route) : { geo: registry.get(selected).geometry.coordinates, art: selectedAnchor.art };
-  const geoXY = registry.transform.toImage(position.geo);
-  const line = points => 'M'+points.map(p => p.join(',')).join(' L');
-  $('mapping-views').innerHTML = [[geoImage,geoXY,mapping.data.nodes.map(n=>registry.transform.toImage(n.geo)),'当代地理参照'],[artImage,position.art,mapping.data.nodes.map(n=>n.art),'独立图层合成']].map(([src,point,path,caption],i)=>`<figure><svg viewBox="0 0 1200 1200"><image href="${src}" width="1200" height="1200"/>${i?overviewMarkup(composition,moduleAssets,session.get()):''}<path d="${line(path)}" fill="none" stroke="#c87a50" stroke-width="7"/><circle cx="${point[0]}" cy="${point[1]}" r="15"/></svg><figcaption>${caption}</figcaption></figure>`).join('');
-  $('mapping-detail').innerHTML = `<div>${[['walker','当前行走位置'],...mapping.data.anchors.map(a=>[a.id,registry.get(a.id).label])].map(([id,label])=>`<button data-map-node="${id}" aria-pressed="${id===selected}">${label}</button>`).join('')}</div><p><strong>${selected==='walker'?'人物走到的位置':escape(registry.get(selected).label)}</strong><br><code>${selected==='walker'?`${session.get().route.edgeId} · t=${session.get().route.t.toFixed(4)}`:selected}</code><br>经纬度 ${position.geo.map(n=>n.toFixed(6)).join(', ')} ↔ 插画坐标 ${position.art.map(n=>Math.round(n)).join(', ')} / 1200</p>`;
-  for(const b of $('mapping-detail').querySelectorAll('[data-map-node]'))b.addEventListener('click',()=>renderMapping(b.dataset.mapNode));
-}
-
 async function start() {
   repository = new PublicRepository(new URL('../../content/public/', import.meta.url));
   manifest = await repository.init();
@@ -219,8 +207,10 @@ async function start() {
   mapping = createIllustrationMapping(mappingData, transform);
   composition = createComposition(await repository.read(manifest.composition),mapping);
   if(composition.data.mappingRevision!==mappingData.id)throw new Error('图层登记版本不匹配。');
+  mapContext = await repository.read(manifest.context);
   moduleAssets=Object.fromEntries(Object.entries(manifest.moduleAssets).map(([id,a])=>[id,{...a,url:assetURL(a)}]));
   let saved = restoreSession(localStorage, manifest);
+  if(saved){saved.layers={roads:true,buildings:true,frontages:true,person:true};saved.frontagePreview='none';}
   if (saved && !mapping.valid(saved.route)) saved.route = mappingData.spawn;
   if (saved && !manifest.assets.find(a => a.id === saved.styleId)?.selectable) saved.styleId = 'journal';
   session = createSession(saved, mapping);
@@ -229,9 +219,6 @@ async function start() {
   session.subscribe(render);
   $('period-options').innerHTML = manifest.periods.map(p => `<button class="option-button" data-period="${p.id}" aria-pressed="false">${escape(p.label)}</button>`).join('');
   for (const b of document.querySelectorAll('[data-period]')) b.addEventListener('click', () => { session.dispatch({ type: 'period', id: b.dataset.period }); $('period-dialog').close(); });
-  const captions = { paper: '淡纸色 · 安静的街区轮廓', board: '纸板建筑 · 生成式画风候选', ink: '冷色线稿 · 留出更多记忆空间' };
-  $('style-options').innerHTML = manifest.assets.filter(a => a.selectable).map(a => `<button class="style-card" data-style="${a.id}" aria-pressed="false"><img style="clip-path:${a.displayClip || 'none'}" src="${assetURL(a)}" alt="${escape(a.label)}候选底盘"/><strong>${escape(a.label)}</strong><span>${captions[a.id]}</span></button>`).join('');
-  for (const b of document.querySelectorAll('[data-style]')) b.addEventListener('click', () => { session.dispatch({ type: 'style', id: b.dataset.style }); $('style-dialog').close(); });
   await document.fonts.ready;
   renderMarkers(); renderRoadLabels(transform); wireControls(); render();
   $('walking-path').innerHTML = `<path d="M${mapping.data.nodes.map(n => n.art.join(',')).join(' L')}"/>`;
@@ -258,7 +245,7 @@ async function start() {
 }
 start().catch(error => {
   const panel = document.createElement('div'); panel.className = 'error-screen';
-  const text = document.createElement('p'); text.textContent = error.message;
+  const text = document.createElement('p'); text.textContent = '暂时没能打开这张地图，请重新载入。';
   const button = document.createElement('button'); button.textContent = '重新载入'; button.onclick = () => location.reload();
   panel.append(text, button); $('app').append(panel);
 });
