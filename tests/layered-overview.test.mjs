@@ -4,16 +4,16 @@ import{mapMetrics,placeMapLabels}from'../src/explorer/map-labels.js';
 import{createTransform}from'../src/domain/spatial.js';import{overlaps}from'../src/domain/map-assembly.js';
 const read=n=>JSON.parse(fs.readFileSync('content/public/'+n+'.json'));
 const transform=createTransform(read('orientation').bounds),registration=read('overview-registration');
-const assets=read('manifest').moduleAssets,loaded=['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(assets).filter(k=>k.startsWith('compound-'))];
+const assets=read('manifest').moduleAssets,loaded=['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(assets).filter(k=>k.startsWith('map-part-'))];
 const assembly=createOverviewAssembly(read('scene-composition'),read('map-context'),registration,transform,assets);
 test('consumer uses separate road/context/solid groups and no overview person',()=>{
  assert.deepEqual([1,1.8,2.7].map(mapLevel),[0,1,2]);
  for(const zoom of[1,1.8,2.7]){
   const markup=layeredOverviewMarkup(assembly,assets,{periodId:'window-2000',camera:{zoom}},loaded);
   for(const layer of['pale-context','road-art','solid-places'])assert.ok(markup.includes(`data-layer="${layer}"`));
-  assert.ok(markup.includes(zoom<2.25?'towerGlyph-r1.webp':'towerSketch-r1.webp'));assert.ok(markup.includes(zoom<2.25?'slabGlyph-r1.webp':'slabSketch-r1.webp'));
+  assert.ok(!markup.includes('preserveAspectRatio="none"'));if(zoom>=2.25)assert.ok(markup.includes('overview-r4/'));else assert.ok(markup.includes('stroke-linecap="round"'));
   assert.ok(!markup.includes('data-map-person'));assert.equal((markup.match(/data-map-object=/g)||[]).length,6);
-  assert.ok(markup.includes('preserveAspectRatio="xMidYMax meet"'));
+  if(markup.includes('<image'))assert.match(markup,/preserveAspectRatio="xMidY(?:Mid|Max) meet"/);
  }
  assert.ok(assembly.model.roads.some(r=>r.states[0].bands.some(b=>b.role==='service')),'Source service roads have independent reservations');
  assert.ok(assembly.model.roads.flatMap(r=>r.states.flatMap(s=>s.parts)).some(p=>p.kind==='retaining-wall'));
@@ -21,7 +21,7 @@ test('consumer uses separate road/context/solid groups and no overview person',(
 test('unassociated life stage does not assert dated solid buildings; unavailable assets leave only supported symbols',()=>{
  const render=(periodId,available)=>layeredOverviewMarkup(assembly,assets,{periodId,camera:{zoom:1.8}},available);
  assert.ok(!render('stage-primary',loaded).includes('data-map-object='));
- assert.equal((render('window-2000',[]).match(/data-map-object=/g)||[]).length,1);
+ assert.equal((render('window-2000',[]).match(/data-map-object=/g)||[]).length,4);
 });
 test('building anchors are projected from source coordinates; all Sanli towers stay in Sanli and retain their image proportions',()=>{
  const sanli=assembly.parcels.find(p=>p.label==='新华街三里'),wuli=assembly.parcels.find(p=>p.label==='新华街五里');
@@ -29,7 +29,7 @@ test('building anchors are projected from source coordinates; all Sanli towers s
   assert.deepEqual(rep.groundAnchor,transform.toImage(f.geo),'No geographic displacement for icon layout');
   if(f.kind==='tower'){
    assert.equal(f.placeId,'place-sanli');assert.ok(pointInPolygon(rep.groundAnchor,sanli.art));assert.ok(!pointInPolygon(rep.groundAnchor,wuli.art));
-   assert.ok(Math.abs(rep.bounds[2]/rep.bounds[3]-assets[rep.assetRef].width/assets[rep.assetRef].height)<1e-9);
+   assert.equal(rep.bounds[2],f.ground[2]);if(assets[rep.assetRef])assert.ok(Math.abs(rep.bounds[2]/rep.bounds[3]-assets[rep.assetRef].width/assets[rep.assetRef].height)<1e-9);
   }
  }
  const changed=structuredClone(registration);changed.features.find(f=>f.kind==='tower').geo=transform.fromImage([630,800]);

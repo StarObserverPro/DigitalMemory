@@ -40,8 +40,8 @@ function render() {
   $('period-label').textContent = currentPeriod().label;
   const asset = manifest.assets.find(a => a.id === state.styleId);
 
-  const artKey=JSON.stringify([state.styleId,state.periodId,mapLevel(state.camera.zoom)]);
-  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-composition').innerHTML=layeredOverviewMarkup(overviewAssembly,moduleAssets,state,[...availableMapAssets],{includeLabels:false});}
+  const artKey=JSON.stringify([state.styleId,state.periodId,mapLevel(state.camera.zoom),Math.round(metrics.scale*100)]);
+  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-composition').innerHTML=layeredOverviewMarkup(overviewAssembly,moduleAssets,state,[...availableMapAssets],{includeLabels:false,metrics});}
   $('map-labels').innerHTML=overviewLabelsMarkup(overviewAssembly,state,[...availableMapAssets],metrics);
   $('map-person').hidden = true;
   $('map-person').src = moduleAssets.walker.url;
@@ -213,7 +213,7 @@ async function start() {
   const overviewRegistration=await repository.read(manifest.overviewRegistration);
   if(overviewRegistration.geometryRevision!==geometry.revision)throw new Error('地图暂时无法载入，请刷新重试。');
   overviewAssembly=createOverviewAssembly(composition.data,mapContext,overviewRegistration,transform,moduleAssets);
-  await Promise.allSettled(['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(moduleAssets).filter(k=>k.startsWith('compound-'))].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
+  await Promise.allSettled(['towerSketch','slabSketch','towerGlyph','slabGlyph',...Object.keys(moduleAssets).filter(k=>k.startsWith('map-part-'))].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
   let saved = restoreSession(localStorage, manifest);
   if(saved && saved.mapRevision!=='journal-r6'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
   if(saved)saved.mapRevision='journal-r6';
