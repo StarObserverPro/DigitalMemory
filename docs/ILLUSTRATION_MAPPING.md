@@ -2,7 +2,7 @@
 
 > Current view hierarchy and compositing rules: [MAP_ASSEMBLY](MAP_ASSEMBLY.md). The overview has three tiers and no person; street entry uses moderately elevated chibi framing. The bounded implementation described below is not yet migrated.
 
-> DM-0004 supersedes the r1 baked illustration: r2 draws roads from registered node positions, composes independent overview groups outside road reservations, and attaches short scenic flats to route/side/setback records. The theatre uses an explicit display offset east of the ring. See [layer composition](LAYER_COMPOSITION.md).
+> DM-0009 supersedes the overview's displaced building proxies. `overview-registration.json` stores public source anchors and parcel associations; all overview anchors use the same transform as roads. The theatre no longer uses the old eastward display offset. Street fixtures remain separate. See [layer composition](LAYER_COMPOSITION.md).
 
 This is the current user-directed visual contract: a hand-drawn/cartoon/travel-journal overview; enter a street to put a person on its sidewalk; stand painted facades up as cinematic scenic flats. Distant/unbuilt areas fade into fog and directional cues. The overview and close view are two presentations of one location.
 

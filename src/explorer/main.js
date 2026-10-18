@@ -1,5 +1,6 @@
 import { createComposition } from '../domain/composition.js';
-import { createOverviewAssembly, layeredOverviewMarkup, mapLevel } from './layered-overview.js';
+import { createOverviewAssembly, layeredOverviewMarkup, overviewLabelsMarkup, mapLevel } from './layered-overview.js';
+import { mapMetrics } from './map-labels.js';
 import { createIllustrationMapping, STAGE } from '../domain/illustration.js';
 import { createTransform, SpatialRegistry } from '../domain/spatial.js';
 import { resolveEnvironment } from '../domain/temporal.js';
@@ -30,7 +31,9 @@ function render() {
 
 
   clearTimeout(saveTimer); saveTimer = setTimeout(() => saveSession(localStorage, session.get()), 200);
-  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId]);
+  const viewport=$('map-viewport'),side=$('map-camera').clientWidth;
+  const metrics=mapMetrics(state.camera,viewport.clientWidth,viewport.clientHeight,side);
+  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId,metrics.width,metrics.height,side]);
   if (key === lastRenderKey) return;
   lastRenderKey = key;
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
@@ -38,7 +41,8 @@ function render() {
   const asset = manifest.assets.find(a => a.id === state.styleId);
 
   const artKey=JSON.stringify([state.styleId,state.periodId,mapLevel(state.camera.zoom)]);
-  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-composition').innerHTML=layeredOverviewMarkup(overviewAssembly,moduleAssets,state,[...availableMapAssets]);}
+  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-composition').innerHTML=layeredOverviewMarkup(overviewAssembly,moduleAssets,state,[...availableMapAssets],{includeLabels:false});}
+  $('map-labels').innerHTML=overviewLabelsMarkup(overviewAssembly,state,[...availableMapAssets],metrics);
   $('map-person').hidden = true;
   $('map-person').src = moduleAssets.walker.url;
   $('map-person').style.height = state.characterId==='youth'?'53px':'46px';
@@ -151,7 +155,10 @@ function wireControls() {
   const viewport = $('map-viewport'); let drag = null;
   viewport.addEventListener('pointerdown', e => { if (e.target.closest('button') || e.button !== 0) return; mapDragged=false; drag = { id: e.pointerId, x: e.clientX, y: e.clientY, camera: session.get().camera }; viewport.setPointerCapture(e.pointerId); });
   viewport.addEventListener('pointermove', e => {
-    if (!drag || drag.id !== e.pointerId) return;
+    if (!drag || drag.id !== e.pointerId) {
+      const r=$('map-camera').getBoundingClientRect(),hit=mapping.nearestArt([(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200]),d=mapping.locate(hit.route).distance;
+      viewport.style.cursor=hit.distance<28&&d>=STAGE.min&&d<=STAGE.max?'pointer':'grab';return;
+    }
     if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)mapDragged=true;
     const side = $('map-camera').clientWidth;
     session.dispatch({ type: 'camera', camera: { x: Math.max(-50*drag.camera.zoom, Math.min(50*drag.camera.zoom, drag.camera.x + (e.clientX - drag.x) / side * 100)), y: Math.max(-50*drag.camera.zoom, Math.min(50*drag.camera.zoom, drag.camera.y + (e.clientY - drag.y) / side * 100)) } });
@@ -203,22 +210,26 @@ async function start() {
   if(composition.data.mappingRevision!==mappingData.id)throw new Error('图层登记版本不匹配。');
   mapContext = await repository.read(manifest.context);
   moduleAssets=Object.fromEntries(Object.entries(manifest.moduleAssets).map(([id,a])=>[id,{...a,url:assetURL(a)}]));
-  overviewAssembly=createOverviewAssembly(composition.data,mapContext);
-  await Promise.allSettled(['towerSketch','slabSketch'].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
+  const overviewRegistration=await repository.read(manifest.overviewRegistration);
+  if(overviewRegistration.geometryRevision!==geometry.revision)throw new Error('地图暂时无法载入，请刷新重试。');
+  overviewAssembly=createOverviewAssembly(composition.data,mapContext,overviewRegistration,transform,moduleAssets);
+  await Promise.allSettled(['towerSketch','slabSketch','towerGlyph','slabGlyph'].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
   let saved = restoreSession(localStorage, manifest);
-  if(saved && saved.mapRevision!=='layered-r5'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
-  if(saved)saved.mapRevision='layered-r5';
+  if(saved && saved.mapRevision!=='journal-r6'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
+  if(saved)saved.mapRevision='journal-r6';
   if(saved){saved.layers={roads:true,buildings:true,frontages:true,person:true};saved.frontagePreview='none';}
   if (saved && !mapping.valid(saved.route)) saved.route = mappingData.spawn;
   if (saved && !manifest.assets.find(a => a.id === saved.styleId)?.selectable) saved.styleId = 'journal';
-  session = createSession(saved, mapping);
+  session = createSession({...saved,mapRevision:'journal-r6'}, mapping);
   if (!saved) session.dispatch({ type: 'route', route: mappingData.spawn });
   portals = createPortalController(session, repository);
   session.subscribe(render);
   $('period-options').innerHTML = manifest.periods.map(p => `<button class="option-button" data-period="${p.id}" aria-pressed="false">${escape(p.label)}</button>`).join('');
   for (const b of document.querySelectorAll('[data-period]')) b.addEventListener('click', () => { session.dispatch({ type: 'period', id: b.dataset.period }); $('period-dialog').close(); });
+  await document.fonts.load('23px "Fengtai Pen"','新华街三里丰台大桥');
   await document.fonts.ready;
   renderMarkers(); renderRoadLabels(transform); wireControls(); render();
+  new ResizeObserver(()=>{lastRenderKey='';render();}).observe($('map-viewport'));
   $('walking-path').innerHTML = `<path d="M${mapping.data.nodes.map(n => n.art.join(',')).join(' L')}"/>`;
   globalThis.__VISUAL_READY__ = true;
   $('map-viewport').addEventListener('click', async e => { if(mapDragged||e.target.closest('button')||session.get().view!=='map')return; const r=$('map-camera').getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200],hit=mapping.nearestArt(p); if(hit.distance<28){session.dispatch({type:'route',route:hit.route});const d=mapping.locate(hit.route).distance;if(d>=STAGE.min&&d<=STAGE.max)await enterStreet();} });

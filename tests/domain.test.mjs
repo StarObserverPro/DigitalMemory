@@ -64,8 +64,8 @@ test('public adapter rejects non-public packages', async () => {
 });
 test('session restore tolerates corrupt or unavailable storage, drops stale scene and unknown place', () => {
   const manifest={periods:[{id:'window-2000'}],assets:[{id:'journal'}],placeIds:['p']};let saved;
-  const storage={setItem:(key,value)=>saved=value,getItem:()=>saved};const session=createSession();
+  const storage={setItem:(key,value)=>saved=value,getItem:()=>saved};const session=createSession({mapRevision:'journal-r6',camera:{x:12,y:-8,zoom:1.8}});
   session.dispatch({type:'select-place',id:'p'});session.dispatch({type:'enter',sceneId:'unloaded'});assert.equal(saveSession(storage,session.get()),true);
-  assert.equal(restoreSession(storage,manifest).sceneId,'map');saved='broken';assert.equal(restoreSession(storage,manifest),null);
+  assert.equal(restoreSession(storage,manifest).sceneId,'map');assert.equal(restoreSession(storage,manifest).mapRevision,'journal-r6');assert.deepEqual(restoreSession(storage,manifest).camera,{x:12,y:-8,zoom:1.8});saved='broken';assert.equal(restoreSession(storage,manifest),null);
   assert.equal(saveSession({setItem(){throw new Error('unavailable')}},session.get()),false);
 });
