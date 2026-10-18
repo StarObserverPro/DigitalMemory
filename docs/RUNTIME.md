@@ -1,5 +1,7 @@
 # Phase 1 runtime foundation
 
+> DM-0004 current runtime: 16 independently placed shell modules, 24 frontage/door slots, a 1.4 m child profile and lower follow camera. Independent overview, shell, frontage and character layers can be inspected; two synthetic shops can be tried in one slot. Historical occupants remain unknown until supported. Seventeen domain tests and fourteen actual-browser checks cover the updated journey. Hosting target is configured in `.openai/hosting.json`; deployment outcome is recorded in [status](STATUS.md).
+
 The application uses native ES modules, original illustrated PNGs and a small static public repository adapter. The close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. It implements the basic contracts without choosing a private archive, authentication service or hosting provider.
 
 ## Run and check

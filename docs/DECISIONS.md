@@ -47,3 +47,7 @@ Adopt the principles, not the full implementation. Do not import Crystal Garden'
 ## D-010 — Illustrated overview, scenic-flat street, shared route identity (2026-10-17)
 
 User correction supersedes the earlier fixed map-camera assumption. Far view: hand-drawn, cartoon/cute or travel-journal map with explicit real-node correspondence. Close view: enter a street, put the person on its sidewalk, erect illustrated cinematic scenic flats; use fog and arrows beyond built scope. One `{edgeId,t}` location feeds both consumers, with separate art and geographic coordinates. DM-0003 implements an initial example; art and historical approvals remain separate.
+
+## DM-0004 — composited places and independent frontages
+
+2026-10-18 user correction: roads, building shells, shops, people and entrances are independently reusable. Short facade sections replace the long street image. Time-specific shop occupancy cannot own the building or road. Local photos are inspected before drawing; ordinary apartment typology replaces generalized decorative courtyard streets. Exact historic occupants stay unknown. The avatar is an anonymous child profile, independent of calendar period. PR3 explicitly supersedes PR2; the user authorized merging and deploying this correction. See `LAYER_COMPOSITION.md` and `LOCAL_VISUAL_REFERENCES.md`.

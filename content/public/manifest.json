@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-illustrated-prototype-r2",
-  "revision": 2,
+  "id": "phase1-layered-prototype-r3",
+  "revision": 3,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -57,18 +57,17 @@
   "assets": [
     {
       "id": "journal",
-      "label": "手绘街区",
-      "revision": "journal-r1",
-      "url": "../../assets/maps/fengtai-journal-r1.png",
-      "sha256": "ac10c6ef19004ccbfc7e540f95fe94f83c430183923b07b6f20a5fee74bb5be7",
-      "kind": "generated-illustrated-map",
-      "mappingRevision": "fengtai-journal-mapping-r1",
+      "url": "../../assets/modules/paper-r2.png",
       "width": 1254,
       "height": 1254,
-      "approval": "candidate",
+      "revision": "paper-r2",
+      "sha256": "90a2b7f523f8be9d7ebd18a4afd382e36718ee9f07e2232f7e586a927736aacf",
       "privacy": "public",
-      "selectable": true,
-      "rights": "Project generated illustration; OSM reference data retains ODbL attribution."
+      "kind": "generated-modular-illustration",
+      "approval": "candidate",
+      "label": "分层手绘街区",
+      "mappingRevision": "fengtai-journal-mapping-r2",
+      "selectable": true
     },
     {
       "id": "paper",
@@ -149,20 +148,148 @@
   "notice": "Public orientation draft and explicitly synthetic interaction fixtures only; no private memories.",
   "illustrationMapping": "illustration-mapping.json",
   "stageAssets": {
-    "flats": {
-      "url": "../../assets/scenes/street-flats-r1.png",
-      "sha256": "d3829e356e560c266ee8408012c64a6ee73b3fb3b9316baac0897bc9457b1418",
-      "revision": "street-flats-r1",
+    "apartment": {
+      "id": "apartment",
+      "url": "../../assets/modules/apartment-front-r2.png",
+      "width": 1024,
+      "height": 1536,
+      "crop": [
+        75,
+        71,
+        875,
+        1400
+      ],
+      "revision": "apartment-r2",
+      "sha256": "e55d18badc366911c6560039826dc067fa3cbaa53d6d49c4085d69fa743e4c52",
       "privacy": "public",
-      "kind": "generated-scenic-flat",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "shop": {
+      "id": "shop",
+      "url": "../../assets/modules/shop-front-r2.png",
+      "width": 1659,
+      "height": 948,
+      "crop": [
+        53,
+        62,
+        1552,
+        833
+      ],
+      "revision": "shop-r2",
+      "sha256": "72179699ab50800f7d70923e1d00339792f48067f52706a4fc380b2dc93ba6b0",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
       "approval": "candidate"
     },
     "walker": {
-      "url": "../../assets/scenes/walker-r1.png",
-      "sha256": "44a26e4467e5894770946e18c1ea5faf3b577a22d3c97c9246401c7ff50fafda",
-      "revision": "walker-r1",
+      "id": "walker",
+      "url": "../../assets/modules/child-back-r2.png",
+      "width": 1024,
+      "height": 1536,
+      "crop": [
+        211,
+        13,
+        603,
+        1494
+      ],
+      "revision": "walker-r2",
+      "sha256": "df53048b08f02cb1f93bc7a23429c85bd03ff40a3b5f00301e266aa3682fa876",
       "privacy": "public",
-      "kind": "generated-scenic-flat",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "paper": {
+      "id": "paper",
+      "url": "../../assets/modules/paper-r2.png",
+      "width": 1254,
+      "height": 1254,
+      "revision": "paper-r2",
+      "sha256": "90a2b7f523f8be9d7ebd18a4afd382e36718ee9f07e2232f7e586a927736aacf",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    }
+  },
+  "composition": "scene-composition.json",
+  "moduleAssets": {
+    "apartment": {
+      "id": "apartment",
+      "url": "../../assets/modules/apartment-front-r2.png",
+      "width": 1024,
+      "height": 1536,
+      "crop": [
+        75,
+        71,
+        875,
+        1400
+      ],
+      "revision": "apartment-r2",
+      "sha256": "e55d18badc366911c6560039826dc067fa3cbaa53d6d49c4085d69fa743e4c52",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "shop": {
+      "id": "shop",
+      "url": "../../assets/modules/shop-front-r2.png",
+      "width": 1659,
+      "height": 948,
+      "crop": [
+        53,
+        62,
+        1552,
+        833
+      ],
+      "revision": "shop-r2",
+      "sha256": "72179699ab50800f7d70923e1d00339792f48067f52706a4fc380b2dc93ba6b0",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "walker": {
+      "id": "walker",
+      "url": "../../assets/modules/child-back-r2.png",
+      "width": 1024,
+      "height": 1536,
+      "crop": [
+        211,
+        13,
+        603,
+        1494
+      ],
+      "revision": "walker-r2",
+      "sha256": "df53048b08f02cb1f93bc7a23429c85bd03ff40a3b5f00301e266aa3682fa876",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "paper": {
+      "id": "paper",
+      "url": "../../assets/modules/paper-r2.png",
+      "width": 1254,
+      "height": 1254,
+      "revision": "paper-r2",
+      "sha256": "90a2b7f523f8be9d7ebd18a4afd382e36718ee9f07e2232f7e586a927736aacf",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "mapApartment": {
+      "id": "apartment-map",
+      "url": "../../assets/modules/apartment-map-r2.png",
+      "width": 1290,
+      "height": 1219,
+      "crop": [
+        172,
+        29,
+        974,
+        1188
+      ],
+      "revision": "apartment-map-r2",
+      "sha256": "5a0f6a9a084446ac2ec50bb5f05b6f7e01b83eb457755904e372bb45ee2c71b8",
+      "privacy": "public",
+      "kind": "generated-modular-illustration",
       "approval": "candidate"
     }
   }

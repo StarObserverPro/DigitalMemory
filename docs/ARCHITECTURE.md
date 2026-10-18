@@ -1,5 +1,7 @@
 # Core architecture
 
+> DM-0004 update: road registration, building shells, frontage slots/occupants, entrances and character profiles are independently composed. Overview and close scene share the composition registry. See [layer composition](LAYER_COMPOSITION.md); this supersedes the monolithic-illustration and long-strip implementation descriptions below.
+
 Status: v1 implementation contract; the initial planar subset (DM-0002) is superseded visually by illustrated overview and scenic-flat street prototype DM-0003. Private storage and hosting remain deferred. See [DECISIONS](DECISIONS.md).
 
 Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
