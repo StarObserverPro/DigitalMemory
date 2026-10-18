@@ -2,13 +2,5 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": [
-    {
-      "taskId": "DM-0001",
-      "lifecycle": "executing",
-      "packet": "docs/attention/tasks/DM-0001.md",
-      "branch": "agent/core-architecture-v1",
-      "baseSha": "cf4d5d15cdde816c37edd90b5670cdfb73c3744d"
-    }
-  ]
+  "active": []
 }
