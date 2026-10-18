@@ -1,0 +1,1264 @@
+{
+  "nativeCanvas": [
+    1536,
+    1024
+  ],
+  "policy": {
+    "minimum": 0.8,
+    "maximum": 1.5,
+    "aspectTolerance": 0.12
+  },
+  "parts": [
+    {
+      "id": "qili-osm-978924276-1",
+      "cellNative": [
+        0,
+        0,
+        192,
+        205
+      ],
+      "trim": [
+        73,
+        82,
+        120,
+        167
+      ],
+      "nativeSubject": [
+        45,
+        83
+      ],
+      "budget": [
+        34.12627199929429,
+        65.38374098410334
+      ],
+      "ratio": [
+        1.3186321670568228,
+        1.269428741010394
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        23.5,
+        62.9505536830672
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924277-1",
+      "cellNative": [
+        192,
+        0,
+        384,
+        205
+      ],
+      "trim": [
+        73,
+        82,
+        121,
+        167
+      ],
+      "nativeSubject": [
+        46,
+        83
+      ],
+      "budget": [
+        35.163590400734506,
+        67.07746369848384
+      ],
+      "ratio": [
+        1.3081713066205873,
+        1.2373753481957617
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        24.0,
+        62.009701630227
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924278-1",
+      "cellNative": [
+        384,
+        0,
+        576,
+        205
+      ],
+      "trim": [
+        73,
+        82,
+        121,
+        167
+      ],
+      "nativeSubject": [
+        46,
+        83
+      ],
+      "budget": [
+        37.065340798923785,
+        70.51386064359166
+      ],
+      "ratio": [
+        1.2410515864280314,
+        1.177073546143202
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        24.0,
+        61.00560804160031
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924279-1",
+      "cellNative": [
+        576,
+        0,
+        768,
+        205
+      ],
+      "trim": [
+        51,
+        90,
+        147,
+        175
+      ],
+      "nativeSubject": [
+        94,
+        83
+      ],
+      "budget": [
+        80.73043200019868,
+        72.12745522787961
+      ],
+      "ratio": [
+        1.164368846679387,
+        1.1507407233177664
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        48.0,
+        55.33589243764639
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924280-1",
+      "cellNative": [
+        768,
+        0,
+        960,
+        205
+      ],
+      "trim": [
+        78,
+        86,
+        118,
+        162
+      ],
+      "nativeSubject": [
+        38,
+        74
+      ],
+      "budget": [
+        29.53350719849891,
+        65.38374098758162
+      ],
+      "ratio": [
+        1.2866741408189886,
+        1.1317798413225526
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        20.0,
+        54.46070258701755
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924281-1",
+      "cellNative": [
+        960,
+        0,
+        1152,
+        205
+      ],
+      "trim": [
+        78,
+        87,
+        118,
+        162
+      ],
+      "nativeSubject": [
+        38,
+        73
+      ],
+      "budget": [
+        31.457807998554017,
+        62.867632683923915
+      ],
+      "ratio": [
+        1.2079671921752049,
+        1.1611698561486803
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        20.0,
+        56.236796974073464
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924282-1",
+      "cellNative": [
+        1152,
+        0,
+        1344,
+        205
+      ],
+      "trim": [
+        78,
+        86,
+        118,
+        162
+      ],
+      "nativeSubject": [
+        38,
+        74
+      ],
+      "budget": [
+        28.6841087987209,
+        61.35992576004578
+      ],
+      "ratio": [
+        1.3247753404733467,
+        1.2059988515857158
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        20.0,
+        56.51781523367771
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924283-1",
+      "cellNative": [
+        1344,
+        0,
+        1536,
+        205
+      ],
+      "trim": [
+        75,
+        89,
+        122,
+        171
+      ],
+      "nativeSubject": [
+        45,
+        80
+      ],
+      "budget": [
+        35.832585600540824,
+        70.25750703336202
+      ],
+      "ratio": [
+        1.2558401590568113,
+        1.138668355568206
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        23.5,
+        51.25825519697541
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924285-1",
+      "cellNative": [
+        0,
+        205,
+        192,
+        410
+      ],
+      "trim": [
+        55,
+        103,
+        139,
+        162
+      ],
+      "nativeSubject": [
+        82,
+        57
+      ],
+      "budget": [
+        68.54569920148032,
+        41.82646222492639
+      ],
+      "ratio": [
+        1.196282202315461,
+        1.3627736358259575
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        42.0,
+        46.674527669170004
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924286-1",
+      "cellNative": [
+        192,
+        205,
+        384,
+        410
+      ],
+      "trim": [
+        77,
+        95,
+        119,
+        169
+      ],
+      "nativeSubject": [
+        40,
+        72
+      ],
+      "budget": [
+        31.021833599868614,
+        61.514764947237325
+      ],
+      "ratio": [
+        1.2894144335868467,
+        1.1704507049934452
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        21.0,
+        48.09963306389358
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-1-1",
+      "cellNative": [
+        384,
+        205,
+        576,
+        410
+      ],
+      "trim": [
+        57,
+        103,
+        137,
+        170
+      ],
+      "nativeSubject": [
+        78,
+        65
+      ],
+      "budget": [
+        69.36336000076881,
+        51.450965094374396
+      ],
+      "ratio": [
+        1.124512999357809,
+        1.2633387902592919
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        40.0,
+        43.01190649770329
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-2-1",
+      "cellNative": [
+        576,
+        205,
+        768,
+        410
+      ],
+      "trim": [
+        57,
+        103,
+        137,
+        169
+      ],
+      "nativeSubject": [
+        78,
+        64
+      ],
+      "budget": [
+        61.5542399998335,
+        49.15386918478271
+      ],
+      "ratio": [
+        1.267175096308735,
+        1.302033818729644
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        40.0,
+        40.5509179406466
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-3-1",
+      "cellNative": [
+        768,
+        205,
+        960,
+        410
+      ],
+      "trim": [
+        57,
+        103,
+        137,
+        169
+      ],
+      "nativeSubject": [
+        78,
+        64
+      ],
+      "budget": [
+        63.39168000124732,
+        46.85678514007748
+      ],
+      "ratio": [
+        1.2304453833447109,
+        1.365864085823925
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        40.0,
+        42.67280521535778
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-4-1",
+      "cellNative": [
+        960,
+        205,
+        1152,
+        410
+      ],
+      "trim": [
+        57,
+        103,
+        137,
+        170
+      ],
+      "nativeSubject": [
+        78,
+        65
+      ],
+      "budget": [
+        65.22911999838857,
+        48.694837403800534
+      ],
+      "ratio": [
+        1.1957849500641267,
+        1.3348437630254184
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        40.0,
+        43.20278266155529
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-5-1",
+      "cellNative": [
+        1152,
+        205,
+        1344,
+        410
+      ],
+      "trim": [
+        57,
+        103,
+        137,
+        170
+      ],
+      "nativeSubject": [
+        78,
+        65
+      ],
+      "budget": [
+        61.5542400019699,
+        49.61346078932837
+      ],
+      "ratio": [
+        1.2671750962647543,
+        1.3101283193286368
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        40.0,
+        41.259726423628805
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-6-1",
+      "cellNative": [
+        1344,
+        205,
+        1536,
+        410
+      ],
+      "trim": [
+        57,
+        108,
+        141,
+        168
+      ],
+      "nativeSubject": [
+        82,
+        58
+      ],
+      "budget": [
+        62.93232000062676,
+        36.750580184198384
+      ],
+      "ratio": [
+        1.3029870819824112,
+        1.5782063768598193
+      ],
+      "sizeStatus": "vector-fallback",
+      "sourceAnchor": null,
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-7-1",
+      "cellNative": [
+        0,
+        410,
+        192,
+        614
+      ],
+      "trim": [
+        60,
+        102,
+        139,
+        175
+      ],
+      "nativeSubject": [
+        77,
+        71
+      ],
+      "budget": [
+        65.68848000007733,
+        64.3143963913626
+      ],
+      "ratio": [
+        1.172199448060137,
+        1.1039518985446821
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        39.5,
+        40.49781270722066
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-8-1",
+      "cellNative": [
+        192,
+        410,
+        384,
+        614
+      ],
+      "trim": [
+        67,
+        105,
+        128,
+        173
+      ],
+      "nativeSubject": [
+        59,
+        66
+      ],
+      "budget": [
+        48.69216000061755,
+        54.666908899225064
+      ],
+      "ratio": [
+        1.2116940386142598,
+        1.207311723471813
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        30.5,
+        40.28131979794425
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-9-1",
+      "cellNative": [
+        384,
+        410,
+        576,
+        614
+      ],
+      "trim": [
+        52,
+        107,
+        142,
+        173
+      ],
+      "nativeSubject": [
+        88,
+        64
+      ],
+      "budget": [
+        78.09119999974081,
+        45.47932503603511
+      ],
+      "ratio": [
+        1.1268875366275852,
+        1.407232845898443
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        45.0,
+        45.32804789762628
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924276-2",
+      "cellNative": [
+        576,
+        410,
+        768,
+        614
+      ],
+      "trim": [
+        63,
+        61,
+        128,
+        174
+      ],
+      "nativeSubject": [
+        63,
+        111
+      ],
+      "budget": [
+        51.18940799894153,
+        98.07561147615513
+      ],
+      "ratio": [
+        1.2307233559196988,
+        1.1317798413827596
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        32.5,
+        82.53077515629407
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924277-2",
+      "cellNative": [
+        768,
+        410,
+        960,
+        614
+      ],
+      "trim": [
+        61,
+        60,
+        124,
+        172
+      ],
+      "nativeSubject": [
+        61,
+        110
+      ],
+      "budget": [
+        52.745385601101816,
+        100.61619554772585
+      ],
+      "ratio": [
+        1.156499271070373,
+        1.0932633598516759
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        31.5,
+        81.83895216182276
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924278-2",
+      "cellNative": [
+        960,
+        410,
+        1152,
+        614
+      ],
+      "trim": [
+        60,
+        60,
+        127,
+        174
+      ],
+      "nativeSubject": [
+        65,
+        112
+      ],
+      "budget": [
+        55.59801119838585,
+        105.7707909653875
+      ],
+      "ratio": [
+        1.1691065669249536,
+        1.0588934712292257
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        33.5,
+        80.50792440660913
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "qili-osm-978924279-2",
+      "cellNative": [
+        1152,
+        410,
+        1344,
+        614
+      ],
+      "trim": [
+        35,
+        72,
+        160,
+        183
+      ],
+      "nativeSubject": [
+        123,
+        109
+      ],
+      "budget": [
+        121.09564800029807,
+        108.19118284181945
+      ],
+      "ratio": [
+        1.0157260151884009,
+        1.0074758139890483
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        62.5,
+        72.49271031734581
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924280-2",
+      "cellNative": [
+        1344,
+        410,
+        1536,
+        614
+      ],
+      "trim": [
+        74,
+        66,
+        121,
+        168
+      ],
+      "nativeSubject": [
+        45,
+        100
+      ],
+      "budget": [
+        44.30026079774848,
+        98.07561148137245
+      ],
+      "ratio": [
+        1.015795374330778,
+        1.0196214786689661
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        23.5,
+        76.67714780041553
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924281-2",
+      "cellNative": [
+        0,
+        614,
+        192,
+        819
+      ],
+      "trim": [
+        73,
+        70,
+        121,
+        168
+      ],
+      "nativeSubject": [
+        46,
+        96
+      ],
+      "budget": [
+        47.18671199783108,
+        94.30144902588597
+      ],
+      "ratio": [
+        0.9748507164922695,
+        1.0180119286782938
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        24.0,
+        75.49717528440472
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924282-2",
+      "cellNative": [
+        192,
+        614,
+        384,
+        819
+      ],
+      "trim": [
+        73,
+        70,
+        121,
+        168
+      ],
+      "nativeSubject": [
+        46,
+        96
+      ],
+      "budget": [
+        43.02616319808101,
+        92.03988864006863
+      ],
+      "ratio": [
+        1.069116941434639,
+        1.043026033803863
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        24.0,
+        74.62682896708354
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924283-2",
+      "cellNative": [
+        384,
+        614,
+        576,
+        819
+      ],
+      "trim": [
+        65,
+        69,
+        127,
+        174
+      ],
+      "nativeSubject": [
+        60,
+        103
+      ],
+      "budget": [
+        53.74887840081118,
+        105.38626055004295
+      ],
+      "ratio": [
+        1.1163023636060558,
+        0.9773570051960443
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        31.0,
+        64.34434026263389
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924285-2",
+      "cellNative": [
+        576,
+        614,
+        768,
+        819
+      ],
+      "trim": [
+        45,
+        88,
+        153,
+        162
+      ],
+      "nativeSubject": [
+        106,
+        72
+      ],
+      "budget": [
+        102.81854880222045,
+        62.73969333738944
+      ],
+      "ratio": [
+        1.0309423857352755,
+        1.1475988512218616
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        54.0,
+        58.359755279658785
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "wuli-west-osm-978924286-2",
+      "cellNative": [
+        768,
+        614,
+        960,
+        819
+      ],
+      "trim": [
+        72,
+        77,
+        128,
+        174
+      ],
+      "nativeSubject": [
+        54,
+        95
+      ],
+      "budget": [
+        46.532750399803035,
+        92.27214742085596
+      ],
+      "ratio": [
+        1.1604729902281592,
+        1.0295631201331235
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        28.0,
+        62.384504636256324
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-1-2",
+      "cellNative": [
+        960,
+        614,
+        1152,
+        819
+      ],
+      "trim": [
+        47,
+        92,
+        154,
+        176
+      ],
+      "nativeSubject": [
+        105,
+        82
+      ],
+      "budget": [
+        104.04504000115332,
+        77.17644764156171
+      ],
+      "ratio": [
+        1.009178332757007,
+        1.0625003159103772
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        53.5,
+        52.05448951613905
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-2-2",
+      "cellNative": [
+        1152,
+        614,
+        1344,
+        819
+      ],
+      "trim": [
+        46,
+        92,
+        151,
+        176
+      ],
+      "nativeSubject": [
+        103,
+        82
+      ],
+      "budget": [
+        92.33135999975048,
+        73.73080377717406
+      ],
+      "ratio": [
+        1.1155473070068322,
+        1.1121538868315708
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        52.5,
+        50.714673690853836
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-3-2",
+      "cellNative": [
+        1344,
+        614,
+        1536,
+        819
+      ],
+      "trim": [
+        46,
+        92,
+        150,
+        176
+      ],
+      "nativeSubject": [
+        102,
+        82
+      ],
+      "budget": [
+        95.08752000187087,
+        70.28517771011616
+      ],
+      "ratio": [
+        1.0726959752235954,
+        1.166675573307937
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        52.0,
+        53.80289912777557
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-4-2",
+      "cellNative": [
+        0,
+        819,
+        192,
+        1024
+      ],
+      "trim": [
+        45,
+        95,
+        150,
+        176
+      ],
+      "nativeSubject": [
+        103,
+        79
+      ],
+      "budget": [
+        97.84367999758305,
+        73.04225610570074
+      ],
+      "ratio": [
+        1.0526995714239726,
+        1.0815657156821348
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        52.5,
+        49.89598223256661
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-5-2",
+      "cellNative": [
+        192,
+        819,
+        384,
+        1024
+      ],
+      "trim": [
+        45,
+        95,
+        149,
+        177
+      ],
+      "nativeSubject": [
+        102,
+        80
+      ],
+      "budget": [
+        92.33136000295474,
+        74.42019118399253
+      ],
+      "ratio": [
+        1.1047167505897872,
+        1.0749770825260614
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        52.0,
+        48.64733455397614
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-6-2",
+      "cellNative": [
+        384,
+        819,
+        576,
+        1024
+      ],
+      "trim": [
+        44,
+        99,
+        150,
+        165
+      ],
+      "nativeSubject": [
+        104,
+        64
+      ],
+      "budget": [
+        94.39848000094025,
+        55.12587027629752
+      ],
+      "ratio": [
+        1.101712654684314,
+        1.1609794036669947
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        53.0,
+        43.36371107195574
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-7-2",
+      "cellNative": [
+        576,
+        819,
+        768,
+        1024
+      ],
+      "trim": [
+        44,
+        82,
+        150,
+        182
+      ],
+      "nativeSubject": [
+        104,
+        98
+      ],
+      "budget": [
+        98.53272000011611,
+        96.47159458704391
+      ],
+      "ratio": [
+        1.055486948902633,
+        1.0158430615716323
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        53.0,
+        56.45159118897336
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-8-2",
+      "cellNative": [
+        768,
+        819,
+        960,
+        1024
+      ],
+      "trim": [
+        54,
+        90,
+        139,
+        177
+      ],
+      "nativeSubject": [
+        83,
+        85
+      ],
+      "budget": [
+        73.0382400009263,
+        82.00036334883771
+      ],
+      "ratio": [
+        1.1363910192653515,
+        1.0365807726778178
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        42.5,
+        48.412704122531736
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-9-2",
+      "cellNative": [
+        960,
+        819,
+        1152,
+        1024
+      ],
+      "trim": [
+        31,
+        95,
+        156,
+        175
+      ],
+      "nativeSubject": [
+        123,
+        78
+      ],
+      "budget": [
+        117.13679999961118,
+        68.21898755405255
+      ],
+      "ratio": [
+        1.0500542954938865,
+        1.143376687292487
+      ],
+      "sizeStatus": "accepted",
+      "sourceAnchor": [
+        62.5,
+        51.50397603872763
+      ],
+      "registration": "source footprint anchor; approximate base contour, no measured height"
+    }
+  ]
+}

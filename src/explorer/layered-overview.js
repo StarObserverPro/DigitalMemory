@@ -1,4 +1,4 @@
-import { compileCompoundTrials, visibleCompoundTrials, compoundTrialMarkup } from './compound-overview.js';
+import { compileCompoundTrials, visibleCompoundTrials, compoundGroundMarkup, compoundStandingEntries, footprintSketch } from './compound-overview.js';
 import { planMapAssembly, validateMapAssembly } from '../domain/map-assembly.js';
 import { mapMetrics, placeMapLabels } from './map-labels.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -38,10 +38,12 @@ export function createOverviewAssembly(data,context,registration,transform,asset
     const [x,y]=transform.toImage(f.geo),[gw,gd]=f.groundSize,ground=[x-gw/2,y-gd/2,gw,gd];
     if(f.parcelId&&!pointInPolygon([x,y],parcels.find(p=>p.id===f.parcelId).art))throw new Error('Feature outside its geographic parcel: '+f.id);
     const representations=Object.fromEntries([0,1,2].map(level=>{
-      const assetRef=f.kind==='theatre'?'venue-symbol@1':f.kind+(level<2?'Glyph':'Sketch');
-      const ratio=f.kind==='theatre'?2.2:assets[assetRef].width/assets[assetRef].height;
-      const w=f.width*(f.kind==='tower'&&level<2?.85:1),h=w/ratio;
-      return [level,{assetRef,styleRevision:'proportional-thumbnail-r3',bounds:[x-w/2,y-h,w,h],groundAnchor:[x,y]}];
+      const height=f.kind==='tower'?38*transform.scale:12*transform.scale;
+      let assetRef=f.kind==='theatre'?'venue-symbol@1':'registered-volume@1';
+      if(level===2&&f.kind==='tower')assetRef='map-part-qili-osm-978924276-1';
+      if(level>0&&f.kind==='slab')assetRef='map-part-liuli-liuli-roof-segment-1-'+level;
+      const w=f.kind==='theatre'?f.width:gw,h=assetRef==='venue-symbol@1'?w/2.2:assetRef==='registered-volume@1'?height+gd:w*assets[assetRef].height/assets[assetRef].width;
+      return [level,{assetRef,styleRevision:'north-up-orthographic-rise-r1',height,bounds:[x-w/2,y+gd/2-h,w,h],groundAnchor:[x,y]}];
     }));
     return {...f,registrationRef:registration.revision+':'+f.id,ground,emphasis:'landmark',states:[{id:f.id+'-typology',approval:'accepted',periodIds:periods,representations}]};
   });
@@ -49,7 +51,7 @@ export function createOverviewAssembly(data,context,registration,transform,asset
   for(let y=-1500;y<3000;y+=300)for(let x=-1500;x<3000;x+=300)patches.push({id:`patch-${x}-${y}`,bounds:[x,y,300,300],interactive:false,recipe:{seed:`city-${x}-${y}`,styleRevision:'paper-roads-r2',typology:'land-wash'}});
   const model={schemaVersion:1,id:'fengtai-overview-review',revision:2,layoutRevision:data.mappingRevision,registrationBounds:[100,150,1050,1000],backdrop:{styleRevision:'paper-r2'},context:patches,roads,features};
   validateMapAssembly(model);
-  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets)};
+  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets,{roads:[...context.roads,...data.roads]})};
 }
 function image(asset,rect,opacity=1) {
   const[x,y,w,h]=rect;return `<image x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMax meet" href="${esc(asset.url)}" opacity="${opacity}"/>`;
@@ -62,7 +64,7 @@ function currentPlan(assembly,state,availableAssets) {
   const key=JSON.stringify([assembly.model.revision,state.periodId,mapLevel(state.camera.zoom),[...availableAssets].sort()]);
   if(!planCache.has(assembly.model))planCache.set(assembly.model,new Map());
   const cache=planCache.get(assembly.model);if(cache.has(key))return cache.get(key);
-  const plan=planMapAssembly(assembly.model,{periodId:state.periodId,level:mapLevel(state.camera.zoom),viewport:[-1500,-1500,4500,4500],availableAssets:[...availableAssets,'venue-symbol@1']});
+  const plan=planMapAssembly(assembly.model,{periodId:state.periodId,level:mapLevel(state.camera.zoom),viewport:[-1500,-1500,4500,4500],availableAssets:[...availableAssets,'venue-symbol@1','registered-volume@1']});
   cache.set(key,plan);return plan;
 }
 const roadWidth=r=>r.class==='ring'?12:r.class==='primary'||r.class==='secondary'?10:r.class==='service'||r.role==='service'?4.5:r.class==='focus'?8:r.width<=3?2.8:7;
@@ -132,6 +134,12 @@ export function layeredOverviewMarkup(assembly,assets,state,availableAssets,opti
   const rail=rails.map(r=>`<path d="${path(r.art)}" fill="none" stroke="#c4c0af" stroke-width="9"/><path d="${path(r.art)}" fill="none" stroke="#8e9486" stroke-width="4" stroke-dasharray="1.5 5"/><path d="${path(r.art)}" fill="none" stroke="#eae5d5" stroke-width="1.5"/>`).join('');
   const decks=assembly.registration.bridgeDecks.map(d=>{const art=d.geo.map(assembly.transform.toImage),p=path(art)+'Z';return `<path d="${p}" transform="translate(0,4)" fill="#928f7c" opacity=".22"/><path data-bridge-deck="${d.id}" d="${p}" fill="#e5e4d8" stroke="#aaa996" stroke-width="1.3"/>`;}).join('');
   const structures=`<g data-layer="bridge-structures" opacity=".85" filter="url(#loose-edge)">${level===2?'<path d="M388,551 L392,625 L400,643 L398,572Z M422,538 L428,614 L436,631 L431,550Z" fill="#b8b09b" opacity=".36"/>':''}${decks}${rail}</g>`;
-  const objects=plan.features.map(f=>`<g data-map-object="${f.id}" data-place-id="${f.placeId}" data-anchor="${f.groundAnchor.join(',')}">${f.assetRef==='venue-symbol@1'?venue(f.bounds):image(assets[f.assetRef],f.bounds)}</g>`).join('');
-  return `${defs}<g data-map-tier="${plan.level}">${context}${compoundTrialMarkup(compounds,assets,level)}${roads}${structures}<g data-layer="solid-places">${objects}</g>${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}</g>`;
+  const screenScale=(options.metrics||mapMetrics(state.camera)).scale;
+  const objects=plan.features.map(f=>{
+    const a=assets[f.assetRef],ratio=a?a.width/(f.bounds[2]*screenScale):0;
+    const art=f.assetRef==='venue-symbol@1'?venue(f.bounds):a&&ratio>=.8&&ratio<=1.5?image(a,f.bounds):footprintSketch({ground:[[f.ground[0],f.ground[1]],[f.ground[0]+f.ground[2],f.ground[1]],[f.ground[0]+f.ground[2],f.ground[1]+f.ground[3]],[f.ground[0],f.ground[1]+f.ground[3]]],height:f.height},level,f.kind==='slab');
+    return{id:f.id,depth:f.groundAnchor[1],html:`<g data-map-object="${f.id}" data-place-id="${f.placeId}" data-anchor="${f.groundAnchor.join(',')}">${art}</g>`};
+  });
+  const standing=[...objects,...compoundStandingEntries(compounds,assets,level,availableAssets,(options.metrics||mapMetrics(state.camera)).scale)].sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(p=>p.html).join('');
+  return `${defs}<g data-map-tier="${plan.level}">${context}${compoundGroundMarkup(compounds,level)}${roads}${structures}<g data-layer="solid-places">${standing}</g>${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}</g>`;
 }
