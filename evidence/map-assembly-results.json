@@ -1,0 +1,35 @@
+{
+  "task": "DM-0007",
+  "base": "09d487682725f3b2c22a2bac17f0fe5775e6c848",
+  "target": "pure composition planner and synthetic fixture",
+  "commands": [
+    {
+      "command": "npm test",
+      "result": "passed",
+      "tests": 28,
+      "newTests": 11
+    },
+    {
+      "command": "npm run build",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "sourceSha256": {
+    "src/domain/map-assembly.js": "5bc68634ca8d61e48bbe5c30bb8c3178cf2d511124d09be24c552e8d27a2429c",
+    "src/domain/temporal.js": "bb259a82ada4f875e80e12763f57f4a714a2014257d5b363592b8d8d90fa1bbf",
+    "tests/map-assembly.test.mjs": "c935fa0132c13244259df75ca4f7fef73f6db764a48024c38d3746bcb7df6ca3",
+    "tests/fixtures/map-assembly.mjs": "e33d2790e99c0cee23c6d48dd8035272e19eb899f54faf38d2fc8311ba73f6b4"
+  },
+  "visualQA": "not performed; no production renderer change",
+  "deployment": "not performed",
+  "limits": [
+    "rectangular reservation/exclusion prototype",
+    "no actual underpass geometry verified",
+    "no renderer/session wiring or production art",
+    "no durable registration backend"
+  ]
+}
