@@ -2,7 +2,13 @@
 
 Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Current correction — DM-0004
+## Current correction — DM-0005
+
+The consumer surface exposes only a closed menu button. Developer inspectors, fixture language and permanent controls are removed. The map fills the viewport with contemporary-reference surrounding streets and apartment vignettes; this display context does not enlarge the editable registry or assert historical facades. The child is an upright cutout in a close half-body composition, with desktop/mobile camera distances and direct drag-to-walk controls.
+
+Validation and final integration are recorded in the DM-0005 packet and its PR. Earlier evidence below documents superseded visual behavior.
+
+## Previous correction — DM-0004
 
 Independent roads, shells, shops, entrances and character layers replace the all-in-one map and long strip. The theatre drawing is moved off the road while its registered coordinate is retained. Local photo research informs apartment typology; exact historic facades and tenants remain unverified. Five original modules, 16 shell instances and 24 slots are pinned in the public manifest. The default pedestrian is an anonymous 1.4 m child, with a correspondingly lowered camera.
 

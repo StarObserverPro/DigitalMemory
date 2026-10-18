@@ -1,0 +1,257 @@
+{
+  "target": "dist/",
+  "buildSha256": "36a7e7721be87caa6cd7df16f25fa2853d02886d861174cad12f9f1fa96bae80",
+  "browser": "151.0.7922.34",
+  "cdp": "http://127.0.0.1:9333",
+  "url": "http://127.0.0.1:37113",
+  "viewport": [
+    "1440x1000",
+    "390x844"
+  ],
+  "dpr": 1,
+  "seed": "immersive r4, context-r1",
+  "probe": {
+    "ok": true,
+    "webgl2": true,
+    "pixel": [
+      51,
+      128,
+      179,
+      255
+    ],
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+  },
+  "renderer": {
+    "webgl2": true,
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "initial": {
+    "schemaVersion": 1,
+    "placeId": null,
+    "periodId": "window-2000",
+    "styleId": "journal",
+    "sceneId": "map",
+    "selectedMemoryId": null,
+    "camera": {
+      "x": 0,
+      "y": 0,
+      "zoom": 1
+    },
+    "mode": "walking",
+    "view": "map",
+    "route": {
+      "edgeId": "xinhua-edge-4",
+      "t": 0.7,
+      "direction": 1
+    },
+    "street": {
+      "lateral": 5.5,
+      "heading": 0
+    },
+    "returnStack": [],
+    "characterId": "child",
+    "frontagePreview": "none",
+    "layers": {
+      "roads": true,
+      "buildings": true,
+      "frontages": true,
+      "person": true
+    }
+  },
+  "initialStage": {
+    "avatarNdc": {
+      "left": -0.41963022136906475,
+      "right": 0.4196302213690637,
+      "bottom": -1.8877461676297038,
+      "top": 0.4454185746505393
+    },
+    "revision": "xinhua-modules-r2",
+    "route": {
+      "edgeId": "xinhua-edge-4",
+      "t": 0.7,
+      "direction": 1
+    },
+    "geo": [
+      116.28452727999999,
+      39.84203692
+    ],
+    "street": {
+      "lateral": 5.5,
+      "heading": 0
+    },
+    "feet": [
+      5.855525361621574,
+      0.17,
+      -60.59441610621019
+    ],
+    "camera": [
+      5.849659738116292,
+      1.27,
+      -59.594433309127716
+    ],
+    "characterHeight": 1.4,
+    "doorDistance": 434.94393589218873,
+    "nearEntrance": false,
+    "renderer": {
+      "webgl2": true,
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "drawCalls": 207,
+    "modules": [
+      {
+        "id": "north-0",
+        "side": "north",
+        "distance": 365,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-1",
+        "side": "north",
+        "distance": 383,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-2",
+        "side": "north",
+        "distance": 401,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-3",
+        "side": "north",
+        "distance": 419,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-4",
+        "side": "north",
+        "distance": 437,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-5",
+        "side": "north",
+        "distance": 455,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-6",
+        "side": "north",
+        "distance": 473,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "north-7",
+        "side": "north",
+        "distance": 491,
+        "shellRevision": "apartment-r2",
+        "width": 12,
+        "height": 17.6
+      },
+      {
+        "id": "south-0",
+        "side": "south",
+        "distance": 361,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-1",
+        "side": "south",
+        "distance": 381,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-2",
+        "side": "south",
+        "distance": 401,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-3",
+        "side": "south",
+        "distance": 421,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-5",
+        "side": "south",
+        "distance": 461,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-6",
+        "side": "south",
+        "distance": 481,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-7",
+        "side": "south",
+        "distance": 501,
+        "shellRevision": "service-r2",
+        "width": 10,
+        "height": 3.3
+      },
+      {
+        "id": "south-entry",
+        "side": "south",
+        "distance": 434.94393589218873,
+        "shellRevision": "entry-r2",
+        "width": 5,
+        "height": 3
+      }
+    ],
+    "preview": "none",
+    "occupiedSlots": [],
+    "layers": {
+      "roads": true,
+      "buildings": true,
+      "frontages": true,
+      "person": true
+    }
+  },
+  "checks": [
+    "Full viewport contains surrounding city; only the closed menu button is exposed",
+    "Menu opens only on explicit action and closes with Escape",
+    "Close upright half-body view, child eye height, no exposed instructions or buttons",
+    "Menu pauses walking and nested entrances return to the exact original street position",
+    "Turning reveals the opposite apartment fronts at pedestrian height",
+    "Map return and deliberate period change preserve position with controls closed",
+    "Unlocated old campuses remain available through search, without invented map positions",
+    "Narrow screen keeps upper body visible; drag-to-walk and release work without a control pad",
+    "Reload/reduced motion retain a usable position and closed menu",
+    "Asset failure preserves map position and a menu retry path"
+  ],
+  "consoleErrors": [],
+  "unexpectedRequestFailures": [],
+  "httpErrors": [],
+  "note": "SwiftShader validates rendering, not target-device performance. Skill plugin doctor/ab.sh are absent from this environment; this replay implements the equivalent WebGL2 pixel + screenshot + shared-CDP gate. No Spector escalation was needed."
+}
