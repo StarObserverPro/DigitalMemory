@@ -2,7 +2,7 @@
 
 Current consumer: built illustrated overview → close sidewalk scenic flats → synthetic courtyard/room → exact street return → same position in overview. The original planar A/B/C evidence is archived below and was rejected by the user as the main experience.
 
-Source binding: delivery revision recorded in the DM-0003 packet; build content SHA-256 and exact initial state are recorded in `street-browser-results.json`. Images were captured from that built application, not a standalone art viewer. No art/historical approval is inferred.
+Source binding: tested implementation `845b05d327fadec71dca37415462a8d1398c075e`, exact tree `55bf1e6e695cc3a34f8f38d7fdc8591aeb8115d8`; build content SHA-256 and exact initial state are recorded in `street-browser-results.json`. Images were captured from that built application, not a standalone art viewer. No art/historical approval is inferred.
 
 | Evidence | Observation |
 | --- | --- |
