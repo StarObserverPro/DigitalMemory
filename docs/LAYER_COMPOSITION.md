@@ -1,5 +1,7 @@
 # Roads, shells, occupants and people
 
+> Superseding target, DM-0007: [MAP_ASSEMBLY](MAP_ASSEMBLY.md). Road art never includes compounds; compounds do not include external roads. Context patches, ground reservations and per-tier representations allow local insertion. The r3 sizing and half-body camera described below are historical prototype choices, not accepted real-world geometry or the current visual target.
+
 The r3 implementation replaces the monolithic map and repeated full-street strip. `scene-composition.json` is read through `createComposition`; overview and close street are render adapters of this registry.
 
 | Layer / owner | Stable identity | What can change independently |
