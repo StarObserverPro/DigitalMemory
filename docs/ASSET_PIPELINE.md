@@ -1,5 +1,7 @@
 # Map, image and scene asset pipeline
 
+> DM-0004 uses original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. The prior all-in-one illustration and long street strip are superseded. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
+
 Status: production contract; DM-0002 adds a contemporary OSM orientation extract, two vector map candidates and one generated style candidate. Historical imagery and accepted production tiles remain open.
 
 Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.

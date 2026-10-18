@@ -1,0 +1,2290 @@
+{
+  "rails": [
+    {
+      "id": "osm-way-1034922494",
+      "art": [
+        [
+          303.5338285714974,
+          638.4619112643344
+        ],
+        [
+          317.60297142914914,
+          635.8589334312383
+        ],
+        [
+          330.45411428634367,
+          632.5760733286538
+        ],
+        [
+          332.91000000036325,
+          632.0127423049429
+        ],
+        [
+          345.612000000085,
+          628.5615304020844
+        ],
+        [
+          359.4574285718808,
+          624.5081370601023
+        ],
+        [
+          373.1139428571677,
+          620.0468143560593
+        ],
+        [
+          390.071485714309,
+          613.6300207427681
+        ]
+      ]
+    },
+    {
+      "id": "osm-way-1034922495",
+      "art": [
+        [
+          390.071485714309,
+          613.6300207427681
+        ],
+        [
+          430.2456000000428,
+          598.5884349065266
+        ]
+      ]
+    },
+    {
+      "id": "osm-way-1034923474",
+      "art": [
+        [
+          430.2456000000428,
+          598.5884349065266
+        ],
+        [
+          535.4211428577003,
+          559.0775624260554
+        ],
+        [
+          577.2209142858604,
+          542.9546400271164
+        ],
+        [
+          618.9312000001021,
+          528.0619807832127
+        ],
+        [
+          688.342285714488,
+          501.6760736451473
+        ],
+        [
+          745.5385714291938,
+          480.0622925335046
+        ],
+        [
+          773.448171428952,
+          469.43022884772955
+        ],
+        [
+          803.7142285715524,
+          457.89813053723526
+        ],
+        [
+          823.1028000006254,
+          450.36762501560645
+        ],
+        [
+          857.0129142859255,
+          436.2713992878886
+        ],
+        [
+          879.2799428572291,
+          426.2285669021527
+        ],
+        [
+          891.5693142859989,
+          420.7571333973852
+        ],
+        [
+          903.5753142860649,
+          414.96194643069373
+        ],
+        [
+          910.9131428577593,
+          411.3488577968731
+        ],
+        [
+          914.845542857439,
+          409.399861956477
+        ],
+        [
+          928.4424000005845,
+          402.7499658507111
+        ],
+        [
+          939.4441714287902,
+          397.4663093536939
+        ],
+        [
+          947.8956000000751,
+          393.25751435006197
+        ],
+        [
+          959.7822857144456,
+          387.3911016218576
+        ]
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "privacy": "public",
+  "id": "xinhua-composition",
+  "revision": "xinhua-modules-r2",
+  "mappingRevision": "fengtai-journal-mapping-r2",
+  "road": {
+    "id": "osm-way-176437964",
+    "geometryRevision": "fengtai-orientation-r1",
+    "width": 8.2,
+    "sidewalkOuter": 7.7
+  },
+  "roads": [
+    {
+      "id": "osm-way-30547272",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          403.146,
+          231.381
+        ],
+        [
+          397.464,
+          121.622
+        ],
+        [
+          378.841,
+          -137.569
+        ],
+        [
+          378.806,
+          -138.087
+        ],
+        [
+          376.499,
+          -170.773
+        ],
+        [
+          375.5,
+          -206.45
+        ],
+        [
+          376.355,
+          -235.148
+        ],
+        [
+          386.577,
+          -381.264
+        ],
+        [
+          392.219,
+          -463.226
+        ],
+        [
+          395.048,
+          -514.062
+        ],
+        [
+          399.214,
+          -568.497
+        ],
+        [
+          400.198,
+          -592.63
+        ],
+        [
+          399.01,
+          -622.629
+        ],
+        [
+          395.625,
+          -667.346
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-30878240",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          386.109,
+          -666.919
+        ],
+        [
+          388.66,
+          -644.897
+        ],
+        [
+          390.096,
+          -621.891
+        ],
+        [
+          389.763,
+          -592.106
+        ],
+        [
+          388.993,
+          -568.128
+        ],
+        [
+          383.927,
+          -500.652
+        ],
+        [
+          375.973,
+          -382.533
+        ],
+        [
+          368.207,
+          -235.193
+        ],
+        [
+          366.601,
+          -206.677
+        ],
+        [
+          367.128,
+          -170.074
+        ],
+        [
+          368.893,
+          -137.685
+        ],
+        [
+          387.571,
+          122.004
+        ],
+        [
+          393.387,
+          233.155
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-42719801",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          544.907,
+          969.17
+        ],
+        [
+          551.901,
+          968.289
+        ],
+        [
+          588.098,
+          960.027
+        ],
+        [
+          631.017,
+          950.049
+        ],
+        [
+          666.031,
+          941.107
+        ],
+        [
+          724.082,
+          926.829
+        ],
+        [
+          772.762,
+          916.858
+        ],
+        [
+          783.118,
+          915.517
+        ],
+        [
+          793.826,
+          914.604
+        ],
+        [
+          878.291,
+          908.524
+        ],
+        [
+          899.747,
+          906.595
+        ],
+        [
+          922.109,
+          904.587
+        ],
+        [
+          935.044,
+          902.988
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-42720123",
+      "label": "建国街",
+      "class": "local",
+      "art": [
+        [
+          486.646,
+          711.805
+        ],
+        [
+          542.436,
+          687.718
+        ],
+        [
+          614.089,
+          656.016
+        ],
+        [
+          695.998,
+          621.42
+        ],
+        [
+          761.129,
+          590.954
+        ],
+        [
+          800.97,
+          572.274
+        ],
+        [
+          815.452,
+          565.488
+        ],
+        [
+          897.669,
+          526.955
+        ],
+        [
+          919.862,
+          526.955
+        ],
+        [
+          970.451,
+          527.764
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-42720137",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          393.387,
+          233.155
+        ],
+        [
+          398.364,
+          320.419
+        ],
+        [
+          397.544,
+          373.178
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-42720196",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          849.635,
+          350.438
+        ],
+        [
+          794.582,
+          377.232
+        ],
+        [
+          724.027,
+          411.388
+        ],
+        [
+          720.304,
+          413.278
+        ],
+        [
+          670.326,
+          436.427
+        ],
+        [
+          547.119,
+          493.064
+        ],
+        [
+          508.039,
+          510.754
+        ],
+        [
+          492.468,
+          517.728
+        ],
+        [
+          460.034,
+          532.737
+        ],
+        [
+          447.944,
+          540.423
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-42720237",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          433.681,
+          547.533
+        ],
+        [
+          382.883,
+          570.131
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-42720238",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          372.821,
+          577.499
+        ],
+        [
+          359.537,
+          584.032
+        ],
+        [
+          318.727,
+          601.088
+        ],
+        [
+          311.443,
+          602.189
+        ],
+        [
+          304.712,
+          601.671
+        ],
+        [
+          283.449,
+          597.766
+        ],
+        [
+          272.592,
+          596.219
+        ],
+        [
+          250.926,
+          593.486
+        ],
+        [
+          219.074,
+          589.051
+        ],
+        [
+          207.7,
+          586.791
+        ],
+        [
+          187.953,
+          582.103
+        ],
+        [
+          177.439,
+          579.345
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-107011069",
+      "label": "东安街",
+      "class": "local",
+      "art": [
+        [
+          359.537,
+          584.032
+        ],
+        [
+          354.068,
+          485.799
+        ],
+        [
+          352.661,
+          437.903
+        ],
+        [
+          351.762,
+          407.147
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-107011089",
+      "label": "东安街头条",
+      "class": "local",
+      "art": [
+        [
+          -45.659,
+          395.148
+        ],
+        [
+          -6.305,
+          394.792
+        ],
+        [
+          75.027,
+          394.009
+        ],
+        [
+          177.672,
+          396.21
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-107011105",
+      "label": "东安街头条",
+      "class": "local",
+      "art": [
+        [
+          177.672,
+          396.21
+        ],
+        [
+          221.003,
+          398.457
+        ],
+        [
+          224.841,
+          398.716
+        ],
+        [
+          231.339,
+          399.15
+        ],
+        [
+          252.154,
+          400.529
+        ],
+        [
+          278.199,
+          402.303
+        ],
+        [
+          324.638,
+          405.469
+        ],
+        [
+          351.762,
+          407.147
+        ],
+        [
+          383.996,
+          406.946
+        ],
+        [
+          388.317,
+          406.92
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-152637105",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          489.714,
+          856.044
+        ],
+        [
+          496.231,
+          869.227
+        ],
+        [
+          502.645,
+          885.078
+        ],
+        [
+          507.83,
+          898.74
+        ],
+        [
+          513.726,
+          917.524
+        ],
+        [
+          517.146,
+          929.445
+        ],
+        [
+          524.275,
+          962.617
+        ],
+        [
+          529.739,
+          993.445
+        ],
+        [
+          532.289,
+          1012.941
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-152637106",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          542.689,
+          1011.717
+        ],
+        [
+          536.077,
+          975.263
+        ],
+        [
+          532.215,
+          951.596
+        ],
+        [
+          527.969,
+          931.608
+        ],
+        [
+          523.355,
+          914.481
+        ],
+        [
+          518.866,
+          898.98
+        ],
+        [
+          515.491,
+          888.037
+        ],
+        [
+          509.053,
+          872.024
+        ],
+        [
+          499.458,
+          851.388
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-152637111",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          532.289,
+          1012.941
+        ],
+        [
+          542.272,
+          1072.797
+        ],
+        [
+          560.298,
+          1181.882
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-152637112",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          499.458,
+          851.388
+        ],
+        [
+          490.683,
+          835.045
+        ],
+        [
+          473.393,
+          804.237
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-152643574",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          447.944,
+          540.423
+        ],
+        [
+          433.681,
+          547.533
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-159801550",
+      "label": "东大街",
+      "class": "local",
+      "art": [
+        [
+          911.778,
+          114.053
+        ],
+        [
+          915.74,
+          98.247
+        ],
+        [
+          915.556,
+          53.219
+        ],
+        [
+          916.755,
+          16.506
+        ],
+        [
+          917.555,
+          -3.217
+        ],
+        [
+          919.593,
+          -67.949
+        ],
+        [
+          919.911,
+          -75.751
+        ],
+        [
+          920.652,
+          -115.21
+        ],
+        [
+          920.508,
+          -123.226
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-172431855",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          571.161,
+          1179.855
+        ],
+        [
+          563.783,
+          1138.499
+        ],
+        [
+          554.81,
+          1084.199
+        ],
+        [
+          542.689,
+          1011.717
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-176437964",
+      "label": "新华街",
+      "class": "focus",
+      "art": [
+        [
+          529.54,
+          900.773
+        ],
+        [
+          534.949,
+          898.293
+        ],
+        [
+          588.347,
+          872.846
+        ],
+        [
+          612.598,
+          861.217
+        ],
+        [
+          706.324,
+          815.432
+        ],
+        [
+          769.431,
+          786.385
+        ],
+        [
+          805.603,
+          768.902
+        ],
+        [
+          891.972,
+          726.497
+        ],
+        [
+          895.363,
+          725.15
+        ],
+        [
+          946.946,
+          706.69
+        ],
+        [
+          1000.493,
+          688.663
+        ]
+      ],
+      "width": 22
+    },
+    {
+      "id": "osm-way-176437972",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          919.275,
+          896.642
+        ],
+        [
+          898.703,
+          898.76
+        ],
+        [
+          885.574,
+          899.919
+        ],
+        [
+          878.37,
+          900.586
+        ],
+        [
+          817.033,
+          905.118
+        ],
+        [
+          792.727,
+          906.938
+        ],
+        [
+          782.705,
+          908.297
+        ],
+        [
+          773.294,
+          909.787
+        ],
+        [
+          724.092,
+          919.033
+        ],
+        [
+          648.332,
+          936.801
+        ],
+        [
+          623.783,
+          942.525
+        ],
+        [
+          586.592,
+          951.201
+        ],
+        [
+          552.473,
+          959.068
+        ],
+        [
+          551.26,
+          959.334
+        ],
+        [
+          547.243,
+          960.208
+        ],
+        [
+          543.445,
+          961.037
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-176437976",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          463.604,
+          810.705
+        ],
+        [
+          473.865,
+          827.029
+        ],
+        [
+          489.714,
+          856.044
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-176437978",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          397.544,
+          373.178
+        ],
+        [
+          398.886,
+          473.458
+        ],
+        [
+          402.858,
+          553.813
+        ],
+        [
+          406.149,
+          597.954
+        ],
+        [
+          411.165,
+          672.495
+        ],
+        [
+          413.308,
+          689.563
+        ],
+        [
+          416.201,
+          704.527
+        ],
+        [
+          418.712,
+          718.559
+        ],
+        [
+          424.876,
+          739.978
+        ],
+        [
+          434.521,
+          758.251
+        ],
+        [
+          448.933,
+          786.883
+        ],
+        [
+          463.604,
+          810.705
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-176442974",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          408.143,
+          395.284
+        ],
+        [
+          409.599,
+          320.478
+        ],
+        [
+          403.146,
+          231.381
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-176442975",
+      "label": "西四环南路",
+      "class": "ring",
+      "art": [
+        [
+          473.393,
+          804.237
+        ],
+        [
+          450.623,
+          766.5
+        ],
+        [
+          439.885,
+          744.815
+        ],
+        [
+          430.753,
+          719.588
+        ],
+        [
+          425.229,
+          697.942
+        ],
+        [
+          421.819,
+          672.229
+        ],
+        [
+          417.191,
+          593.266
+        ],
+        [
+          409.52,
+          473.063
+        ],
+        [
+          408.143,
+          395.284
+        ]
+      ],
+      "width": 17
+    },
+    {
+      "id": "osm-way-978924251",
+      "label": "正阳新开路",
+      "class": "local",
+      "art": [
+        [
+          149.733,
+          1059.503
+        ],
+        [
+          151.05,
+          1054.835
+        ],
+        [
+          153.004,
+          1040.007
+        ],
+        [
+          155.778,
+          1013.763
+        ],
+        [
+          161.754,
+          983.577
+        ],
+        [
+          168.579,
+          951.357
+        ],
+        [
+          183.941,
+          909.217
+        ],
+        [
+          200.794,
+          866.65
+        ],
+        [
+          214.451,
+          842.219
+        ],
+        [
+          220.098,
+          833.608
+        ],
+        [
+          227.913,
+          816.028
+        ],
+        [
+          231.811,
+          810.958
+        ],
+        [
+          257.846,
+          777.676
+        ],
+        [
+          264.627,
+          773.228
+        ],
+        [
+          281.625,
+          754.417
+        ],
+        [
+          286.914,
+          754.508
+        ],
+        [
+          309.932,
+          734.481
+        ],
+        [
+          342.783,
+          700.81
+        ],
+        [
+          347.466,
+          695.999
+        ],
+        [
+          363.34,
+          681.987
+        ],
+        [
+          370.35,
+          674.768
+        ],
+        [
+          386.711,
+          660.102
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-992239074",
+      "label": "丰台大桥南街",
+      "class": "local",
+      "art": [
+        [
+          486.646,
+          711.805
+        ],
+        [
+          489.629,
+          736.766
+        ],
+        [
+          494.75,
+          787.978
+        ],
+        [
+          498.623,
+          807.332
+        ],
+        [
+          499.622,
+          822.917
+        ],
+        [
+          496.46,
+          826.181
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1038257995",
+      "label": "东大街",
+      "class": "local",
+      "art": [
+        [
+          914.855,
+          -122.566
+        ],
+        [
+          912.236,
+          -29.124
+        ],
+        [
+          910.093,
+          16.803
+        ],
+        [
+          909.954,
+          37.491
+        ],
+        [
+          909.273,
+          102.359
+        ],
+        [
+          911.778,
+          114.053
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1049351409",
+      "label": "东大街",
+      "class": "local",
+      "art": [
+        [
+          928.209,
+          312.785
+        ],
+        [
+          928.651,
+          309.289
+        ],
+        [
+          927.632,
+          287.902
+        ],
+        [
+          926.608,
+          266.521
+        ],
+        [
+          924.386,
+          239.319
+        ],
+        [
+          913.374,
+          131.658
+        ],
+        [
+          911.694,
+          115.788
+        ],
+        [
+          911.778,
+          114.053
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1071049949",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          935.044,
+          902.988
+        ],
+        [
+          948.244,
+          900.722
+        ],
+        [
+          954.741,
+          899.284
+        ],
+        [
+          992.226,
+          888.762
+        ],
+        [
+          1029.437,
+          875.547
+        ],
+        [
+          1035.587,
+          873.643
+        ],
+        [
+          1040.901,
+          872.031
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1071049950",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          1040.314,
+          865.84
+        ],
+        [
+          1002.586,
+          878.59
+        ],
+        [
+          987.98,
+          882.986
+        ],
+        [
+          954.244,
+          891.521
+        ],
+        [
+          936.64,
+          894.318
+        ],
+        [
+          919.275,
+          896.642
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1071049951",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          1049.765,
+          863.419
+        ],
+        [
+          1055.264,
+          861.295
+        ],
+        [
+          1082.9,
+          851.958
+        ],
+        [
+          1095.97,
+          848.066
+        ],
+        [
+          1109.716,
+          843.838
+        ],
+        [
+          1129.711,
+          837.162
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1126133321",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          1049.765,
+          863.419
+        ],
+        [
+          1040.314,
+          865.84
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1259450116",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          382.883,
+          570.131
+        ],
+        [
+          372.821,
+          577.499
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-1354401759",
+      "label": "丰台南路",
+      "class": "local",
+      "art": [
+        [
+          1040.901,
+          872.031
+        ],
+        [
+          1049.765,
+          863.419
+        ]
+      ],
+      "width": 12
+    },
+    {
+      "id": "osm-way-1364449467",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          448.053,
+          545.163
+        ],
+        [
+          463.788,
+          539.588
+        ],
+        [
+          496.192,
+          524.87
+        ],
+        [
+          550.246,
+          499.429
+        ],
+        [
+          630.057,
+          462.211
+        ],
+        [
+          643.023,
+          456.143
+        ],
+        [
+          657.748,
+          448.988
+        ],
+        [
+          722.551,
+          418.569
+        ],
+        [
+          726.413,
+          416.756
+        ],
+        [
+          825.091,
+          370.433
+        ],
+        [
+          842.228,
+          362.391
+        ],
+        [
+          849.635,
+          350.438
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-1364449468",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          928.209,
+          312.785
+        ],
+        [
+          925.748,
+          314.385
+        ],
+        [
+          922.884,
+          315.518
+        ],
+        [
+          917.5,
+          316.509
+        ],
+        [
+          906.623,
+          318.788
+        ],
+        [
+          890.317,
+          323.838
+        ],
+        [
+          866.16,
+          335.189
+        ],
+        [
+          860.279,
+          338.291
+        ],
+        [
+          855.382,
+          343.989
+        ],
+        [
+          849.635,
+          350.438
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-1364449469",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          435.023,
+          551.664
+        ],
+        [
+          448.053,
+          545.163
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-1364449471",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          372.821,
+          577.499
+        ],
+        [
+          384.359,
+          575.246
+        ]
+      ],
+      "width": 16
+    },
+    {
+      "id": "osm-way-1364449472",
+      "label": "正阳大街",
+      "class": "primary",
+      "art": [
+        [
+          384.359,
+          575.246
+        ],
+        [
+          435.023,
+          551.664
+        ]
+      ],
+      "width": 16
+    }
+  ],
+  "buildings": [
+    {
+      "id": "north-0",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.23372270592464423,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-1",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.3846005648661646,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-2",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.5354784238076851,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-3",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.6863562827492055,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-4",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.8372341416907259,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-5",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.9881120006322464,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-6",
+      "route": {
+        "edgeId": "xinhua-edge-5",
+        "t": 0.2403412314028329,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "north-7",
+      "route": {
+        "edgeId": "xinhua-edge-5",
+        "t": 0.5012391884238081,
+        "direction": 1
+      },
+      "side": "north",
+      "setback": 10.8,
+      "width": 12,
+      "height": 17.6,
+      "depth": 7.5,
+      "shellAsset": "apartment",
+      "shellRevision": "apartment-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "xinhua2-current",
+        "hanzhuang-current"
+      ]
+    },
+    {
+      "id": "south-0",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.20019429282652856,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-1",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.3678363583171068,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-2",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.5354784238076851,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-3",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.7031204892982633,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-5",
+      "route": {
+        "edgeId": "xinhua-edge-5",
+        "t": 0.06640926005551609,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-6",
+      "route": {
+        "edgeId": "xinhua-edge-5",
+        "t": 0.35629587896771076,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-7",
+      "route": {
+        "edgeId": "xinhua-edge-5",
+        "t": 0.6461824978799054,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 9.5,
+      "width": 10,
+      "height": 3.3,
+      "depth": 5,
+      "shellAsset": "service",
+      "shellRevision": "service-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    },
+    {
+      "id": "south-entry",
+      "route": {
+        "edgeId": "xinhua-edge-4",
+        "t": 0.8199999999999997,
+        "direction": 1
+      },
+      "side": "south",
+      "setback": 8.1,
+      "width": 5,
+      "height": 3,
+      "depth": 2.5,
+      "shellAsset": "entry",
+      "shellRevision": "entry-r2",
+      "registration": "typology-proxy",
+      "historicalApproval": "unverified",
+      "sourceRefs": [
+        "historic-fengtai-collection"
+      ]
+    }
+  ],
+  "slots": [
+    {
+      "id": "north-0-shop-a",
+      "buildingId": "north-0",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-0-shop-b",
+      "buildingId": "north-0",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-1-shop-a",
+      "buildingId": "north-1",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-1-shop-b",
+      "buildingId": "north-1",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-2-shop-a",
+      "buildingId": "north-2",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-2-shop-b",
+      "buildingId": "north-2",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-3-shop-a",
+      "buildingId": "north-3",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-3-shop-b",
+      "buildingId": "north-3",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-4-shop-a",
+      "buildingId": "north-4",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-4-shop-b",
+      "buildingId": "north-4",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-5-shop-a",
+      "buildingId": "north-5",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-5-shop-b",
+      "buildingId": "north-5",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-6-shop-a",
+      "buildingId": "north-6",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-6-shop-b",
+      "buildingId": "north-6",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-7-shop-a",
+      "buildingId": "north-7",
+      "offset": -3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "north-7-shop-b",
+      "buildingId": "north-7",
+      "offset": 3.1,
+      "width": 4.3,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-0-shop",
+      "buildingId": "south-0",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-1-shop",
+      "buildingId": "south-1",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-2-shop",
+      "buildingId": "south-2",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-3-shop",
+      "buildingId": "south-3",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-5-shop",
+      "buildingId": "south-5",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-6-shop",
+      "buildingId": "south-6",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-7-shop",
+      "buildingId": "south-7",
+      "offset": 0,
+      "width": 5,
+      "height": 2.8,
+      "type": "shop"
+    },
+    {
+      "id": "south-entry-door",
+      "buildingId": "south-entry",
+      "offset": 0,
+      "width": 2.4,
+      "height": 2.35,
+      "type": "door"
+    }
+  ],
+  "entrances": [
+    {
+      "id": "demo-street-door",
+      "slotId": "south-entry-door",
+      "route": {
+        "id": "demo-street-door",
+        "placeId": "place-xinhua",
+        "edgeId": "xinhua-edge-4",
+        "t": 0.82,
+        "artDoor": [
+          769.7790113348021,
+          817.0484712619067
+        ],
+        "sceneId": "demo-courtyard",
+        "synthetic": true,
+        "realEntrance": null,
+        "slotId": "south-entry-door"
+      },
+      "sceneId": "demo-courtyard",
+      "status": "synthetic"
+    }
+  ],
+  "occupancies": [
+    {
+      "id": "preview-stationery",
+      "slotId": "north-4-shop-a",
+      "fixture": "stationery",
+      "periodIds": [],
+      "approval": "synthetic",
+      "assetId": "shop",
+      "label": "文具 · 试放"
+    },
+    {
+      "id": "preview-repair",
+      "slotId": "north-4-shop-a",
+      "fixture": "repair",
+      "periodIds": [],
+      "approval": "synthetic",
+      "assetId": "shop",
+      "label": "修车 · 试放"
+    }
+  ],
+  "overview": [
+    {
+      "id": "xinhua-north-group-0",
+      "kind": "apartment",
+      "ground": [
+        609.0635011657924,
+        790.5545147663591,
+        70,
+        18
+      ],
+      "height": 84,
+      "buildingIds": [
+        "north-0",
+        "north-3",
+        "north-6"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "xinhua-south-group-0",
+      "kind": "service",
+      "ground": [
+        652.4447780304109,
+        879.2186090200497,
+        64,
+        14
+      ],
+      "height": 28,
+      "buildingIds": [
+        "south-0",
+        "south-3",
+        "south-7"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "xinhua-north-group-1",
+      "kind": "apartment",
+      "ground": [
+        707.2129565283583,
+        744.0808659384799,
+        70,
+        18
+      ],
+      "height": 84,
+      "buildingIds": [
+        "north-1",
+        "north-4",
+        "north-7"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "xinhua-south-group-1",
+      "kind": "service",
+      "ground": [
+        748.6797051997711,
+        833.6530457990673,
+        64,
+        14
+      ],
+      "height": 28,
+      "buildingIds": [
+        "south-1",
+        "south-5",
+        "south-entry"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "xinhua-north-group-2",
+      "kind": "apartment",
+      "ground": [
+        813.753022864053,
+        692.3834002259339,
+        70,
+        18
+      ],
+      "height": 84,
+      "buildingIds": [
+        "north-2",
+        "north-5"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "xinhua-south-group-2",
+      "kind": "service",
+      "ground": [
+        857.2993271086389,
+        780.9666746348933,
+        64,
+        14
+      ],
+      "height": 28,
+      "buildingIds": [
+        "south-2",
+        "south-6"
+      ],
+      "registration": "illustrative-cluster"
+    },
+    {
+      "id": "theatre-vignette",
+      "kind": "theatre",
+      "placeId": "place-theatre",
+      "ground": [
+        448,
+        224,
+        112,
+        32
+      ],
+      "height": 46,
+      "buildingIds": [],
+      "registration": "illustrative-offset",
+      "evidence": "Exterior not yet verified; abstract venue symbol only."
+    },
+    {
+      "id": "nankai-group",
+      "kind": "apartment",
+      "placeId": "place-nankai",
+      "ground": [
+        240,
+        955,
+        76,
+        20
+      ],
+      "height": 91,
+      "buildingIds": [],
+      "registration": "neighborhood-symbol"
+    }
+  ],
+  "sourceNotice": "Typology study only. Building routes and shop slots are authored test placements, not surveyed historical addresses."
+}

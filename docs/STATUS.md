@@ -2,7 +2,15 @@
 
 Status date: 2026-10-17 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Current correction — DM-0003
+## Current correction — DM-0004
+
+Independent roads, shells, shops, entrances and character layers replace the all-in-one map and long strip. The theatre drawing is moved off the road while its registered coordinate is retained. Local photo research informs apartment typology; exact historic facades and tenants remain unverified. Five original modules, 16 shell instances and 24 slots are pinned in the public manifest. The default pedestrian is an anonymous 1.4 m child, with a correspondingly lowered camera.
+
+Seventeen domain tests and fourteen actual-browser checks pass. The temporary single-slot shop preview demonstrates replacement without road/shell/route changes. This is not a durable private authoring backend.
+
+PR3 will carry all PR2 changes plus this correction. The user explicitly authorized superseding PR2, merging PR3 and deployment. Integration/deployment are in progress; exact outcome will be attached at delivery. Active carrier: `agent/layered-street-pr3`, base `c12bf01eea443687863d930a3f0ac99d057c45e0`. The old delivery records below describe their historical state, not today's deployment state.
+
+## Previous correction — DM-0003
 
 The user explicitly clarified a hand-drawn/cartoon/travel-journal overview with real-node mapping, then a close sidewalk scene built like cinematic scenery. This replaces the earlier aerial-board visual assumption.
 

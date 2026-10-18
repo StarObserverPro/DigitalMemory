@@ -1,5 +1,7 @@
 # Illustrated overview ↔ sidewalk scene
 
+> DM-0004 supersedes the r1 baked illustration: r2 draws roads from registered node positions, composes independent overview groups outside road reservations, and attaches short scenic flats to route/side/setback records. The theatre uses an explicit display offset east of the ring. See [layer composition](LAYER_COMPOSITION.md).
+
 This is the current user-directed visual contract: a hand-drawn/cartoon/travel-journal overview; enter a street to put a person on its sidewalk; stand painted facades up as cinematic scenic flats. Distant/unbuilt areas fade into fog and directional cues. The overview and close view are two presentations of one location.
 
 ## Correspondence, not an image-wide GPS warp

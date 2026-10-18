@@ -1,5 +1,7 @@
 # Verification and acceptance
 
+> DM-0004: 17 domain tests and 14 browser journey checks pass at desktop 1440×1000 and mobile 390×844. New gates cover building-road clearance, frontage bounds, entrance attachment, exact-period occupancy, child scale and independent replacement in the actual WebGL view. See `evidence/README.md` for the exact tested revision and limitations.
+
 Status: acceptance contract. DM-0003 implements the corrected illustrated-map/scenic-flat subset; DM-0002 is earlier rejected visual history; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
 
 ## Evidence levels

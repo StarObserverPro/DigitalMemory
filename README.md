@@ -10,6 +10,8 @@ Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dep
 
 The prototype opens a hand-drawn overview. Choose “走进新华街” to place a character on its sidewalk, surrounded by upright illustrated film-set facades, with fog beyond the modeled segment. Walk, turn, approach a courtyard door and return to the same map position. “查看位置对应” compares real and illustration nodes. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping and scenic-flat design](docs/ILLUSTRATION_MAPPING.md).
 
+The “图层与拼装” control lets you inspect roads, buildings, frontages and the child separately, then try two synthetic shop occupants in a single slot. Building form now follows [local photo observations](docs/LOCAL_VISUAL_REFERENCES.md); [layer composition](docs/LAYER_COMPOSITION.md) explains short modules and independent time layers.
+
 ## Start here
 
 | Question | Canonical document |
@@ -38,4 +40,4 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-This branch adds a runnable illustrated overview and a 140 m scenic-flat sidewalk sample. The previous flat board candidates were rejected as the main experience. No deployed application, acquired historical base-map package, private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.
+This branch adds a runnable illustrated overview and a 140 m scenic-flat sidewalk sample. The previous flat board candidates were rejected as the main experience. The current layered revision is tracked through PR3 and the configured Sites deployment; exact release state is in the status ledger. No private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.

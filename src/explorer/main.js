@@ -1,3 +1,5 @@
+import { createComposition } from '../domain/composition.js';
+import { overviewMarkup } from './overview.js';
 import { createIllustrationMapping, STAGE } from '../domain/illustration.js';
 import { createTransform, SpatialRegistry } from '../domain/spatial.js';
 import { resolveEnvironment } from '../domain/temporal.js';
@@ -7,7 +9,7 @@ import { restoreSession, saveSession } from '../adapters/session-storage.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
-let mapping, stage = null, startingStage = false, lastRenderKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
+let composition, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
 const assetURL = asset => new URL(asset.url, repository.baseURL).href;
 function notify(message = '') { $('status').textContent = message; }
@@ -27,7 +29,7 @@ function render() {
   $('street-entry').style.top = `${location.art[1] / 12}%`;
   $('stage-limit').hidden = location.distance > STAGE.min + .3 && location.distance < STAGE.max - .3;
   clearTimeout(saveTimer); saveTimer = setTimeout(() => saveSession(localStorage, session.get()), 200);
-  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId]);
+  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId]);
   if (key === lastRenderKey) return;
   lastRenderKey = key;
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
@@ -36,6 +38,12 @@ function render() {
   const letter = asset.label[0];
   $('style-label').textContent = `底盘 ${letter}`;
   $('map-art').src = assetURL(asset);
+  $('map-composition').innerHTML = overviewMarkup(composition,moduleAssets,state);
+  $('map-person').hidden = !state.layers.person;
+  $('map-person').src = moduleAssets.walker.url;
+  $('map-person').style.height = state.characterId==='youth'?'53px':'46px';
+  for(const input of document.querySelectorAll('[data-layer-toggle]')) input.checked=state.layers[input.dataset.layerToggle];
+  for(const b of document.querySelectorAll('[data-frontage-preview]')) b.setAttribute('aria-pressed',String(state.frontagePreview===b.dataset.frontagePreview));
   $('map-art').style.clipPath = asset.displayClip || 'none';
   $('map-camera').style.transform = `translate(${state.camera.x}%,${state.camera.y}%) scale(${state.camera.zoom})`;
   $('zoom-out').disabled = state.camera.zoom <= 1;
@@ -56,8 +64,8 @@ function renderMarkers() {
   for (const marker of document.querySelectorAll('.marker')) marker.addEventListener('click', () => openPlace(marker.dataset.id));
 }
 function renderRoadLabels(transform) {
-  const labels = [ ['西四环南路', [350,425], 89], ['正阳大街', [710,410], -22], ['新华街', [945,795], -29], ['铁路', [670,505], -35] ];
-  $('road-labels').innerHTML = labels.map(([label, [x,y], rotate]) => `<text x="${x}" y="${y}" text-anchor="middle" transform="rotate(${rotate} ${x} ${y})">${label}</text>`).join('');
+  const labels = [ ['西四环南路', [355,415], 90], ['正阳大街', [686,438], -26], ['新华街', [892,781], -26], ['建国街',[753,633],-21],['铁路',[760,500],-22],['丰台南路',[752,966],-10] ];
+  $('road-labels').innerHTML = labels.map(([label,[x,y],rotate])=>`<text x="${x}" y="${y}" text-anchor="middle" transform="rotate(${rotate} ${x} ${y})">${label}</text>`).join('')+'<text class="neighborhood-note" x="780" y="1090" text-anchor="middle">往 韩 庄 子</text>';
 }
 function renderPlaces(query = '') {
   const results = registry.all().filter(p => p.label.includes(query.trim()));
@@ -124,6 +132,9 @@ async function back() {
   }
 }
 function wireControls() {
+  for(const id of ['layers-button','street-layers-button']) $(id).addEventListener('click',()=>showDialog('layers-dialog'));
+  for(const input of document.querySelectorAll('[data-layer-toggle]')) input.addEventListener('change',()=>session.dispatch({type:'layer',id:input.dataset.layerToggle,visible:input.checked}));
+  for(const b of document.querySelectorAll('[data-frontage-preview]')) b.addEventListener('click',()=>session.dispatch({type:'frontage-preview',id:b.dataset.frontagePreview}));
   $('street-entry').addEventListener('click', enterStreet);
   $('leave-street').addEventListener('click', () => { stage?.clear(); portals.cancel(); loading=false; notify(); session.dispatch({ type: 'view', view: 'map' }); });
   $('mapping-button').addEventListener('click', () => { renderMapping(); showDialog('mapping-dialog'); });
@@ -167,7 +178,7 @@ async function enterStreet() {
     if (!stage) {
       const { createStage } = await import('./stage.js');
       stage = await createStage({ container: $('stage-canvas'), session, mapping, transform: registry.transform,
-        assets: Object.fromEntries(Object.entries(manifest.stageAssets).map(([k,a]) => [k,assetURL(a)])),
+        assets: Object.fromEntries(Object.entries(manifest.stageAssets).map(([k,a]) => [k,{...a,url:assetURL(a)}])), composition,
         blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near; }, onError: notify });
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
@@ -188,7 +199,7 @@ function renderMapping(selected = 'walker') {
   const position = selected === 'walker' ? mapping.locate(session.get().route) : { geo: registry.get(selected).geometry.coordinates, art: selectedAnchor.art };
   const geoXY = registry.transform.toImage(position.geo);
   const line = points => 'M'+points.map(p => p.join(',')).join(' L');
-  $('mapping-views').innerHTML = [[geoImage,geoXY,mapping.data.nodes.map(n=>registry.transform.toImage(n.geo)),'当代地理参照'],[artImage,position.art,mapping.data.nodes.map(n=>n.art),'手绘图上的位置']].map(([src,point,path,caption])=>`<figure><svg viewBox="0 0 1200 1200"><image href="${src}" width="1200" height="1200"/><path d="${line(path)}" fill="none" stroke="#c87a50" stroke-width="7"/><circle cx="${point[0]}" cy="${point[1]}" r="15"/></svg><figcaption>${caption}</figcaption></figure>`).join('');
+  $('mapping-views').innerHTML = [[geoImage,geoXY,mapping.data.nodes.map(n=>registry.transform.toImage(n.geo)),'当代地理参照'],[artImage,position.art,mapping.data.nodes.map(n=>n.art),'独立图层合成']].map(([src,point,path,caption],i)=>`<figure><svg viewBox="0 0 1200 1200"><image href="${src}" width="1200" height="1200"/>${i?overviewMarkup(composition,moduleAssets,session.get()):''}<path d="${line(path)}" fill="none" stroke="#c87a50" stroke-width="7"/><circle cx="${point[0]}" cy="${point[1]}" r="15"/></svg><figcaption>${caption}</figcaption></figure>`).join('');
   $('mapping-detail').innerHTML = `<div>${[['walker','当前行走位置'],...mapping.data.anchors.map(a=>[a.id,registry.get(a.id).label])].map(([id,label])=>`<button data-map-node="${id}" aria-pressed="${id===selected}">${label}</button>`).join('')}</div><p><strong>${selected==='walker'?'人物走到的位置':escape(registry.get(selected).label)}</strong><br><code>${selected==='walker'?`${session.get().route.edgeId} · t=${session.get().route.t.toFixed(4)}`:selected}</code><br>经纬度 ${position.geo.map(n=>n.toFixed(6)).join(', ')} ↔ 插画坐标 ${position.art.map(n=>Math.round(n)).join(', ')} / 1200</p>`;
   for(const b of $('mapping-detail').querySelectorAll('[data-map-node]'))b.addEventListener('click',()=>renderMapping(b.dataset.mapNode));
 }
@@ -206,6 +217,9 @@ async function start() {
   const mappingData = await repository.read(manifest.illustrationMapping);
   if (mappingData.geometryRevision !== geometry.revision || mappingData.transformRevision !== transform.revision) throw new Error('插画节点对应的地理版本不匹配。');
   mapping = createIllustrationMapping(mappingData, transform);
+  composition = createComposition(await repository.read(manifest.composition),mapping);
+  if(composition.data.mappingRevision!==mappingData.id)throw new Error('图层登记版本不匹配。');
+  moduleAssets=Object.fromEntries(Object.entries(manifest.moduleAssets).map(([id,a])=>[id,{...a,url:assetURL(a)}]));
   let saved = restoreSession(localStorage, manifest);
   if (saved && !mapping.valid(saved.route)) saved.route = mappingData.spawn;
   if (saved && !manifest.assets.find(a => a.id === saved.styleId)?.selectable) saved.styleId = 'journal';
@@ -240,7 +254,7 @@ async function start() {
   $('map-viewport').addEventListener('click', e => { if (e.target.closest('button')) return; const r = $('map-camera').getBoundingClientRect(), p = [(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200], hit = mapping.nearestArt(p); if (hit.distance < 25) mapDestination = mapping.locate(hit.route).distance; });
   $('map-art').addEventListener('error', () => notify('底图未载入，地点入口仍可使用。请刷新重试。'));
   // Read-only diagnostic hook: domain state remains owned by the application session.
-  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), stage: stage?.inspect() || null }) });
+  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null }) });
 }
 start().catch(error => {
   const panel = document.createElement('div'); panel.className = 'error-screen';

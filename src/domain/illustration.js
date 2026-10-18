@@ -12,7 +12,7 @@ export function createIllustrationMapping(data, transform) {
   function nearestArt(p){let best=null;for(const e of edges.values()){const [a,b]=e.art,dx=b[0]-a[0],dy=b[1]-a[1],t=clamp(((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy),0,1),q=lerp(a,b,t),distance=Math.hypot(q[0]-p[0],q[1]-p[1]);if(!best||distance<best.distance)best={route:{edgeId:e.id,t,direction:1},distance};}return best;}
   return Object.freeze({data,edges,total,valid,locate,atDistance,advance,nearestArt});
 }
-export const STAGE = Object.freeze({min:360,max:500,lateralMin:4.65,lateralMax:7.05,speed:2.5,revision:'xinhua-scenic-flats-r1'});
+export const STAGE = Object.freeze({min:360,max:500,lateralMin:4.65,lateralMax:7.05,speed:2.5,revision:'xinhua-modules-r2'});
 export function advanceStage(route,street,input,seconds,mapping){
   const dt=clamp(seconds,0,.05),heading=street.heading+clamp(input.turn||0,-1,1)*1.65*dt,d=clamp(input.forward||0,-1,1)*STAGE.speed*dt;
   return {route:mapping.advance(route,Math.cos(heading)*d,[STAGE.min,STAGE.max]),street:{heading,lateral:clamp(street.lateral+Math.sin(heading)*d,STAGE.lateralMin,STAGE.lateralMax)}};

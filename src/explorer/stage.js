@@ -1,74 +1,99 @@
 import * as T from '../../assets/vendor/three/three.module.min.js';
 import { STAGE } from '../domain/illustration.js';
+import { CHARACTER_PROFILES } from '../domain/composition.js';
 
-/** Painted upright scenery, selective ground geometry, one session-owned pedestrian. */
-export async function createStage({ container, session, mapping, transform, assets, blocked, onNear, onError }) {
-  const renderer=new T.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=T.SRGBColorSpace;
-  const scene=new T.Scene();scene.background=new T.Color('#eee8d7');scene.fog=new T.Fog('#eee8d7',15,43);
-  const camera=new T.PerspectiveCamera(57,1,.08,95);container.append(renderer.domElement);
-  const canvas=renderer.domElement;canvas.tabIndex=0;canvas.setAttribute('aria-label','新华街人行道，方向键行走和转身');
-  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();clear();globalThis.__VISUAL_READY__=false;onError('街景暂时中断，请返回手绘图后重新载入。');});
-  const loader=new T.TextureLoader();
-  let flats,walker;
-  try { [flats,walker]=await Promise.all([loader.loadAsync(assets.flats),loader.loadAsync(assets.walker)]); } catch(error) { renderer.dispose();canvas.remove();throw error; }
-  for(const texture of [flats,walker]){texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());}
-  const origin=transform.toWorld(mapping.locate(mapping.atDistance(360)).geo);
-  const end=transform.toWorld(mapping.locate(mapping.atDistance(500)).geo);
-  const angle=Math.atan2(end[1]-origin[1],end[0]-origin[0]);
-  function frame(distance,lateral=0){const route=mapping.atDistance(distance),p=transform.toWorld(mapping.locate(route).geo),q=transform.toWorld(mapping.locate(mapping.atDistance(distance+.05)).geo);const theta=Math.atan2(q[1]-p[1],q[0]-p[0]);const east=p[0]+Math.sin(theta)*lateral-origin[0],north=p[1]-Math.cos(theta)*lateral-origin[1];return{x:east*Math.sin(angle)-north*Math.cos(angle),z:-(east*Math.cos(angle)+north*Math.sin(angle)),yaw:theta-angle};}
-  const basic=color=>new T.MeshBasicMaterial({color,fog:true});
-  const sharedCube=new T.BoxGeometry(1,1,1),materials=new Map();
-  function box(x,y,z,w,h,d,color){if(!materials.has(color))materials.set(color,basic(color));const mesh=new T.Mesh(sharedCube,materials.get(color));mesh.position.set(x,y,z);mesh.scale.set(w,h,d);scene.add(mesh);return mesh;}
-  function strip(left,right,y,color){const v=[],indices=[];for(let s=STAGE.min-10;s<=STAGE.max+10;s+=2){for(const x of [left,right]){const p=frame(s,x);v.push(p.x,y,p.z);}}for(let i=0;i<v.length/6-1;i++){const a=i*2;indices.push(a,a+1,a+2,a+1,a+3,a+2);}const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(v,3));geo.setIndex(indices);geo.computeVertexNormals();const mesh=new T.Mesh(geo,basic(color));scene.add(mesh);}
-  strip(-30,30,-.05,'#e6ddc7');strip(-4.1,4.1,0,'#b5b5a7');strip(4.1,7.7,.16,'#e0d2b4');strip(-7.7,-4.1,.16,'#e0d2b4');
-  for(let s=350;s<510;s+=2){const p=frame(s);const curb=box(p.x+4.13,.08,p.z,.16,.16,2.04,'#f4e5c7');curb.rotation.y=p.yaw;const seam=box(p.x+5.9,.165,p.z,3.5,.008,.025,'#b8aa8f');seam.rotation.y=p.yaw;}
-  for(let s=354;s<508;s+=10){const p=frame(s);const stripe=box(p.x,.012,p.z,.10,.01,2.3,'#e9ddbd');stripe.rotation.y=p.yaw;}
-  const flatMaterial=new T.MeshBasicMaterial({map:flats,transparent:true,alphaTest:.35,side:T.DoubleSide,fog:true,depthWrite:true});
-  const portal=mapping.data.portals[0],doorDistance=mapping.locate(portal).distance;
-  // On right-side panels texture u=.36 is the courtyard gate; align its feet to portal.
-  const gateU=.36,flatWidth=18,flatHeight=flatWidth*727/2164;
-  const panelOrigin=doorDistance+(gateU-.5)*flatWidth;
-  for(const side of [-1,1])for(let i=-5;i<=5;i++){
-    const distance=panelOrigin+i*flatWidth+(side===-1?7:0);if(distance<350||distance>510)continue;
-    const p=frame(distance,side*7.65),mesh=new T.Mesh(new T.PlaneGeometry(flatWidth,flatHeight),flatMaterial);
-    mesh.position.set(p.x,.16+flatHeight/2-.055,p.z);mesh.rotation.y=p.yaw+(side===1?-Math.PI/2:Math.PI/2);scene.add(mesh);
-    // A very shallow perpendicular return sells a film flat, without modeling a building.
-    if(i%2===0){const wing=new T.Mesh(new T.PlaneGeometry(.8,flatHeight*.68),basic('#d5c8b0'));wing.position.set(p.x+side*.38,flatHeight*.34+.16,p.z+flatWidth/2);wing.rotation.y=p.yaw;scene.add(wing);}
+/** Short independent scenic flats. Session owns movement; composition owns all placement. */
+export async function createStage({ container, session, mapping, transform, assets, composition, blocked, onNear, onError }) {
+ const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=T.SRGBColorSpace;
+ const scene=new T.Scene();scene.background=new T.Color('#f0eadb');scene.fog=new T.Fog('#f0eadb',20,50);
+ const camera=new T.PerspectiveCamera(57,1,.08,100);container.append(renderer.domElement);
+ const canvas=renderer.domElement;canvas.tabIndex=0;canvas.setAttribute('aria-label','新华街人行道，方向键行走和转身');
+ let clear=()=>{};canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();clear();globalThis.__VISUAL_READY__=false;onError('街景暂时中断，请返回手绘图后重新载入。');});
+ const loader=new T.TextureLoader(),textures={},allMaterials=new Set(),allGeometries=new Set();
+ // Wait for every load to settle so a failed load cannot leak a late texture.
+ const loaded=await Promise.allSettled(Object.entries(assets).map(async([id,a])=>{const t=await loader.loadAsync(a.url);t.colorSpace=T.SRGBColorSpace;t.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());if(a.crop){const[x,y,w,h]=a.crop;t.repeat.set(w/a.width,h/a.height);t.offset.set(x/a.width,1-(y+h)/a.height);}textures[id]=t;}));
+ if(loaded.some(r=>r.status==='rejected')){Object.values(textures).forEach(t=>t.dispose());renderer.dispose();canvas.remove();throw new Error('Scenery asset unavailable');}
+ const roadGroup=new T.Group(),shellGroup=new T.Group(),frontGroup=new T.Group();scene.add(roadGroup,shellGroup,frontGroup);
+ const mat=opts=>{const m=new T.MeshBasicMaterial({fog:true,...opts});allMaterials.add(m);return m;};
+ const plane=(w,h)=>{const g=new T.PlaneGeometry(w,h);allGeometries.add(g);return g;};
+ const cube=new T.BoxGeometry(1,1,1);allGeometries.add(cube);const colors=new Map();
+ const basic=color=>{if(!colors.has(color))colors.set(color,mat({color}));return colors.get(color);};
+ function box(group,x,y,z,w,h,d,color){const m=new T.Mesh(cube,basic(color));m.position.set(x,y,z);m.scale.set(w,h,d);group.add(m);return m;}
+ const origin=transform.toWorld(mapping.locate(mapping.atDistance(STAGE.min)).geo),end=transform.toWorld(mapping.locate(mapping.atDistance(STAGE.max)).geo),angle=Math.atan2(end[1]-origin[1],end[0]-origin[0]);
+ function frame(distance,lateral=0){const p=transform.toWorld(mapping.locate(mapping.atDistance(distance)).geo),q=transform.toWorld(mapping.locate(mapping.atDistance(distance+.05)).geo),theta=Math.atan2(q[1]-p[1],q[0]-p[0]),east=p[0]+Math.sin(theta)*lateral-origin[0],north=p[1]-Math.cos(theta)*lateral-origin[1];return{x:east*Math.sin(angle)-north*Math.cos(angle),z:-(east*Math.cos(angle)+north*Math.sin(angle)),yaw:theta-angle};}
+ function strip(left,right,y,color){const v=[],idx=[];for(let s=STAGE.min-10;s<=STAGE.max+10;s+=2)for(const x of[left,right]){const p=frame(s,x);v.push(p.x,y,p.z);}for(let i=0;i<v.length/6-1;i++){const a=i*2;idx.push(a,a+1,a+2,a+1,a+3,a+2);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setIndex(idx);g.computeVertexNormals();allGeometries.add(g);roadGroup.add(new T.Mesh(g,basic(color)));}
+ strip(-40,40,-.04,'#e5dfce');strip(-4.1,4.1,0,'#b9b9ad');strip(4.1,10.8,.16,'#e4d8bf');strip(-12,-4.1,.16,'#e4d8bf');
+ for(let d=350;d<510;d+=4)for(const side of[-1,1]){const p=frame(d,side*4.15),curb=box(roadGroup,p.x,.1,p.z,.14,.20,4.04,'#f5e8cb');curb.rotation.y=p.yaw;}
+ for(let d=355;d<505;d+=12){const p=frame(d);box(roadGroup,p.x,.013,p.z,.1,.02,2.2,'#eee7d0').rotation.y=p.yaw;}
+ const apartmentMat=mat({map:textures.apartment,transparent:true,alphaTest:.67,side:T.DoubleSide});
+ const shopMat=mat({map:textures.shop,transparent:true,alphaTest:.67,side:T.DoubleSide});
+ function flat(group,d,lateral,w,h,material,y=.16){const p=frame(d,lateral),m=new T.Mesh(plane(w,h),material);m.position.set(p.x,y+h/2,p.z);m.rotation.y=p.yaw+(lateral>0?-Math.PI/2:Math.PI/2);group.add(m);return m;}
+ const resolved=composition.resolve(session.get().periodId,session.get().frontagePreview);
+ const shellMeshes=[];
+ for(const b of resolved.buildings){const d=mapping.locate(b.route).distance,side=b.side==='north'?-1:1,lateral=side*b.setback;
+  if(b.shellAsset==='apartment')flat(shellGroup,d,lateral,b.width,b.height,apartmentMat);
+  else if(b.shellAsset==='service'){
+    flat(shellGroup,d,lateral,b.width,b.height,mat({color:'#c9b79b',map:textures.paper,side:T.DoubleSide}));
+    flat(shellGroup,d,lateral-side*.06,b.width+.2,.15,basic('#858877'),.16+b.height-.12);
+  }else{
+    // Independent simple gate, no invented courtyard roof. The slot defines its width and alignment.
+    for(const x of[-1.9,1.9]){const p=frame(d+x,lateral);const pillar=box(shellGroup,p.x,1.5,p.z,.35,2.7,.35,'#c2b59e');pillar.rotation.y=p.yaw;}
   }
-  const person=new T.Sprite(new T.SpriteMaterial({map:walker,transparent:true,alphaTest:.6,depthWrite:true,fog:true}));person.scale.set(1.22,1.83,1);person.center.set(.5,.033);scene.add(person);
-  const shadow=new T.Mesh(new T.CircleGeometry(.34,24),new T.MeshBasicMaterial({color:'#6c6250',transparent:true,opacity:.20,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.scale.y=.65;scene.add(shadow);
-  function label(text,bg='#eadbbd',ink='#475c51'){
-    const c=document.createElement('canvas');c.width=640;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=bg;ctx.fillRect(0,0,640,128);ctx.strokeStyle=ink;ctx.lineWidth=5;ctx.strokeRect(6,6,628,116);ctx.font='400 43px "Memory CJK", sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=ink;ctx.fillText(text,320,66,605);const tex=new T.CanvasTexture(c);tex.colorSpace=T.SRGBColorSpace;return new T.MeshBasicMaterial({map:tex,transparent:true,side:T.DoubleSide,fog:true});
+  if(b.shellAsset!=='entry')for(const offset of[-b.width/2,b.width/2]){
+    const p=frame(d+offset,lateral+side*.55),wing=new T.Mesh(plane(1.1,b.height),basic(b.side==='north'?'#c8c3b3':'#baad94'));wing.position.set(p.x,.16+b.height/2,p.z);wing.rotation.y=p.yaw;shellGroup.add(wing);
   }
-  const gate=frame(doorDistance,7.50),plaque=new T.Mesh(new T.PlaneGeometry(1.65,.33),label('院门 · 交互样例'));
-  plaque.position.set(gate.x,2.5,gate.z);plaque.rotation.y=gate.yaw-Math.PI/2;scene.add(plaque);
-  for(const [d,text]of [[STAGE.min+3,'← 回到手绘图'],[STAGE.max-3,'前方街景待绘 →']]){const p=frame(d,5.8);const sign=new T.Mesh(new T.PlaneGeometry(2.9,.58),label(text));sign.position.set(p.x,1.5,p.z);scene.add(sign);box(p.x,.65,p.z,.07,1.3,.07,'#847d66');}
+  shellMeshes.push({id:b.id,side:b.side,distance:d,shellRevision:b.shellRevision,width:b.width,height:b.height});
+ }
+ const frontageMeshes=new Map();
+ for(const slot of resolved.frontages){const b=composition.buildings.get(slot.buildingId),d=mapping.locate(b.route).distance+slot.offset,side=b.side==='north'?-1:1,lateral=side*(b.setback-.06);
+  if(slot.type==='shop'){const mesh=flat(frontGroup,d,lateral,slot.width,slot.height,shopMat);frontageMeshes.set(slot.id,mesh);}
+  else{flat(frontGroup,d,lateral,slot.width,slot.height,basic('#75867d'));for(let n=-5;n<=5;n++){const p=frame(d+n*.2,lateral-.04);box(frontGroup,p.x,1.32,p.z,.05,2.3,.05,'#b3bbae');}}
+ }
+ const entrance=resolved.entrances[0],doorDistance=mapping.locate(entrance.route).distance,doorBuilding=composition.buildings.get(composition.slots.get(entrance.slotId).buildingId);
+ function label(text,bg='#eadfc6',ink='#475c51'){
+  const c=document.createElement('canvas');c.width=640;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=bg;ctx.fillRect(0,0,640,128);ctx.strokeStyle=ink;ctx.lineWidth=4;ctx.strokeRect(5,5,630,118);ctx.font='400 42px "Memory CJK",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=ink;ctx.fillText(text,320,65,610);const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;const m=mat({map:t,side:T.DoubleSide});m.userData.ownedTexture=t;return m;
+ }
+ flat(frontGroup,doorDistance,doorBuilding.setback-.12,3,.55,label('院门 · 交互样例'),2.6);
+ const occupantLabels=new Map();let lastOccupancyKey='';
+ function syncOccupants(state){
+  const key=state.periodId+'|'+state.frontagePreview;if(key===lastOccupancyKey)return;lastOccupancyKey=key;
+  for(const slot of composition.resolve(state.periodId,state.frontagePreview).frontages){
+   let mesh=occupantLabels.get(slot.id);if(!slot.occupant){if(mesh)mesh.visible=false;continue;}
+   const o=slot.occupant,b=composition.buildings.get(slot.buildingId),side=b.side==='north'?-1:1,d=mapping.locate(b.route).distance+slot.offset;
+   if(mesh?.userData.occupantId!==o.id){
+    const material=label(o.label,o.fixture==='repair'?'#965d43':'#426855','#fff3d9');
+    if(mesh){mesh.material.userData.ownedTexture.dispose();allMaterials.delete(mesh.material);mesh.material.dispose();mesh.material=material;}
+    else{mesh=flat(frontGroup,d,side*(b.setback-.15),slot.width*.94,.55,material,2.36);occupantLabels.set(slot.id,mesh);}
+    mesh.userData.occupantId=o.id;
+   }mesh.visible=true;
+  }
+ }
+ for(const[d,text]of[[STAGE.min+3,'← 回到手绘图'],[STAGE.max-3,'前方街景待绘 →']]){const p=frame(d,5.8),s=new T.Mesh(plane(2.8,.56),label(text));s.position.set(p.x,1.35,p.z);scene.add(s);box(scene,p.x,.58,p.z,.07,1.16,.07,'#8a826c');}
+ const person=new T.Sprite(new T.SpriteMaterial({map:textures.walker,transparent:true,alphaTest:.67,depthWrite:true,fog:true}));allMaterials.add(person.material);person.center.set(.5,0);scene.add(person);
+ const shadowGeometry=new T.CircleGeometry(.27,20);allGeometries.add(shadowGeometry);const shadow=new T.Mesh(shadowGeometry,mat({color:'#6c6250',transparent:true,opacity:.18,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.scale.y=.6;scene.add(shadow);
   const keys=new Set(),touch=new Set();let drag=null,last=0,near=false,disposed=false;const codes={KeyW:'forward',ArrowUp:'forward',KeyS:'back',ArrowDown:'back',KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right'};
-  const clear=()=>{keys.clear();touch.clear();drag=null;};
+  clear=()=>{keys.clear();touch.clear();drag=null;};
   const active=()=>session.get().view==='street'&&session.get().sceneId==='map'&&!blocked();
   const down=e=>{if(!active()||e.target.closest('dialog,input,textarea'))return;if(codes[e.code]){e.preventDefault();keys.add(codes[e.code]);}};
   const up=e=>{if(codes[e.code])keys.delete(codes[e.code]);};window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);document.addEventListener('visibilitychange',clear);
   for(const b of document.querySelectorAll('[data-walk]')){b.addEventListener('pointerdown',e=>{if(!active())return;e.preventDefault();b.setPointerCapture(e.pointerId);touch.add(b.dataset.walk);b.classList.add('pressed');});for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>{touch.delete(b.dataset.walk);b.classList.remove('pressed');});}
   canvas.addEventListener('pointerdown',e=>{if(e.button===0&&active()){drag={id:e.pointerId,x:e.clientX};canvas.setPointerCapture(e.pointerId);}});canvas.addEventListener('pointermove',e=>{if(!drag||!active())return;const delta=e.clientX-drag.x;drag.x=e.clientX;session.dispatch({type:'street-heading',heading:session.get().street.heading+delta*.005});});for(const type of ['pointerup','pointercancel'])canvas.addEventListener(type,()=>drag=null);
   function resize(){const r=container.getBoundingClientRect();if(!r.width||!r.height)return;renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}const observer=new ResizeObserver(resize);observer.observe(container);resize();
-  const gl=renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');const diagnostics={webgl2:gl instanceof WebGL2RenderingContext,version:gl.getParameter(gl.VERSION),renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)};
-  renderer.setAnimationLoop(time=>{if(disposed)return;const dt=Math.min((time-last)/1000,.05);last=time;let moving=false;
-    if(active()){const has=k=>keys.has(k)||touch.has(k),input={forward:Number(has('forward'))-Number(has('back')),turn:Number(has('right'))-Number(has('left'))};moving=!!input.forward;if(input.forward||input.turn)session.dispatch({type:'walk',input,dt});}else clear();
-    const state=session.get(),d=mapping.locate(state.route).distance,p=frame(d,state.street.lateral),heading=state.street.heading-p.yaw;
-    person.position.set(p.x,.17,p.z);person.material.rotation=moving?Math.sin(time*.009)*.016:0;shadow.position.set(p.x,.168,p.z);
-    const dx=Math.sin(heading),dz=-Math.cos(heading);
-    const eyeX=p.x-dx*4.5, cameraX=Math.max(p.x-state.street.lateral+4.35,Math.min(p.x-state.street.lateral+7.25,eyeX));
-    // Slide along the pavement boundary while retaining follow distance: turning
-    // must not push the camera into a flat or crop the character's feet.
-    const dzEye=Math.sqrt(Math.max(.2,4.5**2-(cameraX-p.x)**2))*Math.sign(-dz||1);
-    const lookAhead=camera.aspect<.8?.7:3.6;
-    camera.position.set(cameraX,2.65,p.z+dzEye);camera.lookAt(p.x+dx*lookAhead,1.3,p.z+dz*lookAhead);
-    const nowNear=Math.abs(d-doorDistance)<2.5;if(nowNear!==near){near=nowNear;onNear(near);}
-    if(state.view==='street'&&state.sceneId==='map'){renderer.render(scene,camera);globalThis.__VISUAL_READY__=true;}
-    camera.updateMatrixWorld();
-    const right=new T.Vector3().setFromMatrixColumn(camera.matrixWorld,0),lower=person.position.clone(),upper=person.position.clone().add(new T.Vector3(0,1.83,0));
-    const avatarNdc={left:lower.clone().addScaledVector(right,-.61).project(camera).x,right:lower.clone().addScaledVector(right,.61).project(camera).x,bottom:lower.clone().project(camera).y,top:upper.clone().project(camera).y};
-    globalThis.__QA_STATE__={avatarNdc,revision:STAGE.revision,route:state.route,geo:mapping.locate(state.route).geo,street:state.street,feet:person.position.toArray(),camera:camera.position.toArray(),doorDistance,nearEntrance:near,renderer:diagnostics,drawCalls:renderer.info.render.calls};
-  });
-  return{clear,inspect:()=>structuredClone(globalThis.__QA_STATE__),dispose(){disposed=true;renderer.setAnimationLoop(null);observer.disconnect();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);document.removeEventListener('visibilitychange',clear);scene.traverse(o=>{o.geometry?.dispose();});flats.dispose();walker.dispose();flatMaterial.dispose();renderer.dispose();canvas.remove();}};
+ const gl=renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info'),diagnostics={webgl2:gl instanceof WebGL2RenderingContext,version:gl.getParameter(gl.VERSION),renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)};
+ renderer.setAnimationLoop(time=>{if(disposed)return;const dt=Math.min((time-last)/1000,.05);last=time;let moving=false;
+  if(active()){const has=k=>keys.has(k)||touch.has(k),input={forward:Number(has('forward'))-Number(has('back')),turn:Number(has('right'))-Number(has('left'))};moving=!!input.forward;if(input.forward||input.turn)session.dispatch({type:'walk',input,dt});}else clear();
+  const state=session.get(),d=mapping.locate(state.route).distance,p=frame(d,state.street.lateral),heading=state.street.heading-p.yaw,profile=CHARACTER_PROFILES[state.characterId]||CHARACTER_PROFILES.child;
+  roadGroup.visible=state.layers.roads;shellGroup.visible=state.layers.buildings;frontGroup.visible=state.layers.buildings&&state.layers.frontages;person.visible=shadow.visible=state.layers.person;
+  syncOccupants(state);
+  // The cutout UV bounds are normalized to shoe soles. Physical scale is independent of the image.
+  person.scale.set(profile.width,profile.height,1);person.position.set(p.x,.17,p.z);person.material.rotation=moving?Math.sin(time*.009)*.018:0;shadow.position.set(p.x,.168,p.z);
+  const dx=Math.sin(heading),dz=-Math.cos(heading),follow=3.65,eyeX=p.x-dx*follow,cameraX=Math.max(p.x-state.street.lateral+4.35,Math.min(p.x-state.street.lateral+7.25,eyeX)),dzEye=Math.sqrt(Math.max(.2,follow**2-(cameraX-p.x)**2))*Math.sign(-dz||1),lookAhead=camera.aspect<.8?.7:2.3;
+  camera.position.set(cameraX,profile.eye+.83,p.z+dzEye);camera.lookAt(p.x+dx*lookAhead,profile.eye*.78,p.z+dz*lookAhead);
+  const nowNear=Math.hypot(d-doorDistance,state.street.lateral-doorBuilding.setback)<3.5;if(nowNear!==near){near=nowNear;onNear(near);}
+  if(state.view==='street'&&state.sceneId==='map'){renderer.render(scene,camera);globalThis.__VISUAL_READY__=true;}
+  camera.updateMatrixWorld();const right=new T.Vector3().setFromMatrixColumn(camera.matrixWorld,0),lower=person.position.clone(),upper=person.position.clone().add(new T.Vector3(0,profile.height,0));
+  const avatarNdc={left:lower.clone().addScaledVector(right,-profile.width/2).project(camera).x,right:lower.clone().addScaledVector(right,profile.width/2).project(camera).x,bottom:lower.clone().project(camera).y,top:upper.clone().project(camera).y};
+  globalThis.__QA_STATE__={avatarNdc,revision:STAGE.revision,route:state.route,geo:mapping.locate(state.route).geo,street:state.street,feet:person.position.toArray(),camera:camera.position.toArray(),characterHeight:profile.height,doorDistance,nearEntrance:near,renderer:diagnostics,drawCalls:renderer.info.render.calls,modules:shellMeshes,preview:state.frontagePreview,occupiedSlots:[...occupantLabels].filter(([,m])=>m.visible).map(([id,m])=>({id,occupantId:m.userData.occupantId})),layers:state.layers};
+ });
+ return{clear,inspect:()=>structuredClone(globalThis.__QA_STATE__),dispose(){disposed=true;renderer.setAnimationLoop(null);observer.disconnect();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);document.removeEventListener('visibilitychange',clear);Object.values(textures).forEach(t=>t.dispose());allGeometries.forEach(g=>g.dispose());allMaterials.forEach(m=>{m.userData.ownedTexture?.dispose();m.dispose();});renderer.dispose();canvas.remove();}};
 }
