@@ -1,0 +1,165 @@
+# A layered map that can be completed one memory at a time
+
+DM-0007, 2026-10-18. This is the target composition contract and an executable domain prototype. It is **not yet connected to the deployed overview**, and it does not certify any Fengtai dimensions or production artwork. The general warm drawing style and separation of roads from compounds were accepted as a direction; the individual draft cutouts still need cleanup and registration.
+
+## The picture we are assembling
+
+The entire viewport is a lightly drawn city. Roads form a clear, charcoal-asphalt walking framework. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection makes only the corresponding part more definite.
+
+The distinction is **visual emphasis**, not a truth score. A vividly remembered reconstruction may still be historically uncertain; a well-documented neighboring building may remain pale because it is context. Store evidence, date support, author approval, visual emphasis and publication permission separately.
+
+## Composition layers
+
+| Layer | Contents | Boundaries and replacement unit |
+| --- | --- | --- |
+| Paper / ground wash | Continuous restrained texture and broad land color | Covers the viewport, including beyond the registration region. Contains no named or identifiable buildings. |
+| Context patches | Pale roof grain, tree canopy, repeated slab orientation, low housing or open ground | Usually one street-bounded district with several smaller replaceable patches. No road, text, entrances, memories or clickable fake buildings baked in. |
+| Road assemblies | Asphalt, service roads, sidewalks, dividers, crossings; bridge decks, abutments, retaining walls, ramps | Split at real junctions, bridge transitions or profile changes, not arbitrary image edges. Do not include surrounding residential buildings. |
+| Compound structure | Building shells, yard areas, fences, gates and detached commercial rooms | A compound is a container of objects, not a single irreversible painted rectangle. Overview grouping is permitted; occupancy and entrance relations remain separate. |
+| Landmarks / remembered objects | Theater, hospital exterior, a recognizable gate, a registered shop or small building | Stable object identity and actual ground reservation; separate assets per view/detail tier. Full-color emphasis never moves the road. |
+| Words / memory access | A small selection of place names, selected recollection and intentional interaction | Labels and hit regions are not baked into artwork. No permanent marker field, toolbar or development information. |
+| Street scene | Road geometry, scenic flats, short facade units, shallow depth, fog, grounded chibi figure | A separate view of the same registered places and route positions. No figure or player marker anywhere on the overview. |
+
+These are **ownership layers**, not one universal back-to-front paint order. A bridge must cover the road below it; its far wall and near wall may render on different sides of the scene. Building shadows, roofs and ground footprints also require different masks. Explicit occlusion relationships override the ordinary ground-depth sort.
+
+## Three overview tiers, then enter a street
+
+The tiers use the same stable locations and drawing layout. They change what is represented, not where a place is. Smooth motion between tiers is optional; three clear stops are enough. Wheel/pinch and menu zoom use the same tier selection, with hysteresis near thresholds to avoid flicker. Tier switching must preserve the point under the pointer or the current map center.
+
+| View | What becomes legible | Context and roads | Initial label budget per viewport |
+| --- | --- | --- | --- |
+| Town | Two bridge anchors, the principal roads, selected theater/hospital/park silhouettes and large neighborhood masses | Very pale land and roof grain; unmistakable bridge crossing order. Sidewalk/service corridor remains recognizable as part of the road assembly. No individual windows. | About 8–12; prototype 10 |
+| Neighborhood | Sanli/Wuli/Sili/Liuli/Qili and Nankai Xili typology and arrangement; separate towers, long slabs and court boundaries; local commercial anchors | Stronger but still pale contextual silhouettes. Main road, service road and sidewalk are separable; important setbacks and retaining-wall lengths become visible. | About 12–18; prototype 16 |
+| Street surroundings | Gates, detached street shops, walls, crossings, entrances and nearby memories | Same oblique planar map, still without a figure. Context remains faint rather than inventing more precision. Prioritize walking space. | About 6–10; prototype 10 |
+| Entered street | A short walkable stretch, recognizable facades/gates, remembered shops and optional interior portals | Moderate elevated Richman-like framing; big-headed grounded figure, scenic flats, shallow returns, warm fog at the limits. Not a first-person or half-body camera. | Only locally useful names |
+
+The numerical budgets and initial context opacities (0.16 / 0.22 / 0.26) are **tuning proposals**, not aesthetic acceptance. Draw pale pigment deliberately; avoid transparent ghost towers, dark ambient glows or a gray veil over the whole town. Unknown context must remain subordinate even at the closest map tier.
+
+A small remembered shop may be omitted at town scale. If its solid representation is omitted, its patch must remain pale and filled: never cut a hole for an invisible object. A landmark silhouette at the town tier can stand for the same place that has several facade modules at street scale. Missing near assets do not justify stretching a coarse image indefinitely. The renderer supplies its successfully loaded asset references to the planner; an unavailable solid asset must leave the pale filling intact. Omitting that list is for symbolic/offline planning only.
+
+### Named content allocation
+
+| Content | First useful overview tier | Placement rule |
+| --- | --- | --- |
+| North road bridge / south railway bridge; 看丹桥 | Town | Distinct identities and levels. Never merge the two Fengtai bridges into one symbol or put the railway underground. |
+| 新华街, 四环, 丰台南路, 正阳大街 | Town | Continuous independent road assemblies; protect service roads and sidewalks, not just the centerline. |
+| 丰台影剧院; hospital sites north/south | Town or neighborhood, depending on framing | Separate sites even if their institutions later merged. Silhouette in its own footprint, outside the roadway. |
+| 新华街各里, 南开西里 | Neighborhood | Actual tower/slab/low-rise families and orientations; no generic European houses or decorative old-Beijing courtyards. |
+| Bridge-north KFC; bridge-north McDonald's; bridge-south McDonald's | Neighborhood | Three distinct place records. Precise site/period still requires evidence; unresolved records stay out of the rendered map. |
+| 丰台花园, the intended 党校, public exterior of large compounds | Neighborhood; major park silhouette can appear farther out | Verify which place is meant before placing it. Sparse surroundings extend beyond the registration scope. |
+| Gates, detached commercial rooms, small shops and remembered corners | Street surroundings | Place as short independently replaceable units; do not imply every residential ground floor is retail. |
+| Former “富士商场”, unidentified school-front street and old school entrances | No automatic placement | Keep as research candidates until identity/location is resolved; never substitute a current institution or an approximate named shop. |
+
+This is a content allocation rule, not a claim that every listed object has been drawn or registered. The residential survey remains in [PR5](https://github.com/StarObserverPro/DigitalMemory/pull/5).
+
+## Filling places without a specific memory
+
+Use three levels of contextual specificity, chosen from actual evidence:
+
+1. **Land use / vegetation only:** a soft warm-gray or green wash where even building type is uncertain. Do not invent roof ridges, hutongs or shop signs.
+2. **Known building family and orientation:** pale repeated long slabs, compact tower silhouettes or irregular low-roof grain. Preserve approximate density, orientation, open space and green coverage from satellite/reference evidence; window counts and minor unit differences are irrelevant.
+3. **Known arrangement:** a subdued compound drawing with independently addressable building groups and yard patches. Important gaps, gates and frontage setbacks remain editable.
+
+Satellite imagery is a reference layer in the authoring workspace. Extract roof orientation, massing, approximate height family and vegetation into original compatible art; do not mix a raw photo tile with illustrated streets as the default finished map. A current satellite image alone does not prove a 2005 layout. Keep source acquisition dates and supported periods in the recipe.
+
+Each patch can have period-specific recipes (for example low housing versus later tower/slab massing). Its fallback recipe must be a neutral land/vegetation wash, not a silently borrowed modern roof pattern. Context is **non-interactive and unnamed**. Its components never become places, doors or historical evidence just because a generator drew them. The paper wash covers missing/out-of-view patches; neighboring patches use consistent palettes, world-anchored texture and padded seams. Loading a new patch must not scatter or randomize accepted neighbors.
+
+## How a newly remembered building fits
+
+```mermaid
+flowchart TD
+  A["New recollection at a place"] --> B{"Location sufficiently known?"}
+  B -- No --> C["Keep an area association; no false point"]
+  B -- Yes --> D["Reserve ground space and applicable period"]
+  D --> E{"What occupies that space?"}
+  E -- "Pale context" --> F["Mask that local patch; add the object"]
+  E -- "Accepted building or road" --> G["Review only the local arrangement"]
+  F --> H["Check all map tiers and street correspondence"]
+  G --> H
+```
+
+A concrete example: a vaguely drawn corner behind a sidewalk gains a remembered one-storey shop. Its registered place gets an independent shell or frontage slot, a ground reservation, period membership and overview/street representations. The context under its occupied ground is masked; the nearby slab building, route, sidewalk and bridge stay unchanged. At a tier where the shop is too small to render, the pale patch remains. In a period before that shop is supported, the appropriate earlier environment or pale context returns.
+
+If the recollection is of an already drawn building, attach a memory to that identity and change its emphasis or selected representation; do not create a duplicate building. If it is a tenant change, update the occupancy in a frontage slot; do not rebuild the shell. A separate shop outside a residential block owns a separate shell related to its compound, not an automatic first-floor overlay.
+
+If a new object overlaps an accepted neighbor, reject silent placement. Locally split a context group, replace that small group's composition or adjust its **drawing** scale/setback within a reviewed local revision. Preserve real topology, place identity and route anchors. Do not squeeze a building into a sidewalk or move every subsequent object along a strip. If a genuine spatial correction is needed, it goes through the spatial registry rather than through an image edit.
+
+### Ground reservation is not image size
+
+Each object needs three separate envelopes:
+
+- **Ground footprint/reservation:** land actually occupied; collision checks use this.
+- **Paint silhouette and shadow mask:** what the illustration covers above the ground; canopy/roof overhang does not enlarge the geographic footprint.
+- **Hit area/entrance:** selectable ground-associated region and route connection; not every transparent part of a PNG is clickable.
+
+Large compound vignettes should either be composed from child assets or provide masks that allow replacing a small child region. A three-tower style sample is not a three-tower indivisible runtime asset. Keep each tower, yard area and external frontage separable underneath a grouped representation. Do not cut every window or leaf into a separate asset.
+
+The first executable planner uses **conservative rectangles** for reservations and context exclusions. Polygon/alpha masks and parent-child compound grouping are defined here but remain renderer work. Do not use this prototype's rectangle checks to claim final pixel occlusion or production cadastral accuracy.
+
+## Road ownership, especially the underpass
+
+| Road family | Required structure | Do not assume |
+| --- | --- | --- |
+| 四环 | Main carriageways, each service-road path, each walking path, divider, variable lateral offsets and elevation profiles | Symmetry, a constant lawn between bands, or identical bridge descent on the main and auxiliary roads |
+| 新华街 | Asphalt and two-sided walking/frontage relation, crossings, yard boundaries as separate objects | A wide ring-road cross section or continuous attached retail |
+| 丰台南路 / 正阳大街 | Broader road family with independently verified walking paths and crossings | A road's visual width makes it accessible across a bridge or rail line |
+| 建国街 / narrow lanes | Shared/narrow street profiles where appropriate | A forced main/service/sidewalk subdivision everywhere |
+
+A road assembly is a family of independently registered bands. At a normal short segment they can be delivered as one coordinated artwork. At an underpass each band needs its own lateral and elevation samples, plus a segment transition. A seven-stripe drawing cannot simply be repeated through a bridge.
+
+The Fengtai bridge area must explicitly distinguish:
+
+- The north **road bridge** carrying the east-west road relationship.
+- The south **railway bridge** with Four Ring traffic below it.
+- The descent/ascent of the road surfaces and the independent service-road/sidewalk paths.
+- Tall concrete retaining walls, abutments, bridge holes, railings and the visible ground above the wall, owned by the road/structure assembly.
+- Any building beyond/above the wall as a separately placed building, never painted into the wall asset.
+
+The reported roughly 7–10 m wall is a **user-described range, unmeasured and not yet localized to an exact side or run**. Do not confuse retaining-wall height with a bridge's vehicle clearance. The planner supports independent heights and explicit occlusion, but its synthetic profile numbers are not the actual Fengtai cross section. [Underpass evidence and missing observations](research/FENGTAI_UNDERPASS.md) record the boundary.
+
+Connectivity must be explicit: a bridge passing over a road is not an at-grade junction. Walking/cycling routes attach to service-road, sidewalk or shared-lane edges, never the expressway main carriageway. Separate adjacency for the main road does not imply the pedestrian can cross it. A nearby gate connects to the correct side/path and height, not just to the closest line on a flat picture.
+
+## Time, emphasis and scale are independent axes
+
+An environment state records its supported period(s); a representation records a view and detail tier; emphasis records why it should stand out. Do not derive one from another. The same accepted building shell can serve several periods, with different occupants or surroundings. Earlier low housing and later towers are alternative environment states, not semi-transparent buildings drawn on top of one another.
+
+Changing period resolves the road, compound, shell and occupancy states, then recomputes the pale-context exclusions. An unsupported period leaves pale context rather than silently borrowing a modern solid building. Other-period memories remain searchable through deliberate interaction; the map does not invent a ghost city. Unknown dating can remain an area-linked memory until deliberately associated with a period.
+
+A mid-2000s working scene is approximate; do not assign every current rear Sanli building to 2005. Building chronology is a separate evidence problem, not solved by zoom or visual opacity.
+
+## Data and code responsibilities
+
+| Record / module | Owns | Composition consumes |
+| --- | --- | --- |
+| Spatial registry / illustration mapping | Stable place and route identities, source geometry revisions, reviewed drawing anchors | `registrationRef`, shared `layoutRevision`, derived drawing reservations |
+| Road assembly | Per-band profile, main/service/walk mode, structures, explicit junction and occlusion relations | Period-selected road parts and protected ground space |
+| Compound container | Child shell/gate/fence/frontage identities; local composition revision | Grouped overview representation or detailed children, never both duplicated |
+| Context patch recipe | Typology, orientation, vegetation ratio, source age/status, style revision, deterministic seed and extent | Pale filling with local exclusion masks; never new place IDs |
+| Memory / landmark object | Existing place ID, emphasis, approved environment states and representations | Solid object where supported and visible |
+| Temporal resolver | Explicit supported membership and conflicts | `resolvePeriodState`, without nearest-year fallback |
+| Session | Current period, route, view, zoom tier and return state | Same location across overview and street; no duplicate map-player state |
+| Assembly planner | Selection, exclusion regions, road order, local invalidation, label selection | Render plan, not source geometry or private persistence |
+| Map / street renderers | Artwork drawing, clipping, camera, depth/occlusion, hit testing | Same object/state IDs with different representations |
+
+A release pins geometry, layout, recipe, asset and content revisions. Sources and private recollections stay outside the public repository. GitHub may hold cleared, versioned generated assets; deployed assets load from their release manifest, not mutable raw `main` image URLs.
+
+## Hand-drawn reference decisions
+
+The [Qingdao visitor map](https://www.shangri-la.com/qingdao/shangrila/about/) was visually inspected: it uses quiet land color and selective recognizable landmarks to keep a large area readable. We borrow that hierarchy, not its architecture, crowded captions, decorative people or white roads. Our roads remain charcoal asphalt with walking space.
+
+[Leslie Fehling's Bruges map account](https://www.lesliefehling.com/newwwww/) explicitly describes selecting only the necessary streets and simplifying buildings enough to retain recognition. This supports selective detail at smaller scales; it does not justify inventing Fengtai facades. No reference artwork is redistributed with this change.
+
+## Implemented in this change
+
+`src/domain/map-assembly.js` supplies an independently testable planner, insertion/revision command, conservative bounds validation, explicit road-part ordering, three overview policies and local context exclusion. `temporal.js` owns exact accepted-period state selection. The synthetic fixture demonstrates a road depression with asymmetric service-path profiles, separate decks/walls, a pre-existing landmark and one newly remembered corner.
+
+The tests exercise the important failure cases: insertion must not alter roads or neighbors; hidden artwork and unsupported periods must not erase context; a move restores the old context; road/solid/region/version conflicts reject; crossing parts respect their explicit order; map plans contain no character; label rejection does not delete the associated object.
+
+## Remaining integration, in dependency order
+
+1. Register and verify one real road segment including its full walking/service corridor; underpass-specific wall position and heights remain pending.
+2. Produce clean individual cutouts / masks and original pale context patches in the accepted style, with matched ground baselines, padding and independent external frontage. Do not use the halo-bearing tower preview as a production asset.
+3. Connect the planner to the overview renderer; clip contextual detail using polygon/asset masks, compose compound children without duplicates, and check roof/label occlusion against essential walking corridors. Existing generic repeated residential artwork is not carried forward as accepted art.
+4. Connect the three tiers and street entry to the shared session; replace the old overview figure and half-body street framing. Keep one closed menu. No engineering controls or new always-visible labels.
+5. Persist registration through the authorized private authoring adapter. This planner's command returns a new model; it is not a database, autosave or published record.
+6. Validate real desktop/mobile views at each tier, local before/after insertion, period switching and the road-to-street transition. Then package a reviewed visual release. Passing pure tests does not complete these visual steps.

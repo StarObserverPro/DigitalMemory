@@ -1,5 +1,7 @@
 # Core architecture
 
+> DM-0007 current target: [map assembly](MAP_ASSEMBLY.md) defines pale local context, solid roads/landmarks/memories, three overview tiers, independent road/bridge/wall structures, and local replacement. A pure planner is implemented; the current deployed renderer is not migrated. Overview has no character; street uses elevated chibi framing.
+
 > DM-0004 update: road registration, building shells, frontage slots/occupants, entrances and character profiles are independently composed. Overview and close scene share the composition registry. See [layer composition](LAYER_COMPOSITION.md); this supersedes the monolithic-illustration and long-strip implementation descriptions below.
 
 Status: v1 implementation contract; the initial planar subset (DM-0002) is superseded visually by illustrated overview and scenic-flat street prototype DM-0003. Private storage and hosting remain deferred. See [DECISIONS](DECISIONS.md).

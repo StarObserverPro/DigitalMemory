@@ -4,7 +4,7 @@ This is a short routing surface, not a requirement to read the entire repository
 
 ## Preserve the intended result
 
-DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. Entering a street puts the person on its sidewalk in close pseudo-3D: illustrated cinematic scenic flats, limited geometry, fog and directional cues. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
+DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, with the person grounded on the sidewalk in pseudo-3D: illustrated cinematic scenic flats, limited geometry, fog and directional cues. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
 
 Phase 1 prioritizes the walking-memory network around 新华街, with 南开西里 and the two historical school sites. Do not add the high-school cycling corridor, silently substitute modern school campuses, invent exact routes, or publish private source material. [PHASE_1](docs/PHASE_1.md) is the scope owner.
 
@@ -21,7 +21,7 @@ User-authored meaning and explicit constraints are authoritative. A current expl
 | --- | --- |
 | Purpose / first scope | affected sections of `docs/PRODUCT.md` / `docs/PHASE_1.md` |
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
-| Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` |
+| Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
 | Acceptance / actual completion | `docs/VERIFICATION.md` / `docs/STATUS.md` |
 | Cross-session or concurrent work | `docs/attention/README.md` |

@@ -2,7 +2,15 @@
 
 Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
-## Current correction — DM-0005
+## Current architecture foundation — DM-0007
+
+The latest target is captured in [MAP_ASSEMBLY](MAP_ASSEMBLY.md): three overview tiers without a character, pale replaceable background patches, solid roads and selected memory/landmark objects, separate compound/road assets, road-owned underpass walls and explicit vertical relationships. The previously deployed half-body street framing is superseded by elevated chibi framing as a target, not yet migrated.
+
+Implemented: a pure map assembly planner and local insertion/revision command, explicit accepted-period resolver, independent road-band profiles, conservative road/feature reservations and context exclusions, loaded-asset filtering, deterministic label selection and a synthetic fixture. See DM-0007 for tested revision and review status.
+
+Not implemented by this foundation: real Fengtai underpass registration, polygon/alpha compositing, production art, compound child rendering, overview/session/street wiring, durable memory writes or a new deployment. Amap/Baidu street-view verification of the tall wall remains unavailable in this attempt. The accepted general drawing direction is not approval of previous cutout defects or invented site layouts.
+
+## Previous correction — DM-0005
 
 The consumer surface exposes only a closed menu button. Developer inspectors, fixture language and permanent controls are removed. The map fills the viewport with contemporary-reference surrounding streets and apartment vignettes; this display context does not enlarge the editable registry or assert historical facades. The child is an upright cutout in a close half-body composition, with desktop/mobile camera distances and direct drag-to-walk controls.
 

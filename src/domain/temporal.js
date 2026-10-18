@@ -12,3 +12,10 @@ export function resolveEnvironment(states, placeId, period) {
   const state = states.find(s => s.placeId === placeId && s.approval === 'accepted' && relateTime(s.time, period) === 'current');
   return state ? { status: 'supported', state } : { status: 'no_supported_state', state: null };
 }
+
+/** Explicit period memberships, authored by the temporal registry; no nearest-year fallback. */
+export function resolvePeriodState(states, periodId) {
+  const selected = states.filter(s => s.approval === 'accepted' && s.periodIds.includes(periodId));
+  if (selected.length > 1) throw new Error(`Conflicting accepted states for period: ${periodId}`);
+  return selected[0] || null;
+}
