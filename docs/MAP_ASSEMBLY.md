@@ -1,10 +1,10 @@
 # A layered map that can be completed one memory at a time
 
-DM-0007, 2026-10-18. This is the target composition contract and an executable domain prototype. It is **not yet connected to the deployed overview**, and it does not certify any Fengtai dimensions or production artwork. The general warm drawing style and separation of roads from compounds were accepted as a direction; the individual draft cutouts still need cleanup and registration.
+DM-0009, 2026-10-18. The composition planner is connected to the visible overview. Geometry, visual acceptance and historical verification remain separate. Current implementation and gaps are recorded in STATUS and the active/recent task packet.
 
 ## The picture we are assembling
 
-The entire viewport is a lightly drawn city. Roads form a clear, charcoal-asphalt walking framework. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection makes only the corresponding part more definite.
+The entire viewport is a lightly drawn city. Overview roads use soft gray pen edges and a paper-compatible wash; they do not imitate black asphalt or advertise clickability through dark fill. The entered street may use asphalt and sidewalk materials. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection makes only the corresponding part more definite.
 
 The distinction is **visual emphasis**, not a truth score. A vividly remembered reconstruction may still be historically uncertain; a well-documented neighboring building may remain pale because it is context. Store evidence, date support, author approval, visual emphasis and publication permission separately.
 
@@ -145,7 +145,7 @@ A release pins geometry, layout, recipe, asset and content revisions. Sources an
 
 ## Hand-drawn reference decisions
 
-The [Qingdao visitor map](https://www.shangri-la.com/qingdao/shangrila/about/) was visually inspected: it uses quiet land color and selective recognizable landmarks to keep a large area readable. We borrow that hierarchy, not its architecture, crowded captions, decorative people or white roads. Our roads remain charcoal asphalt with walking space.
+The [Qingdao visitor map](https://www.shangri-la.com/qingdao/shangrila/about/) was visually inspected: it uses quiet land color and selective recognizable landmarks to keep a large area readable. We borrow that hierarchy, not its architecture, crowded captions, decorative people or white roads. The overview now uses soft gray road marks; asphalt and walking surfaces belong to the entered street view.
 
 [Leslie Fehling's Bruges map account](https://www.lesliefehling.com/newwwww/) explicitly describes selecting only the necessary streets and simplifying buildings enough to retain recognition. This supports selective detail at smaller scales; it does not justify inventing Fengtai facades. No reference artwork is redistributed with this change.
 
@@ -163,3 +163,11 @@ The tests exercise the important failure cases: insertion must not alter roads o
 4. Connect the three tiers and street entry to the shared session; replace the old overview figure and half-body street framing. Keep one closed menu. No engineering controls or new always-visible labels.
 5. Persist registration through the authorized private authoring adapter. This planner's command returns a new model; it is not a database, autosave or published record.
 6. Validate real desktop/mobile views at each tier, local before/after insertion, period switching and the road-to-street transition. Then package a reviewed visual release. Passing pure tests does not complete these visual steps.
+
+## Current consumer correction — DM-0009
+
+The road layer now includes contemporary source continuations and source Four Ring service roads, painted with the same soft palette on both sides of the original focus boundary. Two passes (all edges, then all interiors) prevent artificial caps at connected OSM way boundaries. Broad overview width is a drawing choice, independent of the street scene's physical cross-section. Underpass profiles and wall heights remain unmeasured.
+
+`overview-registration.json` owns public source anchors and parcel membership; `spatial.js` supplies their projection. The three Sanli symbols are approximate roof-centre picks from a retained georeferenced satellite reference, with 30 m uncertainty and no numbered-building/doorway claim. Nankai's two symbols represent parcel-interior typology, not specific buildings. A parcel membership failure rejects the assembly; the renderer cannot shift buildings to pass collision checks. Ground reservations are separate from proportional artwork. Long diagonal roads are reserved with short conservative pieces so a broad bounding box does not displace nearby buildings.
+
+The screen-space label pass uses 18–19 px road names and 21–23 px place names, with a locally bundled pen-like font. Desktop count ceilings are 10 / 14 / 18 and character ceilings 52 / 72 / 96; narrow screens use 7 / 10 / 12 and 35 / 50 / 64. These are ceilings, not quotas. Names must fit the viewport, avoid the menu, other names and solid icons. Important names try alternate positions; lower-priority names disappear instead of getting smaller. Map pixels and camera zoom are both accounted for. The implementation follows the pixel sizing and collision/alternate-anchor approach in [Mapbox's style specification](https://docs.mapbox.com/style-spec/reference/layers/#layout-symbol-text-size) and [label placement guide](https://docs.mapbox.com/help/troubleshooting/optimize-map-label-placement/); the numerical sizes and budgets are our own readable-map tuning, not a claimed universal standard.

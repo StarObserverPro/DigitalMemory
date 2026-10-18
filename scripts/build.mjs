@@ -9,13 +9,13 @@ for (const asset of [...manifest.assets, ...Object.values(manifest.stageAssets |
   const bytes = await readFile(new URL(asset.url, new URL('../content/public/manifest.json', import.meta.url)));
   if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) throw new Error(`Checksum mismatch: ${asset.id}`);
 }
-for (const file of [manifest.context, manifest.places, manifest.illustrationMapping, manifest.composition, ...manifest.memoryChunks.map(c => c.path), ...Object.values(manifest.scenes)]) {
+for (const file of [manifest.context, manifest.places, manifest.overviewRegistration, manifest.illustrationMapping, manifest.composition, ...manifest.memoryChunks.map(c => c.path), ...Object.values(manifest.scenes)]) {
   const record = JSON.parse(await readFile(`content/public/${file}`));
   if (record.privacy !== 'public') throw new Error('Private data in public manifest');
 }
 const geometry=JSON.parse(await readFile('content/public/'+manifest.geometry));
 createComposition(JSON.parse(await readFile('content/public/'+manifest.composition)),createIllustrationMapping(JSON.parse(await readFile('content/public/'+manifest.illustrationMapping)),createTransform(geometry.bounds)));
-createOverviewAssembly(JSON.parse(await readFile('content/public/'+manifest.composition)),JSON.parse(await readFile('content/public/'+manifest.context)));
+createOverviewAssembly(JSON.parse(await readFile('content/public/'+manifest.composition)),JSON.parse(await readFile('content/public/'+manifest.context)),JSON.parse(await readFile('content/public/'+manifest.overviewRegistration)),createTransform(geometry.bounds),manifest.moduleAssets);
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist');
 for (const file of ['index.html', 'src', 'assets', 'content']) await cp(file, `dist/${file}`, { recursive: true });
