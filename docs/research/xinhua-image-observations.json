@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "xinhua-image-observations-r1",
+  "status": "research-only",
+  "retrievedAt": "2026-10-18",
+  "captureDate": null,
+  "sourceRequest": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=116.279%2C39.840%2C116.290%2C39.8465&bboxSR=4326&imageSR=3857&size=1800%2C1400&format=jpg&f=pjson",
+  "imageSha256": "d46d133b2e5c09c5ea212f30f76ee330063099d9756d5d61b20dde76c81400db",
+  "imageSize": [
+    1800,
+    1400
+  ],
+  "extent": {
+    "xmin": 12944119.069951057,
+    "ymin": 4842713.684796739,
+    "xmax": 12945343.584349785,
+    "ymax": 4843666.084884639,
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    }
+  },
+  "coordinateMeaning": "Approximate roof-centre pixels from top-left; NOT ground coordinates. No numbered-building identity asserted.",
+  "groupCandidate": "Xinhua Sanli",
+  "observations": [
+    {
+      "id": "sanli-tower-candidate-1",
+      "roofPixel": [
+        1066,
+        814
+      ],
+      "class": "compact-high-rise",
+      "confidence": "visual-inference",
+      "buildingNumber": null
+    },
+    {
+      "id": "sanli-tower-candidate-2",
+      "roofPixel": [
+        1155,
+        765
+      ],
+      "class": "compact-high-rise",
+      "confidence": "visual-inference",
+      "buildingNumber": null
+    },
+    {
+      "id": "sanli-tower-candidate-3",
+      "roofPixel": [
+        1237,
+        726
+      ],
+      "class": "compact-high-rise",
+      "confidence": "visual-inference",
+      "buildingNumber": null
+    },
+    {
+      "id": "sanli-tower-candidate-4",
+      "roofPixel": [
+        813,
+        452
+      ],
+      "class": "compact-high-rise",
+      "confidence": "visual-inference",
+      "buildingNumber": null
+    },
+    {
+      "id": "sanli-tower-candidate-5",
+      "roofPixel": [
+        1070,
+        323
+      ],
+      "class": "compact-high-rise",
+      "confidence": "visual-inference",
+      "buildingNumber": null
+    }
+  ],
+  "registrationApproved": false,
+  "runtimeUse": false,
+  "notes": [
+    "Three streetward compact forms and two rear compact forms are candidate matches to the 3 + 2 source reconciliation.",
+    "Do not infer exact floor count from shadow length.",
+    "Do not use roof pixels as building foundations; oblique displacement is visible.",
+    "Raw provider imagery is not redistributed."
+  ]
+}

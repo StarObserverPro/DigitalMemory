@@ -1,5 +1,7 @@
 # Local visual research — 2026-10-18
 
+> Superseded drawing assumptions: see [the building-group survey](research/XINHUA_BUILDING_SURVEY.md). The north/south proxy placement and automatic apartment ground-floor shops below describe the rejected earlier draft, not approved local morphology.
+
 These references informed the **type** of scenery modules. They do not establish the exact identity, address, height or historical appearance of any prototype building. Source photographs are not distributed in the application or used as textures. Original generated assets have their prompts and checksums in `assets/modules/generation-r2.json` and the public manifest.
 
 | ID | Source / date | Observed visual evidence | Use and uncertainty |
