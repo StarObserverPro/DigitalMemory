@@ -1,0 +1,102 @@
+[
+  {
+    "name": "street-arrival",
+    "width": 1280,
+    "height": 800,
+    "distance": 420.6277200129774,
+    "orbit": 0,
+    "walk": 0,
+    "camera": [
+      -10.420430260384286,
+      18.57111763193393,
+      -16.666602413815404
+    ],
+    "characterPixels": [
+      645.6191082761632,
+      363.13038019267526,
+      694.6351374441194,
+      450.70904419633456
+    ],
+    "soles": [
+      0,
+      0
+    ],
+    "triangles": 4209,
+    "kind": "native geometry raster; not browser/WebGL evidence"
+  },
+  {
+    "name": "street-gate",
+    "width": 1280,
+    "height": 800,
+    "distance": 434.94393589218873,
+    "orbit": 0,
+    "walk": 0,
+    "camera": [
+      -9.804132805920895,
+      18.57111763193393,
+      -23.534889221506294
+    ],
+    "characterPixels": [
+      645.619108276153,
+      363.13038019268686,
+      694.6351374440985,
+      450.7090441963439
+    ],
+    "soles": [
+      0,
+      0
+    ],
+    "triangles": 4127,
+    "kind": "native geometry raster; not browser/WebGL evidence"
+  },
+  {
+    "name": "street-walk",
+    "width": 1280,
+    "height": 800,
+    "distance": 430,
+    "orbit": 0.35,
+    "walk": 1,
+    "camera": [
+      -5.059208992685704,
+      18.57111763193393,
+      -17.429725305968685
+    ],
+    "characterPixels": [
+      630.2888677663205,
+      365.6833525805248,
+      685.264420226497,
+      460.3129278784334
+    ],
+    "soles": [
+      0.11448071399302039,
+      0
+    ],
+    "triangles": 4033,
+    "kind": "native geometry raster; not browser/WebGL evidence"
+  },
+  {
+    "name": "street-mobile",
+    "width": 390,
+    "height": 844,
+    "distance": 434.94393589218873,
+    "orbit": 0,
+    "walk": 0,
+    "camera": [
+      -3.612073325218472,
+      18.57111763193393,
+      -19.425935438700805
+    ],
+    "characterPixels": [
+      189.4341585693744,
+      387.6567925917202,
+      237.89045250855153,
+      487.16968163640223
+    ],
+    "soles": [
+      0,
+      0
+    ],
+    "triangles": 2750,
+    "kind": "native geometry raster; not browser/WebGL evidence"
+  }
+]

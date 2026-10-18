@@ -12,8 +12,22 @@ export function createIllustrationMapping(data, transform) {
   function nearestArt(p){let best=null;for(const e of edges.values()){const [a,b]=e.art,dx=b[0]-a[0],dy=b[1]-a[1],t=clamp(((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy),0,1),q=lerp(a,b,t),distance=Math.hypot(q[0]-p[0],q[1]-p[1]);if(!best||distance<best.distance)best={route:{edgeId:e.id,t,direction:1},distance};}return best;}
   return Object.freeze({data,edges,total,valid,locate,atDistance,advance,nearestArt});
 }
-export const STAGE = Object.freeze({min:360,max:500,lateralMin:4.65,lateralMax:7.05,speed:2.5,revision:'xinhua-modules-r2'});
+export const STAGE = Object.freeze({min:360,max:500,lateralMin:5.1,lateralMax:6.7,speed:2.5,revision:'xinhua-grounded-r3'});
 export function advanceStage(route,street,input,seconds,mapping){
+  if (Number.isFinite(input.along) || Number.isFinite(input.lateral) || street.target) {
+    const dt=clamp(seconds,0,.05), current=mapping.locate(route).distance;
+    let along=input.along||0, lateral=input.lateral||0, target=street.target||null;
+    const manual=Boolean(along||lateral);
+    if(manual)target=null;
+    if(target){along=target.distance-current;lateral=target.lateral-street.lateral;}
+    const length=Math.hypot(along,lateral), step=STAGE.speed*dt;
+    const factor=target?Math.min(1,step/(length||1)):step/Math.max(1,length);
+    const distance=clamp(current+along*factor,STAGE.min,STAGE.max);
+    const offset=clamp(street.lateral+lateral*factor,STAGE.lateralMin,STAGE.lateralMax);
+    const dx=offset-street.lateral,dz=distance-current;
+    return {route:mapping.atDistance(distance,dz<0?-1:dz>0?1:route.direction),street:{...street,
+      heading:Math.hypot(dx,dz)>.00001?Math.atan2(dx,dz):street.heading,lateral:offset,target}};
+  }
   const dt=clamp(seconds,0,.05),heading=street.heading+clamp(input.turn||0,-1,1)*1.65*dt,d=clamp(input.forward||0,-1,1)*STAGE.speed*dt;
-  return {route:mapping.advance(route,Math.cos(heading)*d,[STAGE.min,STAGE.max]),street:{heading,lateral:clamp(street.lateral+Math.sin(heading)*d,STAGE.lateralMin,STAGE.lateralMax)}};
+  return {route:mapping.advance(route,Math.cos(heading)*d,[STAGE.min,STAGE.max]),street:{...street,heading,lateral:clamp(street.lateral+Math.sin(heading)*d,STAGE.lateralMin,STAGE.lateralMax)}};
 }
