@@ -1,0 +1,101 @@
+[
+  {
+    "id": "qili-0",
+    "groundWidthMetres": 115.8089590542045,
+    "spriteSize": [
+      51,
+      87
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "wuli-west-0",
+    "groundWidthMetres": 229.35552414443893,
+    "spriteSize": [
+      96,
+      72
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "liuli-0",
+    "groundWidthMetres": 258.776131630891,
+    "spriteSize": [
+      110,
+      94
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "qili-1",
+    "groundWidthMetres": 115.8089590542045,
+    "spriteSize": [
+      91,
+      153
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "wuli-west-1",
+    "groundWidthMetres": 229.35552414443893,
+    "spriteSize": [
+      171,
+      130
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "liuli-1",
+    "groundWidthMetres": 258.776131630891,
+    "spriteSize": [
+      200,
+      169
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "qili-2",
+    "groundWidthMetres": 115.8089590542045,
+    "spriteSize": [
+      137,
+      229
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "wuli-west-2",
+    "groundWidthMetres": 229.35552414443893,
+    "spriteSize": [
+      255,
+      195
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  },
+  {
+    "id": "liuli-2",
+    "groundWidthMetres": 258.776131630891,
+    "spriteSize": [
+      305,
+      252
+    ],
+    "fit": "one uniform scale; visual-bounds centering only",
+    "groundControls": "red diagnostic dots are independent ground targets, not asserted matches",
+    "geometryStatus": "review-needed; source footprint and generated floor shape are not proven equivalent"
+  }
+]

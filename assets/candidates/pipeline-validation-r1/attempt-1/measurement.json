@@ -1,0 +1,358 @@
+{
+  "nativeCanvas": [
+    1254,
+    1254
+  ],
+  "canvasScale": [
+    1.224609375,
+    1.224609375
+  ],
+  "alphaThreshold": 32,
+  "policy": {
+    "preferredGenerationToDisplayMax": 1.5,
+    "hardGenerationToDisplayMax": 2,
+    "minimumGeneratedToDisplay": 0.8,
+    "noNonuniformResize": true,
+    "largeOpaqueYardForbidden": true
+  },
+  "results": [
+    {
+      "id": "qili-0",
+      "cellNative": [
+        2,
+        2,
+        409,
+        409
+      ],
+      "trimInCell": [
+        167,
+        221,
+        239,
+        341
+      ],
+      "nativeSubjectSize": [
+        72,
+        120
+      ],
+      "finalBudget": [
+        50.578071428568876,
+        91.11110739238339
+      ],
+      "generationToDisplay": [
+        1.423541822896217,
+        1.3170732244884518
+      ],
+      "aspectDrift": 1.0808372658620535,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        59,
+        98
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-0",
+      "cellNative": [
+        419,
+        2,
+        825,
+        409
+      ],
+      "trimInCell": [
+        138,
+        235,
+        270,
+        331
+      ],
+      "nativeSubjectSize": [
+        132,
+        96
+      ],
+      "finalBudget": [
+        100.16807142947141,
+        72.34612116968191
+      ],
+      "generationToDisplay": [
+        1.317785179611265,
+        1.3269543473497336
+      ],
+      "aspectDrift": 0.9930900654142459,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        108,
+        78
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-0",
+      "cellNative": [
+        835,
+        2,
+        1242,
+        409
+      ],
+      "trimInCell": [
+        133,
+        225,
+        284,
+        350
+      ],
+      "nativeSubjectSize": [
+        151,
+        125
+      ],
+      "finalBudget": [
+        113.01714285774642,
+        93.65473716499719
+      ],
+      "generationToDisplay": [
+        1.336080493470466,
+        1.3346895606548976
+      ],
+      "aspectDrift": 1.0010421395780498,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        123,
+        102
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "qili-1",
+      "cellNative": [
+        2,
+        419,
+        409,
+        825
+      ],
+      "trimInCell": [
+        139,
+        156,
+        269,
+        382
+      ],
+      "nativeSubjectSize": [
+        130,
+        226
+      ],
+      "finalBudget": [
+        91.04052857142398,
+        163.99999330629015
+      ],
+      "generationToDisplay": [
+        1.4279354704977483,
+        1.378048836733287
+      ],
+      "aspectDrift": 1.0362009185993142,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        106,
+        185
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-1",
+      "cellNative": [
+        419,
+        419,
+        825,
+        825
+      ],
+      "trimInCell": [
+        89,
+        185,
+        324,
+        365
+      ],
+      "nativeSubjectSize": [
+        235,
+        180
+      ],
+      "finalBudget": [
+        180.30252857304845,
+        130.22301810542746
+      ],
+      "generationToDisplay": [
+        1.3033649714168662,
+        1.382244111822639
+      ],
+      "aspectDrift": 0.9429340015044362,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        192,
+        147
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-1",
+      "cellNative": [
+        835,
+        419,
+        1242,
+        825
+      ],
+      "trimInCell": [
+        71,
+        172,
+        349,
+        396
+      ],
+      "nativeSubjectSize": [
+        278,
+        224
+      ],
+      "finalBudget": [
+        203.43085714394374,
+        168.5785268969949
+      ],
+      "generationToDisplay": [
+        1.3665576791199014,
+        1.328757607051987
+      ],
+      "aspectDrift": 1.0284476806509342,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        227,
+        183
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "qili-2",
+      "cellNative": [
+        2,
+        835,
+        409,
+        1242
+      ],
+      "trimInCell": [
+        105,
+        90,
+        301,
+        407
+      ],
+      "nativeSubjectSize": [
+        196,
+        317
+      ],
+      "finalBudget": [
+        136.56079285713594,
+        245.9999899594352
+      ],
+      "generationToDisplay": [
+        1.4352582165003012,
+        1.2886179387741947
+      ],
+      "aspectDrift": 1.1137965515718327,
+      "touchesCellEdge": true,
+      "sizeStatus": "return-to-layout-or-generation",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        160,
+        259
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "wuli-west-2",
+      "cellNative": [
+        419,
+        835,
+        825,
+        1242
+      ],
+      "trimInCell": [
+        25,
+        124,
+        384,
+        390
+      ],
+      "nativeSubjectSize": [
+        359,
+        266
+      ],
+      "finalBudget": [
+        270.45379285957273,
+        195.3345271581411
+      ],
+      "generationToDisplay": [
+        1.327398651740865,
+        1.361766421277119
+      ],
+      "aspectDrift": 0.9747623608577287,
+      "touchesCellEdge": false,
+      "sizeStatus": "pass",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        293,
+        217
+      ],
+      "cropOffsetMustBeRetained": true
+    },
+    {
+      "id": "liuli-2",
+      "cellNative": [
+        835,
+        835,
+        1242,
+        1242
+      ],
+      "trimInCell": [
+        2,
+        109,
+        405,
+        407
+      ],
+      "nativeSubjectSize": [
+        403,
+        298
+      ],
+      "finalBudget": [
+        305.1462857159154,
+        252.8677903454925
+      ],
+      "generationToDisplay": [
+        1.3206780448089226,
+        1.1784814491115831
+      ],
+      "aspectDrift": 1.1206608689551596,
+      "touchesCellEdge": true,
+      "sizeStatus": "return-to-layout-or-generation",
+      "publicationApproved": false,
+      "groundAnchorReview": "pending visual ground-control comparison",
+      "finalSizeUsingUniformCanvasScale": [
+        329,
+        243
+      ],
+      "cropOffsetMustBeRetained": true
+    }
+  ],
+  "limits": [
+    "A size pass does not establish correct floor geometry, composition, topology or historical identity.",
+    "Transparent pixels and padding do not count as subject size.",
+    "No nonuniform fitting or production replacement."
+  ]
+}
