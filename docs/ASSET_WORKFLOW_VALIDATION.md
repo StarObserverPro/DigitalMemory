@@ -1,6 +1,6 @@
 # Scale-budgeted map asset workflow
 
-DM-0013, 2026-10-18. This is the canonical workflow for future overview asset batches. It supersedes DM-0012's whole-illustration affine fitting and whole-image road masking as a production method. The deployed r3 map has not been repaired or replaced by this validation.
+DM-0013, 2026-10-18. This is the canonical workflow for future overview asset batches. It supersedes DM-0012's whole-illustration affine fitting and whole-image road masking as a production method. DM-0013 was a validation-only batch; DM-0014 below implements the map upgrade using independent parts.
 
 ## Outcome of the validation
 
@@ -114,3 +114,13 @@ python scripts/render-workflow-assembly.py
 The guide preparation uses retained r3 layout/source metadata and does not need to distribute original satellite pixels. First-attempt files are retained separately because changing atlas dimensions changes all cell coordinates. The current script recreates the second-attempt plan. The generated native WebP copies retain returned resolution and alpha; PNGs remain tool originals.
 
 Per batch record these independently: source adequacy, final-size budget, crop integrity, ground correspondence, edge/occlusion review, aesthetic approval, consumer integration and publication. Passing early nodes never activates later release states automatically. DM-0013 ends with nine size passes and **ground correspondence requiring rework**, no automatic production replacement.
+
+## DM-0014 implementation — projection, small marks and lived-in ground
+
+The requested map upgrade now implements independent building/short-row placement for Qili, Wuli-west and Liuli. Atlas r4 contains medium/near variants; 37 meet the native/display limit and one medium segment uses the controlled source sketch. At other viewport scales the renderer checks the current pixel ratio and uses the sketch when necessary. Far silhouettes use a few window dots, not a detailed raster shrunk several times.
+
+The projection convention is north-up cartographic oblique: source ground x/y plus a single screen-up illustrated height direction. This is coordinated axonometric presentation, not strict equal-axis isometric projection. All parts are prepared in that convention before generation; each image is uniformly scaled and positioned from its own source ground origin. Boundary/roof uncertainty in the retained source remains recorded. The previous whole-compound affine and its 3-corner canvas controls are no longer the runtime placement method.
+
+Ground and standing objects now have distinct drawing passes. Ground excludes buildings and public road corridors; source-height standing art is depth-sorted above the ground/road layer with small yard trees. The gray line in the DM-0013 assembly review was a schematic road-occlusion probe, not source geography and not part of the released map.
+
+The compound ground brief is roughly balanced patchy grass and worn hardscape in the gaps between buildings/paths. Use muted irregular grass, missing patches and a few small clutter marks; avoid a manicured continuous lawn. Roadside large trees are omitted. A few small, thin-trunk tree suggestions can sit inside yards. These are ambience details and remain separate from registered remembered places. Tree positions avoid footprints and source road corridors.

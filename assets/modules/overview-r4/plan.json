@@ -1,0 +1,2196 @@
+{
+  "revision": "modular-overview-r4",
+  "canvas": [
+    1536,
+    1024
+  ],
+  "projection": {
+    "id": "north-up-orthographic-rise-r1",
+    "ground": "shared local equirectangular transform",
+    "vertical": "screen y minus illustrated height; no vanishing point",
+    "heightPolicy": "compressed illustration height, not measured storeys"
+  },
+  "sizeGate": {
+    "minimum": 0.8,
+    "maximum": 1.5,
+    "aspectTolerance": 0.12
+  },
+  "items": [
+    {
+      "id": "qili-osm-978924276-1",
+      "compoundId": "qili",
+      "sourceId": "osm-978924276",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        0,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        78.93686400035286,
+        90.57935080358983,
+        113.06313599964714,
+        155.96309178769317
+      ],
+      "guideAnchor": [
+        96,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.28021020000001,
+          39.84117880000003
+        ],
+        [
+          116.2800777,
+          39.8413801
+        ],
+        [
+          116.28039920000002,
+          39.84150489999999
+        ],
+        [
+          116.2805317,
+          39.84130349999999
+        ]
+      ],
+      "anchorGeo": [
+        116.2803047,
+        39.841341850000006
+      ],
+      "groundSize": [
+        22.570285713818976,
+        21.11520077737191
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        34.12627199929429,
+        65.38374098410334
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924277-1",
+      "compoundId": "qili",
+      "sourceId": "osm-978924277",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        192,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        270.41820479963275,
+        89.73248944639958,
+        305.58179520036725,
+        156.80995314488342
+      ],
+      "guideAnchor": [
+        288,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.28023589999998,
+          39.8417566
+        ],
+        [
+          116.28009209999999,
+          39.8419733
+        ],
+        [
+          116.28041610000001,
+          39.842099999999995
+        ],
+        [
+          116.2805599,
+          39.8418834
+        ]
+      ],
+      "anchorGeo": [
+        116.280326,
+        39.84192829999999
+      ],
+      "groundSize": [
+        23.256342857628624,
+        22.23538775778229
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        35.163590400734506,
+        67.07746369848384
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924278-1",
+      "compoundId": "qili",
+      "sourceId": "osm-978924278",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        384,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        461.4673296005381,
+        88.01429097384575,
+        498.5326703994619,
+        158.5281516174374
+      ],
+      "guideAnchor": [
+        480,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.28080379999999,
+          39.8419593
+        ],
+        [
+          116.28063360000002,
+          39.842206900000015
+        ],
+        [
+          116.2809565,
+          39.8423378
+        ],
+        [
+          116.2811267,
+          39.8420902
+        ]
+      ],
+      "anchorGeo": [
+        116.28088015000002,
+        39.842148550000005
+      ],
+      "groundSize": [
+        24.514114285002506,
+        24.508137060102285
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        37.065340798923785,
+        70.51386064359166
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924279-1",
+      "compoundId": "qili",
+      "sourceId": "osm-978924279",
+      "kind": "high-slab",
+      "level": 1,
+      "cell": [
+        576,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        631.6347839999007,
+        92.49026590413078,
+        712.3652160000994,
+        164.6177211320104
+      ],
+      "guideAnchor": [
+        672,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.28133960000001,
+          39.84130630000001
+        ],
+        [
+          116.28036020000002,
+          39.840962299999994
+        ],
+        [
+          116.28045500000002,
+          39.8408034
+        ],
+        [
+          116.28143420000002,
+          39.841147499999984
+        ]
+      ],
+      "anchorGeo": [
+        116.28089720000001,
+        39.841054850000006
+      ],
+      "groundSize": [
+        53.393142857274256,
+        32.56312319048982
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        80.73043200019868,
+        72.12745522787961
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924280-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924280",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        768,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        849.2332464007504,
+        90.57935080185077,
+        878.7667535992493,
+        155.96309178943238
+      ],
+      "guideAnchor": [
+        864,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.28167670000002,
+          39.8413153
+        ],
+        [
+          116.2816892,
+          39.8416326
+        ],
+        [
+          116.2820696,
+          39.8416238
+        ],
+        [
+          116.2820572,
+          39.8413065
+        ]
+      ],
+      "anchorGeo": [
+        116.28187315000001,
+        39.84146955
+      ],
+      "groundSize": [
+        19.532742856150094,
+        21.115200779672364
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        29.53350719849891,
+        65.38374098758162
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924281-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924281",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        960,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1040.271096000723,
+        91.83740495367954,
+        1071.728903999277,
+        154.70503763760345
+      ],
+      "guideAnchor": [
+        1056,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.2822317,
+          39.841509599999995
+        ],
+        [
+          116.28222880000001,
+          39.841807599999996
+        ],
+        [
+          116.28264440000001,
+          39.841809999999995
+        ],
+        [
+          116.2826473,
+          39.84151199999999
+        ]
+      ],
+      "anchorGeo": [
+        116.28243805,
+        39.841659799999995
+      ],
+      "groundSize": [
+        20.80542857047226,
+        19.451107986247962
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        31.457807998554017,
+        62.867632683923915
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924282-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924282",
+      "kind": "tower",
+      "level": 1,
+      "cell": [
+        1152,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1233.6579456006396,
+        92.59125841561861,
+        1262.3420543993604,
+        153.9511841756644
+      ],
+      "guideAnchor": [
+        1248,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.2827193,
+          39.842145900000006
+        ],
+        [
+          116.28271400000001,
+          39.8424267
+        ],
+        [
+          116.2830903,
+          39.84243089999998
+        ],
+        [
+          116.2830956,
+          39.84215
+        ]
+      ],
+      "anchorGeo": [
+        116.2829048,
+        39.842288399999994
+      ],
+      "groundSize": [
+        18.970971427725317,
+        18.453947322307386
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        28.6841087987209,
+        61.35992576004578
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924283-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924283",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        1344,
+        0,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1422.0837071997296,
+        93.4252400013895,
+        1457.9162928002704,
+        163.68274703475151
+      ],
+      "guideAnchor": [
+        1440,
+        140
+      ],
+      "groundGeo": [
+        [
+          116.2835375,
+          39.84209659999999
+        ],
+        [
+          116.28327890000001,
+          39.84249750000001
+        ],
+        [
+          116.28349680000001,
+          39.8425804
+        ],
+        [
+          116.28375560000002,
+          39.842179599999994
+        ]
+      ],
+      "anchorGeo": [
+        116.28351725000002,
+        39.8423385
+      ],
+      "groundSize": [
+        23.698800000357664,
+        31.326384966602518
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        35.832585600540824,
+        70.25750703336202
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924285-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924285",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        0,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        61.72715039925976,
+        312.4407624056073,
+        130.27284960074007,
+        354.2672246305337
+      ],
+      "guideAnchor": [
+        96,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28118539999998,
+          39.84241049999999
+        ],
+        [
+          116.28207910000002,
+          39.84248039999999
+        ],
+        [
+          116.2820973,
+          39.8423628
+        ],
+        [
+          116.2811945,
+          39.842287
+        ]
+      ],
+      "anchorGeo": [
+        116.28164135,
+        39.8423837
+      ],
+      "groundSize": [
+        45.334457143836175,
+        12.522783902822312
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        68.54569920148032,
+        41.82646222492639
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924286-1",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924286",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        192,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        272.4890832000657,
+        302.59661104445183,
+        303.5109167999343,
+        364.11137599168916
+      ],
+      "guideAnchor": [
+        288,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.2812737,
+          39.841318300000005
+        ],
+        [
+          116.2810691,
+          39.84163300000001
+        ],
+        [
+          116.2812771,
+          39.841712799999996
+        ],
+        [
+          116.2814818,
+          39.841398
+        ]
+      ],
+      "anchorGeo": [
+        116.28127545,
+        39.841515550000004
+      ],
+      "groundSize": [
+        20.517085714198856,
+        25.544148137154934
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        31.021833599868614,
+        61.514764947237325
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-1-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-1",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        384,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        445.3183199996157,
+        313.7917452303838,
+        514.6816800003845,
+        365.2427103247582
+      ],
+      "guideAnchor": [
+        480,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28193333333333,
+          39.84098844177859
+        ],
+        [
+          116.2827888888889,
+          39.841260592687775
+        ],
+        [
+          116.28285611111112,
+          39.841124517368016
+        ],
+        [
+          116.28199444444444,
+          39.840842981367565
+        ]
+      ],
+      "anchorGeo": [
+        116.28239472222222,
+        39.841051787027666
+      ],
+      "groundSize": [
+        45.87523809574657,
+        27.04062212269605
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        69.36336000076881,
+        51.450965094374396
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-2-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-2",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        576,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        641.2228800000833,
+        314.9402931851797,
+        702.7771199999167,
+        364.0941623699624
+      ],
+      "guideAnchor": [
+        672,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28288666666667,
+          39.84128874616856
+        ],
+        [
+          116.28363222222222,
+          39.84153743474736
+        ],
+        [
+          116.28370555555556,
+          39.84138259102106
+        ],
+        [
+          116.28297222222224,
+          39.84114328639366
+        ]
+      ],
+      "anchorGeo": [
+        116.28329611111111,
+        39.84134036057051
+      ],
+      "groundSize": [
+        40.71047619036608,
+        25.521378796246495
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        61.5542399998335,
+        49.15386918478271
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-3-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-3",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        768,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        832.3041599993763,
+        316.08883520753227,
+        895.6958400006237,
+        362.94562034760975
+      ],
+      "guideAnchor": [
+        864,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28378500000001,
+          39.841603125919704
+        ],
+        [
+          116.28456111111113,
+          39.84182835231915
+        ],
+        [
+          116.28462833333336,
+          39.84167820146825
+        ],
+        [
+          116.28387055555558,
+          39.84145766681077
+        ]
+      ],
+      "anchorGeo": [
+        116.28420666666668,
+        39.841643009564955
+      ],
+      "groundSize": [
+        41.92571428653923,
+        24.002143316944057
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        63.39168000124732,
+        46.85678514007748
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-4-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-4",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        960,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1023.3854400008056,
+        315.16980907567074,
+        1088.6145599991942,
+        363.8646464794713
+      ],
+      "guideAnchor": [
+        1056,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28216555555557,
+          39.840655290059345
+        ],
+        [
+          116.28293555555554,
+          39.84089928866
+        ],
+        [
+          116.28303333333332,
+          39.84075852034237
+        ],
+        [
+          116.28225722222224,
+          39.840509828942615
+        ]
+      ],
+      "anchorGeo": [
+        116.28259944444444,
+        39.840704558801306
+      ],
+      "groundSize": [
+        43.1409523798867,
+        25.217786348506934
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        65.22911999838857,
+        48.694837403800534
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-5-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-5",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        1152,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1217.222879999015,
+        314.7104973829069,
+        1278.777120000985,
+        364.3239581722353
+      ],
+      "guideAnchor": [
+        1248,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28305166666667,
+          39.84093682682931
+        ],
+        [
+          116.2837727777778,
+          39.8411761321762
+        ],
+        [
+          116.28387055555558,
+          39.84102128763522
+        ],
+        [
+          116.28313111111112,
+          39.84077728946804
+        ]
+      ],
+      "anchorGeo": [
+        116.28346111111112,
+        39.840976710822126
+      ],
+      "groundSize": [
+        40.71047619177898,
+        25.82534149766559
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        61.5542400019699,
+        49.61346078932837
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-6-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-6",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        1344,
+        204.8,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1408.5338399996867,
+        321.1419376854718,
+        1471.4661600003135,
+        357.8925178696702
+      ],
+      "guideAnchor": [
+        1440,
+        344.8
+      ],
+      "groundGeo": [
+        [
+          116.28398666666668,
+          39.84110574833722
+        ],
+        [
+          116.28479944444445,
+          39.84120897794305
+        ],
+        [
+          116.28482388888891,
+          39.841054133476106
+        ],
+        [
+          116.28402333333335,
+          39.84094151909901
+        ]
+      ],
+      "anchorGeo": [
+        116.2844052777778,
+        39.84107524852103
+      ],
+      "groundSize": [
+        41.62190476231933,
+        17.318145330251582
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        62.93232000062676,
+        36.750580184198384
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-7-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-7",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        0,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        63.15575999996133,
+        512.1600295818898,
+        128.84424000003867,
+        576.4744259732524
+      ],
+      "guideAnchor": [
+        96,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28226333333333,
+          39.84050044434385
+        ],
+        [
+          116.28247722222224,
+          39.84055675191718
+        ],
+        [
+          116.28258722222222,
+          39.84020482882653
+        ],
+        [
+          116.28308222222225,
+          39.8403033674737
+        ],
+        [
+          116.28313722222222,
+          39.84014382864075
+        ],
+        [
+          116.28241,
+          39.840007751107976
+        ]
+      ],
+      "anchorGeo": [
+        116.28270027777778,
+        39.840282251512576
+      ],
+      "groundSize": [
+        43.44476190481305,
+        35.54818250430196
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        65.68848000007733,
+        64.3143963913626
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-8-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-8",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        192,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        263.65391999969114,
+        516.9837733279585,
+        312.3460800003087,
+        571.6506822271836
+      ],
+      "guideAnchor": [
+        288,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28311277777779,
+          39.84064121319055
+        ],
+        [
+          116.28351,
+          39.84069282836203
+        ],
+        [
+          116.28344888888888,
+          39.840871135019555
+        ],
+        [
+          116.28365055555558,
+          39.84090867320426
+        ],
+        [
+          116.28376055555557,
+          39.84055205962116
+        ],
+        [
+          116.28314333333334,
+          39.84045821363358
+        ]
+      ],
+      "anchorGeo": [
+        116.28343666666669,
+        39.840683443418925
+      ],
+      "groundSize": [
+        32.203809524217945,
+        29.167569083576154
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        48.69216000061755,
+        54.666908899225064
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-9-1",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-9",
+      "kind": "slab",
+      "level": 1,
+      "cell": [
+        384,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        440.9544000001295,
+        521.5775652595535,
+        519.0455999998703,
+        567.0568902955886
+      ],
+      "guideAnchor": [
+        480,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28392555555557,
+          39.84043944442068
+        ],
+        [
+          116.28412722222224,
+          39.84046759823812
+        ],
+        [
+          116.28417611111112,
+          39.840312752099386
+        ],
+        [
+          116.28491555555557,
+          39.8404300598123
+        ],
+        [
+          116.28496444444446,
+          39.84027521358894
+        ],
+        [
+          116.28399888888887,
+          39.84011098236443
+        ]
+      ],
+      "anchorGeo": [
+        116.28444500000002,
+        39.84028929030127
+      ],
+      "groundSize": [
+        51.64761904744762,
+        23.09112472961442
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        78.09119999974081,
+        45.47932503603511
+      ],
+      "screenScale": 1.512,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "qili-osm-978924276-2",
+      "compoundId": "qili",
+      "sourceId": "osm-978924276",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        576,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        646.4052960005292,
+        475.4690262053847,
+        697.5947039994708,
+        573.5446376815398
+      ],
+      "guideAnchor": [
+        672,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28021020000001,
+          39.84117880000003
+        ],
+        [
+          116.2800777,
+          39.8413801
+        ],
+        [
+          116.28039920000002,
+          39.84150489999999
+        ],
+        [
+          116.2805317,
+          39.84130349999999
+        ]
+      ],
+      "anchorGeo": [
+        116.2803047,
+        39.841341850000006
+      ],
+      "groundSize": [
+        22.570285713818976,
+        21.11520077737191
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        51.18940799894153,
+        98.07561147615513
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924277-2",
+      "compoundId": "qili",
+      "sourceId": "osm-978924277",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        768,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        837.6273071994491,
+        474.19873416959933,
+        890.3726928005509,
+        574.8149297173252
+      ],
+      "guideAnchor": [
+        864,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28023589999998,
+          39.8417566
+        ],
+        [
+          116.28009209999999,
+          39.8419733
+        ],
+        [
+          116.28041610000001,
+          39.842099999999995
+        ],
+        [
+          116.2805599,
+          39.8418834
+        ]
+      ],
+      "anchorGeo": [
+        116.280326,
+        39.84192829999999
+      ],
+      "groundSize": [
+        23.256342857628624,
+        22.23538775778229
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        52.745385601101816,
+        100.61619554772585
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924278-2",
+      "compoundId": "qili",
+      "sourceId": "osm-978924278",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        960,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1028.200994400807,
+        471.6214364607687,
+        1083.799005599193,
+        577.3922274261562
+      ],
+      "guideAnchor": [
+        1056,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28080379999999,
+          39.8419593
+        ],
+        [
+          116.28063360000002,
+          39.842206900000015
+        ],
+        [
+          116.2809565,
+          39.8423378
+        ],
+        [
+          116.2811267,
+          39.8420902
+        ]
+      ],
+      "anchorGeo": [
+        116.28088015000002,
+        39.842148550000005
+      ],
+      "groundSize": [
+        24.514114285002506,
+        24.508137060102285
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        55.59801119838585,
+        105.7707909653875
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "qili-osm-978924279-2",
+      "compoundId": "qili",
+      "sourceId": "osm-978924279",
+      "kind": "high-slab",
+      "level": 2,
+      "cell": [
+        1152,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1187.452175999851,
+        478.3353988561962,
+        1308.5478240001491,
+        586.5265816980157
+      ],
+      "guideAnchor": [
+        1248,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28133960000001,
+          39.84130630000001
+        ],
+        [
+          116.28036020000002,
+          39.840962299999994
+        ],
+        [
+          116.28045500000002,
+          39.8408034
+        ],
+        [
+          116.28143420000002,
+          39.841147499999984
+        ]
+      ],
+      "anchorGeo": [
+        116.28089720000001,
+        39.841054850000006
+      ],
+      "groundSize": [
+        53.393142857274256,
+        32.56312319048982
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        121.09564800029807,
+        108.19118284181945
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924280-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924280",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        1344,
+        409.6,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1417.8498696011256,
+        475.46902620277615,
+        1462.1501303988741,
+        573.5446376841486
+      ],
+      "guideAnchor": [
+        1440,
+        549.6
+      ],
+      "groundGeo": [
+        [
+          116.28167670000002,
+          39.8413153
+        ],
+        [
+          116.2816892,
+          39.8416326
+        ],
+        [
+          116.2820696,
+          39.8416238
+        ],
+        [
+          116.2820572,
+          39.8413065
+        ]
+      ],
+      "anchorGeo": [
+        116.28187315000001,
+        39.84146955
+      ],
+      "groundSize": [
+        19.532742856150094,
+        21.115200779672364
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        44.30026079774848,
+        98.07561148137245
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924281-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924281",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        0,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        72.40664400108446,
+        682.1561074305193,
+        119.59335599891554,
+        776.4575564564053
+      ],
+      "guideAnchor": [
+        96,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.2822317,
+          39.841509599999995
+        ],
+        [
+          116.28222880000001,
+          39.841807599999996
+        ],
+        [
+          116.28264440000001,
+          39.841809999999995
+        ],
+        [
+          116.2826473,
+          39.84151199999999
+        ]
+      ],
+      "anchorGeo": [
+        116.28243805,
+        39.841659799999995
+      ],
+      "groundSize": [
+        20.80542857047226,
+        19.451107986247962
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        47.18671199783108,
+        94.30144902588597
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924282-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924282",
+      "kind": "tower",
+      "level": 2,
+      "cell": [
+        192,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        266.4869184009595,
+        683.286887623428,
+        309.5130815990405,
+        775.3267762634966
+      ],
+      "guideAnchor": [
+        288,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.2827193,
+          39.842145900000006
+        ],
+        [
+          116.28271400000001,
+          39.8424267
+        ],
+        [
+          116.2830903,
+          39.84243089999998
+        ],
+        [
+          116.2830956,
+          39.84215
+        ]
+      ],
+      "anchorGeo": [
+        116.2829048,
+        39.842288399999994
+      ],
+      "groundSize": [
+        18.970971427725317,
+        18.453947322307386
+      ],
+      "height": 22.128014159204373,
+      "displaySize": [
+        43.02616319808101,
+        92.03988864006863
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924283-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924283",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        384,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        453.12556079959427,
+        684.5378600020844,
+        506.87443920040545,
+        789.9241205521273
+      ],
+      "guideAnchor": [
+        480,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.2835375,
+          39.84209659999999
+        ],
+        [
+          116.28327890000001,
+          39.84249750000001
+        ],
+        [
+          116.28349680000001,
+          39.8425804
+        ],
+        [
+          116.28375560000002,
+          39.842179599999994
+        ]
+      ],
+      "anchorGeo": [
+        116.28351725000002,
+        39.8423385
+      ],
+      "groundSize": [
+        23.698800000357664,
+        31.326384966602518
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        53.74887840081118,
+        105.38626055004295
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924285-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924285",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        576,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        620.5907255988897,
+        705.8611436084111,
+        723.4092744011101,
+        768.6008369458006
+      ],
+      "guideAnchor": [
+        672,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.28118539999998,
+          39.84241049999999
+        ],
+        [
+          116.28207910000002,
+          39.84248039999999
+        ],
+        [
+          116.2820973,
+          39.8423628
+        ],
+        [
+          116.2811945,
+          39.842287
+        ]
+      ],
+      "anchorGeo": [
+        116.28164135,
+        39.8423837
+      ],
+      "groundSize": [
+        45.334457143836175,
+        12.522783902822312
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        102.81854880222045,
+        62.73969333738944
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "wuli-west-osm-978924286-2",
+      "compoundId": "wuli-west",
+      "sourceId": "osm-978924286",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        768,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        840.7336248000985,
+        691.0949165666779,
+        887.2663751999015,
+        783.3670639875338
+      ],
+      "guideAnchor": [
+        864,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.2812737,
+          39.841318300000005
+        ],
+        [
+          116.2810691,
+          39.84163300000001
+        ],
+        [
+          116.2812771,
+          39.841712799999996
+        ],
+        [
+          116.2814818,
+          39.841398
+        ]
+      ],
+      "anchorGeo": [
+        116.28127545,
+        39.841515550000004
+      ],
+      "groundSize": [
+        20.517085714198856,
+        25.544148137154934
+      ],
+      "height": 15.140220214192464,
+      "displaySize": [
+        46.532750399803035,
+        92.27214742085596
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "OSM apartment footprint; individual typology inferred from imagery and estate listing; ground accuracy unverified"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-1-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-1",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        960,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1003.9774799994235,
+        707.8876178455757,
+        1108.0225200005768,
+        785.0640654871374
+      ],
+      "guideAnchor": [
+        1056,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.28193333333333,
+          39.84098844177859
+        ],
+        [
+          116.2827888888889,
+          39.841260592687775
+        ],
+        [
+          116.28285611111112,
+          39.841124517368016
+        ],
+        [
+          116.28199444444444,
+          39.840842981367565
+        ]
+      ],
+      "anchorGeo": [
+        116.28239472222222,
+        39.841051787027666
+      ],
+      "groundSize": [
+        45.87523809574657,
+        27.04062212269605
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        104.04504000115332,
+        77.17644764156171
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-2-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-2",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        1152,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1201.8343200001248,
+        709.6104397777697,
+        1294.1656799998752,
+        783.3412435549437
+      ],
+      "guideAnchor": [
+        1248,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.28288666666667,
+          39.84128874616856
+        ],
+        [
+          116.28363222222222,
+          39.84153743474736
+        ],
+        [
+          116.28370555555556,
+          39.84138259102106
+        ],
+        [
+          116.28297222222224,
+          39.84114328639366
+        ]
+      ],
+      "anchorGeo": [
+        116.28329611111111,
+        39.84134036057051
+      ],
+      "groundSize": [
+        40.71047619036608,
+        25.521378796246495
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        92.33135999975048,
+        73.73080377717406
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-3-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-3",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        1344,
+        614.4000000000001,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        1392.4562399990646,
+        711.3332528112985,
+        1487.5437600009354,
+        781.6184305214147
+      ],
+      "guideAnchor": [
+        1440,
+        754.4000000000001
+      ],
+      "groundGeo": [
+        [
+          116.28378500000001,
+          39.841603125919704
+        ],
+        [
+          116.28456111111113,
+          39.84182835231915
+        ],
+        [
+          116.28462833333336,
+          39.84167820146825
+        ],
+        [
+          116.28387055555558,
+          39.84145766681077
+        ]
+      ],
+      "anchorGeo": [
+        116.28420666666668,
+        39.841643009564955
+      ],
+      "groundSize": [
+        41.92571428653923,
+        24.002143316944057
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        95.08752000187087,
+        70.28517771011616
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-4-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-4",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        0,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        47.07816000120835,
+        914.7547136135062,
+        144.9218399987914,
+        987.7969697192069
+      ],
+      "guideAnchor": [
+        96,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28216555555557,
+          39.840655290059345
+        ],
+        [
+          116.28293555555554,
+          39.84089928866
+        ],
+        [
+          116.28303333333332,
+          39.84075852034237
+        ],
+        [
+          116.28225722222224,
+          39.840509828942615
+        ]
+      ],
+      "anchorGeo": [
+        116.28259944444444,
+        39.840704558801306
+      ],
+      "groundSize": [
+        43.1409523798867,
+        25.217786348506934
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        97.84367999758305,
+        73.04225610570074
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-5-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-5",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        192,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        241.83431999852263,
+        914.0657460743604,
+        334.16568000147737,
+        988.4859372583529
+      ],
+      "guideAnchor": [
+        288,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28305166666667,
+          39.84093682682931
+        ],
+        [
+          116.2837727777778,
+          39.8411761321762
+        ],
+        [
+          116.28387055555558,
+          39.84102128763522
+        ],
+        [
+          116.28313111111112,
+          39.84077728946804
+        ]
+      ],
+      "anchorGeo": [
+        116.28346111111112,
+        39.840976710822126
+      ],
+      "groundSize": [
+        40.71047619177898,
+        25.82534149766559
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        92.33136000295474,
+        74.42019118399253
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-6-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-6",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        384,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        432.80075999953,
+        923.7129065282078,
+        527.1992400004702,
+        978.8387768045053
+      ],
+      "guideAnchor": [
+        480,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28398666666668,
+          39.84110574833722
+        ],
+        [
+          116.28479944444445,
+          39.84120897794305
+        ],
+        [
+          116.28482388888891,
+          39.841054133476106
+        ],
+        [
+          116.28402333333335,
+          39.84094151909901
+        ]
+      ],
+      "anchorGeo": [
+        116.2844052777778,
+        39.84107524852103
+      ],
+      "groundSize": [
+        41.62190476231933,
+        17.318145330251582
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        94.39848000094025,
+        55.12587027629752
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-7-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-7",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        576,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        622.7336399999419,
+        903.0400443728347,
+        721.2663600000581,
+        999.5116389598786
+      ],
+      "guideAnchor": [
+        672,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28226333333333,
+          39.84050044434385
+        ],
+        [
+          116.28247722222224,
+          39.84055675191718
+        ],
+        [
+          116.28258722222222,
+          39.84020482882653
+        ],
+        [
+          116.28308222222225,
+          39.8403033674737
+        ],
+        [
+          116.28313722222222,
+          39.84014382864075
+        ],
+        [
+          116.28241,
+          39.840007751107976
+        ]
+      ],
+      "anchorGeo": [
+        116.28270027777778,
+        39.840282251512576
+      ],
+      "groundSize": [
+        43.44476190481305,
+        35.54818250430196
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        98.53272000011611,
+        96.47159458704391
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-8-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-8",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        768,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        827.4808799995367,
+        910.2756599919377,
+        900.519120000463,
+        992.2760233407754
+      ],
+      "guideAnchor": [
+        864,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28311277777779,
+          39.84064121319055
+        ],
+        [
+          116.28351,
+          39.84069282836203
+        ],
+        [
+          116.28344888888888,
+          39.840871135019555
+        ],
+        [
+          116.28365055555558,
+          39.84090867320426
+        ],
+        [
+          116.28376055555557,
+          39.84055205962116
+        ],
+        [
+          116.28314333333334,
+          39.84045821363358
+        ]
+      ],
+      "anchorGeo": [
+        116.28343666666669,
+        39.840683443418925
+      ],
+      "groundSize": [
+        32.203809524217945,
+        29.167569083576154
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        73.0382400009263,
+        82.00036334883771
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    },
+    {
+      "id": "liuli-liuli-roof-segment-9-2",
+      "compoundId": "liuli",
+      "sourceId": "liuli-roof-segment-9",
+      "kind": "slab",
+      "level": 2,
+      "cell": [
+        960,
+        819.2,
+        192,
+        204.8
+      ],
+      "guideVisualBounds": [
+        997.4316000001943,
+        917.1663478893303,
+        1114.5683999998055,
+        985.3853354433828
+      ],
+      "guideAnchor": [
+        1056,
+        959.2
+      ],
+      "groundGeo": [
+        [
+          116.28392555555557,
+          39.84043944442068
+        ],
+        [
+          116.28412722222224,
+          39.84046759823812
+        ],
+        [
+          116.28417611111112,
+          39.840312752099386
+        ],
+        [
+          116.28491555555557,
+          39.8404300598123
+        ],
+        [
+          116.28496444444446,
+          39.84027521358894
+        ],
+        [
+          116.28399888888887,
+          39.84011098236443
+        ]
+      ],
+      "anchorGeo": [
+        116.28444500000002,
+        39.84028929030127
+      ],
+      "groundSize": [
+        51.64761904744762,
+        23.09112472961442
+      ],
+      "height": 6.987793945011907,
+      "displaySize": [
+        117.13679999961118,
+        68.21898755405255
+      ],
+      "screenScale": 2.2680000000000002,
+      "shapeEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity"
+    }
+  ]
+}
