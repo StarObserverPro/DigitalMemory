@@ -4,7 +4,7 @@ This is a short routing surface, not a requirement to read the entire repository
 
 ## Preserve the intended result
 
-DigitalMemory is a geographically registered, stylized, sparse-time memory application. The map is the main experience; selective 2.5D streets and image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
+DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. Entering a street puts the person on its sidewalk in close pseudo-3D: illustrated cinematic scenic flats, limited geometry, fog and directional cues. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
 
 Phase 1 prioritizes the walking-memory network around 新华街, with 南开西里 and the two historical school sites. Do not add the high-school cycling corridor, silently substitute modern school campuses, invent exact routes, or publish private source material. [PHASE_1](docs/PHASE_1.md) is the scope owner.
 

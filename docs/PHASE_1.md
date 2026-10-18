@@ -10,6 +10,10 @@ This is a network of routes associated with different periods, not the asserted 
 
 The two residential-area labels identify project anchors only. Precise homes, unit numbers, and private biographical associations belong in the private archive, not the public repository.
 
+## Construction canvas — 2026-10-17 request
+
+The user authorized a first construction pass using an approximate square around 新华街, the southwest/west Fourth Ring section, 丰台大桥 and 丰台影剧院. The current 1.8 km orientation canvas uses contemporary OSM vectors; it is not a historical source package or an asserted walking route. Four public orientation points are implemented, and both old school-site identities remain unplaced. The first three board candidates were rejected as the main experience. The explicit follow-up requests an illustrated hand-drawn overview plus street-entry scenic flats, connected by real-node mapping; DM-0003 implements one bounded example. See [runtime](RUNTIME.md). This explicit task activates the bounded work in DM-0002; it does not activate the entire sequence below.
+
 ## Initial anchor register
 
 These are planning aliases, not geocoded runtime IDs. Coordinates remain unset until a registration task supplies evidence.
@@ -57,7 +61,7 @@ Build around walking pace, repeated street-side views, familiar turns, small sho
 
 **P1-A / registration sample:** resolve the four anchor labels, identify usable reference coverage, and register one short, evidence-supported 新华街 segment. Record uncertain segments instead of guessing. The result is a spatial/reference package, not finished art.
 
-**P1-B / visual sample:** make one approved style reference and a small overlapping-tile pair over that segment. Check ground registration, seam continuity, readable labels, and one simple raised building. This is a style/geometry acceptance sample, not permission to generate the whole district.
+**P1-B / visual sample (original roadmap, superseded by DM-0003 for the current sample):** make one approved style reference and a small overlapping-tile pair over that segment. Check ground registration, seam continuity, readable labels, and one simple raised building. This is a style/geometry acceptance sample, not permission to generate the whole district.
 
 **P1-C / memory loop:** attach a user-approved fragment and another-time entrance, then demonstrate switching and return at the same place. Use a synthetic, clearly marked fixture until a real private-content workflow is available.
 

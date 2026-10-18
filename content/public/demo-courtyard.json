@@ -1,0 +1,11 @@
+{
+  "id": "demo-courtyard",
+  "schemaVersion": 1,
+  "revision": 1,
+  "privacy": "public",
+  "synthetic": true,
+  "label": "院落入口",
+  "provenanceLabel": "交互示意 · 非历史场景",
+  "description": "这个简化空间用来试走入口与返回。后续可替换为院落、走廊或一张有热点的图片。",
+  "nextSceneId": "demo-room"
+}

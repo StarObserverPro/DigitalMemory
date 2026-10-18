@@ -1,6 +1,10 @@
 # Data model and registration contract
 
-Status: logical schema v1; no production schema, database, or real coordinates are created here.
+> DM-0004 adds implemented BuildingShell, FrontageSlot and Entrance attachments plus exact-period Occupancy resolution. Shells retain identity when a shop changes. See [layer composition](LAYER_COMPOSITION.md).
+
+Status: logical schema v1; a public prototype implements a subset with contemporary orientation coordinates. A production/private database and historical registration are not supplied.
+
+Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
 
 ## Geography is the lookup skeleton, not a mutable primary-key string
 

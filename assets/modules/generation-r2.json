@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "revision": "modules-r2",
+  "method": "built-in image_gen",
+  "approval": "candidate",
+  "outputs": [
+    {
+      "id": "apartment",
+      "prompt": "Use case: stylized-concept. Create one original reusable game scenic-flat asset, a single SHORT 12-metre wide section of an ordinary six-storey residential apartment block in Fengtai, Beijing. Straight-on orthographic FRONT ELEVATION, no perspective or side walls, only this building module isolated on transparent background. Morphology: 1980s-1990s concrete walk-up housing, flat roof, warm weathered grey cream plaster, two vertical stacks of enclosed rectangular projecting balconies and one central stairwell strip of small windows, six restrained storeys in total. Ground floor is a continuous plain muted plaster plinth with two simple rectangular blank bays, no shop painted into it; storefronts will be independently overlaid by code. Subtle restrained pencil contours, sparse warm watercolor wash with beautiful fine paper fibre texture INSIDE the painted surfaces. Match a quiet cute hand-drawn travel-journal map rather than a realistic architectural rendering. Simple large readable forms; VERY LITTLE small detail. No air-conditioners, cables, laundry, posters, trees, pavement, street, people, words, logos or environment. No traditional Chinese courtyard architecture, no decorative tiled eaves, no verandas. Whole facade from roof to ground baseline fits with narrow 3 percent transparent margin; taller than wide, approximately 12:18 aspect of building. The bottom baseline is horizontal. Transparent background truly alpha. This is invented generic morphology, not a reproduction of any photographed building."
+    },
+    {
+      "id": "shop",
+      "prompt": "Use case: stylized-concept. A single independently reusable STORE FRONTAGE OVERLAY for a quiet hand-drawn memory game set in ordinary residential Fengtai, Beijing. Exactly one compact 5m wide by 2.8m high simple ground-floor frontage panel, front orthographic elevation, no perspective. Pale weathered cream plaster rectangle with one broad plain muted bottle-green signboard, beneath it an aluminum-framed window and a simple narrow glazed entry door side by side. Signboard completely BLANK for programmatic text. Modest everyday late-20th-century storefront, broad readable forms, light pencil line and sparse watercolor wash, rich subtle paper grain within painted surfaces. Genuine transparent background outside this rectangle. No upper floors, no roof, no awning, no other shops, no street, no pavement, no people, no clutter, no hanging objects, no written text, no logos, no traditional ornament. Complete panel fits with tiny transparent outer margins. Width to height about 1.8:1. This will be attached to different buildings at runtime."
+    },
+    {
+      "id": "walker",
+      "prompt": "Use case: illustration-story. Create a single original anonymous young schoolboy character cutout for a hand-drawn Chinese neighborhood walking game, BACK VIEW, full body head to both shoe soles visible. Short child around 10-12 years old, about 1.4m tall proportions, softly round youthful silhouette, larger child head and short legs, not a tall or slim teenager. Simple dark short straight hair, muted ochre loose sweatshirt, navy blue trousers, small muted green school backpack, plain dark sneakers. He stands naturally facing away, arms relaxed slightly away from torso and feet separated as if ready to walk. Warm pencil contour and restrained watercolor washes with fine textured paper inside the silhouette; charming quiet sketchbook style, few details and no glossy 3D. Centered figure nearly fills canvas vertically, feet share a clear horizontal baseline, small transparent margins. No face visible. No ground, scenery, road, shadow, lettering, frame or accessories beyond backpack. Genuine transparent alpha background. Not based on or identifying a real individual."
+    },
+    {
+      "id": "paper",
+      "prompt": "Use case: stylized-concept. One flat unmarked warm ivory watercolor-paper texture for the base layer of an illustrated travel-journal map. Square full-bleed sheet, matte off-white with very subtle tan fibres and softly uneven watercolor pigment granulation, delicate natural paper character visible at close view, warm quiet almost-white overall. Absolutely blank, no objects, no roads, no buildings, no text, no drawings, no shadows, no border, no stains or grunge, no torn edges, no photographed table, no lighting gradient. Front-on scan, uniform color across edges suitable as the background of a sparse hand-drawn map. Texture detail only, generous calmness."
+    },
+    {
+      "id": "map-apartment",
+      "prompt": "Use case: stylized-concept. Use the supplied apartment facade only as a style and building-design reference. Create its SMALL 2.5D overview-map version: a single ordinary six-storey Fengtai residential block section, two enclosed balcony stacks and central stair windows, flat roof, pale warm grey plaster. Cute sparse hand-drawn travel-journal map sticker. Show front, a narrow right side and shallow flat roof with a gentle elevated three-quarter view. Keep same basic facade identity; front occupies most of image. Simplify to large quiet shapes and a small number of clear window lines. Delicate pencil and watercolor, fine paper texture inside. Lower floor has two blank frontage bays for later overlays. No text, numbers, road, pavement, people, trees, poles, vehicles, decoration, cast shadow or neighboring buildings. Entire single building isolated with small transparent margins. Genuine alpha background. This is one reusable map asset, not a whole map.",
+      "input": "apartment-front-r2.png (generated original, same building family)"
+    }
+  ],
+  "sourceUse": "Photographs inspected for morphology; no external photos redistributed or used as textures. Historical shop names and exact building addresses are not asserted.",
+  "files": "See content/public/manifest.json for exact output hashes and UV content bounds."
+}
