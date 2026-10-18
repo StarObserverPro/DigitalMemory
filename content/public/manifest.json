@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-layered-prototype-r3",
-  "revision": 3,
+  "id": "phase1-immersive-r4",
+  "revision": 4,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -292,5 +292,6 @@
       "kind": "generated-modular-illustration",
       "approval": "candidate"
     }
-  }
+  },
+  "context": "map-context.json"
 }

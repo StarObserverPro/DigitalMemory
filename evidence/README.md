@@ -1,3 +1,16 @@
+# Current visual evidence — immersive map and street
+
+DM-0005 built-file SHA-256: `36a7e7721be87caa6cd7df16f25fa2853d02886d861174cad12f9f1fa96bae80`. The implementation commit carrying these files is identified by the PR. `immersive-browser-results.json` binds state, viewport, renderer, checks and errors to these built bytes.
+
+- `immersive-overview.png` / `immersive-mobile-map.png`: full-bleed map context, one closed menu button.
+- `immersive-menu.png`: controls revealed only after opening.
+- `immersive-street.png` / `immersive-street-door.png`: upright close half-body composition and walked position.
+- `immersive-street-turned.png` / `immersive-mobile-street.png`: opposite facades and narrow-screen framing.
+
+Ten actual browser checks and seventeen domain tests pass. Shared Chromium CDP 9333, DPR 1, 1440×1000 and 390×844, non-black WebGL2 probe and actual Three.js app. No unexpected console, request or HTTP errors. Generated art remains a candidate; current building-symbol context is not historical reconstruction evidence.
+
+Earlier evidence below is retained as history; its controls and camera acceptance were superseded by the user's correction.
+
 # DM-0004 — layered scene evidence
 
 The current screenshots come from the built static application, not an image mockup. Tested implementation: `0c337176842b3f21d7121f366e46a5c36a2f18d1`; tree `1a39e03e26ff3e5bab0d68e517b8ebc04a0f83ca`, identical to the local verified tree. Built-file SHA-256: `73d5df63607a77932ff31738d5f4415720f0ea3ebb82dd38a177987b8c3b25f2`. The delivery closure changes documentation/routing only. `street-browser-results.json` records initial session, camera/renderer state and all fourteen journey checks. The final merged revision and deployment result are recorded in [PR3](https://github.com/StarObserverPro/DigitalMemory/pull/3).
