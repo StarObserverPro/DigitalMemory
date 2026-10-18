@@ -1,5 +1,7 @@
 # Illustrated overview ↔ sidewalk scene
 
+> Current view hierarchy and compositing rules: [MAP_ASSEMBLY](MAP_ASSEMBLY.md). The overview has three tiers and no person; street entry uses moderately elevated chibi framing. The bounded implementation described below is not yet migrated.
+
 > DM-0004 supersedes the r1 baked illustration: r2 draws roads from registered node positions, composes independent overview groups outside road reservations, and attaches short scenic flats to route/side/setback records. The theatre uses an explicit display offset east of the ring. See [layer composition](LAYER_COMPOSITION.md).
 
 This is the current user-directed visual contract: a hand-drawn/cartoon/travel-journal overview; enter a street to put a person on its sidewalk; stand painted facades up as cinematic scenic flats. Distant/unbuilt areas fade into fog and directional cues. The overview and close view are two presentations of one location.
@@ -11,13 +13,13 @@ This is the current user-directed visual contract: a hand-drawn/cartoon/travel-j
 | Place ID | Stable identity, independently revised WGS84 geometry | Illustrated landmark anchor, label/hit region; can be enlarged |
 | Node ID | Street endpoint or shape control from a referenced road | Authored point in the 1200 × 1200 artboard |
 | Edge ID | Geographic polyline and its endpoints | Drawn path connecting the same nodes |
-| `{edgeId, t, direction}` | Current route location, interpolated from real geometry | Person's foot position along the corresponding illustration edge |
+| `{edgeId, t, direction}` | Current route location, interpolated from real geometry | Street-entry anchor on the overview (no map person); character feet in the entered street |
 | Street offset + heading | Sidewalk-local motion in metres | Grounded character and close follow camera |
 | Portal ID | Place relation; historical entrance may be unknown | Painted door and proximity range; session snapshot on entry |
 
 An illustrated building can be larger than its physical footprint. A curved road can be simplified. Topological identity, point order, declared connections and the entrance's owning edge must remain explicit. A coordinate correction does not change place identity. A new drawing revision does not reset where the person has walked.
 
-There is intentionally **no global inverse from every image pixel to a geographic location**. Only registered nodes, edges and anchors have correspondence. Clicking the illustrated street snaps to its authored edge; empty paper and decorative buildings are not geocoders. The mapping inspector shows both coordinate systems without exposing this as compulsory player UI.
+There is intentionally **no global inverse from every image pixel to a geographic location**. Only registered nodes, edges and anchors have correspondence. Clicking the illustrated street snaps to its authored edge; empty paper and decorative buildings are not geocoders. A separate authoring/QA surface may show both coordinate systems; there is no mapping inspector in the consumer experience.
 
 ## Current bounded implementation
 

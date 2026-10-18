@@ -1,5 +1,7 @@
 # Map, image and scene asset pipeline
 
+> DM-0007: follow [MAP_ASSEMBLY](MAP_ASSEMBLY.md) for three overview tiers, independently replaceable pale context, compound children, and road-only bridge/retaining-wall parts. The same style must hold across scales. Accepted general style is not approval of a specific asset, location or chronology.
+
 > DM-0004 uses original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. The prior all-in-one illustration and long street strip are superseded. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
 
 Status: production contract; DM-0002 adds a contemporary OSM orientation extract, two vector map candidates and one generated style candidate. Historical imagery and accepted production tiles remain open.
