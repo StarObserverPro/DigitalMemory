@@ -1,0 +1,26 @@
+{
+  "imagery": {
+    "request": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=116.279%2C39.840%2C116.290%2C39.8465&bboxSR=4326&imageSR=3857&size=1800%2C1400&format=jpg&f=pjson",
+    "result": {
+      "href": "https://services.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_map16a7172261fb4588adca13c182491fc9.jpg",
+      "width": 1800,
+      "height": 1400,
+      "extent": {
+        "xmin": 12944119.069951057,
+        "ymin": 4842713.684796739,
+        "xmax": 12945343.584349785,
+        "ymax": 4843666.084884639,
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      "scale": 2571.1537001548945
+    }
+  },
+  "captureDate": null,
+  "accessDate": "2026-10-18",
+  "imageryRedistribution": "reference-only; excluded from public asset batch",
+  "footprints": "OpenStreetMap contributors, ODbL; https://www.openstreetmap.org/copyright",
+  "caution": "Qili and Wuli-west OSM footprints are independent source geometry, not surveyed. Liuli visible roof traces are not ground registration. No GCJ02 data mixed with WGS84."
+}

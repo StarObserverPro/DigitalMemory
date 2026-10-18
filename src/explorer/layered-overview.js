@@ -1,3 +1,4 @@
+import { compileCompoundTrials, visibleCompoundTrials, compoundTrialMarkup } from './compound-overview.js';
 import { planMapAssembly, validateMapAssembly } from '../domain/map-assembly.js';
 import { mapMetrics, placeMapLabels } from './map-labels.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -48,7 +49,7 @@ export function createOverviewAssembly(data,context,registration,transform,asset
   for(let y=-1500;y<3000;y+=300)for(let x=-1500;x<3000;x+=300)patches.push({id:`patch-${x}-${y}`,bounds:[x,y,300,300],interactive:false,recipe:{seed:`city-${x}-${y}`,styleRevision:'paper-roads-r2',typology:'land-wash'}});
   const model={schemaVersion:1,id:'fengtai-overview-review',revision:2,layoutRevision:data.mappingRevision,registrationBounds:[100,150,1050,1000],backdrop:{styleRevision:'paper-r2'},context:patches,roads,features};
   validateMapAssembly(model);
-  return {model,data,context,registration,transform,parcels};
+  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets)};
 }
 function image(asset,rect,opacity=1) {
   const[x,y,w,h]=rect;return `<image x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMax meet" href="${esc(asset.url)}" opacity="${opacity}"/>`;
@@ -72,7 +73,10 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
   for(const f of plan.features.filter(f=>f.label)) {
     const[x,y,w,h]=f.bounds;candidates.push({id:f.id,text:f.label,kind:'place',priority:f.priority,minLevel:0,positions:around(x+w/2,y+h/2,w,h)});
   }
+  const compounds=visibleCompoundTrials(assembly,state,availableAssets);
+  for(const c of compounds){const[x,y,w,h]=bounds(c.mask);candidates.push({id:'compound-'+c.id,text:c.label,kind:'place',priority:103,minLevel:1,positions:[[x+w/2,y+h+24/s],[x+w+66/s,y+h/2],[x-66/s,y+h/2]]});}
   for(const p of assembly.parcels) {
+    if(compounds.some(c=>p.label.includes(c.id==='wuli-west'?'新华街五里':c.label)))continue;
     const [x,y,w,h]=bounds(p.art),members=plan.features.filter(f=>assembly.model.features.find(a=>a.id===f.id).parcelId===p.id);
     const named=['新华街三里','南开西里'].includes(p.label),box=members.length?bounds(members.flatMap(f=>[[f.bounds[0],f.bounds[1]],[f.bounds[0]+f.bounds[2],f.bounds[1]+f.bounds[3]]])):[x,y,w,h];
     const [bx,by,bw,bh]=box;
@@ -96,7 +100,7 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
     positions.sort((a,b)=>Math.hypot(a[0]-center[0],a[1]-center[1])-Math.hypot(b[0]-center[0],b[1]-center[1]));
     candidates.push({id:'road-name-'+text,text,kind:'road',vertical:text==='西四环南路',priority:importance[text]||30,minLevel:(importance[text]||30)>=90?0:1,positions});
   }
-  return placeMapLabels(candidates,plan.features.map(f=>f.bounds),metrics,level);
+  return placeMapLabels(candidates,[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))],metrics,level);
 }
 export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapMetrics(state.camera)) {
   const {labels}=overviewLabelLayout(assembly,state,availableAssets,metrics);
@@ -110,10 +114,12 @@ export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapM
 /** Roads are quiet paper marks; click affordance does not change their permanent color. */
 export function layeredOverviewMarkup(assembly,assets,state,availableAssets,options={}) {
   const plan=currentPlan(assembly,state,availableAssets),level=mapLevel(state.camera.zoom);
+  const compounds=visibleCompoundTrials(assembly,state,availableAssets);
   const allRoads=[...assembly.context.roads,...assembly.data.roads];
-  const masks=plan.features.map(f=>`<rect x="${f.ground[0]-2}" y="${f.ground[1]-2}" width="${f.ground[2]+4}" height="${f.ground[3]+4}" fill="black"/>`).join('');
+  const compoundMasks=compounds.map(c=>`<path d="${path(c.mask)}Z" fill="black"/>`).join('');
+  const masks=compoundMasks+plan.features.map(f=>`<rect x="${f.ground[0]-2}" y="${f.ground[1]-2}" width="${f.ground[2]+4}" height="${f.ground[3]+4}" fill="black"/>`).join('');
   const roadMasks=allRoads.map(r=>`<path d="${path(r.art)}" fill="none" stroke="black" stroke-width="${roadWidth(r)+3}"/>`).join('');
-  const defs=`<defs><filter id="loose-edge" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="19" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.4"/></filter><mask id="context-open" maskUnits="userSpaceOnUse" x="-1500" y="-1500" width="4500" height="4500"><rect x="-1500" y="-1500" width="4500" height="4500" fill="white"/>${roadMasks}${masks}</mask></defs>`;
+  const defs=`<defs><filter id="loose-edge" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="19" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.4"/></filter><mask id="context-open" maskUnits="userSpaceOnUse" x="-1500" y="-1500" width="4500" height="4500"><rect x="-1500" y="-1500" width="4500" height="4500" fill="white"/>${roadMasks}${masks}</mask><mask id="compound-road-clear" maskUnits="userSpaceOnUse" x="-1500" y="-1500" width="4500" height="4500"><rect x="-1500" y="-1500" width="4500" height="4500" fill="white"/>${roadMasks}</mask></defs>`;
   const washes=assembly.context.districts.map(d=>`<path d="${path(d.art)}Z" fill="${d.kind==='park'?'#a5b58c':'#cfc0a5'}" opacity="${d.kind==='park'?.22:.11}"/>`).join('');
   const pale=assembly.context.buildings.map(b=>`<path d="${path(b.footprint)}Z" fill="#bbaf98" stroke="#aaa28c" stroke-width=".7" opacity="${level===0?.18:.23}"/>`).join('');
   const yards=assembly.parcels.filter(p=>['osm-way-897762350','osm-way-897762342'].includes(p.id)).map(p=>`<path d="${path(p.art)}Z" fill="#b8c7a4" opacity=".14"/>`).join('');
@@ -127,5 +133,5 @@ export function layeredOverviewMarkup(assembly,assets,state,availableAssets,opti
   const decks=assembly.registration.bridgeDecks.map(d=>{const art=d.geo.map(assembly.transform.toImage),p=path(art)+'Z';return `<path d="${p}" transform="translate(0,4)" fill="#928f7c" opacity=".22"/><path data-bridge-deck="${d.id}" d="${p}" fill="#e5e4d8" stroke="#aaa996" stroke-width="1.3"/>`;}).join('');
   const structures=`<g data-layer="bridge-structures" opacity=".85" filter="url(#loose-edge)">${level===2?'<path d="M388,551 L392,625 L400,643 L398,572Z M422,538 L428,614 L436,631 L431,550Z" fill="#b8b09b" opacity=".36"/>':''}${decks}${rail}</g>`;
   const objects=plan.features.map(f=>`<g data-map-object="${f.id}" data-place-id="${f.placeId}" data-anchor="${f.groundAnchor.join(',')}">${f.assetRef==='venue-symbol@1'?venue(f.bounds):image(assets[f.assetRef],f.bounds)}</g>`).join('');
-  return `${defs}<g data-map-tier="${plan.level}">${context}${roads}${structures}<g data-layer="solid-places">${objects}</g>${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}</g>`;
+  return `${defs}<g data-map-tier="${plan.level}">${context}${compoundTrialMarkup(compounds,assets,level)}${roads}${structures}<g data-layer="solid-places">${objects}</g>${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}</g>`;
 }
