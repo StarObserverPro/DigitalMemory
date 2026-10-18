@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "phase1-immersive-r4",
-  "revision": 4,
+  "id": "phase1-layered-review-r5",
+  "revision": 5,
   "privacy": "public",
   "geometry": "orientation.json",
   "geometryRevision": "fengtai-orientation-r1",
@@ -290,6 +290,28 @@
       "sha256": "5a0f6a9a084446ac2ec50bb5f05b6f7e01b83eb457755904e372bb45ee2c71b8",
       "privacy": "public",
       "kind": "generated-modular-illustration",
+      "approval": "candidate"
+    },
+    "towerSketch": {
+      "id": "towerSketch",
+      "url": "../../assets/modules/towerSketch-r1.webp",
+      "width": 342,
+      "height": 400,
+      "revision": "towerSketch-r1",
+      "sha256": "6b26c9983ca0edc706a2be4d883e49a56a54bee8aac372721cb4121d738d723b",
+      "privacy": "public",
+      "kind": "generated-thumbnail-illustration",
+      "approval": "candidate"
+    },
+    "slabSketch": {
+      "id": "slabSketch",
+      "url": "../../assets/modules/slabSketch-r1.webp",
+      "width": 400,
+      "height": 192,
+      "revision": "slabSketch-r1",
+      "sha256": "0709054ad70e8beeaad35a4509bde3e5e2b3c377515344b2201c1e1a565a9a66",
+      "privacy": "public",
+      "kind": "generated-thumbnail-illustration",
       "approval": "candidate"
     }
   },

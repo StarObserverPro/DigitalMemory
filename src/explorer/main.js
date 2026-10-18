@@ -1,5 +1,5 @@
 import { createComposition } from '../domain/composition.js';
-import { overviewMarkup } from './overview.js';
+import { createOverviewAssembly, layeredOverviewMarkup, mapLevel } from './layered-overview.js';
 import { createIllustrationMapping, STAGE } from '../domain/illustration.js';
 import { createTransform, SpatialRegistry } from '../domain/spatial.js';
 import { resolveEnvironment } from '../domain/temporal.js';
@@ -9,6 +9,7 @@ import { restoreSession, saveSession } from '../adapters/session-storage.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
+let overviewAssembly, mapDragged=false; const availableMapAssets=new Set();
 let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
 const assetURL = asset => new URL(asset.url, repository.baseURL).href;
@@ -36,14 +37,14 @@ function render() {
   $('period-label').textContent = currentPeriod().label;
   const asset = manifest.assets.find(a => a.id === state.styleId);
 
-  const artKey=JSON.stringify([state.styleId,state.periodId,state.layers,state.frontagePreview]);
-  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-art').src=assetURL(asset);$('map-composition').innerHTML=overviewMarkup(composition,moduleAssets,state,mapContext);}
-  $('map-person').hidden = !state.layers.person;
+  const artKey=JSON.stringify([state.styleId,state.periodId,mapLevel(state.camera.zoom)]);
+  if(artKey!==lastArtKey){lastArtKey=artKey;$('map-composition').innerHTML=layeredOverviewMarkup(overviewAssembly,moduleAssets,state,[...availableMapAssets]);}
+  $('map-person').hidden = true;
   $('map-person').src = moduleAssets.walker.url;
   $('map-person').style.height = state.characterId==='youth'?'53px':'46px';
 
   $('map-art').style.clipPath = asset.displayClip || 'none';
-  $('map-camera').style.transform = `translate(calc(-50% + ${state.camera.x}%),calc(-58% + ${state.camera.y}%)) scale(${state.camera.zoom})`;
+  $('map-camera').style.transform = `translate(calc(-50% + ${state.camera.x}%),calc(-50% + ${state.camera.y}%)) scale(${state.camera.zoom})`;
   $('street-entry').hidden = state.view === 'street' || state.sceneId !== 'map';
   $('leave-street').hidden = state.view !== 'street' || state.sceneId !== 'map';
   $('scene-back').hidden = state.sceneId === 'map';
@@ -51,7 +52,7 @@ function render() {
   $('door-action').hidden = state.view !== 'street' || state.sceneId !== 'map' || !stage?.inspect()?.nearEntrance;
   document.querySelector('.menu-zoom').hidden = state.view !== 'map' || state.sceneId !== 'map';
   $('zoom-out').disabled = state.camera.zoom <= 1;
-  $('zoom-in').disabled = state.camera.zoom >= 3;
+  $('zoom-in').disabled = state.camera.zoom >= 2.7;
 
   for (const button of document.querySelectorAll('[data-period]')) button.setAttribute('aria-pressed', String(button.dataset.period === state.periodId));
 
@@ -59,16 +60,8 @@ function render() {
   if (state.sceneId === 'map') { scene.hidden = true; scene.replaceChildren(); }
 
 }
-function renderMarkers() {
-  $('markers').innerHTML = registry.all().filter(p => registry.anchor(p.id)).map(place => {
-    const [x,y] = mapping.data.anchors.find(a=>a.id===place.id)?.label || registry.anchor(place.id);
-    return `<span class="place-label" style="left:${x/12}%;top:${y/12}%">${escape(place.label)}</span>`;
-  }).join('');
-}
-function renderRoadLabels(transform) {
-  const labels = [ ['西四环南路', [355,415], 90], ['正阳大街', [686,438], -26], ['新华街', [892,781], -26], ['建国街',[753,633],-21],['铁路',[760,500],-22],['丰台南路',[752,966],-10] ];
-  $('road-labels').innerHTML = labels.map(([label,[x,y],rotate])=>`<text x="${x}" y="${y}" text-anchor="middle" transform="rotate(${rotate} ${x} ${y})">${label}</text>`).join('')+'<text class="neighborhood-note" x="780" y="1090" text-anchor="middle">往 韩 庄 子</text>';
-}
+function renderMarkers() { $('markers').replaceChildren(); }
+function renderRoadLabels() { $('road-labels').replaceChildren(); }
 function renderPlaces(query = '') {
   const results = registry.all().filter(p => p.label.includes(query.trim()));
   $('place-results').innerHTML = results.length ? results.map(p => `<button class="place-result" data-place="${escape(p.id)}"><span>${escape(p.label)}</span><small>${p.geometry ? '打开地点 ↗' : '旧址待定位'}</small></button>`).join('') : '<p class="empty">暂时没有这个地点。</p>';
@@ -151,16 +144,17 @@ function wireControls() {
     dialog.addEventListener('cancel', () => { queryGeneration++; portals.cancel(); loading = false; notify(); });
     dialog.addEventListener('click', e => { const r = dialog.getBoundingClientRect(); if (e.target === dialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) { dialog.close(); queryGeneration++; } });
   }
-  const zoom = delta => { const camera = session.get().camera; session.dispatch({ type: 'camera', camera: { zoom: camera.zoom + delta, ...(camera.zoom + delta <= 1 ? { x: 0, y: 0 } : {}) } }); };
-  $('zoom-in').addEventListener('click', () => zoom(.35));
-  $('zoom-out').addEventListener('click', () => zoom(-.35));
+  const zoom = delta => { const camera=session.get().camera,stops=[1,1.8,2.7],next=delta>0?(stops.find(z=>z>camera.zoom+.01)||2.7):([...stops].reverse().find(z=>z<camera.zoom-.01)||1); session.dispatch({type:'camera',camera:{zoom:next,x:camera.x*next/camera.zoom,y:camera.y*next/camera.zoom}}); };
+  $('zoom-in').addEventListener('click', () => zoom(1));
+  $('zoom-out').addEventListener('click', () => zoom(-1));
   $('reset-view').addEventListener('click', () => session.dispatch({ type: 'camera', camera: { x: 0, y: 0, zoom: 1 } }));
   const viewport = $('map-viewport'); let drag = null;
-  viewport.addEventListener('pointerdown', e => { if (e.target.closest('button') || e.button !== 0) return; drag = { id: e.pointerId, x: e.clientX, y: e.clientY, camera: session.get().camera }; viewport.setPointerCapture(e.pointerId); });
+  viewport.addEventListener('pointerdown', e => { if (e.target.closest('button') || e.button !== 0) return; mapDragged=false; drag = { id: e.pointerId, x: e.clientX, y: e.clientY, camera: session.get().camera }; viewport.setPointerCapture(e.pointerId); });
   viewport.addEventListener('pointermove', e => {
     if (!drag || drag.id !== e.pointerId) return;
+    if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>6)mapDragged=true;
     const side = $('map-camera').clientWidth;
-    session.dispatch({ type: 'camera', camera: { x: Math.max(-22, Math.min(22, drag.camera.x + (e.clientX - drag.x) / side * 100)), y: Math.max(-22, Math.min(22, drag.camera.y + (e.clientY - drag.y) / side * 100)) } });
+    session.dispatch({ type: 'camera', camera: { x: Math.max(-50*drag.camera.zoom, Math.min(50*drag.camera.zoom, drag.camera.x + (e.clientX - drag.x) / side * 100)), y: Math.max(-50*drag.camera.zoom, Math.min(50*drag.camera.zoom, drag.camera.y + (e.clientY - drag.y) / side * 100)) } });
   });
   viewport.addEventListener('pointerup', () => { drag = null; });
   viewport.addEventListener('pointercancel', () => { drag = null; });
@@ -209,7 +203,11 @@ async function start() {
   if(composition.data.mappingRevision!==mappingData.id)throw new Error('图层登记版本不匹配。');
   mapContext = await repository.read(manifest.context);
   moduleAssets=Object.fromEntries(Object.entries(manifest.moduleAssets).map(([id,a])=>[id,{...a,url:assetURL(a)}]));
+  overviewAssembly=createOverviewAssembly(composition.data,mapContext);
+  await Promise.allSettled(['towerSketch','slabSketch'].map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
   let saved = restoreSession(localStorage, manifest);
+  if(saved && saved.mapRevision!=='layered-r5'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
+  if(saved)saved.mapRevision='layered-r5';
   if(saved){saved.layers={roads:true,buildings:true,frontages:true,person:true};saved.frontagePreview='none';}
   if (saved && !mapping.valid(saved.route)) saved.route = mappingData.spawn;
   if (saved && !manifest.assets.find(a => a.id === saved.styleId)?.selectable) saved.styleId = 'journal';
@@ -223,22 +221,7 @@ async function start() {
   renderMarkers(); renderRoadLabels(transform); wireControls(); render();
   $('walking-path').innerHTML = `<path d="M${mapping.data.nodes.map(n => n.art.join(',')).join(' L')}"/>`;
   globalThis.__VISUAL_READY__ = true;
-  document.addEventListener('keydown', e => { if (session.get().view !== 'map' || session.get().sceneId !== 'map' || document.querySelector('dialog[open]')) return; if (['ArrowUp','ArrowRight','ArrowDown','ArrowLeft'].includes(e.code)) { e.preventDefault(); mapDestination = null; mapKeys.add(e.code); } });
-  document.addEventListener('keyup', e => mapKeys.delete(e.code));
-  window.addEventListener('blur', () => { mapKeys.clear(); mapDestination = null; });
-  let lastMapFrame = performance.now();
-  function animateMap(now) {
-    const dt = Math.min((now-lastMapFrame)/1000,.05); lastMapFrame=now;
-    if (session.get().view === 'map' && session.get().sceneId === 'map' && !document.querySelector('dialog[open]')) {
-      const d=mapping.locate(session.get().route).distance;
-      let forward=Number(mapKeys.has('ArrowUp')||mapKeys.has('ArrowRight'))-Number(mapKeys.has('ArrowDown')||mapKeys.has('ArrowLeft'));
-      if (mapDestination !== null) { const gap=mapDestination-d; if (Math.abs(gap)<35*dt) { session.dispatch({type:'route',route:mapping.atDistance(mapDestination)}); mapDestination=null; } else forward=Math.sign(gap); }
-      if (forward) session.dispatch({type:'walk',input:{forward},dt});
-    } else { mapKeys.clear(); mapDestination=null; }
-    requestAnimationFrame(animateMap);
-  }
-  requestAnimationFrame(animateMap);
-  $('map-viewport').addEventListener('click', e => { if (e.target.closest('button')) return; const r = $('map-camera').getBoundingClientRect(), p = [(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200], hit = mapping.nearestArt(p); if (hit.distance < 25) mapDestination = mapping.locate(hit.route).distance; });
+  $('map-viewport').addEventListener('click', async e => { if(mapDragged||e.target.closest('button')||session.get().view!=='map')return; const r=$('map-camera').getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200],hit=mapping.nearestArt(p); if(hit.distance<28){session.dispatch({type:'route',route:hit.route});const d=mapping.locate(hit.route).distance;if(d>=STAGE.min&&d<=STAGE.max)await enterStreet();} });
   $('map-art').addEventListener('error', () => notify('底图未载入，地点入口仍可使用。请刷新重试。'));
   // Read-only diagnostic hook: domain state remains owned by the application session.
   globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null }) });
