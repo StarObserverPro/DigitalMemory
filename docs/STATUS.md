@@ -2,6 +2,14 @@
 
 Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
 
+## Current art specification — DM-0015
+
+User verdict, 2026-10-19: specification accepted; proportions and scaling are usable; generated finish rejected for excessive meaningless noise and insufficient brushwork differentiation. Neither trial is a selected style reference.
+
+Follow-up research read primary-source hand-drawn route-map, journal/watercolor, architectural graphite/observation and game-art/icon skills. The art contract now combines proportion checks, concrete contour/wash/hatching rules, subject CSS-pixel budgets and detail hierarchy across map tiers. Pen/light watercolor and graphite are proposed directions only; no new image was generated or style accepted by this research.
+
+Delivery contains documentation and ignore rules only. Trial images, visual examples and dedicated demonstration scripts are excluded from the new branch and its history; future visual examples also stay out of Git. Runtime, manifests, registrations and hosting are unchanged. Existing R4 SVG art/fallback still requires a later consumer migration. See [DM-0015](attention/tasks/DM-0015.md) and [current art contract](HANDPAINTED_MAP_ART.md).
+
 ## Current overview correction — DM-0009
 
 Soft paper-compatible roads replace the heavy black overview bars. Context continuations and Four Ring service roads use public source geometry. All feature anchors now share the road projection; the three Sanli symbols remain inside Sanli instead of being spread across Wuli. Thumbnail art retains aspect ratio. A local pen-like handwritten font and screen-pixel label placement keep names readable at all three tiers and on narrow screens; label budgets and collision checks suppress excess names.

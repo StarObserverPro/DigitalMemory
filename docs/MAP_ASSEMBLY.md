@@ -1,5 +1,7 @@
 # A layered map that can be completed one memory at a time
 
+> DM-0015: [hand-painted map art](HANDPAINTED_MAP_ART.md) is the current medium/projection/height-identity contract. SVG defines planning geometry, never visible map artwork. The r4 vector fallback and procedural yard decorations below describe a superseded implementation, not accepted art. Isometric studies must share their ground/roof/vertical axes; do not paste a new-camera building onto the old north-up ground or distort it to fit.
+
 > DM-0013: [validated asset workflow](ASSET_WORKFLOW_VALIDATION.md) supersedes whole-compound affine fitting and whole-image road masking as the production method. DM-0014 implements independently anchored building parts, separate worn-yard ground and standing depth order. Ground bounds, visual bounds and standing-art occlusion must be distinct.
 
 DM-0009, 2026-10-18. The composition planner is connected to the visible overview. Geometry, visual acceptance and historical verification remain separate. Current implementation and gaps are recorded in STATUS and the active/recent task packet.
