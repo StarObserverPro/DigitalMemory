@@ -8,7 +8,7 @@ The purpose is to preserve impressions of living in an environment, not to produ
 
 Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
 
-The prototype opens a hand-drawn overview. Choose “走进新华街” to place a character on its sidewalk, surrounded by upright illustrated film-set facades, with fog beyond the modeled segment. Walk, turn, approach a courtyard door and return to the same map position. “查看位置对应” compares real and illustration nodes. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping and scenic-flat design](docs/ILLUSTRATION_MAPPING.md).
+The prototype opens a hand-drawn overview. Enter the modeled Xinhua segment to walk, orbit, approach a courtyard gate and return to the same map position. The current close scene uses an articulated volumetric child and independent building volumes, superseding the earlier paper person and facade-only sample; see [street prototype and evidence limits](docs/STREET_PROTOTYPE.md). Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping](docs/ILLUSTRATION_MAPPING.md).
 
 The “图层与拼装” control lets you inspect roads, buildings, frontages and the child separately, then try two synthetic shop occupants in a single slot. Building form now follows [local photo observations](docs/LOCAL_VISUAL_REFERENCES.md); [layer composition](docs/LAYER_COMPOSITION.md) explains short modules and independent time layers.
 
@@ -25,6 +25,7 @@ The “图层与拼装” control lets you inspect roads, buildings, frontages a
 | How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
 | Where did Xinhua/Sanli building geometry actually come from, and what is verified? | [Geographic source chain](docs/GEO_DATA_LINEAGE.md) |
 | How does an Agent acquire and audit the next map area without guessing buildings? | [Geodata acquisition / QA runbook](docs/GEO_DATA_RUNBOOK.md) |
+| How does local Codex set up World Labs and resume the proposed street experiment? | [Marble 2 setup and handoff](docs/WORLDLABS_HANDOFF.md) |
 | How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
 | What demonstrates that work actually succeeded? | [Verification](docs/VERIFICATION.md) |
 | Which architecture choices are settled or deferred? | [Decision register](docs/DECISIONS.md) |
