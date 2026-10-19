@@ -134,6 +134,78 @@
     },
     {
       "type": "Feature",
+      "id": "osm-way-42724022",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            116.28343099425287,
+            39.84471919272647
+          ],
+          [
+            116.28400909770114,
+            39.84368219995391
+          ],
+          [
+            116.28410900862069,
+            39.843508595632635
+          ],
+          [
+            116.28490809482759,
+            39.842171497960955
+          ],
+          [
+            116.28517129885057,
+            39.84111030467497
+          ],
+          [
+            116.28537669252873,
+            39.84030969547517
+          ],
+          [
+            116.28538419540229,
+            39.840280398491146
+          ]
+        ]
+      },
+      "properties": {
+        "kind": "road-centerline",
+        "source": "DigitalMemory OSM context inverse-projection",
+        "name": "韩庄路"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "osm-way-114393299",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            116.2858338045977,
+            39.84558299816172
+          ],
+          [
+            116.28643049425287,
+            39.844603394736886
+          ],
+          [
+            116.28744120977011,
+            39.843117202134366
+          ],
+          [
+            116.28818190229885,
+            39.84208470352225
+          ]
+        ]
+      },
+      "properties": {
+        "kind": "road-centerline",
+        "source": "DigitalMemory OSM context inverse-projection",
+        "name": "东兴里"
+      }
+    },
+    {
+      "type": "Feature",
       "id": "024a1730-edd6-416e-970f-7189efb1d441",
       "geometry": {
         "type": "Polygon",
@@ -968,7 +1040,9 @@
         "sourceId": "1611e112-5581-4990-a8e3-4bf4a9e5ae25",
         "buildingId": null,
         "sanliRelation": "nearby-only",
-        "nearRoadCenterline": [],
+        "nearRoadCenterline": [
+          "东兴里"
+        ],
         "heightMeters": null,
         "numFloors": null,
         "minHeightMeters": null,
@@ -11656,7 +11730,9 @@
         "sourceId": "d224a066-f4b6-4437-9120-33e8ae13e4ac",
         "buildingId": null,
         "sanliRelation": "nearby-only",
-        "nearRoadCenterline": [],
+        "nearRoadCenterline": [
+          "东兴里"
+        ],
         "heightMeters": null,
         "numFloors": null,
         "minHeightMeters": null,
