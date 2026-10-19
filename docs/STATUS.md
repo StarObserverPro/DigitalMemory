@@ -1,6 +1,22 @@
 # Repository status
 
-Status date: 2026-10-18 (America/New_York). This is an observed delivery ledger, not task activation.
+Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
+
+## Complete Xinhua overview corridor — DM-0016
+
+The requested corridor now uses eleven selected compound/large-parcel raster paintings: nine residential units (Wuli east/west separate), heating plant and the background 丰台一中 campus. Sanli retains five tall blocks and five lower slabs; the east keeps earlier low fabric up to Zaojia Street. Three short southern shop groups are detached from residential buildings, including the retained frontage opposite Sanli. Building counts and minor footprints are a contextual reconstruction, not an exact historical inventory.
+
+Sixteen production rasters replace the current overview's visible SVG buildings, vegetation, yard decoration and road/ground artwork. SVG supplies only invisible masks and ordinary labels. The overview's legacy vector rendering branch is removed, including missing-image/configuration fallback. One north-up cartographic-oblique projection, scalar frame registration and coherent compound calibration preserve tower proportions and road clearance. Sanli was rebuilt after the user rejected the count-based arrangement: three cream/red-cap towers across the southern row, two white/green flat-top towers at the northern corners, five differently oriented/length slabs and an open shared court. The three stable source feature IDs now link to detailed painted footprints; their obsolete rectangular glyph reservations are retired, with an executable polygon/road clearance check retained. Ground art and raised bodies render separately in depth order. Geographic place identity, walking route, street scene and personal-school anchors are unchanged.
+
+Forty-six automated tests and the build pass. A refreshed map-font subset covers every new compound label. Native actual-consumer rendering is recorded in [DM-0016](attention/tasks/DM-0016.md). Native views cover three tiers, two closer subareas and a phone budget; these are not browser screenshots or a gesture walkthrough. Partial Wayback imagery has a queried 2011-02-01 capture date; it is not a complete old satellite base. Raw references, rejected generations, guides, examples and QA images are excluded from the outgoing Git history. Only selected product rasters and concise provenance are added. User aesthetic/historical approval and merge/deployment remain separate and pending.
+
+## Art specification and prior verdict — DM-0015
+
+User verdict, 2026-10-19: specification accepted; proportions and scaling are usable; generated finish rejected for excessive meaningless noise and insufficient brushwork differentiation. Neither trial is a selected style reference.
+
+Follow-up research read primary-source hand-drawn route-map, journal/watercolor, architectural graphite/observation and game-art/icon skills. The art contract now combines proportion checks, concrete contour/wash/hatching rules, subject CSS-pixel budgets and detail hierarchy across map tiers. Pen/light watercolor and graphite are proposed directions only; no new image was generated or style accepted by this research.
+
+Delivery contains documentation and ignore rules only. Trial images, visual examples and dedicated demonstration scripts are excluded from the new branch and its history; future visual examples also stay out of Git. Runtime, manifests, registrations and hosting are unchanged. Existing R4 SVG art/fallback still requires a later consumer migration. See [DM-0015](attention/tasks/DM-0015.md) and [current art contract](HANDPAINTED_MAP_ART.md).
 
 ## Current overview correction — DM-0009
 

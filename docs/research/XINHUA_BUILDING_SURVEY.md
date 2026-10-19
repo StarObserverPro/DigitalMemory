@@ -66,6 +66,32 @@ S13 [Fang: Sili](https://esf.fang.com/loupan/1010326549.htm). S14 [Lianjia: Liul
 
 Photographs actually viewed: P1 [Sanli](https://news.lianjia.com/bj/xiaoqu/1111027380823.html), P2 [Sili](https://news.lianjia.com/bj/xiaoqu/1111027380824.html), P3 [Liuli](https://news.lianjia.com/bj/xiaoqu/1111027380820.html), P4 [Nankai Xili](https://news.lianjia.com/bj/xiaoqu/1111027378539.html). Photo capture dates unverified. These support facade morphology, not every historical period.
 
-## Delivery boundary
+## DM-0016 corridor extension — 2026-10-19
+
+The user now requests both sides filled by compound, including the larger heating and school parcels, detached intermittent shops, earlier shops opposite Sanli and eastern pre-clearance fabric up to the diagonal Zaojia Street. The production overview follows this request as an earlier composite, not an exact image of 2005 or 2011.
+
+| Area | Working drawing coverage | Evidence boundary |
+| --- | --- | --- |
+| North side | Qili; Wuli west and east separately; Sanli with five tall blocks and five lower slabs; Yili with mid/low blocks and older single-storey rows | Existing typology ledger plus current reference geometry; Yili row inventory is approximate |
+| South side | Bali, Liuli, Sili and Erli; heating plant between the central residential groups; large eastern school campus with classroom wings and sports ground | Public community boundaries and imagery establish relative geography; drawn child footprints are approximate |
+| Frontage | Three short detached shop groups on the southern frontage, including the retained group opposite Sanli | User recollection controls earlier presence and detachment; generic illustrations do not identify tenants |
+| School | Background campus labelled 丰台一中, at the public Xinhua Street 2 address | Current successor is 首都经贸附中; this is not either unresolved personal historical-school anchor |
+
+Primary public references added: [Xinhua south community](https://www.bjft.gov.cn/ftq/ftsq/202203/6ef2959837664a118b049f3c7023e7ab.shtml) gives the west-to-east Bali/Liuli/Sili/Erli/school relationship and boundaries to Xinhua Street, Zaojia Street and Fengtai Nanlu. [Street profile](https://www.bjft.gov.cn/ftq/ftjdgk/202203/28c925dacc15411eaa269afe6c863a7a.shtml) supplies the school's public address. [Boiler-room record](https://www.bjft.gov.cn/ftq/c100007/202410/bed70ecf801d44cd9f56a65f8960c8e2.shtml) gives Xinhua Street Erli 6 for the heating facility; historical operator/name equivalence is not established.
+
+Historical imagery inspected: partial tiles from [Esri World Imagery Wayback](https://livingatlas.arcgis.com/wayback/), release 2014-02-20, release ID 10. The release date is not the acquisition date. Official metadata queried at `[116.286,39.842]`, layers 6/7 of `World_Imagery_Metadata_2014_r01`, reports `SRC_DATE=20110201`, `SRC_DESC=WV02`, `SRC_RES=0.5`. The inspected tiles include streetward Sanli towers, detached lower frontage opposite and the eastern school area. Other requested tiles were unavailable; no complete old mosaic was obtained. This does not prove every parcel's geometry or building completion date. The [2000/2001 IKONOS catalogue previews](https://www.o-map.cn/base/2022m12/fengtai1201.html) were also inspected but are too broad to register individual buildings reliably.
+
+A new contemporary Esri export was inspected separately, bbox `[116.278,39.839,116.2915,39.8465]`, 2200×1600; capture date remains unknown. All source imagery stays outside the repository. Production provenance retains reference roles, not satellite originals or listing photographs. Drawn storeys encode recognizable height classes, not verified counts for every building. New compound paintings are assigned only to the existing `window-2000` working-composite window; they are not automatically asserted in 1995 or unresolved life stages.
+
+## Earlier research-only delivery boundary
 
 Classification research and a revised drawing brief are delivered. No new illustration, street camera, building placement or website publication is claimed by this patch. Next drawing work starts by matching compound ground footprints and gates to this ledger, then builds one representative overview/street pair. Wuli-east individual identities and Nankai's full count remain explicitly unresolved.
+
+
+## Sanli photographic correction — DM-0016
+
+Four supplied estate photographs were inspected locally after the user rejected the count-based layouts. Those layouts are superseded. The photographs show three cream towers with red caps together facing a shared tree-lined court, distinct white/green flat-top high-rises, green-glazed balcony slabs with stepped pitched roofs, and a small older ancillary block. A contemporary public ground-plan reference corroborates the arrangement: three towers across the south; two northern corner towers; three shorter parallel rear slabs, one long court-edge slab and one perpendicular eastern slab. This topology controls the new painting. Counts alone were insufficient to establish it.
+
+Reference base picks were converted from GCJ-02 into WGS84 before use and cross-checked with Esri imagery. They remain approximate; neither a roof centre nor a basemap extrusion is a survey point. The three existing generic tower feature IDs are retained at corrected front-row anchors and linked to the detailed painted parts. Registered ground geometry, measured raster paint bounds and invisible masks have separate roles. The latter preserve complete eaves without changing the source image's proportions. The shared open court is explicitly reserved against building ground footprints.
+
+Individual floor counts, construction dates, planting history and numbered-building matches remain unverified. Twenty-odd/26-storey planning heights distinguish tower families; they are not new historical claims. Reference photographs, basemap tiles, discarded paintings and person/residence associations are excluded from the public changes. The supplied photos are not redistributed.

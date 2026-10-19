@@ -1,8 +1,8 @@
-import { compileCompoundTrials, visibleCompoundTrials, compoundGroundMarkup, compoundStandingEntries, footprintSketch } from './compound-overview.js';
+import { compileCompoundTrials, visibleCompoundTrials } from './compound-overview.js';
 import { planMapAssembly, validateMapAssembly } from '../domain/map-assembly.js';
 import { mapMetrics, placeMapLabels } from './map-labels.js';
+import { compilePaintedOverview, visiblePaintedCompounds, paintedOverviewMarkup } from './painted-overview.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const path=points=>'M'+points.map(p=>p.join(',')).join(' L');
 const bounds=(points,pad=0)=>{const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),x=Math.min(...xs)-pad,y=Math.min(...ys)-pad;return[x,y,Math.max(1,Math.max(...xs)-x+pad),Math.max(1,Math.max(...ys)-y+pad)];};
 const periods=['window-2000','window-1995'];
 export const mapLevel=zoom=>zoom<1.5?0:zoom<2.25?1:2;
@@ -34,7 +34,7 @@ export function createOverviewAssembly(data,context,registration,transform,asset
     roadState.reservations.push(box);roadState.parts.push({id,kind,minLevel:0,bounds:box,paintAfter:[floor.id],evidenceStatus:'schematic-user-described',heightRange:null});
   }
   floor.bounds=bounds(roadState.reservations.flatMap(([x,y,w,h])=>[[x,y],[x+w,y+h]]));
-  const features=registration.features.map(f=>{
+  const registeredFeatures=registration.features.map(f=>{
     const [x,y]=transform.toImage(f.geo),[gw,gd]=f.groundSize,ground=[x-gw/2,y-gd/2,gw,gd];
     if(f.parcelId&&!pointInPolygon([x,y],parcels.find(p=>p.id===f.parcelId).art))throw new Error('Feature outside its geographic parcel: '+f.id);
     const representations=Object.fromEntries([0,1,2].map(level=>{
@@ -47,17 +47,15 @@ export function createOverviewAssembly(data,context,registration,transform,asset
     }));
     return {...f,registrationRef:registration.revision+':'+f.id,ground,emphasis:'landmark',states:[{id:f.id+'-typology',approval:'accepted',periodIds:periods,representations}]};
   });
+  // Detailed painted footprints replace the old rectangular tower glyphs. Their
+  // source feature IDs and geographic anchors remain in the registration ledger.
+  const replacedIds=new Set((registration.paintedOverview?.compounds||[]).flatMap(c=>c.parts.map(p=>p.sourceFeatureId).filter(Boolean)));
+  const features=registeredFeatures.filter(f=>!replacedIds.has(f.id));
   const patches=[];
   for(let y=-1500;y<3000;y+=300)for(let x=-1500;x<3000;x+=300)patches.push({id:`patch-${x}-${y}`,bounds:[x,y,300,300],interactive:false,recipe:{seed:`city-${x}-${y}`,styleRevision:'paper-roads-r2',typology:'land-wash'}});
   const model={schemaVersion:1,id:'fengtai-overview-review',revision:2,layoutRevision:data.mappingRevision,registrationBounds:[100,150,1050,1000],backdrop:{styleRevision:'paper-r2'},context:patches,roads,features};
   validateMapAssembly(model);
-  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets,{roads:[...context.roads,...data.roads]})};
-}
-function image(asset,rect,opacity=1) {
-  const[x,y,w,h]=rect;return `<image x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMax meet" href="${esc(asset.url)}" opacity="${opacity}"/>`;
-}
-function venue(rect) {
-  const[x,y,w,h]=rect;return `<g filter="url(#loose-edge)"><path d="M${x},${y+h}v-${h*.65}l${w*.13},-${h*.2}h${w*.74}l${w*.13},${h*.2}v${h*.65}Z" fill="#dfb57e"/><path d="M${x-2},${y+h*.16}l${w*.16},-${h*.14}h${w*.7}l${w*.16},${h*.14}Z" fill="#a67861"/><path d="M${x+w*.13},${y+h*.55}h${w*.74}v${h*.45}h-${w*.74}Z" fill="#968e79"/></g>`;
+  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets,{roads:[...context.roads,...data.roads]}),painted:compilePaintedOverview(registration,transform,assets,{roads:sourceRoads})};
 }
 const planCache=new WeakMap();
 function currentPlan(assembly,state,availableAssets) {
@@ -75,8 +73,12 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
   for(const f of plan.features.filter(f=>f.label)) {
     const[x,y,w,h]=f.bounds;candidates.push({id:f.id,text:f.label,kind:'place',priority:f.priority,minLevel:0,positions:around(x+w/2,y+h/2,w,h)});
   }
-  const compounds=visibleCompoundTrials(assembly,state,availableAssets);
-  for(const c of compounds){const[x,y,w,h]=bounds(c.mask);candidates.push({id:'compound-'+c.id,text:c.label,kind:'place',priority:103,minLevel:1,positions:[[x+w/2,y+h+24/s],[x+w+66/s,y+h/2],[x-66/s,y+h/2]]});}
+  const compounds=assembly.painted?visiblePaintedCompounds(assembly,state,availableAssets):visibleCompoundTrials(assembly,state,availableAssets);
+  for(const c of compounds){
+    const[x,y,w,h]=bounds(c.mask),top=assembly.painted?Math.min(...c.parts.map(p=>p.visualBounds[1])):y;
+    const positions=c.labelPositionsGeo?c.labelPositionsGeo.map(assembly.transform.toImage):[[x+w/2,y+h/2],[x+w/2,y+h+24/s],[x+w/2,top-24/s],[x+w+66/s,y+h/2],[x-66/s,y+h/2],...[.25,.75].flatMap(t=>[[x+w*t,y+h*.6],[x+w*t,y+h*.85]])];
+    candidates.push({id:'compound-'+c.id,text:c.shortLabel||c.label,kind:'place',priority:c.id==='sanli'?106:c.id==='school'?104:99,minLevel:c.id==='sanli'?0:1,positions});
+  }
   for(const p of assembly.parcels) {
     if(compounds.some(c=>p.label.includes(c.id==='wuli-west'?'新华街五里':c.label)))continue;
     const [x,y,w,h]=bounds(p.art),members=plan.features.filter(f=>assembly.model.features.find(a=>a.id===f.id).parcelId===p.id);
@@ -87,14 +89,14 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
   const bridge=assembly.transform.toImage([116.27759698571428,39.84562054285714]);
   candidates.push({id:'road-bridge',text:'丰台大桥',kind:'place',priority:108,minLevel:0,positions:[[bridge[0]-65/s,bridge[1]-22/s],[bridge[0]+65/s,bridge[1]-22/s]]});
   candidates.push({id:'rail-bridge',text:'铁路桥',kind:'place',priority:106,minLevel:0,positions:[[395-58/s,620+10/s],[420+55/s,620+16/s]]});
-  const importance={'新华街':102,'西四环南路':101,'正阳大街':90,'丰台南路':90,'建国街':60,'东大街':58,'正阳新开路':52,'丰台大桥南街':45,'东安街':40,'东安街头条':40};
+  const importance={'新华街':105,'西四环南路':101,'正阳大街':90,'丰台南路':90,'建国街':60,'东大街':58,'正阳新开路':52,'丰台大桥南街':45,'东安街':40,'东安街头条':40};
   const groups=new Map();
   for(const r of assembly.data.roads) {
     if(!groups.has(r.label))groups.set(r.label,[]);
     for(let i=1;i<r.art.length;i++) {
       const a=r.art[i-1],b=r.art[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);
       if(len<20)continue;
-      for(const t of [.5,.25,.75])groups.get(r.label).push([a[0]+(b[0]-a[0])*t+(r.class==='ring'?-23/s:0),a[1]+(b[1]-a[1])*t+(r.class==='ring'?0:14/s)]);
+      for(const t of [.5,.25,.75])for(const offset of(r.label==='新华街'?[0,14,-14]:[r.class==='ring'?0:14]))groups.get(r.label).push([a[0]+(b[0]-a[0])*t+(r.class==='ring'?-23/s:0),a[1]+(b[1]-a[1])*t+offset/s]);
     }
   }
   for(const[text,positions]of groups) {
@@ -102,7 +104,8 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
     positions.sort((a,b)=>Math.hypot(a[0]-center[0],a[1]-center[1])-Math.hypot(b[0]-center[0],b[1]-center[1]));
     candidates.push({id:'road-name-'+text,text,kind:'road',vertical:text==='西四环南路',priority:importance[text]||30,minLevel:(importance[text]||30)>=90?0:1,positions});
   }
-  return placeMapLabels(candidates,[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))],metrics,level);
+  const obstacles=assembly.painted?[...compounds.flatMap(c=>c.parts.map(p=>p.visualBounds)),...assembly.painted.landmarks.filter(l=>availableAssets.includes(l.assetRef)).map(l=>l.rect)]:[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))];
+  return placeMapLabels(candidates,obstacles,metrics,level);
 }
 export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapMetrics(state.camera)) {
   const {labels}=overviewLabelLayout(assembly,state,availableAssets,metrics);
@@ -113,33 +116,8 @@ export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapM
   }).join('')}</g>`;
 }
 
-/** Roads are quiet paper marks; click affordance does not change their permanent color. */
+/** Visible map artwork is raster-only, including missing-asset/configuration paths. */
 export function layeredOverviewMarkup(assembly,assets,state,availableAssets,options={}) {
-  const plan=currentPlan(assembly,state,availableAssets),level=mapLevel(state.camera.zoom);
-  const compounds=visibleCompoundTrials(assembly,state,availableAssets);
-  const allRoads=[...assembly.context.roads,...assembly.data.roads];
-  const compoundMasks=compounds.map(c=>`<path d="${path(c.mask)}Z" fill="black"/>`).join('');
-  const masks=compoundMasks+plan.features.map(f=>`<rect x="${f.ground[0]-2}" y="${f.ground[1]-2}" width="${f.ground[2]+4}" height="${f.ground[3]+4}" fill="black"/>`).join('');
-  const roadMasks=allRoads.map(r=>`<path d="${path(r.art)}" fill="none" stroke="black" stroke-width="${roadWidth(r)+3}"/>`).join('');
-  const defs=`<defs><filter id="loose-edge" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="2" seed="19" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="1.4"/></filter><mask id="context-open" maskUnits="userSpaceOnUse" x="-1500" y="-1500" width="4500" height="4500"><rect x="-1500" y="-1500" width="4500" height="4500" fill="white"/>${roadMasks}${masks}</mask><mask id="compound-road-clear" maskUnits="userSpaceOnUse" x="-1500" y="-1500" width="4500" height="4500"><rect x="-1500" y="-1500" width="4500" height="4500" fill="white"/>${roadMasks}</mask></defs>`;
-  const washes=assembly.context.districts.map(d=>`<path d="${path(d.art)}Z" fill="${d.kind==='park'?'#a5b58c':'#cfc0a5'}" opacity="${d.kind==='park'?.22:.11}"/>`).join('');
-  const pale=assembly.context.buildings.map(b=>`<path d="${path(b.footprint)}Z" fill="#bbaf98" stroke="#aaa28c" stroke-width=".7" opacity="${level===0?.18:.23}"/>`).join('');
-  const yards=assembly.parcels.filter(p=>['osm-way-897762350','osm-way-897762342'].includes(p.id)).map(p=>`<path d="${path(p.art)}Z" fill="#b8c7a4" opacity=".14"/>`).join('');
-  const context=`<g data-layer="pale-context" mask="url(#context-open)" filter="url(#loose-edge)">${washes}${pale}${yards}</g>`;
-  // One casing pass followed by one fill pass: connected ways share their junctions.
-  const casing=allRoads.map(r=>`<path data-road="${r.id}" d="${path(r.art)}" stroke="#aea99a" stroke-width="${roadWidth(r)+1.6}"/>`).join('');
-  const fill=allRoads.map(r=>`<path d="${path(r.art)}" stroke="${r.class==='ring'?'#d4d6ca':'#e8e7dc'}" stroke-width="${roadWidth(r)}"/>`).join('');
-  const roads=`<g data-layer="road-art" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#loose-edge)" opacity=".72">${casing}${fill}</g>`;
-  const rails=[...assembly.data.rails,...assembly.registration.railContinuations.map(r=>({id:r.id,art:r.geo.map(assembly.transform.toImage)}))];
-  const rail=rails.map(r=>`<path d="${path(r.art)}" fill="none" stroke="#c4c0af" stroke-width="9"/><path d="${path(r.art)}" fill="none" stroke="#8e9486" stroke-width="4" stroke-dasharray="1.5 5"/><path d="${path(r.art)}" fill="none" stroke="#eae5d5" stroke-width="1.5"/>`).join('');
-  const decks=assembly.registration.bridgeDecks.map(d=>{const art=d.geo.map(assembly.transform.toImage),p=path(art)+'Z';return `<path d="${p}" transform="translate(0,4)" fill="#928f7c" opacity=".22"/><path data-bridge-deck="${d.id}" d="${p}" fill="#e5e4d8" stroke="#aaa996" stroke-width="1.3"/>`;}).join('');
-  const structures=`<g data-layer="bridge-structures" opacity=".85" filter="url(#loose-edge)">${level===2?'<path d="M388,551 L392,625 L400,643 L398,572Z M422,538 L428,614 L436,631 L431,550Z" fill="#b8b09b" opacity=".36"/>':''}${decks}${rail}</g>`;
-  const screenScale=(options.metrics||mapMetrics(state.camera)).scale;
-  const objects=plan.features.map(f=>{
-    const a=assets[f.assetRef],ratio=a?a.width/(f.bounds[2]*screenScale):0;
-    const art=f.assetRef==='venue-symbol@1'?venue(f.bounds):a&&ratio>=.8&&ratio<=1.5?image(a,f.bounds):footprintSketch({ground:[[f.ground[0],f.ground[1]],[f.ground[0]+f.ground[2],f.ground[1]],[f.ground[0]+f.ground[2],f.ground[1]+f.ground[3]],[f.ground[0],f.ground[1]+f.ground[3]]],height:f.height},level,f.kind==='slab');
-    return{id:f.id,depth:f.groundAnchor[1],html:`<g data-map-object="${f.id}" data-place-id="${f.placeId}" data-anchor="${f.groundAnchor.join(',')}">${art}</g>`};
-  });
-  const standing=[...objects,...compoundStandingEntries(compounds,assets,level,availableAssets,(options.metrics||mapMetrics(state.camera)).scale)].sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(p=>p.html).join('');
-  return `${defs}<g data-map-tier="${plan.level}">${context}${compoundGroundMarkup(compounds,level)}${roads}${structures}<g data-layer="solid-places">${standing}</g>${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}</g>`;
+  const art=assembly.painted?paintedOverviewMarkup(assembly,assets,state,availableAssets):'';
+  return `${art}${options.includeLabels===false?'':overviewLabelsMarkup(assembly,state,availableAssets,options.metrics)}`;
 }

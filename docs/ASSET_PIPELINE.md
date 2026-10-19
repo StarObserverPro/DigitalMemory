@@ -1,6 +1,8 @@
 # Map, image and scene asset pipeline
 
-> DM-0013: [scale-budgeted workflow and measured validation](ASSET_WORKFLOW_VALIDATION.md) owns the satellite → final-size SVG → packed imagegen → crop/geometry/assembly gates. Define final display dimensions before generation; default native subject/display ratio ≤1.5 per axis. Never repair raised art with unrestricted affine fitting.
+> DM-0015 correction: [hand-painted map art](HANDPAINTED_MAP_ART.md) owns visible medium, contextual generation, tower identity and projection/scale acceptance. SVG is planning only, never map art or a runtime art fallback. The older ≤1.5 native/display ratio is a recorded r4 experiment, not a universal requirement; it must not erase paint or tower storeys. Never repair raised art with unrestricted affine fitting.
+
+> [Scale-budgeted workflow](ASSET_WORKFLOW_VALIDATION.md) retains source, crop, anchor and assembly checks. Its older isolated-atlas and SVG-fallback choices are superseded by the DM-0015 correction.
 
 > DM-0007: follow [MAP_ASSEMBLY](MAP_ASSEMBLY.md) for three overview tiers, independently replaceable pale context, compound children, and road-only bridge/retaining-wall parts. The same style must hold across scales. Accepted general style is not approval of a specific asset, location or chronology.
 
@@ -74,7 +76,7 @@ Review **registration**, **appearance**, **text**, and **publication** separatel
 
 ## Publication package
 
-Publish only selected revisions and the required derivatives, with source-type labels and usage metadata appropriate to the audience. Keep originals, intermediate masks, prompts, and high-volume generation output outside public Git unless explicitly cleared. The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
+Publish only selected revisions and the required derivatives, with source-type labels and usage metadata appropriate to the audience. Keep trial paintings, visual examples, contact sheets, unused generations, intermediate masks, batch prompt dumps and one-off example scripts outside the repository. Commit only selected production assets and concise necessary provenance; see [repository storage](HANDPAINTED_MAP_ART.md#repository-storage). The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
 
 ## Dual-scale illustration assets — DM-0003 correction
 

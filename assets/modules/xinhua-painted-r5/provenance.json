@@ -1,0 +1,362 @@
+{
+  "revision": "xinhua-painted-r5",
+  "createdAt": "2026-10-19",
+  "generator": "built-in imagegen",
+  "medium": "pressure-varying warm pen, selective hatching and broad light watercolor washes",
+  "geometry": "shared north-up cartographic oblique; world registration independent from illustration",
+  "selectedAssets": [
+    {
+      "assetRef": "painted-qili",
+      "sourceImageSha256": "5b7daa80469390df9815cb52a3bbcedfa284f6e676aaa6af3694ef06d09fa22c",
+      "sourceCrop": [
+        176,
+        69,
+        714,
+        992
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-wuli-west",
+      "sourceImageSha256": "5b7daa80469390df9815cb52a3bbcedfa284f6e676aaa6af3694ef06d09fa22c",
+      "sourceCrop": [
+        455,
+        35,
+        1365,
+        808
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-liuli",
+      "sourceImageSha256": "7411218d1642d3d8624f5b141f1453f92c818481c9dc8bfd507d42e17f101924",
+      "sourceCrop": [
+        532,
+        1,
+        1519,
+        849
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-bali",
+      "sourceImageSha256": "4dd7dd05fd60c919e1d9c012692bd07f7244e833da72e42b136bd85b269355f9",
+      "sourceCrop": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-wuli-east",
+      "sourceImageSha256": "3292982fed79d7d8fadcc2cb7d2dc38c62c12aba24c2bd278297e845a1d9c37c",
+      "sourceCrop": [
+        270,
+        3,
+        1235,
+        1016
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-sanli",
+      "sourceImageSha256": "4fca450055a0de8eb4c672a2fad6dfe94930f6810eb527ac6a8014b1ce6c1790",
+      "sourceCrop": [
+        357,
+        0,
+        1210,
+        1012
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-yili",
+      "sourceImageSha256": "f7bc006b0a71c88250fa0a6b20f4938b6d7156f6ccd79ef60b6718dc7a7a61ee",
+      "sourceCrop": [
+        385,
+        5,
+        1207,
+        1024
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-erli",
+      "sourceImageSha256": "516273c0ce1f54f82881ba42bd558add60c9438c2a7f3927b4a621df66744318",
+      "sourceCrop": [
+        254,
+        189,
+        825,
+        814
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-sili",
+      "sourceImageSha256": "22ba672a55b71f1c734e16c6723bd1a6fa4ea0d902813a82682a76763fb290a9",
+      "sourceCrop": [
+        401,
+        316,
+        1196,
+        1023
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-heating",
+      "sourceImageSha256": "22ba672a55b71f1c734e16c6723bd1a6fa4ea0d902813a82682a76763fb290a9",
+      "sourceCrop": [
+        414,
+        0,
+        1180,
+        554
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-school",
+      "sourceImageSha256": "516273c0ce1f54f82881ba42bd558add60c9438c2a7f3927b4a621df66744318",
+      "sourceCrop": [
+        721,
+        27,
+        1296,
+        980
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-ground",
+      "sourceImageSha256": "6aedc6b59e19050a4d08f33f85a89fb0a6b0ab03e08f7f7abe86c0ba37dd7523",
+      "sourceCrop": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "assetRef": "painted-theatre",
+      "sourceImageSha256": "bd533a2559150eec3fae755905c12bfb08b9b1f5646a2faa01b2a7cd4af54655",
+      "sourceCrop": [
+        70,
+        210,
+        670,
+        470
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-nankai-a",
+      "sourceImageSha256": "bd533a2559150eec3fae755905c12bfb08b9b1f5646a2faa01b2a7cd4af54655",
+      "sourceCrop": [
+        795,
+        145,
+        1390,
+        590
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-nankai-b",
+      "sourceImageSha256": "bd533a2559150eec3fae755905c12bfb08b9b1f5646a2faa01b2a7cd4af54655",
+      "sourceCrop": [
+        835,
+        535,
+        1430,
+        980
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "assetRef": "painted-detached-frontage",
+      "sourceImageSha256": "7411218d1642d3d8624f5b141f1453f92c818481c9dc8bfd507d42e17f101924",
+      "sourceCrop": [
+        80,
+        565,
+        274,
+        687
+      ],
+      "processing": "mechanical crop and WebP encoding; no affine warp or vector paint",
+      "sourceFrameSize": [
+        1536,
+        1024
+      ]
+    }
+  ],
+  "sourceReferences": [
+    "https://www.openstreetmap.org/copyright",
+    "https://livingatlas.arcgis.com/wayback/",
+    "https://www.bjft.gov.cn/ftq/ftsq/202203/6ef2959837664a118b049f3c7023e7ab.shtml",
+    "https://www.bjft.gov.cn/ftq/ftjdgk/202203/28c925dacc15411eaa269afe6c863a7a.shtml",
+    "https://www.amap.com/place/B000A7VR6S",
+    "https://lbs.amap.com/api/webservice/guide/api/convert"
+  ],
+  "historicalImagery": {
+    "waybackRelease": "2014-02-20",
+    "acquisitionAtQueriedLocation": "2011-02-01",
+    "sensor": "WV02",
+    "resolutionMetres": 0.5,
+    "coverage": "partial reference tiles; not a complete 2005 base",
+    "redistribution": "reference imagery excluded"
+  },
+  "userDirections": [
+    "Earlier detached shops retained opposite Sanli",
+    "Earlier eastern low fabric retained up to diagonal Zaojia boundary",
+    "Shop rows are independent low structures, not universal apartment ground floors"
+  ],
+  "approval": "selected for requested working reconstruction; user aesthetic review pending",
+  "frameRegistration": [
+    {
+      "batch": 0,
+      "scale": 1.035,
+      "translation": [
+        -24,
+        -16
+      ],
+      "silhouetteIoU": 0.9773,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 1,
+      "scale": 1.1050000000000002,
+      "translation": [
+        -96,
+        -56
+      ],
+      "silhouetteIoU": 0.971,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 2,
+      "scale": 1.135,
+      "translation": [
+        -88,
+        -88
+      ],
+      "silhouetteIoU": 0.9484,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 3,
+      "scale": 1.12,
+      "translation": [
+        -64,
+        -56
+      ],
+      "silhouetteIoU": 0.9689,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 4,
+      "scale": 1.0850000000000002,
+      "translation": [
+        -48,
+        -56
+      ],
+      "silhouetteIoU": 0.8916,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 5,
+      "scale": 1.1649999999999998,
+      "translation": [
+        -96,
+        -104
+      ],
+      "silhouetteIoU": 0.9438,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": 6,
+      "scale": 1.03,
+      "translation": [
+        -16,
+        -24
+      ],
+      "silhouetteIoU": 0.8647,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    },
+    {
+      "batch": "bali-regenerated",
+      "scale": 1.0750000000000002,
+      "translation": [
+        -48,
+        -48
+      ],
+      "silhouetteIoU": 0.9242,
+      "method": "one uniform scale plus translation only; silhouette registration, not independent surveyed ground proof"
+    }
+  ],
+  "geometryCorrections": "Liuli and Sili contextual paintings and child geometry receive a coherent uniform scale about their compound center (.87 and .96) to preserve road setbacks; no raster segment is detached or warped. Bali is regenerated from its corrected footprint plan. Sanli is rebuilt from photographic relationships and an approximate public ground plan; source paint bounds retain full roofs. No source imagery or rejected layouts are included.",
+  "sanliGeometry": {
+    "basis": "photographic references held outside Git, public plan relationships and Esri imagery",
+    "layout": "three cream/red-cap towers across the south; two white/green flat-top towers at the northern corners; three shorter rear slabs, one long north court-edge slab and one perpendicular east slab; shared open court and small ancillary block",
+    "groundReference": "https://www.amap.com/place/B000A7VR6S",
+    "coordinates": "GCJ-02 reference base picks converted to WGS84 before registration; approximate, not surveyed",
+    "dateLimit": "photographs and current plan constrain morphology, not individual construction/planting dates",
+    "privacy": "reference photos and residential-person associations excluded"
+  }
+}
