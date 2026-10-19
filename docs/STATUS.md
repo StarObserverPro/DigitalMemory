@@ -2,6 +2,10 @@
 
 Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
 
+## World Labs handoff to local Codex — DM-0020
+
+Repository entry points now route to [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md), covering the proposed short-streetscape experiment, private local CLI setup, actual versus unverified account capabilities, geometry/time ownership, camera conversion and durable operation records. The current volumetric street prototype is distinguished from the older facade-only descriptions. The handoff does not claim a World Labs install, authenticated account, submitted task, exported scene, integrated renderer or accepted street artwork. This is a documentation-only branch/PR; merge and deployment are not part of this task. See [DM-0020](attention/tasks/DM-0020.md).
+
 ## Registered Xinhua masses and zoom detail — DM-0018
 
 R6 replaces the geographically rejected R5 compound layouts with 161 source-linked building/low-rise masses across the eleven Xinhua groups. The other chat's acquired Sanli data is included; a bounded corridor acquisition supplies 774 source polygons, with no native height fields. Floor estimates now have explicit evidence roles and ranges. The school uses its retrieved OSM boundary; Bali has two tall blocks; Wuli east retains the two curved perimeter runs; Sanli's front and rear tower families and differently oriented slabs follow the inspected source plan.

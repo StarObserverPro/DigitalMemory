@@ -4,7 +4,7 @@ This is a short routing surface, not a requirement to read the entire repository
 
 ## Preserve the intended result
 
-DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, with the person grounded on the sidewalk in pseudo-3D: illustrated cinematic scenic flats, limited geometry, fog and directional cues. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
+DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, with the person grounded on the sidewalk. The current bounded street prototype uses articulated volumetric placeholders and independent building volumes; earlier facade-only descriptions are superseded for that prototype (see `docs/STREET_PROTOTYPE.md`). Illustrated surfaces, fog and directional cues remain part of the visual direction. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
 
 Phase 1 prioritizes the walking-memory network around 新华街, with 南开西里 and the two historical school sites. Do not add the high-school cycling corridor, silently substitute modern school campuses, invent exact routes, or publish private source material. [PHASE_1](docs/PHASE_1.md) is the scope owner.
 
@@ -23,6 +23,7 @@ User-authored meaning and explicit constraints are authoritative. A current expl
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
 | GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
+| World Labs / Marble 2 setup, proposed street experiment and local Codex handoff | `docs/WORLDLABS_HANDOFF.md`; task names do not establish account entitlements or scene export access |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
 | Acceptance / actual completion | `docs/VERIFICATION.md` / `docs/STATUS.md` |
 | Cross-session or concurrent work | `docs/attention/README.md` |

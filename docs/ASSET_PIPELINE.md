@@ -1,5 +1,7 @@
 # Map, image and scene asset pipeline
 
+> World Labs / Marble 2 is a proposed street-generation experiment, not an implemented adapter or a replacement for the hand-painted overview. [Setup and handoff](WORLDLABS_HANDOFF.md) records local CLI setup, account/output unknowns, the orthographic-to-pinhole camera mismatch and the bounded sample proposal. No generation has been submitted by that handoff.
+
 > DM-0015 correction: [hand-painted map art](HANDPAINTED_MAP_ART.md) owns visible medium, contextual generation, tower identity and projection/scale acceptance. SVG is planning only, never map art or a runtime art fallback. The older ≤1.5 native/display ratio is a recorded r4 experiment, not a universal requirement; it must not erase paint or tower storeys. Never repair raised art with unrestricted affine fitting.
 
 > [Scale-budgeted workflow](ASSET_WORKFLOW_VALIDATION.md) retains source, crop, anchor and assembly checks. Its older isolated-atlas and SVG-fallback choices are superseded by the DM-0015 correction.
