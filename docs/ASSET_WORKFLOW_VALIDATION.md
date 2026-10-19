@@ -1,5 +1,7 @@
 # Scale-budgeted map asset workflow
 
+> **2026-10-18 / DM-0015 correction:** [Hand-painted map art](HANDPAINTED_MAP_ART.md) supersedes the tiny-isolated-subject strategy, fixed 0.8–1.5 ratio gate, few-window tower treatment and any visible SVG fallback described below. Preserve this page's old measurements as historical evidence, not current aesthetic acceptance. Use useful surrounding yard/grass/hardscape/clutter or packed scene content, then crop. Keep actual height class, repeated floor rhythm and one shared projection. Current r4 runtime still contains the rejected vector fallback and decorations; a documentation update is not their removal.
+
 DM-0013, 2026-10-18. This is the canonical workflow for future overview asset batches. It supersedes DM-0012's whole-illustration affine fitting and whole-image road masking as a production method. DM-0013 was a validation-only batch; DM-0014 below implements the map upgrade using independent parts.
 
 ## Outcome of the validation
@@ -47,9 +49,11 @@ The validation uses a 1200×900 viewport, side=900 and the existing three stops 
 
 Ground bounds and visual bounds must be separate fields. A vertical tower extends upward in the image without expanding its ground reservation. The same camera/projection must be used to construct ground and raised forms. A sheet may translate/pack a view, but may not squeeze it into a cell. At different viewports choose the suitable asset tier or recalculate the stated scale range; do not claim one pixel budget covers every screen and arbitrary zoom.
 
-## Node 3 — SVG assembly contract
+## Node 3 — SVG planning contract (never production artwork)
 
 Before generation, render the controlled SVG at the final-use dimensions in the intended map context. Review street width, setbacks, tower/slab orientation, spacing and external overlaps. The source plane may be projected once before drawing; an already raised illustration must never be sheared afterwards to match that plane.
+
+This guide is not a visible production layer. Generated raster paint owns visible buildings, yards, plants and objects. SVG masks may retain the planning geometry but cannot supply painted faces or decorative paths. Converting such vectors to PNG is not a hand-painted replacement.
 
 Keep these independent:
 - Ground/yard wash: source plane, bounded/feathered as appropriate.

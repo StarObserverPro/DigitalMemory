@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "privacy": "public",
-  "revision": "fengtai-overview-registration-r1",
+  "revision": "overview-registration-painted-r5-photo-sanli",
   "geometryRevision": "fengtai-orientation-r1",
   "transformRevision": "local-equirectangular-r1",
   "crs": "WGS84",
@@ -46,6 +46,12 @@
           815
         ]
       ]
+    },
+    {
+      "id": "amap-sanli-plan-2026-10-19",
+      "url": "https://www.amap.com/place/B000A7VR6S",
+      "role": "contemporary plan relationships cross-checked with photographic morphology; GCJ-02 base picks converted to WGS84; approximate, not historical/survey proof",
+      "referenceImagesRedistributed": false
     }
   ],
   "parcels": [
@@ -408,12 +414,13 @@
       "placeId": "place-sanli",
       "parcelId": "osm-way-897762350",
       "geo": [
-        116.2854472222,
-        39.8438600487
+        116.28551867485047,
+        39.842680497112624
       ],
       "sourceRefs": [
         "Approximate spatial result; historical validity unresolved",
-        "osm-way-897762350"
+        "osm-way-897762350",
+        "amap-sanli-plan-2026-10-19"
       ],
       "kind": "tower",
       "label": null,
@@ -424,19 +431,21 @@
         10
       ],
       "uncertaintyMeters": 30,
-      "registration": "approximate-roof-centre"
+      "registration": "approximate-ground-base-photo-plan",
+      "registrationStatus": "photo-ground-plan correction; approximate base, not a numbered-building identity"
     },
     {
       "id": "xinhua-tower-2",
       "placeId": "place-sanli",
       "parcelId": "osm-way-897762350",
       "geo": [
-        116.2859972222,
-        39.8432313085
+        116.28610754013062,
+        39.842909926624884
       ],
       "sourceRefs": [
         "Approximate spatial result; historical validity unresolved",
-        "osm-way-897762350"
+        "osm-way-897762350",
+        "amap-sanli-plan-2026-10-19"
       ],
       "kind": "tower",
       "label": null,
@@ -447,19 +456,21 @@
         10
       ],
       "uncertaintyMeters": 30,
-      "registration": "approximate-roof-centre"
+      "registration": "approximate-ground-base-photo-plan",
+      "registrationStatus": "photo-ground-plan correction; approximate base, not a numbered-building identity"
     },
     {
       "id": "xinhua-tower-3",
       "placeId": "place-sanli",
       "parcelId": "osm-way-897762350",
       "geo": [
-        116.2855388889,
-        39.8427104819
+        116.28671725273134,
+        39.84314942388272
       ],
       "sourceRefs": [
         "Approximate spatial result; historical validity unresolved",
-        "osm-way-897762350"
+        "osm-way-897762350",
+        "amap-sanli-plan-2026-10-19"
       ],
       "kind": "tower",
       "label": null,
@@ -470,7 +481,8 @@
         10
       ],
       "uncertaintyMeters": 30,
-      "registration": "approximate-roof-centre"
+      "registration": "approximate-ground-base-photo-plan",
+      "registrationStatus": "photo-ground-plan correction; approximate base, not a numbered-building identity"
     },
     {
       "id": "nankai-slab-1",
@@ -992,7 +1004,7 @@
               "assetRef": "map-part-qili-osm-978924277-1",
               "modelUnitsPerPixel": 0.5055726708180136,
               "sourceAnchor": [
-                24.0,
+                24,
                 62.009701630227
               ],
               "sourceNativeSize": [
@@ -1062,7 +1074,7 @@
               "assetRef": "map-part-qili-osm-978924278-1",
               "modelUnitsPerPixel": 0.5329155279348371,
               "sourceAnchor": [
-                24.0,
+                24,
                 61.00560804160031
               ],
               "sourceNativeSize": [
@@ -1132,7 +1144,7 @@
               "assetRef": "map-part-qili-osm-978924279-1",
               "modelUnitsPerPixel": 0.5680121580561092,
               "sourceAnchor": [
-                48.0,
+                48,
                 55.33589243764639
               ],
               "sourceNativeSize": [
@@ -1241,7 +1253,7 @@
               "assetRef": "map-part-wuli-west-osm-978924280-1",
               "modelUnitsPerPixel": 0.514019548846055,
               "sourceAnchor": [
-                20.0,
+                20,
                 54.46070258701755
               ],
               "sourceNativeSize": [
@@ -1311,7 +1323,7 @@
               "assetRef": "map-part-wuli-west-osm-978924281-1",
               "modelUnitsPerPixel": 0.5475112781703226,
               "sourceAnchor": [
-                20.0,
+                20,
                 56.236796974073464
               ],
               "sourceNativeSize": [
@@ -1331,7 +1343,7 @@
               "assetRef": "map-part-wuli-west-osm-978924281-2",
               "modelUnitsPerPixel": 0.4522919254450491,
               "sourceAnchor": [
-                24.0,
+                24,
                 75.49717528440472
               ],
               "sourceNativeSize": [
@@ -1381,7 +1393,7 @@
               "assetRef": "map-part-wuli-west-osm-978924282-1",
               "modelUnitsPerPixel": 0.4992360902032978,
               "sourceAnchor": [
-                20.0,
+                20,
                 56.51781523367771
               ],
               "sourceNativeSize": [
@@ -1401,7 +1413,7 @@
               "assetRef": "map-part-wuli-west-osm-978924282-2",
               "modelUnitsPerPixel": 0.4124124223418547,
               "sourceAnchor": [
-                24.0,
+                24,
                 74.62682896708354
               ],
               "sourceNativeSize": [
@@ -1471,7 +1483,7 @@
               "assetRef": "map-part-wuli-west-osm-978924283-2",
               "modelUnitsPerPixel": 0.39498000000596106,
               "sourceAnchor": [
-                31.0,
+                31,
                 64.34434026263389
               ],
               "sourceNativeSize": [
@@ -1521,7 +1533,7 @@
               "assetRef": "map-part-wuli-west-osm-978924285-1",
               "modelUnitsPerPixel": 0.5528592334614167,
               "sourceAnchor": [
-                42.0,
+                42,
                 46.674527669170004
               ],
               "sourceNativeSize": [
@@ -1541,7 +1553,7 @@
               "assetRef": "map-part-wuli-west-osm-978924285-2",
               "modelUnitsPerPixel": 0.42768355796071866,
               "sourceAnchor": [
-                54.0,
+                54,
                 58.359755279658785
               ],
               "sourceNativeSize": [
@@ -1591,7 +1603,7 @@
               "assetRef": "map-part-wuli-west-osm-978924286-1",
               "modelUnitsPerPixel": 0.5129271428549714,
               "sourceAnchor": [
-                21.0,
+                21,
                 48.09963306389358
               ],
               "sourceNativeSize": [
@@ -1611,7 +1623,7 @@
               "assetRef": "map-part-wuli-west-osm-978924286-2",
               "modelUnitsPerPixel": 0.37994603174442326,
               "sourceAnchor": [
-                28.0,
+                28,
                 62.384504636256324
               ],
               "sourceNativeSize": [
@@ -1700,7 +1712,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-1-1",
               "modelUnitsPerPixel": 0.588144078150597,
               "sourceAnchor": [
-                40.0,
+                40,
                 43.01190649770329
               ],
               "sourceNativeSize": [
@@ -1770,7 +1782,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-2-1",
               "modelUnitsPerPixel": 0.5219291819277703,
               "sourceAnchor": [
-                40.0,
+                40,
                 40.5509179406466
               ],
               "sourceNativeSize": [
@@ -1840,7 +1852,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-3-1",
               "modelUnitsPerPixel": 0.5375091575197337,
               "sourceAnchor": [
-                40.0,
+                40,
                 42.67280521535778
               ],
               "sourceNativeSize": [
@@ -1860,7 +1872,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-3-2",
               "modelUnitsPerPixel": 0.41103641457391404,
               "sourceAnchor": [
-                52.0,
+                52,
                 53.80289912777557
               ],
               "sourceNativeSize": [
@@ -1910,7 +1922,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-4-1",
               "modelUnitsPerPixel": 0.5530891330754705,
               "sourceAnchor": [
-                40.0,
+                40,
                 43.20278266155529
               ],
               "sourceNativeSize": [
@@ -1980,7 +1992,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-5-1",
               "modelUnitsPerPixel": 0.5219291819458843,
               "sourceAnchor": [
-                40.0,
+                40,
                 41.259726423628805
               ],
               "sourceNativeSize": [
@@ -2000,7 +2012,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-5-2",
               "modelUnitsPerPixel": 0.3991223156056763,
               "sourceAnchor": [
-                52.0,
+                52,
                 48.64733455397614
               ],
               "sourceNativeSize": [
@@ -2059,7 +2071,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-6-2",
               "modelUnitsPerPixel": 0.40021062271460894,
               "sourceAnchor": [
-                53.0,
+                53,
                 43.36371107195574
               ],
               "sourceNativeSize": [
@@ -2137,7 +2149,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-7-2",
               "modelUnitsPerPixel": 0.417738095238587,
               "sourceAnchor": [
-                53.0,
+                53,
                 56.45159118897336
               ],
               "sourceNativeSize": [
@@ -2273,7 +2285,7 @@
               "assetRef": "map-part-liuli-liuli-roof-segment-9-1",
               "modelUnitsPerPixel": 0.5869047619028138,
               "sourceAnchor": [
-                45.0,
+                45,
                 45.32804789762628
               ],
               "sourceNativeSize": [
@@ -2316,5 +2328,2614 @@
       "projectionId": "north-up-orthographic-rise-r1",
       "groundStyle": "worn-hardscape-and-patchy-grass"
     }
-  ]
+  ],
+  "paintedOverview": {
+    "revision": "xinhua-painted-r5",
+    "projectionId": "north-up-orthographic-rise-r1",
+    "base": {
+      "assetRef": "painted-ground",
+      "bounds": [
+        -250,
+        -250,
+        1700,
+        1700
+      ]
+    },
+    "compounds": [
+      {
+        "id": "qili",
+        "label": "新华街七里",
+        "contextMaskGeo": [
+          [
+            116.28002881111111,
+            39.842375337382926
+          ],
+          [
+            116.2814830888889,
+            39.842375337382926
+          ],
+          [
+            116.2814830888889,
+            39.84076586175774
+          ],
+          [
+            116.28002881111111,
+            39.84076586175774
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-qili",
+        "frame": {
+          "modelUnitsPerPixel": 0.1771169891416434,
+          "sourceOrigin": [
+            -2909.659345161748,
+            -4094.8730924795027
+          ]
+        },
+        "parts": [
+          {
+            "id": "qili-osm-978924276",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28021020000001,
+                39.84117880000003
+              ],
+              [
+                116.2800777,
+                39.8413801
+              ],
+              [
+                116.28039920000002,
+                39.84150489999999
+              ],
+              [
+                116.2805317,
+                39.84130349999999
+              ]
+            ],
+            "anchorGeo": [
+              116.2803047,
+              39.841341850000006
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "qili-osm-978924277",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28023589999998,
+                39.8417566
+              ],
+              [
+                116.28009209999999,
+                39.8419733
+              ],
+              [
+                116.28041610000001,
+                39.842099999999995
+              ],
+              [
+                116.2805599,
+                39.8418834
+              ]
+            ],
+            "anchorGeo": [
+              116.280326,
+              39.84192829999999
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "qili-osm-978924278",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28080379999999,
+                39.8419593
+              ],
+              [
+                116.28063360000002,
+                39.842206900000015
+              ],
+              [
+                116.2809565,
+                39.8423378
+              ],
+              [
+                116.2811267,
+                39.8420902
+              ]
+            ],
+            "anchorGeo": [
+              116.28088015000002,
+              39.842148550000005
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "qili-osm-978924279",
+            "kind": "high-slab",
+            "groundGeo": [
+              [
+                116.28133960000001,
+                39.84130630000001
+              ],
+              [
+                116.28036020000002,
+                39.840962299999994
+              ],
+              [
+                116.28045500000002,
+                39.8408034
+              ],
+              [
+                116.28143420000002,
+                39.841147499999984
+              ]
+            ],
+            "anchorGeo": [
+              116.28089720000001,
+              39.841054850000006
+            ],
+            "storeys": 14,
+            "heightMetres": 40.6,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            80,
+            137.3
+          ],
+          [
+            144.1,
+            247.2
+          ],
+          [
+            216.1,
+            370.8
+          ]
+        ]
+      },
+      {
+        "id": "wuli-west",
+        "label": "新华街五里西区",
+        "contextMaskGeo": [
+          [
+            116.2810202111111,
+            39.84261793725029
+          ],
+          [
+            116.2838044888889,
+            39.84261793725029
+          ],
+          [
+            116.2838044888889,
+            39.84126896203277
+          ],
+          [
+            116.2810202111111,
+            39.84126896203277
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-wuli-west",
+        "frame": {
+          "modelUnitsPerPixel": 0.1771169891416434,
+          "sourceOrigin": [
+            -3188.659345161748,
+            -4060.8730924795027
+          ]
+        },
+        "parts": [
+          {
+            "id": "wuli-west-osm-978924280",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28167670000002,
+                39.8413153
+              ],
+              [
+                116.2816892,
+                39.8416326
+              ],
+              [
+                116.2820696,
+                39.8416238
+              ],
+              [
+                116.2820572,
+                39.8413065
+              ]
+            ],
+            "anchorGeo": [
+              116.28187315000001,
+              39.84146955
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "wuli-west-osm-978924281",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.2822317,
+                39.841509599999995
+              ],
+              [
+                116.28222880000001,
+                39.841807599999996
+              ],
+              [
+                116.28264440000001,
+                39.841809999999995
+              ],
+              [
+                116.2826473,
+                39.84151199999999
+              ]
+            ],
+            "anchorGeo": [
+              116.28243805,
+              39.841659799999995
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "wuli-west-osm-978924282",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.2827193,
+                39.842145900000006
+              ],
+              [
+                116.28271400000001,
+                39.8424267
+              ],
+              [
+                116.2830903,
+                39.84243089999998
+              ],
+              [
+                116.2830956,
+                39.84215
+              ]
+            ],
+            "anchorGeo": [
+              116.2829048,
+              39.842288399999994
+            ],
+            "storeys": 23,
+            "heightMetres": 66.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "wuli-west-osm-978924283",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2835375,
+                39.84209659999999
+              ],
+              [
+                116.28327890000001,
+                39.84249750000001
+              ],
+              [
+                116.28349680000001,
+                39.8425804
+              ],
+              [
+                116.28375560000002,
+                39.842179599999994
+              ]
+            ],
+            "anchorGeo": [
+              116.28351725000002,
+              39.8423385
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "wuli-west-osm-978924285",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28118539999998,
+                39.84241049999999
+              ],
+              [
+                116.28207910000002,
+                39.84248039999999
+              ],
+              [
+                116.2820973,
+                39.8423628
+              ],
+              [
+                116.2811945,
+                39.842287
+              ]
+            ],
+            "anchorGeo": [
+              116.28164135,
+              39.8423837
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          },
+          {
+            "id": "wuli-west-osm-978924286",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2812737,
+                39.841318300000005
+              ],
+              [
+                116.2810691,
+                39.84163300000001
+              ],
+              [
+                116.2812771,
+                39.841712799999996
+              ],
+              [
+                116.2814818,
+                39.841398
+              ]
+            ],
+            "anchorGeo": [
+              116.28127545,
+              39.841515550000004
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            135.4,
+            115
+          ],
+          [
+            243.7,
+            207
+          ],
+          [
+            365.5,
+            310.5
+          ]
+        ]
+      },
+      {
+        "id": "liuli",
+        "label": "新华街六里",
+        "contextMaskGeo": [
+          [
+            116.28188444444446,
+            39.84186588998056
+          ],
+          [
+            116.28501333333334,
+            39.84186588998056
+          ],
+          [
+            116.28501333333334,
+            39.8399702124308
+          ],
+          [
+            116.28188444444446,
+            39.8399702124308
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-liuli",
+        "frame": {
+          "modelUnitsPerPixel": 0.1578137643206313,
+          "sourceOrigin": [
+            -3922.150236470975,
+            -5051.962461841367
+          ]
+        },
+        "parts": [
+          {
+            "id": "liuli-liuli-roof-segment-1",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28213035555555,
+                39.84097929100411
+              ],
+              [
+                116.2828746888889,
+                39.8412160622951
+              ],
+              [
+                116.28293317222223,
+                39.841097676766914
+              ],
+              [
+                116.28218352222221,
+                39.84085274044652
+              ]
+            ],
+            "anchorGeo": [
+              116.28253176388888,
+              39.841034401370806
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-2",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28295975555557,
+                39.84124055582338
+              ],
+              [
+                116.2836083888889,
+                39.84145691488694
+              ],
+              [
+                116.28367218888889,
+                39.84132220084506
+              ],
+              [
+                116.2830341888889,
+                39.84111400581922
+              ]
+            ],
+            "anchorGeo": [
+              116.28331597222223,
+              39.841285460353085
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-3",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28374130555557,
+                39.841514066206884
+              ],
+              [
+                116.28441652222224,
+                39.8417100131744
+              ],
+              [
+                116.28447500555558,
+                39.84157938193412
+              ],
+              [
+                116.28381573888892,
+                39.841387516782106
+              ]
+            ],
+            "anchorGeo": [
+              116.28410815555557,
+              39.84154876497825
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-4",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2823323888889,
+                39.840689449008366
+              ],
+              [
+                116.28300228888888,
+                39.840901727790936
+              ],
+              [
+                116.28308735555555,
+                39.8407792593546
+              ],
+              [
+                116.2824121388889,
+                39.84056289783681
+              ]
+            ],
+            "anchorGeo": [
+              116.28270987222223,
+              39.84073231281388
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-5",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28310330555556,
+                39.84093438599824
+              ],
+              [
+                116.28373067222225,
+                39.84114258165003
+              ],
+              [
+                116.28381573888892,
+                39.84100786689938
+              ],
+              [
+                116.28317242222224,
+                39.84079558849393
+              ]
+            ],
+            "anchorGeo": [
+              116.28345952222223,
+              39.84096908507199
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-6",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28391675555557,
+                39.84108134771012
+              ],
+              [
+                116.28462387222223,
+                39.84117115746719
+              ],
+              [
+                116.2846451388889,
+                39.841036442780954
+              ],
+              [
+                116.28394865555558,
+                39.84093846827288
+              ]
+            ],
+            "anchorGeo": [
+              116.28428094722224,
+              39.841054812870034
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-7",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28241745555556,
+                39.84055473323589
+              ],
+              [
+                116.2826035388889,
+                39.84060372082468
+              ],
+              [
+                116.28269923888888,
+                39.840297547735815
+              ],
+              [
+                116.28312988888891,
+                39.84038327635886
+              ],
+              [
+                116.2831777388889,
+                39.84024447757419
+              ],
+              [
+                116.28254505555556,
+                39.84012609012068
+              ]
+            ],
+            "anchorGeo": [
+              116.28279759722223,
+              39.84036490547268
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-8",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28315647222223,
+                39.84067720213252
+              ],
+              [
+                116.28350205555556,
+                39.84072210733171
+              ],
+              [
+                116.28344888888888,
+                39.84087723412375
+              ],
+              [
+                116.28362433888891,
+                39.84090989234445
+              ],
+              [
+                116.2837200388889,
+                39.840599638527145
+              ],
+              [
+                116.28318305555557,
+                39.84051799251795
+              ]
+            ],
+            "anchorGeo": [
+              116.28343825555558,
+              39.8407139424312
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "liuli-liuli-roof-segment-9",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2838635888889,
+                39.84050166330273
+              ],
+              [
+                116.2840390388889,
+                39.840526157123904
+              ],
+              [
+                116.28408157222223,
+                39.840391440983204
+              ],
+              [
+                116.2847248888889,
+                39.84049349869344
+              ],
+              [
+                116.28476742222223,
+                39.840358782479115
+              ],
+              [
+                116.28392738888888,
+                39.84021590131379
+              ]
+            ],
+            "anchorGeo": [
+              116.28431550555557,
+              39.84037102921884
+            ],
+            "storeys": 6,
+            "heightMetres": 15.137999999999998,
+            "geometryEvidence": "manual visible roof segment, NOT surveyed ground footprint or confirmed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            130.8,
+            112.4
+          ],
+          [
+            235.5,
+            202.4
+          ],
+          [
+            353.3,
+            303.5
+          ]
+        ],
+        "frameCalibration": {
+          "uniformScale": 0.87,
+          "basis": "approximate contextual fit within public street setbacks; not a survey"
+        }
+      },
+      {
+        "id": "bali",
+        "label": "新华街八里",
+        "contextMaskGeo": [
+          [
+            116.28051579597701,
+            39.83966510005116
+          ],
+          [
+            116.28029630172414,
+            39.84034299241643
+          ],
+          [
+            116.28173039655172,
+            39.84085239237488
+          ],
+          [
+            116.28224079310344,
+            39.83994719742082
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-bali",
+        "frame": {
+          "modelUnitsPerPixel": 0.09616063655790041,
+          "sourceOrigin": [
+            -5342.30021141023,
+            -8982.908953085716
+          ]
+        },
+        "parts": [
+          {
+            "id": "bali-west-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28041205516718,
+                39.83983661844364
+              ],
+              [
+                116.28120454911269,
+                39.84005808013302
+              ],
+              [
+                116.28115647507818,
+                39.84015949029816
+              ],
+              [
+                116.28036398113267,
+                39.839938028608785
+              ]
+            ],
+            "anchorGeo": [
+              116.28078426512268,
+              39.8399980543709
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual footprint plan with public street setbacks; regenerated coherent painting, not a surveyed building identity",
+            "paintBounds": [
+              233,
+              369,
+              435,
+              354
+            ]
+          },
+          {
+            "id": "bali-east-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28082879690484,
+                39.84013163992954
+              ],
+              [
+                116.28159927712964,
+                39.840346949905324
+              ],
+              [
+                116.28155120309515,
+                39.84044836007047
+              ],
+              [
+                116.28078072287035,
+                39.84023305009468
+              ]
+            ],
+            "anchorGeo": [
+              116.28119,
+              39.84029
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual footprint plan with public street setbacks; regenerated coherent painting, not a surveyed building identity",
+            "paintBounds": [
+              528,
+              196,
+              468,
+              360
+            ]
+          },
+          {
+            "id": "bali-south-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28052275574272,
+                39.83960714401058
+              ],
+              [
+                116.28142531829178,
+                39.83985936426793
+              ],
+              [
+                116.28137724425729,
+                39.839960774433074
+              ],
+              [
+                116.28047468170823,
+                39.83970855417572
+              ]
+            ],
+            "anchorGeo": [
+              116.28095,
+              39.839783959221826
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual footprint plan with public street setbacks; regenerated coherent painting, not a surveyed building identity",
+            "paintBounds": [
+              393,
+              568,
+              555,
+              381
+            ]
+          },
+          {
+            "id": "bali-detached-frontage",
+            "kind": "shop",
+            "groundGeo": [
+              [
+                116.28034489124667,
+                39.84034198075602
+              ],
+              [
+                116.28076315194014,
+                39.84045886331431
+              ],
+              [
+                116.28073510875333,
+                39.84051801924397
+              ],
+              [
+                116.28031684805987,
+                39.840401136685685
+              ]
+            ],
+            "anchorGeo": [
+              116.28054,
+              39.84043
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual footprint plan with public street setbacks; regenerated coherent painting, not a surveyed building identity",
+            "paintBounds": [
+              282,
+              264,
+              272,
+              192
+            ]
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            124.1,
+            82.7
+          ],
+          [
+            223.3,
+            148.9
+          ],
+          [
+            335.0,
+            223.3
+          ]
+        ]
+      },
+      {
+        "id": "wuli-east",
+        "label": "新华街五里东区",
+        "contextMaskGeo": [
+          [
+            116.28295,
+            39.84262
+          ],
+          [
+            116.28406,
+            39.84338
+          ],
+          [
+            116.28476,
+            39.84223
+          ],
+          [
+            116.2838,
+            39.84191
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-wuli-east",
+        "frame": {
+          "modelUnitsPerPixel": 0.10767366264225564,
+          "sourceOrigin": [
+            -6177.0864852041195,
+            -6511.905443255875
+          ]
+        },
+        "parts": [
+          {
+            "id": "wuli-east-articulated-a",
+            "kind": "high-slab",
+            "groundGeo": [
+              [
+                116.28396945274338,
+                39.84235789034631
+              ],
+              [
+                116.28421517307015,
+                39.842824838126255
+              ],
+              [
+                116.28403054725663,
+                39.84288210965369
+              ],
+              [
+                116.28378482692986,
+                39.84241516187374
+              ]
+            ],
+            "anchorGeo": [
+              116.284,
+              39.84262
+            ],
+            "storeys": 14,
+            "heightMetres": 40.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "wuli-east-articulated-b",
+            "kind": "high-slab",
+            "groundGeo": [
+              [
+                116.28442822846934,
+                39.84255456705274
+              ],
+              [
+                116.2846563973442,
+                39.842988161419825
+              ],
+              [
+                116.28447177153068,
+                39.84304543294726
+              ],
+              [
+                116.28424360265582,
+                39.84261183858017
+              ]
+            ],
+            "anchorGeo": [
+              116.28445,
+              39.8428
+            ],
+            "storeys": 10,
+            "heightMetres": 29,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            87.3,
+            91.6
+          ],
+          [
+            157.1,
+            164.9
+          ],
+          [
+            235.7,
+            247.4
+          ]
+        ]
+      },
+      {
+        "id": "sanli",
+        "label": "新华街三里",
+        "contextMaskGeo": [
+          [
+            116.28368587493897,
+            39.84454520349708
+          ],
+          [
+            116.28587028503418,
+            39.84532880920831
+          ],
+          [
+            116.28736098289491,
+            39.8430823034264
+          ],
+          [
+            116.2850674533844,
+            39.84227746772285
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "photo-informed earlier working composite; construction and planting dates not individually verified",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-sanli",
+        "frame": {
+          "modelUnitsPerPixel": 0.25215005966143106,
+          "sourceOrigin": [
+            -2746.120735412532,
+            -2144.3858501049017
+          ]
+        },
+        "parts": [
+          {
+            "id": "sanli-street-tower-1",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28543020609881,
+                39.84252229490467
+              ],
+              [
+                116.28573551244021,
+                39.84263662337342
+              ],
+              [
+                116.28560714360212,
+                39.84283869932058
+              ],
+              [
+                116.28530183726072,
+                39.842724370851826
+              ]
+            ],
+            "anchorGeo": [
+              116.28551867485047,
+              39.842680497112624
+            ],
+            "storeys": 23,
+            "heightMetres": 68.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "cream-red-cap",
+            "sourceFeatureId": "xinhua-tower-1",
+            "paintBounds": [
+              335,
+              625,
+              145,
+              290
+            ]
+          },
+          {
+            "id": "sanli-street-tower-2",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28601907137896,
+                39.84275172441693
+              ],
+              [
+                116.28632437772036,
+                39.84286605288568
+              ],
+              [
+                116.28619600888227,
+                39.84306812883284
+              ],
+              [
+                116.28589070254087,
+                39.842953800364086
+              ]
+            ],
+            "anchorGeo": [
+              116.28610754013062,
+              39.842909926624884
+            ],
+            "storeys": 23,
+            "heightMetres": 68.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "cream-red-cap",
+            "sourceFeatureId": "xinhua-tower-2",
+            "paintBounds": [
+              460,
+              575,
+              145,
+              290
+            ]
+          },
+          {
+            "id": "sanli-street-tower-3",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28662878397968,
+                39.842991221674765
+              ],
+              [
+                116.28693409032108,
+                39.84310555014352
+              ],
+              [
+                116.28680572148299,
+                39.84330762609068
+              ],
+              [
+                116.28650041514159,
+                39.84319329762192
+              ]
+            ],
+            "anchorGeo": [
+              116.28671725273134,
+              39.84314942388272
+            ],
+            "storeys": 23,
+            "heightMetres": 68.7,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "cream-red-cap",
+            "sourceFeatureId": "xinhua-tower-3",
+            "paintBounds": [
+              580,
+              515,
+              155,
+              300
+            ]
+          },
+          {
+            "id": "sanli-rear-tower-a",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28397517402138,
+                39.84419399437496
+              ],
+              [
+                116.2843120637774,
+                39.8443201499267
+              ],
+              [
+                116.28417856018578,
+                39.84453030891174
+              ],
+              [
+                116.28384167042975,
+                39.84440415336
+              ]
+            ],
+            "anchorGeo": [
+              116.28407686710358,
+              39.84436215164335
+            ],
+            "storeys": 26,
+            "heightMetres": 76.39999999999999,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-flat-top",
+            "paintBounds": [
+              75,
+              190,
+              145,
+              290
+            ]
+          },
+          {
+            "id": "sanli-rear-tower-b",
+            "kind": "tower",
+            "groundGeo": [
+              [
+                116.28561838824714,
+                39.84478997676855
+              ],
+              [
+                116.28595527800317,
+                39.84491613232029
+              ],
+              [
+                116.28582177441154,
+                39.845126291305334
+              ],
+              [
+                116.28548488465552,
+                39.845000135753594
+              ]
+            ],
+            "anchorGeo": [
+              116.28572008132934,
+              39.84495813403694
+            ],
+            "storeys": 26,
+            "heightMetres": 76.39999999999999,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-flat-top",
+            "paintBounds": [
+              395,
+              60,
+              155,
+              305
+            ]
+          },
+          {
+            "id": "sanli-rear-slab-1",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28416684816257,
+                39.843941643745374
+              ],
+              [
+                116.28474587743075,
+                39.84415847359992
+              ],
+              [
+                116.28468426038846,
+                39.844255470054556
+              ],
+              [
+                116.28410523112028,
+                39.84403864020001
+              ]
+            ],
+            "anchorGeo": [
+              116.28442555427551,
+              39.844098556899965
+            ],
+            "storeys": 6,
+            "heightMetres": 19.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-pitched-slab",
+            "paintBounds": [
+              135,
+              385,
+              155,
+              175
+            ]
+          },
+          {
+            "id": "sanli-rear-slab-2",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2849386062337,
+                39.844173568580274
+              ],
+              [
+                116.28557027452625,
+                39.844410110239785
+              ],
+              [
+                116.28550865748396,
+                39.84450710669442
+              ],
+              [
+                116.2848769891914,
+                39.84427056503491
+              ]
+            ],
+            "anchorGeo": [
+              116.28522363185883,
+              39.84434033763735
+            ],
+            "storeys": 6,
+            "heightMetres": 19.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-pitched-slab",
+            "paintBounds": [
+              285,
+              325,
+              165,
+              175
+            ]
+          },
+          {
+            "id": "sanli-rear-slab-3",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28570409524646,
+                39.84446030098912
+              ],
+              [
+                116.28629365231951,
+                39.844681073204654
+              ],
+              [
+                116.28623203527722,
+                39.84477806965929
+              ],
+              [
+                116.28564247820417,
+                39.84455729744376
+              ]
+            ],
+            "anchorGeo": [
+              116.28596806526184,
+              39.844619185324206
+            ],
+            "storeys": 6,
+            "heightMetres": 19.4,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-pitched-slab",
+            "paintBounds": [
+              435,
+              265,
+              160,
+              175
+            ]
+          },
+          {
+            "id": "sanli-rear-slab-4",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28529498389918,
+                39.84380366232616
+              ],
+              [
+                116.28647409804528,
+                39.844245206757236
+              ],
+              [
+                116.28639194198888,
+                39.84437453536342
+              ],
+              [
+                116.28521282784278,
+                39.843932990932345
+              ]
+            ],
+            "anchorGeo": [
+              116.28584346294403,
+              39.84408909884479
+            ],
+            "storeys": 9,
+            "heightMetres": 28.099999999999998,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-pitched-slab",
+            "paintBounds": [
+              335,
+              380,
+              265,
+              235
+            ]
+          },
+          {
+            "id": "sanli-rear-slab-5",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28657705434709,
+                39.844064345846846
+              ],
+              [
+                116.28695702610787,
+                39.843466201043256
+              ],
+              [
+                116.28711494318101,
+                39.84352533645813
+              ],
+              [
+                116.28673497142023,
+                39.84412348126172
+              ]
+            ],
+            "anchorGeo": [
+              116.28684599876405,
+              39.84379484115249
+            ],
+            "storeys": 9,
+            "heightMetres": 28.099999999999998,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "green-articulated-slab",
+            "paintBounds": [
+              575,
+              345,
+              205,
+              335
+            ]
+          },
+          {
+            "id": "sanli-court-service-block",
+            "kind": "service",
+            "groundGeo": [
+              [
+                116.2846894059768,
+                39.843623482604144
+              ],
+              [
+                116.28483679524507,
+                39.843678675658026
+              ],
+              [
+                116.2847803129563,
+                39.84376758907477
+              ],
+              [
+                116.28463292368804,
+                39.84371239602089
+              ]
+            ],
+            "anchorGeo": [
+              116.28473485946655,
+              39.84369553583946
+            ],
+            "storeys": 4,
+            "heightMetres": 13.6,
+            "geometryEvidence": "Approximate spatial result; historical validity unresolved",
+            "appearanceFamily": "older-ochre-block",
+            "paintBounds": [
+              195,
+              510,
+              105,
+              120
+            ]
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            180.7,
+            214.3
+          ],
+          [
+            325.2,
+            385.8
+          ],
+          [
+            487.8,
+            578.7
+          ]
+        ],
+        "openSpaces": [
+          {
+            "id": "sanli-main-court",
+            "groundGeo": [
+              [
+                116.28505197048187,
+                39.84362368684931
+              ],
+              [
+                116.28622555732727,
+                39.844050810045275
+              ],
+              [
+                116.28647109985351,
+                39.843528956587704
+              ],
+              [
+                116.2853094625473,
+                39.84310472816075
+              ]
+            ],
+            "evidence": "Approximate spatial result; historical validity unresolved"
+          }
+        ]
+      },
+      {
+        "id": "yili",
+        "label": "新华街一里",
+        "contextMaskGeo": [
+          [
+            116.28738,
+            39.8432
+          ],
+          [
+            116.2895,
+            39.8437
+          ],
+          [
+            116.28901,
+            39.84578
+          ],
+          [
+            116.2869,
+            39.8453
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-yili",
+        "frame": {
+          "modelUnitsPerPixel": 0.18644730613774613,
+          "sourceOrigin": [
+            -4593.394550103308,
+            -2900.108032493009
+          ]
+        },
+        "parts": [
+          {
+            "id": "yili-south-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28778173824644,
+                39.843499731794815
+              ],
+              [
+                116.28875034195761,
+                39.84377040719295
+              ],
+              [
+                116.28869826175357,
+                39.84388026820519
+              ],
+              [
+                116.2877296580424,
+                39.843609592807056
+              ]
+            ],
+            "anchorGeo": [
+              116.28824,
+              39.84369
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-middle-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28773824853695,
+                39.84391434558001
+              ],
+              [
+                116.28867383166708,
+                39.84417579340775
+              ],
+              [
+                116.28862175146304,
+                39.844285654419984
+              ],
+              [
+                116.28768616833291,
+                39.844024206592245
+              ]
+            ],
+            "anchorGeo": [
+              116.28818,
+              39.8441
+            ],
+            "storeys": 5,
+            "heightMetres": 14.5,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-west-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28714584492732,
+                39.844043170927115
+              ],
+              [
+                116.28776222910717,
+                39.844215418907744
+              ],
+              [
+                116.28771415507268,
+                39.84431682907289
+              ],
+              [
+                116.28709777089283,
+                39.84414458109226
+              ]
+            ],
+            "anchorGeo": [
+              116.28743,
+              39.84418
+            ],
+            "storeys": 4,
+            "heightMetres": 11.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-north-row",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28732275574272,
+                39.844473184788754
+              ],
+              [
+                116.28822531829178,
+                39.844725405046105
+              ],
+              [
+                116.28817724425728,
+                39.84482681521125
+              ],
+              [
+                116.28727468170823,
+                39.8445745949539
+              ]
+            ],
+            "anchorGeo": [
+              116.28775,
+              39.84465
+            ],
+            "storeys": 4,
+            "heightMetres": 11.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-0",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28712840701593,
+                39.84489661699023
+              ],
+              [
+                116.28753566084904,
+                39.84501042369172
+              ],
+              [
+                116.28749159298408,
+                39.845103383009764
+              ],
+              [
+                116.28708433915097,
+                39.84498957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28731,
+              39.845
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-1",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28767840701593,
+                39.84489661699023
+              ],
+              [
+                116.28808566084905,
+                39.84501042369172
+              ],
+              [
+                116.28804159298409,
+                39.845103383009764
+              ],
+              [
+                116.28763433915097,
+                39.84498957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28786000000001,
+              39.845
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-2",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28822840701592,
+                39.84489661699023
+              ],
+              [
+                116.28863566084904,
+                39.84501042369172
+              ],
+              [
+                116.28859159298408,
+                39.845103383009764
+              ],
+              [
+                116.28818433915096,
+                39.84498957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28841,
+              39.845
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-3",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28712840701593,
+                39.845216616990236
+              ],
+              [
+                116.28753566084904,
+                39.84533042369172
+              ],
+              [
+                116.28749159298408,
+                39.845423383009766
+              ],
+              [
+                116.28708433915097,
+                39.84530957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28731,
+              39.84532
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-4",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28767840701593,
+                39.845216616990236
+              ],
+              [
+                116.28808566084905,
+                39.84533042369172
+              ],
+              [
+                116.28804159298409,
+                39.845423383009766
+              ],
+              [
+                116.28763433915097,
+                39.84530957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28786000000001,
+              39.84532
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "yili-earlier-low-5",
+            "kind": "low",
+            "groundGeo": [
+              [
+                116.28822840701592,
+                39.845216616990236
+              ],
+              [
+                116.28863566084904,
+                39.84533042369172
+              ],
+              [
+                116.28859159298408,
+                39.845423383009766
+              ],
+              [
+                116.28818433915096,
+                39.84530957630828
+              ]
+            ],
+            "anchorGeo": [
+              116.28841,
+              39.84532
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            128.7,
+            159.6
+          ],
+          [
+            231.7,
+            287.3
+          ],
+          [
+            347.6,
+            430.9
+          ]
+        ]
+      },
+      {
+        "id": "erli",
+        "label": "新华街二里",
+        "contextMaskGeo": [
+          [
+            116.2872205,
+            39.841607
+          ],
+          [
+            116.2871288,
+            39.8417384
+          ],
+          [
+            116.286521,
+            39.8426088
+          ],
+          [
+            116.2874694,
+            39.8429778
+          ],
+          [
+            116.2882548,
+            39.8419069
+          ],
+          [
+            116.2876716,
+            39.8416916
+          ],
+          [
+            116.2872549,
+            39.8415378
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-erli",
+        "frame": {
+          "modelUnitsPerPixel": 0.1948807245913114,
+          "sourceOrigin": [
+            -4295.1322757623075,
+            -3684.8011252651786
+          ]
+        },
+        "parts": [
+          {
+            "id": "erli-row-a",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2869802728936,
+                39.84241087443075
+              ],
+              [
+                116.28782780114089,
+                39.84264771540411
+              ],
+              [
+                116.2877797271064,
+                39.84274912556925
+              ],
+              [
+                116.2869321988591,
+                39.842512284595884
+              ]
+            ],
+            "anchorGeo": [
+              116.28738,
+              39.84258
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "erli-row-b",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2871602728936,
+                39.84202087443075
+              ],
+              [
+                116.28800780114089,
+                39.842257715404116
+              ],
+              [
+                116.2879597271064,
+                39.84235912556925
+              ],
+              [
+                116.2871121988591,
+                39.84212228459589
+              ]
+            ],
+            "anchorGeo": [
+              116.28756,
+              39.84219
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "erli-row-c",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28737879690485,
+                39.84167163992954
+              ],
+              [
+                116.28814927712965,
+                39.84188694990532
+              ],
+              [
+                116.28810120309515,
+                39.84198836007047
+              ],
+              [
+                116.28733072287035,
+                39.84177305009468
+              ]
+            ],
+            "anchorGeo": [
+              116.28774,
+              39.84183
+            ],
+            "storeys": 6,
+            "heightMetres": 17.4,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "erli-detached-frontage",
+            "kind": "shop",
+            "groundGeo": [
+              [
+                116.28715737409577,
+                39.84281429111404
+              ],
+              [
+                116.28763066909102,
+                39.842946552956306
+              ],
+              [
+                116.28760262590423,
+                39.84300570888597
+              ],
+              [
+                116.28712933090898,
+                39.8428734470437
+              ]
+            ],
+            "anchorGeo": [
+              116.28738,
+              39.84291
+            ],
+            "storeys": 1,
+            "heightMetres": 2.9,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            93.5,
+            102.3
+          ],
+          [
+            168.3,
+            184.2
+          ],
+          [
+            252.4,
+            276.2
+          ]
+        ]
+      },
+      {
+        "id": "sili",
+        "label": "新华街四里",
+        "contextMaskGeo": [
+          [
+            116.28502,
+            39.8414
+          ],
+          [
+            116.28692,
+            39.84174
+          ],
+          [
+            116.28712,
+            39.84067
+          ],
+          [
+            116.2852,
+            39.84034
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-sili",
+        "frame": {
+          "modelUnitsPerPixel": 0.15063323025170583,
+          "sourceOrigin": [
+            -5093.705220638432,
+            -5353.3365619209635
+          ]
+        },
+        "parts": [
+          {
+            "id": "sili-slab-a",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28516237868489,
+                39.84075126304225
+              ],
+              [
+                116.28598657238823,
+                39.84098158319921
+              ],
+              [
+                116.2859404213151,
+                39.84107893695775
+              ],
+              [
+                116.28511622761177,
+                39.84084861680079
+              ]
+            ],
+            "anchorGeo": [
+              116.28555139999999,
+              39.840915100000004
+            ],
+            "storeys": 6,
+            "heightMetres": 16.703999999999997,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "sili-slab-b",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.2860998285638,
+                39.84103409227605
+              ],
+              [
+                116.28689232250933,
+                39.841255553965425
+              ],
+              [
+                116.2868461714362,
+                39.84135290772396
+              ],
+              [
+                116.28605367749067,
+                39.841131446034574
+              ]
+            ],
+            "anchorGeo": [
+              116.286473,
+              39.8411935
+            ],
+            "storeys": 6,
+            "heightMetres": 16.703999999999997,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "sili-slab-c",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28539806197786,
+                39.840416739453524
+              ],
+              [
+                116.28621168909525,
+                39.840644106787956
+              ],
+              [
+                116.28616553802215,
+                39.84074146054648
+              ],
+              [
+                116.28535191090474,
+                39.84051409321205
+              ]
+            ],
+            "anchorGeo": [
+              116.2857818,
+              39.84057910000001
+            ],
+            "storeys": 6,
+            "heightMetres": 16.703999999999997,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          },
+          {
+            "id": "sili-slab-d",
+            "kind": "slab",
+            "groundGeo": [
+              [
+                116.28631727844271,
+                39.84070252150983
+              ],
+              [
+                116.28707807263041,
+                39.84091512473164
+              ],
+              [
+                116.28703192155727,
+                39.84101247849017
+              ],
+              [
+                116.28627112736959,
+                39.840799875268374
+              ]
+            ],
+            "anchorGeo": [
+              116.2866746,
+              39.840857500000006
+            ],
+            "storeys": 6,
+            "heightMetres": 16.703999999999997,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity; whole contextual painting and child geometry uniformly calibrated for street setbacks, no individual raster segment moved"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            100.6,
+            89.5
+          ],
+          [
+            181.1,
+            161
+          ],
+          [
+            271.6,
+            241.5
+          ]
+        ],
+        "frameCalibration": {
+          "uniformScale": 0.96,
+          "basis": "approximate contextual fit within public street setbacks; not a survey"
+        }
+      },
+      {
+        "id": "heating",
+        "label": "新华街供热厂",
+        "contextMaskGeo": [
+          [
+            116.28706910344827,
+            39.84165479306131
+          ],
+          [
+            116.28615890229885,
+            39.841568106729554
+          ],
+          [
+            116.28610899712643,
+            39.84158540384189
+          ],
+          [
+            116.28528800574712,
+            39.84148730450476
+          ],
+          [
+            116.2852136005747,
+            39.84147689534965
+          ],
+          [
+            116.28506020402298,
+            39.84207889663453
+          ],
+          [
+            116.28647430459769,
+            39.842598504978035
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-heating",
+        "frame": {
+          "modelUnitsPerPixel": 0.1569096148455269,
+          "sourceOrigin": [
+            -4887.11337814678,
+            -4809.01717935848
+          ]
+        },
+        "parts": [
+          {
+            "id": "heating-boiler-hall",
+            "kind": "industrial",
+            "groundGeo": [
+              [
+                116.28550186375747,
+                39.841587486146715
+              ],
+              [
+                116.28620630282015,
+                39.84178434098172
+              ],
+              [
+                116.28609813624252,
+                39.842012513853284
+              ],
+              [
+                116.28539369717984,
+                39.84181565901828
+              ]
+            ],
+            "anchorGeo": [
+              116.2858,
+              39.8418
+            ],
+            "storeys": 3,
+            "heightMetres": 8.7,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "heating-service-wing",
+            "kind": "industrial",
+            "groundGeo": [
+              [
+                116.28635625316878,
+                39.841568827468954
+              ],
+              [
+                116.28654493127684,
+                39.841927376657125
+              ],
+              [
+                116.28640374683121,
+                39.84197117253104
+              ],
+              [
+                116.28621506872315,
+                39.84161262334287
+              ]
+            ],
+            "anchorGeo": [
+              116.28638,
+              39.84177
+            ],
+            "storeys": 2,
+            "heightMetres": 5.8,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "heating-chimney",
+            "kind": "chimney",
+            "groundGeo": [
+              [
+                116.28619549758216,
+                39.84208965653637
+              ],
+              [
+                116.28627254560463,
+                39.84211118753395
+              ],
+              [
+                116.28624450241784,
+                39.84217034346362
+              ],
+              [
+                116.28616745439537,
+                39.84214881246604
+              ]
+            ],
+            "anchorGeo": [
+              116.28622,
+              39.84213
+            ],
+            "storeys": 14,
+            "heightMetres": 40.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            101,
+            73
+          ],
+          [
+            181.7,
+            131.4
+          ],
+          [
+            272.6,
+            197.2
+          ]
+        ],
+        "shortLabel": "供热厂",
+        "labelPositionsGeo": [
+          [
+            116.28565,
+            39.84207
+          ],
+          [
+            116.28608,
+            39.84198
+          ],
+          [
+            116.28525,
+            39.84182
+          ]
+        ]
+      },
+      {
+        "id": "school",
+        "label": "丰台一中",
+        "contextMaskGeo": [
+          [
+            116.28835,
+            39.84316
+          ],
+          [
+            116.2896,
+            39.84352
+          ],
+          [
+            116.2901,
+            39.84143
+          ],
+          [
+            116.28882,
+            39.84104
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "periodStatus": "user-authorized earlier composite reconstruction; not an exact dated snapshot",
+        "projectionId": "north-up-orthographic-rise-r1",
+        "assetRef": "painted-school",
+        "frame": {
+          "modelUnitsPerPixel": 0.1948807245913114,
+          "sourceOrigin": [
+            -4762.1322757623075,
+            -3522.8011252651786
+          ]
+        },
+        "parts": [
+          {
+            "id": "school-south-classrooms",
+            "kind": "school",
+            "groundGeo": [
+              [
+                116.28882573378003,
+                39.84144090381058
+              ],
+              [
+                116.28983836493263,
+                39.841723882635904
+              ],
+              [
+                116.28977426621996,
+                39.841859096189424
+              ],
+              [
+                116.28876163506736,
+                39.8415761173641
+              ]
+            ],
+            "anchorGeo": [
+              116.2893,
+              39.84165
+            ],
+            "storeys": 4,
+            "heightMetres": 11.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "school-west-classrooms",
+            "kind": "school",
+            "groundGeo": [
+              [
+                116.28866007129204,
+                39.84185705996381
+              ],
+              [
+                116.28896283383753,
+                39.842432406335526
+              ],
+              [
+                116.28879992870796,
+                39.8424829400362
+              ],
+              [
+                116.28849716616247,
+                39.84190759366448
+              ]
+            ],
+            "anchorGeo": [
+              116.28873,
+              39.84217
+            ],
+            "storeys": 4,
+            "heightMetres": 11.6,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          },
+          {
+            "id": "school-north-wing",
+            "kind": "school",
+            "groundGeo": [
+              [
+                116.28847986173281,
+                39.84294509721716
+              ],
+              [
+                116.28905221847124,
+                39.843105041770606
+              ],
+              [
+                116.2890001382672,
+                39.84321490278284
+              ],
+              [
+                116.28842778152877,
+                39.843054958229395
+              ]
+            ],
+            "anchorGeo": [
+              116.28874,
+              39.84308
+            ],
+            "storeys": 3,
+            "heightMetres": 8.7,
+            "geometryEvidence": "approximate contextual reconstruction; not a surveyed building identity"
+          }
+        ],
+        "nominalCssSizeByTier": [
+          [
+            94.1,
+            156
+          ],
+          [
+            169.4,
+            280.8
+          ],
+          [
+            254.1,
+            421.2
+          ]
+        ]
+      }
+    ],
+    "landmarks": [
+      {
+        "featureId": "theatre-symbol",
+        "assetRef": "painted-theatre",
+        "width": 40,
+        "sourceAnchor": [
+          0.5,
+          0.94
+        ]
+      },
+      {
+        "featureId": "nankai-slab-1",
+        "assetRef": "painted-nankai-a",
+        "width": 49,
+        "sourceAnchor": [
+          0.5,
+          0.94
+        ]
+      },
+      {
+        "featureId": "nankai-slab-2",
+        "assetRef": "painted-nankai-b",
+        "width": 49,
+        "sourceAnchor": [
+          0.5,
+          0.94
+        ]
+      }
+    ],
+    "frontages": [
+      {
+        "id": "sanli-opposite-detached-frontage",
+        "compoundId": "heating",
+        "assetRef": "painted-detached-frontage",
+        "anchorGeo": [
+          116.28555,
+          39.842231945629095
+        ],
+        "groundGeo": [
+          [
+            116.28536739536766,
+            39.84215699101741
+          ],
+          [
+            116.28575263548005,
+            39.842264646005304
+          ],
+          [
+            116.28573260463234,
+            39.84230690024078
+          ],
+          [
+            116.28534736451995,
+            39.842199245252885
+          ]
+        ],
+        "widthMetres": 44,
+        "sourceAnchor": [
+          0.59,
+          0.66
+        ],
+        "sourceClip": [
+          [
+            0.18,
+            0.44
+          ],
+          [
+            0.83,
+            0.05
+          ],
+          [
+            0.92,
+            0.36
+          ],
+          [
+            0.93,
+            0.48
+          ],
+          [
+            0.28,
+            0.9
+          ],
+          [
+            0.18,
+            0.77
+          ]
+        ],
+        "periodIds": [
+          "window-2000"
+        ],
+        "geometryEvidence": "user-directed detached earlier shops opposite Sanli; generic short raster row, not exact tenant inventory"
+      }
+    ],
+    "sourceStatus": "Approximate spatial result; historical validity unresolved"
+  }
 }
