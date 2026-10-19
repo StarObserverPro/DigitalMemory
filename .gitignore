@@ -11,6 +11,10 @@
 /raw-inputs/
 /local-evidence/
 
+# Visual trials/examples stay outside Git; existing tracked legacy files are not purged here.
+/assets/candidates/
+/local-art-studies/
+
 # Generated caches/builds, not the durable archive
 node_modules/
 dist/
