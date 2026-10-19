@@ -30,6 +30,12 @@ One primary work item and up to two genuine dependencies are the default attenti
 
 ## Construction boundaries
 
+Map artwork must be hand-painted raster imagery. SVG is for planning/registration, invisible masks/hit geometry and ordinary UI/text, never visible buildings, trees, grass, clutter or an emergency art fallback. Rasterizing an SVG stand-in does not satisfy this rule. Preserve building height class and dense storey rhythm: a 23-storey tower cannot become a few-storey icon. Read [hand-painted map art](docs/HANDPAINTED_MAP_ART.md) before new generation; context-filled generation, shared projection and final-size evidence supersede the older tiny-isolated-sprite recipe.
+
+Repository art storage is production-only: do not commit visual trials, examples, contact sheets, unused generations or one-off demonstration scripts. Keep their files outside the checkout, retain only concise decisions in documentation, and add raster assets only when selected for actual product use. A later deletion does not remove binaries from Git history; prepare a clean branch before the first push.
+
+For future image generation, use the drawing rules and selected skill references in the art contract: specify actual contour/wash/hatch behavior, preserve quiet surfaces and shared projection, and inspect brushwork at final object size. Extra grain, splatter or foliage fragments do not establish a hand-painted style. The proposed pen/watercolor and graphite treatments are unvalidated directions, not approved art.
+
 Read the current branch/head and relevant open PRs before writes. Discover tool capabilities read-only; a permission denial is not a reason to switch identity or bypass protection. Prefer an exact-base `agent/<task>` branch and a reviewable PR. Do not merge or deploy without authorization covering that effect. A documentation request alone does not authorize a production release.
 
 Keep stable place identity separate from editable coordinates. Only the spatial registry controls registration; only the time resolver selects time-layer visibility; only the application session owns the current location, period, camera and portal stack. Generated visuals never become historical evidence. Detailed ownership is in [architecture](docs/ARCHITECTURE.md).

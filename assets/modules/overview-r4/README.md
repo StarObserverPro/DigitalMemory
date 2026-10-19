@@ -1,5 +1,8 @@
 # Modular overview r4
 
+> Superseded by [DM-0015 hand-painted art requirements](../../../docs/HANDPAINTED_MAP_ART.md): visible SVG buildings/decorations/fallback are prohibited; preserve tower height class and floor rhythm. R4 remains installed historical runtime code, not an accepted stylistic solution.
+
+
 Qili, Wuli-west and Liuli now contain 19 independently positioned building/roof-segment objects. Each owns geographic ground geometry and a ground origin. No whole-compound raster is sheared to fit a parcel. Nine Liuli segments retain the previous approximate roof-trace identity; they are not a claim of nine separately numbered houses.
 
 The map uses a north-up cartographic oblique convention: ground follows the shared spatial transform and illustrated height rises vertically in screen space. It is not a strict 30-degree isometric grid. Building footprints keep their individual directions. Full-image road masking is removed from standing architecture; only ground decoration excludes road corridors.
