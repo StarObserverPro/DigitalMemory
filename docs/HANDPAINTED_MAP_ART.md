@@ -2,6 +2,16 @@
 
 DM-0015, updated 2026-10-19. This records the user's current correction and supersedes older instructions that let tiny isolated images, a fixed pixel ratio or sparse window dots determine the final style.
 
+## Current mass-first implementation — DM-0018
+
+The latest request permits simple rectangular/footprint-based masses, with wax colour blocks or coloured-pencil hatching, followed by more detail when enlarged. R6 applies that instruction to a source-linked spatial plan. One selected image-generated material atlas supplies broad wax, directional pencil, roofs and facade marks. An offline compositor projects these raster materials onto the registered volume faces; it does not render visible SVG surfaces, add synthetic grain, or reshape a whole generated compound to fit geography. This surface-material method is distinct from the contextual-scene method below and is the current implementation for Xinhua.
+
+Far scale simplifies small contour steps and omits small low-rise bodies; main masses keep their source position, physical height and height class. Medium adds subdued floor/window rhythm. Near adds finer facade marks at a row spacing derived from the estimated storey count. Every level shares the same canonical footprint, anchor and image world bounds. Simplification changes only the visible raster contour, not the geography. No tiny-body count or fixed window count replaces a 23-storey tower.
+
+`content/reference/xinhua-spatial-plan.json` owns selected outlines, source IDs, exclusions, compound boundaries and independent floor estimates. `scripts/build-xinhua-art.py` builds the selected rasters and runtime registration from that plan. The production material atlas is a build input, not a style comparison or example sheet. Runtime uses three packed raster levels per compound. No private photographs, source satellite images, QA renders or unused generations belong in Git.
+
+The user has not yet approved R6 aesthetics. The old R5 geography was rejected; its visual success claims below are historical, not current geographic acceptance. Estimates remain estimates, with ranges and source roles; a generic typology estimate is not a verified count within 20%.
+
 ## Visible art and planning have different owners
 
 All visible map buildings, vegetation, lawns, hardscape, clutter and painted surface details use original hand-painted raster imagery. SVG belongs to footprint/projection planning, guide diagrams, registration, invisible masks/clips, hit areas and ordinary text/UI. SVG cannot paint finished roofs/walls, trees, grass blobs or debris. Rasterizing vector shapes, adding a turbulence filter, or overlaying noise on clean vector faces does not satisfy the drawing requirement.

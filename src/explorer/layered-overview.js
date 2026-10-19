@@ -55,7 +55,7 @@ export function createOverviewAssembly(data,context,registration,transform,asset
   for(let y=-1500;y<3000;y+=300)for(let x=-1500;x<3000;x+=300)patches.push({id:`patch-${x}-${y}`,bounds:[x,y,300,300],interactive:false,recipe:{seed:`city-${x}-${y}`,styleRevision:'paper-roads-r2',typology:'land-wash'}});
   const model={schemaVersion:1,id:'fengtai-overview-review',revision:2,layoutRevision:data.mappingRevision,registrationBounds:[100,150,1050,1000],backdrop:{styleRevision:'paper-r2'},context:patches,roads,features};
   validateMapAssembly(model);
-  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets,{roads:[...context.roads,...data.roads]}),painted:compilePaintedOverview(registration,transform,assets,{roads:sourceRoads})};
+  return {model,data,context,registration,transform,parcels,compounds:compileCompoundTrials(registration,transform,assets,{roads:[...context.roads,...data.roads]}),painted:compilePaintedOverview(registration,transform,assets,{roads:[...context.roads,...data.roads]})};
 }
 const planCache=new WeakMap();
 function currentPlan(assembly,state,availableAssets) {
@@ -96,7 +96,7 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
     for(let i=1;i<r.art.length;i++) {
       const a=r.art[i-1],b=r.art[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);
       if(len<20)continue;
-      for(const t of [.5,.25,.75])for(const offset of(r.label==='新华街'?[0,14,-14]:[r.class==='ring'?0:14]))groups.get(r.label).push([a[0]+(b[0]-a[0])*t+(r.class==='ring'?-23/s:0),a[1]+(b[1]-a[1])*t+offset/s]);
+      for(const t of [.5,.25,.75])for(const offset of(r.label==='新华街'?[0,14,-14,28,-28,44,-44]:[r.class==='ring'?0:14]))groups.get(r.label).push([a[0]+(b[0]-a[0])*t+(r.class==='ring'?-23/s:0),a[1]+(b[1]-a[1])*t+offset/s]);
     }
   }
   for(const[text,positions]of groups) {
@@ -104,7 +104,7 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
     positions.sort((a,b)=>Math.hypot(a[0]-center[0],a[1]-center[1])-Math.hypot(b[0]-center[0],b[1]-center[1]));
     candidates.push({id:'road-name-'+text,text,kind:'road',vertical:text==='西四环南路',priority:importance[text]||30,minLevel:(importance[text]||30)>=90?0:1,positions});
   }
-  const obstacles=assembly.painted?[...compounds.flatMap(c=>c.parts.map(p=>p.visualBounds)),...assembly.painted.landmarks.filter(l=>availableAssets.includes(l.assetRef)).map(l=>l.rect)]:[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))];
+  const obstacles=assembly.painted?[...compounds.flatMap(c=>c.parts.filter(p=>(p.minLevel||0)<=level).map(p=>p.visualBounds)),...assembly.painted.landmarks.filter(l=>availableAssets.includes(l.assetRef)).map(l=>l.rect)]:[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))];
   return placeMapLabels(candidates,obstacles,metrics,level);
 }
 export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapMetrics(state.camera)) {
