@@ -23,6 +23,8 @@ The “图层与拼装” control lets you inspect roads, buildings, frontages a
 | How are location, time, evidence, and memory represented? | [Data model](docs/DATA_MODEL.md) |
 | How does the application feel and behave? | [Interaction contract](docs/INTERACTION.md) |
 | How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
+| Where did Xinhua/Sanli building geometry actually come from, and what is verified? | [Geographic source chain](docs/GEO_DATA_LINEAGE.md) |
+| How does an Agent acquire and audit the next map area without guessing buildings? | [Geodata acquisition / QA runbook](docs/GEO_DATA_RUNBOOK.md) |
 | How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
 | What demonstrates that work actually succeeded? | [Verification](docs/VERIFICATION.md) |
 | Which architecture choices are settled or deferred? | [Decision register](docs/DECISIONS.md) |

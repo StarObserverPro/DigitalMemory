@@ -18,6 +18,8 @@ Maintain a **registration package** and a **presentation package**. The first co
 
 The historical map/satellite layer is a workbench reference, not the default viewer surface. The illustrative surface may simplify detail while preserving the relationships that make the walking route recognizable. Do not mistake a visually seamless image for a geographically registered map.
 
+> For Xinhua/Sanli, **source coordinates precede painting**. Read the [measured geographic source chain](GEO_DATA_LINEAGE.md) and [acquisition/QA runbook](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
+
 ## Reference intake
 
 Record source identity, actual capture/publication date or range, coverage, resolution where known, original coordinate system, processing history, access conditions, and reuse/publication status. A catalog listing is not a downloaded source; a satellite's nominal capability is not proof of Phase 1 coverage.

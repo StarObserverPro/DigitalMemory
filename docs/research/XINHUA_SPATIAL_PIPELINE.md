@@ -1,5 +1,8 @@
 # Xinhua source-to-render pipeline
 
+> For source-level provenance, recorded 2026-10-19 Sanli counts, reproducibility caveats and the exact local acquisition/QA commands, see [Geographic data lineage](../GEO_DATA_LINEAGE.md) and [Geodata runbook](../GEO_DATA_RUNBOOK.md). This page begins at the R6 source-selection/presentation step; it does not replace the acquired-source ledger.
+
+
 DM-0018, 2026-10-19. The previous failure was that hand-authored compound layouts became the runtime source of truth, while checking only a few tower anchors and road overlap could not catch missing, rotated or invented buildings. R6 removes that dependency.
 
 1. **Acquire bounded data.** The other chat's Sanli snapshot has 249 polygons. The corridor snapshot adds coverage across both sides of Xinhua: 774 source polygons from Overture 2026-09-23.1, including OSM and East Asia building data. Both snapshots contain no usable native heights. Overture records sourced from OSM are not independent corroboration of OSM.
