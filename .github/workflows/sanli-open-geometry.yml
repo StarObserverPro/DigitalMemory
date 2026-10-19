@@ -3,7 +3,7 @@ name: Sanli open building reference snapshot
 on:
   push:
     branches: [agent/dm-0017-sanli-open-geometry]
-    paths: [.github/workflows/sanli-open-geometry.yml]
+    paths: [.github/workflows/sanli-open-geometry.yml, scripts/ingest-sanli-overture.py]
   workflow_dispatch:
 
 permissions:
