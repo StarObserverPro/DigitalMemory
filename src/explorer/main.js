@@ -214,7 +214,7 @@ async function start() {
   if(overviewRegistration.geometryRevision!==geometry.revision)throw new Error('地图暂时无法载入，请刷新重试。');
   overviewAssembly=createOverviewAssembly(composition.data,mapContext,overviewRegistration,transform,moduleAssets);
   const painted=overviewAssembly.painted;
-  const mapAssetKeys=painted?[...new Set([painted.base.assetRef,...painted.compounds.map(c=>c.assetRef),...painted.landmarks.map(l=>l.assetRef),...painted.frontages.map(f=>f.assetRef)])]:[];
+ const mapAssetKeys=painted?[...new Set([painted.base.assetRef,painted.ground?.assetRef,...painted.compounds.flatMap(c=>c.assetRefsByLevel||[c.assetRef]),...painted.landmarks.map(l=>l.assetRef),...painted.frontages.map(f=>f.assetRef)].filter(Boolean))]:[];
   await Promise.allSettled(mapAssetKeys.map(id=>new Promise(resolve=>{const im=new Image();im.onload=()=>{availableMapAssets.add(id);resolve();};im.onerror=resolve;im.src=moduleAssets[id].url;})));
   let saved = restoreSession(localStorage, manifest);
   if(saved && saved.mapRevision!=='journal-r6'){saved.camera={x:0,y:0,zoom:1};saved.view='map';saved.sceneId='map';saved.returnStack=[];}
