@@ -2,6 +2,12 @@
 
 Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
 
+## Sanli licensed footprint benchmark — DM-0017
+
+A real, spatially bounded Overture Maps source snapshot has been acquired on a review branch (not merged): 249 valid local building polygons, 34 source objects mostly inside the Sanli parcel (14 over 300 m²), and four source local road centerlines including both junction arms. This does **not** mean 34 residences. Source polygons derive mainly from a published East Asia footprint dataset rather than direct 3D map-client capture. Overture has zero buildings with height/floor fields and returned zero `building_part` records here; building heights, ground footprint vs roofprint, individual building identities and historical dates are NOT validated. Four nearby road-centerline proximity flags remain for map QA.
+
+The workflow download and spatial validator pass; `content/reference/sanli-open-geometry.geojson` and its audit are isolated from painted runtime registration. No commercial 3D meshes or panorama textures were extracted. No visual/historical acceptance, merge or deployment in this step.
+
 ## Complete Xinhua overview corridor — DM-0016
 
 The requested corridor now uses eleven selected compound/large-parcel raster paintings: nine residential units (Wuli east/west separate), heating plant and the background 丰台一中 campus. Sanli retains five tall blocks and five lower slabs; the east keeps earlier low fabric up to Zaojia Street. Three short southern shop groups are detached from residential buildings, including the retained frontage opposite Sanli. Building counts and minor footprints are a contextual reconstruction, not an exact historical inventory.
