@@ -13,13 +13,20 @@
     "building_part": 0
   },
   "selectedCounts": {
-    "road-centerline": 2,
+    "road-centerline": 4,
     "building": 249
   },
   "ignoredCounts": {
     "building-invalid-or-outside": 1
   },
   "sanliSourceFootprintsMostlyInside": 34,
+  "sanliLargeFootprintCandidatesArea300SqM": 14,
+  "sourceRoadNames": [
+    "东兴里",
+    "建国街",
+    "新华街",
+    "韩庄路"
+  ],
   "sanliSourceIds": [
     "0d7befcc-ee93-4e12-8503-8ffffdb16938",
     "0e660565-7d02-410e-ba70-78bd39128b1f",
@@ -59,10 +66,12 @@
   "workingSanliCountFromSurvey": 10,
   "sourceBuildingsWithHeight": 0,
   "sourceBuildingsWithFloorCount": 0,
-  "roadNearFlags": 2,
+  "roadNearFlags": 4,
   "roadNearSourceIds": [
+    "1611e112-5581-4990-a8e3-4bf4a9e5ae25",
     "707d3ac8-91a3-44b0-a6f7-91bf6482e1b8",
-    "831b7cbd-1cff-46dc-b4f0-68f4ff6a498f"
+    "831b7cbd-1cff-46dc-b4f0-68f4ff6a498f",
+    "d224a066-f4b6-4437-9120-33e8ae13e4ac"
   ],
   "downloadSha256": {
     "building": "e1ca39a7ce25ce2c05a400f580e4dc15af5d6c9a98992d405dce6538fb095aae",
