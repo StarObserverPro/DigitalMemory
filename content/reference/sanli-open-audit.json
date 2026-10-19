@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "reference-only-not-promoted",
+  "area": "新华街三里；新华街—韩庄路／东兴里交叉口",
+  "bboxWGS84": [
+    116.28335,
+    39.84175,
+    116.28935,
+    39.84615
+  ],
+  "rawFeatureCounts": {
+    "building": 250,
+    "building_part": 0
+  },
+  "selectedCounts": {
+    "road-centerline": 2,
+    "building": 249
+  },
+  "ignoredCounts": {
+    "building-invalid-or-outside": 1
+  },
+  "sanliSourceFootprintsMostlyInside": 34,
+  "sanliSourceIds": [
+    "0d7befcc-ee93-4e12-8503-8ffffdb16938",
+    "0e660565-7d02-410e-ba70-78bd39128b1f",
+    "1558a808-868c-4008-bd4e-289ac27e4f77",
+    "1eee35ff-dc1f-40c5-842f-6bfbe010bd64",
+    "22b8dade-a7f0-43a7-a9f8-ddad714305f3",
+    "2a60ca75-764c-43b9-9bff-52d198cb85af",
+    "2b5eeafe-9cf1-42cc-906f-ca39973b91f6",
+    "310cbd7b-84c5-4585-9a63-12208ec729b9",
+    "3a5d2c13-7606-4f33-bf96-b00e3255d7d4",
+    "42b1fac2-a803-43b4-bf94-c3992ca40535",
+    "46aa4676-3cfc-4e3f-8d88-12ef672cf37c",
+    "4b2c9261-fe9f-43b8-b079-8d568bbebc5e",
+    "4e39ce07-801f-4d8f-bc7a-358d57023210",
+    "4fa53cc3-8e16-4126-99b6-89a7353128da",
+    "61baafb9-474f-4f14-b093-5206abd2a9d8",
+    "65927c25-5bdc-4fc2-980e-f31f096a746c",
+    "6952c25b-4be4-4053-8864-0a40e0a781f7",
+    "6c39d597-ed4a-40bb-858c-3fae53c6e487",
+    "7141c25e-f89d-4204-a566-61cee2f22613",
+    "7ebac776-f8d3-442a-919c-9cd7a25d90dc",
+    "86e1b014-2885-46fb-a42d-b1778f0cee37",
+    "a4c9fa09-1ce2-4455-8f9f-2862bb70ec53",
+    "b59e87f4-033c-4506-a274-61b2c1eb2c2d",
+    "bac3da74-8990-41da-b13e-984e350b9147",
+    "c382b775-18bf-4865-b52c-400d0ff0e168",
+    "c592bc41-d3d5-4839-ab76-bceffb38be55",
+    "c626e91c-b883-4f1f-8949-f4addd3cfc5a",
+    "ca5d1563-4379-4a48-967b-a10ad18eb004",
+    "cf7f7fb4-3960-4de8-90a7-aefbd9403b6c",
+    "d88e31c0-0404-4765-9f34-aa1236e5a3a1",
+    "d94aee6a-42d0-40af-a9a6-d599aae03b2f",
+    "da4eeac8-f133-4c1e-a984-a01d88770bcb",
+    "e07d05ac-2e15-484a-8dd7-504484edcbb7",
+    "fe62088e-f582-458f-bb56-a1d4e1bb6b5c"
+  ],
+  "workingSanliCountFromSurvey": 10,
+  "sourceBuildingsWithHeight": 0,
+  "sourceBuildingsWithFloorCount": 0,
+  "roadNearFlags": 2,
+  "roadNearSourceIds": [
+    "707d3ac8-91a3-44b0-a6f7-91bf6482e1b8",
+    "831b7cbd-1cff-46dc-b4f0-68f4ff6a498f"
+  ],
+  "downloadSha256": {
+    "building": "e1ca39a7ce25ce2c05a400f580e4dc15af5d6c9a98992d405dce6538fb095aae",
+    "building_part": "b282fe0a1b482f0f5cfe8e199a8f84ad3b03117f83f1369a7a2ed021e7473d15"
+  },
+  "decision": "Do not update illustratedOverview or street-world; inspect mismatched/missing outlines and roof-ground registration first.",
+  "limitations": "No licensed Chinese commercial 3D meshes/panoramas imported; Overture may lack heights and its outlines may be roofprints; no historical date inferred."
+}
