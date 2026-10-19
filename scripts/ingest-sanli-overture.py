@@ -59,6 +59,25 @@ def run():
             line=LineString(road["points"])
             if line.intersects(roi):
                 roads.append((road,line))
+    # The orientation subset omits smaller streets at both Sanli junctions.
+    # Recover them from the same repo's OSM context art using its published
+    # local-equirectangular transform (never from the hand-painted assets).
+    orientation=read(a.orientation)
+    bounds=orientation["bounds"]
+    ox,oy=(bounds[0]+bounds[2])/2,(bounds[1]+bounds[3])/2
+    factor=math.cos(math.radians(oy))
+    scale=1044/max((bounds[2]-bounds[0])*factor,bounds[3]-bounds[1])
+    to_geo=lambda p:(ox+(p[0]-600)/scale/factor,oy-(p[1]-600)/scale)
+    present={r["id"] for r,_ in roads}
+    for candidate in read("content/public/map-context.json")["roads"]:
+        if candidate["label"] not in ("新华街","韩庄路","东兴里","建国街") or candidate["id"] in present:
+            continue
+        recovered=LineString([to_geo(p) for p in candidate["art"]])
+        if recovered.intersects(roi):
+            road={ "id":candidate["id"],"label":candidate["label"],
+                   "source":"DigitalMemory OSM context inverse-projection" }
+            roads.append((road,recovered))
+            present.add(candidate["id"])
     road_buffers={r["id"]:meters(line).buffer(4) for r,line in roads}
     items=[]
     raw_counts={}
@@ -113,7 +132,7 @@ def run():
             }})
     items.sort(key=lambda f:(f["properties"]["kind"],f["properties"]["sourceId"]))
     lines=[{"type":"Feature","id":r["id"],"geometry":{"type":"LineString","coordinates":list(line.coords)},
-            "properties":{"kind":"road-centerline","source":"DigitalMemory OSM orientation","name":r["label"]}}
+            "properties":{"kind":"road-centerline","source":r.get("source","DigitalMemory OSM orientation"),"name":r["label"]}}
            for r,line in roads]
     selected=lines+items
     buildings=[f for f in items if f["properties"]["kind"]=="building"]
@@ -136,7 +155,7 @@ def run():
         "bboxWGS84":BBOX,"rawFeatureCounts":raw_counts,
         "selectedCounts":dict(Counter(f["properties"]["kind"] for f in selected)),
         "ignoredCounts":dict(ignored),
-        "sanliSourceFootprintsMostlyInside":len(inside),
+        "sanliSourceFootprintsMostlyInside":len(inside),\n        "sanliLargeFootprintCandidatesArea300SqM":sum(f["properties"]["estimatedAreaSqM"]>=300 for f in inside),\n        "sourceRoadNames":sorted({r["label"] for r,_ in roads}),
         "sanliSourceIds":[f["properties"]["sourceId"] for f in inside],
         "workingSanliCountFromSurvey":10,
         "sourceBuildingsWithHeight":len(heights),
