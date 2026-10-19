@@ -22,6 +22,7 @@ User-authored meaning and explicit constraints are authoritative. A current expl
 | Purpose / first scope | affected sections of `docs/PRODUCT.md` / `docs/PHASE_1.md` |
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
+| GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
 | Acceptance / actual completion | `docs/VERIFICATION.md` / `docs/STATUS.md` |
 | Cross-session or concurrent work | `docs/attention/README.md` |
