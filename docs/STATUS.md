@@ -10,9 +10,9 @@ Original imagegen wax/pencil materials are composed onto those geographic masses
 
 ## Sanli licensed footprint benchmark — DM-0017
 
-A real, spatially bounded Overture Maps source snapshot has been acquired on a review branch (not merged): 249 valid local building polygons, 34 source objects mostly inside the Sanli parcel (14 over 300 m²), and four source local road centerlines including both junction arms. This does **not** mean 34 residences. Source polygons derive mainly from a published East Asia footprint dataset rather than direct 3D map-client capture. Overture has zero buildings with height/floor fields and returned zero `building_part` records here; building heights, ground footprint vs roofprint, individual building identities and historical dates are NOT validated. Four nearby road-centerline proximity flags remain for map QA.
+The source acquisition was merged through PR 15, and the later DM-0018 production spatial plan uses the related Overture geographic evidence. This is **data acquisition**, not commercial 3D reconstruction or individual-building address verification. The [source lineage](GEO_DATA_LINEAGE.md) and [repeatable QA runbook](GEO_DATA_RUNBOOK.md) explain the actual data chain, CLI invocation, source hashes, geodetic conversion, limitations and promotion gates.
 
-The workflow download and spatial validator pass; `content/reference/sanli-open-geometry.geojson` and its audit are isolated from painted runtime registration. No commercial 3D meshes or panorama textures were extracted. No visual/historical acceptance, merge or deployment in this step.
+The bounded 2026-10-19 Sanli snapshot contains 249 retained polygons, including 34 objects with more than 80% of their area within the registered estate (14 over 300 m²). The dataset contains zero source-provided building heights/storey counts and zero building-part features here. Four named OSM roads and four nearby (outside-Sanli) centreline-proximity flags are retained. These counts do not establish actual apartment-building identities, surveyed heights or historical conditions. The later R6 review separately selects 161 masses across 11 Xinhua groups and records inferred Z evidence; see DM-0018 above. The original acquisition had no independent deployment.
 
 ## Complete Xinhua overview corridor — DM-0016
 
