@@ -1,0 +1,44 @@
+name: Xinhua corridor open geometry
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install overturemaps==1.0.2
+      - name: Acquire bounded corridor polygons
+        run: overturemaps download --release=2026-09-23.1 --bbox=116.279,39.8392,116.2912,39.8460 -f geojson --type=building -o "$RUNNER_TEMP/xinhua-buildings.geojson"
+      - name: Retain reusable spatial fields
+        env:
+          SOURCE: ${{ runner.temp }}/xinhua-buildings.geojson
+        run: |
+          python - <<'PY'
+          import json, os, hashlib
+          from pathlib import Path
+          raw=Path(os.environ['SOURCE']).read_bytes()
+          data=json.loads(raw)
+          out=[]
+          for f in data['features']:
+              p=f.get('properties',{})
+              q={k:p.get(k) for k in ['id','height','num_floors','class','subtype','sources','has_parts','roof_shape']}
+              out.append({'type':'Feature','id':p.get('id',f.get('id')),'geometry':f['geometry'],'properties':q})
+          result={'type':'FeatureCollection','metadata':{'crs':'WGS84','bbox':[116.279,39.8392,116.2912,39.8460],'provider':'Overture Maps','release':'2026-09-23.1','license':'ODbL-1.0','sourceSha256':hashlib.sha256(raw).hexdigest(),'role':'source footprint candidates; heights remain nullable'},'features':out}
+          Path('content/reference/xinhua-open-geometry.geojson').write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'))+'\n')
+          print('Source buildings:',len(out),'Source heights:',sum(f['properties']['height'] is not None for f in out))
+          PY
+      - name: Commit source snapshot to working branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/reference/xinhua-open-geometry.geojson
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: acquire Xinhua corridor footprint coverage'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

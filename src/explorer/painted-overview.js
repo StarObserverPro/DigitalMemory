@@ -18,6 +18,7 @@ const segmentDistance=(a,b,c,d)=>cross(a,b,c)*cross(a,b,d)<0&&cross(c,d,a)*cross
 export function compilePaintedOverview(registration,transform,assets,options={}){
  const source=registration.paintedOverview;if(!source)return null;
  if(source.projectionId!=='north-up-orthographic-rise-r1')throw new Error('Painted overview projection mismatch');
+ if(source.renderer==='registered-raster-volumes-v1')return compileRegisteredVolumes(source,registration,transform,assets,options);
  const compounds=source.compounds.map(c=>{
   const asset=assets[c.assetRef],u=c.frame.modelUnitsPerPixel,o=c.frame.sourceOrigin;
   if(!asset||!(u>0)||o.length!==2||!o.every(Number.isFinite))throw new Error('Invalid painted compound frame '+c.id);
@@ -53,8 +54,10 @@ export function compilePaintedOverview(registration,transform,assets,options={})
  return {...source,compounds,landmarks,frontages};
 }
 
-export const visiblePaintedCompounds=(assembly,state,available)=>assembly.painted.compounds.filter(c=>c.periodIds.includes(state.periodId)&&available.includes(c.assetRef));
+const levelFor=state=>state.camera.zoom<1.5?0:state.camera.zoom<2.25?1:2;
+export const visiblePaintedCompounds=(assembly,state,available)=>assembly.painted.compounds.filter(c=>c.periodIds.includes(state.periodId)&&available.includes(c.assetRefsByLevel?.[levelFor(state)]||c.assetRef));
 export function paintedOverviewMarkup(assembly,assets,state,available){
+ if(assembly.painted.renderer==='registered-raster-volumes-v1')return registeredVolumesMarkup(assembly,assets,state,available);
  const painted=assembly.painted,compounds=visiblePaintedCompounds(assembly,state,available),defs=[],ground=[],standing=[];
  // Full original road painting uses the same fixed world frame as all compound patches.
  const base=available.includes(painted.base.assetRef)?image(assets[painted.base.assetRef],painted.base.bounds,'data-raster-ground="true"'):'';
@@ -80,4 +83,52 @@ export function paintedOverviewMarkup(assembly,assets,state,available){
   standing.push({id:f.id,depth:f.groundAnchor[1],html:`<g data-frontage="${esc(f.id)}" data-kind="shop" clip-path="url(#${id})">${image(assets[f.assetRef],f.rect)}</g>`});
  }
  return `<defs>${defs.join('')}</defs><g data-layer="pale-context">${base}</g><g data-layer="road-art" data-raster-roads="true"></g><g data-layer="compound-ground">${ground.join('')}</g><g data-layer="solid-places">${standing.sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(s=>s.html).join('')}</g>`;
+}
+
+/** XY and Z are immutable across the three raster detail levels. */
+function compileRegisteredVolumes(source,registration,transform,assets,options){
+ const seen=new Set();
+ const roads=(options.roads||[]).filter(r=>['新华街','西四环南路','丰台南路','造甲街','建国街','东大街','韩庄路'].includes(r.label));
+ const compounds=source.compounds.map(c=>{
+  const mask=c.contextMaskGeo.map(transform.toImage);
+  if(!c.assetRefsByLevel?.every(id=>assets[id]))throw new Error('Missing registered raster level: '+c.id);
+  const parts=c.parts.map(p=>{
+   if(seen.has(p.id))throw new Error('Duplicate registered mass: '+p.id);seen.add(p.id);
+   const ground=p.groundGeo.map(transform.toImage),origin=transform.toImage(p.anchorGeo),height=p.heightMetres*transform.scale;
+   if(!(p.storeys>0&&height>0)||!p.heightEvidence?.sources?.length||!p.sourceIds?.length)throw new Error('Missing geographic/height evidence: '+p.id);
+   if(p.sourceFeatureId){const f=registration.features.find(f=>f.id===p.sourceFeatureId);if(!f||f.geo.some((v,i)=>Math.abs(v-p.anchorGeo[i])>1e-9))throw new Error('Painted feature anchor mismatch: '+p.id);}
+   for(const road of roads){
+    const radius=(road.class==='ring'?24:road.label==='新华街'?14:12)*transform.scale/2;
+    for(let i=1;i<road.art.length;i++)for(let j=0;j<ground.length;j++)if(segmentDistance(ground[j],ground[(j+1)%ground.length],road.art[i-1],road.art[i])<radius-.05)throw new Error('Painted footprint overlaps road: '+p.id+' / '+road.label);
+   }
+   const[x,y,w,h]=p.renderBounds;
+   if(!p.renderBounds.every(Number.isFinite)||w<=0||h<=0)throw new Error('Invalid registered raster bounds: '+p.id);
+   for(const level of[0,1,2]){
+    const rep=p.levels[level],a=assets[rep?.assetRef],q=rep?.crop;
+    if(!a||!q||q.length!==4||q.some(n=>!Number.isFinite(n))||q[0]<0||q[1]<0||q[0]+q[2]>a.width||q[1]+q[3]>a.height||Math.abs(q[2]/q[3]-w/h)>1e-8)throw new Error('Invalid registered atlas crop: '+p.id);
+   }
+   // A shifted source outline must invalidate an already composed image.
+   for(const [gx,gy]of ground)if(gx<x||gx>x+w||gy>y+h||gy-height<y)throw new Error('Registered footprint no longer matches raster bounds: '+p.id);
+   return {...p,ground,origin,height,visualBounds:p.renderBounds,depth:Math.max(...ground.map(p=>p[1]))};
+  });
+  return {...c,mask,bounds:bounds(mask),parts};
+ });
+ const landmarks=source.landmarks.map(l=>{const f=registration.features.find(f=>f.id===l.featureId),a=assets[l.assetRef];if(!f||!a)throw new Error('Invalid painted landmark '+l.featureId);const groundAnchor=transform.toImage(f.geo),height=l.width*a.height/a.width;return {...l,groundAnchor,rect:[groundAnchor[0]-l.width*l.sourceAnchor[0],groundAnchor[1]-height*l.sourceAnchor[1],l.width,height]};});
+ for(const a of[source.base,source.ground])if(!assets[a.assetRef])throw new Error('Missing registered ground');
+ return {...source,compounds,landmarks,frontages:[]};
+}
+
+function registeredVolumesMarkup(assembly,assets,state,available){
+ const painted=assembly.painted,level=levelFor(state),compounds=visiblePaintedCompounds(assembly,state,available),standing=[];
+ const base=available.includes(painted.base.assetRef)?image(assets[painted.base.assetRef],painted.base.bounds,'data-raster-ground="true"'):'';
+ const ground=painted.ground.periodIds.includes(state.periodId)&&available.includes(painted.ground.assetRef)?image(assets[painted.ground.assetRef],painted.ground.bounds,'data-registered-corridor="true"'):'';
+ for(const c of compounds)for(const p of c.parts.filter(p=>(p.minLevel||0)<=level)){
+  const rep=p.levels[level],a=assets[rep.assetRef],[x,y,w,h]=p.visualBounds;
+  // The nested SVG is only an image viewport into a packed raster atlas.
+  // Identical world bounds at every tier preserve scale, anchors and occlusion.
+  const body=`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${rep.crop.join(' ')}" preserveAspectRatio="xMidYMid meet" overflow="hidden"><image width="${a.width}" height="${a.height}" href="${esc(a.url)}"/></svg>`;
+  standing.push({id:p.id,depth:p.depth,html:`<g data-compound="${esc(c.id)}" data-part="${esc(p.id)}" data-kind="${esc(p.kind)}" data-storeys="${p.storeys}" data-detail-level="${level}" data-ground-anchor="${p.origin.join(',')}"${p.id==='sanli-opposite-detached-frontage'?' data-frontage="sanli-opposite-detached-frontage"':''}>${body}</g>`});
+ }
+ if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if(available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
+ return `<g data-layer="pale-context">${base}</g><g data-layer="road-art" data-raster-roads="true">${ground}</g><g data-layer="solid-places">${standing.sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(s=>s.html).join('')}</g>`;
 }

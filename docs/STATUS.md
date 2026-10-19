@@ -2,6 +2,18 @@
 
 Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
 
+## Registered Xinhua masses and zoom detail — DM-0018
+
+R6 replaces the geographically rejected R5 compound layouts with 161 source-linked building/low-rise masses across the eleven Xinhua groups. The other chat's acquired Sanli data is included; a bounded corridor acquisition supplies 774 source polygons, with no native height fields. Floor estimates now have explicit evidence roles and ranges. The school uses its retrieved OSM boundary; Bali has two tall blocks; Wuli east retains the two curved perimeter runs; Sanli's front and rear tower families and differently oriented slabs follow the inspected source plan.
+
+Original imagegen wax/pencil materials are composed onto those geographic masses. Three raster detail levels preserve position and height, suppress tiny low-rise clutter at far scale, add restrained window rhythm at medium and more facade detail near. The pipeline and limits are recorded in [Xinhua spatial pipeline](research/XINHUA_SPATIAL_PIPELINE.md). Integration/publication and final verification are recorded in [DM-0018](attention/tasks/DM-0018.md). R5 observations below are superseded for this corridor; they are not current geographic or aesthetic acceptance.
+
+## Sanli licensed footprint benchmark — DM-0017
+
+A real, spatially bounded Overture Maps source snapshot has been acquired on a review branch (not merged): 249 valid local building polygons, 34 source objects mostly inside the Sanli parcel (14 over 300 m²), and four source local road centerlines including both junction arms. This does **not** mean 34 residences. Source polygons derive mainly from a published East Asia footprint dataset rather than direct 3D map-client capture. Overture has zero buildings with height/floor fields and returned zero `building_part` records here; building heights, ground footprint vs roofprint, individual building identities and historical dates are NOT validated. Four nearby road-centerline proximity flags remain for map QA.
+
+The workflow download and spatial validator pass; `content/reference/sanli-open-geometry.geojson` and its audit are isolated from painted runtime registration. No commercial 3D meshes or panorama textures were extracted. No visual/historical acceptance, merge or deployment in this step.
+
 ## Complete Xinhua overview corridor — DM-0016
 
 The requested corridor now uses eleven selected compound/large-parcel raster paintings: nine residential units (Wuli east/west separate), heating plant and the background 丰台一中 campus. Sanli retains five tall blocks and five lower slabs; the east keeps earlier low fabric up to Zaojia Street. Three short southern shop groups are detached from residential buildings, including the retained frontage opposite Sanli. Building counts and minor footprints are a contextual reconstruction, not an exact historical inventory.
