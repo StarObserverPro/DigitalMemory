@@ -41,6 +41,7 @@ try {
   const before=initial.travel;
   await page.keyboard.down('ArrowUp');
   await page.waitForTimeout(900);
+  await page.screenshot({path:'local-evidence/schoolboy-red-in-motion.png'});
   await page.keyboard.up('ArrowUp');
   await page.waitForTimeout(240);
   let after=await page.evaluate(()=>window.__QA_STATE__);
@@ -72,11 +73,28 @@ try {
   assert.ok(narrow.avatarNdc.left>-1 && narrow.avatarNdc.right<1,
     'Avatar should remain visible on phone view');
   await page.screenshot({path:'local-evidence/schoolboy-red-mobile.png'});
+  // The map has no avatar. A single menu action changes the model colors/height
+  // without rebuilding the street world or inventing a period-to-school mapping.
+  await page.click('#menu-button');
+  await page.click('#uniform-toggle');
+  await page.waitForFunction(()=>window.__QA_STATE__?.uniform==='blue',null,{timeout:20000});
+  const blue=await page.evaluate(()=>window.__QA_STATE__);
+  assert.equal(blue.characterHeight,1.6);
+  assert.equal(blue.avatarAsset,'modular-glb-walk-r1');
+  await page.screenshot({path:'local-evidence/schoolboy-blue-mobile.png'});
+  await page.setViewportSize({width:1280,height:800});
+  await page.waitForTimeout(400);
+  await page.screenshot({path:'local-evidence/schoolboy-blue-desktop.png'});
+  // The explicit costume decision must survive a reload.
+  await page.waitForTimeout(240);
+  await page.reload();
+  await page.waitForFunction(()=>window.digitalMemory && window.__VISUAL_READY__,null,{timeout:30000});
+  assert.equal(await page.evaluate(()=>window.digitalMemory.inspect().session.characterId),'youth');
   assert.deepEqual(errors,[]);
   assert.deepEqual(httpErrors,[]);
   console.log(JSON.stringify({status:'passed',initial:{avatar:initial.avatarAsset,uniform:initial.uniform,
     size:initial.avatarNdc,renderer:initial.renderer},walkDistance:after.travel-before,
-    mobileAvatar:narrow.avatarNdc,screenshots:3,
+    mobileAvatar:narrow.avatarNdc,screenshots:6,uniformToggle:'red/blue verified',
     requestsFailed:failures.length,pageErrors:errors.length,httpErrors:httpErrors.length},null,2));
 } catch(error) {
   console.error('student browser smoke:',error);
