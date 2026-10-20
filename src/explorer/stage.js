@@ -36,7 +36,7 @@ export async function createStage({container,session,mapping,transform,compositi
     return {distance:p.distance,lateral:Math.max(STAGE.lateralMin,Math.min(STAGE.lateralMax,p.lateral))};
   }
   const down=e=>{
-    if(!active()||e.target.closest?.('dialog,input,textarea,button,select'))return;
+    if(!active()||e.target.closest?.('dialog,input,textarea,select,[contenteditable=true]'))return;
     if(codes[e.code]){e.preventDefault();keys.add(codes[e.code]);if(session.get().street.target)session.dispatch({type:'street-target',target:null});}
     else if(e.code==='Enter'&&near){e.preventDefault();clear();onEnter?.();}
   };
