@@ -1,5 +1,7 @@
 # Grounded street prototype — DM-0010
 
+> **Later street-scale selection (DM-0021, 2026-10-19):** The user chose the **2× apparent character size** from a fixed-camera local 1×/1.5×/2× comparison as the default target when the **separately authored** avatar is integrated. The 1× alternative was too small. See [street visual calibration](STREET_VISUAL_CALIBRATION.md) for the test controls, limits and integration checks. The **1.4-unit figure in the table below remains the current implemented r3 prototype**, not an already-delivered 2× version. No camera, head-body ratio, building material, bicycle mode, geographic registration or historical claim was approved by that scale choice.
+
 ## Reference and scope
 
 The user explicitly prioritizes volume, readable scale and interaction before street artwork. The current simplified models replace the old facade cutouts and paper person only in the existing Xinhuajie sample. They are spatial prototypes, not a verified historical block.
