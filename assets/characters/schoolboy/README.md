@@ -29,5 +29,6 @@ One **male**, unhooded, un-hatted short-hair student. A full skeletal walk, not 
 - The screenshot/reference was not redistributed and no person's real facial identity was reconstructed.
 - Glasses/backpack remain optional future accessories, not an invented physical trait.
 - Map interaction/ground units remain as previously implemented. Existing older procedural geometry is retained for isolated unit fixtures but removed from the rendered player group before the first live street frame.
+- The viewer's existing menu now has a compact **校服** toggle: junior red/white and high-school blue/white are explicit user choices, not inferred from historic date windows; the choice persists on reload.
 
 **Review gates still open:** 3/4-view projected 3.5–4.5 head impression; costume stripe shape and age plausibility; front orientation; actual feet-to-ground through each phase; gait cadence/slide; desktop and phone WebGL screenshot; confirmed permission to reuse the mesh geometry. Script and GLB metadata tests cannot certify these.
