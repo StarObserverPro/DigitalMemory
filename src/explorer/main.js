@@ -183,7 +183,9 @@ async function enterStreet() {
         blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onEnter: enterDoor, onError: notify });
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
-    session.dispatch({ type: 'view', view: 'street' }); notify();
+    session.dispatch({ type: 'view', view: 'street' });
+    $('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
+    notify();
   } catch (error) { stage?.dispose(); stage = null; $('stage-canvas').replaceChildren(); notify('街景暂时打不开，手绘图上的位置已保留。'); }
   finally { startingStage = false; }
 }
