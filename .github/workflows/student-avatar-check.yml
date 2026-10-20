@@ -9,6 +9,8 @@ on:
       - 'assets/characters/schoolboy/**'
       - 'assets/vendor/three/**'
       - 'tests/schoolboy.test.mjs'
+      - 'tests/schoolboy.browser.mjs'
+      - 'scripts/serve.mjs'
       - '.github/workflows/student-avatar-check.yml'
   workflow_dispatch:
 
@@ -26,3 +28,19 @@ jobs:
           node-version: '22'
       - name: Static build and Node tests
         run: npm run check
+      - name: Browser smoke prerequisites
+        run: |
+          command -v google-chrome
+          npm install --no-save --ignore-scripts playwright-core@1.56.1
+      - name: Real WebGL schoolboy smoke
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node tests/schoolboy.browser.mjs
+      - name: Preserve temporary WebGL screenshots for PR review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-avatar-webgl
+          path: local-evidence/schoolboy-*.png
+          if-no-files-found: ignore
+          retention-days: 7
