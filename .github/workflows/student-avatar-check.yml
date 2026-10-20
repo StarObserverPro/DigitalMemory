@@ -1,6 +1,8 @@
 name: Student avatar review checks
 
 on:
+  push:
+    branches: ['agent/dm-0019-schoolboy-glb']
   pull_request:
     paths:
       - 'src/explorer/schoolboy.js'
