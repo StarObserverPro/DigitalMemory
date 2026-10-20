@@ -1,5 +1,11 @@
 # Repository status
 
+## Male Y2K school-student rig — DM-0019 (unmerged review branch)
+
+The Xinhua street runtime now has a 3D skinned male-student candidate with independently replaceable hair, jacket, trousers and shoes, plus KayKit `Idle_A` and `Walking_A` source clips. The previous ball/cylinder walker is removed from the **browser player's** mesh group when the stage initializes; isolated prototype tests still contain that geometry. Red/white junior and blue/white high-school kits use one shared mesh and a bind-space jersey/stripe shader, without copying the user's private photograph or a school logo. Street picking/route registration are unchanged.
+
+Status: branch `agent/dm-0019-schoolboy-glb` only. **Visual and licensing approval remain open**: actual animated WebGL at the final projection/size, planted feet, shader rendering, and the donor's separately documented geometry CC0 grant must be checked before merge/publication. Evidence and source lineage: [DM-0019](attention/tasks/DM-0019.md), [asset README](../assets/characters/schoolboy/README.md). The older r3 street CPU screenshots do **not** validate this GLB model.
+
 Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
 
 ## Registered Xinhua masses and zoom detail — DM-0018
