@@ -1,6 +1,6 @@
 # Product contract
 
-Status: architecture baseline v1; requirements and intended behavior, not an implementation claim.
+Status: integrated product contract, 2026-10-19; requirements and intended behavior, not an implementation claim. Read [documentation ownership](README.md) for the current contract map.
 
 ## Purpose
 
@@ -10,19 +10,21 @@ Geographic registration provides the skeleton. Sparse recollections and life sta
 
 ## Established requirements
 
-**Geography first.** Coordinate-based spatial lookup and registration organize points, routes, areas, and entrances. Frequently walked streets deserve stronger continuity than rarely visited backgrounds. Approximate dimensions are acceptable; meaningful street-side, turn, crossing, entrance, and sightline relationships take priority. A feature being unclear in a satellite image does not by itself prove that it is unimportant to the user.
+**Area → line → point.** The overview organizes an area; a registered street or route is the normal entry into the lived environment. Roadside gates, objects and remembered positions are reached inside that route scene. Showing a school symbol on the overview does not make its interior directly clickable. Search/resume must retain an explicit route context.
 
-**Time as fragments.** The browsing session has a current life stage or approximate period, not a continuously simulated day. Other-time memories remain discoverable at the same place through restrained grayscale, pale, or outline treatment. A street/route memory timeline is an optional dedicated view, not a permanent full-width HUD.
+**Geographic identity, selective depiction.** Source geometry provides a stable skeleton; remembered relevance and the historically visible street interface determine what is drawn. Side-of-road, entrance, turn, crossing, setback and sightline relationships matter more than exhaustive parcel detail. A source-accurate rear campus can remain omitted, while a familiar gate is recognizable. Do not trade recognizability for a falsely complete city model.
 
-**App, not content website.** Open into a large map or the previous scene. Keep two or three small corner controls collapsed. Visible words should be memories or necessary orientation, source labels, and accessible controls. Development status, ingestion queues, confidence diagnostics, and production tooling belong in a separate workbench.
+**One attachment, several content depths.** A roadside attachment may expose a short note, a finite picture-and-text sequence, or a separately loaded local scene. An unused door may simply remain part of the scenery. Institutions do not receive mandatory templates: one school may be only a gate, another may lead to a familiar courtyard. Several notes do not automatically justify free movement; spatial interaction must serve an actual recollection.
 
-**Stylized map, not satellite display.** Historical imagery is a registration/reference input. The default surface is a coherent illustrated map with a 1990s/early-2000s memory-book sensibility. The distant view uses illustrated 2.5D depth. Selecting a street switches to a grounded person on the sidewalk, with close perspective and upright painted scenic flats; unbuilt areas recede into fog and direction cues. The board-game reference concerns legibility and spatial presentation only: no equal-sized cells, dice, property economy, or loss of real-node/topology correspondence. Drawing-space roads may be intentionally simplified or displaced with an explicit mapping revision.
+**Street-facing fabric is editable.** Walls, iron railings, mixed boundaries, gates, detached frontage rooms and setbacks are replaceable short segments. A commercial office outside an apartment block is not automatically ground-floor retail. Rendering, physical blocking and note access are independent choices.
 
-**Selective depth.** A school can be a modest exterior volume with a portal. A short zoom or forward transition may open a separately loaded campus/corridor. A classroom can be an image viewed from its doorway with linked photos and words. Full interior geometry and free movement are not required.
+**Same place, repeated observations.** Preserve changes in use, shell, enclosure, signage, damage and repair at the same location. Support before/after relations, approximate life stages and unresolved intervals without fabricating annual snapshots. Repeated looking is content even without a singular dramatic event. A visual recurrence is not proof that the same structure or business returned unchanged.
 
-**Meaning-preserving editing.** Store the original input, extracted statements, and edited presentation separately. Remove repetition and improve order or rhythm, but add no new substantive person, object, action, frequency, time, sensory detail, emotion, or causal claim. Keep uncertainty and the user's point of view. Image completion can contain acknowledged visual inference; it must not become a first-person assertion.
+**App, not content website.** A map or the previous valid scene dominates the screen; one menu starts closed. Notes and image sequences open intentionally and return to their origin. No persistent marker carpet, article sidebar, construction dashboard or compulsory timeline. A static sequence is a scene viewer, not an obligation to build a dialogue engine, RPG or branching narrative game.
 
-**Incremental accumulation.** Expect hundreds of short inputs per month. One input can describe several places or periods; one photograph can inform multiple assets. Stable identities, retrieval, batch review, local revisions, and durable export matter from the start. Do not rely on a single growing prompt, a giant runtime JSON, or a monolithic map repaint.
+**Coherent illustrated world.** Use the established hand-painted raster language, shared map projection, shallow scenic geometry and grounded street character. All overview tiers omit the avatar. Board-game references concern legibility, proportions and movement, never dice, property economics or an equal-cell street. Symbolic enlargement changes representation bounds, not source geometry or collision.
+
+**Meaning-preserving, incremental authoring.** Keep originals, extracted claims and edited text separate; do not invent autobiographical meaning. Generic visual completion remains identified as reconstruction. Hundreds of short recollections can accumulate through local revisions and paginated retrieval without republishing the private archive or repainting the entire street.
 
 ## Quality priorities
 

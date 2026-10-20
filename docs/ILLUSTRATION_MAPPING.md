@@ -1,21 +1,21 @@
 # Illustrated overview ↔ sidewalk scene
 
-> Current view hierarchy and compositing rules: [MAP_ASSEMBLY](MAP_ASSEMBLY.md). The overview has three tiers and no person; street entry uses moderately elevated chibi framing. The bounded implementation described below is not yet migrated.
+> View/compositing requirements: [MAP_ASSEMBLY](MAP_ASSEMBLY.md). The overview has three tiers and no person; street entry uses moderately elevated chibi framing. The sample details below are historical implementation evidence, not proof that the generalized route-attachment contract has been migrated.
 
 > DM-0009 supersedes the overview's displaced building proxies. `overview-registration.json` stores public source anchors and parcel associations; all overview anchors use the same transform as roads. The theatre no longer uses the old eastward display offset. Street fixtures remain separate. See [layer composition](LAYER_COMPOSITION.md).
 
-This is the current user-directed visual contract: a hand-drawn/cartoon/travel-journal overview; enter a street to put a person on its sidewalk; stand painted facades up as cinematic scenic flats. Distant/unbuilt areas fade into fog and directional cues. The overview and close view are two presentations of one location.
+This is the current user-directed visual contract: a hand-drawn/cartoon/travel-journal overview; enter a street to put a person on its sidewalk; stand painted facades up as cinematic scenic flats. Distant/unbuilt areas fade into fog and directional cues. The overview and close view are two presentations of one location. Normal selection follows area → route → roadside attachment; an overview place silhouette is not a direct content portal.
 
 ## Correspondence, not an image-wide GPS warp
 
 | Record | Geographic meaning | Drawing / scene meaning |
 | --- | --- | --- |
-| Place ID | Stable identity, independently revised WGS84 geometry | Illustrated landmark anchor, label/hit region; can be enlarged |
+| Place ID | Stable identity, independently revised WGS84 geometry | Optional illustrated landmark/label; enlargement does not create an overview content hit target |
 | Node ID | Street endpoint or shape control from a referenced road | Authored point in the 1200 × 1200 artboard |
 | Edge ID | Geographic polyline and its endpoints | Drawn path connecting the same nodes |
 | `{edgeId, t, direction}` | Current route location, interpolated from real geometry | Street-entry anchor on the overview (no map person); character feet in the entered street |
 | Street offset + heading | Sidewalk-local motion in metres | Grounded character and close follow camera |
-| Portal ID | Place relation; historical entrance may be unknown | Painted door and proximity range; session snapshot on entry |
+| Route attachment / target | Place/object relation; historical entrance may be uncertain; valid approach belongs to a route side | Painted gate/object and local activation range; note, sequence or local scene shares a saved street origin |
 
 An illustrated building can be larger than its physical footprint. A curved road can be simplified. Topological identity, point order, declared connections and the entrance's owning edge must remain explicit. A coordinate correction does not change place identity. A new drawing revision does not reset where the person has walked.
 
@@ -36,10 +36,18 @@ Entering the street preserves this pair. Moving updates route progress and deriv
 - `src/domain/spatial.js`: authoritative WGS84 / metric frame and place geometry.
 - `src/domain/illustration.js`: authored correspondence validation and route motion.
 - `src/application/session.js`: sole current route / street / period / portal owner.
-- `src/explorer/main.js`: illustrated map and opt-in correspondence inspector.
+- `src/explorer/main.js`: overview consumer; the former correspondence inspector is not part of the ordinary UI.
 - `src/explorer/stage.js`: local Three.js scenic planes, minimal ground, fog, avatar and input; no historical record ownership.
 
 The map and facade textures are separate assets. Do not reuse a perspective map as an upright facade or add another roof projection on top of painted buildings. Source artists' examples inform the category, not app-distributed copies.
+
+## Attachment mapping and symbolic bounds
+
+Keep route ID/revision, canonical edge direction, progress/range and side explicit. Multiple entries may point to the same place without duplicating its identity. Nearest-line snapping cannot establish a valid pedestrian entrance across a wall, carriageway or level change.
+
+Source footprint, illustration silhouette, runtime collision and attachment hit area are independent. Enlarging a gate to improve recognition may cover vague rear context, but must not move its street anchor or hide a meaningful neighboring route. At overview scale it remains orientation artwork; activation is resolved only in the entered route context.
+
+Existing ordered-chain/progress logic is a foundation, not a claim that arbitrary multi-route attachment remapping has been implemented.
 
 ## Registration review still required
 

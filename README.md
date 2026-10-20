@@ -1,6 +1,6 @@
 # DigitalMemory
 
-A geographically registered, time-layered memory application: a stylized map becomes a walkable 2.5D memory landscape, with branches into schools, corridors, images, photographs, and carefully edited recollections.
+A geographically registered, sparse-time memory application. Browse an illustrated area, enter a street or route, and encounter roadside gates, objects and remembered positions. The same attachment can open a note, an illustrated sequence, or a small explorable scene; complete buildings and interiors are not the default unit of production.
 
 The purpose is to preserve impressions of living in an environment, not to produce a survey-grade reconstruction, a conventional content website, or a complete 3D city. Historical maps and satellite images support registration behind the scenes; they are not the default visual surface.
 
@@ -8,14 +8,15 @@ The purpose is to preserve impressions of living in an environment, not to produ
 
 Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
 
-The prototype opens a hand-drawn overview. Choose “走进新华街” to place a character on its sidewalk, surrounded by upright illustrated film-set facades, with fog beyond the modeled segment. Walk, turn, approach a courtyard door and return to the same map position. “查看位置对应” compares real and illustration nodes. Historical school sites remain unplaced. See [runtime and asset storage](docs/RUNTIME.md) and [node mapping and scenic-flat design](docs/ILLUSTRATION_MAPPING.md).
+The runtime has an illustrated overview and a bounded, grounded street prototype. Run instructions are above; [RUNTIME](docs/RUNTIME.md), [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md) and [STATUS](docs/STATUS.md) distinguish implemented behavior from historical experiments. The ordinary interface uses one initially closed menu, not the former mapping/layer inspectors or storefront demonstration controls.
 
-The “图层与拼装” control lets you inspect roads, buildings, frontages and the child separately, then try two synthetic shop occupants in a single slot. Building form now follows [local photo observations](docs/LOCAL_VISUAL_REFERENCES.md); [layer composition](docs/LAYER_COMPOSITION.md) explains short modules and independent time layers.
+The current design follows **area → street/route → roadside attachment**. All three overview tiers remain orientation views without an avatar. Route entry precedes normal place activation; notes, static image sequences and local exploration use one attachment contract. This documentation revision does not claim that the complete new dispatcher, street-edge editor or private note archive exists.
 
 ## Start here
 
 | Question | Canonical document |
 | --- | --- |
+| How should these documents be read together? | [Documentation and ownership map](docs/README.md) |
 | What are we making, and what must not drift? | [Product contract](docs/PRODUCT.md) |
 | What is actually implemented or still unknown? | [Repository status](docs/STATUS.md) |
 | What is the first geographic and experiential scope? | [Phase 1](docs/PHASE_1.md) |
@@ -42,4 +43,4 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-This branch adds a runnable illustrated overview and a 140 m scenic-flat sidewalk sample. The previous flat board candidates were rejected as the main experience. The current layered revision is tracked through PR3 and the configured Sites deployment; exact release state is in the status ledger. No private archive/auth service, accepted historical scenes or user-approved memory content is claimed. Consult [status](docs/STATUS.md) for observed verification and review state.
+The initial street sample is bounded; it is not a complete historical route or a private content archive. Current runtime, evidence, pending integration and publication status belong in [STATUS](docs/STATUS.md), not in an old prototype description. This documentation reorganization does not change runtime, art, geography, active task routing or deployment.

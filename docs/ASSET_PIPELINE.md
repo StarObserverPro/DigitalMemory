@@ -8,9 +8,7 @@
 
 > DM-0004 uses original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. The prior all-in-one illustration and long street strip are superseded. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
 
-Status: production contract; DM-0002 adds a contemporary OSM orientation extract, two vector map candidates and one generated style candidate. Historical imagery and accepted production tiles remain open.
-
-Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
+Status: production target integrated 2026-10-19. Existing Xinhua R6 source-linked paintings and street prototypes are recorded in [STATUS](STATUS.md)/[RUNTIME](RUNTIME.md). Historical trials below retain provenance only. This revision changes asset-selection requirements, not runtime, generated assets or historical acceptance.
 
 ## Two products, not one flattened picture
 
@@ -19,6 +17,21 @@ Maintain a **registration package** and a **presentation package**. The first co
 The historical map/satellite layer is a workbench reference, not the default viewer surface. The illustrative surface may simplify detail while preserving the relationships that make the walking route recognizable. Do not mistake a visually seamless image for a geographically registered map.
 
 > For Xinhua/Sanli, **source coordinates precede painting**. Read the [measured geographic source chain](GEO_DATA_LINEAGE.md) and [acquisition/QA runbook](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
+
+## Choose the minimum useful representation before researching depth
+
+First identify the route attachment and its memory role; then select overview/street depiction and activation independently. A gate/name plus short wall can be the final asset for a pass-by landmark. A few still images can be the final interior representation. Only a spatial memory that benefits from movement calls for a local scene.
+
+| Selected outcome | Required production inputs | Not required by default |
+| --- | --- | --- |
+| Gate/frontage landmark | Supported street side and position/range, recognizable type, shared projection/scale and compatible boundary | Complete parcel perimeter, exact rear-building inventory or explorable rooms |
+| Note | Approved text revision, object/route binding and period/source associations | New art or geometry merely because text was added |
+| Illustrated sequence | Finite page plan, pinned images/text, provenance labels, explicit reading order and return origin | Accurate hospital floor plan, 3D corridors, dialogue engine or implied physical links |
+| Local scene | Bounded walkable geometry, meaningful landmarks, attachments, period state, camera and collision checks | An entire campus or surrounding city |
+
+Research remains necessary for an actual claim being made. Stop deep rear-layout/year research when it cannot change the chosen representation, route relationship or meaning. Modern source data may remain reference-only. A correct source date does not date the user's recollection. Material/type completion is reconstruction and never becomes a new source.
+
+Do not promote a sequence to a scene simply because many images can be generated. Likewise, do not require exact campus extent before placing a supported gate at its street-facing anchor. Existing source provenance, coordinate conversion and permission requirements still apply to every data source actually used.
 
 ## Reference intake
 
@@ -56,11 +69,13 @@ The actual footprint, entrance and street-side relationship remain separate from
 
 Repeated templates use pinned revisions. Improve a template through a preview batch; do not change every accepted street automatically. Performance/detail changes must preserve scene identity and the same spatial hit targets.
 
-## Interior images and shallow spaces
+## Interior images, sequences and shallow spaces
 
-Campus/corridor geometry is optional and purpose-driven. A classroom can be a single generated reconstruction from the doorway, an original photograph, or a composition of both with explicit provenance labels. No requirement exists to produce a complete room mesh, physically exact furniture arrangement, or free movement.
+Build a finite `SceneSequence` when internal geometry is not the memory object. Pages may show a corridor, waiting area, room or store impression, each with independent evidence and reconstruction labels. Store explicit reading order and optional selected links; adjacent pages do not establish adjacent physical rooms. The viewer is image/text browsing, not simulated walking through an invented plan.
 
-A scene records its viewpoint, subject place, period association, image revision, hotspots, associated memories, and return portal. Original image, restoration/edit, composite, and generated reconstruction remain distinguishable. The source label accompanies viewing; it is not hidden only in metadata.
+A local explorable scene is a separate choice for a familiar yard, meaningful school area or small corner. It may use shallow geometry and still-image destinations; no complete mesh or exact furniture arrangement is compulsory. Its only default entry is a route/local-scene attachment, and its return origin is session-owned.
+
+A target manifest records exact asset/text revisions, source type, approximate period, optional hotspots and return behavior. Generate assets during authorized authoring only, cache/pin them, and load on demand. No browse-time World Labs or other generation request is implied.
 
 ## One photograph, many useful derivatives
 

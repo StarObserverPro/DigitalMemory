@@ -27,6 +27,22 @@ Do not add “放学后”, “每天”, “热乎乎”, a friendly shopkeeper
 
 A reconstruction can use generic visual completion such as a representative room layout; the image must be marked reconstructed, and that completion must not migrate into the display passage as remembered fact.
 
+## Attach a note before expanding a world
+
+The current route, object or doorway is an association suggestion. The author can add a few words to a named gate even when it has no interior scene. Resolve the exact place and route side only as far as supported; keep uncertain location ranges or area associations rather than inventing a point. A real private write still requires the durable authoring boundary—an architecture document or browser cache is not proof the note was archived.
+
+One attachment can accumulate several notes and selected images. Present them as a finite sequence only when that organization serves reading. A familiar, spatially meaningful subset can later gain a local scene. Preserve source spans and attachment/place identity through all these revisions. Do not turn every recollection into a request for expensive geometry.
+
+## Repeated observation is first-class content
+
+Extract separately: what was seen at a place; what physical/use change is described; when it was observed; and what relation to earlier/later observations is actually stated. Preserve “later”, “again”, “roughly”, “perhaps” and gaps in visits. Seeing renewed commercial use is not evidence that the old tenant or shell returned unchanged. A damage observation does not independently establish repair date or cause.
+
+Allow multiple observations of an ordinary wall, shopfront, yard or tree without forcing a dramatic event or merging them as duplicates. Link observations to versioned environment states where useful. Keep the distinction between temporal ordering, editorial picture order and physical adjacency.
+
+Narrative/artistic examples mentioned in conversation can clarify the feeling of repeatedly encountering one place. They do not automatically become named style mandates, story templates, borrowed characters or a requirement to reproduce a book/game. Uncertain titles and transcribed place labels are not silently corrected into authoritative entities.
+
+Public technical documentation may use synthetic examples of reuse/damage/reappearance. Do not publish the user's family names, exact anecdote, transcript, residence connection or an unresolved named-site mapping as part of a general architecture task.
+
 ## A batch is the unit of conversation, not a monolithic content object
 
 One user session can create many fragments. A batch manifest groups the proposed place/period associations, edited text revisions and visual proposals so they can be reviewed together. Individual fragments and assets retain their own IDs and revision histories.

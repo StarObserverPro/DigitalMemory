@@ -2,6 +2,19 @@
 
 This is the concise record of decisions and their authority, not a second copy of every contract. Detailed semantics live in the linked owners. A later change records its reason and affected decision IDs; it does not silently rewrite the original user constraint.
 
+## Integrated decisions — 2026-10-19
+
+| ID | Decision | Owner / supersession |
+| --- | --- | --- |
+| ADR-013 | Normal discovery follows area → registered street/route → roadside attachment. Overview landmark visibility is not direct content access. | [INTERACTION](INTERACTION.md); supersedes the earlier direct map-to-classroom example. |
+| ADR-014 | A uniform attachment dispatches note, finite illustrated sequence or local scene; category/parcel size does not dictate depth. | [ARCHITECTURE](ARCHITECTURE.md), [DATA_MODEL](DATA_MODEL.md). |
+| ADR-015 | Source certainty, date support, familiarity, visual detail, collision and click behavior are independent. Unknown rear geometry can stay selectively omitted. | [MAP_ASSEMBLY](MAP_ASSEMBLY.md), [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md). |
+| ADR-016 | Mixed boundaries, gates, detached frontage hosts, ground installations, occupancy and use are locally revisable. Not all commerce is apartment ground-floor retail. | [LAYER_COMPOSITION](LAYER_COMPOSITION.md); generalizes the r3 host constraint. |
+| ADR-017 | Stable locations carry repeated observations and separately versioned shell/use/appearance states; partial chronology and gaps remain explicit. | [DATA_MODEL](DATA_MODEL.md), [CONTENT_PIPELINE](CONTENT_PIPELINE.md). |
+| ADR-018 | New documentation consolidates existing owners; source research, actual runtime status and cold historical packets are distinct reading tracks. | [Documentation map](README.md), [STATUS](STATUS.md). |
+
+Basis: the user's current integration request and the accepted discussion of selective depiction/scene depth. These are product/architecture requirements, not runtime or visual approval. Cultural examples express the repeated-place feeling only; no book/game imitation is required. Existing ADR-001 through ADR-012 retain their applicable identity, privacy and scope constraints.
+
 ## Baseline decisions
 
 | ID | Decision | Basis / owner |
@@ -30,7 +43,7 @@ User-defined requirements above are established project constraints. Technical c
 
 ## Explicitly deferred
 
-Exact historical school coordinates, entrances and walking segments; evidence-backed base-map acquisitions; exact life-stage date mapping; final illustration style, fonts and camera pitch; renderer/UI framework and versions; private storage/authentication/hosting provider; measured performance targets; later cycling/transit interaction; and any deployment or public-content release.
+Exact historical school coordinates, entrances and walking segments; evidence-backed base-map acquisitions; exact life-stage date mapping; final illustration style, fonts and camera pitch; future renderer changes beyond the recorded prototype; private storage/authentication/archive provider; measured device performance targets; later cycling/transit interaction; and any new deployment or public-content release. Existing implementation/deployment observations remain in STATUS rather than being re-deferred by this list.
 
 Deferral is not permission for an executor to invent values. It is also not a requirement to block unrelated work. A suitable activated packet can resolve the relevant choice and record evidence.
 
