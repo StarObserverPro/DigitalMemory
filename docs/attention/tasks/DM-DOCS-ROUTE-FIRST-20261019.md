@@ -29,4 +29,4 @@ Lifecycle: documentation integration delivery, with review branch and PR as the 
 
 Mechanical evidence is in the package's `verification.json`. It must not be described as a full checkout build, runtime walkthrough, independent review or visual acceptance. The apply utility checks exact original Git blob IDs and all edits before replacing any file; a changed target requires review/rebasing, never force overwrite.
 
-Next unactivated action: implement the new contracts only upon a separate, bounded runtime request. This documentation integration does not activate application construction. The active task router remains empty; the GitHub PR records integration outcome.
+Next unactivated action: implement the new contracts only upon a separate, bounded runtime request. This documentation integration does not activate application construction. The active task router remains empty; [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) records this documentation integration and its merge outcome.
