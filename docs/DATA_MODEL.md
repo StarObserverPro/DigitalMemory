@@ -1,10 +1,6 @@
 # Data model and registration contract
 
-> DM-0004 adds implemented BuildingShell, FrontageSlot and Entrance attachments plus exact-period Occupancy resolution. Shells retain identity when a shop changes. See [layer composition](LAYER_COMPOSITION.md).
-
-Status: logical schema v1; a public prototype implements a subset with contemporary orientation coordinates. A production/private database and historical registration are not supplied.
-
-Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The original contract below remains the target, not a claim of complete capability.
+Status: integrated logical contract, 2026-10-19. The prototype implements parts of registration, time, session, BuildingShell/FrontageSlot/Entrance composition and exact-period occupancy. The generalized route attachment, three-way activation and repeated-observation contracts below are targets, not a completed schema migration. [RUNTIME](RUNTIME.md) and [STATUS](STATUS.md) own implementation evidence.
 
 ## Geography is the lookup skeleton, not a mutable primary-key string
 
@@ -38,6 +34,53 @@ An unresolved value is null/unknown, never a fabricated coordinate, zero date, o
 | `SceneRevision` / `Portal` | Manifest of exact geometry/asset/text revisions; camera/hotspots; destination scene and return behavior. A destination may be only an image. |
 | `Approval` / `ReleaseManifest` | Approval dimensions and exact revisions; selected publication scope and immutable content/asset closure. Approval of one dimension does not approve the others. |
 
+## Route registration and uniform attachment contract
+
+A route is a registered line used by the overview to enter a street scene. A `Place` remains an independently identified point, line or area; route-first navigation does not make its identity depend on a road, nor require the overview to render all its source geometry.
+
+Conceptual additions (names can be adapted to existing modules without changing their meanings):
+
+| Record | Required meaning |
+| --- | --- |
+| `RouteSceneRegistration` | Route ID/revision, supported entry edges/ranges, scene revision and period support. Does not assert that an entire source road is a remembered traversal. |
+| `RouteAttachment` | Stable attachment ID; referenced place/object/position; route ID/revision; edge/progress or supported interval; side and approach anchor; optional activation-target reference; evidence and unresolved status. |
+| `InteractionTarget` | Versioned discriminated union: `note` with memory references; `sequence` with sequence revision; `scene` with scene revision and return policy. No content means no reader-facing target, not an invented note. |
+| `SceneSequence` | Ordered page IDs and optional explicit reading links; each page pins image/text/source/period references. Order can be thematic, editorial or temporal and must be declared. No inferred floor-plan connectivity. |
+| `StreetEdgeSegment` | Stable locally editable interval on a route side; child boundary/gate/frontage/ground objects, independent lateral placement and period-specific states. |
+| `Observation` | Source-supported observation of a place/object with the observed facts, observation time or relative-time relation, familiarity/visible-extent context and source spans. It does not certify the whole environment. |
+| `StateTransition` | References to compatible before/after states, supported change kind and evidence; optional approximate time and causal statement only when supported. |
+
+Minimal conceptual attachment:
+
+```text
+RouteAttachment
+  id, revision, placeId
+  routeId, routeRevision, edgeId
+  anchor: progress OR unresolved range
+  side: relative to canonical edge direction, not current camera/facing
+  approach: walk-edge reference, local offset, elevation where relevant
+  targetRef: InteractionTarget revision OR null
+  periodSupport, evidenceRefs, registrationStatus
+```
+
+Exact progress and appearance dimensions remain nullable until supported. An uncertain interval is not an exact doorway and is not silently made walkable. An approved illustrative approach point may coexist with an uncertain historical location, with the roles explicitly distinguished. Nearby is not equivalent to reachable: side, crossing, wall and level relations must be validated.
+
+Several route attachments may reference one place or target; several memories may reference the same attachment. Correcting a door, splitting an edge or reorienting a canonical edge requires an explicit mapping revision, including side/progress updates. Coordinate/name corrections do not rewrite memory IDs. A route-relative location is navigation context, not a replacement for the spatial registry.
+
+## Representation, experience and interaction are separate axes
+
+Store explicit source/geometry uncertainty, date support, remembered exterior/interior familiarity, observed visible extent and memory relevance without collapsing them into one confidence number. A render policy then chooses overview visibility, gate/icon/frontage/mass representation, per-tier detail and street depiction. An independent target chooses what activation does.
+
+A precise modern boundary may stay hidden behind a symbolic gate. A high-detail exterior may have no interior target. A stack of pictures may carry many memories without requiring movement. Geographic ground footprint, painted silhouette, interaction hit area and physical navigation/collision geometry are separate records or fields; enlarging one never silently enlarges the others.
+
+## Street edge and physical identity
+
+Boundary appearance is not a compulsory closed parcel polygon. A segment can specify brick wall, iron railing, masonry-plus-railing, a locally mixed sequence, an opening or unresolved treatment, with independently supported length, height and visual permeability. Physical access is separate from visual permeability: a railing can reveal the rear scene while remaining impassable.
+
+A frontage host is explicit: attached to a supported building, a detached shell, a boundary-facing structure or a ground installation. An adjacent residential block is not a mandatory owner. Preserve the existing rule that slots lie within their actual host, but never fabricate a host relation just to pass that check. Commercial use and low interaction are compatible.
+
+`EnvironmentState` references independently versioned shell, boundary, ground/installation, use and occupant states. Repainting or tenancy can reuse a shell. Demolition/rebuilding replaces the shell reference while retaining the site. Conversion to a shelter or damage to a roof is not merely an occupancy/sign swap.
+
 ## Coordinates and precision
 
 The proposed canonical geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve the coordinate system and processing history of every input; never assume a Chinese consumer-map coordinate, historical sheet, screenshot pixel, and satellite coordinate are interchangeable. The first registration task must verify the chosen transform and the relevant source terms.
@@ -65,11 +108,31 @@ Keep at least four meanings separate: **when something was experienced**, **when
 
 An interval may mean uncertain occurrence bounds or known duration; `relation` and the original expression must disambiguate them. Do not infer an exact school year or birthday from approximate decade references. Conflicting dating claims can coexist until resolved.
 
+## Repeated observations and same-place recurrence
+
+Retain the four time meanings above and allow additional supported relations such as before/after/overlap/same-era between observations or states. A known order does not imply known durations, and an observation gap is not proof that a condition persisted unchanged. Contradictory ordering remains a review conflict; do not manufacture a total timeline.
+
+Synthetic example, not a public autobiographical record:
+
+```text
+site-A: state-A1 (small commercial frontage)
+     → state-A2 (shelter use)
+     → state-A3 (roof damaged)
+     → [unobserved interval]
+     → state-A4 (commercial frontage seen again)
+```
+
+All four states refer to `site-A`; each has its own evidence and identity. A4 is not automatically the same shell, occupant, doorway count or exact appearance as A1. The example establishes no year, named site, cause or residence association. A later observation may resemble an earlier state without merging their revisions.
+
+An event belongs in the record only when supplied; a sequence of ordinary observations is also meaningful. Do not add periodic weather, business cycles or annual tree growth simulation because the user described recurrence. Sparse recorded states are enough.
+
+A release can deliberately select a compatible approximate-period composite with explicit memberships, or an authored remembered phase. It cannot silently combine mutually exclusive states or interpret the nearest dated image as historical truth. Reading a note/sequence and changing the active environment are separate commands.
+
 ## Temporal query result
 
 The temporal resolver returns `current`, `earlier`, `later`, `overlapping`, or `unknown` relation, with the evidence/revision that produced it. Color is a presentation of that result, not its storage representation. When bounds overlap or chronology is unclear, do not force an earlier/later label.
 
-For a scene, return an explicit compatible environment revision or `no_supported_state`. A nearest source date can be offered for inspection but cannot silently become the active period. Other-time memories remain clickable entrance records; their historical buildings are not automatically inserted into the current world as physical obstacles.
+For a scene, return an explicit compatible environment revision or `no_supported_state`. A nearest source date can be offered for inspection but cannot silently become the active period. Other-time memories remain reachable through route-context attachments or a deliberate local time/history view; their historical buildings are not automatically inserted as physical obstacles or direct overview portals.
 
 ## Fragment and source granularity
 

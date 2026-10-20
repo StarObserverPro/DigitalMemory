@@ -2,6 +2,16 @@
 
 DM-0015, updated 2026-10-19. This records the user's current correction and supersedes older instructions that let tiny isolated images, a fixed pixel ratio or sparse window dots determine the final style.
 
+## Selective depiction and recognizable entrances — 2026-10-19
+
+Source geometry and its QA remain authoritative for positions; it does not dictate how much to show. For an unfamiliar compound, the intended object may be a gate, name, short wall/railing and a few compatible rear masses—not the complete campus. Town-scale omission and persistent low-detail interiors at high zoom are permitted. Source certainty, memory relevance and visual specificity are independent.
+
+Use a period-compatible local recognition language, not imported Japanese-school architecture or exact historic logos without support. A hospital sign or school gate can act as a pictorial landmark. Its extra visual area may naturally cover low-information background, but not important roads, neighboring attachments or a known registration error. The painted silhouette must not become a enlarged physical footprint or clickable overview shortcut.
+
+Simplify by selecting forms, edge density, pigment contrast and object count; connect to common ground with compatible paper/paint transitions. Do not substitute transparent ghost buildings or an opaque fog patch for selective drawing. Opaque brick walls, permeable railings, detached rooms and mixed boundaries need separate replaceable assets/masks.
+
+These are representation-selection rules. The height/projection requirements below still apply wherever an actual tall building is represented. They do not require drawing every hidden building, and they do not authorize shrinking corrected residential towers into gate symbols.
+
 ## Current mass-first implementation — DM-0018
 
 The latest request permits simple rectangular/footprint-based masses, with wax colour blocks or coloured-pencil hatching, followed by more detail when enlarged. R6 applies that instruction to a source-linked spatial plan. One selected image-generated material atlas supplies broad wax, directional pencil, roofs and facade marks. An offline compositor projects these raster materials onto the registered volume faces; it does not render visible SVG surfaces, add synthetic grain, or reshape a whole generated compound to fit geography. This surface-material method is distinct from the contextual-scene method below and is the current implementation for Xinhua.

@@ -1,6 +1,6 @@
 # Verification and acceptance
 
-> DM-0004: 17 domain tests and 14 browser journey checks pass at desktop 1440×1000 and mobile 390×844. New gates cover building-road clearance, frontage bounds, entrance attachment, exact-period occupancy, child scale and independent replacement in the actual WebGL view. See `evidence/README.md` for the exact tested revision and limitations.
+> Historical DM-0004 observations: 17 domain tests and 14 browser checks were recorded for that revision. They do not verify the new route-first contract or the current release. Read [STATUS](STATUS.md) and [evidence](../evidence/README.md) for revision-bound results.
 
 Status: acceptance contract. DM-0003 implements the corrected illustrated-map/scenic-flat subset; DM-0002 is earlier rejected visual history; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
 
@@ -31,13 +31,13 @@ Semantic review of D01–D05/D07 is an author review against the current user re
 | G01 | Correct a place coordinate/geometry revision; its memories and school occupancy relations retain stable identity. |
 | G02 | Resolve a moved school by historical occupancy; current campus search does not replace the old site. |
 | G03 | Select a registered street/route buffer; results are spatially correct, paginated and period-aware. An unresolved connector is not silently made into a walked route. |
-| T01 | Current, earlier, later and uncertain entrances have distinguishable presentation. Selecting one deliberately changes period and preserves the anchor where possible. |
+| T01 | Current, earlier, later and uncertain memories remain distinguishable in route context. Reading does not change the active environment; an explicit environment/period selection does, preserving the anchor where possible. |
 | T02 | Enter an area lacking a compatible period state; no silent nearest-year fallback occurs. Other-time content remains discoverable. |
 | T03 | Approximate date and life-stage language survives extraction, display and export; missing intervals are not interpolated into historical claims. |
 | U01 | Default desktop and narrow-screen views remain map/scene-dominant with collapsed corner controls, readable text and usable targets. No development dashboard leaks into explorer. |
 | U02 | A small memory shop can outrank a large background compound without losing its actual side-of-road registration. |
 | U03 | Route timeline is explicitly opened and closed; closing restores the prior view. Dense memories cluster without disappearing from retrieval. |
-| S01 | Enter map → school → corridor → image and return; original period, camera, selection and place restore. Test reduced motion, failed load and back navigation. |
+| S01 | Enter overview → street/route → roadside attachment → note/sequence/local scene and return. Original route, side/offset, heading, period, camera, selection and origin scene restore. Test nested returns, reduced motion, failed load and back navigation. |
 | S02 | A late response for an abandoned scene cannot replace the current scene; a dormant scene no longer receives navigation input. |
 | A01 | Adjacent illustrated tiles join without shifted roads, duplicated structures or click misregistration at the intended view and zooms. Include a diagnostic overlay and normal-view evidence. |
 | A02 | Reopening an accepted scene uses the same pinned assets; updating a shared template does not change accepted scenes automatically. |
@@ -50,6 +50,28 @@ Semantic review of D01–D05/D07 is an author review against the current user re
 | L01 | A synthetic large archive matching the anticipated ingestion volume remains paginated and browsable; initial scene does not download every memory or source. |
 
 Select scenarios according to the changed behavior; do not build a project-wide gate maze before there is a runtime. Numerical performance budgets and supported devices are to be measured and set during the first implementation packet, not fabricated here.
+
+## Route-first and local-change acceptance additions
+
+These are future executable requirements, not passed tests in this documentation delivery.
+
+| ID | Required observation |
+| --- | --- |
+| R01 | Across all overview tiers, a school/hospital/gate landmark cannot directly open interior content. The supported route is the normal navigation target. No overview avatar appears. |
+| R02 | The same attachment shape can dispatch a note, static sequence or local scene. Updating a target preserves place/route identity and does not repaint unrelated objects. |
+| R03 | Two entrances on different valid routes can reach one place without duplicate identity. Wrong-side, different-level and wall-crossing activation is rejected. |
+| R04 | Sequence page turns do not start a walk controller or imply adjacent rooms. Closing restores the exact street origin; stale image loads cannot replace the active scene. |
+| R05 | A name-only gate remains valid without invented interior content. Authorized note capture does not depend on complete campus geometry. Public builds contain no private drafts. |
+| F01 | Replace one boundary interval from brick to railing and back at the same camera. Only the local appearance/visibility/blocking/masks change; route and neighboring accepted objects stay fixed. |
+| F02 | A detached office/frontage room occupies its own supported host/depth. No forced apartment-ground-floor attachment and no fence drawn through its door. Commercial use does not force a shop interaction. |
+| F03 | Split a formerly coarse segment as memory improves. Existing notes/attachments retain stable identity through an explicit remapping revision. |
+| H01 | A synthetic site changes use, gains damage, has an unobserved gap and later resembles an earlier use. Site identity survives; shell/occupant identity and dates are not fabricated. |
+| H02 | Partial ordering and uncertain dates survive input, query, reading and export. Unknown intervals are not interpolated, and contradictory observations remain reviewable. |
+| V01 | An unfamiliar compound stays intentionally sparse at high zoom. A gate/icon uses coherent projection and does not hide meaningful routes or turn extra painted pixels into a larger physical/click footprint. |
+| V02 | Opaque walls, rails and detached frontages show correct local occlusion in the actual consumer. Increasing zoom does not invent rear details. |
+| Q01 | Notes, sequences and local scenes are fetched lazily from pinned revisions. Initial overview does not download all interiors, and reopening content makes no generation request. |
+
+Documentation acceptance also checks that ownership links agree, outdated direct-map-to-room and compulsory building-host rules are removed from current requirements, and Phase 1 is not enlarged by hospital examples. Keep local patch-tool verification separate from a full repository application, app tests and browser/visual evidence.
 
 ## Visual review discipline
 

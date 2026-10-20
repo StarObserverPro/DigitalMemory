@@ -1,6 +1,6 @@
 # Phase 1 runtime foundation
 
-> DM-0004 current runtime: 16 independently placed shell modules, 24 frontage/door slots, a 1.4 m child profile and lower follow camera. Independent overview, shell, frontage and character layers can be inspected; two synthetic shops can be tried in one slot. Historical occupants remain unknown until supported. Seventeen domain tests and fourteen actual-browser checks cover the updated journey. Hosting target is configured in `.openai/hosting.json`; deployment outcome is recorded in [status](STATUS.md).
+> Historical DM-0004 baseline: 16 shell modules, 24 frontage/door slots and a 1.4-unit character profile. Its inspection/shop controls and lower follow-camera description are not the current consumer contract. Later street behavior belongs in [STREET_PROTOTYPE](STREET_PROTOTYPE.md); overview/source deliveries and release evidence belong in [STATUS](STATUS.md).
 
 The application uses native ES modules, original illustrated PNGs and a small static public repository adapter. The close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. It implements the basic contracts without choosing a private archive, authentication service or hosting provider.
 
@@ -27,7 +27,7 @@ Optional browser checks use Playwright installed separately. Run `node scripts/b
 | Session and portals | `src/application/session.js` | One place/period/camera/selection/scene owner; nested return snapshots; rejected stale loads |
 | Data connection | `src/adapters/public-repository.js` | Manifest-directed public records; place-filtered lazy chunks; paginated memory results; lazy scene loading; errors preserve origin |
 | Browsing persistence | `src/adapters/session-storage.js` | Best-effort local session preferences only; validation and usable map origin on restore |
-| Overview and street | `src/explorer/` | Hand-drawn overview; enter a sidewalk scene of upright scenic flats, minimal ground and fog; near-door interaction, exact return and opt-in mapping inspector |
+| Overview and street | `src/explorer/` | Hand-drawn overview; enter a sidewalk scene of upright scenic flats, minimal ground and fog; near-door interaction and exact return; the former consumer mapping inspector is removed |
 | Illustration mapping | `src/domain/illustration.js` | Real-node / drawing-node correspondence, stable route edge/progress, metre-based street movement; one ordered Xinhua chain |
 | Resources and references | `content/public/manifest.json`, `assets/maps/` | Revision/checksum-pinned candidates and explicit provenance; exact transform for vector candidates; B raster alignment still reviewable |
 
@@ -37,7 +37,17 @@ The raster is not an identity store. The initial A/B/C boards were rejected as t
 
 The square is approximately 1.8 km across, covering 新华街, the adjacent southwest/west Fourth Ring section, 丰台大桥 and 丰台影剧院. 南开西里 remains a general neighborhood anchor. This is the visual canvas, not a newly asserted walked itinerary. Roads/rails come from a selected contemporary OSM extract; historical registration remains open. No private home position is recorded.
 
-A date/life-stage selection currently filters synthetic memory relationships. It does not imply the orientation board existed in that form during the selected period. No historical `EnvironmentState` is supplied, so the resolver returns `no_supported_state`. The explorer labels this limitation at viewing time.
+The original prototype filtered synthetic memory relationships and could return `no_supported_state`. Later Xinhua artwork has explicitly selected approximate working-composite membership, recorded in STATUS and the source plan; it still does not prove the entire orientation board existed in every chosen period. Do not place historical development notices over the ordinary scene.
+
+## New route-first contract: implementation gap register
+
+The shared location/session, ordered Xinhua chain, prototype near-gate journey and separate composition/time owners are foundations. This documentation task did not modify or execute them.
+
+The following are **not claimed as implemented here**: general `RouteSceneRegistration`/`RouteAttachment` migration; a note/sequence/local-scene discriminated dispatcher; private notes attached to arbitrary objects; a durable static-sequence authoring/viewing flow; mixed boundary/frontage interval editing; multi-entrance route remapping; or observation/state-transition authoring across unknown dates.
+
+A future implementation must demonstrate overview route-only entry, correct-side approach, all three target types and exact return; localized wall/railing/detached-frontage edits; and same-site temporal revisions without nearest-year fallback. The proposed fields in DATA_MODEL must not be mistaken for the current JSON schema.
+
+The current contract forbids reintroducing former mapping inspectors, trial-shop controls or permanent debug labels. Parallel character-calibration and World Labs handoff changes remain separate; this package changes no runtime parameters, authentication, generation request or deployment.
 
 ## Storage seam
 
