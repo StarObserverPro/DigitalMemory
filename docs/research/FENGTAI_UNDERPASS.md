@@ -2,6 +2,8 @@
 
 Research date: 2026-10-18. Purpose: constrain the road assembly, not reconstruct an exact surveyed cross section.
 
+Historical bridge generations, alias conflicts, old-bridge demolition uncertainty and the separate 2020 railway arch are indexed in [Fengtai bridges and Zhengyang Street public research](FENGTAI_BRIDGES_ZHENGYANG.md). This underpass note remains limited to road-profile evidence.
+
 | Observation | Source and status | Consequence |
 | --- | --- | --- |
 | The newer bridge complex includes separate road and railway bridges; Four Ring passes under the railway bridge. The road bridge connects Zhengyang Street across Four Ring. | Fengtai Times, 2025-02-28, citing local gazetteers: [article](https://www.bjft.gov.cn/fengtaishibao/html/2025-02/28/content_9506_18302103.htm). Read in full. | Preserve separate crossing identities and explicit upper/lower relationships. Do not draw the railway below the road. |
