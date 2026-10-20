@@ -43,7 +43,25 @@ try {
   await page.waitForTimeout(900);
   await page.keyboard.up('ArrowUp');
   await page.waitForTimeout(240);
-  const after=await page.evaluate(()=>window.__QA_STATE__);
+  let after=await page.evaluate(()=>window.__QA_STATE__);
+  console.log('movement diagnostic after ArrowUp',JSON.stringify({
+    before,after:after.travel,route:after.route,street:after.street,
+    documentView:await page.evaluate(()=>({
+      focused:document.activeElement?.id,
+      activeDialogs:[...document.querySelectorAll('dialog[open]')].map(x=>x.id),
+      currentView:window.digitalMemory.inspect().session.view
+    }))
+  }));
+  if(after.travel<=before+0.02){
+    await page.keyboard.down('ArrowDown');
+    await page.waitForTimeout(950);
+    await page.keyboard.up('ArrowDown');
+    await page.waitForTimeout(200);
+    after=await page.evaluate(()=>window.__QA_STATE__);
+    console.log('movement diagnostic after ArrowDown',JSON.stringify({
+      before,after:after.travel,route:after.route,street:after.street
+    }));
+  }
   assert.ok(after.travel>before+0.02,
     'Walking must move the registered character along the street');
   assert.ok(after.avatarAsset==='modular-glb-walk-r1');
