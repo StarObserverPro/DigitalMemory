@@ -6,7 +6,7 @@ Status date: 2026-10-19. This is an observed delivery ledger, not task activatio
 
 A documentation change package was prepared against main `2b2bd01b52934cd28be57e050a90b250b3455c6a`. It consolidates area → route → attachment navigation; note/sequence/local-scene targets; selective gate-centered depiction; editable brick/railing/detached-frontage segments; and repeated observations/versioned local states with uncertain dates. Existing owners are indexed by [the documentation map](README.md).
 
-The initial offline preparation did not change the remote repository. An authorized GitHub documentation integration followed; its review and merge provenance belongs to the associated PR and commit history. This is a documentation contract, not evidence that route attachment dispatch or memory authoring is implemented.
+The initial offline preparation did not change the remote repository. An authorized GitHub documentation integration followed; its review and merge provenance is in [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) and the commit history. This is a documentation contract, not evidence that route attachment dispatch or memory authoring is implemented.
 
 No runtime, public data, imagery, generated art, private memory record, character setting or World Labs request changed. The generalized contracts are not claimed as implemented. Open PR #18 (World Labs handoff) and #19 (2× apparent street character) were preserved as separate tracks at inspection. See [the bounded packet](attention/tasks/DM-DOCS-ROUTE-FIRST-20261019.md) for the delivery boundary and unactivated next action.
 
