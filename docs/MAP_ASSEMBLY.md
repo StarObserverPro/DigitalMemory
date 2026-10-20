@@ -6,9 +6,19 @@
 
 DM-0009, 2026-10-18. The composition planner is connected to the visible overview. Geometry, visual acceptance and historical verification remain separate. Current implementation and gaps are recorded in STATUS and the active/recent task packet.
 
+## Current experience contract — 2026-10-19
+
+The normal interaction hierarchy is overview area → registered route/street → roadside attachment. Overview gates, hospital signs and compound silhouettes are orientation representations; visible does not mean directly enterable. Route attachments resolve note, static sequence or local scene only after street entry. [INTERACTION](INTERACTION.md) and [DATA_MODEL](DATA_MODEL.md) own the details.
+
+The acquired source plan remains available, but not every source footprint must be painted. Select depiction by observed street interface, familiarity and memory purpose independently of geometric confidence. Large unfamiliar compounds may be represented by a recognizable gate and sparse compatible masses, or omitted at town scale. Unknown interior extent is not a reason to invent a precise closed boundary.
+
+An icon may conceal low-information background through ordinary compositional overlap. Its scale changes painted bounds, not source footprint, walking collision or a doorway's approach position. It must not hide a meaningful road, neighboring remembered entrance or a known topology error. Preserve coherent projection, height family where an actual mass is represented, route continuity and stable anchors.
+
+This rule does not downgrade the important residential geometry already corrected in R6, nor authorize altering building orientations. It changes representation selection for places where internal layout is not the memory object.
+
 ## The picture we are assembling
 
-The entire viewport is a lightly drawn city. Overview roads use soft gray pen edges and a paper-compatible wash; they do not imitate black asphalt or advertise clickability through dark fill. The entered street may use asphalt and sidewalk materials. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection makes only the corresponding part more definite.
+The entire viewport is a lightly drawn city. Overview roads use soft gray pen edges and a paper-compatible wash; they do not imitate black asphalt or advertise clickability through dark fill. The entered street may use asphalt and sidewalk materials. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection changes only the relevant local content/representation; it does not automatically increase geometric detail or historical certainty.
 
 The distinction is **visual emphasis**, not a truth score. A vividly remembered reconstruction may still be historically uncertain; a well-documented neighboring building may remain pale because it is context. Store evidence, date support, author approval, visual emphasis and publication permission separately.
 
@@ -32,7 +42,7 @@ The tiers use the same stable locations and drawing layout. They change what is 
 
 | View | What becomes legible | Context and roads | Initial label budget per viewport |
 | --- | --- | --- | --- |
-| Town | Two bridge anchors, the principal roads, selected theater/hospital/park silhouettes and large neighborhood masses | Very pale land and roof grain; unmistakable bridge crossing order. Sidewalk/service corridor remains recognizable as part of the road assembly. No individual windows. | About 8–12; prototype 10 |
+| Town | Two bridge anchors, principal roads and only useful theater/park/compound silhouettes; a hospital need not appear at this scale | Very pale land and roof grain; unmistakable bridge crossing order. Sidewalk/service corridor remains recognizable as part of the road assembly. No individual windows. | About 8–12; prototype 10 |
 | Neighborhood | Sanli/Wuli/Sili/Liuli/Qili and Nankai Xili typology and arrangement; separate towers, long slabs and court boundaries; local commercial anchors | Stronger but still pale contextual silhouettes. Main road, service road and sidewalk are separable; important setbacks and retaining-wall lengths become visible. | About 12–18; prototype 16 |
 | Street surroundings | Gates, detached street shops, walls, crossings, entrances and nearby memories | Same oblique planar map, still without a figure. Context remains faint rather than inventing more precision. Prioritize walking space. | About 6–10; prototype 10 |
 | Entered street | A short walkable stretch, recognizable facades/gates, remembered shops and optional interior portals | Moderate elevated Richman-like framing; big-headed grounded figure, scenic flats, shallow returns, warm fog at the limits. Not a first-person or half-body camera. | Only locally useful names |
@@ -47,7 +57,7 @@ A small remembered shop may be omitted at town scale. If its solid representatio
 | --- | --- | --- |
 | North road bridge / south railway bridge; 看丹桥 | Town | Distinct identities and levels. Never merge the two Fengtai bridges into one symbol or put the railway underground. |
 | 新华街, 四环, 丰台南路, 正阳大街 | Town | Continuous independent road assemblies; protect service roads and sidewalks, not just the centerline. |
-| 丰台影剧院; hospital sites north/south | Town or neighborhood, depending on framing | Separate sites even if their institutions later merged. Silhouette in its own footprint, outside the roadway. |
+| 丰台影剧院; separately identified hospital sites | Only the tier where orientation benefits; hospital depiction may wait until street surroundings | Keep site identity independent of an institutional merger. A gate/sign can suffice. No automatic phase-scope expansion or direct overview-to-interior link. |
 | 新华街各里, 南开西里 | Neighborhood | Actual tower/slab/low-rise families and orientations; no generic European houses or decorative old-Beijing courtyards. |
 | Bridge-north KFC; bridge-north McDonald's; bridge-south McDonald's | Neighborhood | Three distinct place records. Precise site/period still requires evidence; unresolved records stay out of the rendered map. |
 | 丰台花园, the intended 党校, public exterior of large compounds | Neighborhood; major park silhouette can appear farther out | Verify which place is meant before placing it. Sparse surroundings extend beyond the registration scope. |
@@ -58,7 +68,7 @@ This is a content allocation rule, not a claim that every listed object has been
 
 ## Filling places without a specific memory
 
-Use three levels of contextual specificity, chosen from actual evidence:
+Use three levels of contextual specificity, constrained by evidence and independently selected for memory relevance/visible extent. Better evidence permits detail; it does not require displaying it:
 
 1. **Land use / vegetation only:** a soft warm-gray or green wash where even building type is uncertain. Do not invent roof ridges, hutongs or shop signs.
 2. **Known building family and orientation:** pale repeated long slabs, compact tower silhouettes or irregular low-roof grain. Preserve approximate density, orientation, open space and green coverage from satellite/reference evidence; window counts and minor unit differences are irrelevant.
@@ -67,6 +77,16 @@ Use three levels of contextual specificity, chosen from actual evidence:
 Satellite imagery is a reference layer in the authoring workspace. Extract roof orientation, massing, approximate height family and vegetation into original compatible art; do not mix a raw photo tile with illustrated streets as the default finished map. A current satellite image alone does not prove a 2005 layout. Keep source acquisition dates and supported periods in the recipe.
 
 Each patch can have period-specific recipes (for example low housing versus later tower/slab massing). Its fallback recipe must be a neutral land/vegetation wash, not a silently borrowed modern roof pattern. Context is **non-interactive and unnamed**. Its components never become places, doors or historical evidence just because a generator drew them. The paper wash covers missing/out-of-view patches; neighboring patches use consistent palettes, world-anchored texture and padded seams. Loading a new patch must not scatter or randomize accepted neighbors.
+
+## Gate-centered representation and continuous transitions
+
+A gate/short boundary is the primary visible unit when internal layout is neither known nor useful. Keep the familiar street face legible, suggest only the supported rear typology, and reduce contour density, contrast, object count and explicit closure into continuous ground/paper treatment. Do not merely lower opacity on a fully detailed invented campus or cover it with game-like exploration fog.
+
+Boundary-wall, railing and frontage recipes use [LAYER_COMPOSITION](LAYER_COMPOSITION.md). Revealing a background through rails does not require accurate internal corridors; opaque brick wall and detached frontage have their own occlusion. A generic hospital identifier or period-appropriate school gate is a recognition aid, not proof of an exact historical sign or borrowed fictional architecture.
+
+Zoom reveals only useful available information. It does not force an unfamiliar rear compound to become detailed at the nearest tier. Context can remain conceptually sparse at every tier. The nearby gate may become clearer while the interior remains an intentional omission.
+
+At the finest overview tier, selecting the street still enters the route scene. A larger gate symbol does not capture the map click and bypass that route. Hit masks must respect this separation.
 
 ## How a newly remembered building fits
 
