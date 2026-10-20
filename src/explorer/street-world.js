@@ -121,13 +121,22 @@ export function createStreetWorld({mapping, transform, composition, periodId, la
     hand:ball(person,[0,0,0],[.078,.08,.075],'#e0c4a1'),side
   }));
   function bone(m,a,b){const av=new T.Vector3(...a),bv=new T.Vector3(...b),delta=bv.clone().sub(av);m.position.copy(av.add(bv).multiplyScalar(.5));m.scale.y=delta.length();m.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),delta.normalize());}
+  // A separately loaded, skinned GLB replaces the provisional ball/cylinder child
+  // before the first browser-rendered frame. Old geometry remains only for isolated tests.
+  let schoolboy=null;
+  function installAvatar(avatar) {
+    if(!avatar?.root || !avatar.setVariant || !avatar.update)throw Error('Invalid student avatar');
+    person.clear();schoolboy=avatar;person.add(avatar.root);
+  }
+  function updateAvatar(dt,amount,stepDistance) {schoolboy?.update(dt,amount,stepDistance);}
   let pose;
   function posePerson(state,travel=0,amount=0){
     const profile=CHARACTER_PROFILES[state.characterId]||CHARACTER_PROFILES.child;
     const p=frame(mapping.locate(state.route).distance,state.street.lateral);
     person.scale.setScalar(profile.height/1.4);person.position.set(p.x,.16,p.z);person.rotation.y=p.yaw-state.street.heading;contactShadow.position.set(p.x,.164,p.z);
     pose=gaitPose(travel,amount);
-    pose.legs.forEach((leg,i)=>{const l=limbs[i];bone(l.thigh,leg.hip,leg.knee);bone(l.shin,leg.knee,leg.ankle);l.knee.position.set(...leg.knee);l.shoe.position.set(...leg.foot);
+    if(schoolboy)schoolboy.setVariant(state.characterId==='youth'?'blue':'red');
+    else pose.legs.forEach((leg,i)=>{const l=limbs[i];bone(l.thigh,leg.hip,leg.knee);bone(l.shin,leg.knee,leg.ankle);l.knee.position.set(...leg.knee);l.shoe.position.set(...leg.foot);
       const shoulder=[l.side*.255,.91,0],hand=[l.side*.30,.58,-leg.swing];bone(l.arm,shoulder,hand);l.hand.position.set(...hand);
     });
     return {point:p,profile,pose};
@@ -161,8 +170,9 @@ export function createStreetWorld({mapping, transform, composition, periodId, la
     }
     const t=state.street.target;mark.visible=Boolean(t)&&state.layers.roads;if(t){const p=frame(t.distance,t.lateral);mark.position.set(p.x,.166,p.z);}
   }
-  function dispose(){for(const r of resources){r.userData?.ownedTexture?.dispose();r.dispose();}}
-  return {scene,camera,road,buildings,frontages,person,frame,locateGround,posePerson,setCamera,revealPerson,sync,dispose,
+  function dispose(){schoolboy?.dispose();for(const r of resources){r.userData?.ownedTexture?.dispose();r.dispose();}}
+  return {scene,camera,road,buildings,frontages,person,frame,locateGround,posePerson,installAvatar,updateAvatar,setCamera,revealPerson,sync,dispose,
+    get avatarSource(){return schoolboy?.source||'test-only-prototype';},get avatarVariant(){return schoolboy?.variant||null;},
     gateDistance,gateTarget,gateBuilding,gateParts,entrance,pickObjects,instances,slotMeshes,
     get pose(){return pose;},meshes,resources};
 }

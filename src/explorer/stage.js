@@ -2,9 +2,12 @@ import * as T from '../../assets/vendor/three/three.module.min.js';
 import { STAGE } from '../domain/illustration.js';
 import { STREET_VIEW, cameraRelativeInput } from './street-layout.js';
 import { createStreetWorld } from './street-world.js';
+import { loadSchoolboy } from './schoolboy.js';
 
 /** The stage owns one renderer/input loop. The session owns every navigation target. */
 export async function createStage({container,session,mapping,transform,composition,blocked,onNear,onEnter,onError}) {
+  // Do not start a street scene with the rejected procedural avatar.
+  const avatar=await loadSchoolboy();
   const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
   renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;container.append(renderer.domElement);
@@ -16,6 +19,7 @@ export async function createStage({container,session,mapping,transform,compositi
     const material=new T.MeshLambertMaterial({map:texture});material.userData.ownedTexture=texture;return material;
   }
   const world=createStreetWorld({mapping,transform,composition,periodId:session.get().periodId,labelMaterial});
+  world.installAvatar(avatar);
   const {scene,camera}=world,ray=new T.Raycaster(),keys=new Set();
   let disposed=false,drag=null,lastTime=0,lastPoint=null,travel=0,gaitAmount=0,near=false,aspect=1,viewWasActive=false;
   const codes={KeyW:'up',ArrowUp:'up',KeyS:'down',ArrowDown:'down',KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right'};
@@ -75,7 +79,7 @@ export async function createStage({container,session,mapping,transform,compositi
     const moved=lastPoint?Math.hypot(p.x-lastPoint.x,p.z-lastPoint.z):0;lastPoint=p;travel+=moved;
     // Animation is driven by actual displacement: no marching at a boundary, no idle bounce.
     gaitAmount+=(Number(moved>.0002)-gaitAmount)*(1-Math.exp(-dt*18));
-    const hero=world.posePerson(state,travel,gaitAmount);world.sync(state);world.setCamera(p,aspect,state.street.cameraYaw||0);world.revealPerson();
+    const hero=world.posePerson(state,travel,gaitAmount);world.updateAvatar(dt,gaitAmount,moved);world.sync(state);world.setCamera(p,aspect,state.street.cameraYaw||0);world.revealPerson();
     const nowNear=Math.hypot(distance-world.gateDistance,state.street.lateral-world.gateBuilding.setback)<=STREET_VIEW.gateReach;
     if(nowNear!==near){near=nowNear;onNear(near);}
     const target=state.street.target;
@@ -86,8 +90,9 @@ export async function createStage({container,session,mapping,transform,compositi
     renderer.render(scene,camera);globalThis.__VISUAL_READY__=true;
     const bounds=new T.Box3().setFromObject(world.person),lo=outline.copy(bounds.min).project(camera).clone(),hi=outline.copy(bounds.max).project(camera).clone();
     globalThis.__QA_STATE__={revision:STREET_VIEW.revision,route:state.route,geo:mapping.locate(state.route).geo,street:state.street,
-      feet:[p.x,STREET_VIEW.pavementY,p.z],soleOffsets:hero.pose.legs.map(l=>l.sole),travel,
-      characterHeight:hero.profile.height,avatarNdc:{left:lo.x,right:hi.x,bottom:lo.y,top:hi.y},camera:camera.position.toArray(),projection:'orthographic',
+      feet:[p.x,STREET_VIEW.pavementY,p.z],soleOffsets:hero.pose.legs.map(l=>l.sole),
+      soleOffsetsStatus:'legacy-kinematic-estimate-not-glb-foot-contact',travel,
+      characterHeight:hero.profile.height,avatarAsset:world.avatarSource,uniform:world.avatarVariant,avatarNdc:{left:lo.x,right:hi.x,bottom:lo.y,top:hi.y},camera:camera.position.toArray(),projection:'orthographic',
       nearEntrance:near,doorDistance:world.gateDistance,renderer:diagnostics,drawCalls:renderer.info.render.calls,
       modules:[...world.instances].map(([id,b])=>({id,distance:b.distance,height:b.height,sourceHeight:b.building.height,depth:b.building.depth*STREET_VIEW.groundScale})),
       occupiedSlots:[...world.slotMeshes].filter(([,s])=>s.occupantId).map(([id,s])=>({id,occupantId:s.occupantId})),layers:state.layers};
