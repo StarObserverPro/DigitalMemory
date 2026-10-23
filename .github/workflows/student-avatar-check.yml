@@ -1,0 +1,48 @@
+name: Student avatar review checks
+
+on:
+  push:
+    branches: ['agent/dm-0019-schoolboy-glb']
+  pull_request:
+    paths:
+      - 'src/explorer/schoolboy.js'
+      - 'src/explorer/street-*.js'
+      - 'src/explorer/stage.js'
+      - 'assets/characters/schoolboy/**'
+      - 'assets/vendor/three/**'
+      - 'tests/schoolboy.test.mjs'
+      - 'tests/schoolboy.browser.mjs'
+      - 'scripts/serve.mjs'
+      - '.github/workflows/student-avatar-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static build and Node tests
+        run: npm run check
+      - name: Browser smoke prerequisites
+        run: |
+          command -v google-chrome
+          npm install --no-save --ignore-scripts playwright-core@1.56.1
+      - name: Real WebGL schoolboy smoke
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: node tests/schoolboy.browser.mjs
+      - name: Preserve temporary WebGL screenshots for PR review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-avatar-webgl
+          path: local-evidence/schoolboy-*.png
+          if-no-files-found: ignore
+          retention-days: 7

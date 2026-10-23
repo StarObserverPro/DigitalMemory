@@ -1,5 +1,7 @@
 # Grounded street prototype — DM-0010
 
+> **2026-10-19 DM-0019 review branch:** The live WebGL stage now loads an actual **male school-student modular GLB** (head resized toward approximately four heads, short hair, no hat), original KayKit `Idle_A`/`Walking_A`, and two red/white and blue/white 2000s Beijing uniform treatments. `person.clear()` removes the deprecated geometric child **before the first street frame**; the geometric prototype and its `gaitPose` assertions remain only as legacy unit fixtures. The old presentation table and DM-0010 CPU projections **describe r3 historical evidence, not DM-0019 GLB acceptance**. The new r4 has not received real browser visual review or geometry-licensing clearance; see [DM-0019](attention/tasks/DM-0019.md) and [avatar asset provenance](../assets/characters/schoolboy/README.md).
+
 ## Reference and scope
 
 The user explicitly prioritizes volume, readable scale and interaction before street artwork. The current simplified models replace the old facade cutouts and paper person only in the existing Xinhuajie sample. They are spatial prototypes, not a verified historical block.

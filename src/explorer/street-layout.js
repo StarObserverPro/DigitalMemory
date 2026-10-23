@@ -2,7 +2,7 @@ import { STAGE } from '../domain/illustration.js';
 
 // Presentation compression is not a change to the geographic registration.
 export const STREET_VIEW = Object.freeze({
-  revision: 'xinhua-grounded-r3', groundScale: .48, pavementY: .16,
+  revision: 'xinhua-grounded-r4-schoolboy', groundScale: .48, pavementY: .16,
   cameraPitch: 44 * Math.PI / 180, desktopAzimuth: -.78, mobileAzimuth: -.38,
   desktopSpan: 15.2, mobileSpan: 14, gateReach: 1.85,
 });
