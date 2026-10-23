@@ -38,6 +38,7 @@ function render() {
   lastRenderKey = key;
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
   $('period-label').textContent = currentPeriod().label;
+  $('uniform-label').textContent = state.characterId==='youth'?'高中蓝白':'初中红白';
   const asset = manifest.assets.find(a => a.id === state.styleId);
 
   const artKey=JSON.stringify([state.styleId,state.periodId,mapLevel(state.camera.zoom),Math.round(metrics.scale*100)]);
@@ -138,6 +139,7 @@ function wireControls() {
   $('scene-back').addEventListener('click',()=>{closeMenu();back();});
   $('scene-next').addEventListener('click',()=>{closeMenu();if(sceneData?.nextSceneId)enterScene(sceneData.nextSceneId);});
   $('period-button').addEventListener('click', () => showDialog('period-dialog'));
+  $('uniform-toggle').addEventListener('click',()=>{const id=session.get().characterId==='child'?'youth':'child';session.dispatch({type:'character',id});closeMenu();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});});
 
   $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
@@ -183,7 +185,9 @@ async function enterStreet() {
         blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onEnter: enterDoor, onError: notify });
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
-    session.dispatch({ type: 'view', view: 'street' }); notify();
+    session.dispatch({ type: 'view', view: 'street' });
+    $('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
+    notify();
   } catch (error) { stage?.dispose(); stage = null; $('stage-canvas').replaceChildren(); notify('街景暂时打不开，手绘图上的位置已保留。'); }
   finally { startingStage = false; }
 }
