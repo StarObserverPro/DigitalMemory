@@ -54,6 +54,12 @@ Keep stable place identity separate from editable coordinates. Only the spatial 
 
 Investigate dependencies as needed, but expand modification or external effects only with authority. Do not refactor unrelated modules, regenerate accepted scenes globally, weaken acceptance to obtain a pass, or add private data to public Git/PR/logs. A reversible same-contract implementation choice is ordinarily the executor's decision.
 
+## Required documentation alignment with every PR push
+
+**Every initial PR push and every subsequent update must include a documentation alignment pass on the same proposed change.** Compare the full branch diff against the current base, identify affected canonical owners through [the documentation map](docs/README.md), and update those owners **in the same PR** wherever behavior, interfaces, data/evidence, visual decisions, scopes, implementation status or known gaps changed. Update [STATUS](docs/STATUS.md) only for supported present-tense facts, relevant decision/contract pages for approved changes, and the task packet for tested revisions and handoff. Update README/Agent entry links when routing changes; do not create duplicate current specifications or rewrite unrelated history.
+
+Before publishing or re-pushing the PR, use the [PR checklist](.github/PULL_REQUEST_TEMPLATE.md) to record **which documents changed** or explicitly state **"no documentation changes needed" with a reason**. Check links and consistency against the actual proposed code/assets and evidence. Proposed implementation, tested behavior, user approval, merge and deployment are separate statuses; avoid branch-only or "pending merge" wording that will become falsely current after merging. Recheck the final PR head before merge. A documentation-only PR is subject to the same cross-check, not an exemption from it.
+
 ## Verify and hand off
 
 Bind observations to a commit or asset revision and to the actual consumer: a map tile, camera view, doorway, text panel, or export. Static code presence is not visual acceptance. A build is not a successful walkthrough. An aesthetically approved reconstruction is not a confirmed historical fact. An architecture document is not an implemented capability.
