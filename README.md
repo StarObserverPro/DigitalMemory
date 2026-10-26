@@ -8,7 +8,7 @@ The purpose is to preserve impressions of living in an environment, not to produ
 
 Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
 
-The runtime has an illustrated overview and a bounded, grounded street prototype. Run instructions are above; [RUNTIME](docs/RUNTIME.md), [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md) and [STATUS](docs/STATUS.md) distinguish implemented behavior from historical experiments. The ordinary interface uses one initially closed menu, not the former mapping/layer inspectors or storefront demonstration controls.
+The runtime has an illustrated overview and a bounded, grounded street prototype with the merged male-student GLB and two schoolwear palettes. Its present proportions are provisionally retained as-is. Run instructions are above; [RUNTIME](docs/RUNTIME.md), [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md) and [STATUS](docs/STATUS.md) distinguish implemented behavior from historical experiments. The ordinary interface uses one initially closed menu, not the former mapping/layer inspectors or storefront demonstration controls.
 
 The current design follows **area → street/route → roadside attachment**. All three overview tiers remain orientation views without an avatar. Route entry precedes normal place activation; notes, static image sequences and local exploration use one attachment contract. This documentation revision does not claim that the complete new dispatcher, street-edge editor or private note archive exists.
 
@@ -26,6 +26,9 @@ The current design follows **area → street/route → roadside attachment**. Al
 | How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
 | Where did Xinhua/Sanli building geometry actually come from, and what is verified? | [Geographic source chain](docs/GEO_DATA_LINEAGE.md) |
 | How does an Agent acquire and audit the next map area without guessing buildings? | [Geodata acquisition / QA runbook](docs/GEO_DATA_RUNBOOK.md) |
+| Which student is actually running vs the 2× fixture? | [Street prototype](docs/STREET_PROTOTYPE.md) and [scale review](docs/STREET_VISUAL_CALIBRATION.md) |
+| Where is the future World Labs handoff? | [Marble 2 documentation — no generation](docs/WORLDLABS_HANDOFF.md) |
+| Where is bridge/Zhengyang public research? | [Fengtai bridge research](docs/research/FENGTAI_BRIDGES_ZHENGYANG.md) |
 | How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
 | What demonstrates that work actually succeeded? | [Verification](docs/VERIFICATION.md) |
 | Which architecture choices are settled or deferred? | [Decision register](docs/DECISIONS.md) |

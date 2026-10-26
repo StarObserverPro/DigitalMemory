@@ -1,5 +1,7 @@
 # Documentation map: area → route → roadside attachment
 
+**2026-10-26:** Consult [current STATUS](STATUS.md) before old branch packets. The male GLB is provisionally unchanged, earlier 2× notes are a historical fixture, Marble 2 has no actual generation, bridge research is public only, and Keith Haring-inspired lines are future exploration.
+
 Contract revision: 2026-10-19. This page routes readers to the owners below; it is not another schema or a claim that the new behavior is implemented. The proposal package was prepared against main `2b2bd01b52934cd28be57e050a90b250b3455c6a`.
 
 ## Read by question, not by historical task number
@@ -9,6 +11,9 @@ Contract revision: 2026-10-19. This page routes readers to the owners below; it 
 | What experience are we preserving? | [PRODUCT](PRODUCT.md) | [PHASE_1](PHASE_1.md) owns geographic scope. |
 | What can be entered from each view? | [INTERACTION](INTERACTION.md) | [ILLUSTRATION_MAPPING](ILLUSTRATION_MAPPING.md) owns overview/street correspondence. |
 | Who resolves location, interaction and scene loading? | [ARCHITECTURE](ARCHITECTURE.md) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
+| Which student model is really used vs the older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
+| What is the World Labs/Marble 2 status? | [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) | Future handoff only; no generated environment. |
+| What public sources describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
 | What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) preserve source provenance. |

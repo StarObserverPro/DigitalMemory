@@ -4,7 +4,7 @@ This is a short routing surface, not a requirement to read the entire repository
 
 ## Preserve the intended result
 
-DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, with the person grounded on the sidewalk in pseudo-3D: illustrated cinematic scenic flats, limited geometry, fog and directional cues. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
+DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, currently using a skinned male student and modular street grayboxes; illustrated surfaces, fog and directional cues remain visual goals. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
 
 Phase 1 prioritizes the walking-memory network around 新华街, with 南开西里 and the two historical school sites. Do not add the high-school cycling corridor, silently substitute modern school campuses, invent exact routes, or publish private source material. [PHASE_1](docs/PHASE_1.md) is the scope owner.
 
@@ -16,7 +16,7 @@ The normal journey is area overview → registered street/route → roadside att
 
 Preserve source geometry while selecting what to show. A familiar gate and a few compatible masses may represent an unfamiliar compound. Wall/railing segments, detached frontage rooms, gates, occupancy and appearance must be independently revisable. Repeated changes at one site retain location identity and uncertain dating; reconstruction does not supply missing memories. New content never automatically creates a free-roaming interior.
 
-This documentation correction is not runtime implementation, avatar work, paid generation, private-content publication or release authorization. Preserve concurrent World Labs and character-calibration work.
+The 2026-10-26 checkpoint reconciles the already merged character with old street-calibration, World Labs and public bridge documents. It triggers no runtime work, paid generation, private-content publication or deployment; Keith Haring-inspired sparse art is parked only.
 
 ## Read only what this task needs
 
@@ -31,6 +31,9 @@ This documentation correction is not runtime implementation, avatar work, paid g
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
 | GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
+| Live avatar vs historic 2× review | `docs/STREET_PROTOTYPE.md` / `docs/STREET_VISUAL_CALIBRATION.md` |
+| World Labs / Marble 2, no generation | `docs/WORLDLABS_HANDOFF.md` |
+| Bridge public research | `docs/research/FENGTAI_BRIDGES_ZHENGYANG.md` |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
 | Acceptance / actual completion | `docs/VERIFICATION.md` / `docs/STATUS.md` |
 | Cross-session or concurrent work | `docs/attention/README.md` |
