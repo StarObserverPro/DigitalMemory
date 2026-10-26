@@ -1,12 +1,24 @@
 # Repository status
 
-## Male Y2K school-student rig — DM-0019 (unmerged review branch)
+## Integration checkpoint — 2026-10-26 (authoritative current main)
+
+Older packets/branch descriptions below are historical. This checkpoint reconciles the user's latest decision with merged code.
+
+- **Live student**: [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) merged a male skinned GLB on 2026-10-23 (red junior/blue high-school uniforms, KayKit idle/walk). Running `src/explorer/schoolboy.js` normalizes it to **1.4 presentation units** with `headBoneScale=0.48`. The user finds it a little stocky, and on 2026-10-26 explicitly chose to **use it as-is**: do not further adjust physical proportions, perceived size, height or head/body ratios now. The old **2× apparent-size** result in [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) was a synthetic placeholder comparison, not a live GLB multiplier or mandatory future task. Chromium WebGL smoke was completed; detailed gait/foot planting and final aesthetics are not approved. The donor geometry still lacks explicit independent licensing proof; see [avatar source notes](../assets/characters/schoolboy/README.md).
+- **Marble 2 / World Labs**: [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) consolidates the proposed local Codex setup and camera/geometry constraints. **No World Labs generation, upload, export, installed runtime adapter or produced scene.** Local CLI/auth/account capabilities are not verified at this checkpoint.
+- **桥南／桥北 history**: [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) holds public evidence, naming and chronology uncertainties only. No new bridge geometry registration, map drawing or private-memory material was added.
+- **Product / map**: [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) merged the area → street/route → roadside attachment documentation contract, not a complete running dispatcher or authoring backend. The existing Xinhua R6 map and 161 selected masses were untouched.
+- **Parked concept**: a future **Keith Haring-inspired** sparse box/line treatment with selective color on memorable elements, recorded in [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md), is *not yet an accepted visual system or active assignment*.
+- **Agent**: `docs/attention/current.json` still has `"active": []`. No generation, private-publication, new implementation, deployment or successor task is activated by this documentation integration.
+
+
+## Male Y2K school-student rig — DM-0019 (merged; provisional appearance)
 
 The Xinhua street runtime now has a 3D skinned male-student candidate with independently replaceable hair, jacket, trousers and shoes, plus KayKit `Idle_A` and `Walking_A` source clips. The previous ball/cylinder walker is removed from the **browser player's** mesh group when the stage initializes; isolated prototype tests still contain that geometry. Red/white junior and blue/white high-school kits use one shared mesh and a bind-space jersey/stripe shader, without copying the user's private photograph or a school logo. Street picking/route registration are unchanged.
 
-Status: branch `agent/dm-0019-schoolboy-glb` only. **Chromium WebGL runtime smoke now passes**: CI [run 39486090781](https://github.com/StarObserverPro/DigitalMemory/actions/runs/39486090781) verified 50 Node tests, build, live red/blue menu switch, registered walking displacement (0.18 scene units), mobile fit and reload persistence with zero HTTP/page errors. Six temporary screenshots are in CI artifacts. Detailed planted-feet animation review, user aesthetics and the donor's independently documented geometry CC0 grant remain **open** before merge/publication. Evidence and source lineage: [DM-0019](attention/tasks/DM-0019.md), [asset README](../assets/characters/schoolboy/README.md). The older r3 street CPU screenshots do **not** validate this GLB model.
+Status: merged into main via [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) on 2026-10-23. **Chromium WebGL runtime smoke now passes**: CI [run 39486090781](https://github.com/StarObserverPro/DigitalMemory/actions/runs/39486090781) verified 50 Node tests, build, live red/blue menu switch, registered walking displacement (0.18 scene units), mobile fit and reload persistence with zero HTTP/page errors. Six temporary screenshots are in CI artifacts. Detailed planted-feet animation review, user aesthetics and the donor's independently documented geometry CC0 grant remain **open** after integration and need resolution before claiming the third-party geometry is fully cleared for ongoing redistribution. Evidence and source lineage: [DM-0019](attention/tasks/DM-0019.md), [asset README](../assets/characters/schoolboy/README.md). The older r3 street CPU screenshots do **not** validate this GLB model.
 
-Status date: 2026-10-19. This is an observed delivery ledger, not task activation.
+Original evidence date 2026-10-19; runtime integration and current provisional-use status rechecked 2026-10-26. Not a task activation.
 
 ## Route-first documentation integration — 2026-10-19
 
@@ -14,7 +26,7 @@ A documentation change package was prepared against main `2b2bd01b52934cd28be57e
 
 The initial offline preparation did not change the remote repository. An authorized GitHub documentation integration followed; its review and merge provenance is in [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) and the commit history. This is a documentation contract, not evidence that route attachment dispatch or memory authoring is implemented.
 
-No runtime, public data, imagery, generated art, private memory record, character setting or World Labs request changed. The generalized contracts are not claimed as implemented. Open PR #18 (World Labs handoff) and #19 (2× apparent street character) were preserved as separate tracks at inspection. See [the bounded packet](attention/tasks/DM-DOCS-ROUTE-FIRST-20261019.md) for the delivery boundary and unactivated next action.
+No runtime, public data, imagery, generated art, private memory record, character setting or World Labs request changed. The generalized contracts are not claimed as implemented. At the 2026-10-19 inspection, PR #18 (World Labs) and #19 (2× synthetic character study) were separate tracks; their content is now reconciled in the checkpoint above. See [the bounded packet](attention/tasks/DM-DOCS-ROUTE-FIRST-20261019.md) for the delivery boundary and unactivated next action.
 
 ## Registered Xinhua masses and zoom detail — DM-0018
 
@@ -129,6 +141,6 @@ The public GitHub feature branch/PR contains public non-personal assets and synt
 
 The documentation baseline was delivered in PR #1 and is present at base `00239079b4d9a3c61fa5d5d6e98b417f384815c3`. The original MIT license remains unchanged. The earlier [bootstrap packet](attention/tasks/DM-0001.md) is cold history; [DM-0002](attention/tasks/DM-0002.md) records this implementation scope.
 
-## Next action
+## Historical suggested action (not active)
 
-Review the illustrated-overview → scenic-flat-street sample and the real/art node correspondence. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.
+That old scenic-flat review predates the merged volumetric student. Refer to the 2026-10-26 checkpoint and the empty active-task index instead. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.

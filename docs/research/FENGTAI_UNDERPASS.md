@@ -1,5 +1,7 @@
 # Fengtai Four Ring underpass: evidence boundary
 
+> Public bridge-generation identities, alias conflicts and source chronology are separately indexed in [FENGTAI_BRIDGES_ZHENGYANG](FENGTAI_BRIDGES_ZHENGYANG.md). This underpass profile does not register new geometry or private recollections.
+
 Research date: 2026-10-18. Purpose: constrain the road assembly, not reconstruct an exact surveyed cross section.
 
 | Observation | Source and status | Consequence |
