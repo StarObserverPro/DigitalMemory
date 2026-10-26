@@ -20,6 +20,12 @@ During authorized construction, create a missing packet from [TASK.template.md](
 
 On delivery or stop, update the existing packet with tested revision, observations/gaps and next action; remove its active row in the closure change. The retained packet becomes cold history. Do not create an active successor merely to keep a queue occupied. A later user request may activate a new packet referencing the old one.
 
+### PR-time documentation alignment
+
+For **every new PR and every push to an existing PR**, reconcile the complete proposed diff with its canonical docs **in that PR branch**, rather than postponing a documentation sweep until later. Update the affected contract, [STATUS](../STATUS.md) for observed state, source/evidence and task handoff as applicable; preserve uncertain or incomplete outcomes without claiming a merge, release or visual approval. Check links and stale references on the final PR head. The [repository PR template](../../.github/PULL_REQUEST_TEMPLATE.md) requires a short list of updated docs, or an explicit explanation why no document should change. A code-only fix is allowed when its existing documentation remains accurate and that reasoning is stated; bulk touching unrelated documents is not required.
+
+Before the merge decision, compare against the latest base and ensure the new change does not restore an outdated description from a concurrent branch. This is a delivery discipline, not an automatic new work item or a requirement to start deferred tasks.
+
 ## Default attention window
 
 Use one primary work item and up to two dependencies that affect its acceptance or a shared contract. This is a default local working set, not a hard global concurrency ceiling. Prefer a small number of relevant document sections and source files over entire directories. Expand investigation when evidence calls for it, without confusing a wider read with authorization to modify everything read.

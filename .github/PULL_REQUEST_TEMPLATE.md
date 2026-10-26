@@ -8,6 +8,14 @@ State the user-authorized result and task packet. Do not paste private source ma
 - Affected places, periods, scenes, batches or contract owners:
 - Exclusions and any approved scope changes:
 
+## Documentation alignment (required on every PR push/update)
+
+- [ ] Compared the full PR diff against the latest base and checked the affected canonical docs.
+- [ ] Updated relevant docs **in this PR**, or explicitly justified why existing documentation is still accurate.
+- [ ] Checked local links, stale status/handoff wording, and the distinction between proposed, tested, merged and deployed.
+- Docs updated (paths), **or** "none — reason":
+- Remaining documentation uncertainty (if any; not an automatically activated task):
+
 ## Evidence
 
 | Acceptance ID | Actual observation | Tested revision / consumer | Remaining gap |

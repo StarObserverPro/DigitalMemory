@@ -10,6 +10,12 @@ Keep document consistency, domain tests, build results, runtime observations, vi
 
 Private evidence must stay private. Public PR summaries can identify the test and result without attaching personal originals, private URLs or exact residential coordinates.
 
+## Every-PR documentation check
+
+At each initial PR submission or update, check the **entire diff vs the current base** and align affected canonical files before pushing. The PR description should identify: (1) which product/architecture/data/art/runbook/status/task documents were updated (or a specific reason **none** needed changes); (2) their correspondence to what is actually implemented, tested, proposed or unresolved; and (3) any link or wording checks. Repeat the check on the **final head before merge**, especially after rebases, merges from main, or changed implementation scope.
+
+Do not say a branch-only feature is already on main, conflate browser tests with aesthetic acceptance, or leave a historical "pending integration" claim as the new present tense. Prefer stable, evidence-bound descriptions that remain accurate once a PR merges, with exact PR/commit provenance in the delivery statement. This requirement does **not** force unrelated documentation churn, private information into public files, or publication/deployment. The [pull-request template](../.github/PULL_REQUEST_TEMPLATE.md) records the result.
+
 ## Documentation acceptance for this task
 
 | ID | Acceptance |
