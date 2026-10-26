@@ -1,5 +1,10 @@
 # Hand-painted map art: current production direction
 
+## Parked future art idea — Keith Haring-inspired line economy (2026-10-26)
+
+The user suggested exploring a **Keith Haring-inspired** simplified visual language for streets: buildings reduced to boxes and a few purposeful graphic lines, with restrained color applied selectively to remembered places. This is a **long-term hypothesis** only, not a new accepted style or request to generate imagery now. Any future treatment must be original rather than replicate a specific artwork, must preserve verified street/bridge placement, tower height classes, meaningful gates, collision and occlusion, and must be compared in an actual consumer view. Existing painted raster assets and the street GLB remain unchanged.
+
+
 DM-0015, updated 2026-10-19. This records the user's current correction and supersedes older instructions that let tiny isolated images, a fixed pixel ratio or sparse window dots determine the final style.
 
 ## Selective depiction and recognizable entrances — 2026-10-19

@@ -1,6 +1,7 @@
 # Grounded street prototype — DM-0010
 
-> **2026-10-19 DM-0019 review branch:** The live WebGL stage now loads an actual **male school-student modular GLB** (head resized toward approximately four heads, short hair, no hat), original KayKit `Idle_A`/`Walking_A`, and two red/white and blue/white 2000s Beijing uniform treatments. `person.clear()` removes the deprecated geometric child **before the first street frame**; the geometric prototype and its `gaitPose` assertions remain only as legacy unit fixtures. The old presentation table and DM-0010 CPU projections **describe r3 historical evidence, not DM-0019 GLB acceptance**. The new r4 has not received real browser visual review or geometry-licensing clearance; see [DM-0019](attention/tasks/DM-0019.md) and [avatar asset provenance](../assets/characters/schoolboy/README.md).
+> **Running consumer, 2026-10-26:** The street player now displays the merged skinned male-student GLB, with KayKit idle/walk and two selectable schoolwear palettes. Actual scale: `SCHOOLBOY_SCALE.height=1.4` and `headBoneScale=0.48`. User elects to keep the existing slightly stocky character unchanged. The older [2× synthetic comparison](STREET_VISUAL_CALIBRATION.md) does not control the current runtime. Chrome WebGL smoke passed earlier, but detailed foot planting, final aesthetics and donor rights remain unresolved.
+
 
 ## Reference and scope
 
@@ -15,10 +16,10 @@ Observed: elevated oblique views, large-headed volumetric figures, plainly visib
 
 ## Presentation contract
 
-| Part | Current prototype |
+| Part | Current runtime / historical reference |
 | --- | --- |
-| Child | 1.4 world units, large head, rounded torso, backpack, separate jointed limbs and shoes |
-| Walking | Distance-driven two-bone leg pose; at least one sole planted; constant root height; no billboard/bounce |
+| Live avatar | Modular skinned GLB fitted to 1.4 presentation units, donor head scale 0.48, red/blue uniform; old ball/cylinder figure now only a unit fixture |
+| Live walking | KayKit idle/walk blended by route displacement; old procedural two-bone test does not validate actual GLB foot contacts |
 | Shops | Independent short volumes, 2.65 units high; frontage slots/occupants remain separate |
 | Housing | 6.16 units for the current 17.6 m source proxies, roof and wall thickness, outside the sidewalk |
 | Gate | 2.35 units high; open passage with independent leaves and posts; source synthetic portal retained |
@@ -36,8 +37,8 @@ No dice, compulsory board spaces, costs, hovering instructions, controls outside
 
 ## Evidence and limits
 
-- `tests/street.test.mjs`: target arrival/bounds, inverse pointer registration, planted feet and connected joints throughout a full cycle, actual camera projection and ray hits at desktop/phone sizes, orbit/facing independence and portal return.
+- `tests/street.test.mjs`: route/target/bounds and camera tests; its procedural planted-feet and joint checks are **legacy fixtures**, not GLB foot-contact proof.
 - `evidence/street-*-r3.webp` and `street-proportions-r3.json`: native CPU projections of the consumer's actual meshes and camera. They show arrival, gate, mid-step/orbit and narrow screen. They are **not WebGL screenshots**; browser lighting, shadows, label textures, input events, GPU draw count and device performance have not been observed.
 - Reproduce geometry evidence: `node scripts/render-street-evidence.mjs`, then `python scripts/raster-street-evidence.py` (NumPy/Pillow). Intermediate triangles stay in ignored `local-evidence/`.
-- Sites managed mode has no `$control-browser`; its skill prohibits launching an alternate browser/server. Browser walkthrough remains open. The old `scripts/browser-check.mjs` records the superseded half-body/cutout interaction and must not be reported as a current passing gate.
+- Earlier Sites-controlled browser review was unavailable; the merged GLB later passed [Chromium WebGL smoke](https://github.com/StarObserverPro/DigitalMemory/actions/runs/39486090781). Detailed gait/foot acceptance and visual sign-off remain separate.
 - User aesthetic approval remains open. Current neutral volumes can later receive modular illustrated surfaces after the spatial relationship is accepted.

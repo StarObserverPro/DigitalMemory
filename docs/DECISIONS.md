@@ -1,5 +1,7 @@
 # Architecture decision register
 
+> **2026-10-26 status reconciliation:** The already merged student model stays unchanged; an older synthetic 2× visual trial is historical evidence, not a required new scale transform. Marble 2 has produced nothing, the Fengtai bridge branch is public research only, and a Keith Haring-inspired outline style is a **parked option**, not a new adopted art specification. See [STATUS](STATUS.md), [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md), and [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md).
+
 This is the concise record of decisions and their authority, not a second copy of every contract. Detailed semantics live in the linked owners. A later change records its reason and affected decision IDs; it does not silently rewrite the original user constraint.
 
 ## Integrated decisions — 2026-10-19
