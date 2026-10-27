@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import * as T from '../xinhua-junction-outline/vendor/three/build/three.module.js';import {makeInkOcclusion} from './ink-occlusion.mjs';
+const camera=()=>{const c=new T.PerspectiveCamera(50,1280/720,.1,380);c.position.set(0,9,22);c.lookAt(0,0,0);c.updateMatrixWorld();return c;};
+const tree=(x,z)=>{const group=new T.Group();group.position.set(x,0,z);group.updateMatrixWorld();return {group,height:5,inkOwner:500};};
+test('Offscreen full-block trees do not occupy screen mask slots',()=>{const ink=makeInkOcclusion();ink.resize(1280,720);ink.update(camera(),Array.from({length:45},(_,i)=>tree(200+i*5,0)),[]);assert.equal(ink.audit.masks,0);ink.update(camera(),[tree(0,0)],[]);assert.equal(ink.audit.treeMasks,2);});
+test('Nearby wheel survives a scene with more tree masks than the shader budget',()=>{const ink=makeInkOcclusion();ink.resize(1280,720);const wheel=new T.Group();wheel.position.set(2,.4,2);wheel.rotation.y=Math.PI/2;wheel.userData.inkOwner=1001;wheel.updateMatrixWorld();const trees=Array.from({length:30},(_,i)=>tree((i%5)-2,-Math.floor(i/5)*2));ink.update(camera(),trees,[{wheels:[wheel]}]);assert.equal(ink.audit.wheelMasks,1);assert.equal(wheel.visible,true);assert(ink.audit.masks<=40);});

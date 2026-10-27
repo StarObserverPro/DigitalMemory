@@ -17,6 +17,7 @@ Contract revision: 2026-10-19. This page routes readers to the owners below; it 
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
 | What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) preserve source provenance. |
+| How do we reuse the accepted Xinhua close-street outline process? | [Xinhua outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) | [Selected runnable scene](../scenes/xinhua-junction-outline/README.md); [Integrated Sanli close view](../scenes/xinhua-sanli-outline/README.md), reached through the main street entry; overview raster art remains unchanged. |
 | How do new observations become notes, sequences and environment revisions? | [CONTENT_PIPELINE](CONTENT_PIPELINE.md) | Original/private material stays outside public Git. |
 | What is accepted, tested, merged or released? | [VERIFICATION](VERIFICATION.md), [STATUS](STATUS.md) | Task packets identify exact observations, not new requirements. |
 | Why is a decision settled? | [DECISIONS](DECISIONS.md) | Current explicit corrections supersede conflicting older assumptions. |

@@ -1075,5 +1075,6 @@
     }
   },
   "context": "map-context.json",
-  "overviewRegistration": "overview-registration.json"
+  "overviewRegistration": "overview-registration.json",
+  "outlineScene": "outline-registration.json"
 }

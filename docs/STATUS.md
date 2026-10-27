@@ -1,5 +1,16 @@
 # Repository status
 
+## Accepted Sanli outline integration — 2026-10-27, review branch
+
+The user approved sanli-outline-r5 for intake and integration. The supported main overview→street entry now lazy-loads the selected full Sanli/junction close view, including continuous outline person, sparse motion, north-up collapsible minimap, compass, irregular rounded UI and local ZCOOL KuaiLe. Existing overview assets and retained schoolboy source/rig are unchanged. Session owns the local pose/camera/path; public registration/hash, spatial frame and explicit temporal membership select the working composite. Returning to map releases the renderer and input; re-entry and reload preserve a valid same-entry pose.
+
+The accepted junction intake is carried into this branch from4d919e5 on current main1242dbd; unrelated dirty overview artwork remains in the original checkout. Reusable style, expansion/filtering/validation lessons and controlled intake process live in [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md), with selected data/code/licences in [Sanli scene](../scenes/xinhua-sanli-outline/README.md). Geographic correction history, raw photos, private inputs and screenshots are excluded. Visual selection does not certify a historical year or all inferred surfaces.
+
+Local validation:55 application tests plus12 selected-scene tests and build passed; actual built entry/walk/menu/return/reload observed at runtime commit748aabe. Source/font byte and documentation-link checks passed. CI status remains a separate GitHub result.
+
+Verification/delivery record: [DM-SANLI-INTEGRATE-20261027](attention/tasks/DM-SANLI-INTEGRATE-20261027.md). PR branch only; main is not merged and nothing is deployed. Earlier street-renderer/character status entries below are historical where this consumer supersedes them.
+
+
 ## Integration checkpoint — 2026-10-26 (authoritative current main)
 
 Older packets/branch descriptions below are historical. This checkpoint reconciles the user's latest decision with merged code.
@@ -144,3 +155,5 @@ The documentation baseline was delivered in PR #1 and is present at base `002390
 ## Historical suggested action (not active)
 
 That old scenic-flat review predates the merged volumetric student. Refer to the 2026-10-26 checkpoint and the empty active-task index instead. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.
+
+Corridor integration revision xinhua-corridor-integrated-r1 extends the selected street consumer to western Qili/Fourth Ring frontage and eastern Xinhua. Daoxiangcun west frontage has map/panorama evidence. Integration validation and merge outcome are recorded in DM-XINHUA-CORRIDOR-20261027.

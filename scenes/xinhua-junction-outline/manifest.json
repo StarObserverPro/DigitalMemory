@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "sceneId": "xinhua-junction-outline",
+  "artRevision": "outline-motion-r4-05",
+  "geometryRevision": "outline-street-r4-02",
+  "acceptedBase": "outline-motion-r4-04",
+  "decisionDate": "2026-10-27",
+  "userAcceptance": "Junction spatial/visual sample accepted for library intake; remove overhead wires, retain simplified lamps.",
+  "integration": "Library-only; not connected to production entry, session or build.",
+  "historicalAcceptance": false,
+  "sourceHashes": {
+    "sources/entrance-roads-osm.xml": "b249f11f78a2af07be6099e04b2fcf723910834b029420cf65ccb35e07569d19",
+    "sources/ENTRANCES.md": "d6b1ca2b057d3e1ee2384fdda4a45a097843cccc17e7d29de7c3a51980bb06f3",
+    "sources/orientation.json": "6e6c0270965530aef460c824df23a027db1429cb7795b7976786163c33259840",
+    "sources/xinhua-spatial-plan.json": "7700fae51f41872268f9e4a492640ebc71931301d340153769a0b8e8423d9a4f"
+  },
+  "runtimeHashes": {
+    "index.html": "c748465292dbb4b20eb23a368c489b3d802b851340cd30a4fa6f4c4e5d0cd666",
+    "style.css": "40dc223f10b6a5a7fceafd8869f3adaacaaec6d2055c759492bd9a88fb86caaa",
+    "app.mjs": "b90d16c8faa062a3c2e30008b638cbac39704b015c401b8e956605fb5a56a500",
+    "drawing.mjs": "601ad5ec5b6a79d435acceb6d96e0a0c9c4dfae8b8f462f15074a1a38ac8f695",
+    "navigation.mjs": "e3348193a576c383e64f4c24045695a93134d3a2bc100ef90cb41818805af8c9",
+    "avatar.mjs": "ff116ac0f3ec10793abb49ec4d22fa7ac580f1f7048a307a8cec9fd8ff18e625",
+    "motion.mjs": "9243feb766458c76d7f43dc3e7fd1d9f894a94ab8091b26be34e7438b1d065ac",
+    "ink-occlusion.mjs": "8971b1303277e9f73e744bbc463599dd7d2cde65e0b5e0ad3f46a946a78a5709",
+    "scene-data.json": "d375aba770065abc5ab6d35e3738feb638a86644b0cb0f08bc4b32c26e75b616",
+    "serve.mjs": "51869b4b5821d4e9daeeafa804e0292e89c1ec349bce765c9dd70d99a8a95ced",
+    "build-scene.mjs": "6a672b8320896271521a70b343fa7a49c2bfb58e6df70cce23f009aa849f6bf6",
+    "motion.test.mjs": "56f49b3b3691259a679a37e29b22d25855b1c32c91ed0da80cc785458b8cb7d0",
+    "navigation.test.mjs": "eebda4a232835f7b0895a67e44c70464b280b13babda2677b452c38af45f037c",
+    "vendor/three/build/three.module.js": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a",
+    "vendor/three/build/three.core.js": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20",
+    "vendor/three/LICENSE": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+    "vendor/three/examples/jsm/lines/Line2.js": "69dd2120d4df14208796acf199f80a64d37e042cfa65dc2b98286694b2954194",
+    "vendor/three/examples/jsm/lines/LineGeometry.js": "b7ec6b0011e3b09dc72e17cfd8e8945295cb2bc8c8aa9aa19e47119680bdad7e",
+    "vendor/three/examples/jsm/lines/LineMaterial.js": "8450d827153d2509e43513cd123df786d7c8c7cdbfd4c7eea4c9e1621f2a7fb5",
+    "vendor/three/examples/jsm/lines/LineSegments2.js": "5d707b4e6056945b3b34cd8291b6afe16c913f6b1e8eac7b6d6892f41c45c26d",
+    "vendor/three/examples/jsm/lines/LineSegmentsGeometry.js": "471f0a954a0c9c59d3d151392f424142a9164a722802f63b371971378a84a1b1",
+    "vendor/three/examples/jsm/lines/Wireframe.js": "0f8b84215e857f83e8ce0e106df0f605469d9b6acf4d72bdbb3ae887f71f8ea6",
+    "vendor/three/examples/jsm/lines/WireframeGeometry2.js": "b540ca152b38de6197849e9cc51a669f93b3ae4822c6030c589e9914320ced50"
+  }
+}

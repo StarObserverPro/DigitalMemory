@@ -1,11 +1,16 @@
 # Grounded street prototype — DM-0010
 
-> **Running consumer, 2026-10-26:** The street player now displays the merged skinned male-student GLB, with KayKit idle/walk and two selectable schoolwear palettes. Actual scale: `SCHOOLBOY_SCALE.height=1.4` and `headBoneScale=0.48`. User elects to keep the existing slightly stocky character unchanged. The older [2× synthetic comparison](STREET_VISUAL_CALIBRATION.md) does not control the current runtime. Chrome WebGL smoke passed earlier, but detailed foot planting, final aesthetics and donor rights remain unresolved.
+## Current selected Xinhua close-view consumer — 2026-10-27
+
+The main Xinhua entry now uses the user-approved [Sanli outline scene](../scenes/xinhua-sanli-outline/README.md), with the continuous outline figure and navigation UI. Earlier GLB schoolwear/orthographic renderer descriptions and evidence below remain historical or legacy-module records; they are not the live Xinhua rendering claim. The accepted 3D schoolboy assets are retained. [Outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns this selected style and integration process.
+
+
+> **Historical consumer, 2026-10-26 (superseded for Xinhua by the selected outline integration):** The street player now displays the merged skinned male-student GLB, with KayKit idle/walk and two selectable schoolwear palettes. Actual scale: `SCHOOLBOY_SCALE.height=1.4` and `headBoneScale=0.48`. User elects to keep the existing slightly stocky character unchanged. The older [2× synthetic comparison](STREET_VISUAL_CALIBRATION.md) does not control the current runtime. Chrome WebGL smoke passed earlier, but detailed foot planting, final aesthetics and donor rights remain unresolved.
 
 
 ## Reference and scope
 
-The user explicitly prioritizes volume, readable scale and interaction before street artwork. The current simplified models replace the old facade cutouts and paper person only in the existing Xinhuajie sample. They are spatial prototypes, not a verified historical block.
+The user explicitly prioritizes volume, readable scale and interaction before street artwork. The former simplified models replaced the old facade cutouts and paper person only in the existing Xinhuajie sample. They are spatial prototypes, not a verified historical block.
 
 Inspected the actual screenshots from the publishers' Steam store pages on 2026-10-18:
 

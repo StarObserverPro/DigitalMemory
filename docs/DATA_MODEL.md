@@ -151,3 +151,7 @@ Preserve originals and history under normal editing. A correction adds a superse
 ## Query and indexing requirements
 
 Support spatial-window queries, route-plus-buffer queries in metric units, period filtering, aliases/full-text search, and source-to-derived-asset dependency lookup. Paginate both memories and review queues. Build screen-space clustering in presentation, not by deleting nearby records. Rebuild indexes from authoritative records. No monthly archive growth should require loading all recordings or all text into a browser session or an Agent prompt.
+
+## Selected outline session state
+
+The implemented Xinhua/Sanli close-view seam stores `session.outline`: registration revision, originRoute key, environmentId, local-metre position, yaw/distance/pitch camera, continuous path, destination, visited waypoint IDs and travelled distance. Application `outline-state` validates finite/ranged values and clones updates; nested portal snapshots preserve it. Restore drops pending paths/destination and invalid poses, opens a usable overview, and revalidates revision/entry and collision before the next street mount. This field is a concrete selected-scene adapter, not the proposed general RouteAttachment migration. `outline-registration.json` binds the stable place IDs, registered local frame, scene bytes/art revisions and explicit working-composite period members.

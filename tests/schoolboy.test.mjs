@@ -39,7 +39,7 @@ test('the two Beijing-era student uniforms share the same shaped rig',()=>{
   assert.ok(SCHOOLBOY_SCALE.headBoneScale>0.4&&SCHOOLBOY_SCALE.headBoneScale<0.65);
   assert.equal(SCHOOLBOY_SCALE.height,1.4);
 });
-test('actual street stage installs the GLB before its render loop and updates its clip',()=>{
+test('retained legacy street stage installs the GLB before its render loop and updates its clip',()=>{
   const stage=readFileSync(new URL('../src/explorer/stage.js',import.meta.url),'utf8');
   const world=readFileSync(new URL('../src/explorer/street-world.js',import.meta.url),'utf8');
   assert.ok(stage.indexOf('await loadSchoolboy()')<stage.indexOf('new T.WebGLRenderer'));

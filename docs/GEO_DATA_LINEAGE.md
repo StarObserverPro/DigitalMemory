@@ -108,3 +108,7 @@ For each selected object the spatial plan records: `id`, `compoundId`, WGS84 `ge
 - **Privacy:** only public geographic outlines, references and source IDs belong in Git; private images, address/unit associations and sensitive personal memories remain elsewhere.
 
 **Current integration state:** the Sanli evidence has been merged into `main` (PR 15). R6 subsequently consumed the corridor geometry and spatial plan (DM-0018). Data acquisition, candidate-footprint audit, inferred Z, generated art, UI integration, user review and deployment are separate events; consult [current status](STATUS.md) rather than an earlier task packet's initial “review branch” wording.
+
+## Named frontage registration
+
+Named shops must be checked against an actual map POI, registered building side and dated street imagery before labeling. A postal address or map viewport center cannot establish an entrance. Daoxiangcun Kandanqiao is on Qili west frontage facing Fourth Ring: Baidu POI 905d861757ac875e4107c15e, panorama 09002200122003141220538666G (2020-03), viewed facing east from the auxiliary road. The south-facing Xinhua shop bands carry no Daoxiangcun label. Shop dimensions and forecourt boundary remain reconstruction estimates.

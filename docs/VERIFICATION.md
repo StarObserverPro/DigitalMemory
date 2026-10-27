@@ -88,3 +88,11 @@ When browser or generation capability is unavailable, record exactly which obser
 ## Delivery statement
 
 Every delivery states: files/assets changed, exact branch/head, acceptance evidence, known gaps, approvals not yet obtained, whether main changed, and whether anything was published/deployed. This is an outcome record, not a promise of autonomous future work.
+
+## Selected outline integration gates
+
+Check scene registration/hash and privacy before mount, local-frame round trips, session return/reload, explicit time membership and invalid saved-state rejection. Check all continuous routes, gates/fences/non-road masks, fixture collision and screen-mask budget. Then use the actual built main entry for pointer/keyboard walk, camera/compass, minimap collapse, menu pause, map exit/re-entry, reload and failed-load recovery. Standalone r5 screenshots prove the approved look, not main integration. Keep browser captures outside Git and bind compact observations to the selected manifest and tested commit.
+
+For outline figure visibility, bind foot/head projection and actual screenshot to the same pose/yaw, then retrace the point before changing camera or masking. Screen-in-bounds diagnostics do not replace visible figure review.
+
+Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
