@@ -12,3 +12,5 @@ Validation: 57 application tests, 12 scene tests and static build pass. Source g
 Runtime commit c887e311b52b91844c1aef22b9d209819c457dbd. Final built consumer entered via main menu, continuously walked to west forecourt (-434,113), turned toward shop, returned to map, reloaded and restored position/yaw -1.156. No browser warnings/errors. 57 application +12 scene checks and build pass. Map screenshot and panorama evidence retained outside checkout. Implementation delivered; merge authorized and gated on PR25 CI. GitHub PR records merge outcome; deployment is not requested. Future scene changes remain inactive.
 
 Review fixes: delayed cancelled loads exit before session mutation; proximity visits commit immediately. Browser CI selector updated for the renamed Xinhua minimap; prior CI failed on the obsolete Sanli label.
+
+Renderer import is lazy after load cancellation check, with a second cancellation check after import. This permits a real cancelled-load unit fixture without loading browser-only Three add-ons.
