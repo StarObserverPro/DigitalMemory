@@ -22,6 +22,8 @@ The historical map/satellite layer is a workbench reference, not the default vie
 
 ## Choose the minimum useful representation before researching depth
 
+The 2026-10-27 selected Xinhua junction close-scene and its [reusable outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) retain the accepted spatial/contour process, sparse retracting motion and ink-occlusion rules. It is a library intake, not a whole-map style replacement or an app entry integration. Omit overhead wires by default in this near-scene family: their uncertain time-dependent layout adds research/rendering work without improving the selected memory representation. Retain sparse simplified lamps; reopen wire depiction only for an explicitly selected memory-relevant object. The scene manifest pins the selected version; technical parameters remain local calibration values.
+
 First identify the route attachment and its memory role; then select overview/street depiction and activation independently. A gate/name plus short wall can be the final asset for a pass-by landmark. A few still images can be the final interior representation. Only a spatial memory that benefits from movement calls for a local scene.
 
 | Selected outcome | Required production inputs | Not required by default |

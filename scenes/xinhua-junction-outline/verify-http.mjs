@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import crypto from 'node:crypto';
+const root=new URL('.',import.meta.url),base=process.env.SCENE_URL||'http://127.0.0.1:4197';
+const paths=['/','/style.css','/app.mjs','/drawing.mjs','/navigation.mjs','/scene-data.json','/vendor/three/build/three.module.js','/vendor/three/build/three.core.js','/vendor/three/examples/jsm/lines/Line2.js','/vendor/three/examples/jsm/lines/LineGeometry.js','/vendor/three/examples/jsm/lines/LineMaterial.js','/vendor/three/examples/jsm/lines/LineSegments2.js','/vendor/three/examples/jsm/lines/LineSegmentsGeometry.js'];
+paths.push('/avatar.mjs','/motion.mjs','/ink-occlusion.mjs');
+const responses=[];for(const path of paths){const r=await fetch(base+path),body=new Uint8Array(await r.arrayBuffer());assert.equal(r.status,200,path);assert.ok(body.length>0);assert.deepEqual(body,new Uint8Array(await fs.readFile(new URL(path==='/'?'index.html':path.slice(1),root))),path+' served bytes must match this copy');responses.push({path,status:r.status,bytes:body.length,sha256:crypto.createHash('sha256').update(body).digest('hex')});}
+for(const path of ['/TASK.md','/sources/xinhua-spatial-plan.json','/evidence/north-actual.png','/not-a-runtime-image.png']){const r=await fetch(base+path);assert.equal(r.status,404);responses.push({path,status:404,intentionalNonRuntimeProbe:true});}
+const data=JSON.parse(await fs.readFile(new URL('scene-data.json',root),'utf8'));
+const prior=JSON.parse(await fs.readFile(new URL('evidence/http-verification.json',root),'utf8'));
+for(const p of ['/scene-data.json','/navigation.mjs'])assert.equal(responses.find(r=>r.path===p).sha256,prior.responses.find(r=>r.path===p).sha256,'Previously accepted space and navigation remain identical');
+await fs.writeFile(new URL('evidence/http-library-verification.json',root),JSON.stringify({revision:data.revision,artRevision:'outline-motion-r4-05',base,responses,runtimeImages:0,externalRuntimeRequests:0,geometryAndNavigationUnchanged:true,note:'Runtime sources contain no image loads; source/evidence paths are not served. Actual WebGL and input checks are separate.'},null,2));
+console.log(JSON.stringify({revision:data.revision,artRevision:'outline-motion-r4-05',runtimeResources:paths.length,checks:responses.length,images:0,geometryAndNavigationUnchanged:true}));
