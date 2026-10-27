@@ -26,3 +26,5 @@ Delivered implementation and documentation / review branch. Active route removed
 - CI smoke now targets actual selected main entry; retained GLB source/asset tests remain. CI is configured for the outgoing PR; its actual status is reported by GitHub, separate from local acceptance. Browser screenshots/HTTP logs kept outside Git.
 - Figure review: a transient missing-figure capture was retraced at the same65,-80 pose/yaw; after closing an older concurrent review page, screenshot and in-bounds projection were normal. Read-only projection/readiness diagnostics and CI screen-bound checks retained; no speculative masking/camera rewrite.
 - User art/intake/integration approval granted; GitHub merge and deployment not requested. Next after PR submission: review the selected runtime and integration diff. GitHub merge/deployment remain unactivated.
+
+Follow-on: DM-XINHUA-CORRIDOR-20261027 supersedes the original merge restriction; user explicitly authorized corrected corridor integration and main merge. Original selected Sanli objects remain preserved.
