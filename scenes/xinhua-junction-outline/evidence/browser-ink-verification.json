@@ -1,0 +1,485 @@
+{
+  "artRevision": "outline-motion-r4-04",
+  "geometryRevision": "outline-street-r4-02",
+  "url": "http://127.0.0.1:4197/",
+  "viewport": {
+    "width": 599,
+    "height": 528
+  },
+  "samples": [
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111476750,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 26,
+        "shopOpenings": 21,
+        "thinLineMasks": 6,
+        "treeMasks": 16,
+        "visibleWheels": 4,
+        "wheelMasks": 4
+      },
+      "motion": {
+        "active": [
+          {
+            "anchor": [
+              -4.31,
+              3.36,
+              -21.85
+            ],
+            "distance": 8.41,
+            "extension": 1,
+            "id": "tree-r-0",
+            "kind": "tree",
+            "lengthScale": 1.2,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              -4.88,
+              1.49,
+              -28.52
+            ],
+            "distance": 12.83,
+            "extension": 0.98,
+            "id": "car-nr-0",
+            "kind": "engine",
+            "lengthScale": 1,
+            "pattern": "radial",
+            "strokes": 2
+          }
+        ],
+        "animation": "extend-retract",
+        "buildingEvents": 0,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 1,
+        "visibleStrokes": 4
+      },
+      "position": "3.55,-18.85",
+      "walking": "true",
+      "yaw": "0.524"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111476836,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 26,
+        "shopOpenings": 21,
+        "thinLineMasks": 6,
+        "treeMasks": 16,
+        "visibleWheels": 4,
+        "wheelMasks": 4
+      },
+      "motion": {
+        "active": [
+          {
+            "anchor": [
+              -4.3,
+              3.36,
+              -21.84
+            ],
+            "distance": 7.76,
+            "extension": 1,
+            "id": "tree-r-0",
+            "kind": "tree",
+            "lengthScale": 1.2,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              -4.88,
+              1.49,
+              -28.52
+            ],
+            "distance": 11.97,
+            "extension": 0.84,
+            "id": "car-nr-0",
+            "kind": "engine",
+            "lengthScale": 1,
+            "pattern": "radial",
+            "strokes": 2
+          }
+        ],
+        "animation": "extend-retract",
+        "buildingEvents": 0,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 1,
+        "visibleStrokes": 4
+      },
+      "position": "3.13,-19.62",
+      "walking": "true",
+      "yaw": "0.524"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111476909,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 26,
+        "shopOpenings": 21,
+        "thinLineMasks": 6,
+        "treeMasks": 16,
+        "visibleWheels": 4,
+        "wheelMasks": 4
+      },
+      "motion": {
+        "active": [
+          {
+            "anchor": [
+              -4.3,
+              3.36,
+              -21.84
+            ],
+            "distance": 7.76,
+            "extension": 1,
+            "id": "tree-r-0",
+            "kind": "tree",
+            "lengthScale": 1.2,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              -4.88,
+              1.49,
+              -28.52
+            ],
+            "distance": 11.97,
+            "extension": 0.84,
+            "id": "car-nr-0",
+            "kind": "engine",
+            "lengthScale": 1,
+            "pattern": "radial",
+            "strokes": 2
+          }
+        ],
+        "animation": "extend-retract",
+        "buildingEvents": 0,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 1,
+        "visibleStrokes": 4
+      },
+      "position": "3.13,-19.62",
+      "walking": "true",
+      "yaw": "0.524"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111489203,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 18,
+        "shopOpenings": 21,
+        "thinLineMasks": 2,
+        "treeMasks": 8,
+        "visibleWheels": 8,
+        "wheelMasks": 8
+      },
+      "motion": {
+        "active": [
+          {
+            "anchor": [
+              -12.06,
+              4.46,
+              -63.44
+            ],
+            "distance": 12.32,
+            "extension": 0.42,
+            "id": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281",
+            "kind": "building",
+            "lengthScale": 1.51,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              -44.77,
+              3.75,
+              -85.94
+            ],
+            "distance": 29.88,
+            "extension": 0.97,
+            "id": "tree-l-3",
+            "kind": "tree",
+            "lengthScale": 1.06,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              -21.55,
+              1.03,
+              -64.83
+            ],
+            "distance": 10.8,
+            "extension": 0.92,
+            "id": "car-nr-1",
+            "kind": "engine",
+            "lengthScale": 1,
+            "pattern": "radial",
+            "strokes": 2
+          }
+        ],
+        "animation": "extend-retract",
+        "buildingEvents": 3,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [
+          {
+            "distance": 2.48,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:3:4.455",
+            "pattern": "tangent"
+          },
+          {
+            "distance": 30.37,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:2:4.455",
+            "pattern": "radial"
+          },
+          {
+            "distance": 58.27,
+            "id": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281",
+            "key": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281:2:4.455",
+            "pattern": "tangent"
+          }
+        ],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 2,
+        "visibleStrokes": 6
+      },
+      "position": "-17.10,-74.67",
+      "walking": "true",
+      "yaw": "0.524"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111521787,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 18,
+        "shopOpenings": 21,
+        "thinLineMasks": 2,
+        "treeMasks": 8,
+        "visibleWheels": 8,
+        "wheelMasks": 8
+      },
+      "motion": {
+        "active": [],
+        "animation": "extend-retract",
+        "buildingEvents": 3,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [
+          {
+            "distance": 2.48,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:3:4.455",
+            "pattern": "tangent"
+          },
+          {
+            "distance": 30.37,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:2:4.455",
+            "pattern": "radial"
+          },
+          {
+            "distance": 58.27,
+            "id": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281",
+            "key": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281:2:4.455",
+            "pattern": "tangent"
+          }
+        ],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 2,
+        "visibleStrokes": 0
+      },
+      "position": "-17.35,-75.26",
+      "walking": "false",
+      "yaw": "0.524"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111541713,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 36,
+        "shopOpenings": 21,
+        "thinLineMasks": 6,
+        "treeMasks": 14,
+        "visibleWheels": 16,
+        "wheelMasks": 16
+      },
+      "motion": {
+        "active": [],
+        "animation": "extend-retract",
+        "buildingEvents": 3,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [
+          {
+            "distance": 2.48,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:3:4.455",
+            "pattern": "tangent"
+          },
+          {
+            "distance": 30.37,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:2:4.455",
+            "pattern": "radial"
+          },
+          {
+            "distance": 58.27,
+            "id": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281",
+            "key": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281:2:4.455",
+            "pattern": "tangent"
+          }
+        ],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 2,
+        "visibleStrokes": 0
+      },
+      "position": "-17.35,-75.26",
+      "walking": "false",
+      "yaw": "1.664"
+    },
+    {
+      "artRevision": "outline-motion-r4-04",
+      "at": 1793111559395,
+      "ink": {
+        "clearGapPixels": 2.5,
+        "joinedDoors": 9,
+        "masks": 27,
+        "shopOpenings": 21,
+        "thinLineMasks": 6,
+        "treeMasks": 16,
+        "visibleWheels": 5,
+        "wheelMasks": 5
+      },
+      "motion": {
+        "active": [
+          {
+            "anchor": [
+              -24.02,
+              3.71,
+              -33.38
+            ],
+            "distance": 31.97,
+            "extension": 1,
+            "id": "tree-l-1",
+            "kind": "tree",
+            "lengthScale": 1.05,
+            "pattern": "tangent",
+            "strokes": 2
+          },
+          {
+            "anchor": [
+              6.58,
+              2.11,
+              -29.25
+            ],
+            "distance": 11.54,
+            "extension": 0.96,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "kind": "shop",
+            "lengthScale": 1.25,
+            "pattern": "tangent",
+            "strokes": 2
+          }
+        ],
+        "animation": "extend-retract",
+        "buildingEvents": 3,
+        "buildingLifetime": 5.8,
+        "extendSeconds": 1.15,
+        "history": [
+          {
+            "distance": 2.48,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:3:4.455",
+            "pattern": "tangent"
+          },
+          {
+            "distance": 30.37,
+            "id": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173",
+            "key": "xinhua-d3c9338e-e0a3-4217-867c-3ff1cbc32173:2:4.455",
+            "pattern": "radial"
+          },
+          {
+            "distance": 58.27,
+            "id": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281",
+            "key": "xinhua-73123247-7f1e-425d-b8a1-6ebfafc7a281:2:4.455",
+            "pattern": "tangent"
+          }
+        ],
+        "maxVisibleStrokes": 6,
+        "opacity": 1,
+        "retractSeconds": 1.5,
+        "shopEvents": 4,
+        "visibleStrokes": 4
+      },
+      "position": "4.00,-18.00",
+      "walking": "false",
+      "yaw": "0.524"
+    }
+  ],
+  "checks": {
+    "longerNearbyBuilding": true,
+    "slowerTiming": true,
+    "fartherVisibleTree": true,
+    "shopSound": true,
+    "sixStrokeBudget": true,
+    "opaqueInk": true,
+    "shopAndEngineAlternate": true,
+    "stationaryBuildingStops": true,
+    "joinedDoors": true,
+    "emptyConsole": true
+  },
+  "visualInspection": {
+    "method": "Actual WebGL screenshots at start, crossing side view, walking north and opposite side view; normal menu, Escape and drag input only.",
+    "results": [
+      "Shop door joins baseline; ordinary windows retain separation.",
+      "Tree and foreground wire interrupt rear ink with narrow clear gaps; road fill remains unchanged.",
+      "Wheel/body lines separated in near side and oblique views; end-on wheel slivers omitted.",
+      "Near building accents are visibly longer; farther tree accents observed around 30-32m.",
+      "No broad ink erasure after near-plane guard repair."
+    ],
+    "internalScreenshots": [
+      "r4-04-crossing-final.png",
+      "r4-04-walk-final.png",
+      "r4-04-orbit-final.png"
+    ],
+    "knownScope": "These camera samples are local implementation evidence, not user aesthetic approval or exhaustive testing of every view."
+  },
+  "errors": []
+}

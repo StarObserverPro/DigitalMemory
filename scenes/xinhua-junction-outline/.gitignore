@@ -1,0 +1,4 @@
+!vendor/three/build/
+!vendor/three/build/*.js
+evidence/*.log
+evidence/*.pid
