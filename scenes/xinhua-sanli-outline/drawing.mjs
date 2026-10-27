@@ -27,8 +27,10 @@ export function makeDrawing(scene,data){
  function patch(points,color,y=.01,holes=[]){const s=new T.Shape();s.moveTo(points[0][0],-points[0][1]);for(const p of points.slice(1))s.lineTo(p[0],-p[1]);s.closePath();for(const ring of holes){const h=new T.Path();h.moveTo(ring[0][0],-ring[0][1]);for(const p of ring.slice(1))h.lineTo(p[0],-p[1]);h.closePath();s.holes.push(h);}const m=new T.Mesh(new T.ShapeGeometry(s),new T.MeshBasicMaterial({color,side:T.DoubleSide}));m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
  const roadColor=0xe8e9e2;
  function ribbon(dir,start,end,width){const r=[-dir[1],dir[0]],p=(s,d)=>[dir[0]*s+r[0]*d,dir[1]*s+r[1]*d];return patch([p(start,-width/2),p(end,-width/2),p(end,width/2),p(start,width/2)],roadColor,.012);}
- const ground=new T.Mesh(new T.PlaneGeometry(1100,1100),new T.MeshBasicMaterial({color:PAPER}));ground.rotation.x=-Math.PI/2;ground.position.y=-.03;scene.add(ground);
- ribbon(data.northDirection,-12,data.northLength+45,10.5);ribbon(data.eastDirection,-65,data.eastLength+65,13.2);
+ const ground=new T.Mesh(new T.PlaneGeometry(1600,1600),new T.MeshBasicMaterial({color:PAPER}));ground.rotation.x=-Math.PI/2;ground.position.y=-.03;scene.add(ground);
+ ribbon(data.northDirection,-12,data.northLength+45,10.5);
+ if(!data.corridor)ribbon(data.eastDirection,-65,data.eastLength+65,13.2);
+ for(const p of data.corridorRoadSurfaces||[])patch(p.ring,roadColor,.012,p.holes);
  // Whole-estate ground layers share the same polygons as navigation.
  for(const p of data.paving||[])patch(p.ring,0xf3f2ea,.016,p.holes);
  for(const p of data.roadSurfaces||[])patch(p.ring,roadColor,.021,p.holes);
@@ -39,11 +41,12 @@ export function makeDrawing(scene,data){
  function at(dir,s,d=0,y=.08){return [dir[0]*s-dir[1]*d,y,dir[1]*s+dir[0]*d];}
  for(const side of [-1,1]){
   stroke([at(data.northDirection,10,side*5.25),at(data.northDirection,data.northLength+25,side*5.25)],groundInk);
-  stroke([at(data.eastDirection,-60,side*6.6),at(data.eastDirection,-10,side*6.6)],groundInk);
-  stroke([at(data.eastDirection,10,side*6.6),at(data.eastDirection,data.eastLength+25,side*6.6)],groundInk);
+  if(!data.corridor){stroke([at(data.eastDirection,-60,side*6.6),at(data.eastDirection,-10,side*6.6)],groundInk);
+  stroke([at(data.eastDirection,10,side*6.6),at(data.eastDirection,data.eastLength+25,side*6.6)],groundInk);}
  }
+ for(const path of data.corridorCurbs||[])stroke(path.map(p=>[p[0],.05,p[1]]),groundInk);
  // Crosswalk bars are plain ground shapes, not repeated outlines or surface hatch.
- for(let i=-3;i<=3;i++){const s=i*1.15,p=[at(data.eastDirection,s-.34,-9),at(data.eastDirection,s+.34,-9),at(data.eastDirection,s+.34,-4.8),at(data.eastDirection,s-.34,-4.8)];patch(p.map(v=>[v[0],v[2]]),PAPER,.025);}
+ for(let i=-3;i<=3;i++){const s=i*1.15,p=[at(data.eastDirection,s-.34,-7),at(data.eastDirection,s+.34,-7),at(data.eastDirection,s+.34,data.corridor?7:-4.8),at(data.eastDirection,s-.34,data.corridor?7:-4.8)];patch(p.map(v=>[v[0],v[2]]),PAPER,.025);}
  const circle=(x,y,z,r,n=24)=>Array.from({length:n+1},(_,i)=>[x+Math.cos(i/n*Math.PI*2)*r,y,z+Math.sin(i/n*Math.PI*2)*r]);
  stroke(circle(1,.035,1,.55),groundInk);
  stroke([at(data.northDirection,38,-18),at(data.northDirection,40,-18.7),at(data.northDirection,43,-18.5)],groundInk);
@@ -61,7 +64,8 @@ export function makeDrawing(scene,data){
   const edges=o.ring.map((a,i)=>{const b=o.ring[(i+1)%o.ring.length],l=Math.hypot(b[0]-a[0],b[1]-a[1]);return {a,b,l,i,mid:[(a[0]+b[0])/2,(a[1]+b[1])/2]};}).filter(e=>e.l>6);
   if(!edges.length)return;
   // One selected facade only; never populate whole buildings with a window grid.
-  edges.sort((a,b)=>Math.hypot(...a.mid)-Math.hypot(...b.mid));const e=edges[0],u=[(e.b[0]-e.a[0])/e.l,(e.b[1]-e.a[1])/e.l],winding=silhouettes.find(s=>s.id===o.id).sign;const normal=[u[1]*winding,-u[0]*winding],nl=1,offset=normal.map(v=>v*.045);
+  const score=p=>{if(!o.sourceIds||!data.corridor)return Math.hypot(...p);let best=Infinity;const line=data.corridor.centerline;for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dz)/(dx*dx+dz*dz)));best=Math.min(best,Math.hypot(p[0]-a[0]-t*dx,p[1]-a[1]-t*dz));}return best;};
+  edges.sort((a,b)=>o.facadeEdge!==undefined?Number(b.i===o.facadeEdge)-Number(a.i===o.facadeEdge):score(a.mid)-score(b.mid));const e=edges[0],u=[(e.b[0]-e.a[0])/e.l,(e.b[1]-e.a[1])/e.l],winding=silhouettes.find(s=>s.id===o.id).sign;const normal=[u[1]*winding,-u[0]*winding],nl=1,offset=normal.map(v=>v*.045);
   const p=(t,y)=>[e.a[0]+u[0]*t+offset[0],y,e.a[1]+u[1]*t+offset[1]];
   const n=o.kind==='shop'?Math.min(3,Math.floor(e.l/4)):Math.min(4,Math.floor(e.l/5));
   for(let i=0;i<n;i++){
@@ -75,9 +79,16 @@ export function makeDrawing(scene,data){
    if(door)silhouettes.find(s=>s.id===o.id).baseCuts.set(e.i,[(t-w/2)/e.l,(t+w/2)/e.l]);
    if(o.kind==='shop')openings.push({id:o.id+':opening:'+i,buildingId:o.id,type:door?'door':'window',anchor:new T.Vector3(...p(t+w/2,y+h*.68)),center:new T.Vector3(...p(t,y+h*.68)),normal:new T.Vector3(normal[0]/nl,0,normal[1]/nl)});
   }
-  audit.find(a=>a.id===o.id).facadeStrokes=n;
+  if(o.streetFacing){stroke([p(.3,o.height-.62),p(e.l-.3,o.height-.62)],detailInk);}
+  if(o.label&&o.streetFacing){
+   const canvas=document.createElement('canvas');canvas.width=384;canvas.height=80;const ctx=canvas.getContext('2d'),texture=new T.CanvasTexture(canvas);
+   const paint=()=>{ctx.clearRect(0,0,384,80);ctx.fillStyle='#20231f';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='48px "Sanli Happy",sans-serif';ctx.fillText(o.label,192,42);texture.needsUpdate=true;};paint();document.fonts.ready.then(paint);
+   const sign=new T.Mesh(new T.PlaneGeometry(6.5,.72),new T.MeshBasicMaterial({map:texture,transparent:true,side:T.DoubleSide,depthWrite:false}));sign.position.set(...p(e.l*.5,o.height-.31));sign.rotation.y=Math.atan2(normal[0],normal[1]);scene.add(sign);
+  }
+  audit.find(a=>a.id===o.id).facadeStrokes=n+(o.streetFacing?1:0);
  }
- for(const o of data.buildings){body(o.id,o.ring,o.height);facadeFrames(o);}
+ const rearById=new Map((data.residentialDisplayVolumes||[]).map(v=>[v.sourceBuildingId,v]));
+ for(const source of [...data.buildings,...(data.frontageBuildings||[])]){const override=rearById.get(source.id),o=override?{...source,ring:override.ring}:source;body(o.id,o.ring,o.height);facadeFrames(o);}
  // Simple gate: one continuous inverted-U stroke, no bars or decorative loops.
  for(const g of data.gates?[]:[data.landmarks.north,data.landmarks.east]){
   const d=g.id==='north'?data.northDirection:data.eastDirection,[x,z]=g.anchor,w=2.9;

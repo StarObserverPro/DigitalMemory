@@ -1,21 +1,22 @@
 {
   "sceneId": "xinhua-sanli-outline",
-  "revision": "sanli-integrated-r1",
-  "artRevision": "sanli-outline-r5",
-  "geometryRevision": "sanli-block-layout-r4",
-  "approval": "user-selected-2026-10-27",
+  "revision": "xinhua-corridor-integrated-r1",
+  "artRevision": "xinhua-corridor-outline-r4",
+  "geometryRevision": "xinhua-corridor-layout-r4",
+  "approval": "user-authorized-correction-and-main-integration-2026-10-27",
   "files": {
-    "runtime.mjs": "cc091e1978cd0568a1da274dfa776d93fb3c81fce8d1356509ba790d429b1091",
-    "drawing.mjs": "b91ddba69c5a6825babc42ac811ace16bb720afe2e51d40982aa161c2118706d",
+    "runtime.mjs": "8cec8388e686e093571dd2132da88fe31c1cc6eced07aa5088e20e967aa8b776",
+    "drawing.mjs": "33676c25e5d338c3fc49bf020405a26d3221efdd3da7174541ff4125db214367",
     "avatar.mjs": "f1cf62a14cd0e9212993ce5c5a5b28d15693ad92f76e5a555067709e985b5ff9",
     "motion.mjs": "cdc9f4c1d0bca5371e6bf9bfeacb2e06bba2a66adfcc6d7e6317788f87e34a74",
-    "navigation.mjs": "f7f3f86e7bd630e82bf28abfa8dda14c0ec7c2cc574fd0175ec35f4e42abbd6d",
+    "navigation.mjs": "4bfe1b61d22556fa89ea0245f986cf060aa4ec935f21ca72270afcbac7d59e5f",
     "ink-occlusion.mjs": "70b0bc216843de902fd466d89c7a581c2598be967f881abc884c261cdc2a14c7",
     "site-details.mjs": "9c671b68124cd77de2e7b528858054d1ca35cb0969d421a335c7983842461e81",
-    "navigation-ui.mjs": "33c2c40dfff0ebb70c62c031225a456571fa5f5d2b959b6153e2975db108ddec",
+    "navigation-ui.mjs": "cbe8019e526010d2abf188202e2bdecb4c000060a52cf3647aa27da4f5bbba00",
     "style.css": "7d192a4d8d203a62d98494f57f717da70ae4d4f4135533dc60b46be7a3495081",
-    "scene-data.json": "bb7f8a33f6144f041011f2bc604ef18cc53c3e4025b6cb9f1b08d4006fdade76",
+    "scene-data.json": "79ddf20177ce72527aaa6efb148841acbaa58fa62d280ead4c58cf3839882637",
     "fonts/ZCOOLKuaiLe-Regular.ttf": "812a6fc1fe54b6d73a419245c32dfeba8aa33104d5be90d1cf6af082007cb71d",
-    "fonts/OFL.txt": "538078469839b4a2e7ad22bef4ebe41681a4e53749bb2a072144024f1d6d703d"
+    "fonts/OFL.txt": "538078469839b4a2e7ad22bef4ebe41681a4e53749bb2a072144024f1d6d703d",
+    "street-props.mjs": "73a880a0f7eb4e935cadcffcae832e8c406ea3ae37de163df7d7e8acf8cef9d0"
   }
 }

@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "privacy": "public",
   "id": "xinhua-sanli-outline",
-  "revision": "sanli-integrated-r1",
-  "dataRevision": "sanli-block-layout-r4",
-  "artRevision": "sanli-outline-r5",
+  "revision": "xinhua-corridor-integrated-r1",
+  "dataRevision": "xinhua-corridor-layout-r4",
+  "artRevision": "xinhua-corridor-outline-r4",
   "data": "../../scenes/xinhua-sanli-outline/scene-data.json",
-  "sha256": "bb7f8a33f6144f041011f2bc604ef18cc53c3e4025b6cb9f1b08d4006fdade76",
+  "sha256": "79ddf20177ce72527aaa6efb148841acbaa58fa62d280ead4c58cf3839882637",
   "placeIds": [
     "place-xinhua",
     "place-sanli"
