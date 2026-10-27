@@ -8,7 +8,7 @@ export function segmentGap(a,b,c,d){
 }
 export function makeNavigation(data){
  const N=data.northDirection,E=data.eastDirection,b=data.bounds,step=1,cols=Math.ceil((b.maxX-b.minX)/step)+1,rows=Math.ceil((b.maxZ-b.minZ)/step)+1;
- const obstacles=data.buildings.map(o=>({ring:o.originalRing,minX:Math.min(...o.originalRing.map(p=>p[0]))-.45,maxX:Math.max(...o.originalRing.map(p=>p[0]))+.45,minZ:Math.min(...o.originalRing.map(p=>p[1]))-.45,maxZ:Math.max(...o.originalRing.map(p=>p[1]))+.45}));
+ const obstacles=[...data.buildings,...(data.frontageBuildings||[])].map(o=>({ring:o.originalRing,minX:Math.min(...o.originalRing.map(p=>p[0]))-.45,maxX:Math.max(...o.originalRing.map(p=>p[0]))+.45,minZ:Math.min(...o.originalRing.map(p=>p[1]))-.45,maxZ:Math.max(...o.originalRing.map(p=>p[1]))+.45}));
  function inPaving(p){
   if(data.nonRoadAreas?.some(g=>inside(p,g.ring)&&!(g.holes||[]).some(h=>inside(p,h))))return false;
   if(data.greenAreas?.some(g=>inside(p,g.ring)&&!(g.holes||[]).some(h=>inside(p,h))))return false;
@@ -20,6 +20,9 @@ export function makeNavigation(data){
   return yes;
  }
  function blocked(p){
+  for(const b of data.bridges||[])for(const pier of b.piers)if(Math.hypot(p[0]-pier.position[0],p[1]-pier.position[1])<pier.collisionRadius)return true;
+  for(const e of data.streetProps||[])if(Math.hypot(p[0]-e.position[0],p[1]-e.position[1])<e.collisionRadius)return true;
+  for(const w of data.streetWalls||[])if(segmentDistance(p,w.points[0],w.points[1])<.55)return true;
   for(const b of data.trashBins||[])if(Math.hypot(p[0]-b.position[0],p[1]-b.position[1])<b.collisionRadius)return true;
   for(const f of data.fences||[])for(let i=1;i<f.points.length;i++)if(segmentDistance(p,f.points[i-1],f.points[i])<(f.collisionRadius||.55))return true;
   for(const e of data.equipment||[])if(Math.hypot(p[0]-e.position[0],p[1]-e.position[1])<e.collisionRadius)return true;

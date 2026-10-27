@@ -15,3 +15,7 @@
 `npm test`覆盖应用会话、登记/哈希、时间选择及既有功能。`npm run test:outline`覆盖连续人物、伸缩短线、屏幕让线预算、地面/围栏/绿地/器材、窄门和位置关系。`npm run build`校验所选数据与场景文件哈希并构建主体。实际浏览器验收见任务包，截图留在库外；不能用构建成功替代真实进入/返回。
 
 完整[轮廓风格和工作流程](../../docs/research/XINHUA_OUTLINE_WORKFLOW.md)记录可重用规则。Three.js0.180.0复用相邻已收录路口的vendor，许可见[Three.js MIT](../xinhua-junction-outline/vendor/three/LICENSE)。字体为原始ZCOOL KuaiLe，许可见[OFL1.1](fonts/OFL.txt)。派生地理数据保留OSM contributors/Overture ODbL及相应East Asia上游CC BY4.0，来源边界见[地理谱系](../../docs/GEO_DATA_LINEAGE.md)。应用代码MIT不改变第三方数据/字体许可。
+
+Corridor extension: xinhua-corridor-outline-r4, approximately 875 m of Xinhua Street plus Qili west frontage. Original Sanli geometry retained; detached shops, broad pavement and Kandan Bridge added. Daoxiangcun is on the west frontage facing Fourth Ring, checked against Baidu POI and 2020-03 panorama. Ground extents and bridge heights are estimates. Application session/spatial/time owners remain unchanged.
+
+Evidence: https://map.baidu.com/?qt=inf&uid=905d861757ac875e4107c15e ; dated panorama 09002200122003141220538666G, west auxiliary road facing east. Source photographs and audit screenshots are not shipped. Bridge footprint: OSM way 627475479; deck height/pier dimensions approximate.

@@ -111,3 +111,7 @@ Marble 2 重建可帮助检查空间，但生成结果本身不是地理或历�
 3. 按需加载选定渲染器，隔离局部CSS，使用可取消输入监听与可释放资源。打开菜单暂停移动和环境动态；退出取消路径并释放renderer。禁止保留沙盒自己的位置localStorage、无条件全局键盘监听或竞争的渲染循环。
 4. 验证未改源几何、全部目的地可达、边界/树/容器避障、字形覆盖和实际服务字节；再从构建后的主体走进入→点击/键盘移动→转向/菜单→返回→重新进入/重载。实际镜头证据留在库外，文档记录修订与结果。
 5. 对同一完整PR做文档对齐：风格规则、interaction例外、session/登记接口、runtime与STATUS更新到真实行为。用户视觉认可、测试通过、PR、GitHub合并和发布分开记。每次推送前检查PR模板，避免旧文档仍称“仅独立样本”。
+
+## Named frontage registration
+
+Named shops must be checked against an actual map POI, registered building side and dated street imagery before labeling. A postal address or map viewport center cannot establish an entrance. Daoxiangcun Kandanqiao is on Qili west frontage facing Fourth Ring: Baidu POI 905d861757ac875e4107c15e, panorama 09002200122003141220538666G (2020-03), viewed facing east from the auxiliary road. The south-facing Xinhua shop bands carry no Daoxiangcun label. Shop dimensions and forecourt boundary remain reconstruction estimates.

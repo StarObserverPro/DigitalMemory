@@ -155,3 +155,5 @@ The documentation baseline was delivered in PR #1 and is present at base `002390
 ## Historical suggested action (not active)
 
 That old scenic-flat review predates the merged volumetric student. Refer to the 2026-10-26 checkpoint and the empty active-task index instead. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.
+
+Corridor integration revision xinhua-corridor-integrated-r1 extends the selected street consumer to western Qili/Fourth Ring frontage and eastern Xinhua. Daoxiangcun west frontage has map/panorama evidence. Integration validation and merge outcome are recorded in DM-XINHUA-CORRIDOR-20261027.

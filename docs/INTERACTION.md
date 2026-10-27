@@ -104,3 +104,5 @@ An early-2000s illustrated-memory language is established; the exact paper textu
 ## Selected Xinhua/Sanli outline close view
 
 The accepted sanli-outline-r5 close view now owns the supported Xinhua street entry. This scoped view adds a compact north-up collapsible minimap and compass beside its one menu; the overview and unrelated views retain the menu-only rule. Menu destinations walk continuously; they do not teleport or create memories. Its menu returns to the same overview route/camera, and re-entry restores the registered close-view pose. The selected continuous outline person replaces the schoolwear presentation only in this close view.
+
+Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
