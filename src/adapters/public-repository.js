@@ -21,6 +21,18 @@ export class PublicRepository {
     const rows = records.filter(m => m.placeIds.some(id => placeIds.includes(id)) && (includeDemo || !m.synthetic)).map(m => ({ ...m, timeRelation: relateTime(m.time, period) }));
     return { records: rows.slice(offset, offset + limit), total: rows.length, nextOffset: offset + limit < rows.length ? offset + limit : null };
   }
+  async loadOutline() {
+    const registration=await this.read(this.manifest.outlineScene);
+    const url=new URL(registration.data,this.baseURL);
+    if(url.origin!==new URL(this.baseURL).origin)throw Error('Outline data must be same-origin');
+    const response=await this.fetcher(url.href);if(!response.ok)throw Error('Outline data unavailable');
+    const bytes=await response.arrayBuffer();
+    const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join('');
+    if(hash!==registration.sha256)throw Error('Outline checksum mismatch');
+    const data=JSON.parse(new TextDecoder().decode(bytes));
+    if(data.privacy!=='public'||data.revision!==registration.dataRevision||data.artRevision!==registration.artRevision)throw Error('Outline revision mismatch');
+    return {registration,data};
+  }
   async loadScene(id) {
     const path = this.manifest.scenes[id];
     if (!path) throw new Error('这个入口还没有场景。');

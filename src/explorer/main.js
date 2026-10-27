@@ -10,16 +10,19 @@ import { restoreSession, saveSession } from '../adapters/session-storage.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
+let streetLoadGeneration=0;
 let overviewAssembly, mapDragged=false; const availableMapAssets=new Set();
 let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
 const assetURL = asset => new URL(asset.url, repository.baseURL).href;
 function notify(message = '') { $('status').textContent = message; }
 function showDialog(id) {
+  if(startingStage){streetLoadGeneration++;startingStage=false;}
   queryGeneration++;
   if (loading) { portals.cancel(); loading = false; notify(); }
   for (const dialog of document.querySelectorAll('dialog[open]')) if (dialog.id !== id) dialog.close();
   if (!$(id).open) $(id).showModal();
+  if(id==='menu-dialog')stage?.menuState?.(true);
 }
 function currentPeriod() { return manifest.periods.find(p => p.id === session.get().periodId); }
 function render() {
@@ -36,6 +39,9 @@ function render() {
   const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId,metrics.width,metrics.height,side]);
   if (key === lastRenderKey) return;
   lastRenderKey = key;
+  $('app').classList.toggle('outline-active',state.view==='street'&&state.sceneId==='map'&&!!stage?.landmarks);
+  $('uniform-toggle').hidden=!!stage?.landmarks&&state.view==='street';
+  $('outline-destinations').hidden=state.view!=='street'||state.sceneId!=='map'||!stage?.landmarks;
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
   $('period-label').textContent = currentPeriod().label;
   $('uniform-label').textContent = state.characterId==='youth'?'高中蓝白':'初中红白';
@@ -132,15 +138,16 @@ async function back() {
 function wireControls() {
   const closeMenu=()=> $('menu-dialog').close();
   $('menu-button').addEventListener('click',()=>{lastRenderKey='';render();showDialog('menu-dialog');$('menu-button').setAttribute('aria-expanded','true');});
-  $('menu-dialog').addEventListener('close',()=> $('menu-button').setAttribute('aria-expanded','false'));
+  $('menu-dialog').addEventListener('close',()=>{stage?.menuState?.(false);$('menu-button').setAttribute('aria-expanded','false');stage?.focus?.();});
   $('street-entry').addEventListener('click',async()=>{closeMenu();await enterStreet();});
-  $('leave-street').addEventListener('click',()=>{closeMenu();stage?.clear();portals.cancel();loading=false;notify();session.dispatch({type:'view',view:'map'});});
+  $('leave-street').addEventListener('click',()=>{closeMenu();stage?.clear();stage?.dispose();stage=null;portals.cancel();loading=false;notify();session.dispatch({type:'view',view:'map'});});
   $('door-action').addEventListener('click',()=>{closeMenu();enterDoor();});
   $('scene-back').addEventListener('click',()=>{closeMenu();back();});
   $('scene-next').addEventListener('click',()=>{closeMenu();if(sceneData?.nextSceneId)enterScene(sceneData.nextSceneId);});
   $('period-button').addEventListener('click', () => showDialog('period-dialog'));
-  $('uniform-toggle').addEventListener('click',()=>{const id=session.get().characterId==='child'?'youth':'child';session.dispatch({type:'character',id});closeMenu();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});});
+  $('uniform-toggle').addEventListener('click',()=>{const id=session.get().characterId==='child'?'youth':'child';session.dispatch({type:'character',id});closeMenu();stage?.focus?.();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});});
 
+  window.addEventListener('pagehide',()=>saveSession(localStorage,session.get()));
   $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
   $('place-search').addEventListener('input', e => renderPlaces(e.target.value));
@@ -176,20 +183,25 @@ async function enterStreet() {
   mapDestination = null; mapKeys.clear();
   const d = mapping.locate(session.get().route).distance;
   if (d < STAGE.min || d > STAGE.max) { notify('这段街景还在绘制，请先点新华街院门附近的路。'); return; }
+  const token=++streetLoadGeneration;
   startingStage = true; notify('正在走到街上……');
   try {
     if (!stage) {
-      const { createStage } = await import('./stage.js');
-      stage = await createStage({ container: $('stage-canvas'), session, mapping, transform: registry.transform,
-        composition,
-        blocked: () => loading || !!document.querySelector('dialog[open]'), onNear: near => { $('door-action').hidden = !near || session.get().sceneId !== 'map'; }, onEnter: enterDoor, onError: notify });
+      const { createOutlineStage } = await import('./outline-stage.js');
+      if(token!==streetLoadGeneration)return;
+      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
+      if(token!==streetLoadGeneration){candidate?.dispose();return;}stage=candidate;
+      const targets=$('outline-destinations');targets.replaceChildren();
+      for(const g of Object.values(stage.landmarks)){const button=document.createElement('button');button.textContent=g.label;button.dataset.outlineGo=g.id;button.addEventListener('click',()=>{$('menu-dialog').close();stage?.go(g.id);});targets.append(button);}
+      const origin=session.get().outline;
+      $('stage-canvas').dataset.outlineRevision=origin.revision;
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' });
-    $('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
+    stage?.focus?.();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
     notify();
-  } catch (error) { stage?.dispose(); stage = null; $('stage-canvas').replaceChildren(); notify('街景暂时打不开，手绘图上的位置已保留。'); }
-  finally { startingStage = false; }
+  } catch (error) { if(token!==streetLoadGeneration)return;console.error('Outline street load failed',error);stage?.dispose(); stage = null; $('stage-canvas').replaceChildren(); notify('街景暂时打不开，手绘图上的位置已保留。'); }
+  finally { if(token===streetLoadGeneration)startingStage = false; }
 }
 async function enterDoor() {
   if ($('door-action').hidden) return;
@@ -237,7 +249,7 @@ async function start() {
   renderMarkers(); renderRoadLabels(transform); wireControls(); render();
   new ResizeObserver(()=>{lastRenderKey='';render();}).observe($('map-viewport'));
   $('walking-path').innerHTML = `<path d="M${mapping.data.nodes.map(n => n.art.join(',')).join(' L')}"/>`;
-  globalThis.__VISUAL_READY__ = true;
+  globalThis.__VISUAL_READY__ = true;$('app').dataset.ready='true';
   $('map-viewport').addEventListener('click', async e => { if(mapDragged||e.target.closest('button')||session.get().view!=='map')return; const r=$('map-camera').getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200],hit=mapping.nearestArt(p); if(hit.distance<28){session.dispatch({type:'route',route:hit.route});const d=mapping.locate(hit.route).distance;if(d>=STAGE.min&&d<=STAGE.max)await enterStreet();} });
   $('map-art').addEventListener('error', () => notify('底图未载入，地点入口仍可使用。请刷新重试。'));
   // Read-only diagnostic hook: domain state remains owned by the application session.

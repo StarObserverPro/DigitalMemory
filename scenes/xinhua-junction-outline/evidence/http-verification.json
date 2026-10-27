@@ -1,0 +1,107 @@
+{
+  "revision": "outline-street-r4-02",
+  "base": "http://127.0.0.1:4197",
+  "responses": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 1791,
+      "sha256": "c748465292dbb4b20eb23a368c489b3d802b851340cd30a4fa6f4c4e5d0cd666"
+    },
+    {
+      "path": "/style.css",
+      "status": 200,
+      "bytes": 1926,
+      "sha256": "40dc223f10b6a5a7fceafd8869f3adaacaaec6d2055c759492bd9a88fb86caaa"
+    },
+    {
+      "path": "/app.mjs",
+      "status": 200,
+      "bytes": 10200,
+      "sha256": "4d9160e6c44a9a5ff8e7236a10e32346d82b24f89e7f18979a23c79700e6fc90"
+    },
+    {
+      "path": "/drawing.mjs",
+      "status": 200,
+      "bytes": 10314,
+      "sha256": "a3cca91f2d74472f8c385fc5746bc5f3d4ba34e29a7b6f3bd86819d104a101be"
+    },
+    {
+      "path": "/navigation.mjs",
+      "status": 200,
+      "bytes": 4362,
+      "sha256": "e3348193a576c383e64f4c24045695a93134d3a2bc100ef90cb41818805af8c9"
+    },
+    {
+      "path": "/scene-data.json",
+      "status": 200,
+      "bytes": 53156,
+      "sha256": "d375aba770065abc5ab6d35e3738feb638a86644b0cb0f08bc4b32c26e75b616"
+    },
+    {
+      "path": "/vendor/three/build/three.module.js",
+      "status": 200,
+      "bytes": 603113,
+      "sha256": "c8211c69345d2e9949dc7a8ac969380497aa0600a5a8ac6a459c8cd02dd9cb8a"
+    },
+    {
+      "path": "/vendor/three/build/three.core.js",
+      "status": 200,
+      "bytes": 1403455,
+      "sha256": "eb077d2417f61d3e6d9264c317cabc4ea35769ed6b0ab533067292a550784c20"
+    },
+    {
+      "path": "/vendor/three/examples/jsm/lines/Line2.js",
+      "status": 200,
+      "bytes": 1486,
+      "sha256": "69dd2120d4df14208796acf199f80a64d37e042cfa65dc2b98286694b2954194"
+    },
+    {
+      "path": "/vendor/three/examples/jsm/lines/LineGeometry.js",
+      "status": 200,
+      "bytes": 3479,
+      "sha256": "b7ec6b0011e3b09dc72e17cfd8e8945295cb2bc8c8aa9aa19e47119680bdad7e"
+    },
+    {
+      "path": "/vendor/three/examples/jsm/lines/LineMaterial.js",
+      "status": 200,
+      "bytes": 13228,
+      "sha256": "8450d827153d2509e43513cd123df786d7c8c7cdbfd4c7eea4c9e1621f2a7fb5"
+    },
+    {
+      "path": "/vendor/three/examples/jsm/lines/LineSegments2.js",
+      "status": 200,
+      "bytes": 11277,
+      "sha256": "5d707b4e6056945b3b34cd8291b6afe16c913f6b1e8eac7b6d6892f41c45c26d"
+    },
+    {
+      "path": "/vendor/three/examples/jsm/lines/LineSegmentsGeometry.js",
+      "status": 200,
+      "bytes": 6893,
+      "sha256": "471f0a954a0c9c59d3d151392f424142a9164a722802f63b371971378a84a1b1"
+    },
+    {
+      "path": "/TASK.md",
+      "status": 404,
+      "intentionalNonRuntimeProbe": true
+    },
+    {
+      "path": "/sources/xinhua-spatial-plan.json",
+      "status": 404,
+      "intentionalNonRuntimeProbe": true
+    },
+    {
+      "path": "/evidence/north-actual.png",
+      "status": 404,
+      "intentionalNonRuntimeProbe": true
+    },
+    {
+      "path": "/not-a-runtime-image.png",
+      "status": 404,
+      "intentionalNonRuntimeProbe": true
+    }
+  ],
+  "runtimeImages": 0,
+  "externalRuntimeRequests": 0,
+  "note": "Runtime sources contain no image loads; source/evidence paths are not served. Actual WebGL and input checks are separate."
+}

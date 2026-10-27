@@ -100,3 +100,9 @@ Review batches and administrative queues live in the private workbench. No const
 ## Style decisions intentionally left open
 
 An early-2000s illustrated-memory language is established; the exact paper texture, color palette, typefaces, amount of distress, and camera pitch are not. Consider lightly distressed Song-style display lettering with readable Hei-style supporting text, but do not turn this into an artificially antique or uniformly sepia Beijing. Long reading text must remain clean and legible. Evaluate the style on the same short registered segment before large-scale production.
+
+## Selected Xinhua/Sanli outline close view
+
+The accepted sanli-outline-r5 close view now owns the supported Xinhua street entry. This scoped view adds a compact north-up collapsible minimap and compass beside its one menu; the overview and unrelated views retain the menu-only rule. Menu destinations walk continuously; they do not teleport or create memories. Its menu returns to the same overview route/camera, and re-entry restores the registered close-view pose. The selected continuous outline person replaces the schoolwear presentation only in this close view.
+
+Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.

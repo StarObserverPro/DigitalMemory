@@ -4,6 +4,12 @@
 
 The application uses native ES modules, original illustrated PNGs and a small static public repository adapter. The close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. It implements the basic contracts without choosing a private archive, authentication service or hosting provider.
 
+## Accepted Xinhua/Sanli close-view integration — 2026-10-27
+
+The normal supported overview→street entry now lazy-loads scenes/xinhua-sanli-outline via outline-stage.js instead of the legacy stage.js. It keeps the approved continuous outline walker, sparse motion, muted green ground, irregular menu/minimap/compass outlines and locally served ZCOOL KuaiLe. Existing schoolwear code/assets remain; its old browser smoke is not evidence for this new consumer.
+
+Application session owns outline pose/path/camera; reload opens a usable map then restores the valid pose on street entry, while a changed overview route gets its own entry. Returning to map cancels targets and disposes renderer/input; the overview still has no person. The public registration fixes data/art revisions and explicit working-composite periods. Final layout estimates remain in data; no historical year or new private content was certified. npm run test:outline checks the selected library; npm test includes session/registration/loading tests; npm run build includes selected scenes and verifies hashes.
+
 ## Run and check
 
 Requires Node.js 22 or later. No dependency installation is needed for these commands:

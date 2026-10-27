@@ -51,3 +51,9 @@ export function segmentDistance(p, a, b) {
   const t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)));
   return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy);
 }
+
+/** Registered local metres: +X east, +Z south; never derive registration from art. */
+export function createLocalSceneFrame({origin,kx,ky}) {
+ if(!Array.isArray(origin)||origin.length!==2||!origin.every(Number.isFinite)||!Number.isFinite(kx)||!Number.isFinite(ky)||kx<=0||ky<=0)throw Error('Invalid local scene registration');
+ return Object.freeze({toLocal:([lng,lat])=>[(lng-origin[0])*kx,-(lat-origin[1])*ky],toGeo:([x,z])=>[origin[0]+x/kx,origin[1]-z/ky]});
+}

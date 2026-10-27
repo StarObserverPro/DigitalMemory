@@ -1,0 +1,42 @@
+{
+  "artRevision": "outline-motion-r4-05",
+  "geometryRevision": "outline-street-r4-02",
+  "date": "2026-10-27",
+  "consumer": "http://127.0.0.1:4197/ served from the repository scene directory",
+  "automated": {
+    "command": "node --test navigation.test.mjs motion.test.mjs",
+    "tests": 9,
+    "passed": 9,
+    "httpChecks": 20,
+    "runtimeResources": 16,
+    "servedBytesEqualLibraryFiles": true,
+    "geometryAndNavigationEqualR4_02": true,
+    "manifestHashesChecked": 27,
+    "documentationFilesLinkChecked": 6,
+    "missingLinks": 0,
+    "privateDetailScan": "pass"
+  },
+  "browser": {
+    "viewport": [599, 528],
+    "revisionObserved": "outline-motion-r4-05",
+    "orbitYawBefore": 2.371,
+    "orbitYawAfter": 1.351,
+    "routeStart": [4, -18],
+    "routeSample": [1.21, -23.24],
+    "walkingObserved": true,
+    "resetObserved": true,
+    "thinLineMasks": 4,
+    "wireAbsentInStartAndSideViews": true,
+    "simplifiedLampRetainedInStartView": true,
+    "consoleWarningsOrErrors": [],
+    "notes": "Actual menu route, Escape, reset and drag input; start and side render inspected. A keyboard probe facing the road boundary did not change position; no successful keyboard movement is claimed for that probe. Screenshot evidence retained outside repository. Four thin-line masks correspond to two two-segment lamps after wire removal."
+  },
+  "acceptance": {
+    "user": "r4-04 junction accepted for library intake; wire omission explicitly requested",
+    "implementation": "r4-05 wire removal and library launch verified",
+    "historicalAuthenticity": "not certified",
+    "mainApplicationEntry": "unchanged",
+    "mergePushPublicationDeployment": "not performed"
+  },
+  "limits": "This turn repeats the checks affected by wire removal and library portability. Previous r4-04 dynamic observations retain their old revision. Full endpoint walkthrough and every device/view were not repeated."
+}

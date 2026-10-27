@@ -46,4 +46,6 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-The initial street sample is bounded; it is not a complete historical route or a private content archive. Current runtime, evidence, pending integration and publication status belong in [STATUS](docs/STATUS.md), not in an old prototype description. This documentation reorganization does not change runtime, art, geography, active task routing or deployment.
+The initial street sample is bounded; it is not a complete historical route or a private content archive. Current runtime, evidence, pending integration and publication status belong in [STATUS](docs/STATUS.md), not in an old prototype description. That documentation reorganization changed no runtime; the later selected Sanli integration is described below.
+
+已选定的新华街路口与三里近景现可从主体“到街上走走”进入；风格与接入流程见[轮廓工作流程](docs/research/XINHUA_OUTLINE_WORKFLOW.md)，运行与许可见[三里场景](scenes/xinhua-sanli-outline/README.md)。
