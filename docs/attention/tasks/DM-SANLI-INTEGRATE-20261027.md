@@ -16,11 +16,13 @@ Primary: selected outline street/Sanli runtime reachable through existing overvi
 Preserve selected r5 appearance and geographic data. Use controlled scene adapter rather than invasive unrelated renderer refactor. Build/HTTP/main walkthrough evidence retained outside checkout. Record exact consumer revisions and gaps at delivery. Read ARCHITECTURE, INTERACTION, RUNTIME, VERIFICATION, existing outline workflow and session/spatial owners.
 
 ## Current state
-Executing / final review before commit and PR.
+Delivered implementation and documentation / review branch. Active route removed.
+- Tested runtime commit:748aabee47a072b3762a19e790f6e5d7a5ce2201; subsequent closure edits are documentation only.
 - Selected revision sanli-outline-r5 / sanli-block-layout-r4; integrated registration sanli-integrated-r1. Geometry and all24 source junction objects preserved;22 Sanli source objects included.
 - Implemented controlled mount with application-owned state, spatial frame, hash/privacy validation, explicit working-composite membership, lazy Three resources and release on map exit. Unrelated overview artwork remains untouched in original checkout.
 - Verification:55 application tests +12 scene tests pass; build passes,33 served runtime/source/font byte comparisons pass; changed documentation local links and diff whitespace checks pass.
 - Actual built browser: menu route entry→destination walk→keyboard displacement71,-73 to70.15,-74.48; menu blocks further keyboard movement; map exit removes outline host and keeps overview person hidden; re-entry restores70.15,-74.48; direct ground click reaches65,-80; compass330°→356° and map folding/restoring work; whole-page reload opens map and re-entry restores65,-80 and yaw0.074. Local font ready true, approved contour UI visible.
 - Code-level integrity/failure evidence: mismatched scene bytes rejected before mount; unsupported periods return no state; corrupt saved poses rejected; nested returns preserve pose. Loading cancellation uses generation tokens. Full live outage or physical-device performance not separately certified.
-- CI smoke now targets actual selected main entry; retained GLB source/asset tests remain. CI execution pending push. Browser screenshots/HTTP logs kept outside Git.
-- User art/intake/integration approval granted; GitHub merge and deployment not requested. Next: commit exact tested source, close route with commit ID, push clean branch and open/attach PR.
+- CI smoke now targets actual selected main entry; retained GLB source/asset tests remain. CI is configured for the outgoing PR; its actual status is reported by GitHub, separate from local acceptance. Browser screenshots/HTTP logs kept outside Git.
+- Figure review: a transient missing-figure capture was retraced at the same65,-80 pose/yaw; after closing an older concurrent review page, screenshot and in-bounds projection were normal. Read-only projection/readiness diagnostics and CI screen-bound checks retained; no speculative masking/camera rewrite.
+- User art/intake/integration approval granted; GitHub merge and deployment not requested. Next after PR submission: review the selected runtime and integration diff. GitHub merge/deployment remain unactivated.
