@@ -10,3 +10,6 @@
 #map-labels .map-name,#map-labels .road-name{font-family:"Fengtai Pen","Memory CJK",serif;font-weight:400;fill:#605e4b;paint-order:stroke;stroke:#f7f0df;stroke-linejoin:round}
 #map-labels .road-name{fill:#717263}
 @media(max-width:560px){.map-camera{width:105dvh;height:105dvh}}
+
+@font-face{font-family:"Sanli Happy";src:url("../../scenes/xinhua-sanli-outline/fonts/ZCOOLKuaiLe-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+#app.outline-active>#menu-button{visibility:hidden}.outline-active #menu-dialog{font-family:"Sanli Happy",system-ui,sans-serif;color:#24251f;background:#faf9f4;border:3px solid #24251f;border-radius:23px 18px 25px 16px}.outline-active #menu-dialog h1{font-size:23px}.outline-active .menu-list>button{font-size:16px}#outline-destinations{display:grid;gap:8px;margin-bottom:12px}#outline-destinations button{border:2px solid #24251f;border-radius:14px 18px 12px 17px;padding:10px;text-align:left;min-height:43px;font-size:16px}#outline-destinations button:hover{background:#f2df90}

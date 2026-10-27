@@ -22,7 +22,7 @@ The historical map/satellite layer is a workbench reference, not the default vie
 
 ## Choose the minimum useful representation before researching depth
 
-The 2026-10-27 selected Xinhua junction close-scene and its [reusable outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) retain the accepted spatial/contour process, sparse retracting motion and ink-occlusion rules. It is a library intake, not a whole-map style replacement or an app entry integration. Omit overhead wires by default in this near-scene family: their uncertain time-dependent layout adds research/rendering work without improving the selected memory representation. Retain sparse simplified lamps; reopen wire depiction only for an explicitly selected memory-relevant object. The scene manifest pins the selected version; technical parameters remain local calibration values.
+The 2026-10-27 selected Xinhua junction close-scene and its [reusable outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) retain the accepted spatial/contour process, sparse retracting motion and ink-occlusion rules. The junction library remains a reusable source; the accepted Sanli extension is now integrated at the main street entry, while overview raster art remains unchanged. Omit overhead wires by default in this near-scene family: their uncertain time-dependent layout adds research/rendering work without improving the selected memory representation. Retain sparse simplified lamps; reopen wire depiction only for an explicitly selected memory-relevant object. The scene manifest pins the selected version; technical parameters remain local calibration values.
 
 First identify the route attachment and its memory role; then select overview/street depiction and activation independently. A gate/name plus short wall can be the final asset for a pass-by landmark. A few still images can be the final interior representation. Only a spatial memory that benefits from movement calls for a local scene.
 
@@ -110,3 +110,7 @@ Current art is a candidate: the cinema, houses, shopfronts and gate are generic 
 ## DM-0010 candidate batch
 
 Two original transparent sheets and fifteen cropped small-scale compound/building motifs are retained in `assets/candidates/overview-r1/`. Their catalog has no geographic registration and does not replace active overview assets. The new street prototype uses original procedural geometry to settle scale and movement first; these overview sprites are not used as street people or facade strips.
+
+## Selected Sanli intake
+
+The accepted sanli-outline-r5 runtime/data/font is production-selected and integrated through the existing street entry. Retain exact source IDs, original geometry, dependency/font licences and immutable hashes. Do not intake sandbox snapshots, rejected images, raw reference photos or one-off builders that depend on private local paths. Geographic corrections belong in final scene data unless they expose a reusable acquisition/filtering/validation lesson; the [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns those lessons.

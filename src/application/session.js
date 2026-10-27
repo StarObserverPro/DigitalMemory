@@ -3,6 +3,11 @@ import { CHARACTER_PROFILES } from '../domain/composition.js';
 export const initialSession = Object.freeze({ schemaVersion: 1, placeId: null, periodId: 'window-2000', styleId: 'journal', sceneId: 'map', selectedMemoryId: null, camera: { x: 0, y: 0, zoom: 1 }, mode: 'walking', view: 'map', route: { edgeId: 'xinhua-edge-4', t: .70, direction: 1 }, street: { lateral: 5.5, heading: 0, cameraYaw: 0, target: null }, returnStack: [] });
 export function reduceSession(state, command, mapping) {
   switch (command.type) {
+    case 'outline-state': {
+      const value=command.value;
+      if(!validOutlineState(value))return state;
+      return {...state,outline:structuredClone(value)};
+    }
     case 'layer': return Object.hasOwn(state.layers, command.id) ? {...state,layers:{...state.layers,[command.id]:!!command.visible}} : state;
     case 'frontage-preview': return ['none','stationery','repair'].includes(command.id) ? {...state,frontagePreview:command.id} : state;
     case 'character': return CHARACTER_PROFILES[command.id] ? {...state,characterId:command.id} : state;
@@ -47,4 +52,8 @@ export function createPortalController(session, repository) {
     },
     back() { generation++; return session.dispatch({ type: 'back' }); }
   };
+}
+
+export function validOutlineState(value){
+ return !!value&&typeof value.revision==='string'&&typeof value.originRoute==='string'&&Array.isArray(value.position)&&value.position.length===2&&value.position.every(Number.isFinite)&&[value.yaw,value.distance,value.pitch,value.distanceWalked].every(Number.isFinite)&&value.distance>=12&&value.distance<=43&&value.pitch>=.38&&value.pitch<=1&&value.distanceWalked>=0&&Array.isArray(value.path)&&value.path.length<=5000&&value.path.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite))&&Array.isArray(value.visited)&&value.visited.every(id=>typeof id==='string')&&(value.destination===null||typeof value.destination==='string');
 }

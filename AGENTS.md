@@ -29,6 +29,7 @@ The 2026-10-26 checkpoint reconciles the already merged character with old stree
 | --- | --- |
 | Purpose / first scope | affected sections of `docs/PRODUCT.md` / `docs/PHASE_1.md` |
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
+| Accepted Xinhua/Sanli outline style and integration | [XINHUA_OUTLINE_WORKFLOW](docs/research/XINHUA_OUTLINE_WORKFLOW.md) / [selected scene](scenes/xinhua-sanli-outline/README.md) |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
 | GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
 | Live avatar vs historic 2× review | `docs/STREET_PROTOTYPE.md` / `docs/STREET_VISUAL_CALIBRATION.md` |

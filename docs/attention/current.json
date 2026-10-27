@@ -2,5 +2,10 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": []
+  "active": [
+    {
+      "taskId": "DM-SANLI-INTEGRATE-20261027",
+      "packet": "tasks/DM-SANLI-INTEGRATE-20261027.md"
+    }
+  ]
 }
