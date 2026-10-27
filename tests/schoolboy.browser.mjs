@@ -1,108 +1,19 @@
-import {chromium} from 'playwright-core';
-import {spawn} from 'node:child_process';
-import {once} from 'node:events';
-import {mkdir} from 'node:fs/promises';
-import assert from 'node:assert/strict';
-
-const executablePath = process.env.CHROMIUM_EXECUTABLE || '/usr/bin/google-chrome';
-const port = Number(process.env.STUDENT_QA_PORT || 43179);
-const server=spawn(process.execPath,['scripts/serve.mjs','--dist'],{env:{...process.env,PORT:String(port)},stdio:['ignore','pipe','pipe']});
-let browser=null;
-const failures=[],errors=[],httpErrors=[];
-try {
-  const ready=Promise.race([
-    once(server.stdout,'data'),
-    once(server,'exit').then(([code])=>{throw Error('Street server ended with '+code);}),
-  ]);
-  await ready;
-  browser=await chromium.launch({executablePath,headless:true,
-    args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-  const page=await browser.newPage({viewport:{width:1280,height:800}});
-  page.on('pageerror',error=>errors.push(error.stack||error.message));
-  page.on('requestfailed',r=>failures.push(r.url()+' '+r.failure()?.errorText));
-  page.on('response',r=>{if(r.status()>=400)httpErrors.push({url:r.url(),code:r.status()});});
-  const url='http://127.0.0.1:'+port;
-  await page.goto(url,{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>window.digitalMemory && window.__VISUAL_READY__,null,{timeout:30000});
-  await page.click('#menu-button');
-  await page.click('#street-entry');
-  await page.waitForFunction(()=>window.__QA_STATE__?.avatarAsset==='modular-glb-walk-r1',null,{timeout:45000});
-  const initial=await page.evaluate(()=>window.__QA_STATE__);
-  assert.equal(initial.uniform,'red');
-  assert.equal(initial.characterHeight,1.4);
-  assert.equal(initial.projection,'orthographic');
-  assert.equal(initial.renderer.webgl2,true);
-  assert.ok(initial.avatarNdc.top<1 && initial.avatarNdc.bottom>-1,
-    'Avatar needs to be within camera view: '+JSON.stringify(initial.avatarNdc));
-  assert.deepEqual(errors,[]);
-  assert.deepEqual(httpErrors,[]);
-  await mkdir('local-evidence',{recursive:true});
-  await page.screenshot({path:'local-evidence/schoolboy-red-idle.png'});
-  const before=initial.travel;
-  await page.keyboard.down('ArrowUp');
-  await page.waitForTimeout(900);
-  await page.screenshot({path:'local-evidence/schoolboy-red-in-motion.png'});
-  await page.keyboard.up('ArrowUp');
-  await page.waitForTimeout(240);
-  let after=await page.evaluate(()=>window.__QA_STATE__);
-  console.log('movement diagnostic after ArrowUp',JSON.stringify({
-    before,after:after.travel,route:after.route,street:after.street,
-    documentView:await page.evaluate(()=>({
-      focused:document.activeElement?.id,
-      activeDialogs:[...document.querySelectorAll('dialog[open]')].map(x=>x.id),
-      currentView:window.digitalMemory.inspect().session.view
-    }))
-  }));
-  if(after.travel<=before+0.02){
-    await page.keyboard.down('ArrowDown');
-    await page.waitForTimeout(950);
-    await page.keyboard.up('ArrowDown');
-    await page.waitForTimeout(200);
-    after=await page.evaluate(()=>window.__QA_STATE__);
-    console.log('movement diagnostic after ArrowDown',JSON.stringify({
-      before,after:after.travel,route:after.route,street:after.street
-    }));
-  }
-  assert.ok(after.travel>before+0.02,
-    'Walking must move the registered character along the street');
-  assert.ok(after.avatarAsset==='modular-glb-walk-r1');
-  await page.screenshot({path:'local-evidence/schoolboy-red-walk-stop.png'});
-  await page.setViewportSize({width:390,height:844});
-  await page.waitForTimeout(200);
-  const narrow=await page.evaluate(()=>window.__QA_STATE__);
-  assert.ok(narrow.avatarNdc.left>-1 && narrow.avatarNdc.right<1,
-    'Avatar should remain visible on phone view');
-  await page.screenshot({path:'local-evidence/schoolboy-red-mobile.png'});
-  // The map has no avatar. A single menu action changes the model colors/height
-  // without rebuilding the street world or inventing a period-to-school mapping.
-  await page.click('#menu-button');
-  await page.click('#uniform-toggle');
-  await page.waitForFunction(()=>window.__QA_STATE__?.uniform==='blue',null,{timeout:20000});
-  const blue=await page.evaluate(()=>window.__QA_STATE__);
-  assert.equal(blue.characterHeight,1.6);
-  assert.equal(blue.avatarAsset,'modular-glb-walk-r1');
-  await page.screenshot({path:'local-evidence/schoolboy-blue-mobile.png'});
-  await page.setViewportSize({width:1280,height:800});
-  await page.waitForTimeout(400);
-  await page.screenshot({path:'local-evidence/schoolboy-blue-desktop.png'});
-  // The explicit costume decision must survive a reload.
-  await page.waitForTimeout(240);
-  await page.reload();
-  await page.waitForFunction(()=>window.digitalMemory && window.__VISUAL_READY__,null,{timeout:30000});
-  assert.equal(await page.evaluate(()=>window.digitalMemory.inspect().session.characterId),'youth');
-  assert.deepEqual(errors,[]);
-  assert.deepEqual(httpErrors,[]);
-  console.log(JSON.stringify({status:'passed',initial:{avatar:initial.avatarAsset,uniform:initial.uniform,
-    size:initial.avatarNdc,renderer:initial.renderer},walkDistance:after.travel-before,
-    mobileAvatar:narrow.avatarNdc,screenshots:6,uniformToggle:'red/blue verified',
-    requestsFailed:failures.length,pageErrors:errors.length,httpErrors:httpErrors.length},null,2));
-} catch(error) {
-  console.error('student browser smoke:',error);
-  if(errors.length)console.error('page errors',errors);
-  if(failures.length)console.error('request failures',failures);
-  if(httpErrors.length)console.error('HTTP failures',httpErrors);
-  process.exitCode=1;
-} finally {
-  await browser?.close();
-  server.kill();
-}
+// The selected Xinhua entry now renders the outline scene. Legacy rig assets remain covered by Node tests.
+import {chromium} from 'playwright-core';import {spawn} from 'node:child_process';import {once} from 'node:events';import {mkdir} from 'node:fs/promises';import assert from 'node:assert/strict';
+const port=Number(process.env.STUDENT_QA_PORT||43179),server=spawn(process.execPath,['scripts/serve.mjs','--dist'],{env:{...process.env,PORT:String(port)},stdio:['ignore','pipe','pipe']});let browser;
+try{
+ await Promise.race([once(server.stdout,'data'),once(server,'exit').then(()=>{throw Error('Server stopped');})]);
+ browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const page=await browser.newPage({viewport:{width:1280,height:800}}),errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
+ await page.goto('http://127.0.0.1:'+port);await page.waitForFunction(()=>window.__VISUAL_READY__===true);
+ const menu=()=>page.getByRole('button',{name:'打开菜单',exact:true});const openStreet=async()=>{await menu().click();await page.locator('#street-entry').click();await page.waitForFunction(()=>document.querySelector('.outline-host')?.dataset.ready==='true');};
+ await openStreet();const host=page.locator('.outline-host'),canvas=host.locator('canvas#scene');
+ assert.equal(await host.getAttribute('data-art-revision'),'sanli-outline-r5');const projection=JSON.parse(await host.getAttribute('data-avatar-projection'));assert(projection.visible);assert(projection.foot.slice(0,2).every(v=>Math.abs(v)<1));assert(projection.head.slice(0,2).every(v=>Math.abs(v)<1));await page.waitForFunction(()=>JSON.parse(document.querySelector('.outline-host').dataset.navigationUi).fontReady);
+ const read=()=>host.getAttribute('data-position');const before=await read();await canvas.focus();await page.keyboard.down('ArrowUp');await page.waitForFunction(p=>document.querySelector('.outline-host').dataset.position!==p,before,{timeout:10000});await page.keyboard.up('ArrowUp');
+ const moved=await read();assert.notEqual(moved,before);await menu().click();await page.waitForTimeout(250);const paused=await read();await page.waitForTimeout(250);assert.equal(await read(),paused);await page.getByRole('button',{name:'关闭菜单',exact:true}).click();
+ const map=page.getByRole('button',{name:'三里',exact:true});await map.click();assert.equal(await map.getAttribute('aria-expanded'),'false');await map.click();
+ const nav=JSON.parse(await host.getAttribute('data-navigation-ui'));const box=await canvas.boundingBox();await page.mouse.move(box.x+box.width*.5,box.y+box.height*.5);await page.mouse.down();await page.mouse.move(box.x+box.width*.5+80,box.y+box.height*.5);await page.mouse.up();await page.waitForFunction(h=>Math.abs(JSON.parse(document.querySelector('.outline-host').dataset.navigationUi).heading-h)>5,nav.heading);
+ const saved=await read();await menu().click();await page.locator('#leave-street').click();await page.waitForSelector('.outline-host',{state:'detached'});assert.equal(await page.locator('#map-person').isVisible(),false);await openStreet();assert.equal(await read(),saved);
+ await mkdir('local-evidence',{recursive:true});await page.screenshot({path:'local-evidence/outline-main-desktop.png'});await page.setViewportSize({width:390,height:844});await page.screenshot({path:'local-evidence/outline-main-phone.png'});
+ const rect=await host.locator('#minimap-panel').boundingBox();assert(rect.x>=0&&rect.x+rect.width<=390);assert.deepEqual(errors,[]);console.log('Selected outline main entry: walk, menu pause, map toggle, heading, exit/re-entry and phone fit passed');
+}finally{await browser?.close();server.kill();}

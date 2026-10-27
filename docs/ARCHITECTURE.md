@@ -117,3 +117,7 @@ tests/                  domain, round-trip, privacy and visual evidence tests
 ```
 
 Keep dependency direction toward domain contracts. Presentation must not import provider-specific generation logic; generation jobs must not own browsing session state. Concrete dependencies and version choices require an implementation packet and targeted verification, not a speculative lockfile in this documentation task.
+
+## Selected outline integration
+
+The Xinhua/Sanli selected close view is adapted by src/explorer/outline-stage.js. PublicRepository verifies its registration/data hash before mounting. Spatial createLocalSceneFrame converts registered WGS84/local metres; session outline-state owns revision, origin route, position, camera and path. resolvePeriodState selects explicit working-composite membership without historical interpolation. The renderer uses isolated Shadow DOM styles, abortable listeners and one cancellable loop; leaving disposes it. Existing portal snapshots include outline state. This implements the selected close-view seam, not the general attachment-schema migration above.

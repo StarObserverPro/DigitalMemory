@@ -66,3 +66,7 @@ User correction supersedes the earlier fixed map-camera assumption. Far view: ha
 ## DM-0004 — composited places and independent frontages
 
 2026-10-18 user correction: roads, building shells, shops, people and entrances are independently reusable. Short facade sections replace the long street image. Time-specific shop occupancy cannot own the building or road. Local photos are inspected before drawing; ordinary apartment typology replaces generalized decorative courtyard streets. Exact historic occupants stay unknown. The avatar is an anonymous child profile, independent of calendar period. PR3 explicitly supersedes PR2; the user authorized merging and deploying this correction. See `LAYER_COMPOSITION.md` and `LOCAL_VISUAL_REFERENCES.md`.
+
+## 2026-10-27 — accepted Sanli outline and controlled integration
+
+User selected sanli-outline-r5 for intake and main integration. Preserve continuous sparse black contours, quiet faces, restrained retracting motion, outline person, muted green ground, irregular rounded navigation UI and local ZCOOL KuaiLe. This close-view decision leaves overview raster style and stable place/route ownership intact. Navigation compass/minimap are approved scoped additions. Keep final geography in the selected data; record position changes in prose only when they reveal reusable process lessons. Integrate through the existing route entry/session/spatial/time owners, then open a PR; GitHub merge and deployment remain separate effects.

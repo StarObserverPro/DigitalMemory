@@ -4,6 +4,7 @@
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="theme-color" content="#eee5d3" />
 <title>丰台，慢慢走</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232f5749'/%3E%3Cpath d='M8 24L20 12 32 24M13 21v11h14V21' fill='none' stroke='%23fff7df' stroke-width='3'/%3E%3C/svg%3E" />
+<script type="importmap">{"imports":{"three":"./scenes/xinhua-junction-outline/vendor/three/build/three.module.js"}}</script>
 <link rel="stylesheet" href="./src/explorer/styles.css" /><script type="module" src="./src/explorer/main.js"></script>
 </head>
 <body><main id="app" aria-label="丰台镇记忆地图">
@@ -13,7 +14,7 @@
 <section id="scene" hidden aria-label="院内"></section>
 <button id="menu-button" class="menu-button" aria-label="打开菜单" aria-haspopup="dialog" aria-expanded="false"><span></span><span></span><span></span></button>
 <dialog id="menu-dialog" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-heading"><h1 id="menu-title">丰台，慢慢走</h1><button class="close" aria-label="关闭菜单">×</button></div><nav class="menu-list" aria-label="菜单">
-<button id="street-entry">到街上走走 <span>↗</span></button><button id="leave-street" hidden>回到地图 <span>↖</span></button><button id="door-action" hidden>走进院门 <span>↗</span></button><button id="scene-next" hidden>走进屋里 <span>↗</span></button><button id="scene-back" hidden>返回 <span>↖</span></button>
+<button id="street-entry">到街上走走 <span>↗</span></button><button id="leave-street" hidden>回到地图 <span>↖</span></button><div id="outline-destinations" hidden></div><button id="door-action" hidden>走进院门 <span>↗</span></button><button id="scene-next" hidden>走进屋里 <span>↗</span></button><button id="scene-back" hidden>返回 <span>↖</span></button>
 <button id="period-button" aria-haspopup="dialog">时间 <span id="period-label"></span></button><button id="uniform-toggle" aria-label="切换校服版本">校服 <span id="uniform-label">初中红白</span></button><button id="find-button" aria-haspopup="dialog">找地方 <span>⌕</span></button>
 <div class="menu-zoom"><span>远近</span><button id="zoom-out" aria-label="缩小地图">−</button><button id="reset-view" aria-label="回到新华街">⌂</button><button id="zoom-in" aria-label="放大地图">+</button></div>
 <button id="help-button" aria-haspopup="dialog">怎么走 <span>?</span></button>
@@ -21,5 +22,5 @@
 <dialog id="place-dialog" class="place-dialog" aria-labelledby="place-title"></dialog>
 <dialog id="period-dialog" aria-labelledby="period-title"><div class="dialog-heading"><h2 id="period-title">回到哪段时间？</h2><button class="close" aria-label="关闭">×</button></div><div id="period-options" class="option-grid"></div></dialog>
 <dialog id="find-dialog" aria-labelledby="find-title"><div class="dialog-heading"><h2 id="find-title">找一个地方</h2><button class="close" aria-label="关闭">×</button></div><label class="search-label" for="place-search">地点名称</label><input id="place-search" type="search" placeholder="新华街、丰台大桥……" autocomplete="off" /><div id="place-results" class="place-results"></div></dialog>
-<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">沿着街慢慢走</h2><button class="close" aria-label="关闭">×</button></div><p>地图可以拖动，滚轮可以拉近、拉远。点新华街已画好的路段，或在菜单里选“到街上走走”，就来到人行道上。远近分为三档。</p><p>点人行道，就会走到那里。也可以用方向键或 WASD 行走；按住画面左右拖动，可以换个角度看街。打开菜单就会停下。</p><p>点院门，会先走到门前再进去；靠近后也可以按 Enter，或在菜单里选“走进院门”。返回时仍在原来的位置。按 Esc 收起菜单。</p><p class="fine-print">画中的建筑是参考绘景，具体旧貌尚待核对；院内为想象画面。</p></dialog>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">沿着街慢慢走</h2><button class="close" aria-label="关闭">×</button></div><p>地图可以拖动，滚轮可以拉近、拉远。点新华街已画好的路段，或在菜单里选“到街上走走”，就来到人行道上。远近分为三档。</p><p>点人行道，就会走到那里。也可以用方向键或 WASD 行走；按住画面左右拖动，可以换个角度看街。打开菜单就会停下。</p><p>点院门，会先走到门前再进去；靠近后也可以按 Enter，或在菜单里选“走进院门”。返回时仍在原来的位置。按 Esc 收起菜单。</p><p class="fine-print">近景采用已选定的轮廓风格，建筑轮廓有地理依据，具体旧貌与设施细节仍有概括。</p></dialog>
 </main></body></html>
