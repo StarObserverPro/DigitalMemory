@@ -189,8 +189,8 @@ async function enterStreet() {
     if (!stage) {
       const { createOutlineStage } = await import('./outline-stage.js');
       if(token!==streetLoadGeneration)return;
-      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
-      if(token!==streetLoadGeneration){candidate.dispose();return;}stage=candidate;
+      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
+      if(token!==streetLoadGeneration){candidate?.dispose();return;}stage=candidate;
       const targets=$('outline-destinations');targets.replaceChildren();
       for(const g of Object.values(stage.landmarks)){const button=document.createElement('button');button.textContent=g.label;button.dataset.outlineGo=g.id;button.addEventListener('click',()=>{$('menu-dialog').close();stage?.go(g.id);});targets.append(button);}
       const origin=session.get().outline;

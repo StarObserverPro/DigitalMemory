@@ -54,7 +54,7 @@ function movement(dt){
   if(!state.path.length){goalMarker.visible=false;if(state.destination){const g=data.landmarks[state.destination];say(g.label);if(!state.visited.includes(g.id))state.visited.push(g.id);}state.destination=null;}
  }
  const travelled=Math.hypot(state.position[0]-old[0],state.position[1]-old[1]);state.distanceWalked+=travelled;state.walking=travelled>.0001;if(travelled>0)commit();
- for(const g of Object.values(data.landmarks))if(Math.hypot(state.position[0]-g.position[0],state.position[1]-g.position[1])<1.8&&!state.visited.includes(g.id)){state.visited.push(g.id);say(g.label);}
+ for(const g of Object.values(data.landmarks))if(Math.hypot(state.position[0]-g.position[0],state.position[1]-g.position[1])<1.8&&!state.visited.includes(g.id)){state.visited.push(g.id);say(g.label);commit();}
 }
 function frame(now){if(disposed)return;const dt=Math.max(0,Math.min(.045,(now-last)/1000));last=now;const active=isActive()&&!document.hidden;host.hidden=!isVisible();if(!active){clearKeys();if(isVisible())sync();raf=requestAnimationFrame(frame);return;}Object.assign(state,readState());const animationDt=state.paused||document.hidden?0:dt;state.elapsed+=animationDt;movement(dt);character.update(state,animationDt);
  const underBridge=data.bridges?.some(b=>b.deckRings.some(r=>inside(state.position,r))),narrow=camera.aspect<.8?1.2:1,d=state.distance*narrow,s=Math.sin(state.yaw),c=Math.cos(state.yaw),target=new T.Vector3(state.position[0]-s*3.5,.9,state.position[1]-c*3.5),desired=new T.Vector3(state.position[0]+s*d,underBridge?3.9:d*state.pitch,state.position[1]+c*d);

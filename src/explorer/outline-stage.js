@@ -5,8 +5,9 @@ import {makeNavigation} from '../../scenes/xinhua-sanli-outline/navigation.mjs';
 import {mountOutline} from '../../scenes/xinhua-sanli-outline/runtime.mjs';
 
 /** Adapts the accepted renderer to the one application session and registered route. */
-export async function createOutlineStage({container,session,mapping,repository,blocked,onMenu}) {
+export async function createOutlineStage({container,session,mapping,repository,blocked,onMenu,isCurrent=()=>true}) {
  const {registration,data}=await repository.loadOutline();
+ if(!isCurrent())return null;
  const environment=resolvePeriodState(registration.periodStates,session.get().periodId);
  if(!environment)throw Error('No supported outline environment');
  const frame=createLocalSceneFrame(registration.frame),nav=makeNavigation(data),current=session.get();

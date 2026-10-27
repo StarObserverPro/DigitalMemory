@@ -5,7 +5,7 @@
   "geometryRevision": "xinhua-corridor-layout-r4",
   "approval": "user-authorized-correction-and-main-integration-2026-10-27",
   "files": {
-    "runtime.mjs": "8cec8388e686e093571dd2132da88fe31c1cc6eced07aa5088e20e967aa8b776",
+    "runtime.mjs": "41cdc1d06d951ea190409248e297dcb87ea1899a6e7d59f1e4754485c9f7f7c3",
     "drawing.mjs": "33676c25e5d338c3fc49bf020405a26d3221efdd3da7174541ff4125db214367",
     "avatar.mjs": "f1cf62a14cd0e9212993ce5c5a5b28d15693ad92f76e5a555067709e985b5ff9",
     "motion.mjs": "cdc9f4c1d0bca5371e6bf9bfeacb2e06bba2a66adfcc6d7e6317788f87e34a74",
