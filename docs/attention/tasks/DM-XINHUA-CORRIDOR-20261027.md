@@ -6,6 +6,8 @@ Acceptance: actual Baidu map POI plus dated west-frontage panorama; no south-fro
 
 Historical authoring checkpoint: local r4 source had 78 original source buildings, 9 frontage objects and 24 reachable landmarks. Exact shop dimensions and forecourt edges remain approximate. The planned consumer verification and merge are recorded below.
 
+Earlier standalone r3 views carried a Daoxiangcun sign/forecourt identification that the user rejected. The retained r4 registration uses Qili's west frontage facing Fourth Ring, checked against Baidu POI `905d861757ac875e4107c15e` and panorama `09002200122003141220538666G` (2020-03), viewed eastward from the auxiliary road. Earlier route/build checks do not validate the rejected location. The [outline workflow](../../research/XINHUA_OUTLINE_WORKFLOW.md#具名地点的定位与证据) records the accepted geographic evidence; shop extents, setbacks and bridge dimensions remain estimates. This paragraph consolidates the discarded local process copy without restoring its obsolete execution plans.
+
 Validation: 57 application tests, 12 scene tests and static build pass. Source geometry and original accepted gate/fence/bins objects retained; only source commentary differed and was restored from the selected PR data. Named POI registration and all 24 destination routes are covered. Main browser entry successfully renders r4; live west-frontage walk in progress.
 
 ## Verified consumer and handoff

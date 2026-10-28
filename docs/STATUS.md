@@ -1,5 +1,9 @@
 # Repository status
 
+## Local overview candidate retired — 2026-10-27
+
+The user discarded the uncommitted 2026-10-26 junction facade candidate affecting Wuli east, Sanli and the heating group. Its six trial atlas replacements, source/registration edits and partial-build script changes are not selected for integration. The existing main R6 artwork, data and compiler remain unchanged. Useful source limits from the local Sanli process notes were consolidated into the [existing integration record](attention/tasks/DM-SANLI-INTEGRATE-20261027.md#consolidated-pre-integration-evidence-limits--2026-10-27); [the cleanup packet](attention/tasks/DM-LOCAL-NOTES-CLEANUP-20261027.md) records the disposition. Old candidate tests do not establish approval of the retained overview.
+
 ## Selected consumer and integration baseline — 2026-10-27
 
 The resource-management work starts from main `928528b36596bbc4ac64b8d34638c1dae6f0f963`. The selected Xinhua/Sanli outline scene and corridor extension are already merged through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25), merge commit `67baf01065f15f9d83a6b4d2903667197582e61b`; the following [PR #26](https://github.com/StarObserverPro/DigitalMemory/pull/26) added location-verification/documentation rules. Neither merge is evidence of a deployment.

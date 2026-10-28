@@ -15,8 +15,8 @@ Primary: selected outline street/Sanli runtime reachable through existing overvi
 ## Working envelope
 Preserve selected r5 appearance and geographic data. Use controlled scene adapter rather than invasive unrelated renderer refactor. Build/HTTP/main walkthrough evidence retained outside checkout. Record exact consumer revisions and gaps at delivery. Read ARCHITECTURE, INTERACTION, RUNTIME, VERIFICATION, existing outline workflow and session/spatial owners.
 
-## Current state
-Delivered implementation and documentation / review branch. Active route removed.
+## Historical integration checkpoint
+The following observations describe the initial integration revision, before the corridor merge and later runtime-residency work. Its active route was removed.
 - Tested runtime commit:748aabee47a072b3762a19e790f6e5d7a5ce2201; subsequent closure edits are documentation only.
 - Selected revision sanli-outline-r5 / sanli-block-layout-r4; integrated registration sanli-integrated-r1. Geometry and all24 source junction objects preserved;22 Sanli source objects included.
 - Implemented controlled mount with application-owned state, spatial frame, hash/privacy validation, explicit working-composite membership, lazy Three resources and release on map exit. Unrelated overview artwork remains untouched in original checkout.
@@ -28,3 +28,16 @@ Delivered implementation and documentation / review branch. Active route removed
 - User art/intake/integration approval granted; GitHub merge and deployment not requested. Next after PR submission: review the selected runtime and integration diff. GitHub merge/deployment remain unactivated.
 
 Follow-on: DM-XINHUA-CORRIDOR-20261027 supersedes the original merge restriction; user explicitly authorized corrected corridor integration and main merge. Original selected Sanli objects remain preserved.
+
+## Consolidated pre-integration evidence limits — 2026-10-27
+
+The local r1–r5 process notes were reconciled with main `514a27d` during [local-note cleanup](DM-LOCAL-NOTES-CLEANUP-20261027.md). Their repeated implementation descriptions, obsolete localhost addresses, sandbox paths and pre-integration next actions were omitted. The selected scene data, source comments, tests, font licence and [outline workflow](../../research/XINHUA_OUTLINE_WORKFLOW.md) retain the implemented result. This reconciliation adds no new visual or geographic validation.
+
+- **Source gap:** the r1/r2 investigation used registered overhead imagery, but did not obtain new, visually checked estate-agent interior photographs. Search text and album listings were not photo evidence. The user chose to skip the phone-login source; that research route is closed unless separately requested.
+- **Boundary confidence:** the south fence and partial side segments had user-observation support; the approximate age was not an exact construction date. The north/建国街 boundary was unobserved. The eastern institute's identity did not establish its gate or boundary geometry. Do not turn these gaps into a complete perimeter or a dated reconstruction.
+- **Layout estimates:** gate widths of 5.6 m, partial fence extents, path/green-space edges and exercise-equipment types/counts were drawing estimates. The r3 correction removes the transverse path between the south towers and fence. Tree/bin offsets and exact fixture counts remain schematic; relative placement is distinct from a measured survey. Final positions belong to the selected data, not this historical note.
+- **Revision scope:** r1–r5 checks belonged to their standalone revisions; the original r1/r2 photo gap remains even though later r5 appearance/intake was approved. Current browser and integration evidence is reported by the later task packets, not inherited from those old counts or screenshots.
+
+## Delivery closure
+
+Lifecycle: delivered. The selected r5 intake was followed by the corrected corridor integration and [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25), merged as `67baf01065f15f9d83a6b4d2903667197582e61b`. The [corridor packet](DM-XINHUA-CORRIDOR-20261027.md) owns that verification and merge; [RUNTIME](../../RUNTIME.md) owns the later lifecycle. No deployment is recorded here. No follow-up scene task is active.
