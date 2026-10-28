@@ -1,8 +1,8 @@
-# Scale-budgeted map asset workflow
+# Historical scale-budgeted map asset validation
 
-> **2026-10-18 / DM-0015 correction:** [Hand-painted map art](HANDPAINTED_MAP_ART.md) supersedes the tiny-isolated-subject strategy, fixed 0.8–1.5 ratio gate, few-window tower treatment and any visible SVG fallback described below. Preserve this page's old measurements as historical evidence, not current aesthetic acceptance. Use useful surrounding yard/grass/hardscape/clutter or packed scene content, then crop. Keep actual height class, repeated floor rhythm and one shared projection. Current r4 runtime still contains the rejected vector fallback and decorations; a documentation update is not their removal.
+> **Superseded trial rules:** [Hand-painted map art](HANDPAINTED_MAP_ART.md) and [ASSET_PIPELINE](ASSET_PIPELINE.md) own current overview production. They supersede the tiny-isolated-subject strategy, fixed 0.8–1.5 ratio gate, few-window tower treatment and visible SVG fallback described below. Preserve the old measurements as historical evidence. The later DM-0016 overview migration removed the active vector fallback; this page's r4 implementation notes are not current runtime status.
 
-DM-0013, 2026-10-18. This is the canonical workflow for future overview asset batches. It supersedes DM-0012's whole-illustration affine fitting and whole-image road masking as a production method. DM-0013 was a validation-only batch; DM-0014 below implements the map upgrade using independent parts.
+DM-0013, 2026-10-18. This was a validation-only batch followed by DM-0014's independent-part implementation. It rejected DM-0012's whole-illustration affine fitting and whole-image road masking. Its source/crop/anchor/assembly lessons remain useful under the current owners; its old production limits and fallback choices do not apply to new batches.
 
 ## Outcome of the validation
 
@@ -67,7 +67,7 @@ Whole-compound images are permissible for distant silhouette groups whose intern
 
 Record the final display W/H before the call. Pack same-family, different-detail versions into a shared atlas with known cells, target subject bounds and reserved transparent margin. The subjects occupy their intended small areas inside the larger image. A 1200px sheet containing several 100–300px subjects is valid; a 1200px subject later shrunk to 200px is not.
 
-Default release gates for this workflow:
+Historical operating gates for this trial, superseded where noted above:
 - Target source-to-display ratio near 1–1.25 per axis; hard upper bound 1.5 per axis. Below 0.8 returns for insufficient resolution. These are project operating limits, not universal graphics standards.
 - Native **subject** size is measured on the actual returned image. Requested output size, full sheet dimensions and transparent padding cannot stand in for it.
 - Any object touching its crop safety border returns for re-layout; expand the cell/sheet or split the object. Preserve image resolution and object budgets while repacking.
@@ -105,7 +105,7 @@ Draw ground art and road surface in their plane, then standing architecture acco
 
 Review at named far/medium/near fixtures and a representative phone fixture, with neighboring compounds and normal label budgets. A correct native diagnostic is not a browser walkthrough. This validation checks atlas sizes and provides ground/occlusion diagnostics; it does not deliver a new production renderer or establish a complete mobile walkthrough.
 
-## Reproduction and completion states
+## Historical reproduction and completion states
 
 Run from repository root with Pillow, NumPy and the existing runtime Node sharp:
 
@@ -119,7 +119,7 @@ The guide preparation uses retained r3 layout/source metadata and does not need 
 
 Per batch record these independently: source adequacy, final-size budget, crop integrity, ground correspondence, edge/occlusion review, aesthetic approval, consumer integration and publication. Passing early nodes never activates later release states automatically. DM-0013 ends with nine size passes and **ground correspondence requiring rework**, no automatic production replacement.
 
-## DM-0014 implementation — projection, small marks and lived-in ground
+## Historical DM-0014 implementation — projection, small marks and lived-in ground
 
 The requested map upgrade now implements independent building/short-row placement for Qili, Wuli-west and Liuli. Atlas r4 contains medium/near variants; 37 meet the native/display limit and one medium segment uses the controlled source sketch. At other viewport scales the renderer checks the current pixel ratio and uses the sketch when necessary. Far silhouettes use a few window dots, not a detailed raster shrunk several times.
 

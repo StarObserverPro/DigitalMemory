@@ -10,22 +10,58 @@ import { restoreSession, saveSession } from '../adapters/session-storage.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
-let streetLoadGeneration=0;
+let streetLoadGeneration=0,streetLoadController=null,streetLoadKey=null,stageSlot=null;
 let overviewAssembly, mapDragged=false; const availableMapAssets=new Set();
 let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
 const assetURL = asset => new URL(asset.url, repository.baseURL).href;
 function notify(message = '') { $('status').textContent = message; }
+function cancelStreetLoad() {
+  streetLoadGeneration++;
+  streetLoadController?.abort();
+  streetLoadController=null;
+  startingStage=false;
+  // A cancelled reconstruction has no renderer to resume. Return to a usable
+  // overview; a retained street and a nested attachment keep their own origin.
+  const state=session?.get();
+  if(!stage&&state?.view==='street'&&state.sceneId==='map')session.dispatch({type:'view',view:'map'});
+}
+function discardStage() {
+  const previous=stage;
+  stage=null;
+  if(stageSlot)stageSlot.clear();else previous?.dispose();
+  lastRenderKey='';
+}
+function refreshStage() {
+  if(!stage)return;
+  if(!stage.compatible()) {
+    discardStage();
+    const state=session.get();
+    if(state.view==='street'&&state.sceneId==='map'&&!startingStage)queueMicrotask(()=>enterStreet());
+    return;
+  }
+  const state=session.get();
+  if(state.view==='street'&&state.sceneId==='map')stageSlot?.resume();
+  else stageSlot?.suspend();
+  stage?.refresh?.();
+}
+function closeMenuDialog() {
+  $('menu-dialog').close();
+  stage?.menuState?.(false);
+  stage?.refresh?.();
+}
 function showDialog(id) {
-  if(startingStage){streetLoadGeneration++;startingStage=false;}
+  if(startingStage){cancelStreetLoad();notify();}
   queryGeneration++;
   if (loading) { portals.cancel(); loading = false; notify(); }
   for (const dialog of document.querySelectorAll('dialog[open]')) if (dialog.id !== id) dialog.close();
   if (!$(id).open) $(id).showModal();
   if(id==='menu-dialog')stage?.menuState?.(true);
+  stage?.refresh?.();
 }
 function currentPeriod() { return manifest.periods.find(p => p.id === session.get().periodId); }
 function render() {
+  refreshStage();
   const state = session.get();
   const location = mapping.locate(state.route);
   $('map-person').style.left = `${location.art[0] / 12}%`;
@@ -36,7 +72,7 @@ function render() {
   clearTimeout(saveTimer); saveTimer = setTimeout(() => saveSession(localStorage, session.get()), 200);
   const viewport=$('map-viewport'),side=$('map-camera').clientWidth;
   const metrics=mapMetrics(state.camera,viewport.clientWidth,viewport.clientHeight,side);
-  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId,metrics.width,metrics.height,side]);
+  const key = JSON.stringify([state.periodId,state.styleId,state.camera,state.placeId,state.sceneId,state.view,state.selectedMemoryId,state.layers,state.frontagePreview,state.characterId,metrics.width,metrics.height,side,!!stage]);
   if (key === lastRenderKey) return;
   lastRenderKey = key;
   $('app').classList.toggle('outline-active',state.view==='street'&&state.sceneId==='map'&&!!stage?.landmarks);
@@ -108,6 +144,7 @@ async function openPlace(id, { preserveSelection = false } = {}) {
 async function enterScene(id) {
   if (loading) return;
   loading = true; notify('正在打开入口……');
+  stage?.refresh?.();
   try {
     const scene = await portals.enter(id);
     if (!scene) return;
@@ -115,7 +152,7 @@ async function enterScene(id) {
     for (const dialog of document.querySelectorAll('dialog[open]')) dialog.close();
     showScene(scene);
   } catch { notify('入口暂时打不开，原来的位置已保留。'); return; }
-  finally { loading = false; }
+  finally { loading = false; refreshStage(); }
   notify();
 }
 function showScene(scene) {
@@ -125,6 +162,7 @@ function showScene(scene) {
   lastRenderKey=''; render();
 }
 async function back() {
+  cancelStreetLoad();
   portals.cancel();
   const state = portals.back();
   if (state.sceneId !== 'map') {
@@ -133,28 +171,31 @@ async function back() {
   } else {
     sceneData = null;
     lastRenderKey=''; render();
+    if(state.view==='street'&&!stage)await enterStreet();
   }
 }
 function wireControls() {
-  const closeMenu=()=> $('menu-dialog').close();
+  const closeMenu=closeMenuDialog;
   $('menu-button').addEventListener('click',()=>{lastRenderKey='';render();showDialog('menu-dialog');$('menu-button').setAttribute('aria-expanded','true');});
   $('menu-dialog').addEventListener('close',()=>{stage?.menuState?.(false);$('menu-button').setAttribute('aria-expanded','false');stage?.focus?.();});
   $('street-entry').addEventListener('click',async()=>{closeMenu();await enterStreet();});
-  $('leave-street').addEventListener('click',()=>{closeMenu();stage?.clear();stage?.dispose();stage=null;portals.cancel();loading=false;notify();session.dispatch({type:'view',view:'map'});});
+  $('leave-street').addEventListener('click',()=>{closeMenu();cancelStreetLoad();stage?.clear();portals.cancel();loading=false;notify();session.dispatch({type:'view',view:'map'});});
   $('door-action').addEventListener('click',()=>{closeMenu();enterDoor();});
   $('scene-back').addEventListener('click',()=>{closeMenu();back();});
   $('scene-next').addEventListener('click',()=>{closeMenu();if(sceneData?.nextSceneId)enterScene(sceneData.nextSceneId);});
   $('period-button').addEventListener('click', () => showDialog('period-dialog'));
   $('uniform-toggle').addEventListener('click',()=>{const id=session.get().characterId==='child'?'youth':'child';session.dispatch({type:'character',id});closeMenu();stage?.focus?.();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});});
 
-  window.addEventListener('pagehide',()=>saveSession(localStorage,session.get()));
+  window.addEventListener('pagehide',event=>{saveSession(localStorage,session.get());cancelStreetLoad();if(event.persisted)stage?.suspend?.();else{stageSlot?.dispose();stage=null;repository.dispose();}});
+  window.addEventListener('pageshow',event=>{if(event.persisted)refreshStage();});
   $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
   $('place-search').addEventListener('input', e => renderPlaces(e.target.value));
 
   for (const dialog of document.querySelectorAll('dialog')) {
+    dialog.addEventListener('close',()=>stage?.refresh?.());
     dialog.querySelector('.close')?.addEventListener('click', () => { queryGeneration++; dialog.close(); });
-    dialog.addEventListener('cancel', () => { queryGeneration++; portals.cancel(); loading = false; notify(); });
+    dialog.addEventListener('cancel', () => { queryGeneration++; portals.cancel(); loading = false; notify(); stage?.refresh?.(); });
     dialog.addEventListener('click', e => { const r = dialog.getBoundingClientRect(); if (e.target === dialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) { dialog.close(); queryGeneration++; } });
   }
   const zoom = delta => { const camera=session.get().camera,stops=[1,1.8,2.7],next=delta>0?(stops.find(z=>z>camera.zoom+.01)||2.7):([...stops].reverse().find(z=>z<camera.zoom-.01)||1); session.dispatch({type:'camera',camera:{zoom:next,x:camera.x*next/camera.zoom,y:camera.y*next/camera.zoom}}); };
@@ -175,33 +216,40 @@ function wireControls() {
   viewport.addEventListener('pointerup', () => { drag = null; });
   viewport.addEventListener('pointercancel', () => { drag = null; });
   viewport.addEventListener('wheel', e => { if (e.ctrlKey || e.metaKey) return; e.preventDefault(); zoom(e.deltaY < 0 ? .12 : -.12); }, { passive: false });
-  document.addEventListener('keydown', e => { if (e.key !== 'Escape') return; const dialog = document.querySelector('dialog[open]'); if (dialog) { e.preventDefault(); e.stopImmediatePropagation(); dialog.close(); queryGeneration++; portals.cancel(); loading=false; notify(); } }, true);
+  document.addEventListener('keydown', e => { if (e.key !== 'Escape') return; if(startingStage){cancelStreetLoad();notify();}const dialog = document.querySelector('dialog[open]'); if (dialog) { e.preventDefault(); e.stopImmediatePropagation(); dialog.close(); queryGeneration++; portals.cancel(); loading=false; notify(); } }, true);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { portals.cancel(); if (!document.querySelector('dialog[open]') && session.get().sceneId !== 'map') back(); } });
 }
 async function enterStreet() {
-  if (startingStage) return;
+  const requestedKey=JSON.stringify([session.get().route,session.get().periodId]);
+  if(startingStage){if(streetLoadKey===requestedKey)return;cancelStreetLoad();}
+  streetLoadKey=requestedKey;
   mapDestination = null; mapKeys.clear();
   const d = mapping.locate(session.get().route).distance;
-  if (d < STAGE.min || d > STAGE.max) { notify('这段街景还在绘制，请先点新华街院门附近的路。'); return; }
+  if (d < STAGE.min || d > STAGE.max) { notify('这段街景还在绘制，请先点新华街院门附近的路。');if(session.get().view==='street')session.dispatch({type:'view',view:'map'});return; }
   const token=++streetLoadGeneration;
+  const request=new AbortController();streetLoadController=request;
   startingStage = true; notify('正在走到街上……');
   try {
+    const { createOutlineStage,createRetainedStageSlot } = await import('./outline-stage.js');
+    if(token!==streetLoadGeneration)return;
+    if(!stageSlot)stageSlot=createRetainedStageSlot({onEvict:previous=>{if(stage===previous){stage=null;lastRenderKey='';$('outline-destinations').replaceChildren();}}});
+    if(stage&&!stage.compatible())discardStage();
     if (!stage) {
-      const { createOutlineStage } = await import('./outline-stage.js');
-      if(token!==streetLoadGeneration)return;
-      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
-      if(token!==streetLoadGeneration){candidate?.dispose();return;}stage=candidate;
+      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,signal:request.signal,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
+      if(!candidate||token!==streetLoadGeneration){candidate?.dispose();if(token===streetLoadGeneration)notify();return;}
+      stageSlot.set(candidate);stage=candidate;
       const targets=$('outline-destinations');targets.replaceChildren();
-      for(const g of Object.values(stage.landmarks)){const button=document.createElement('button');button.textContent=g.label;button.dataset.outlineGo=g.id;button.addEventListener('click',()=>{$('menu-dialog').close();stage?.go(g.id);});targets.append(button);}
+      for(const g of Object.values(stage.landmarks)){const button=document.createElement('button');button.textContent=g.label;button.dataset.outlineGo=g.id;button.addEventListener('click',()=>{closeMenuDialog();stage?.go(g.id);});targets.append(button);}
       const origin=session.get().outline;
       $('stage-canvas').dataset.outlineRevision=origin.revision;
     }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' });
+    refreshStage();
     stage?.focus?.();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
     notify();
-  } catch (error) { if(token!==streetLoadGeneration)return;console.error('Outline street load failed',error);stage?.dispose(); stage = null; $('stage-canvas').replaceChildren(); notify('街景暂时打不开，手绘图上的位置已保留。'); }
-  finally { if(token===streetLoadGeneration)startingStage = false; }
+  } catch (error) { if(token!==streetLoadGeneration)return;console.error('Outline street load failed',error);discardStage();$('stage-canvas').replaceChildren();if(session.get().view==='street')session.dispatch({type:'view',view:'map'});notify('街景暂时打不开，手绘图上的位置已保留。'); }
+  finally { if(token===streetLoadGeneration){startingStage=false;streetLoadController=null;refreshStage();} }
 }
 async function enterDoor() {
   if ($('door-action').hidden) return;
@@ -253,7 +301,7 @@ async function start() {
   $('map-viewport').addEventListener('click', async e => { if(mapDragged||e.target.closest('button')||session.get().view!=='map')return; const r=$('map-camera').getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200],hit=mapping.nearestArt(p); if(hit.distance<28){session.dispatch({type:'route',route:hit.route});const d=mapping.locate(hit.route).distance;if(d>=STAGE.min&&d<=STAGE.max)await enterStreet();} });
   $('map-art').addEventListener('error', () => notify('底图未载入，地点入口仍可使用。请刷新重试。'));
   // Read-only diagnostic hook: domain state remains owned by the application session.
-  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null }) });
+  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null, dataCache:repository.inspect() }) });
 }
 start().catch(error => {
   const panel = document.createElement('div'); panel.className = 'error-screen';

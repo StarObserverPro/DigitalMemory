@@ -1,8 +1,8 @@
 # Documentation map: area → route → roadside attachment
 
-**2026-10-26:** Consult [current STATUS](STATUS.md) before old branch packets. The male GLB is provisionally unchanged, earlier 2× notes are a historical fixture, Marble 2 has no actual generation, bridge research is public only, and Keith Haring-inspired lines are future exploration.
+**Current routing, 2026-10-27:** The supported Xinhua entry uses the selected Sanli outline scene and corridor extension, merged through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25). The continuous outline person, restrained motion and navigation UI are the active close-view treatment. Overview raster art remains separate; the retained GLB student, 2× study and graybox camera are historical/legacy references. Read [STATUS](STATUS.md) for exact implementation and evidence, [RUNTIME](RUNTIME.md) for current lifecycle and known gaps.
 
-Contract revision: 2026-10-19. This page routes readers to the owners below; it is not another schema or a claim that the new behavior is implemented. The proposal package was prepared against main `2b2bd01b52934cd28be57e050a90b250b3455c6a`.
+The area → route → attachment target was integrated on 2026-10-19. This page routes readers to existing owners; it is not a second schema or evidence that every target contract has been implemented. Marble 2 remains a future handoff with no actual generation, and bridge research retains its public-source boundaries.
 
 ## Read by question, not by historical task number
 
@@ -11,12 +11,13 @@ Contract revision: 2026-10-19. This page routes readers to the owners below; it 
 | What experience are we preserving? | [PRODUCT](PRODUCT.md) | [PHASE_1](PHASE_1.md) owns geographic scope. |
 | What can be entered from each view? | [INTERACTION](INTERACTION.md) | [ILLUSTRATION_MAPPING](ILLUSTRATION_MAPPING.md) owns overview/street correspondence. |
 | Who resolves location, interaction and scene loading? | [ARCHITECTURE](ARCHITECTURE.md) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
-| Which student model is really used vs the older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
+| Which street/person is active vs the retained GLB and older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
 | What is the World Labs/Marble 2 status? | [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) | Future handoff only; no generated environment. |
 | What public sources describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
-| What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) preserve source provenance. |
+| What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) preserve source provenance; [ASSET_WORKFLOW_VALIDATION](ASSET_WORKFLOW_VALIDATION.md) retains superseded trial measurements. |
+| Which older visual/source studies still matter? | [Xinhua building survey](research/XINHUA_BUILDING_SURVEY.md), [R6 overview pipeline](research/XINHUA_SPATIAL_PIPELINE.md) | [LOCAL_VISUAL_REFERENCES](LOCAL_VISUAL_REFERENCES.md) and `research/xinhua-image-observations.json` retain dated observations, not current placement instructions. |
 | How do we reuse the accepted Xinhua close-street outline process? | [Xinhua outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) | [Selected runnable scene](../scenes/xinhua-junction-outline/README.md); [Integrated Sanli close view](../scenes/xinhua-sanli-outline/README.md), reached through the main street entry; overview raster art remains unchanged. |
 | How do new observations become notes, sequences and environment revisions? | [CONTENT_PIPELINE](CONTENT_PIPELINE.md) | Original/private material stays outside public Git. |
 | What is accepted, tested, merged or released? | [VERIFICATION](VERIFICATION.md), [STATUS](STATUS.md) | Task packets identify exact observations, not new requirements. |
@@ -39,13 +40,19 @@ The street-facing fabric is locally replaceable: brick walls, iron railings, mix
 
 A stable location supports successive observations and alternative environment states. Reuse, damage, repair and renewed use can recur without producing a new place ID each time. Calendar dates may remain unknown while a partial ordering is known. A picture sequence is a reading order, not automatically a walkable floor plan or a historical timeline.
 
-## What this revision changes—and does not
+## Targets, current consumers and historical evidence
 
-This revision integrates navigation, representation, street-edge editing and sparse local chronology into the existing owners. It does not acquire imagery, replace the 161-mass Xinhua reference plan, generate assets, implement private note storage, call World Labs, alter the avatar or deploy the application.
+PRODUCT, PHASE_1, ARCHITECTURE, DATA_MODEL, INTERACTION and the production contracts describe required behavior. RUNTIME and STATUS identify the implemented subset and the selected consumer. A requirement for a note/sequence/local-scene dispatcher, editable frontage intervals or a private archive does not establish that those capabilities exist.
 
-At the inspected baseline, open PR #18 documents World Labs/Codex handoff and PR #19 records the selected 2× apparent street-character scale. Preserve both tracks when integrating these edits. The scale selection concerns street presentation, not doubling physical building/person dimensions; there is still no overview avatar. Their branch-specific documents remain their owners and must not be overwritten by this reorganization.
+STREET_VISUAL_CALIBRATION, ASSET_WORKFLOW_VALIDATION, LOCAL_VISUAL_REFERENCES and dated sections in STATUS retain their original fixtures and verdicts. World Labs camera/CLI guidance retains its checked date and must be revalidated before any future authorized submission. Public geographic research retains its source dates, approximate dimensions and unresolved identities. Do not silently convert an older trial's counts, camera, completion state or permission into the present contract.
 
-Historical task packets, research notes and superseded trial specifications remain traceable. They are not parallel live contracts. Runtime history belongs in STATUS/task records; do not infer present capability from an old paragraph headed “current”.
+Task packets preserve exact scope, source base, observations and handoff. Only [current.json](attention/current.json) identifies actively executing work; an old “next action” is not an autonomous task. Reading and reconciling documentation does not change source geometry, content approval or deployment state.
+
+## Construction and PR sequence
+
+Record or reuse the repository task scope before construction, including sandbox work. Its minimum record is purpose, baseline, boundaries, acceptance, output destination and status; selected deliverables may enter production paths, while trial artifacts stay outside Git. [Attention guidance](attention/README.md#sandbox-work-still-has-a-repository-scope) owns the details.
+
+Read the relevant owners before implementation, keep them aligned with the change, and review the full diff/documentation **before tests/build/CI**. Then open or update the PR with actual evidence and explicit remaining gaps. Event-triggered GitHub checks are reported for the head that ran them. This is a completion sequence within the existing task, not a new per-step approval process.
 
 ## 文档修正的完成标准
 

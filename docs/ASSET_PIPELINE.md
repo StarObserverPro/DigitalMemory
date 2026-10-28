@@ -1,6 +1,6 @@
 # Map, image and scene asset pipeline
 
-> **2026-10-26:** [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) is documentation only: there is no World Labs generation/output/importer. Current GLB student assets are independent. A [Keith Haring-inspired graphic treatment](HANDPAINTED_MAP_ART.md) remains a parked possibility.
+> **2026-10-27 current consumers:** The overview keeps its hand-painted rasters; the selected Xinhua/Sanli close view uses the accepted [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md). The GLB student is a retained legacy asset. [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) remains documentation only, with no World Labs generation/output/importer.
 
 > DM-0015 correction: [hand-painted map art](HANDPAINTED_MAP_ART.md) owns visible medium, contextual generation, tower identity and projection/scale acceptance. SVG is planning only, never map art or a runtime art fallback. The older ≤1.5 native/display ratio is a recorded r4 experiment, not a universal requirement; it must not erase paint or tower storeys. Never repair raised art with unrestricted affine fitting.
 
@@ -8,9 +8,9 @@
 
 > DM-0007: follow [MAP_ASSEMBLY](MAP_ASSEMBLY.md) for three overview tiers, independently replaceable pale context, compound children, and road-only bridge/retaining-wall parts. The same style must hold across scales. Accepted general style is not approval of a specific asset, location or chronology.
 
-> DM-0004 uses original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. The prior all-in-one illustration and long street strip are superseded. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
+> Historical DM-0004 used original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. Its module evidence is retained; those characters and facade strips do not define the selected outline consumer. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
 
-Status: production target integrated 2026-10-19. Existing Xinhua R6 source-linked paintings and street prototypes are recorded in [STATUS](STATUS.md)/[RUNTIME](RUNTIME.md). Historical trials below retain provenance only. This revision changes asset-selection requirements, not runtime, generated assets or historical acceptance.
+Status: production contract, with current Xinhua R6 overview paintings and the selected outline street reported in [STATUS](STATUS.md)/[RUNTIME](RUNTIME.md). Historical trials below retain their own provenance and verdicts. Contract text alone does not establish runtime completion or historical acceptance.
 
 ## Two products, not one flattened picture
 
@@ -99,15 +99,15 @@ Review **registration**, **appearance**, **text**, and **publication** separatel
 
 Publish only selected revisions and the required derivatives, with source-type labels and usage metadata appropriate to the audience. Keep trial paintings, visual examples, contact sheets, unused generations, intermediate masks, batch prompt dumps and one-off example scripts outside the repository. Commit only selected production assets and concise necessary provenance; see [repository storage](HANDPAINTED_MAP_ART.md#repository-storage). The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
 
-## Dual-scale illustration assets — DM-0003 correction
+## Historical dual-scale illustration assets — DM-0003
 
 The overview is an original hand-drawn map with deliberately simplified proportions. It is not the street renderer's ground texture. Store node/edge correspondences in a separately revised mapping file. Place/door footprints and clickable regions remain structured records.
 
 For the close scene, prepare front-elevation PNGs with real alpha and a shared ground baseline. Stand them upright along a metric sidewalk, with shallow returns only where the view needs them. Character feet and occlusion are renderer concerns. Do not bake the controllable person into the map or bake a second incompatible perspective into facade planes. Fog and direction signs bound unfinished areas.
 
-Current art is a candidate: the cinema, houses, shopfronts and gate are generic reconstructions, not observed historical facades. Reference artists are linked for visual research; their artwork is not redistributed in the app. Original generated assets and provenance are in `assets/scenes/README.md` and `assets/maps/generation-journal-r1.json`.
+That batch's cinema, houses, shopfronts and gate are generic candidates, not observed historical facades. Reference artists were linked for visual research; their artwork is not redistributed in the app. Original generated assets and provenance are in `assets/scenes/README.md` and `assets/maps/generation-journal-r1.json`.
 
-## DM-0010 candidate batch
+## Historical DM-0010 candidate batch
 
 Two original transparent sheets and fifteen cropped small-scale compound/building motifs are retained in `assets/candidates/overview-r1/`. Their catalog has no geographic registration and does not replace active overview assets. The new street prototype uses original procedural geometry to settle scale and movement first; these overview sprites are not used as street people or facade strips.
 

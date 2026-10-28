@@ -2,6 +2,8 @@
 
 Survey date: 2026-10-18. This is a source-backed classification draft, not a completed street reconstruction. No personal residential history is included. Existing rendered apartment modules are not validated by this survey.
 
+The dated drawing/consumer remarks below preserve that research context. Current overview and selected outline-street behavior are in [STATUS](../STATUS.md), [RUNTIME](../RUNTIME.md) and [the outline workflow](XINHUA_OUTLINE_WORKFLOW.md); this survey does not override those later visual decisions.
+
 ## Main correction
 
 Classify real building groups before producing illustration assets. Preserve compact towers, elongated slabs, mixed-height blocks, compound setbacks and independent street buildings. A compound is a coherent overview composition with independently replaceable children, not a row of identical apartment stickers. Road geometry stays independent.

@@ -1,6 +1,6 @@
 # Interaction contract
 
-Status: the three-tier overview is implemented. The current grounded street prototype and its verification limits are in [STREET_PROTOTYPE](STREET_PROTOTYPE.md).
+Status: the three-tier overview and selected Xinhua/Sanli outline close view are implemented. [RUNTIME](RUNTIME.md) records the current consumer/lifecycle; [STREET_PROTOTYPE](STREET_PROTOTYPE.md) separates it from legacy GLB/graybox evidence.
 
 Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The integrated requirements below remain the target, not a claim of complete capability.
 
@@ -8,7 +8,7 @@ Implementation update: the first planar explorer, shared registration transform,
 
 Open into the illustrated map, or resume the last valid place, period and view. Keep the map/scene as the dominant surface. Do not reserve permanent sidebars for articles, source lists, developer panels, or project statistics.
 
-The only persistent control is one menu button. The menu starts closed and stays closed on map/street transitions and return. Time, search, zoom, street entry/exit, nearby doors and help live inside it. No title card, toolbar, instruction strip, direction pad, debug panel, composition controls, mapping inspector, sample badge or construction message overlays the scene. Do not reintroduce developer wording even inside consumer menus. Read-only QA state belongs in code and evidence, not the product UI.
+The overview's only persistent control is one menu button. The selected outline street additionally has its approved compact compass and collapsible north-up minimap. Menus start closed and stay closed on map/street transitions and return. Time, search, zoom, street entry/exit, nearby actions and help live inside the menu. No title card, toolbar, instruction strip, direction pad, debug panel, composition controls, mapping inspector, sample badge or construction message overlays the scene. Do not reintroduce developer wording even inside consumer menus. Read-only QA state belongs in code and evidence, not the product UI.
 
 Menus require an explicit user action. Closing or Escape restores the same place. Keyboard and direct pointer/touch gestures work without displaying additional controls. Opening a modal pauses movement. Credits and short usage guidance remain available through the menu.
 
@@ -18,9 +18,9 @@ Use a coherent stylized ground surface derived from registered historical refere
 
 The initial overview is an illustrated travel-journal map: individual building vignettes, readable streets, selective enlargement of meaningful places and restrained texture. The map fills the entire viewport; surrounding city context extends beyond the editable registration area. Never use the registration boundary as a blank artboard edge. The overview has no person, avatar or player marker. Three detail tiers reveal the town, neighborhoods and street surroundings. Clicking a modeled street selects its registered position and enters a separate street view; it does not first place a character on the map. Landmarks and route progress retain stable IDs even when illustration proportions change.
 
-Selecting a modeled street transitions to a close third-person sidewalk view. Nearby facades, courtyard gates and small props stand up as painted film-set flats, with perspective, foreground/background occlusion and restrained shallow geometry. The person appears only after street entry, as a grounded big-headed chibi figure in a moderately elevated board-game-like composition. A brief fog/rotation/approach transition preserves orientation. The earlier near-eye-height half-body framing is superseded. The person can walk forward/backward and turn; pointer drag turns the view. Fog, faded silhouettes and arrows mark unbuilt extents. Do not replace this with a generic full-3D block city or a floating orbital view.
+Selecting a supported street enters a grounded, elevated third-person view. The current Xinhua/Sanli consumer uses registered building masses, quiet filled surfaces, sparse continuous black contours and the outline person under a perspective camera. The figure appears only after street entry. Earlier paper flats, half-body framing and the orthographic GLB graybox are historical presentations, not current camera or art requirements. Preserve recognizable street relationships, ordinary depth occlusion and a readable walking surface without expanding every background parcel into a detailed city model.
 
-The current prototype uses click/tap destinations on the sidewalk, camera-relative arrow/WASD movement and horizontal drag to orbit. Character facing and camera orbit are independent. Clicking the gate approaches it first and enters only at close range. Opening a menu, blur, visibility change and inactive scenes stop movement. There is no persistent control pad. See STREET_PROTOTYPE for the bounded volumetric replacement of the earlier paper character. Returning to the overview restores the same edge/progress; returning from an interior also restores sidewalk position, heading, period and selection.
+The selected street uses click/tap destinations on walkable ground, camera-relative arrow/WASD movement, drag to orbit and wheel camera-distance control. Character facing and camera orbit are independent. Menu destinations walk continuously through supported paths. Opening a menu, blur, visibility change and inactive scenes stop movement; there is no persistent control pad. Returning to the overview preserves its route/camera context, and re-entry restores a valid registered close-view pose. General attachment dispatch and the legacy synthetic courtyard interaction are not claimed as active outline-scene features. Future note/sequence/interior activation must preserve the return contract below.
 
 The board-game reference supplies readable spatial relationships and character movement. There are no route cells, dice, property prices or compulsory turns. Geographic nodes, illustration anchors and actual historical entrances have distinct approval states.
 
@@ -99,7 +99,7 @@ Review batches and administrative queues live in the private workbench. No const
 
 ## Style decisions intentionally left open
 
-An early-2000s illustrated-memory language is established; the exact paper texture, color palette, typefaces, amount of distress, and camera pitch are not. Consider lightly distressed Song-style display lettering with readable Hei-style supporting text, but do not turn this into an artificially antique or uniformly sepia Beijing. Long reading text must remain clean and legible. Evaluate the style on the same short registered segment before large-scale production.
+An early-2000s illustrated-memory language is established. The selected outline close view has an accepted palette, contour/UI pairing and local ZCOOL KuaiLe typeface; preserve them during runtime work. Future overview refinements and long-reading typography remain local art decisions under their owners. Avoid an artificially antique or uniformly sepia Beijing. Long reading text must remain clean and legible. Evaluate any new style on the same registered segment before larger production.
 
 ## Selected Xinhua/Sanli outline close view
 

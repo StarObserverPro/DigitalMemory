@@ -83,7 +83,7 @@ A frontage host is explicit: attached to a supported building, a detached shell,
 
 ## Coordinates and precision
 
-The proposed canonical geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve the coordinate system and processing history of every input; never assume a Chinese consumer-map coordinate, historical sheet, screenshot pixel, and satellite coordinate are interchangeable. The first registration task must verify the chosen transform and the relevant source terms.
+The implemented geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve the coordinate system and processing history of every input; never assume a Chinese consumer-map coordinate, historical sheet, screenshot pixel, and satellite coordinate are interchangeable. Each acquisition/registration task must verify its transform and relevant source terms; [the geographic runbook](GEO_DATA_RUNBOOK.md) records that procedure.
 
 Store geometry separately from display offsets, building height, stylization, and camera projection. Building height can be an approximate parameter with its own evidence; changing it must not silently change the footprint. Source positional uncertainty, reconstruction accuracy, and personal familiarity are independent fields. Satellite resolution is not a measure of personal importance.
 

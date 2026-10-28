@@ -4,7 +4,7 @@
 
 > DM-0013: [validated asset workflow](ASSET_WORKFLOW_VALIDATION.md) supersedes whole-compound affine fitting and whole-image road masking as the production method. DM-0014 implements independently anchored building parts, separate worn-yard ground and standing depth order. Ground bounds, visual bounds and standing-art occlusion must be distinct.
 
-DM-0009, 2026-10-18. The composition planner is connected to the visible overview. Geometry, visual acceptance and historical verification remain separate. Current implementation and gaps are recorded in STATUS and the active/recent task packet.
+The composition planner is connected to the visible overview, with the later R6 source-linked raster assembly. The selected outline street has its own [drawing workflow](research/XINHUA_OUTLINE_WORKFLOW.md) and runtime lifecycle. Geometry, visual acceptance and historical verification remain separate. [STATUS](STATUS.md) and [RUNTIME](RUNTIME.md) own current implementation; dated records below preserve earlier planner and art evidence.
 
 ## Current experience contract — 2026-10-19
 
@@ -32,7 +32,7 @@ The distinction is **visual emphasis**, not a truth score. A vividly remembered 
 | Compound structure | Building shells, yard areas, fences, gates and detached commercial rooms | A compound is a container of objects, not a single irreversible painted rectangle. Overview grouping is permitted; occupancy and entrance relations remain separate. |
 | Landmarks / remembered objects | Theater, hospital exterior, a recognizable gate, a registered shop or small building | Stable object identity and actual ground reservation; separate assets per view/detail tier. Full-color emphasis never moves the road. |
 | Words / memory access | A small selection of place names, selected recollection and intentional interaction | Labels and hit regions are not baked into artwork. No permanent marker field, toolbar or development information. |
-| Street scene | Road geometry, scenic flats, short facade units, shallow depth, fog, grounded chibi figure | A separate view of the same registered places and route positions. No figure or player marker anywhere on the overview. |
+| Street scene | Registered local geometry, selected building/frontage representation and grounded person; currently the Xinhua/Sanli outline scene | A separate view of the same registered places and route positions. No figure or player marker anywhere on the overview. |
 
 These are **ownership layers**, not one universal back-to-front paint order. A bridge must cover the road below it; its far wall and near wall may render on different sides of the scene. Building shadows, roofs and ground footprints also require different masks. Explicit occlusion relationships override the ordinary ground-depth sort.
 
@@ -45,7 +45,7 @@ The tiers use the same stable locations and drawing layout. They change what is 
 | Town | Two bridge anchors, principal roads and only useful theater/park/compound silhouettes; a hospital need not appear at this scale | Very pale land and roof grain; unmistakable bridge crossing order. Sidewalk/service corridor remains recognizable as part of the road assembly. No individual windows. | About 8–12; prototype 10 |
 | Neighborhood | Sanli/Wuli/Sili/Liuli/Qili and Nankai Xili typology and arrangement; separate towers, long slabs and court boundaries; local commercial anchors | Stronger but still pale contextual silhouettes. Main road, service road and sidewalk are separable; important setbacks and retaining-wall lengths become visible. | About 12–18; prototype 16 |
 | Street surroundings | Gates, detached street shops, walls, crossings, entrances and nearby memories | Same oblique planar map, still without a figure. Context remains faint rather than inventing more precision. Prioritize walking space. | About 6–10; prototype 10 |
-| Entered street | A short walkable stretch, recognizable facades/gates, remembered shops and optional interior portals | Moderate elevated Richman-like framing; big-headed grounded figure, scenic flats, shallow returns, warm fog at the limits. Not a first-person or half-body camera. | Only locally useful names |
+| Entered street | A bounded walkable stretch, recognizable facades/gates and supported local destinations; future attachments follow the shared contract | Current Xinhua/Sanli: elevated perspective view, continuous outline person, sparse contours and normal depth occlusion. Legacy scenic flats/GLB framing are historical references. | Only locally useful names |
 
 The numerical budgets and initial context opacities (0.16 / 0.22 / 0.26) are **tuning proposals**, not aesthetic acceptance. Draw pale pigment deliberately; avoid transparent ghost towers, dark ambient glows or a gray veil over the whole town. Unknown context must remain subordinate even at the closest map tier.
 
@@ -173,13 +173,15 @@ The [Qingdao visitor map](https://www.shangri-la.com/qingdao/shangrila/about/) w
 
 [Leslie Fehling's Bruges map account](https://www.lesliefehling.com/newwwww/) explicitly describes selecting only the necessary streets and simplifying buildings enough to retain recognition. This supports selective detail at smaller scales; it does not justify inventing Fengtai facades. No reference artwork is redistributed with this change.
 
-## Implemented in this change
+## Historical planner foundation — DM-0007
 
 `src/domain/map-assembly.js` supplies an independently testable planner, insertion/revision command, conservative bounds validation, explicit road-part ordering, three overview policies and local context exclusion. `temporal.js` owns exact accepted-period state selection. The synthetic fixture demonstrates a road depression with asymmetric service-path profiles, separate decks/walls, a pre-existing landmark and one newly remembered corner.
 
 The tests exercise the important failure cases: insertion must not alter roads or neighbors; hidden artwork and unsupported periods must not erase context; a move restores the old context; road/solid/region/version conflicts reject; crossing parts respect their explicit order; map plans contain no character; label rejection does not delete the associated object.
 
-## Remaining integration, in dependency order
+## Historical integration plan — DM-0007
+
+This was the remaining-work list at that foundation. Later overview tiers, raster assembly and selected street integration are recorded in STATUS; the list does not reactivate completed work or superseded visual choices.
 
 1. Register and verify one real road segment including its full walking/service corridor; underpass-specific wall position and heights remain pending.
 2. Produce clean individual cutouts / masks and original pale context patches in the accepted style, with matched ground baselines, padding and independent external frontage. Do not use the halo-bearing tower preview as a production asset.
@@ -188,7 +190,7 @@ The tests exercise the important failure cases: insertion must not alter roads o
 5. Persist registration through the authorized private authoring adapter. This planner's command returns a new model; it is not a database, autosave or published record.
 6. Validate real desktop/mobile views at each tier, local before/after insertion, period switching and the road-to-street transition. Then package a reviewed visual release. Passing pure tests does not complete these visual steps.
 
-## Current consumer correction — DM-0009
+## Historical consumer correction — DM-0009
 
 The road layer now includes contemporary source continuations and source Four Ring service roads, painted with the same soft palette on both sides of the original focus boundary. Two passes (all edges, then all interiors) prevent artificial caps at connected OSM way boundaries. Broad overview width is a drawing choice, independent of the street scene's physical cross-section. Underpass profiles and wall heights remain unmeasured.
 
@@ -196,7 +198,7 @@ The road layer now includes contemporary source continuations and source Four Ri
 
 The screen-space label pass uses 18–19 px road names and 21–23 px place names, with a locally bundled pen-like font. Desktop count ceilings are 10 / 14 / 18 and character ceilings 52 / 72 / 96; narrow screens use 7 / 10 / 12 and 35 / 50 / 64. These are ceilings, not quotas. Names must fit the viewport, avoid the menu, other names and solid icons. Important names try alternate positions; lower-priority names disappear instead of getting smaller. Map pixels and camera zoom are both accounted for. The implementation follows the pixel sizing and collision/alternate-anchor approach in [Mapbox's style specification](https://docs.mapbox.com/style-spec/reference/layers/#layout-symbol-text-size) and [label placement guide](https://docs.mapbox.com/help/troubleshooting/optimize-map-label-placement/); the numerical sizes and budgets are our own readable-map tuning, not a claimed universal standard.
 
-## DM-0012: compound illustration trial
+## Historical DM-0012 compound illustration trial
 
 Three compound images now share the source-road coordinate transform through explicit registry control points. Seven and Wuli-west use taller modern northern forms; Liuli uses southern red-brick walkups, following the user's latest typology correction. Exact northern floor counts remain unresolved; prior six-storey listing claims are not erased. This is trial appearance, not evidence of construction dates.
 

@@ -2,7 +2,7 @@
 
 > **2026-10-26 integration:** This is a future setup/handoff reference only. The user confirms that **no World Labs / Marble 2 scene was generated, uploaded, exported or integrated**. This check has not established actual CLI installation, login or available account task entitlements. The commands below must not be treated as an active assignment; recheck current vendor documentation if later authorized. The student GLB is an independent existing asset, not Marble output.
 
-Checked 2026-10-19. This is the bounded handoff to local Codex, not an installed integration or an approved production pipeline. Read [AGENTS](../AGENTS.md), then only the sections below needed for the current task. [DM-0020](attention/tasks/DM-0020.md) records this documentation delivery.
+Vendor guidance checked 2026-10-19; local consumer references reconciled 2026-10-27. This is a bounded future handoff, not an installed integration or an approved production pipeline. Recheck vendor commands/schemas before any later authorized setup or submission. Read [AGENTS](../AGENTS.md), then only the needed sections. [DM-0020](attention/tasks/DM-0020.md) records the original documentation delivery.
 
 ## Start with setup, preserve the project
 
@@ -17,8 +17,8 @@ Use `StarObserverPro/DigitalMemory`. Start from current main, inspect local chan
 | Purpose, geography and sparse time | [PRODUCT](PRODUCT.md), [PHASE_1](PHASE_1.md): Xinhua walking-memory network first; Nankai Xili and two historical school sites are other anchors, not a confirmed itinerary. No exact decade is inferred from repeated walking. |
 | Latest overview and its evidence | [STATUS](STATUS.md), [R6 pipeline](research/XINHUA_SPATIAL_PIPELINE.md): 161 selected masses across eleven groups from a 774-polygon corridor acquisition, with separately estimated floors. This is overview work, not an already built World Labs street. |
 | Source provenance and next acquisition | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md). Source IDs, roof/footprint ambiguity and floor ranges remain explicit. Current polygons do not establish historical construction dates. |
-| Actual close-view consumer | [STREET_PROTOTYPE](STREET_PROTOTYPE.md): bounded volumetric child/building prototype, elevated orthographic camera, orbit, walking and gate/return. Earlier paper-person/facade-only descriptions are superseded for this prototype. Native geometry evidence is not browser QA. |
-| Code ownership | `src/explorer/street-layout.js`, `street-world.js`, `stage.js`; `src/application/session.js`. The existing renderer/input loop and session remain owners. Spatial registry and temporal resolver retain geography/time authority; see [ARCHITECTURE](ARCHITECTURE.md). |
+| Actual close-view consumer | [STREET_PROTOTYPE](STREET_PROTOTYPE.md): selected Xinhua/Sanli outline street, continuous outline person, elevated perspective camera and local walking/navigation. The retained GLB/orthographic prototype is historical. No World Labs renderer is active. |
+| Code ownership | `src/explorer/outline-stage.js`, `scenes/xinhua-sanli-outline/runtime.mjs`, and `src/application/session.js`; [RUNTIME](RUNTIME.md) owns the current lifecycle. Spatial registry and temporal resolver retain geography/time authority; see [ARCHITECTURE](ARCHITECTURE.md). |
 | Spatial input | `content/reference/xinhua-spatial-plan.json` is the reviewed overview plan, not a street-ready model or verified gate layout. Check units/transforms before reusing it. |
 | Art / storage | [ASSET_PIPELINE](ASSET_PIPELINE.md), [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md): painted overview stays its own product. Only selected production assets enter Git; trials, QA images and raw references stay outside the checkout. |
 
@@ -55,9 +55,9 @@ The planning discussion proposes one short, complete local streetscape: a gate o
 
 Keep the character, movable gates, readable signs and occlusion-sensitive foreground buildings independent where the interaction requires it. Generated surroundings must preserve usable entrances. Geometry continues to own navigation/collision; generated appearance must not create a second location, time or portal state owner. Load by local scene, not the entire neighborhood at once.
 
-## Critical mismatch: current game camera versus API camera
+## Camera compatibility still requires an explicit adapter
 
-The existing street consumer is orthographic (44 degrees above ground, with a documented presentation compression); Marble 2 takes pinhole cameras. Never upload orthographic depth while describing it with invented perspective intrinsics. A future adapter must render actual perspective camera/depth pairs from the same geometry and compare their coverage with the consumer, or establish another valid representation path. This does not authorize changing the game's camera just to fit the API.
+The selected outline consumer is perspective (`PerspectiveCamera` in its runtime). The earlier graybox consumer was orthographic at 44 degrees above ground with presentation compression; those values remain legacy evidence. The checked Marble 2 guidance uses pinhole cameras. A perspective consumer still needs a validated export of its actual pose, field of view, pixel intrinsics, scale and matching depth; an ordinary screenshot is not such an export. Never describe orthographic depth with invented perspective intrinsics. Any future adapter must compare its camera/depth pairs with the selected consumer, without changing the accepted game camera just to fit the API.
 
 Keep camera-to-world poses, XYZW quaternions, coordinate basis and distance units consistent. Preserve the distinction between geographic metres, local geometry and the existing presentation scale. RGB/depth/intrinsics must refer to the same pixel grid; a grayscale screenshot of a depth display is not calibrated depth. See [camera guide](https://atlas-beta.worldlabs.ai/docs/cameras-and-posed-images).
 
@@ -87,4 +87,4 @@ Only after this bounded comparison should the project choose a primary World Lab
 
 ## Optional future local-Codex handoff — not activated
 
-> Work only in StarObserverPro/DigitalMemory. Read AGENTS.md and docs/WORLDLABS_HANDOFF.md, then inspect current main/local changes. Set up the World Labs CLI and bundled Codex skill on this machine using Node 24+. Let me enter the World Labs key privately in my terminal; do not ask for it in chat. Verify auth and list CLI tasks, and report actual status versus unverified task entitlements/export access. This step is environment setup only; do not upload or submit a generation yet. Preserve the existing elevated street prototype and the separate hand-painted overview.
+> Work only in StarObserverPro/DigitalMemory. Read AGENTS.md and docs/WORLDLABS_HANDOFF.md, then inspect current main/local changes. Recheck vendor requirements before setting up the World Labs CLI and bundled Codex skill on this machine. Let me enter the World Labs key privately in my terminal; do not ask for it in chat. Verify auth and list CLI tasks, and report actual status versus unverified task entitlements/export access. This step is environment setup only; do not upload or submit a generation yet. Preserve the selected outline street and the separate hand-painted overview.

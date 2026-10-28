@@ -1,6 +1,6 @@
 # Core architecture
 
-Status: integrated target architecture, 2026-10-19. [RUNTIME](RUNTIME.md) and [STATUS](STATUS.md) report implementation and delivery separately. Existing spatial/time/session, composition and illustration-mapping modules are retained. The new route-attachment dispatcher and street-edge/history contracts below are requirements, not an implemented migration.
+Status: target architecture from 2026-10-19, current consumer/resource ownership reconciled 2026-10-27. [RUNTIME](RUNTIME.md) and [STATUS](STATUS.md) report implementation and delivery separately. Existing spatial/time/session, composition and illustration-mapping modules are retained. The general route-attachment dispatcher and street-edge/history contracts below remain requirements, not an implemented migration.
 
 [INTERACTION](INTERACTION.md) owns the area → route → attachment journey; [DATA_MODEL](DATA_MODEL.md) owns record semantics; [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns independently replaceable street-facing structures. [MAP_ASSEMBLY](MAP_ASSEMBLY.md) and [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) retain geographic, projection and painting constraints.
 
@@ -50,7 +50,7 @@ A renderer may own implementation resources such as its frame loop and GPU lifec
 
 The overview is a hand-drawn/cartoon/travel-journal illustration with a separate drawing-space layout. Stable node and edge IDs connect that layout to WGS84 source geometry. A route location is `{ edgeId, t, direction }`; geographic and illustration coordinates are derived views, not competing session positions. Do not force an artistic map into one global affine transform or infer a geographic address from an arbitrary illustration pixel.
 
-Entering a modeled street preserves that route position and puts the character on its sidewalk. The current close scene uses an elevated orthographic camera, articulated volumetric placeholder character and short independently replaceable building volumes. This replaces the earlier paper cutout; illustrated scenic-flat surfaces can follow after proportion approval. Ground coordinates remain registered and camera/presentation compression is documented in STREET_PROTOTYPE. Fog and arrows terminate the visible sample. The renderer does not recreate a full city or promote painted buildings into historical evidence. The same session owns sidewalk offset, heading, active period and portal stack. See [illustration mapping](ILLUSTRATION_MAPPING.md).
+Entering the selected street preserves its route context and puts the continuous outline figure in the registered Xinhua/Sanli corridor. The current close scene uses a perspective camera, source-backed building footprints with separately authored display masses, restrained flat colors and sparse motion. Existing GLB/graybox and orthographic fixtures are retained historical work, not the active overview→street consumer. The same application session owns position, heading, camera, active period, path and return context. Rendering does not make approximate ground extents or modern-source geometry into historical evidence. See [illustration mapping](ILLUSTRATION_MAPPING.md) and the [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md).
 
 Map illustrations, vectors, boxes, sprites, and portal images all reference the same scene manifest and transform revision. A pixel-to-world mapping cannot be independently re-created in the click handler. Foreground silhouettes and visual offsets must not alter the ground-space identity of a memory anchor.
 
@@ -102,24 +102,42 @@ A missing temporal state yields an explicitly sparse background and discoverable
 
 An export includes records, original/derived assets allowed by the selected privacy scope, manifests, transformation metadata, approvals, and checksums. Rebuildable caches are omitted. Restore must be tested into a clean instance; a successful ZIP download alone is not proof of recoverability. User-requested deletion and publication withdrawal override ordinary retention; preserve only permissible tombstone/audit metadata.
 
-## Proposed source layout
+## Source layout: current owners and future surfaces
 
-This is a future directory map, not a statement that these files exist:
+This map combines current source owners with future authoring/provider surfaces; it does not claim that every listed directory or capability is implemented:
 
 ```text
 src/domain/             identities, time/geometry contracts, pure selectors
 src/application/        session, commands, query orchestration
 src/explorer/           map/scene/image adapters and minimal HUD
+src/engine/             current rendering-lifetime and spatial-query utilities
 src/workbench/          private ingestion and separate review controls
 src/adapters/           storage, historical sources, generation providers
 content/public/         explicitly cleared fixtures/manifests only
 tests/                  domain, round-trip, privacy and visual evidence tests
 ```
 
-Keep dependency direction toward domain contracts. Presentation must not import provider-specific generation logic; generation jobs must not own browsing session state. Concrete dependencies and version choices require an implementation packet and targeted verification, not a speculative lockfile in this documentation task.
+Keep dependency direction toward domain contracts. Presentation must not import provider-specific generation logic; generation jobs must not own browsing session state. The engine utility directory now exists; workbench/provider entries remain future owners. Concrete dependency changes require an implementation packet and targeted verification.
 
 ## Selected outline integration
 
-The Xinhua/Sanli selected close view is adapted by src/explorer/outline-stage.js. PublicRepository verifies its registration/data hash before mounting. Spatial createLocalSceneFrame converts registered WGS84/local metres; session outline-state owns revision, origin route, position, camera and path. resolvePeriodState selects explicit working-composite membership without historical interpolation. The renderer uses isolated Shadow DOM styles, abortable listeners and one cancellable loop; leaving disposes it. Existing portal snapshots include outline state. This implements the selected close-view seam, not the general attachment-schema migration above.
+The Xinhua/Sanli selected close view is adapted by `src/explorer/outline-stage.js`. `PublicRepository` verifies its registration/data hash before mounting. Spatial `createLocalSceneFrame` converts registered WGS84/local metres; session outline-state owns revision, origin route, position, camera and path. `resolvePeriodState` selects explicit working-composite membership without historical interpolation. The renderer uses isolated Shadow DOM styles, abortable listeners and one cancellable loop. Existing portal snapshots include outline state. This implements the selected close-view seam, not the general attachment-schema migration above.
 
 Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
+
+## Selected runtime resource ownership
+
+The resource change has four separate lifetimes. Their budgets and validation limits are specified in [RUNTIME](RUNTIME.md#bounded-runtime-resources--dm-runtime-residency-20261027), with delivery evidence in the [task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md).
+
+| Owner | Keeps | Releases / invalidates |
+| --- | --- | --- |
+| Application session | Registered scene revision, route/environment context, pose, camera and path | Invalid states are rejected/remapped through existing registration/session rules; resource eviction never rewrites place identity |
+| Public repository | Bounded reusable decoded records and shared in-flight public requests | LRU eviction removes cache references; epoch invalidation aborts requests and rejects late results |
+| Outline stage slot | At most one compatible renderer/navigation pair for 60 seconds after returning to overview | An incompatible context, expiry or final page exit disposes it; suspended stages schedule no frames and accept no navigation input |
+| Spatial drawing | Active/pinned chunk resources and a bounded inactive warm cache | Warm LRU/age eviction releases chunk-owned allocations; final drawing disposal also releases scene-shared resources once |
+
+`src/engine/frame-loop.js`, `spatial-index.js`, `chunk-residency.js`, `resource-scope.js` and `navigation-grid.js` are implementation utilities. They own neither chronology nor coordinate authority. A chunk identifier is a disposable presentation/cache key; registered places, source footprints and destination IDs remain stable across eviction and reconstruction. Shared materials and textures have an explicit scene owner so releasing one chunk cannot invalidate another chunk's rendering.
+
+The selected scene still downloads and validates one complete JSON payload. Drawing factories create spatial GPU resources on demand; navigation evaluates grid cells on demand with bounded reusable caches, explicit per-query work limits and one adapter-owned instance. A query that exhausts its work budget fails safely; it does not certify physical disconnection. These changes do not implement network chunk streaming, a globally bounded visible set, a hierarchical road graph or automatic LOD. The accepted full camera frustum remains the rendering boundary, including distant ink beyond the filled surfaces' fog range.
+
+Asynchronous mount results are accepted only while their caller, repository epoch, source path and session context remain current. View cancellation can detach from a shared fetch; repository invalidation owns cancellation of that fetch. No completed stale request may replace a newer stage or publish old session state. Final cleanup remains separate from temporary suspension, and neither becomes a second persistence owner.

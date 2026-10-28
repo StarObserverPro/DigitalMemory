@@ -1,6 +1,6 @@
 # Architecture decision register
 
-> **2026-10-26 status reconciliation:** The already merged student model stays unchanged; an older synthetic 2× visual trial is historical evidence, not a required new scale transform. Marble 2 has produced nothing, the Fengtai bridge branch is public research only, and a Keith Haring-inspired outline style is a **parked option**, not a new adopted art specification. See [STATUS](STATUS.md), [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md), and [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md).
+> **2026-10-27 current decision:** The selected Keith Haring-inspired Xinhua/Sanli outline scene and corridor extension supersede the earlier parked idea for this close view. Overview raster art remains separate. The GLB student's provisional-use decision and synthetic 2× trial remain legacy records, not instructions for the active outline person. Marble 2 has no generated output; bridge research remains public-source material. See [STATUS](STATUS.md) and [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md).
 
 This is the concise record of decisions and their authority, not a second copy of every contract. Detailed semantics live in the linked owners. A later change records its reason and affected decision IDs; it does not silently rewrite the original user constraint.
 
@@ -32,7 +32,7 @@ Basis: the user's current integration request and the accepted discussion of sel
 | ADR-009 | Public code repository and private memory archive are separate; publishing is an explicit additional effect. | Observed public repository plus privacy-preserving architecture; [content](CONTENT_PIPELINE.md). |
 | ADR-010 | Phase 1 is the compact walking network, with 新华街 first; no high-school cycling extension. | Latest explicit user scope, superseding the earlier longer route proposal; [Phase 1](PHASE_1.md). |
 | ADR-011 | Use a small task router and intent/evidence packet, not Crystal Garden's complete governance system. | User asks for selective borrowing; [attention](attention/README.md). |
-| ADR-012 | Logical modules first; select concrete app/storage/generation technology in bounded implementation tasks. | Documentation-only activation and no existing runtime to preserve; [architecture](ARCHITECTURE.md). |
+| ADR-012 | Logical modules first; select concrete app/storage/generation technology in bounded implementation tasks. | Initial pre-runtime architecture decision; current implementation is in [RUNTIME](RUNTIME.md). |
 
 User-defined requirements above are established project constraints. Technical choices are the v1 architecture proposed by this deliverable, not claims of separate user aesthetic acceptance or implemented behavior. Already authorized ordinary implementation choices do not need a new product-alignment meeting for every file.
 
@@ -45,7 +45,7 @@ User-defined requirements above are established project constraints. Technical c
 
 ## Explicitly deferred
 
-Exact historical school coordinates, entrances and walking segments; evidence-backed base-map acquisitions; exact life-stage date mapping; final illustration style, fonts and camera pitch; future renderer changes beyond the recorded prototype; private storage/authentication/archive provider; measured device performance targets; later cycling/transit interaction; and any new deployment or public-content release. Existing implementation/deployment observations remain in STATUS rather than being re-deferred by this list.
+Exact historical school coordinates, entrances and remembered walking segments; complete historical base-map coverage; exact life-stage date mapping; visual changes outside accepted scene revisions; private storage/authentication/archive provider; measured physical-device performance targets; later cycling/transit interaction; and unrequested deployment or public-content release. The selected outline style, font and camera are already concrete. Current activated runtime work and existing deliveries are reported in their task packet and STATUS rather than being re-deferred by this list.
 
 Deferral is not permission for an executor to invent values. It is also not a requirement to block unrelated work. A suitable activated packet can resolve the relevant choice and record evidence.
 
@@ -70,3 +70,11 @@ User correction supersedes the earlier fixed map-camera assumption. Far view: ha
 ## 2026-10-27 — accepted Sanli outline and controlled integration
 
 User selected sanli-outline-r5 for intake and main integration. Preserve continuous sparse black contours, quiet faces, restrained retracting motion, outline person, muted green ground, irregular rounded navigation UI and local ZCOOL KuaiLe. This close-view decision leaves overview raster style and stable place/route ownership intact. Navigation compass/minimap are approved scoped additions. Keep final geography in the selected data; record position changes in prose only when they reveal reusable process lessons. Integrate through the existing route entry/session/spatial/time owners, then open a PR; GitHub merge and deployment remain separate effects.
+
+The subsequent corridor request authorized correction and merge through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25), merged at `67baf01065f15f9d83a6b4d2903667197582e61b`. That authorization does not carry forward to unrelated mixed-code PRs or deployment.
+
+## 2026-10-27 — bounded runtime resources and documented sandbox scope
+
+The user authorized implementation of the resource-management improvements on current main and a reviewable PR, with no merge/deployment for that mixed task. Preserve selected geometry/art and existing session/spatial/time ownership. Separate active rendering, temporarily retained resources and final disposal; keep cache limits explicit and measure lifecycle behavior. [ARCHITECTURE](ARCHITECTURE.md), [RUNTIME](RUNTIME.md) and [the task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md) own the concrete design, implementation and evidence.
+
+Sandbox construction must have a repository scope before work begins, reusing an existing matching task packet. Purpose, baseline, boundaries, acceptance, output destination and status are the minimum; trial artifacts remain outside Git. Read canonical docs before implementation, align/review them before tests/build/CI, then open or update the PR with actual results. This augments ADR-011/ADR-018 without creating per-step approvals or a second task system.

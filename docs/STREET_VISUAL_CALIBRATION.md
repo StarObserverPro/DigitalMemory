@@ -1,12 +1,14 @@
-# Street visual calibration — selected scale and reference findings (DM-0021)
+# Historical street visual calibration — DM-0021
 
-> **2026-10-26 current model resolution:** The separate avatar has already been integrated via [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22). The running GLB uses `SCHOOLBOY_SCALE.height=1.4`, `headBoneScale=0.48`, and the street's existing profile scaling. The user finds the silhouette slightly stocky but chooses to **keep it for now, with no further height, head/body, silhouette or perceived-size changes**. The **2×** numbers below measure an *older synthetic character with a fixed camera*, **not** a multiplier to apply to the actual GLB. This checkpoint does not claim a new rendered visual review.
+> **Current reading boundary:** The selected Xinhua/Sanli street uses the continuous outline person; see [STREET_PROTOTYPE](STREET_PROTOTYPE.md). This page retains the earlier synthetic scale study and GLB decision. Neither its 2× ratio nor orthographic camera settings configure the outline scene.
 
-**Earlier synthetic comparison state (2026-10-19; superseded as a live change request):** User-selected **2× apparent character size** from local review 02, for the *next street-view character integration*. Documentation decision only; not a change to the current app, not a final character design, camera approval, or historical dimension. Main's street prototype remains the baseline described in [STREET_PROTOTYPE](STREET_PROTOTYPE.md).
+> **Historical 2026-10-26 model resolution:** The separate avatar was integrated via [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22). That GLB uses `SCHOOLBOY_SCALE.height=1.4`, `headBoneScale=0.48`, and the legacy street's profile scaling. The user found the silhouette slightly stocky but chose to **retain it unchanged at that checkpoint, with no further height, head/body, silhouette or perceived-size changes**. The **2×** numbers below measure an *older synthetic character with a fixed camera*, **not** a multiplier to apply to the GLB. That checkpoint did not claim a new rendered visual review.
+
+**Earlier synthetic comparison state (2026-10-19; superseded as a live change request):** User-selected **2× apparent character size** from local review 02, for the then-proposed street-view character integration. It was a documentation decision, not a runtime change, final character design, camera approval or historical dimension. The dated evidence below remains tied to that fixture.
 
 ## Intent and limits
 
-The objective is a readable person/sidewalk/gate/building relationship, convincing grounded motion, and a modestly elevated street composition for the Xinhua walking-memory scene. The user is building the character **separately**; this document describes the **street integration target**, not its mesh authoring or rigging specification.
+The study sought a readable person/sidewalk/gate/building relationship, grounded motion and a modestly elevated composition. Character authoring was a separate track; this page records the historical integration comparison rather than a new mesh, rig or scale instruction.
 
 Richman 10/11 is an *observational reference* for legibility, body/environment proportion and buoyant but grounded movement. It is not a source of game mechanics, copied character geometry, a colorful rendering style, turn-based movement, property logic or HUD. The overview remains a separate illustrated map with **no avatar**; this trial concerns **street view only**. The Phase 1 walking network is unchanged, with no new historical cycling corridor.
 
@@ -20,7 +22,7 @@ Richman 10/11 is an *observational reference* for legibility, body/environment p
 | --- | ---: | ---: | ---: |
 | 1× — rejected as too small | 1.40 presentation units | 82.37 px | 12.87% |
 | 1.5× — intermediate | 2.10 presentation units | 123.56 px | 19.31% |
-| **2× — selected integration target** | **2.80 presentation units** | **164.75 px** | **25.74%** |
+| **2× — selected in this synthetic fixture** | **2.80 presentation units** | **164.75 px** | **25.74%** |
 
 The height pixels above measure a vertical *reference line*, not a precise figure silhouette or a design target for all aspect ratios. The test units are **not metres** and **not source GIS coordinates**. The synthetic test gate is 2.35 units high, so making the actual character physically 2.80 units high without recalibrating the scene would be misleading. **Carry over the perceived prominence of 2×; do not assert that a historical human should be taller than a gate.** In the real registered street scene, inspect gate/door scale and achieve the comparable visual presence through a documented scene-local visual scale/framing decision. Do not turn this old fixture into an automatic runtime scaling command under the 2026-10-26 decision.
 

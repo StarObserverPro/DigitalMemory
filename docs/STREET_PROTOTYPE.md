@@ -1,16 +1,18 @@
-# Grounded street prototype — DM-0010
+# Selected street consumer and retained prototypes
 
 ## Current selected Xinhua close-view consumer — 2026-10-27
 
-The main Xinhua entry now uses the user-approved [Sanli outline scene](../scenes/xinhua-sanli-outline/README.md), with the continuous outline figure and navigation UI. Earlier GLB schoolwear/orthographic renderer descriptions and evidence below remain historical or legacy-module records; they are not the live Xinhua rendering claim. The accepted 3D schoolboy assets are retained. [Outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns this selected style and integration process.
+The main Xinhua entry uses the user-approved [Sanli outline scene](../scenes/xinhua-sanli-outline/README.md) and its corridor extension, with the continuous outline figure, sparse motion and navigation UI. `src/explorer/outline-stage.js` adapts it to the existing spatial/time/session owners. Its camera is perspective; the old orthographic values below do not configure this consumer. [RUNTIME](RUNTIME.md) owns current loading/lifecycle and [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns selected style, source geometry and visual checks.
+
+Earlier GLB schoolwear/graybox descriptions and evidence below remain historical or legacy-module records. The 3D schoolboy assets are retained, with their existing rights/appearance gaps; they do not run alongside the active outline figure.
 
 
 > **Historical consumer, 2026-10-26 (superseded for Xinhua by the selected outline integration):** The street player now displays the merged skinned male-student GLB, with KayKit idle/walk and two selectable schoolwear palettes. Actual scale: `SCHOOLBOY_SCALE.height=1.4` and `headBoneScale=0.48`. User elects to keep the existing slightly stocky character unchanged. The older [2× synthetic comparison](STREET_VISUAL_CALIBRATION.md) does not control the current runtime. Chrome WebGL smoke passed earlier, but detailed foot planting, final aesthetics and donor rights remain unresolved.
 
 
-## Reference and scope
+## Historical DM-0010 reference and scope
 
-The user explicitly prioritizes volume, readable scale and interaction before street artwork. The former simplified models replaced the old facade cutouts and paper person only in the existing Xinhuajie sample. They are spatial prototypes, not a verified historical block.
+For the earlier DM-0010 study, the user prioritized volume, readable scale and interaction before street artwork. The simplified models replaced the facade cutouts and paper person in that Xinhuajie sample. They are spatial prototypes, not a verified historical block or the later accepted outline style.
 
 Inspected the actual screenshots from the publishers' Steam store pages on 2026-10-18:
 
@@ -19,12 +21,12 @@ Inspected the actual screenshots from the publishers' Steam store pages on 2026-
 
 Observed: elevated oblique views, large-headed volumetric figures, plainly visible ground contacts, roofs and building sides, and a readable route within one composition. The following numerical choices are our prototype decisions, not measurements of either game. No screenshot, game character or third-party model is redistributed.
 
-## Presentation contract
+## Retained graybox / GLB presentation record
 
-| Part | Current runtime / historical reference |
+| Part | Legacy implementation / historical reference |
 | --- | --- |
-| Live avatar | Modular skinned GLB fitted to 1.4 presentation units, donor head scale 0.48, red/blue uniform; old ball/cylinder figure now only a unit fixture |
-| Live walking | KayKit idle/walk blended by route displacement; old procedural two-bone test does not validate actual GLB foot contacts |
+| Retained avatar | Modular skinned GLB fitted to 1.4 presentation units, donor head scale 0.48, red/blue uniform; ball/cylinder figure retained as a unit fixture |
+| Retained walking | KayKit idle/walk blended by route displacement; procedural two-bone tests do not validate actual GLB foot contacts |
 | Shops | Independent short volumes, 2.65 units high; frontage slots/occupants remain separate |
 | Housing | 6.16 units for the current 17.6 m source proxies, roof and wall thickness, outside the sidewalk |
 | Gate | 2.35 units high; open passage with independent leaves and posts; source synthetic portal retained |
@@ -32,18 +34,18 @@ Observed: elevated oblique views, large-headed volumetric figures, plainly visib
 | Camera | Fixed elevated orthographic view, 44° above ground, 15.2-unit desktop span / 14-unit narrow span; orbit independent of facing |
 | Occlusion | A foreground building blocking the character becomes translucent; it does not move its registered root |
 
-`street-layout.js` owns pure presentation calculations. `street-world.js` constructs the same meshes used by the consumer and native evidence. `stage.js` owns the sole renderer/input loop. `session.js` owns route, lateral position, facing, orbit and click destination. The spatial registry and time resolver are unchanged.
+Within that legacy implementation, `street-layout.js` owns presentation calculations, `street-world.js` constructs its meshes and `stage.js` owns its renderer/input loop. `session.js` owns the recorded route, lateral position, facing, orbit and click destination. These retained modules are not the selected outline runtime's rendering owner.
 
-## Interaction
+## Historical graybox interaction
 
 Click/tap the modeled sidewalk to walk to a bounded destination. Arrow keys/WASD move in camera-relative ground directions. A new directional input cancels the click destination. Drag horizontally to orbit without turning the body. Click the gate to approach first and enter after reaching it; Enter and the closed menu's gate action remain available only nearby. Opening a dialog, leaving the scene, blur or visibility change cancels walking. Portal return restores the route, sidewalk offset, facing and orbit. Map mode has no person.
 
 No dice, compulsory board spaces, costs, hovering instructions, controls outside the menu, or named historical shop claims are added. The existing courtyard remains an explicitly imagined fixture.
 
-## Evidence and limits
+## Legacy evidence and limits
 
 - `tests/street.test.mjs`: route/target/bounds and camera tests; its procedural planted-feet and joint checks are **legacy fixtures**, not GLB foot-contact proof.
 - `evidence/street-*-r3.webp` and `street-proportions-r3.json`: native CPU projections of the consumer's actual meshes and camera. They show arrival, gate, mid-step/orbit and narrow screen. They are **not WebGL screenshots**; browser lighting, shadows, label textures, input events, GPU draw count and device performance have not been observed.
 - Reproduce geometry evidence: `node scripts/render-street-evidence.mjs`, then `python scripts/raster-street-evidence.py` (NumPy/Pillow). Intermediate triangles stay in ignored `local-evidence/`.
 - Earlier Sites-controlled browser review was unavailable; the merged GLB later passed [Chromium WebGL smoke](https://github.com/StarObserverPro/DigitalMemory/actions/runs/39486090781). Detailed gait/foot acceptance and visual sign-off remain separate.
-- User aesthetic approval remains open. Current neutral volumes can later receive modular illustrated surfaces after the spatial relationship is accepted.
+- Detailed GLB aesthetic approval remains open. A future use of those neutral volumes or illustrated surfaces requires its own selected consumer; it does not supersede the approved outline scene.
