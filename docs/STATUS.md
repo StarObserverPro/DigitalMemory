@@ -31,7 +31,9 @@ An initial authoring comparison used the same corridor data, default position `(
 | Drawing chunks | No spatial residency owner | 88 registered; 27 resident/active; 0 warm |
 | Navigation initialization | Full-grid walkability pre-scan | 699,141 logical cells; 153 cached at the sampled entry |
 
-The fixed-view images retained the accepted visible composition on inspection; the initial camera settling differed by roughly 0.005 m in height, so this is not a pixel-identical comparison. Entry duration in this one local run is not a formal benchmark. Final regression results, tested head, actual browser flow and PR/CI status must be taken from the current task packet; initial authoring observations do not establish that final acceptance has passed.
+The default-view images retained the accepted visible composition on inspection; the initial camera settling differed by roughly 0.005 m in height, so that pair is not a pixel-identical comparison. Three additional settled views—under the bridge, across the Daoxiangcun forecourt and toward its sign—had **0 differing RGB pixels**. Their calls/geometries changed from 771/775 to 38/41, 790/791 to 93/93 and 821/821 to 182/181 respectively. Camera collision and the sign texture remained intact. These are the tested views in the same software WebGL environment, not a hardware frame-rate or loading-time benchmark.
+
+Implementation/test source `338d89995ea7f1c099d528516f1be85d3ad00bc6` passed `npm run check` (14 application test files, 5 scene test files and build), the built main walking/menu/turn/map/phone flow, eight-turn bounded-cache eviction, retained re-entry, a real 60-second expiry/rebuild, and delayed-load cancellation/retry. All 24 destinations remained reachable. The documentation audit checked 62 Markdown files and 316 local links/anchors without failures. Detailed conditions, ownership limits and handoff are in the [resource task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md). GitHub CI is reported separately against the published PR head; these local results do not claim a merge or deployment.
 
 ## Historical selected-Sanli intake — 2026-10-27
 
