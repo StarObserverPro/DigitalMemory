@@ -46,14 +46,33 @@ try {
   assert(await page.locator('#menu-button').evaluate(el => el === document.activeElement));
   evidence.checks.push('Cancelling the first drawing after scene mount suspends the fresh renderer and restores map keyboard focus.');
   await begin();
-  await page.waitForFunction(() => Number(document.querySelector('.street-transition')?.dataset.frame) >= 6);
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'drawing' && digitalMemory.inspect().entryTransition.elapsedMs > 1900);
   await shot('journal-box-desktop');
-  await page.waitForFunction(() => Number(document.querySelector('.street-transition')?.dataset.frame) >= 19);
+  const cadence = await page.evaluate(() => new Promise(resolve => {
+    const samples = [], start = performance.now();
+    function sample() {
+      const entry = digitalMemory.inspect().entryTransition;
+      samples.push({ frame: entry.frame, time: entry.elapsedMs });
+      if (performance.now() - start < 500) requestAnimationFrame(sample); else resolve(samples);
+    }
+    requestAnimationFrame(sample);
+  }));
+  assert(new Set(cadence.map(s => s.frame)).size > 8, 'continuous canvas updates must exceed the old 8 fps gate');
+  assert(cadence.some(s => Math.abs(s.time % 125) > 1), 'elapsed motion time must not be quantized');
+  evidence.motionCadence = cadence;
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 8000);
   const during = await state();
   await page.keyboard.down('w'); await page.waitForTimeout(160); await page.keyboard.up('w');
   assert.deepEqual((await state()).session.outline.position, during.session.outline.position, 'entry must block walking');
   await shot('journal-writing-desktop');
   const firstJournal = during.entryTransition.journal;
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'reading');
+  const reading = (await state()).entryTransition;
+  assert(reading.durationMs - reading.elapsedMs > 1700, 'the completed page must have time to read');
+  await shot('journal-reading-desktop');
+  await page.waitForTimeout(1000);
+  assert.equal((await state()).entryTransition.beat, 'reading');
+  evidence.readingHold = reading;
   await landed(); await stamp('journalLanding'); await shot('street-desktop');
   assert.deepEqual((await state()).session.camera, origin.camera);
   assert.deepEqual((await state()).session.route, origin.route);
@@ -90,9 +109,9 @@ try {
 
   await page.setViewportSize({ width: 390, height: 844 });
   await begin();
-  await page.waitForFunction(() => Number(document.querySelector('.street-transition')?.dataset.frame) >= 7);
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'pause');
   await shot('journal-box-phone');
-  await page.waitForFunction(() => Number(document.querySelector('.street-transition')?.dataset.frame) >= 24);
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 8000);
   await shot('journal-writing-phone');
   await page.setViewportSize({ width: 430, height: 844 });
   await landed(); await shot('street-phone');

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { animateFrames, chooseJournal, JOURNAL_LINES } from '../src/explorer/entry-transition.js';
+import { animateFrames, chooseJournal, JOURNAL_LINES, journalTiming, journalMoment } from '../src/explorer/entry-transition.js';
 import { createSession } from '../src/application/session.js';
 import { restoreSession, saveSession } from '../src/adapters/session-storage.js';
 
@@ -71,4 +71,26 @@ test('transition preference persists without changing the map or route, includin
   saved = JSON.stringify({ ...session.get(), entryTransition: 'invalid' });
   assert.equal(restoreSession(storage, manifest).entryTransition, 'journal');
   assert.equal(createSession({ entryTransition: {} }).get().entryTransition, 'journal');
+});
+
+
+test('journal allows time to read and continues writing smoothly between object pose changes', () => {
+  for (const lines of JOURNAL_LINES) {
+    const timing = journalTiming(lines);
+    assert(timing.duration + 900 >= 14500 && timing.duration + 900 <= 16500);
+    assert.equal(journalMoment(timing.drawEnd + 100, timing).beat, 'pause');
+    assert.equal(journalMoment(timing.exitEnd + 1000, timing).beat, 'reading');
+    const row = timing.rows[1];
+    const a = journalMoment(row.start + 151, timing), b = journalMoment(row.start + 167, timing);
+    assert(b.progress > a.progress && b.progress - a.progress < .01, 'writing advances within a pose interval');
+    for (let i = 0; i < timing.rows.length - 1; i++) {
+      const end = timing.rows[i].end, next = timing.rows[i + 1].start;
+      assert.equal(journalMoment(end + 1, timing).progress, journalMoment(next - 1, timing).progress, 'ink holds during a lifted line change');
+      assert.equal(journalMoment(end, timing).lineTravel.progress, 0, 'line lift begins at the previous endpoint');
+      assert(journalMoment(end + 1, timing).lineTravel.progress < .001);
+      assert(journalMoment(next - 1, timing).lineTravel.progress > .999);
+      assert.equal(journalMoment(next, timing).progress, journalMoment(end, timing).progress);
+    }
+    assert.equal(journalMoment(timing.duration, timing).progress, 1);
+  }
 });
