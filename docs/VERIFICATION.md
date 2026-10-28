@@ -101,6 +101,10 @@ For outline figure visibility, bind foot/head projection and actual screenshot t
 
 ## Runtime lifecycle and residency checks
 
+For map-to-street transitions, observe the lower-right box → upper-left writing → fade sequence, five dated street-journal variants and subtle object-level Haring hand/block instability at actual desktop/phone size. Observe a complete moving entry: continuous stroke growth and pen travel, lifted stroke/line changes, the distinct pause and 2.1-second reading hold; screenshots alone cannot establish pacing or motion. Check the unframed page layout, the block's position below/right of the unchanged writing, absence of thin page/button borders, the block's rounded contour/face joins and pencil contact along the curved drawing path, pen-tip alignment between raster poses, a short softly faded wrist with no hard crop edge or long arm obscuring the page, font glyph coverage and readable final handwriting; rejection of earlier art/text remains separate from passing behavior checks. Exercise the menu switch and reload persistence, the actual overhead/cloud/descent alternative and reduced motion. During both presentations verify navigation is blocked and the saved map/street camera stays unchanged. Cancel before loading, during drawing and during reveal; test delayed/failed scene load, page hiding, repeated entry and return. Cleanup must leave no modal, camera override or extra frame chain, and a retry must still work. See [TR01–TR05](attention/tasks/DM-STREET-TRANSITION-20261028.md).
+
+`tests/entry-transition.browser.mjs` runs against the built application; it records cadence/beat observations and writes screenshots/results to `ENTRY_EVIDENCE_DIR` or a system temporary directory. The existing browser CI job runs it after the selected-street smoke and retains captures as short-lived workflow artifacts. Its failure fixtures are separate from normal-flow console-error checks; Windows local checks may use a supplied Playwright module and Chromium executable.
+
 Use the actual main outline entry, plus focused tests for its shared runtime modules. Record these outcomes independently:
 
 | Concern | Required observation |

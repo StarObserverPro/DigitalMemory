@@ -1,0 +1,4 @@
+# Keep pinned text hashes identical on Windows and Unix.
+* text eol=lf
+*.png binary
+*.woff2 binary

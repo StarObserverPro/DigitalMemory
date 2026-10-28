@@ -14,6 +14,9 @@ for (const file of [manifest.context, manifest.places, manifest.overviewRegistra
   if (record.privacy !== 'public') throw new Error('Private data in public manifest');
 }
 const sceneManifest=JSON.parse(await readFile('scenes/xinhua-sanli-outline/manifest.json'));
+const entryManifest=JSON.parse(await readFile('assets/transitions/manifest.json'));
+if(entryManifest.privacy!=='public')throw Error('Private entry art');
+for(const [file,hash] of Object.entries(entryManifest.files))if(createHash('sha256').update(await readFile('assets/transitions/'+file)).digest('hex')!==hash)throw Error('Entry presentation checksum mismatch: '+file);
 for(const [file,hash] of Object.entries(sceneManifest.files))if(createHash('sha256').update(await readFile('scenes/xinhua-sanli-outline/'+file)).digest('hex')!==hash)throw Error('Selected scene checksum mismatch: '+file);
 const geometry=JSON.parse(await readFile('content/public/'+manifest.geometry));
 createComposition(JSON.parse(await readFile('content/public/'+manifest.composition)),createIllustrationMapping(JSON.parse(await readFile('content/public/'+manifest.illustrationMapping)),createTransform(geometry.bounds)));

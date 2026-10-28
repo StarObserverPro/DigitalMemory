@@ -5,3 +5,5 @@
 #compass>span{z-index:1}#map-toggle,#map-content{position:relative;z-index:1}
 
 .compass-drawing #compass-needle{position:static;width:auto;height:auto}.nav-frame .compass-arrow{fill:#f1cf50;stroke-width:2.3}.compass-drawing text{fill:#24251f;stroke:none;font-family:"Sanli Happy",system-ui,sans-serif;text-anchor:middle;font-size:14px}.compass-drawing #compass-heading{font-size:13px}
+/* Entry camera belongs to the presentation; navigation appears after landing. */
+#outline-root.entering > :not(#stage){visibility:hidden!important}
