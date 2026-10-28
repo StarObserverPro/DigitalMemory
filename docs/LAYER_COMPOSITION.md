@@ -38,7 +38,7 @@ Occupancy, use, shell, roof/installation and boundary changes are different oper
 
 The r3 implementation reads `scene-composition.json` through `createComposition`. Its fixed widths, common shell assumptions and synthetic occupants describe that fixture only. They do not implement the generalized segment/attachment contracts above.
 
-## Concrete sizing and placement
+## Historical fixture sizing and placement
 
 The prototype is a 140 m route slice. North-side facade sections are 12 m wide, with two 4.3 m storefront slots. South-side service sections are 10 m, with one 5 m slot. The independent entry module is 5 m. An unknown block may reuse a type, but every instance has its own ID. These are authored typology proxies, not surveyed addresses.
 
@@ -46,13 +46,13 @@ Road width is 8.2 m, sidewalk navigation is bounded by the existing walk contrac
 
 The overview uses grouped representations to keep its density low. Each group lists the close-scene building IDs it represents; group ground reservations are separate from elevated image height. The historical theatre-offset experiment is superseded: current overview anchors follow the shared source registration. Artwork cannot move a route or establish a different geographic point. No road moves to fit a generated building. Tests check segment/rectangle crossings, including crossings whose endpoints lie outside the rectangle.
 
-## Rendering and time
+## Historical rendering and time
 
 In the historical fixture, roads draw first and building groups sort by ground depth. The target uses explicit hosts and occlusion relations: a detached frontage is not reparented to the nearest apartment, and a foreground fence/bridge need not follow a universal road-first paint order. In the street, the facade plane, two shallow returns and a shop plane supply depth. Fog limits the sample. No whole-city model is created.
 
 A period or preview change updates occupant signage through the resolver. It does not reload road geometry, move a building or reset the route. The former “试放一家店” control was a synthetic composition demonstration and was removed from the ordinary UI; it is not a present consumer feature, durable registration backend or historical evidence. There are currently no accepted historical occupants; changing period therefore retains typology proxies with unknown actual occupants.
 
-The child is physically 1.4 m high. The close follow camera and target height derive from the profile. This is a generic visual setting; no personal dates, growth history or home locations are published.
+The old child fixture used a 1.4 m profile, with its close follow camera and target derived from that profile. These are legacy settings, not the selected outline figure's dimensions or camera. No personal dates, growth history or home locations are published.
 
 ## Public image repository use
 
@@ -60,6 +60,6 @@ The current public modules are versioned beside code under `assets/modules/`; th
 
 A separate image repository can later export the same immutable asset manifest. `assetId` and revision remain the interface: changing storage location updates the manifest/base URL, not building identity or route data. Large original photos belong in permission-appropriate storage; only cleared derivatives go into public Git. No private-photo upload or extra asset repository is required for this prototype.
 
-## Consumer presentation correction (DM-0005)
+## Historical consumer presentation correction — DM-0005
 
 The composition contracts remain internal. Their previous layer switches, sample storefront controls and geographic mapping inspector are removed from the consumer UI. `map-context.json` supplies display-only roads, district washes and building-symbol centroids from the retained OSM extract; it cannot register places or resolve historical occupants. `scripts/build-context.py` reproduces it from that source, whose checksum is recorded. Street secondary-row flats are subdued contextual scenery, not newly asserted historical buildings. The one closed menu owns all explicit controls; the visible map or street contains only the scene.

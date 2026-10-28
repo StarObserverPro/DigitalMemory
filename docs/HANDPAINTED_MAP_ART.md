@@ -1,8 +1,8 @@
-# Hand-painted map art: current production direction
+# Hand-painted overview art: production direction
 
-## Parked future art idea — Keith Haring-inspired line economy (2026-10-26)
+## Scope and selected outline close view — 2026-10-27
 
-The user suggested exploring a **Keith Haring-inspired** simplified visual language for streets: buildings reduced to boxes and a few purposeful graphic lines, with restrained color applied selectively to remembered places. This is a **long-term hypothesis** only, not a new accepted style or request to generate imagery now. Any future treatment must be original rather than replicate a specific artwork, must preserve verified street/bridge placement, tower height classes, meaningful gates, collision and occlusion, and must be compared in an actual consumer view. Existing painted raster assets and the street GLB remain unchanged.
+This page owns the **overview's raster artwork**. The user subsequently selected the Keith Haring-inspired Xinhua/Sanli close view, which uses original real-time masses, sparse contours, a continuous outline person and restrained motion. That approved treatment supersedes the 2026-10-26 parked idea for the selected street only; [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns its drawing and occlusion rules. It does not replace the overview with vector buildings or turn every other view into the same renderer. The GLB remains a retained legacy asset, not the selected street person.
 
 
 DM-0015, updated 2026-10-19. This records the user's current correction and supersedes older instructions that let tiny isolated images, a fixed pixel ratio or sparse window dots determine the final style.
@@ -19,7 +19,7 @@ These are representation-selection rules. The height/projection requirements bel
 
 ## Current mass-first implementation — DM-0018
 
-The latest request permits simple rectangular/footprint-based masses, with wax colour blocks or coloured-pencil hatching, followed by more detail when enlarged. R6 applies that instruction to a source-linked spatial plan. One selected image-generated material atlas supplies broad wax, directional pencil, roofs and facade marks. An offline compositor projects these raster materials onto the registered volume faces; it does not render visible SVG surfaces, add synthetic grain, or reshape a whole generated compound to fit geography. This surface-material method is distinct from the contextual-scene method below and is the current implementation for Xinhua.
+The DM-0018 request permits simple rectangular/footprint-based masses, with wax colour blocks or coloured-pencil hatching, followed by more detail when enlarged. R6 applies that instruction to a source-linked spatial plan. One selected image-generated material atlas supplies broad wax, directional pencil, roofs and facade marks. An offline compositor projects these raster materials onto the registered volume faces; it does not render visible SVG surfaces, add synthetic grain, or reshape a whole generated compound to fit geography. This surface-material method is distinct from the contextual-scene method below and is the Xinhua overview implementation.
 
 Far scale simplifies small contour steps and omits small low-rise bodies; main masses keep their source position, physical height and height class. Medium adds subdued floor/window rhythm. Near adds finer facade marks at a row spacing derived from the estimated storey count. Every level shares the same canonical footprint, anchor and image world bounds. Simplification changes only the visible raster contour, not the geography. No tiny-body count or fixed window count replaces a 23-storey tower.
 
@@ -29,7 +29,7 @@ The user has not yet approved R6 aesthetics. The old R5 geography was rejected; 
 
 ## Visible art and planning have different owners
 
-All visible map buildings, vegetation, lawns, hardscape, clutter and painted surface details use original hand-painted raster imagery. SVG belongs to footprint/projection planning, guide diagrams, registration, invisible masks/clips, hit areas and ordinary text/UI. SVG cannot paint finished roofs/walls, trees, grass blobs or debris. Rasterizing vector shapes, adding a turbulence filter, or overlaying noise on clean vector faces does not satisfy the drawing requirement.
+All visible overview buildings, vegetation, lawns, hardscape, clutter and painted surface details use original hand-painted raster imagery. SVG belongs to footprint/projection planning, guide diagrams, registration, invisible masks/clips, hit areas and ordinary text/UI. SVG cannot paint finished overview roofs/walls, trees, grass blobs or debris. Rasterizing vector shapes, adding a turbulence filter, or overlaying noise on clean vector faces does not satisfy the overview drawing requirement.
 
 If a raster is missing or fails the required scale, retain an appropriate previously reviewed raster or leave the supported pale context. Do not fall back to a visible vector building. DM-0016 replaces the current overview consumer with selected raster paintings and removes its legacy visible SVG rendering branch. Missing compound images leave the painted base; missing painting configuration does not revive vector art.
 
@@ -138,7 +138,7 @@ Do not put trial paintings, visual examples, contact sheets, unused generated as
 
 Prepare a clean branch containing only intended deliverables before pushing. Adding images and deleting them in a later commit still stores those images in Git history. The ignore rule for new candidate files is a guard against accidental additions, not a request to rewrite existing shared history or remove earlier tracked production dependencies.
 
-## Current user verdict
+## Historical overview verdicts — DM-0015 and DM-0016
 
 On 2026-10-19 the user accepted the specification and found the proportion/scaling result usable. The user rejected the generated finish: excessive meaningless visual noise and no demonstrated difference in brushwork. Neither painting is an accepted style reference, and no version is preferred. Trial images and associated example scripts are excluded from this documentation-only delivery and its branch history.
 
