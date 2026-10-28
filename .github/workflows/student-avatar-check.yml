@@ -8,15 +8,23 @@ on:
       - 'src/explorer/schoolboy.js'
       - 'src/explorer/outline-stage.js'
       - 'src/explorer/main.js'
+      - 'src/explorer/entry-transition.js'
+      - 'src/explorer/styles.css'
+      - 'src/application/session.js'
+      - 'src/adapters/session-storage.js'
+      - 'index.html'
       - 'src/engine/**'
       - 'src/adapters/public-repository.js'
       - 'scenes/**'
       - 'src/explorer/street-*.js'
       - 'src/explorer/stage.js'
       - 'assets/characters/schoolboy/**'
+      - 'assets/transitions/**'
       - 'assets/vendor/three/**'
       - 'tests/schoolboy.test.mjs'
       - 'tests/schoolboy.browser.mjs'
+      - 'tests/entry-transition.browser.mjs'
+      - 'tests/entry-transition.test.mjs'
       - 'scripts/serve.mjs'
       - '.github/workflows/student-avatar-check.yml'
   workflow_dispatch:
@@ -43,6 +51,19 @@ jobs:
         env:
           CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
         run: node tests/schoolboy.browser.mjs
+      - name: Journal and cloud entry walkthrough
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+          ENTRY_EVIDENCE_DIR: ${{ runner.temp }}/entry-transition
+        run: node tests/entry-transition.browser.mjs
+      - name: Preserve entry transition review captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: entry-transition
+          path: ${{ runner.temp }}/entry-transition
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Preserve temporary WebGL screenshots for PR review
         if: always()
         uses: actions/upload-artifact@v4

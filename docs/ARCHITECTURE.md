@@ -70,6 +70,8 @@ Resolve in this order: selected period/environment → supported route/walking e
 
 ## Session transitions and recovery
 
+The map-to-street presentation in `src/explorer/entry-transition.js` owns only a temporary modal canvas and cancellable frame sequence. The application entry owner keeps its existing load-generation/AbortController boundary; the session owns the persisted `entryTransition` preference (`journal` or `simple`) and final map/street pose. The selected renderer accepts a transient entry-camera progress without writing it to session storage. During that presentation its one scene loop can render while navigation stays blocked; cancellation releases the overlay and camera override. A nested return preserves the current user preference.
+
 Normal navigation is overview → route scene → attachment content. Capture the route ID/revision, edge/progress, side, local offset, heading, camera, active period, scene revision and selection before activation. A sequence also owns a page cursor and optional approved reading links; page order is not spatial connectivity.
 
 Closing a note or sequence returns to exactly the same street context. A local scene can contain further attachments and return through the same stack. Preserve the origin while loading, pause the inactive walk controller, cancel stale loads and recover cleanly from unavailable content. Search can reveal/focus the relevant route and attachment; an intentionally resumed interior must restore a valid origin stack rather than inventing an overview-to-room portal.
