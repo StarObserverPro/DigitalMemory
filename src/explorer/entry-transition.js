@@ -97,26 +97,34 @@ function drawBox(ctx, progress, x, y, scale) {
 // Source rectangles exclude the neighboring frame's cut forearm. Each pen tip
 // is registered separately; pose changes cannot move the drawing contact point.
 const HAND_FRAMES = [
-  { x: 0, width: 512, tip: [51, 606], seam: [495, 625.5, 780.5] },
-  { x: 530, width: 490, tip: [23, 606], seam: [477, 627, 783] },
-  { x: 1040, width: 480, tip: [26, 607], seam: [464, 631, 781.5] }
+  { x: 0, width: 512, tip: [51, 606] },
+  { x: 530, width: 490, tip: [23, 606] },
+  { x: 1040, width: 480, tip: [26, 607] }
 ];
+const handPoseCache = new WeakMap();
+function fadedHandPoses(sprite) {
+  if (!handPoseCache.has(sprite)) handPoseCache.set(sprite, HAND_FRAMES.map(pose => {
+    const canvas = document.createElement('canvas');
+    canvas.width = pose.width; canvas.height = 1024;
+    const ink = canvas.getContext('2d');
+    ink.drawImage(sprite, pose.x, 0, pose.width, 1024, 0, 0, pose.width, 1024);
+    // Mask only the short source wrist. The grip and pencil remain opaque;
+    // the entire tail is transparent before the source crop's hard boundary.
+    const fade = ink.createLinearGradient(pose.tip[0] + 305, pose.tip[1] - 10, pose.tip[0] + 410, pose.tip[1] + 60);
+    fade.addColorStop(0, '#000'); fade.addColorStop(.35, '#000d');
+    fade.addColorStop(.72, '#0004'); fade.addColorStop(1, '#0000');
+    ink.globalCompositeOperation = 'destination-in';
+    ink.fillStyle = fade; ink.fillRect(0, 0, canvas.width, canvas.height);
+    return canvas;
+  }));
+  return handPoseCache.get(sprite);
+}
 function drawHand(ctx, sprite, x, y, scale, frame, lifted = false) {
   if (!sprite) return;
-  const pose = HAND_FRAMES[[0, 1, 2, 1][frame % 4]];
+  const index = [0, 1, 2, 1][frame % 4], pose = HAND_FRAMES[index];
   ctx.save(); ctx.translate(x, y); ctx.rotate(lifted ? -.06 : 0); ctx.scale(scale, scale);
   ctx.translate(-pose.tip[0], -pose.tip[1]);
-  // Continue the broad Haring arm off-screen instead of leaving a floating,
-  // chopped wrist in the middle of the page. The generated hand covers the join.
-  const [sx, top, bottom] = pose.seam, reach = 8000;
-  ctx.fillStyle = '#fffae9'; ctx.strokeStyle = '#050505'; ctx.lineWidth = 18; ctx.lineJoin = 'round';
-  ctx.beginPath(); ctx.moveTo(sx, top);
-  ctx.bezierCurveTo(sx + 80, top + 60, sx + 320, top + 220, sx + reach, top + reach * .64);
-  ctx.lineTo(sx + reach, bottom + reach * .64);
-  ctx.bezierCurveTo(sx + 320, bottom + 220, sx + 80, bottom + 32, sx, bottom); ctx.closePath(); ctx.fill();
-  ctx.beginPath(); ctx.moveTo(sx, top); ctx.bezierCurveTo(sx + 80, top + 60, sx + 320, top + 220, sx + reach, top + reach * .64); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(sx, bottom); ctx.bezierCurveTo(sx + 80, bottom + 32, sx + 320, bottom + 220, sx + reach, bottom + reach * .64); ctx.stroke();
-  ctx.drawImage(sprite, pose.x, 0, pose.width, 1024, 0, 0, pose.width, 1024);
+  ctx.drawImage(fadedHandPoses(sprite)[index], 0, 0);
   ctx.restore();
 }
 
