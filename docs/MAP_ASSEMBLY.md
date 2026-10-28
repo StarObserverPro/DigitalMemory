@@ -88,6 +88,8 @@ Each patch can have period-specific recipes (for example low housing versus late
 
 A gate/short boundary is the primary visible unit when internal layout is neither known nor useful. Keep the familiar street face legible, suggest only the supported rear typology, and reduce contour density, contrast, object count and explicit closure into continuous ground/paper treatment. Do not merely lower opacity on a fully detailed invented campus or cover it with game-like exploration fog.
 
+The street-view refinement may deliberately leave an unfamiliar rear building's upper contour open or unpainted while keeping the foreground/backdrop relationship legible at the walking camera. Source footprint, direction and height stay intact; no new horizontal cap should turn a tall source building into a short closed one. Map flattening is a separate representation choice: a selected building becomes a ground-plane block with no facade or visible height. The [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md#按行走视线选择前后轮廓--2026-10-28) owns the close-view treatment and its acceptance scope.
+
 Boundary-wall, railing and frontage recipes use [LAYER_COMPOSITION](LAYER_COMPOSITION.md). Revealing a background through rails does not require accurate internal corridors; opaque brick wall and detached frontage have their own occlusion. A generic hospital identifier or period-appropriate school gate is a recognition aid, not proof of an exact historical sign or borrowed fictional architecture.
 
 Zoom reveals only useful available information. It does not force an unfamiliar rear compound to become detailed at the nearest tier. Context can remain conceptually sparse at every tier. The nearby gate may become clearer while the interior remains an intentional omission.
