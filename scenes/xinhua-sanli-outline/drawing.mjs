@@ -60,13 +60,13 @@ export function makeDrawing(scene,data,options={}){
  for(let i=-3;i<=3;i++){const s=i*1.15,p=[at(data.eastDirection,s-.34,-7),at(data.eastDirection,s+.34,-7),at(data.eastDirection,s+.34,data.corridor?7:-4.8),at(data.eastDirection,s-.34,data.corridor?7:-4.8)];layer('crosswalk',p.map(v=>[v[0],v[2]]),PAPER,.025);}
  const circle=(x,y,z,r,n=24)=>Array.from({length:n+1},(_,i)=>[x+Math.cos(i/n*Math.PI*2)*r,y,z+Math.sin(i/n*Math.PI*2)*r]);
  line('ground-mark',circle(1,.035,1,.55));line('ground-mark',[at(data.northDirection,38,-18),at(data.northDirection,40,-18.7),at(data.northDirection,43,-18.5)]);
- function body(id,ring,height,material=face){
+ function body(id,ring,height,material=face,openUpper=null){
   const shape=new T.Shape();shape.moveTo(ring[0][0],-ring[0][1]);for(const p of ring.slice(1))shape.lineTo(p[0],-p[1]);shape.closePath();
   const mesh=new T.Mesh(new T.ExtrudeGeometry(shape,{depth:height,steps:1,bevelEnabled:false,curveSegments:1}),material);mesh.rotation.x=-Math.PI/2;mesh.position.y=.055;mesh.userData.id=id;context.root.add(mesh);context.meshes.push(mesh);
   const capacity=ring.length*3,geo=new LineSegmentsGeometry();geo.setPositions(new Float32Array(capacity*6));geo.instanceCount=0;
   const outline=new LineSegments2(geo,mainInk);outline.frustumCulled=false;outline.renderOrder=2;ink.stroke(outline);context.root.add(outline);
   const area=ring.reduce((s,p,i)=>{const q=ring[(i+1)%ring.length];return s+p[0]*q[1]-q[0]*p[1];},0),sign=area>0?1:-1;
-  context.silhouettes.push({id,ring,height:height+.055,bottom:.055,outline,sign,baseCuts:new Map()});return mesh;
+  context.silhouettes.push({id,ring,height:height+.055,bottom:.055,outline,sign,openUpper,baseCuts:new Map()});return mesh;
  }
  function facadeFrames(o){
   if(o.kind==='low-rise'&&o.height<10)return;
@@ -98,9 +98,31 @@ export function makeDrawing(scene,data,options={}){
   if(record.facadeStrokes!==count){record.facadeStrokes=count;auditRevision++;}
  }
  const rearById=new Map((data.residentialDisplayVolumes||[]).map(v=>[v.sourceBuildingId,v]));
- for(const source of [...data.buildings,...(data.frontageBuildings||[])]){const override=rearById.get(source.id),o=override?{...source,ring:override.ring}:source;
+ const presentationById=new Map((data.buildingPresentation||[]).map(v=>[v.sourceBuildingId,v]));
+ for(const source of [...data.buildings,...(data.frontageBuildings||[])]){
+  const override=rearById.get(source.id),presentation=presentationById.get(source.id),openUpper=presentation?.openUpper;
+  const o={...source,ring:override?.ring??source.ring,height:presentation?.displayHeight??source.height,kind:presentation?.displayKind??source.kind};
+  if(presentation?.facadeEdge!==undefined)o.facadeEdge=presentation.facadeEdge;
   audit.push({id:o.id,type:'building',outlineStrokes:1,facadeStrokes:0,surfaceMarks:0});
-  register({id:'building:'+o.id,bounds:boundsOf(o.ring,.6,0,o.height+.8),collision:true,build:()=>{body(o.id,o.ring,o.height);facadeFrames(o);}});
+  const drawnHeight=openUpper?.fadeEnd??o.height;
+  register({id:'building:'+o.id,bounds:boundsOf(o.ring,.6,0,drawnHeight+.8),collision:true,build:()=>{
+   let material=face;
+   if(openUpper){
+    // This local drawing band never changes source height or creates a low roof.
+    // The private material follows the same chunk eviction owner as its mesh.
+    material=face.clone();material.transparent=true;material.alphaTest=.01;
+    material.onBeforeCompile=shader=>{
+     shader.uniforms.outlineFadeStart={value:openUpper.fadeStart};shader.uniforms.outlineFadeEnd={value:openUpper.fadeEnd};
+     shader.vertexShader='varying float outlineHeight;\n'+shader.vertexShader;
+     shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\noutlineHeight = position.z;');
+     shader.fragmentShader='varying float outlineHeight;\nuniform float outlineFadeStart;\nuniform float outlineFadeEnd;\n'+shader.fragmentShader;
+     shader.fragmentShader=shader.fragmentShader.replace('#include <alphatest_fragment>','diffuseColor.a *= 1.0 - smoothstep(outlineFadeStart, outlineFadeEnd, outlineHeight);\n#include <alphatest_fragment>');
+    };
+    material.customProgramCacheKey=()=> 'open-upper-building-v1';
+   }
+   body(o.id,o.ring,drawnHeight,material,openUpper);
+   facadeFrames({...o,height:openUpper?.fadeStart??o.height});
+  }});
  }
  for(const g of data.gates?[]:[data.landmarks.north,data.landmarks.east]){
   const d=g.id==='north'?data.northDirection:data.eastDirection,[x,z]=g.anchor,w=2.9;
@@ -141,7 +163,7 @@ export function makeDrawing(scene,data,options={}){
   const cam=camera.position;
   for(const o of silhouettes){if(o.cameraKey===key)continue;o.cameraKey=key;spatial.audit.staticUpdates++;const {ring,height,bottom,sign}=o,n=ring.length,visible=ring.map((p,i)=>{const q=ring[(i+1)%n],dx=q[0]-p[0],dz=q[1]-p[1];return sign*(dz*(cam.x-(p[0]+q[0])/2)-dx*(cam.z-(p[1]+q[1])/2))>0;}),top=cam.y>height,bot=cam.y<bottom,coords=[];
    const add=(a,ay,b,by)=>coords.push(a[0],ay,a[1],b[0],by,b[1]);
-   for(let i=0;i<n;i++){const p=ring[i],q=ring[(i+1)%n];if(visible[i]!==top)add(p,height,q,height);if(visible[i]!==bot){const cut=o.baseCuts.get(i);if(cut){const at=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];add(p,bottom,at(cut[0]),bottom);add(at(cut[1]),bottom,q,bottom);}else add(p,bottom,q,bottom);}if(visible[i]!==visible[(i+n-1)%n])add(p,bottom,p,height);}
+   for(let i=0;i<n;i++){const p=ring[i],q=ring[(i+1)%n];if(!o.openUpper&&visible[i]!==top)add(p,height,q,height);if(visible[i]!==bot){const cut=o.baseCuts.get(i);if(cut){const at=t=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];add(p,bottom,at(cut[0]),bottom);add(at(cut[1]),bottom,q,bottom);}else add(p,bottom,q,bottom);}if(visible[i]!==visible[(i+n-1)%n])add(p,bottom,p,o.openUpper?o.openUpper.fadeStart+(i%4)*.7:height);}
    ensureSegmentCapacity(o.outline.geometry,coords.length/6);const a=o.outline.geometry.attributes.instanceStart.data;a.array.set(coords);a.needsUpdate=true;o.outline.geometry.instanceCount=coords.length/6;
   }
   for(const c of cars){if(c.cameraKey===key)continue;c.cameraKey=key;spatial.audit.staticUpdates++;c.group.updateMatrixWorld();const p=c.points.map((v,i)=>{const q=v.clone().applyMatrix4(c.group.matrixWorld).project(camera);return {x:q.x,y:q.y,i};});

@@ -46,7 +46,7 @@ try{
     await waitFrames();
   };
   await openStreet();
-  assert.equal(await host.getAttribute('data-art-revision'),'xinhua-corridor-outline-r4');
+  assert.equal(await host.getAttribute('data-art-revision'),'xinhua-corridor-outline-r5');
   await page.waitForFunction(()=>JSON.parse(document.querySelector('.outline-host').dataset.navigationUi).fontReady);
   const projection=JSON.parse(await host.getAttribute('data-avatar-projection'));
   assert(projection.visible);assert(projection.foot.slice(0,2).every(v=>Math.abs(v)<1));assert(projection.head.slice(0,2).every(v=>Math.abs(v)<1));
