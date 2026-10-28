@@ -18,9 +18,11 @@ from shapely.geometry.polygon import orient
 from shapely.ops import transform, unary_union
 
 ROOT = Path(__file__).resolve().parents[1]
-read = lambda p: json.loads(Path(p).read_text())
-write = lambda p, d: Path(p).write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+read = lambda p: json.loads(Path(p).read_text(encoding='utf-8'))
+write = lambda p, d: Path(p).write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 plan = read(ROOT / 'content/reference/xinhua-spatial-plan.json')
+if plan.get('revision') != 'xinhua-registered-masses-r6':
+    raise SystemExit('Legacy R6 compiler cannot overwrite the selected travel-map registration/art. See docs/research/XINHUA_SPATIAL_PIPELINE.md.')
 registry_path = ROOT / 'content/public/overview-registration.json'
 manifest_path = ROOT / 'content/public/manifest.json'
 registration = read(registry_path)

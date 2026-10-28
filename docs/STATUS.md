@@ -1,8 +1,16 @@
 # Repository status
 
+## Local overview recovery — 2026-10-28
+
+The user rejected the R6 material-covered block appearance and Sili/Liuli/Qili geography, then explicitly requested recovering the better local results into the real application overview and subsequently authorized PR/main integration. Inspected baseline `ed2cc85633e39e470c66e1b03669c53602fd8f43` retained the old `6a9c212` overview while PR #25 updated the separate street. The selected recovery `xinhua-travel-r7` uses the current manifest/overview registration: 161 unchanged baseline outlines, 30 recovered source-linked masses and four Qili frontage reconstructions; Sili/Liuli membership and the approximately six-storey Sili height-family correction are restored. The selected outline scene/session/resource behavior is preserved. Actual-entry visual and applicable test/build verification are recorded below/in the [repair record](attention/tasks/DM-MAP-REPAIR-20261028.md); published-head CI and merge results belong to the corresponding GitHub PR record. No deployment is requested. Selection for integration does not certify exact historical/floor/ground-boundary details.
+
+Actual local homepage at 1280×720 renders the recovered artwork through `#map-composition`, with all three repaired estate labels readable in the block view. Menu zoom across three tiers, dragging, near Sili/Liuli and Qili west-frontage views, entry into the selected outline street and return to the same R7 map were observed. At 390×844, menu zoom/panning keeps the recovered map and readable Sili/Liuli labels without horizontal page overflow. No warning/error logs were observed in that browser run. These are actual application observations, not the old comparison page or native SVG evidence. Final check counts and source fingerprints belong to the repair record.
+
+Final ordinary-panel review at 646×528 also retains Four/Six/Seven Li names inside their registered groups. Runtime source `2c860eb` passed 86 application checks, 16 selected-scene checks, 13 focused map regressions, build/pinned hashes, the legacy overwrite guard and 135 local documentation-link targets. All 161 baseline physical polygons are unchanged; recovered/added objects and height/identity uncertainty remain recorded above. The user selected this repair for PR/main integration. No deployment is part of this delivery.
+
 ## Local overview candidate retired — 2026-10-27
 
-The user discarded the uncommitted 2026-10-26 junction facade candidate affecting Wuli east, Sanli and the heating group. Its six trial atlas replacements, source/registration edits and partial-build script changes are not selected for integration. The existing main R6 artwork, data and compiler remain unchanged. Useful source limits from the local Sanli process notes were consolidated into the [existing integration record](attention/tasks/DM-SANLI-INTEGRATE-20261027.md#consolidated-pre-integration-evidence-limits--2026-10-27); [the cleanup packet](attention/tasks/DM-LOCAL-NOTES-CLEANUP-20261027.md) records the disposition. Old candidate tests do not establish approval of the retained overview.
+At that cleanup checkpoint, the user discarded the uncommitted 2026-10-26 junction facade candidate affecting Wuli east, Sanli and the heating group. Its six trial atlas replacements and partial-build changes were not integrated; main retained R6 then. The later explicitly authorized R7 recovery above supersedes that retained overview baseline. Useful source limits from the local Sanli process notes were consolidated into the [existing integration record](attention/tasks/DM-SANLI-INTEGRATE-20261027.md#consolidated-pre-integration-evidence-limits--2026-10-27); [the cleanup packet](attention/tasks/DM-LOCAL-NOTES-CLEANUP-20261027.md) records the earlier disposition. Old candidate tests do not establish approval of a later overview.
 
 ## Selected consumer and integration baseline — 2026-10-27
 
@@ -10,7 +18,7 @@ The resource-management work starts from main `928528b36596bbc4ac64b8d34638c1dae
 
 | Surface / concern | Supported state |
 | --- | --- |
-| Overview | Three tiers of the existing R6 illustrated map, no person/player marker; its raster-art contract remains separate from the street. |
+| Overview | Three tiers of the selected R7 travel map described above, no person/player marker; its raster-art contract remains separate from the street. |
 | Xinhua street entry | `outline-stage.js` loads `scenes/xinhua-sanli-outline/`, currently `xinhua-corridor-outline-r4` with `xinhua-corridor-integrated-r1` registration. The roughly 875 m corridor includes the preserved Sanli/junction, western Qili frontage and eastern Xinhua. |
 | Selected close-view presentation | Continuous outline person, sparse retracting motion, perspective camera, collapsible north-up minimap, compass, irregular navigation UI and local ZCOOL KuaiLe. |
 | State and sources | Application session owns local position/path/camera and return context; spatial/time owners retain registration and explicit working-composite membership. Source bytes and revisions are pinned. |
