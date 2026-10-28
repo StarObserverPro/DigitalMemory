@@ -31,6 +31,50 @@ const clamp = value => Math.max(0, Math.min(1, value));
 const smooth = value => { const t = clamp(value); return t * t * (3 - 2 * t); };
 const mix = (a, b, t) => a + (b - a) * t;
 
+// Deliberate beats are measured in time; object pose changes never throttle
+// path growth, pen travel, paper opacity or the requestAnimationFrame chain.
+export function journalTiming(lines) {
+  const drawStart = 650, drawEnd = drawStart + 3200, travelStart = drawEnd + 650;
+  const writingStart = travelStart + 1050;
+  let cursor = writingStart, count = 0;
+  const rows = lines.map((text, index) => {
+    const length = [...text].length, start = cursor, end = start + length * 210;
+    const row = { start, end, length, offset: count };
+    cursor = end + (index < lines.length - 1 ? 650 : 0); count += length;
+    return row;
+  });
+  const writingEnd = cursor, exitEnd = writingEnd + 600;
+  return { drawStart, drawEnd, travelStart, writingStart, rows, count, writingEnd, exitEnd, duration: exitEnd + 2100 };
+}
+
+export function journalMoment(time, timing) {
+  let progress = time >= timing.writingEnd ? 1 : 0, lineTravel = null;
+  for (let index = 0; index < timing.rows.length; index++) {
+    const row = timing.rows[index], next = timing.rows[index + 1];
+    if (time >= row.start && time <= row.end) progress = (row.offset + (time - row.start) / 210) / timing.count;
+    if (next && time >= row.end && time < next.start) {
+      progress = (row.offset + row.length) / timing.count;
+      lineTravel = { from: index, to: index + 1, progress: smooth((time - row.end) / (next.start - row.end)) };
+    }
+  }
+  const beat = time < timing.drawStart ? 'arrival' : time < timing.drawEnd ? 'drawing'
+    : time < timing.travelStart ? 'pause' : time < timing.writingStart ? 'travel'
+      : time < timing.writingEnd ? lineTravel ? 'line-travel' : 'writing'
+        : time < timing.exitEnd ? 'pen-away' : 'reading';
+  return { progress, lineTravel, beat };
+}
+
+// Small irregular held poses, with a short soft settle between them. Only
+// local objects receive this transform; paper/text and path time stay stable.
+function objectPose(time, seed) {
+  const frame = Math.floor(time / 145), blend = smooth(((time % 145) - 108) / 37);
+  const noise = (n, axis) => {
+    const value = Math.sin((n + seed * 17 + axis * 31) * 12.9898) * 43758.5453;
+    return (value - Math.floor(value)) * 2 - 1;
+  };
+  return [0, 1, 2].map(axis => mix(noise(frame, axis), noise(frame + 1, axis), blend));
+}
+
 /** One abortable frame chain. A late callback cannot draw after cancellation. */
 export function animateFrames({ duration, draw, signal, requestFrame = requestAnimationFrame, cancelFrame = cancelAnimationFrame, now = () => performance.now() }) {
   return new Promise((resolve, reject) => {
@@ -100,8 +144,27 @@ function line(ctx, points, length = Infinity) {
   ctx.stroke(); return tip;
 }
 
-function drawBox(ctx, progress, x, y, scale) {
-  ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale);
+function boxMoment(progress) {
+  const elapsed = clamp(progress) * 3200, inkMs = 3200 - 2 * 240;
+  let cursor = 0, inkLength = 0;
+  for (let index = 0; index < BOX_STROKES.length; index++) {
+    const points = BOX_STROKES[index], length = strokeLength(points), duration = inkMs * length / BOX_LENGTH;
+    if (elapsed <= cursor + duration) return { progress: (inkLength + length * clamp((elapsed - cursor) / duration)) / BOX_LENGTH, lifted: false, tip: elapsed === cursor ? points[0] : null };
+    cursor += duration; inkLength += length;
+    const next = BOX_STROKES[index + 1];
+    if (next && elapsed < cursor + 240) {
+      const t = smooth((elapsed - cursor) / 240), end = points.at(-1);
+      return { progress: inkLength / BOX_LENGTH, lifted: true, tip: [mix(end[0], next[0][0], t), mix(end[1], next[0][1], t) - Math.sin(t * Math.PI) * 18] };
+    }
+    cursor += next ? 240 : 0;
+  }
+  return { progress: 1, lifted: false };
+}
+
+function drawBox(ctx, moment, x, y, scale, time) {
+  const { progress } = moment, jitter = objectPose(time, 2), angle = jitter[2] * .004;
+  const cx = x + 109 * scale + jitter[0] * 1.35, cy = y + 110 * scale + jitter[1] * 1.1;
+  ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle); ctx.scale(scale, scale); ctx.translate(-109, -110);
   ctx.lineWidth = 7.2; ctx.strokeStyle = '#11120f'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   if (progress > .82) {
     ctx.save(); ctx.globalAlpha = smooth((progress - .82) / .18) * .8;
@@ -114,7 +177,9 @@ function drawBox(ctx, progress, x, y, scale) {
     if (remaining <= 0) break;
     tip = line(ctx, points, remaining); remaining -= strokeLength(points);
   }
-  ctx.restore(); return [x + tip[0] * scale, y + tip[1] * scale];
+  tip = moment.tip || tip;
+  const dx = (tip[0] - 109) * scale, dy = (tip[1] - 110) * scale;
+  ctx.restore(); return [cx + dx * Math.cos(angle) - dy * Math.sin(angle), cy + dx * Math.sin(angle) + dy * Math.cos(angle)];
 }
 
 // Source rectangles exclude the neighboring frame's cut forearm. Each pen tip
@@ -142,10 +207,12 @@ function fadedHandPoses(sprite) {
   }));
   return handPoseCache.get(sprite);
 }
-function drawHand(ctx, sprite, x, y, scale, frame, lifted = false) {
+function drawHand(ctx, sprite, x, y, scale, time, lifted = false) {
   if (!sprite) return;
-  const index = [0, 1, 2, 1][frame % 4], pose = HAND_FRAMES[index];
-  ctx.save(); ctx.translate(x, y); ctx.rotate(lifted ? -.06 : 0); ctx.scale(scale, scale);
+  const index = [0, 1, 2, 1][Math.floor(time / 160) % 4], pose = HAND_FRAMES[index];
+  const jitter = objectPose(time, 5), size = scale * (1 + jitter[1] * .003);
+  // Pivot at the registered pencil tip so grip wobble cannot break contact.
+  ctx.save(); ctx.translate(x, y); ctx.rotate((lifted ? -.06 : 0) + jitter[2] * .014); ctx.scale(size, size);
   ctx.translate(-pose.tip[0], -pose.tip[1]);
   ctx.drawImage(fadedHandPoses(sprite)[index], 0, 0);
   ctx.restore();
@@ -153,7 +220,7 @@ function drawHand(ctx, sprite, x, y, scale, frame, lifted = false) {
 
 function drawJournal(ctx, lines, progress, x, y, fontSize) {
   const glyphs = lines.map(text => [...text]), total = glyphs.reduce((sum, text) => sum + text.length, 0);
-  let remaining = clamp(progress) * total, tip = [x, y], current = false;
+  let remaining = clamp(progress) * total, tip = [x, y - fontSize * .8 * .2], current = false;
   const angle = -.025;
   ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.fillStyle = '#30322d';
   ctx.textBaseline = 'alphabetic';
@@ -162,6 +229,10 @@ function drawJournal(ctx, lines, progress, x, y, fontSize) {
     ctx.font = `${size}px "Street Journal", cursive`;
     row.forEach((glyph, i) => {
       const left = i * size * 1.03, portion = clamp(remaining);
+      if (remaining === 0 && !current) {
+        const py = baseline - size * .2;
+        tip = [x + left * Math.cos(angle) - py * Math.sin(angle), y + left * Math.sin(angle) + py * Math.cos(angle)];
+      }
       if (portion > 0) {
         ctx.save(); ctx.beginPath(); ctx.rect(left - 2, baseline - size * 1.2, (size * 1.03 + 3) * portion, size * 1.5); ctx.clip();
         ctx.fillText(glyph, left, baseline + Math.sin(i * 1.7 + rowIndex) * size * .035); ctx.restore();
@@ -198,10 +269,9 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   const canvas = dialog.querySelector('canvas'), ctx = canvas.getContext('2d');
   if (!ctx) throw Error('Entry canvas unavailable');
   const opacity = street.style.opacity;
-  let disposed = false, controller = null, handSprite = null, width = 0, height = 0, redraw = () => {}, phase = 'preparing', frameIndex = -1;
+  let disposed = false, controller = null, handSprite = null, width = 0, height = 0, redraw = () => {}, phase = 'preparing', frameIndex = 0, elapsedMs = 0, beat = 'arrival';
   const journal = chooseJournal(); lastJournal = journal;
-  const writingMs = JOURNAL_LINES[journal].reduce((count, row) => count + [...row].length, 0) * 105;
-  const writingEnd = 1700 + writingMs, preludeMs = Math.ceil((writingEnd + 350) / 125) * 125;
+  const lines = JOURNAL_LINES[journal], timing = journalTiming(lines), preludeMs = timing.duration;
   const simple = mode === 'simple';
   container.append(dialog);
   const listen = (target, type, callback) => target.addEventListener(type, callback, { signal: lifetime.signal });
@@ -212,7 +282,7 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
     const rect = dialog.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
     width = rect.width; height = rect.height;
     canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); frameIndex = -1;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     if (phase === 'revealing' && !simple && !reducedMotion) sketch(preludeMs);
     redraw();
   }
@@ -220,7 +290,7 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   function sketch(time) {
     clear();
     // One unframed sheet: the map is a faint underlay, not a corner layout grid.
-    ctx.fillStyle = 'rgba(250,247,237,.86)'; ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = `rgba(250,247,237,${.86 * smooth(time / 500)})`; ctx.fillRect(0, 0, width, height);
     const mobile = width < 600, boxScale = Math.min(mobile ? width * .00165 : width * .00105, height * .00135, 1.22);
     const penScale = Math.min(width / 1400, height / 1400, .48);
     const font = Math.min(mobile ? width * .066 : width * .032, height * .052, 40);
@@ -229,20 +299,38 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
     // belongs below the text on the same page, inset from its right margin.
     const pageRight = Math.min(width * .84, textX + font * 15);
     const boxX = pageRight - 218 * boxScale, boxY = textY + font * 4.8;
-    const drawProgress = clamp(time / 1250), textProgress = clamp((time - 1700) / writingMs);
-    const boxTip = drawBox(ctx, drawProgress, boxX, boxY, boxScale);
-    const textTip = drawJournal(ctx, JOURNAL_LINES[journal], textProgress, textX, textY, font);
-    let tip = boxTip, lifted = false;
-    if (time > 1250 && time < 1700) {
-      const t = smooth((time - 1250) / 450);
-      tip = [mix(boxTip[0], textX, t), mix(boxTip[1], textY - font * .35, t) - Math.sin(t * Math.PI) * height * .12]; lifted = true;
-    } else if (time >= 1700) tip = textTip;
-    if (time > writingEnd) {
-      const t = clamp((time - writingEnd) / 300);
-      tip = [tip[0] + t * width * .18, tip[1] + t * height * .12];
-      ctx.save(); ctx.globalAlpha = 1 - t; drawHand(ctx, handSprite, ...tip, penScale, Math.floor(time / 125), true); ctx.restore();
-    } else drawHand(ctx, handSprite, ...tip, penScale, Math.floor(time / 125), lifted);
+    const moment = journalMoment(time, timing);
+    beat = moment.beat; dialog.dataset.beat = beat;
+    const box = boxMoment((time - timing.drawStart) / (timing.drawEnd - timing.drawStart));
+    const boxTip = drawBox(ctx, box, boxX, boxY, boxScale, time);
+    const textTip = drawJournal(ctx, lines, moment.progress, textX, textY, font);
+    const textStart = [textX - Math.sin(-.025) * (-font * .8 * .2), textY + Math.cos(-.025) * (-font * .8 * .2)];
+    let tip = boxTip, lifted = box.lifted;
+    if (time < timing.drawStart) {
+      const arrival = smooth(time / timing.drawStart);
+      tip = [boxTip[0] + (1 - arrival) * 22, boxTip[1] - (1 - arrival) * 30]; lifted = true;
+    } else if (time >= timing.travelStart && time < timing.writingStart) {
+      const t = smooth((time - timing.travelStart) / (timing.writingStart - timing.travelStart));
+      tip = [mix(boxTip[0], textStart[0], t), mix(boxTip[1], textStart[1], t) - Math.sin(t * Math.PI) * height * .09]; lifted = true;
+    } else if (time >= timing.writingStart) {
+      tip = textTip;
+      if (moment.lineTravel) {
+        const { from, to, progress: t } = moment.lineTravel, py = to * font * 1.5 - font * .2;
+        const size = from === 0 ? font * .8 : font, length = [...lines[from]].length;
+        const endX = (length - 1) * size * 1.03 + size, endY = from * font * 1.5 - size * .2;
+        const previous = [textX + endX * Math.cos(-.025) - endY * Math.sin(-.025), textY + endX * Math.sin(-.025) + endY * Math.cos(-.025)];
+        const next = [textX - py * Math.sin(-.025), textY + py * Math.cos(-.025)];
+        tip = [mix(previous[0], next[0], t), mix(previous[1], next[1], t) - Math.sin(t * Math.PI) * font * .7]; lifted = true;
+      }
+    }
+    let alpha = smooth(time / timing.drawStart);
+    if (time > timing.writingEnd) {
+      const t = smooth((time - timing.writingEnd) / (timing.exitEnd - timing.writingEnd));
+      tip = [tip[0] + t * width * .08, tip[1] + t * height * .06]; alpha *= 1 - t; lifted = true;
+    }
+    ctx.save(); ctx.globalAlpha = alpha; drawHand(ctx, handSprite, ...tip, penScale, time, lifted); ctx.restore();
   }
+
   function cleanup() {
     if (disposed) return;
     disposed = true; phase = 'finished'; lifetime.abort(); observer.disconnect();
@@ -264,9 +352,8 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
     handSprite = sprite;
     phase = 'drawing'; dialog.dataset.mode = 'journal'; dialog.dataset.journal = String(journal);
     const result = await play(preludeMs, progress => {
-      const index = Math.floor(progress * preludeMs / 125);
-      if (index === frameIndex && canvas.width) return;
-      frameIndex = index; dialog.dataset.frame = String(index); sketch(index * 125);
+      elapsedMs = progress * preludeMs; frameIndex++;
+      dialog.dataset.frame = String(frameIndex); sketch(elapsedMs);
     });
     if (result) { phase = 'waiting'; dialog.dataset.phase = phase; }
     return result;
@@ -277,14 +364,14 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   return {
     prepared,
     cancel: cleanup,
-    inspect: () => ({ mode: reducedMotion ? 'reduced' : mode, phase, journal, frame: frameIndex, disposed }),
+    inspect: () => ({ mode: reducedMotion ? 'reduced' : mode, phase, journal, frame: frameIndex, elapsedMs, beat, durationMs: preludeMs, disposed }),
     async reveal(stage) {
       if (disposed || !await prepared) return false;
       controller = stage; phase = 'revealing'; dialog.dataset.phase = phase;
       dialog.dataset.mode = reducedMotion ? 'reduced' : mode;
       controller.setEntryView?.(simple && !reducedMotion ? 0 : 1);
       street.style.opacity = '0';
-      const result = await play(reducedMotion ? 180 : simple ? 2300 : 650, progress => {
+      const result = await play(reducedMotion ? 180 : simple ? 2300 : 900, progress => {
         if (simple && !reducedMotion) {
           clear();
           street.style.opacity = String(smooth(progress / .12));
