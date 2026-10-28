@@ -1,5 +1,15 @@
 # Xinhua source-to-render pipeline
 
+## Selected travel-map recovery — R7, 2026-10-28
+
+`content/reference/xinhua-spatial-plan.json` is the selected 195-object plan. It retains the 161 baseline full physical polygons, restores the local Sili/Liuli grouping and approximately six-storey height-family correction, recovers 30 previously reviewed source-linked context masses, and adds four Qili frontage reconstructions converted from the selected corridor's pinned local frame. `content/public/overview-registration.json` retains the full source polygons separately from the outer-ring runtime projection and binds all three image levels to stable world bounds. Group envelopes organise depiction/labels; they are not administrative or cadastral estate boundaries.
+
+`assets/modules/xinhua-travel-r7/` contains the selected local block rasters and compatible Qili frontage raster assembly. Existing paper/landmark assets remain shared. The current manifest keeps the current app/outline fields and replaces only selected overview artwork references. Identical raster files are shared between level keys where possible. The three levels preserve sparse directional gestures rather than adding dense windows on enlargement. Qili's west-facing Daoxiangcun label appears only at the near overview tier as orientation text; it creates no attachment shortcut or new interaction.
+
+These selected raster exports are production inputs pinned by the manifest, not a claim of a fully automated repaint. After geographic edits, reconcile source geometry, re-register the affected selected rasters and validate their full-ring snapshot, exterior, bounds, road clearance and all-tier anchors. `scripts/build-xinhua-art.py` is the historical R6 material compiler and refuses the selected R7 plan, preventing a silent return to the rejected finish. Normal application verification is `npm test`, `npm run test:outline`, `npm run build`, followed by actual homepage pan/zoom and overview → street → overview evidence. The [repair packet](../attention/tasks/DM-MAP-REPAIR-20261028.md) binds observations to the selected data and actual consumer. No source photographs, satellite tiles, trial pictures or old sandbox paths are runtime dependencies.
+
+## Historical R6 acquisition and material assembly
+
 > For source-level provenance, recorded 2026-10-19 Sanli counts, reproducibility caveats and the exact local acquisition/QA commands, see [Geographic data lineage](../GEO_DATA_LINEAGE.md) and [Geodata runbook](../GEO_DATA_RUNBOOK.md). This page begins at the R6 source-selection/presentation step; it does not replace the acquired-source ledger.
 
 
@@ -14,4 +24,4 @@ DM-0018, 2026-10-19. The previous failure was that hand-authored compound layout
 
 The working time window is the existing approximate 2000-era memory composite. Contemporary imagery can orient surviving buildings but does not prove their construction dates. Earlier eastern low fabric and the detached frontage opposite Sanli follow the user's reconstruction instruction. The data does not silently appear in 1995 or unmapped life stages.
 
-Production regeneration: install Pillow, numpy and Shapely 2.1 in an offline build environment, then run `python scripts/build-xinhua-art.py`, `npm test`, `npm run build`. The application itself remains dependency-free native JavaScript. Keep overlays, QA pictures and source photographs outside the repository; retain concise outcomes in the task packet. Art acceptance remains the user's decision.
+Historical R6 regeneration required Pillow, numpy and Shapely 2.1, then `python scripts/build-xinhua-art.py`. This command is guarded against the selected R7 plan. The application itself remains dependency-free native JavaScript. Keep overlays, QA pictures and source photographs outside the repository; retain concise outcomes in the task packet. Art acceptance remains the user's decision.

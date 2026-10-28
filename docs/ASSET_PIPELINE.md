@@ -10,7 +10,7 @@
 
 > Historical DM-0004 used original independent paper, apartment overview/front, single-shop and child cutouts in `assets/modules/`. Its module evidence is retained; those characters and facade strips do not define the selected outline consumer. See [photo observations](LOCAL_VISUAL_REFERENCES.md) and [composition/storage contract](LAYER_COMPOSITION.md).
 
-Status: production contract, with current Xinhua R6 overview paintings and the selected outline street reported in [STATUS](STATUS.md)/[RUNTIME](RUNTIME.md). Historical trials below retain their own provenance and verdicts. Contract text alone does not establish runtime completion or historical acceptance.
+Status: production contract, with selected Xinhua travel-map R7 rasters recovered into the local application overview and the selected outline street reported in [STATUS](STATUS.md)/[RUNTIME](RUNTIME.md). [Hand-painted art](HANDPAINTED_MAP_ART.md#selected-local-travel-map-recovery--2026-10-28) owns the recovered sparse strokes and geometric corrections. Historical R6 and other trials below retain their own provenance and verdicts. Contract text alone does not establish runtime completion or historical acceptance.
 
 ## Two products, not one flattened picture
 

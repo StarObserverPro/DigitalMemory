@@ -4,6 +4,12 @@
 
 The application uses native ES modules, original illustrated PNGs and a small static public repository adapter. The selected close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. It implements the basic contracts without choosing a private archive, authentication service or hosting provider. [STATUS](STATUS.md) separates accepted main behavior from the current branch's implementation and validation evidence.
 
+## Selected overview recovery — 2026-10-28
+
+The actual homepage uses `overview-registration-travel-r7` and the manifest's selected `xinhua-travel-r7` rasters through the existing `layeredOverviewMarkup` consumer. Its 195 registered objects include the recovered block and four Qili frontage masses from the selected street frame. Source geometry and full inner rings are retained; exterior rings drive existing road clearance and image registration. The sparse travel-map appearance shares files across identical level keys and adds no character or direct attachment shortcut. Daoxiangcun's west-frontage orientation label is limited to the near tier. Public observation metadata is in `content/reference/xinhua-recovery-evidence.json`; raw images and comparison pages are not runtime inputs. This change does not replace the selected street/session/resource lifecycle below. [Repair verification](attention/tasks/DM-MAP-REPAIR-20261028.md) records actual homepage and return-flow evidence separately from source checks.
+
+The recovered chimney landmark retains its own registration and explicit `window-2000` working-composite membership. Engine JavaScript and scene text sources use LF checkout endings through `.gitattributes`, matching the exact bytes pinned by the selected scene manifest; checksum checks remain strict and are not regenerated to accept Windows newline conversion.
+
 ## Accepted Xinhua/Sanli close-view integration — 2026-10-27
 
 The normal supported overview→street entry now lazy-loads scenes/xinhua-sanli-outline via outline-stage.js instead of the legacy stage.js. It keeps the approved continuous outline walker, sparse motion, muted green ground, irregular menu/minimap/compass outlines and locally served ZCOOL KuaiLe. Existing schoolwear code/assets remain; its old browser smoke is not evidence for this new consumer.
