@@ -21,6 +21,17 @@ function fixture() {
     trees: [{ id: 'tree-near', position: [-8, 0], height: 5 }, { id: 'tree-far', position: [992, 0], height: 5 }] };
 }
 
+test('Open rear contours have no false roof, retain source height and release their private fade material',async()=>{
+ await ready;const data=fixture();data.buildings=[{...house('near',0),height:71.1}];data.cars=[];data.trees=[];
+ data.buildingPresentation=[{sourceBuildingId:'near',openUpper:{fadeStart:18,fadeEnd:24}}];
+ const scene=new T.Scene(),drawing=makeDrawing(scene,data,{maxWarmChunks:0});drawing.resize(1280,720);drawing.update(cameraAt());
+ const silhouette=drawing.active('silhouettes')[0],mesh=drawing.meshes[0];assert.equal(data.buildings[0].height,71.1);
+ const lines=silhouette.outline.geometry.attributes.instanceStart.data.array;
+ for(let i=0;i<silhouette.outline.geometry.instanceCount;i++){const a=lines.slice(i*6,i*6+6);assert(!(a[1]>1&&a[4]>1),'upper horizontal cap is absent');assert(Math.max(a[1],a[4])<=20.11);}
+ assert.notEqual(mesh.material,drawing.face);assert(mesh.material.transparent);let disposed=0;mesh.material.addEventListener('dispose',()=>disposed++);
+ drawing.update(cameraAt(1000));assert.equal(disposed,1);drawing.dispose();assert.equal(disposed,1);
+});
+
 test('Geometry is lazy, warm eviction releases private buffers, and shared ink survives reentry', async () => {
   await ready;
   const scene = new T.Scene(), drawing = makeDrawing(scene, fixture(), { maxWarmChunks: 0 });
