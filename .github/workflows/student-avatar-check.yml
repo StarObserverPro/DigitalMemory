@@ -19,10 +19,12 @@ on:
       - 'src/explorer/street-*.js'
       - 'src/explorer/stage.js'
       - 'assets/characters/schoolboy/**'
+      - 'assets/transitions/**'
       - 'assets/vendor/three/**'
       - 'tests/schoolboy.test.mjs'
       - 'tests/schoolboy.browser.mjs'
       - 'tests/entry-transition.browser.mjs'
+      - 'tests/entry-transition.test.mjs'
       - 'scripts/serve.mjs'
       - '.github/workflows/student-avatar-check.yml'
   workflow_dispatch:
