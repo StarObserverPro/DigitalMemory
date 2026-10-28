@@ -1,12 +1,9 @@
 // Transient screen-space journal art. It never registers a map building or
 // writes the street pose: the application session remains the location owner.
-export const JOURNAL_LINES = Object.freeze([
-  ['十二日', '早点铺的油饼刚出锅，', '接过纸袋时还烫手。'],
-  ['十七日', '路上看见一只花猫，', '窝在自行车筐里。'],
-  ['二十一日', '修车摊的螺丝，', '都装在一个旧茶缸里。'],
-  ['二十四日', '买了两个烧饼，', '走到街口就吃掉一个。'],
-  ['二十七日', '刚下过雨。卖菜的人', '正往筐上盖塑料布。']
-].map(Object.freeze));
+import { JOURNAL_ASSETS, JOURNAL_ENTRIES } from './journal-catalog.js';
+import { journalLines, journalLayout, createDoodlePainter, drawDoodleAccents } from './journal-drawing.js';
+export { JOURNAL_ENTRIES, JOURNAL_ASSETS };
+export const JOURNAL_LINES = Object.freeze(JOURNAL_ENTRIES.map(entry => Object.freeze(journalLines(entry))));
 
 // User-requested fictional street-journal decoration; these lines are never
 // inserted into the memory catalog or attributed to a named real shop/person.
@@ -19,6 +16,17 @@ function loadHandSprite() {
     sprite.src = new URL('../../assets/transitions/hand-haring-r1.png', import.meta.url).href;
   });
   return handSpritePromise;
+}
+
+const doodlePromises = new Map();
+function loadDoodle(asset) {
+  if (!doodlePromises.has(asset.file)) doodlePromises.set(asset.file, new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => { doodlePromises.delete(asset.file); reject(Error('Entry doodle unavailable')); };
+    image.src = new URL('../../assets/transitions/doodles-r1/' + asset.file, import.meta.url).href;
+  }));
+  return doodlePromises.get(asset.file);
 }
 
 let lastJournal = -1;
@@ -101,85 +109,6 @@ export function animateFrames({ duration, draw, signal, requestFrame = requestAn
     signal?.addEventListener('abort', abort, { once: true });
     frame = requestFrame(tick);
   });
-}
-
-// One continuous rounded silhouette and two curved face seams. Sampling the
-// authored curves once lets the pencil follow the exact ink path as it grows.
-function curvePoints(start, segments) {
-  const points = [start];
-  for (const [cx1, cy1, cx2, cy2, x, y] of segments) {
-    const [sx, sy] = points.at(-1);
-    for (let step = 1; step <= 12; step++) {
-      const t = step / 12, u = 1 - t;
-      points.push([u ** 3 * sx + 3 * u * u * t * cx1 + 3 * u * t * t * cx2 + t ** 3 * x,
-        u ** 3 * sy + 3 * u * u * t * cy1 + 3 * u * t * t * cy2 + t ** 3 * y]);
-    }
-  }
-  return points;
-}
-const BOX_STROKES = [
-  curvePoints([24, 42], [
-    [42, 29, 65, 13, 77, 7], [83, 3, 89, 3, 101, 7],
-    [130, 16, 181, 31, 204, 40], [214, 44, 218, 49, 218, 60],
-    [218, 84, 217, 130, 216, 148], [216, 157, 213, 162, 204, 169],
-    [185, 183, 160, 201, 143, 211], [137, 215, 131, 216, 123, 212],
-    [92, 202, 34, 182, 13, 174], [4, 171, 0, 164, 0, 154],
-    [0, 125, 1, 83, 1, 65], [1, 55, 8, 50, 24, 42]
-  ]),
-  curvePoints([4, 55], [[30, 64, 82, 86, 118, 96], [127, 100, 134, 100, 144, 95], [164, 82, 196, 60, 215, 50]]),
-  curvePoints([132, 99], [[131, 126, 133, 184, 133, 213]])
-];
-const strokeLength = points => points.slice(1).reduce((sum, p, i) => sum + Math.hypot(p[0] - points[i][0], p[1] - points[i][1]), 0);
-const BOX_LENGTH = BOX_STROKES.reduce((sum, points) => sum + strokeLength(points), 0);
-
-function line(ctx, points, length = Infinity) {
-  ctx.beginPath(); ctx.moveTo(...points[0]);
-  let tip = points[0];
-  for (let i = 1; i < points.length && length > 0; i++) {
-    const a = points[i - 1], b = points[i], distance = Math.hypot(b[0] - a[0], b[1] - a[1]);
-    const t = Math.min(1, length / distance);
-    tip = [mix(a[0], b[0], t), mix(a[1], b[1], t)];
-    ctx.lineTo(...tip); length -= distance;
-  }
-  ctx.stroke(); return tip;
-}
-
-function boxMoment(progress) {
-  const elapsed = clamp(progress) * 3200, inkMs = 3200 - 2 * 240;
-  let cursor = 0, inkLength = 0;
-  for (let index = 0; index < BOX_STROKES.length; index++) {
-    const points = BOX_STROKES[index], length = strokeLength(points), duration = inkMs * length / BOX_LENGTH;
-    if (elapsed <= cursor + duration) return { progress: (inkLength + length * clamp((elapsed - cursor) / duration)) / BOX_LENGTH, lifted: false, tip: elapsed === cursor ? points[0] : null };
-    cursor += duration; inkLength += length;
-    const next = BOX_STROKES[index + 1];
-    if (next && elapsed < cursor + 240) {
-      const t = smooth((elapsed - cursor) / 240), end = points.at(-1);
-      return { progress: inkLength / BOX_LENGTH, lifted: true, tip: [mix(end[0], next[0][0], t), mix(end[1], next[0][1], t) - Math.sin(t * Math.PI) * 18] };
-    }
-    cursor += next ? 240 : 0;
-  }
-  return { progress: 1, lifted: false };
-}
-
-function drawBox(ctx, moment, x, y, scale, time) {
-  const { progress } = moment, jitter = objectPose(time, 2), angle = jitter[2] * .004;
-  const cx = x + 109 * scale + jitter[0] * 1.35, cy = y + 110 * scale + jitter[1] * 1.1;
-  ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle); ctx.scale(scale, scale); ctx.translate(-109, -110);
-  ctx.lineWidth = 7.2; ctx.strokeStyle = '#11120f'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-  if (progress > .82) {
-    ctx.save(); ctx.globalAlpha = smooth((progress - .82) / .18) * .8;
-    ctx.fillStyle = '#fffbee'; ctx.beginPath(); ctx.moveTo(...BOX_STROKES[0][0]);
-    for (const point of BOX_STROKES[0].slice(1)) ctx.lineTo(...point);
-    ctx.closePath(); ctx.fill(); ctx.restore();
-  }
-  let remaining = BOX_LENGTH * clamp(progress), tip = BOX_STROKES[0][0];
-  for (const points of BOX_STROKES) {
-    if (remaining <= 0) break;
-    tip = line(ctx, points, remaining); remaining -= strokeLength(points);
-  }
-  tip = moment.tip || tip;
-  const dx = (tip[0] - 109) * scale, dy = (tip[1] - 110) * scale;
-  ctx.restore(); return [cx + dx * Math.cos(angle) - dy * Math.sin(angle), cy + dx * Math.sin(angle) + dy * Math.cos(angle)];
 }
 
 // Source rectangles exclude the neighboring frame's cut forearm. Each pen tip
@@ -269,8 +198,11 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   const canvas = dialog.querySelector('canvas'), ctx = canvas.getContext('2d');
   if (!ctx) throw Error('Entry canvas unavailable');
   const opacity = street.style.opacity;
-  let disposed = false, controller = null, handSprite = null, width = 0, height = 0, redraw = () => {}, phase = 'preparing', frameIndex = 0, elapsedMs = 0, beat = 'arrival';
+  let disposed = false, controller = null, handSprite = null, doodleSprite = null, width = 0, height = 0, redraw = () => {}, phase = 'preparing', frameIndex = 0, elapsedMs = 0, beat = 'arrival';
   const journal = chooseJournal(); lastJournal = journal;
+  const entry = JOURNAL_ENTRIES[journal], asset = JOURNAL_ASSETS[entry.asset];
+  const paintDoodle = createDoodlePainter();
+  dialog.querySelector('.transition-announcement').textContent = entry.date + '。' + entry.text;
   const lines = JOURNAL_LINES[journal], timing = journalTiming(lines), preludeMs = timing.duration;
   const simple = mode === 'simple';
   container.append(dialog);
@@ -291,21 +223,22 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
     clear();
     // One unframed sheet: the map is a faint underlay, not a corner layout grid.
     ctx.fillStyle = `rgba(250,247,237,${.86 * smooth(time / 500)})`; ctx.fillRect(0, 0, width, height);
-    const mobile = width < 600, boxScale = Math.min(mobile ? width * .00165 : width * .00105, height * .00135, 1.22);
     const penScale = Math.min(width / 1400, height / 1400, .48);
-    const font = Math.min(mobile ? width * .066 : width * .032, height * .052, 40);
-    const textX = width * .13, textY = height * (mobile ? .25 : .27);
-    // Preserve the accepted writing anchor and block size. The illustration
-    // belongs below the text on the same page, inset from its right margin.
-    const pageRight = Math.min(width * .84, textX + font * 15);
-    const boxX = pageRight - 218 * boxScale, boxY = textY + font * 4.8;
+    const { textX, textY, font, artX, artY, size } = journalLayout(width, height, lines, entry.copies);
     const moment = journalMoment(time, timing);
     beat = moment.beat; dialog.dataset.beat = beat;
-    const box = boxMoment((time - timing.drawStart) / (timing.drawEnd - timing.drawStart));
-    const boxTip = drawBox(ctx, box, boxX, boxY, boxScale, time);
+    const progress = clamp((time - timing.drawStart) / (timing.drawEnd - timing.drawStart));
+    let drawing = { tip: [artX, artY], lifted: false };
+    if (doodleSprite) for (let i = 0; i < entry.copies; i++) {
+      const local = clamp(progress * entry.copies - i), x = artX + i * size;
+      const result = paintDoodle(ctx, doodleSprite, asset, local, x, artY, size, time, Number(entry.id) + i);
+      if (i === Math.min(entry.copies - 1, Math.floor(progress * entry.copies))) drawing = result;
+      if (time >= timing.drawEnd) drawDoodleAccents(ctx, asset.motion, x, artY, size, time);
+    }
+    const boxTip = drawing.tip;
     const textTip = drawJournal(ctx, lines, moment.progress, textX, textY, font);
     const textStart = [textX - Math.sin(-.025) * (-font * .8 * .2), textY + Math.cos(-.025) * (-font * .8 * .2)];
-    let tip = boxTip, lifted = box.lifted;
+    let tip = boxTip, lifted = drawing.lifted;
     if (time < timing.drawStart) {
       const arrival = smooth(time / timing.drawStart);
       tip = [boxTip[0] + (1 - arrival) * 22, boxTip[1] - (1 - arrival) * 30]; lifted = true;
@@ -347,10 +280,10 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   } });
   const prepared = (async () => {
     if (simple || reducedMotion || disposed) return !disposed;
-    const [sprite] = await Promise.all([loadHandSprite(), document.fonts.load('40px "Street Journal"', JOURNAL_LINES[journal].join(''))]);
+    const [sprite, doodle] = await Promise.all([loadHandSprite(), loadDoodle(asset), document.fonts.load('40px "Street Journal"', JOURNAL_LINES[journal].join(''))]);
     if (disposed) return false;
-    handSprite = sprite;
-    phase = 'drawing'; dialog.dataset.mode = 'journal'; dialog.dataset.journal = String(journal);
+    handSprite = sprite; doodleSprite = doodle;
+    phase = 'drawing'; dialog.dataset.mode = 'journal'; dialog.dataset.journal = String(journal); dialog.dataset.fragment = entry.id; dialog.dataset.asset = entry.asset;
     const result = await play(preludeMs, progress => {
       elapsedMs = progress * preludeMs; frameIndex++;
       dialog.dataset.frame = String(frameIndex); sketch(elapsedMs);
@@ -364,7 +297,7 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   return {
     prepared,
     cancel: cleanup,
-    inspect: () => ({ mode: reducedMotion ? 'reduced' : mode, phase, journal, frame: frameIndex, elapsedMs, beat, durationMs: preludeMs, disposed }),
+    inspect: () => ({ mode: reducedMotion ? 'reduced' : mode, phase, journal, fragmentId: entry.id, asset: entry.asset, copies: entry.copies, frame: frameIndex, elapsedMs, beat, durationMs: preludeMs, disposed }),
     async reveal(stage) {
       if (disposed || !await prepared) return false;
       controller = stage; phase = 'revealing'; dialog.dataset.phase = phase;

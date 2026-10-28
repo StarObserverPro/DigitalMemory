@@ -60,7 +60,7 @@ try {
   assert(new Set(cadence.map(s => s.frame)).size > 8, 'continuous canvas updates must exceed the old 8 fps gate');
   assert(cadence.some(s => Math.abs(s.time % 125) > 1), 'elapsed motion time must not be quantized');
   evidence.motionCadence = cadence;
-  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 8000);
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 7000);
   const during = await state();
   await page.keyboard.down('w'); await page.waitForTimeout(160); await page.keyboard.up('w');
   assert.deepEqual((await state()).session.outline.position, during.session.outline.position, 'entry must block walking');
@@ -69,15 +69,15 @@ try {
   await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'reading');
   const reading = (await state()).entryTransition;
   assert(reading.durationMs - reading.elapsedMs > 1700, 'the completed page must have time to read');
-  await shot('journal-reading-desktop');
   await page.waitForTimeout(1000);
   assert.equal((await state()).entryTransition.beat, 'reading');
+  await shot('journal-reading-desktop');
   evidence.readingHold = reading;
   await landed(); await stamp('journalLanding'); await shot('street-desktop');
   assert.deepEqual((await state()).session.camera, origin.camera);
   assert.deepEqual((await state()).session.route, origin.route);
   assert.equal(await page.locator('.street-transition').count(), 0);
-  evidence.checks.push('Desktop journal: lower-right box, upper-left writing, blocked walking, fade and usable street.');
+  evidence.checks.push('Desktop journal: paired lower-right doodle, upper-left writing, blocked walking, fade and usable street.');
 
   // Actual pointer orbit, then return/re-entry must preserve the new camera.
   const canvas = page.locator('.outline-host canvas#scene');
@@ -111,7 +111,7 @@ try {
   await begin();
   await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'pause');
   await shot('journal-box-phone');
-  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 8000);
+  await page.waitForFunction(() => digitalMemory.inspect().entryTransition?.beat === 'writing' && digitalMemory.inspect().entryTransition.elapsedMs > 7000);
   await shot('journal-writing-phone');
   await page.setViewportSize({ width: 430, height: 844 });
   await landed(); await shot('street-phone');
@@ -180,6 +180,19 @@ try {
   await failed.waitForFunction(() => !digitalMemory.inspect().entryTransition && digitalMemory.inspect().session.view === 'street');
   await failed.close();
   evidence.checks.push('Scene failure removes the animation; the original map remains usable and retry succeeds.');
+
+  const missingArt = await context.newPage();
+  await missingArt.route('**/assets/transitions/doodles-r1/*.png', route => route.fulfill({ status: 503, body: 'fixture unavailable' }));
+  await load(missingArt);
+  await missingArt.getByRole('button', { name: '打开菜单', exact: true }).click(); await missingArt.locator('#street-entry').click();
+  await missingArt.waitForFunction(() => document.getElementById('status').textContent.includes('街景暂时打不开'));
+  assert.equal(await missingArt.locator('.street-transition').count(), 0);
+  assert.equal(await missingArt.evaluate(() => digitalMemory.inspect().session.view), 'map');
+  await missingArt.unrouteAll();
+  await missingArt.getByRole('button', { name: '打开菜单', exact: true }).click(); await missingArt.locator('#street-entry').click();
+  await missingArt.waitForFunction(() => !digitalMemory.inspect().entryTransition && digitalMemory.inspect().session.view === 'street', null, { timeout: 30000 });
+  await missingArt.close();
+  evidence.checks.push('Doodle failure removes the overlay, keeps the map usable and retries with working art.');
 
   assert.deepEqual(evidence.errors, []);
   evidence.browser = await browser.version();
