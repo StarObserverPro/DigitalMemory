@@ -219,18 +219,16 @@ export function createEntryTransition({ container, street, mode = 'journal', sig
   function clear() { ctx.clearRect(0, 0, width, height); }
   function sketch(time) {
     clear();
-    // A translucent sheet opens over the existing raster map, retaining its
-    // actual geography underneath. The small box is an unregistered doodle.
-    ctx.fillStyle = 'rgba(250,247,237,.64)'; ctx.fillRect(0, 0, width, height);
-    const inset = Math.min(width * .07, 88), top = height * .1;
-    ctx.fillStyle = 'rgba(255,253,245,.30)'; ctx.fillRect(inset, top, width - inset * 2, height * .78);
-    ctx.strokeStyle = '#7f80714a'; ctx.lineWidth = 1.5;
-    line(ctx, [[inset + 4, top + 2], [width - inset, top], [width - inset - 3, height * .88], [inset, height * .88 - 2], [inset + 4, top + 2]]);
+    // One unframed sheet: the map is a faint underlay, not a corner layout grid.
+    ctx.fillStyle = 'rgba(250,247,237,.86)'; ctx.fillRect(0, 0, width, height);
     const mobile = width < 600, boxScale = Math.min(mobile ? width * .00165 : width * .00105, height * .00135, 1.22);
-    const boxX = mobile ? width * .49 : width * .65, boxY = height * .59;
     const penScale = Math.min(width / 1400, height / 1400, .48);
     const font = Math.min(mobile ? width * .066 : width * .032, height * .052, 40);
     const textX = width * .13, textY = height * (mobile ? .25 : .27);
+    // Preserve the accepted writing anchor and block size. The illustration
+    // belongs below the text on the same page, inset from its right margin.
+    const pageRight = Math.min(width * .84, textX + font * 15);
+    const boxX = pageRight - 218 * boxScale, boxY = textY + font * 4.8;
     const drawProgress = clamp(time / 1250), textProgress = clamp((time - 1700) / writingMs);
     const boxTip = drawBox(ctx, drawProgress, boxX, boxY, boxScale);
     const textTip = drawJournal(ctx, JOURNAL_LINES[journal], textProgress, textX, textY, font);
