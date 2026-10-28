@@ -1,0 +1,2 @@
+# Preserve the exact bytes pinned in manifest.json on every checkout platform.
+* -text

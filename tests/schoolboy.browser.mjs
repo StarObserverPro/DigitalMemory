@@ -5,6 +5,7 @@ import {mkdir, writeFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
 const port=Number(process.env.STUDENT_QA_PORT||43179);
+const evidenceDir=process.env.OUTLINE_EVIDENCE_DIR||'local-evidence';
 const server=spawn(process.execPath,['scripts/serve.mjs','--dist'],{env:{...process.env,PORT:String(port)},stdio:['ignore','pipe','pipe']});
 let browser,context;
 const evidence={errors:[],rotation:[]};
@@ -41,6 +42,7 @@ try{
   const openStreet=async()=>{
     await menu().click();await page.locator('#street-entry').click();
     await page.waitForFunction(()=>document.querySelector('.outline-host')?.dataset.ready==='true',null,{timeout:45000});
+    await page.waitForFunction(()=>!globalThis.digitalMemory.inspect().entryTransition);
     await waitFrames();
   };
   await openStreet();
@@ -96,10 +98,10 @@ try{
   }
   assert(evidence.rotation.some(s=>s.evicted>0),'travel across viewpoints must release old chunks');
   assert.equal(await host.count(),1);
-  await mkdir('local-evidence',{recursive:true});
-  await page.screenshot({path:'local-evidence/outline-main-desktop.png'});
+  await mkdir(evidenceDir,{recursive:true});
+  await page.screenshot({path:evidenceDir+'/outline-main-desktop.png'});
   await page.setViewportSize({width:390,height:844});await waitFrames();
-  await page.screenshot({path:'local-evidence/outline-main-phone.png'});
+  await page.screenshot({path:evidenceDir+'/outline-main-phone.png'});
   const rect=await host.locator('#minimap-panel').boundingBox();assert(rect.x>=0&&rect.x+rect.width<=390);
 
   // The real 60-second warm timeout also needs to release the canvas and stage owner.
@@ -135,7 +137,7 @@ try{
     evidence.cancelledLoadRecovered=true;
   }finally{await cancelledContext.close();}
   assert.deepEqual(evidence.errors,[]);
-  await writeFile('local-evidence/outline-runtime.json',JSON.stringify(evidence,null,2));
+  await writeFile(evidenceDir+'/outline-runtime.json',JSON.stringify(evidence,null,2));
   console.log('Main WebGL entry passed: render, walk, true menu pause, heading, retained re-entry, chunk eviction, phone fit, real warm expiry and rebuilt state.');
 }finally{
   await context?.close();await browser?.close();server.kill();

@@ -1,0 +1,11 @@
+# Street-entry journal presentation
+
+Revision: `journal-entry-haring-r1`. This is the user's 2026-10-28 replacement direction after rejecting the first procedural hand/copy and a realistic sketch: a Haring-inspired, rounded, continuous black-outline writing hand with flat fill. The final composed animation remains subject to user visual review.
+
+- `hand-haring-r1.png`: built-in ImageGen output, 1536×1024 RGBA, three matching writing poses. The consumer crops the original pixels, excludes adjacent-frame bleed and registers each pen tip. No private reference image or source photograph was used. Rejected generations are not included.
+- `street-journal-r1.woff2`: a renamed, glyph-subset derivative of [Long Cang](https://github.com/google/fonts/tree/main/ofl/longcang), containing the five journal snippets' 2026-10-28 character set. The original font and subset are licensed under the included SIL OFL 1.1; copyright belongs to the Long Cang Project Authors. The original font is not bundled in addition to this subset.
+- `manifest.json`: pinned delivery hashes and provenance/review status. `scripts/build.mjs` verifies them before packaging.
+
+The five dated snippets are fictional decorative street observations requested for the transition. They are not user-authored memories, do not name or locate a shop, and are never written to the memory catalog. They replace all initial map/drawing-instruction phrases.
+
+The brief used for the selected hand: Keith Haring's bold rounded continuous black contours and flat warm-white fill; a clear right-hand pencil grip; three close animation poses with aligned pencil contact points; true transparency; no skin rendering, hatching, cuffs, gradients, labels or background. Runtime frame registration and off-screen forearm continuation belong to `src/explorer/entry-transition.js`.

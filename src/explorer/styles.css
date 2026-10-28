@@ -13,3 +13,17 @@
 
 @font-face{font-family:"Sanli Happy";src:url("../../scenes/xinhua-sanli-outline/fonts/ZCOOLKuaiLe-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
 #app.outline-active>#menu-button{visibility:hidden}.outline-active #menu-dialog{font-family:"Sanli Happy",system-ui,sans-serif;color:#24251f;background:#faf9f4;border:3px solid #24251f;border-radius:23px 18px 25px 16px}.outline-active #menu-dialog h1{font-size:23px}.outline-active .menu-list>button{font-size:16px}#outline-destinations{display:grid;gap:8px;margin-bottom:12px}#outline-destinations button{border:2px solid #24251f;border-radius:14px 18px 12px 17px;padding:10px;text-align:left;min-height:43px;font-size:16px}#outline-destinations button:hover{background:#f2df90}
+
+.transition-option{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;cursor:pointer;font-size:16px}
+@font-face{font-family:"Street Journal";src:url("../../assets/transitions/street-journal-r1.woff2") format("woff2");font-weight:400;font-display:block}
+.transition-option small{display:block;max-width:260px;margin-top:9px;font-size:13px;line-height:1.7;color:#717460}
+.transition-option input{appearance:none;flex:0 0 48px;width:48px;height:28px;margin:0;border:2px solid #677060;border-radius:18px;background:#e2e3d6;cursor:pointer}
+.transition-option input::before{content:"";display:block;width:18px;height:18px;margin:3px;border-radius:50%;background:#677060}
+.transition-option input:checked{background:#efdb91;border-color:#414b3c}
+.transition-option input:checked::before{transform:translateX(20px);background:#414b3c}
+dialog.street-transition{position:fixed;inset:0;margin:0;padding:0;border:0;border-radius:0;width:100vw;height:100dvh;max-width:none;max-height:none;overflow:hidden;background:transparent;box-shadow:none;color:#35392f;touch-action:none}
+dialog.street-transition::backdrop{background:transparent;backdrop-filter:none}
+.street-transition canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.transition-announcement{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.transition-cancel{position:absolute;left:max(24px,env(safe-area-inset-left));bottom:max(24px,env(safe-area-inset-bottom));border:1px solid #787c6970;background:#faf7eddb;border-radius:17px 20px 16px 19px;padding:10px 16px;font-size:13px;min-height:44px}
+.transition-cancel span{margin-left:8px}.transition-cancel:hover{background:#fffdf6}
