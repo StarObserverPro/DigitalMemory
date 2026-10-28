@@ -18,6 +18,8 @@ Preserve source geometry while selecting what to show. A familiar gate and a few
 
 The 2026-10-26 checkpoint reconciles the already merged character with old street-calibration, World Labs and public bridge documents. It triggers no runtime work, paid generation, private-content publication or deployment; Keith Haring-inspired sparse art is parked only.
 
+具名地点落图前必须执行 [地理核验流程](docs/GEO_DATA_RUNBOOK.md#具体地点落图前的核验顺序)：地图POI、对应建筑侧/朝向与街景交叉核对；地址文字不足以定位门脸。工程检查和地理核验分列，具体证据要求见 [验收](docs/VERIFICATION.md#具名地点的地理验收与工程验收)。
+
 ## Read only what this task needs
 
 1. Identify the request and its authorized effects: investigation, repository modification, content approval, integration, publication, or deployment. These are different permissions.
@@ -54,6 +56,10 @@ Read the current branch/head and relevant open PRs before writes. Discover tool 
 Keep stable place identity separate from editable coordinates. Only the spatial registry controls registration; only the time resolver selects time-layer visibility; only the application session owns the current location, period, camera and portal stack. Generated visuals never become historical evidence. Detailed ownership is in [architecture](docs/ARCHITECTURE.md).
 
 Investigate dependencies as needed, but expand modification or external effects only with authority. Do not refactor unrelated modules, regenerate accepted scenes globally, weaken acceptance to obtain a pass, or add private data to public Git/PR/logs. A reversible same-contract implementation choice is ordinarily the executor's decision.
+
+## 文档类修正的持续授权
+
+用户明确要求的文档类修正，默认完成定位规范所有者、修改关联文档、核对事实与链接、提交、创建或更新PR，以及必要检查通过后合并main；无需逐步或在合并前再次询问。2026-10-27用户已明确授权这一完整流程。修订必须以用户要求及可核实事实为限，不能借文档修正扩展为运行时代码、美术资产、私人资料公开或生产部署。若存在真实的内容歧义、权限阻断或检查失败，先完成不受影响的部分，再明确报告具体问题；不能将其作为省略验证的理由。
 
 ## Required documentation alignment with every PR push
 

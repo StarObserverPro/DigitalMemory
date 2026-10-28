@@ -96,3 +96,19 @@ Check scene registration/hash and privacy before mount, local-frame round trips,
 For outline figure visibility, bind foot/head projection and actual screenshot to the same pose/yaw, then retrace the point before changing camera or masking. Screen-in-bounds diagnostics do not replace visible figure review.
 
 Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
+
+## 具名地点的地理验收与工程验收
+
+位置相关改动必须分别给出以下结果，不以同一个“通过”概括：
+
+| 验收项 | 可支持结论的证据 |
+| --- | --- |
+| 地点身份、所在楼栋、街侧与朝向 | 实际地图POI与建筑对应、带日期和视向的街景；逐项标明已核实或仍未知 |
+| 轮廓、进深、退界和广场范围 | 卫星/街景交叉观察与注册底稿；绘制估计明确标出 |
+| 实际呈现与导航 | 当前修订在主体入口中的画面、目的地行走、返回和恢复 |
+| 工程一致性 | 源数据保留、哈希、测试、构建与最终提交CI |
+| 集成与合并 | 实际消费入口、PR状态、远端main提交；部署另列 |
+
+连通测试只能证明能走到设定的坐标，不能证明坐标属于所标商店；构建与CI通过不能证明地点正确。生成图、示意图和场景截图也不能用作自身地理准确性的来源。代码中写了来源名称，不能替代实际查看来源。
+
+用户问“是否已合并main”时，实时核对远端main和PR合并状态，分别报告独立预览、已接主体、已开PR、已合并和已部署的实际状态。修复后合并的授权允许在必要检查通过后继续合并；不得将未完成的位置核验包装为已完成以满足合并条件。

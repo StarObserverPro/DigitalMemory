@@ -21,6 +21,16 @@ The user's instruction to “take the 3D data from a public Chinese map” is no
 4. Establish the target historical window **independently**. An undated current satellite reference is an orientation source; do not mislabel it as a 2000-era image.
 5. Lock down the repository public/private boundary before downloading photos or street views. Do not insert private addresses, personal residence links, restricted photos, or source images into commits or publicly visible CI artifacts.
 
+### 具体地点落图前的核验顺序
+
+用户提到商店、广场、校门或其他具名地点，即触发定位核验。执行者负责查图，不把常规检索工作交回给用户。先确认街段、小区、路侧与朝向，再查实际地图POI、对应建筑和入口，最后用卫星图与有拍摄日期、视向的街景交叉核对。旧地址只提供检索线索；查到楼号不等于确认商铺位于该楼哪一面。
+
+- 先展示或保留真实证据：地图提供方、POI ID/链接、所见楼栋与路侧、街景ID/拍摄期/视向、参考截图和场景修订。地图视口中心、搜索结果摘要、地址文字不能冒充门店坐标；坐标换算必须注明CRS。
+- 将确认的地点身份与朝向、近似的进深/退界/广场范围分别记录。地图图钉可能是楼栋代表点；街景未见清晰店招或入口时，不能写成“入口已核实”。店房和广场分别核验，不能从店名推造广场边界。
+- 证据尚不足时，保留无商号的概括体量或待定位记录，不在任意门脸上挂真实商号。访问失败、只看到地址或只看过周边卫星图，要如实说明尚缺哪项核验。
+- 用户明确纠正地点后，立即撤销错误身份绑定及依赖它的目的地、广场标注和“已核实”结论；重新核对后再落图。不得用“可能是旧址”解释冲突，除非确有迁址证据；用户没有给出的具体落点不能归到用户名下。
+- 对位置敏感的修改，交付地图参照和修正后的实际consumer画面，说明核实到哪一级。原始参考、截图留在库外；公开文档只保留可复用规则、公开来源与必要结论，不记录私人居住经历。
+
 ### Actual input sources in this repository
 
 - [OSM orientation](../content/public/orientation.json): WGS84 named streets and district boundaries, acquired 2026-10-18.
