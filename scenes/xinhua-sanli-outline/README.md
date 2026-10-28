@@ -1,6 +1,6 @@
 # 新华街三里 · 已选定近景
 
-用户于2026-10-27认可 `sanli-outline-r5` 入库并接入主体，原空间修订为 `sanli-block-layout-r4`。当前选定版本已扩展为 `xinhua-corridor-outline-r4`，约875米新华街走廊及七里西侧临街，保留原三里几何与已选定轮廓语法。正式入口已随PR #25合并；当前交付与验证状态见[STATUS](../../docs/STATUS.md)。最终地理取舍保存在 `scene-data.json`，不保存逐次纠正日记。
+用户于2026-10-27认可 `sanli-outline-r5` 入库并接入主体，原空间修订为 `sanli-block-layout-r4`。当前选定版本已扩展为 `xinhua-corridor-outline-r5`，约875米新华街走廊及七里西侧临街，保留原三里几何与已选定轮廓语法。正式入口已随PR #25合并；当前交付与验证状态见[STATUS](../../docs/STATUS.md)。最终地理取舍保存在 `scene-data.json`，不保存逐次纠正日记。
 
 运行项目根目录 `npm run dev`，在总览新华街已支持路段或菜单选择“到街上走走”。点击铺地步行、拖动转向、滚轮远近、WASD/方向键行走，Shift快走。菜单可选择院内目的地并回到地图。指南针随视角，小地图固定北向，可收起。此版本采用连续轮廓人物；既有校服模型和旧renderer保留供其他受控用途，不与当前场景同时运行。
 
@@ -18,6 +18,8 @@
 
 完整[轮廓风格和工作流程](../../docs/research/XINHUA_OUTLINE_WORKFLOW.md)记录可重用规则。Three.js0.180.0复用相邻已收录路口的vendor，许可见[Three.js MIT](../xinhua-junction-outline/vendor/three/LICENSE)。字体为原始ZCOOL KuaiLe，许可见[OFL1.1](fonts/OFL.txt)。派生地理数据保留OSM contributors/Overture ODbL及相应East Asia上游CC BY4.0，来源边界见[地理谱系](../../docs/GEO_DATA_LINEAGE.md)。应用代码MIT不改变第三方数据/字体许可。
 
-Corridor extension: xinhua-corridor-outline-r4, approximately 875 m of Xinhua Street plus Qili west frontage. Original Sanli geometry retained; detached shops, broad pavement and Kandan Bridge added. Daoxiangcun is on the west frontage facing Fourth Ring, checked against Baidu POI and 2020-03 panorama. Ground extents and bridge heights are estimates. Application session/spatial/time owners remain unchanged.
+Corridor extension: xinhua-corridor-outline-r5, approximately 875 m of Xinhua Street plus Qili west frontage. Original Sanli geometry retained; detached shops, broad pavement and Kandan Bridge added. Daoxiangcun is on the west frontage facing Fourth Ring, checked against Baidu POI and 2020-03 panorama. Ground extents and bridge heights are estimates. Application session/spatial/time owners remain unchanged.
 
 Evidence: https://map.baidu.com/?qt=inf&uid=905d861757ac875e4107c15e ; dated panorama 09002200122003141220538666G, west auxiliary road facing east. Source photographs and audit screenshots are not shipped. Bridge footprint: OSM way 627475479; deck height/pier dimensions approximate.
+
+云柏—看丹桥接入修订 `yunbai-kandan-native-r1`：沿用源坐标补入五个缺失体量；`buildingPresentation`独立记录低商业约10.5 m、路口住宅约20.4 m的显示估计，以及三座高楼约18 m以上渐隐至24 m的开放上部画法。原始占地、层数和高度保留；该米数是约五六层表现带的本段参数，不是实测层高。云柏仅标旧址区，精确门脸范围、裙房连接和年代仍有缺口。约146 m步行段接入现有七里西侧及桥下导航。未引入沙盒程序、依赖、参考原图、对比图或运行状态；实际主体证据见[任务包](../../docs/attention/tasks/DM-YUNBAI-KANDAN-20261028.md)。

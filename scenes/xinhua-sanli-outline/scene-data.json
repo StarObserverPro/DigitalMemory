@@ -1,5 +1,5 @@
 {
-  "revision": "xinhua-corridor-layout-r4",
+  "revision": "xinhua-corridor-layout-r5",
   "origin": [
     116.2849081,
     39.8421715
@@ -283,6 +283,22 @@
       ],
       "label": "看丹桥与广场方向",
       "source": "user named anchor / public source registration; exact local approach approximate"
+    },
+    "yunbai": {
+      "id": "yunbai",
+      "label": "云柏鞋城旧址区",
+      "position": [
+        -461.86739,
+        25.52555
+      ],
+      "anchor": [
+        -454.59635,
+        22.18907
+      ],
+      "source": "User-identified historical area at current group-buy supermarket marker on Qili west frontage; 2013 imagery and 2011 aerial massing audit",
+      "identityStatus": "user-authored-historical-anchor",
+      "extentStatus": "approximate-frontage-area-not-an-exact-doorway",
+      "positionUncertaintyMetres": 10.2
     }
   },
   "buildings": [
@@ -7033,6 +7049,261 @@
         "43570d43-c9a9-47a1-bb75-2c44fa80a6e0"
       ],
       "periodStatus": "later-reference-stability-candidate-not-individually-dated"
+    },
+    {
+      "id": "xinhua-fe02b2dd-93ad-4b4b-bc1e-673c45df7be2",
+      "compound": "qili",
+      "kind": "slab",
+      "ring": [
+        [
+          -451.16588,
+          29.18871
+        ],
+        [
+          -428.06288,
+          77.81432
+        ],
+        [
+          -406.32592,
+          67.48429
+        ],
+        [
+          -429.43745,
+          18.86981
+        ]
+      ],
+      "originalRing": [
+        [
+          -451.1658824870629,
+          29.188708560158833
+        ],
+        [
+          -428.06288350929907,
+          77.81431714490776
+        ],
+        [
+          -406.325915512233,
+          67.48429419170665
+        ],
+        [
+          -429.437452184339,
+          18.869805115110672
+        ]
+      ],
+      "height": 18.9,
+      "storeys": 6,
+      "label": "",
+      "heightEvidence": "photo-typology-estimate",
+      "sourceIds": [
+        "fe02b2dd-93ad-4b4b-bc1e-673c45df7be2"
+      ],
+      "periodStatus": "historical-reference-massing-not-individually-dated",
+      "silhouetteStrokes": 1,
+      "maxFacadeStrokes": 4
+    },
+    {
+      "id": "xinhua-f4117f10-8e48-4b19-a528-0a512a9f1575",
+      "compound": "qili",
+      "kind": "tower",
+      "ring": [
+        [
+          -411.17533,
+          22.03886
+        ],
+        [
+          -398.89812,
+          46.13484
+        ],
+        [
+          -371.23599,
+          32.0353
+        ],
+        [
+          -383.5132,
+          7.95045
+        ]
+      ],
+      "originalRing": [
+        [
+          -411.1753254969859,
+          22.03886490156545
+        ],
+        [
+          -398.89812204968416,
+          46.13483878772282
+        ],
+        [
+          -371.2359946693221,
+          32.03530261412869
+        ],
+        [
+          -383.51319811783713,
+          7.950448236124262
+        ]
+      ],
+      "height": 71.1,
+      "storeys": 24,
+      "label": "",
+      "heightEvidence": "listing-and-photo-height-family",
+      "sourceIds": [
+        "f4117f10-8e48-4b19-a528-0a512a9f1575"
+      ],
+      "periodStatus": "historical-reference-massing-not-individually-dated",
+      "silhouetteStrokes": 1,
+      "maxFacadeStrokes": 4
+    },
+    {
+      "id": "xinhua-75ce6030-8ec8-46d5-ae66-7a6b02973c4f",
+      "compound": "qili",
+      "kind": "tower",
+      "ring": [
+        [
+          -364.94371,
+          -3.93631
+        ],
+        [
+          -350.41256,
+          23.5956
+        ],
+        [
+          -322.84435,
+          9.04016
+        ],
+        [
+          -337.3755,
+          -18.49174
+        ]
+      ],
+      "originalRing": [
+        [
+          -364.9437144596451,
+          -3.936305840316917
+        ],
+        [
+          -350.41255989164415,
+          23.595596024805527
+        ],
+        [
+          -322.84434714176615,
+          9.040160022471323
+        ],
+        [
+          -337.37550170976715,
+          -18.49174184265112
+        ]
+      ],
+      "height": 71.1,
+      "storeys": 24,
+      "label": "",
+      "heightEvidence": "listing-and-photo-height-family",
+      "sourceIds": [
+        "75ce6030-8ec8-46d5-ae66-7a6b02973c4f"
+      ],
+      "periodStatus": "historical-reference-massing-not-individually-dated",
+      "silhouetteStrokes": 1,
+      "maxFacadeStrokes": 4
+    },
+    {
+      "id": "xinhua-3ce43988-fe71-4630-a36f-b63b505642e3",
+      "compound": "qili",
+      "kind": "shop",
+      "ring": [
+        [
+          -373.32773,
+          110.35
+        ],
+        [
+          -358.5746,
+          111.27292
+        ],
+        [
+          -357.98549,
+          101.75462
+        ],
+        [
+          -372.73863,
+          100.8317
+        ]
+      ],
+      "originalRing": [
+        [
+          -373.327729609653,
+          110.3499976203883
+        ],
+        [
+          -358.574595006955,
+          111.27291678602137
+        ],
+        [
+          -357.9854941470902,
+          101.7546179185041
+        ],
+        [
+          -372.73862874978823,
+          100.83169875208092
+        ]
+      ],
+      "height": 4.4,
+      "storeys": 1,
+      "label": "",
+      "heightEvidence": "photo-typology-estimate",
+      "sourceIds": [
+        "3ce43988-fe71-4630-a36f-b63b505642e3"
+      ],
+      "periodStatus": "historical-reference-massing-not-individually-dated",
+      "silhouetteStrokes": 1,
+      "maxFacadeStrokes": 4
+    },
+    {
+      "id": "xinhua-37f84561-d0e5-42b7-9525-29da1ceee187",
+      "compound": "qili",
+      "kind": "shop",
+      "ring": [
+        [
+          -350.25888,
+          36.40527
+        ],
+        [
+          -353.76787,
+          28.69945
+        ],
+        [
+          -371.0567,
+          36.62766
+        ],
+        [
+          -367.54771,
+          44.3446
+        ]
+      ],
+      "originalRing": [
+        [
+          -350.2588814068313,
+          36.40526926687979
+        ],
+        [
+          -353.7678734902731,
+          28.699450206959934
+        ],
+        [
+          -371.056703102696,
+          36.627659427568396
+        ],
+        [
+          -367.5477110192542,
+          44.344597995641195
+        ]
+      ],
+      "height": 4.4,
+      "storeys": 1,
+      "label": "",
+      "heightEvidence": "photo-typology-estimate",
+      "sourceIds": [
+        "37f84561-d0e5-42b7-9525-29da1ceee187"
+      ],
+      "periodStatus": "historical-reference-massing-not-individually-dated",
+      "silhouetteStrokes": 1,
+      "maxFacadeStrokes": 4
     }
   ],
   "cars": [
@@ -14373,6 +14644,29 @@
       ],
       "holes": [],
       "evidence": "map and west frontage panorama; pavement edges approximate"
+    },
+    {
+      "id": "yunbai-kandan-west-frontage",
+      "ring": [
+        [
+          -407.63785,
+          170.08058
+        ],
+        [
+          -391.27802,
+          162.57351
+        ],
+        [
+          -458.00759,
+          17.15286
+        ],
+        [
+          -474.36741,
+          24.65993
+        ]
+      ],
+      "holes": [],
+      "evidence": "Continuous west-frontage pavement and forecourt; approximate edges, accepted route relationship"
     }
   ],
   "greenAreas": [
@@ -16438,8 +16732,8 @@
     "forwardInterpretation": "toward Xinhua gate from tree midpoint",
     "evidence": "User correction: between two trees, about 2 metres forward at roadside; precise positions approximate"
   },
-  "artRevision": "xinhua-corridor-outline-r4",
-  "navigationRevision": "xinhua-corridor-nav-r4",
+  "artRevision": "xinhua-corridor-outline-r5",
+  "navigationRevision": "xinhua-corridor-nav-r5",
   "corridor": {
     "id": "xinhua-streetside-r1",
     "centerline": [
@@ -17942,5 +18236,73 @@
     ],
     "evidence": "registered OSM ground-road endpoints; connecting under-bridge pavement approximate, no historical route assertion"
   },
-  "privacy": "public"
+  "privacy": "public",
+  "buildingPresentation": [
+    {
+      "sourceBuildingId": "xinhua-fe02b2dd-93ad-4b4b-bc1e-673c45df7be2",
+      "displayHeight": 10.5,
+      "displayKind": "shop",
+      "facadeEdge": 0,
+      "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate"
+    },
+    {
+      "sourceBuildingId": "xinhua-5b3de662-5e89-49d2-acb9-c86f965dde5d",
+      "displayHeight": 20.4,
+      "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate"
+    },
+    {
+      "sourceBuildingId": "xinhua-71f81588-cee7-4b4d-b52b-06c2dc29dc44",
+      "openUpper": {
+        "fadeStart": 18,
+        "fadeEnd": 24
+      },
+      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+    },
+    {
+      "sourceBuildingId": "xinhua-f4117f10-8e48-4b19-a528-0a512a9f1575",
+      "openUpper": {
+        "fadeStart": 18,
+        "fadeEnd": 24
+      },
+      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+    },
+    {
+      "sourceBuildingId": "xinhua-75ce6030-8ec8-46d5-ae66-7a6b02973c4f",
+      "openUpper": {
+        "fadeStart": 18,
+        "fadeEnd": 24
+      },
+      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+    }
+  ],
+  "yunbaiKandan": {
+    "revision": "yunbai-kandan-native-r1",
+    "buildingIds": [
+      "xinhua-fe02b2dd-93ad-4b4b-bc1e-673c45df7be2",
+      "xinhua-71f81588-cee7-4b4d-b52b-06c2dc29dc44",
+      "xinhua-f4117f10-8e48-4b19-a528-0a512a9f1575",
+      "xinhua-75ce6030-8ec8-46d5-ae66-7a6b02973c4f",
+      "xinhua-3ce43988-fe71-4630-a36f-b63b505642e3",
+      "xinhua-37f84561-d0e5-42b7-9525-29da1ceee187",
+      "xinhua-5b3de662-5e89-49d2-acb9-c86f965dde5d",
+      "daoxiangcun-qili-west"
+    ],
+    "route": [
+      [
+        -461.86739,
+        25.52555
+      ],
+      [
+        -400.97666,
+        158.22189
+      ]
+    ],
+    "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate",
+    "unknowns": [
+      "exact former shop doorway and extent",
+      "physical attachment of low frontage and towers",
+      "metre-accurate setbacks",
+      "complete historical chronology"
+    ]
+  }
 }
