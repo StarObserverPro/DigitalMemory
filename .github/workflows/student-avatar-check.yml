@@ -1,4 +1,4 @@
-name: Street scene and retained avatar checks
+name: Street scene and resource lifetime checks
 
 on:
   push:
@@ -8,6 +8,8 @@ on:
       - 'src/explorer/schoolboy.js'
       - 'src/explorer/outline-stage.js'
       - 'src/explorer/main.js'
+      - 'src/engine/**'
+      - 'src/adapters/public-repository.js'
       - 'scenes/**'
       - 'src/explorer/street-*.js'
       - 'src/explorer/stage.js'
@@ -25,7 +27,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,6 +48,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: selected-street-webgl
-          path: local-evidence/outline-*.png
+          path: local-evidence/outline-*.*
           if-no-files-found: ignore
           retention-days: 7

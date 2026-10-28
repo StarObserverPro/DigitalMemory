@@ -6,9 +6,9 @@ The purpose is to preserve impressions of living in an environment, not to produ
 
 ## Run the Phase 1 prototype
 
-Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain seams; `npm run build` produces the static application in `dist/`.
+Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain/application seams, `npm run test:outline` checks the selected street scene, and `npm run build` produces the static application in `dist/`.
 
-The runtime has an illustrated overview and a bounded, grounded street prototype with the merged male-student GLB and two schoolwear palettes. Its present proportions are provisionally retained as-is. Run instructions are above; [RUNTIME](docs/RUNTIME.md), [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md) and [STATUS](docs/STATUS.md) distinguish implemented behavior from historical experiments. The ordinary interface uses one initially closed menu, not the former mapping/layer inspectors or storefront demonstration controls.
+The runtime has a three-tier illustrated overview and the selected Xinhua/Sanli outline street, including the continuous outline person, restrained motion and the corridor to Qili's west frontage. Enter through a supported Xinhua segment or “到街上走走”. The street adds an approved collapsible minimap and compass to its closed-menu interface; the overview has no avatar. The former GLB student, schoolwear palettes and graybox renderer remain retained modules, with their evidence separated from the current consumer in [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md). [RUNTIME](docs/RUNTIME.md) and [STATUS](docs/STATUS.md) describe current behavior and its limits.
 
 The current design follows **area → street/route → roadside attachment**. All three overview tiers remain orientation views without an avatar. Route entry precedes normal place activation; notes, static image sequences and local exploration use one attachment contract. This documentation revision does not claim that the complete new dispatcher, street-edge editor or private note archive exists.
 
@@ -26,7 +26,7 @@ The current design follows **area → street/route → roadside attachment**. Al
 | How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
 | Where did Xinhua/Sanli building geometry actually come from, and what is verified? | [Geographic source chain](docs/GEO_DATA_LINEAGE.md) |
 | How does an Agent acquire and audit the next map area without guessing buildings? | [Geodata acquisition / QA runbook](docs/GEO_DATA_RUNBOOK.md) |
-| Which student is actually running vs the 2× fixture? | [Street prototype](docs/STREET_PROTOTYPE.md) and [scale review](docs/STREET_VISUAL_CALIBRATION.md) |
+| Which street scene/person is running, and which character studies are historical? | [Selected street and legacy prototypes](docs/STREET_PROTOTYPE.md), [historical scale review](docs/STREET_VISUAL_CALIBRATION.md) and [outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md) |
 | Where is the future World Labs handoff? | [Marble 2 documentation — no generation](docs/WORLDLABS_HANDOFF.md) |
 | Where is bridge/Zhengyang public research? | [Fengtai bridge research](docs/research/FENGTAI_BRIDGES_ZHENGYANG.md) |
 | How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
@@ -46,6 +46,6 @@ This repository is public. Keep implementation, architecture, synthetic test fix
 
 The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
 
-The initial street sample is bounded; it is not a complete historical route or a private content archive. Current runtime, evidence, pending integration and publication status belong in [STATUS](docs/STATUS.md), not in an old prototype description. That documentation reorganization changed no runtime; the later selected Sanli integration is described below.
+The street remains a bounded working reconstruction, with source and dimensional uncertainty recorded separately from visual approval. It is not a complete historical route or a private content archive. Current implementation, exact verification, merge and deployment provenance belong in [STATUS](docs/STATUS.md). Selected scene operation and licences are in [the scene README](scenes/xinhua-sanli-outline/README.md).
 
-已选定的新华街路口与三里近景现可从主体“到街上走走”进入；风格与接入流程见[轮廓工作流程](docs/research/XINHUA_OUTLINE_WORKFLOW.md)，运行与许可见[三里场景](scenes/xinhua-sanli-outline/README.md)。
+For construction, record or reuse a repository task scope even when working in a sandbox. Read the relevant docs before implementation, align them before validation/CI, and report the actual results with each PR; [AGENTS](AGENTS.md) and [attention guidance](docs/attention/README.md) own that workflow. Trial artifacts remain outside Git.
