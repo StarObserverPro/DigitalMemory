@@ -1,5 +1,7 @@
 # Geographic data lineage: Xinhua Street / Sanli
 
+**2026-10-28 consumer correction:** inspected main `ed2cc85` retained the rejected R6 overview at `6a9c212` while PR #25's outline corridor was a different consumer. The user subsequently requested recovery into the actual local overview. Selected R7 restores the local Sili/Liuli membership and height-family correction, retains all 161 baseline physical polygons, recovers 30 reviewed source-linked masses and converts four selected Qili street frontage rings through the pinned scene frame. Runtime registration retains complete `sourceGeometry` separately from its exterior-ring projection. The [spatial pipeline](research/XINHUA_SPATIAL_PIPELINE.md) and [repair record](attention/tasks/DM-MAP-REPAIR-20261028.md) record the transition. The dated counts below remain their original source snapshots; neither old tests nor recovered artwork certify every estate boundary, building identity, height or historical year.
+
 **Status:** source/data audit and production lineage, checked against repository `main` on 2026-10-19.  
 **Consumers:** source QA, [Sanli importer](../scripts/ingest-sanli-overture.py), [Xinhua spatial plan](../content/reference/xinhua-spatial-plan.json), [R6 art compiler](../scripts/build-xinhua-art.py).  
 **Operator procedure:** [Geographic acquisition and QA runbook](GEO_DATA_RUNBOOK.md).  
