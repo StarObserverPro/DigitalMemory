@@ -29,7 +29,17 @@ Use public map/dated panorama and archival search, then a compact independently 
 - Retained Esri Wayback release 2014-02-20 imagery with source metadata `SRC_DATE=20110201`. Publication and acquisition dates are distinct. Roof parallax and 10.2 m source accuracy limit ground-outline precision.
 - Current source footprints are read-only starting inputs. Their storey estimates and presumed detached storefronts must be checked against the acquired imagery, not silently accepted.
 
-## R3 delivery and current correction — 2026-10-28
+## R4 height-range clarification — 2026-10-28
+
+Lifecycle: delivered; active route removed. The user now selects approximately five to six storeys as the useful visible height band: lower buildings can retain their full street silhouette; taller ordinary background masses may stop around that band without needing their exact total storey count. This is an approximate drawing choice, not a requirement for floor measurement. Preserve source heights and the accepted broad geometry; keep the sample isolated. Documentation carrier: `agent/dm-yunbai-five-six-storeys`, based on `e01c8ee980dbeb6e08952a99baab3e1adafde581`.
+
+- Independent `yunbai-kandan-study-r4`, application SHA-256 `aaa75634a6ed845439b6af3b7517959c1b8f281a8acc3ecdd72c1c24272c026a`: the three towers retain their full lower fill to approximately 18 m, then fade through 24 m; selected vertical lines end at 18–20.1 m without a horizontal cap. These sample metres approximate the requested band, not a universal or historically measured floor height. Five lower objects keep their complete geometry.
+- Near/far same-camera full/open renders were inspected in the existing in-app browser and saved as `rear-comparison-near-r4.png` / `rear-comparison-far-r4.png`. The lower façade was also inspected from the route's southern segment. Captured warning/error logs were empty. `browser-check-r4.json` and `verification-r4.json` retain this revision's evidence; the earlier full 146 m walk remains R3 evidence, not a new R4 walk claim.
+- Eight building records, source/study heights, footprints, coordinate frame and route compare exactly equal to R3. Application/server syntax checks pass. The separate R3 source/evidence snapshots are retained outside the checkout.
+- The approximate height rule is accepted; R4's specific appearance remains for user review. Canonical workflow, assembly, verification and status are aligned. Sample code/assets remain outside Git; no production integration or deployment.
+- Next action only on request: review the retained height band and continue isolated refinement, or integrate selected work with explicit authorization. No per-building exact floor-count research is activated.
+
+## R3 delivery and earlier correction — 2026-10-28
 
 Lifecycle: delivered; active route removed. User confirms the Yunbai sample broadly conveys the intended relationship. Exact shop boundaries are not the goal; the street-level relationship between foreground and background masses is. Keep front masses and important gaps legible; unfamiliar rear buildings may lose their upper outline and remain open, especially where normal close walking views cannot see their full height. Do not turn those omissions into shorter closed buildings. Preserve source footprint/height and restrict implementation to the independent sample.
 
@@ -38,7 +48,7 @@ Lifecycle: delivered; active route removed. User confirms the Yunbai sample broa
 - Same-camera near/far closed/open WebGL comparisons were rendered and inspected in the in-app browser (`rear-comparison-near.png`, `rear-comparison-far.png`). The full 146 m walk completed, map standing/flat checks remained consistent, and captured warning/error logs were empty (`browser-check-r3.json`). These observations apply to this independent consumer.
 - Canonical alignment: XINHUA_OUTLINE_WORKFLOW owns selective rear contours; GEO_DATA_RUNBOOK and VERIFICATION distinguish visual adequacy from source precision; MAP_ASSEMBLY separates street omission from map flattening; STATUS separates accepted broad massing from pending R3 drawing review.
 - Approval and external effects: R2 broad geometry accepted; R3 specific appearance awaits user review. Only the workflow/evidence documentation enters the repository PR. Sample code, original references and screenshots stay outside Git. No production runtime integration or deployment.
-- Next action, only on a new user request: judge R3's rear exposure, line endings and foreground/background readability, then refine in isolation or integrate selected work if explicitly authorized. Metre-accurate shop research and invisible structural connections are no longer default next steps.
+- R3's review handoff is superseded by the five/six-storey R4 clarification above. Metre-accurate shop research and invisible structural connections remain outside the default next steps; integration requires explicit authorization.
 
 ## Earlier r2 delivery — 2026-10-28
 
