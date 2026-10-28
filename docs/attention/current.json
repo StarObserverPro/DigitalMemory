@@ -2,5 +2,5 @@
   "schemaVersion": 1,
   "description": "Explicitly activated tasks only; plans and delivered packets stay cold.",
   "globalConcurrencyLimit": null,
-  "active": [{"id":"DM-RUNTIME-RESIDENCY-20261027","path":"tasks/DM-RUNTIME-RESIDENCY-20261027.md","phase":"authoring"}]
+  "active": []
 }
