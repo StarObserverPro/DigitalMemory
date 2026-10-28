@@ -24,6 +24,14 @@ The selected street uses click/tap destinations on walkable ground, camera-relat
 
 The board-game reference supplies readable spatial relationships and character movement. There are no route cells, dice, property prices or compulsory turns. Geographic nodes, illustration anchors and actual historical entrances have distinct approval states.
 
+## Map-to-street transition
+
+The 2026-10-28 selected entry direction opens a translucent journal window over the current map. An approximately 8 fps Haring-inspired hand, with rounded continuous black outlines and flat fill, draws a small building box at lower right and moves to upper left to write a dated street-journal fragment. The five authored variants describe everyday observations such as a fresh oil cake, a cat in a bicycle basket or a repairer's tea mug holding screws. They are fictional transition decoration, never user memory records or claims about a named real shop. Casual handwriting replaces the rejected initial map/drawing-instruction text. The map and drawing then fade into the loaded street. The box is a transient drawing gesture and does not register a real building.
+
+Menu → 选项 → 简化入街动画 switches to the alternative: an overhead view of the registered street, a soft cloud covering the view, then descent to the valid saved street camera. The preference persists. Journal writing duration follows the short fragment's length (roughly five seconds for the whole sequence, plus any remaining load wait); the simple sequence is about 2.3 seconds after scene readiness. Reduced-motion preference uses a short fade without hand jitter or camera travel.
+
+Entry blocks navigation until the scene is ready and the presentation finishes. Escape or 返回地图 cancels the entry and restores a usable origin; opening another menu or hiding the page also cancels it. Slow loading holds the completed drawing over the map. A failed load leaves the original map available for retry. Returning to the map preserves its route/camera, and re-entry ends at the saved valid street pose. No transition camera altitude or progress is persisted.
+
 ## Area → line → point: selection rules
 
 | Context | Normal selection result | Not a default behavior |

@@ -1,5 +1,9 @@
 # Repository status
 
+## Street entry transition — 2026-10-28
+
+The user selected a low-frame-rate hand drawing a lower-right building box, then upper-left journal handwriting, followed by a fade into the street, with an overhead/cloud/descent alternative in options. They subsequently rejected the first procedural hand and wording, rejected a realistic sketch, and specified a Haring-style hand plus dated concrete street observations. The replacement uses three generated flat-outline hand poses and five fictional journal fragments. Temporary entry cameras remain separate from saved street pose; reduced motion uses a short fade. Scope, revision-bound checks and outstanding visual review are recorded in [DM-STREET-TRANSITION-20261028](attention/tasks/DM-STREET-TRANSITION-20261028.md). No user acceptance of the composed replacement, merge or deployment is claimed by this record.
+
 ## Local overview candidate retired — 2026-10-27
 
 The user discarded the uncommitted 2026-10-26 junction facade candidate affecting Wuli east, Sanli and the heating group. Its six trial atlas replacements, source/registration edits and partial-build script changes are not selected for integration. The existing main R6 artwork, data and compiler remain unchanged. Useful source limits from the local Sanli process notes were consolidated into the [existing integration record](attention/tasks/DM-SANLI-INTEGRATE-20261027.md#consolidated-pre-integration-evidence-limits--2026-10-27); [the cleanup packet](attention/tasks/DM-LOCAL-NOTES-CLEANUP-20261027.md) records the disposition. Old candidate tests do not establish approval of the retained overview.

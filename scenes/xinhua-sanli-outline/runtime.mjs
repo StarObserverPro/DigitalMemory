@@ -10,7 +10,7 @@ import {createFrameLoop} from '../../src/engine/frame-loop.js';
 import {createResourceScope} from '../../src/engine/resource-scope.js';
 
 export async function mountOutline({container,sceneData,navigation,readState,writeState,isActive,isVisible,onMenu}){
- let disposed=false,suspended=false,windowFocused=true,externalMenu=false;
+ let disposed=false,suspended=false,windowFocused=true,externalMenu=false,entryProgress=null;
  const listeners=new AbortController();
  const listen=(element,type,fn,options={})=>element.addEventListener(type,fn,{...options,signal:listeners.signal});
  const host=document.createElement('div');host.className='outline-host';host.style.cssText='position:absolute;inset:0';container.append(host);
@@ -58,7 +58,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    keys.clear();state.walking=false;
    if(down){try{if(canvas.hasPointerCapture(down.id))canvas.releasePointerCapture(down.id);}catch{}down=null;}
   }
-  function inputActive(){return !disposed&&!suspended&&!document.hidden&&windowFocused&&!panel.open&&!externalMenu&&isActive();}
+  function inputActive(){return entryProgress===null&&!disposed&&!suspended&&!document.hidden&&windowFocused&&!panel.open&&!externalMenu&&isActive();}
   function sync(){
    if(lastStrokeAuditRevision!==drawing.auditRevision){host.dataset.strokeAudit=JSON.stringify(drawing.audit);lastStrokeAuditRevision=drawing.auditRevision;}
    const sorted=intervals.slice().sort((a,b)=>a-b),p95=sorted.length?sorted[Math.min(sorted.length-1,Math.floor(sorted.length*.95))]:0;
@@ -72,10 +72,11 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   function refresh(){
    if(disposed)return false;
    const visible=Boolean(isVisible()),active=visible&&inputActive();
+   const presenting=visible&&entryProgress!==null&&!disposed&&!suspended&&!document.hidden&&windowFocused&&!panel.open&&!externalMenu;
    host.hidden=!visible;state.paused=!active;
-   const changed=loop?.setPaused(!active);
+   const changed=loop?.setPaused(!(active||presenting));
    if(changed)sync();
-   return active;
+   return active||presenting;
   }
   function setDestination(p,name=null){
    if(!inputActive())return false;
@@ -129,13 +130,19 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    if(!refresh())return;
    const frameStarted=performance.now();
    if(previousDiagnosticTime!==null){intervals.push(Math.max(0,now-previousDiagnosticTime));if(intervals.length>120)intervals.shift();}previousDiagnosticTime=now;
-   Object.assign(state,readState());state.elapsed+=dt;movement(dt);character.update(state,dt);
+   Object.assign(state,readState());if(entryProgress===null)state.elapsed+=dt;movement(dt);character.update(state,dt);avatar.visible=entryProgress===null||entryProgress>.86;
    const underBridge=data.bridges?.some(bridge=>bridge.deckRings.some(ring=>inside(state.position,ring))),narrow=camera.aspect<.8?1.2:1,d=state.distance*narrow,s=Math.sin(state.yaw),c=Math.cos(state.yaw),target=new T.Vector3(state.position[0]-s*3.5,.9,state.position[1]-c*3.5),desired=new T.Vector3(state.position[0]+s*d,underBridge?3.9:d*state.pitch,state.position[1]+c*d);
    const direction=desired.clone().sub(target),length=direction.length();raycaster.set(target,direction.normalize());raycaster.far=length;
    const candidates=drawing.collisionCandidates?drawing.collisionCandidates(target,desired):drawing.meshes;
    const hits=raycaster.intersectObjects(candidates,false);if(hits.length&&hits[0].distance<length-1)desired.copy(target).addScaledVector(direction,Math.max(5.2,hits[0].distance-1));
-   camera.position.lerp(desired,1-Math.exp(-dt*9));camera.lookAt(target);camera.updateMatrixWorld();
-   drawing.update(camera,state.elapsed,reducedMotion.matches);site.update(camera);navigationUI.update(state,Math.atan2(camera.position.x-target.x,camera.position.z-target.z),now);motion.update(camera,state,reducedMotion.matches);
+   if(entryProgress!==null){
+    // Presentation-only camera: the session's valid street pose is never changed.
+    desired.lerp(new T.Vector3(state.position[0]+s*9,88,state.position[1]+c*9),1-entryProgress);
+    target.lerp(new T.Vector3(state.position[0],.9,state.position[1]),1-entryProgress);
+    camera.position.copy(desired);
+   }else camera.position.lerp(desired,1-Math.exp(-dt*9));
+   camera.lookAt(target);camera.updateMatrixWorld();
+   drawing.update(camera,state.elapsed,reducedMotion.matches||entryProgress!==null);site.update(camera);navigationUI.update(state,Math.atan2(camera.position.x-target.x,camera.position.z-target.z),now);motion.update(camera,state,reducedMotion.matches||entryProgress!==null);
    const submittedAt=performance.now();updateMs=submittedAt-frameStarted;
    renderer.render(world,camera);submissionMs=performance.now()-submittedAt;completedFrames++;
    host.dataset.frameSerial=String(completedFrames);
@@ -147,6 +154,13 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   sync();refresh();
   return {
    refresh,focus,clear,dispose,
+   setEntryView(progress){
+    if(disposed)return;
+    entryProgress=Number.isFinite(progress)?T.MathUtils.clamp(progress,0,1):null;
+    root.querySelector('#outline-root').classList.toggle('entering',entryProgress!==null);
+    host.dataset.entryProgress=entryProgress===null?'':String(entryProgress);
+    clearKeys();refresh();
+   },
    menuState(open){externalMenu=Boolean(open);root.querySelector('#menu').setAttribute('aria-expanded',String(open));refresh();},
    suspend(){if(disposed)return;suspended=true;refresh();},
    resume(){if(disposed)return;suspended=false;refresh();},

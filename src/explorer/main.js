@@ -7,10 +7,12 @@ import { resolveEnvironment } from '../domain/temporal.js';
 import { createSession, createPortalController } from '../application/session.js';
 import { PublicRepository } from '../adapters/public-repository.js';
 import { restoreSession, saveSession } from '../adapters/session-storage.js';
+import { createEntryTransition } from './entry-transition.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
 let streetLoadGeneration=0,streetLoadController=null,streetLoadKey=null,stageSlot=null;
+let entryTransition = null;
 let overviewAssembly, mapDragged=false; const availableMapAssets=new Set();
 let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
@@ -63,6 +65,7 @@ function currentPeriod() { return manifest.periods.find(p => p.id === session.ge
 function render() {
   refreshStage();
   const state = session.get();
+  $('simple-entry').checked = state.entryTransition === 'simple';
   const location = mapping.locate(state.route);
   $('map-person').style.left = `${location.art[0] / 12}%`;
   $('map-person').style.top = `${location.art[1] / 12}%`;
@@ -190,6 +193,12 @@ function wireControls() {
   window.addEventListener('pageshow',event=>{if(event.persisted)refreshStage();});
   $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
+  $('options-button').addEventListener('click', () => showDialog('options-dialog'));
+  $('simple-entry').addEventListener('change', event => {
+    session.dispatch({ type: 'entry-transition', mode: event.target.checked ? 'simple' : 'journal' });
+    saveSession(localStorage, session.get());
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && startingStage) { cancelStreetLoad(); notify(); } });
   $('place-search').addEventListener('input', e => renderPlaces(e.target.value));
 
   for (const dialog of document.querySelectorAll('dialog')) {
@@ -228,14 +237,26 @@ async function enterStreet() {
   if (d < STAGE.min || d > STAGE.max) { notify('这段街景还在绘制，请先点新华街院门附近的路。');if(session.get().view==='street')session.dispatch({type:'view',view:'map'});return; }
   const token=++streetLoadGeneration;
   const request=new AbortController();streetLoadController=request;
+  const fromMap = session.get().view === 'map';
+  let transition = null, entered = false;
+  request.signal.addEventListener('abort', () => {
+    transition?.cancel();
+    // Dispatch even when still on the map: a newly mounted stage must enter its
+    // bounded suspended slot if the drawing is cancelled before the reveal.
+    if (fromMap && session.get().sceneId === 'map') session.dispatch({ type: 'view', view: 'map' });
+    if (fromMap && !document.hidden) $('menu-button').focus({ preventScroll: true });
+  }, { once: true });
   startingStage = true; notify('正在走到街上……');
   try {
+    transition = createEntryTransition({ container: $('app'), street: $('street-stage'), mode: session.get().entryTransition, signal: request.signal,
+      onCancel: () => { cancelStreetLoad(); notify(); $('menu-button').focus(); } });
+    entryTransition = transition;
     const { createOutlineStage,createRetainedStageSlot } = await import('./outline-stage.js');
     if(token!==streetLoadGeneration)return;
     if(!stageSlot)stageSlot=createRetainedStageSlot({onEvict:previous=>{if(stage===previous){stage=null;lastRenderKey='';$('outline-destinations').replaceChildren();}}});
     if(stage&&!stage.compatible())discardStage();
     if (!stage) {
-      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,signal:request.signal,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
+      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,signal:request.signal,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||startingStage||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
       if(!candidate||token!==streetLoadGeneration){candidate?.dispose();if(token===streetLoadGeneration)notify();return;}
       stageSlot.set(candidate);stage=candidate;
       const targets=$('outline-destinations');targets.replaceChildren();
@@ -243,13 +264,19 @@ async function enterStreet() {
       const origin=session.get().outline;
       $('stage-canvas').dataset.outlineRevision=origin.revision;
     }
+    if (!await transition.prepared || token !== streetLoadGeneration) return;
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' });
     refreshStage();
-    stage?.focus?.();$('stage-canvas').querySelector('canvas')?.focus({preventScroll:true});
+    if (!await transition.reveal(stage) || token !== streetLoadGeneration) return;
+    entered = true;
     notify();
   } catch (error) { if(token!==streetLoadGeneration)return;console.error('Outline street load failed',error);discardStage();$('stage-canvas').replaceChildren();if(session.get().view==='street')session.dispatch({type:'view',view:'map'});notify('街景暂时打不开，手绘图上的位置已保留。'); }
-  finally { if(token===streetLoadGeneration){startingStage=false;streetLoadController=null;refreshStage();} }
+  finally {
+    transition?.cancel();
+    if (entryTransition === transition) entryTransition = null;
+    if(token===streetLoadGeneration){startingStage=false;streetLoadController=null;refreshStage();if(entered)stage?.focus?.();}
+  }
 }
 async function enterDoor() {
   if ($('door-action').hidden) return;
@@ -301,7 +328,7 @@ async function start() {
   $('map-viewport').addEventListener('click', async e => { if(mapDragged||e.target.closest('button')||session.get().view!=='map')return; const r=$('map-camera').getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*1200,(e.clientY-r.top)/r.height*1200],hit=mapping.nearestArt(p); if(hit.distance<28){session.dispatch({type:'route',route:hit.route});const d=mapping.locate(hit.route).distance;if(d>=STAGE.min&&d<=STAGE.max)await enterStreet();} });
   $('map-art').addEventListener('error', () => notify('底图未载入，地点入口仍可使用。请刷新重试。'));
   // Read-only diagnostic hook: domain state remains owned by the application session.
-  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null, dataCache:repository.inspect() }) });
+  globalThis.digitalMemory = Object.freeze({ inspect: () => ({ session: session.get(), geometryRevision: geometry.revision, transformRevision: transform.revision, assets: manifest.assets.map(a => ({ id: a.id, revision: a.revision })), mappingRevision: mapping.data.id, position: mapping.locate(session.get().route), composition: composition.resolve(session.get().periodId,session.get().frontagePreview), stage: stage?.inspect() || null, entryTransition: entryTransition?.inspect() || null, dataCache:repository.inspect() }) });
 }
 start().catch(error => {
   const panel = document.createElement('div'); panel.className = 'error-screen';

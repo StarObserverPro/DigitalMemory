@@ -5,7 +5,7 @@
   "geometryRevision": "xinhua-corridor-layout-r4",
   "approval": "user-authorized-correction-and-main-integration-2026-10-27",
   "files": {
-    "runtime.mjs": "e335df49965250295093a8a1f17fa20e3c93f6cf11474b274d59664d0ba8970e",
+    "runtime.mjs": "79e28473f9374e9a9b394f1a746922f92962f01e9b7928cbf1c256bea2171649",
     "drawing.mjs": "972faba05cb19d60615100f881c178e7f4f0e8b2603d51bf851c3097f1252f5c",
     "avatar.mjs": "f1cf62a14cd0e9212993ce5c5a5b28d15693ad92f76e5a555067709e985b5ff9",
     "motion.mjs": "cdc9f4c1d0bca5371e6bf9bfeacb2e06bba2a66adfcc6d7e6317788f87e34a74",
@@ -13,7 +13,7 @@
     "ink-occlusion.mjs": "70b0bc216843de902fd466d89c7a581c2598be967f881abc884c261cdc2a14c7",
     "site-details.mjs": "6e777a33f9fa5dd97eddcea7e6127f88685533150171d6e62ee4a46e89b5d034",
     "navigation-ui.mjs": "cbe8019e526010d2abf188202e2bdecb4c000060a52cf3647aa27da4f5bbba00",
-    "style.css": "7d192a4d8d203a62d98494f57f717da70ae4d4f4135533dc60b46be7a3495081",
+    "style.css": "259a7d7f3f83c8dc867081e1811ff1572de22680d46132294ae6563a28c27e91",
     "scene-data.json": "79ddf20177ce72527aaa6efb148841acbaa58fa62d280ead4c58cf3839882637",
     "fonts/ZCOOLKuaiLe-Regular.ttf": "812a6fc1fe54b6d73a419245c32dfeba8aa33104d5be90d1cf6af082007cb71d",
     "fonts/OFL.txt": "538078469839b4a2e7ad22bef4ebe41681a4e53749bb2a072144024f1d6d703d",

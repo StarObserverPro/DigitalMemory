@@ -14,6 +14,8 @@ Status: production contract, with current Xinhua R6 overview paintings and the s
 
 ## Two products, not one flattened picture
 
+The selected 2026-10-28 journal entry direction combines a generated Haring-inspired raster hand, a generic line-drawn box and casual dated handwriting in a transient canvas over the existing raster map. The user rejected the first procedural hand, realistic sketch and generic instruction phrases. The replacement hand uses three pen-tip-registered poses with bold rounded contours and flat fill; [the transition package](../assets/transitions/README.md) records its hashes, provenance and local Long Cang-derived font license. Five fictional decorative street observations are chosen at runtime; no images or personal memories are generated while browsing. The simple alternative uses the actual registered street camera and procedural cloud cover. These layers do not substitute overview map art or alter source footprints or scene art/data revisions.
+
 Maintain a **registration package** and a **presentation package**. The first contains evidence, source dates, geometry, transforms, classified regions and uncertainty. The second contains illustrated ground tiles, textures, simple volumes, sprites, interior images and labels. Both share stable spatial IDs and explicit transform versions.
 
 The historical map/satellite layer is a workbench reference, not the default viewer surface. The illustrative surface may simplify detail while preserving the relationships that make the walking route recognizable. Do not mistake a visually seamless image for a geographically registered map.

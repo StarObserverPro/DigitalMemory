@@ -10,6 +10,14 @@ The normal supported overview→street entry now lazy-loads scenes/xinhua-sanli-
 
 Application session owns outline pose/path/camera; reload opens a usable map then restores the valid pose on street entry, while a changed overview route gets its own entry. Returning to map cancels targets and suspends the selected stage under the retention policy below; the overview still has no person. The public registration fixes data/art revisions and explicit working-composite periods. Final layout estimates remain in data; no historical year or new private content was certified. `npm run test:outline` checks the selected library; `npm test` includes session/registration/loading tests; `npm run build` includes selected scenes and verifies hashes.
 
+## Entry presentation — DM-STREET-TRANSITION-20261028
+
+The existing `enterStreet()` owner starts a cancellable journal overlay while the selected scene loads. It waits for the selected hand sprite, the local journal-font glyphs and the drawing prelude before revealing the scene. `entry-transition.js` owns one bounded canvas and one abortable frame chain, with redraws quantized to 8 fps. Three source frames use separately registered pen tips and a matching off-screen forearm continuation. Writing time follows the chosen dated fragment's length; slow scene loading holds the final drawing without a spinning wait animation. Its modal blocks background pointer and keyboard interaction. Escape, cancellation, page hiding and superseding entry clean up the overlay and restore a usable map origin, including a freshly mounted stage cancelled before reveal; failed loads follow the existing map retry path.
+
+The alternative `simple` mode renders a temporary 88-metre overhead camera, cloud cover and a descent to the valid final street camera. The selected renderer's `setEntryView()` bypasses navigation while allowing its existing frame loop to render; it hides street navigation UI until landing. The temporary camera is not included in session writes. The local session adapter persists only `entryTransition` (`journal` by default, `simple` when enabled). Reduced motion uses a 180 ms fade. Final reveal/cancellation clears the override, modal, observer and frame callback before restoring normal control. The selected scene manifest pins the changed runtime/style bytes without changing geographic or art revisions.
+
+Exact tested revisions and visual acceptance remain in [the transition packet](attention/tasks/DM-STREET-TRANSITION-20261028.md).
+
 ## Bounded runtime resources — DM-RUNTIME-RESIDENCY-20261027
 
 These are the implementation contracts of the current resource-management change. Its exact verification and PR state belong in the [task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md) and [STATUS](STATUS.md); the description alone is not a measured performance result.
