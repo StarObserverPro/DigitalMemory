@@ -57,6 +57,10 @@ Keep stable place identity separate from editable coordinates. Only the spatial 
 
 Investigate dependencies as needed, but expand modification or external effects only with authority. Do not refactor unrelated modules, regenerate accepted scenes globally, weaken acceptance to obtain a pass, or add private data to public Git/PR/logs. A reversible same-contract implementation choice is ordinarily the executor's decision.
 
+## 文档类修正的持续授权
+
+用户明确要求的文档类修正，默认完成定位规范所有者、修改关联文档、核对事实与链接、提交、创建或更新PR，以及必要检查通过后合并main；无需逐步或在合并前再次询问。2026-10-27用户已明确授权这一完整流程。修订必须以用户要求及可核实事实为限，不能借文档修正扩展为运行时代码、美术资产、私人资料公开或生产部署。若存在真实的内容歧义、权限阻断或检查失败，先完成不受影响的部分，再明确报告具体问题；不能将其作为省略验证的理由。
+
 ## Required documentation alignment with every PR push
 
 **Every initial PR push and every subsequent update must include a documentation alignment pass on the same proposed change.** Compare the full branch diff against the current base, identify affected canonical owners through [the documentation map](docs/README.md), and update those owners **in the same PR** wherever behavior, interfaces, data/evidence, visual decisions, scopes, implementation status or known gaps changed. Update [STATUS](docs/STATUS.md) only for supported present-tense facts, relevant decision/contract pages for approved changes, and the task packet for tested revisions and handoff. Update README/Agent entry links when routing changes; do not create duplicate current specifications or rewrite unrelated history.

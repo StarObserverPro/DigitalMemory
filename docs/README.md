@@ -46,3 +46,7 @@ This revision integrates navigation, representation, street-edge editing and spa
 At the inspected baseline, open PR #18 documents World Labs/Codex handoff and PR #19 records the selected 2× apparent street-character scale. Preserve both tracks when integrating these edits. The scale selection concerns street presentation, not doubling physical building/person dimensions; there is still no overview avatar. Their branch-specific documents remain their owners and must not be overwritten by this reorganization.
 
 Historical task packets, research notes and superseded trial specifications remain traceable. They are not parallel live contracts. Runtime history belongs in STATUS/task records; do not infer present capability from an old paragraph headed “current”.
+
+## 文档修正的完成标准
+
+明确提出的文档类修正按 [AGENTS 的持续授权](../AGENTS.md#文档类修正的持续授权)直接完成至main合并。先在本表定位规范所有者，同步受影响说明并检查事实、链接和状态一致性，再提交PR、完成适用检查与合并；交付时报告真实的合并结果。无需为同一已授权文档修正重复征求确认。运行时改动、素材公开和部署仍按各自授权范围执行。
