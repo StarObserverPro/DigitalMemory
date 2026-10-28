@@ -112,6 +112,10 @@ Marble 2 重建可帮助检查空间，但生成结果本身不是地理或历�
 4. 验证未改源几何、全部目的地可达、边界/树/容器避障、字形覆盖和实际服务字节；再从构建后的主体走进入→点击/键盘移动→转向/菜单→返回→重新进入/重载。实际镜头证据留在库外，文档记录修订与结果。
 5. 对同一完整PR做文档对齐：风格规则、interaction例外、session/登记接口、runtime与STATUS更新到真实行为。用户视觉认可、测试通过、PR、GitHub合并和发布分开记。每次推送前检查PR模板，避免旧文档仍称“仅独立样本”。
 
-## Named frontage registration
+## 具名地点的定位与证据
 
 Named shops must be checked against an actual map POI, registered building side and dated street imagery before labeling. A postal address or map viewport center cannot establish an entrance. Daoxiangcun Kandanqiao is on Qili west frontage facing Fourth Ring: Baidu POI 905d861757ac875e4107c15e, panorama 09002200122003141220538666G (2020-03), viewed facing east from the auxiliary road. The south-facing Xinhua shop bands carry no Daoxiangcun label. Shop dimensions and forecourt boundary remain reconstruction estimates.
+
+执行细则由 [地理核验流程](../GEO_DATA_RUNBOOK.md#具体地点落图前的核验顺序)统一管理。先完成地点身份、建筑侧与朝向的核验，再绘制商号和入口。退界门脸必须作为可独立修订的房体表达，不能用大楼底部的门窗代替；宽人行道、商铺前场、后排住宅分别登记，不通过挪动地标来修补构图。
+
+每次被纠正后先重核定位与受影响对象，再继续扩区或美术加工。报告“已看地图/已核对街景”须能对应实际打开的资料与保留的证据；只查过文字地址，就只报告查到地址。交付时同时说明已修改、已运行验证、地理证据已核实到的层级以及当前集成/合并状态。

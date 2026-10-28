@@ -18,6 +18,8 @@ Preserve source geometry while selecting what to show. A familiar gate and a few
 
 The 2026-10-26 checkpoint reconciles the already merged character with old street-calibration, World Labs and public bridge documents. It triggers no runtime work, paid generation, private-content publication or deployment; Keith Haring-inspired sparse art is parked only.
 
+具名地点落图前必须执行 [地理核验流程](docs/GEO_DATA_RUNBOOK.md#具体地点落图前的核验顺序)：地图POI、对应建筑侧/朝向与街景交叉核对；地址文字不足以定位门脸。工程检查和地理核验分列，具体证据要求见 [验收](docs/VERIFICATION.md#具名地点的地理验收与工程验收)。
+
 ## Read only what this task needs
 
 1. Identify the request and its authorized effects: investigation, repository modification, content approval, integration, publication, or deployment. These are different permissions.
