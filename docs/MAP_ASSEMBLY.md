@@ -4,7 +4,13 @@
 
 > DM-0013: [validated asset workflow](ASSET_WORKFLOW_VALIDATION.md) supersedes whole-compound affine fitting and whole-image road masking as the production method. DM-0014 implements independently anchored building parts, separate worn-yard ground and standing depth order. Ground bounds, visual bounds and standing-art occlusion must be distinct.
 
-The composition planner is connected to the visible overview, with the later R6 source-linked raster assembly. The selected outline street has its own [drawing workflow](research/XINHUA_OUTLINE_WORKFLOW.md) and runtime lifecycle. Geometry, visual acceptance and historical verification remain separate. [STATUS](STATUS.md) and [RUNTIME](RUNTIME.md) own current implementation; dated records below preserve earlier planner and art evidence.
+The composition planner is connected to the visible overview. The selected R7 recovery uses the same source-linked raster consumer, restoring local Sili/Liuli grouping, sparse travel-map strokes and Qili frontage registered to the selected street. The selected outline street has its own [drawing workflow](research/XINHUA_OUTLINE_WORKFLOW.md) and runtime lifecycle. Geometry, visual acceptance and historical verification remain separate. [STATUS](STATUS.md) and [RUNTIME](RUNTIME.md) own current implementation; dated records below preserve earlier planner and art evidence.
+
+Numbered Xinhua estates use concise orientation labels such as 三里/四里/六里/七里; their full names and identities remain in registration. Label candidate envelopes follow the principal residential masses rather than unrelated low frontage. Their explicit `labelWithinGroup` presentation setting keeps names inside the corresponding registered display group: first seek clear ground, then allow text with the normal paper halo over that same group's artwork or low-information flat/unnamed low-rise frontage context if needed. Other principal groups, named frontages, other labels and the menu control still block placement. Names must not be pushed across a road to obtain a collision-free result. For flat context, collision avoidance uses the actual raster alpha bounds across all three levels, leaving transparent image padding available for text; render bounds and physical geometry remain unchanged. Period-hidden landmarks do not reserve label space. The ordinary app-panel viewport and desktop block view both retain the three repaired estate names within their corresponding groups.
+
+Registered R7 objects also carry conservative rectangles covering the union of actual raster alpha across all levels. These avoid treating the empty courtyard inside an L/U-shaped painting as a solid rectangular obstruction. They are derived label metadata; they do not change image cropping, source rings, physical geometry or collision/navigation.
+
+Sili's narrow north/south group uses a vertical 四里 label at the same readable type size, keeping the name inside its group in an ordinary narrow app panel.
 
 ## Current experience contract — 2026-10-19
 
@@ -14,7 +20,7 @@ The acquired source plan remains available, but not every source footprint must 
 
 An icon may conceal low-information background through ordinary compositional overlap. Its scale changes painted bounds, not source footprint, walking collision or a doorway's approach position. It must not hide a meaningful road, neighboring remembered entrance or a known topology error. Preserve coherent projection, height family where an actual mass is represented, route continuity and stable anchors.
 
-This rule does not downgrade the important residential geometry already corrected in R6, nor authorize altering building orientations. It changes representation selection for places where internal layout is not the memory object.
+Preserve the source geometry and building orientations in the selected spatial plan. R7's corrected Sili/Liuli membership changes grouping rather than moving those physical outlines. Representation selection can remain sparse where internal layout is not the memory object.
 
 ## The picture we are assembling
 

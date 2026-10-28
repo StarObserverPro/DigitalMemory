@@ -14,7 +14,7 @@ test('consumer uses raster artwork at all three detail levels and no overview pe
  for(const zoom of[1,1.8,2.7]){
   const markup=render(zoom);
   for(const layer of['pale-context','road-art','solid-places'])assert.match(markup,new RegExp(`data-layer="${layer}"`));
-  assert.match(markup,/xinhua-wax-r6\//);assert.doesNotMatch(markup,/data-map-person|preserveAspectRatio="none"/);
+  assert.match(markup,/xinhua-travel-r7\//);assert.doesNotMatch(markup,/data-map-person|preserveAspectRatio="none"/);
   for(const id of['qili','wuli-west','wuli-east','sanli','yili','bali','liuli','sili','erli','heating','school'])assert.ok(markup.includes(`data-compound="${id}"`));
   assert.doesNotMatch(markup.replace(/<defs>[\s\S]*?<\/defs>/g,''),/<(?:path|rect|polygon|ellipse|circle|line)\b/,'no visible vector illustration');
   if(zoom>=1.5)assert.match(markup,/data-frontage="sanli-opposite-detached-frontage"/);
@@ -24,7 +24,9 @@ test('consumer uses raster artwork at all three detail levels and no overview pe
 test('unassociated periods and failed images cannot create fallback buildings',()=>{
  for(const period of['stage-primary','window-1995'])assert.doesNotMatch(render(1.8,loaded,period),/data-part=|data-frontage=|data-registered-corridor=/);
  assert.doesNotMatch(render(1.8,[]),/<image\b|data-part=|data-map-object=/);
- const missing=render(1.8,loaded.filter(k=>k!=='painted-sanli-r6-1'));
+ assert.doesNotMatch(render(1.8,loaded,'window-1995'),/data-map-object="heating-chimney-review"/);
+ assert.match(render(1.8),/data-map-object="heating-chimney-review"/);
+ const missing=render(1.8,loaded.filter(k=>k!==assembly.painted.compounds.find(c=>c.id==='sanli').assetRefsByLevel[1]));
  assert.doesNotMatch(missing,/data-compound="sanli"/);assert.match(missing,/data-compound="qili"/);
  assert.equal(layeredOverviewMarkup({...assembly,painted:null},assets,{periodId:'window-2000',camera:{zoom:1.8}},loaded,{includeLabels:false}),'');
 });
@@ -33,6 +35,7 @@ test('source-linked masses retain geographic XY and evidenced height at every le
  assert.equal(parts.length,plan.objects.length);assert.ok(parts.length>100);assert.equal(new Set(parts.map(p=>p.id)).size,parts.length);
  for(const p of parts){
   const source=plan.objects.find(o=>o.id===p.id);
+  assert.deepEqual(p.sourceGeometry,source.geometry,'complete canonical geometry, including interior rings');
   assert.deepEqual(p.groundGeo,source.geometry.coordinates[0].slice(0,-1));
   assert.deepEqual(p.ground,p.groundGeo.map(transform.toImage));assert.deepEqual(p.origin,transform.toImage(p.anchorGeo));
   assert.ok(p.heightEvidence.sources.length);assert.ok(p.heightEvidence.storeyRange[0]<=p.storeys&&p.heightEvidence.storeyRange[1]>=p.storeys);
@@ -42,7 +45,32 @@ test('source-linked masses retain geographic XY and evidenced height at every le
  const anchors=zoom=>Object.fromEntries([...render(zoom).matchAll(/data-part="([^"]+)"[^>]+data-ground-anchor="([^"]+)"/g)].map(m=>[m[1],m[2]]));
  const far=anchors(1),near=anchors(2.7);for(const[id,anchor]of Object.entries(far))assert.equal(near[id],anchor);
  assert.ok(Object.keys(far).length<Object.keys(near).length,'far view suppresses tiny low-rise clutter');
- assert.notEqual(assets['painted-sanli-r6-0'].sha256,assets['painted-sanli-r6-2'].sha256);
+ const sanliLevels=assembly.painted.compounds.find(c=>c.id==='sanli').assetRefsByLevel;
+ assert.notEqual(assets[sanliLevels[0]].sha256,assets[sanliLevels[2]].sha256);
+});
+
+test('recovered Sili stays west of Hanzhuang, separate from Liuli and Wuli east',()=>{
+ const sili=assembly.painted.compounds.find(c=>c.id==='sili');
+ const road=assembly.context.roads.find(r=>r.id==='osm-way-42724022');
+ const eastOfRoad=p=>{const[x,y]=p.origin;const positions=road.art.slice(1).flatMap((b,i)=>{const a=road.art[i],t=(y-a[1])/(b[1]-a[1]);return t>=0&&t<=1?[a[0]+t*(b[0]-a[0])]:[];});assert.equal(positions.length,1);return x-positions[0];};
+ assert.deepEqual(new Set(sili.parts.map(p=>p.id)),new Set(['xinhua-f781d739-e119-4272-9807-2fa0ffba3217','xinhua-6e025abe-de38-47fb-a014-3706cfc98201','xinhua-8575f544-b366-43f2-b5bd-a15f163c4ab0','xinhua-2552551f-3a27-4cb0-b446-534b279d38c5']));
+ for(const p of sili.parts){assert.ok(eastOfRoad(p)<0);assert.equal(p.storeys,6);assert.ok(p.heightMetres>15);}
+ const eastContext=assembly.painted.compounds.find(c=>c.id==='railway-works-context');
+ assert.ok(eastContext.parts.every(p=>eastOfRoad(p)>0));assert.deepEqual(eastContext.labelPositionsGeo,[]);
+ const liuli=assembly.painted.compounds.find(c=>c.id==='liuli');
+ assert.ok(liuli.parts.every(p=>!sili.parts.some(q=>q.id===p.id)));
+});
+
+test('Qili overview retains the selected street frontage registration and west-side shop identity',()=>{
+ const scene=JSON.parse(fs.readFileSync('scenes/xinhua-sanli-outline/scene-data.json'));
+ const qili=assembly.painted.compounds.find(c=>c.id==='qili');
+ const street=scene.frontageBuildings.filter(p=>p.compound==='qili');assert.equal(street.length,4);
+ for(const source of street){
+  const part=qili.parts.find(p=>p.id===source.id);assert.ok(part,source.id);
+  assert.equal(part.storeys,1);assert.equal(part.heightMetres,source.height);
+  source.ring.forEach((q,i)=>{assert.ok(Math.abs(part.groundGeo[i][0]-(scene.origin[0]+q[0]/scene.kx))<1e-10);assert.ok(Math.abs(part.groundGeo[i][1]-(scene.origin[1]-q[1]/scene.ky))<1e-10);});
+ }
+ const named=qili.parts.filter(p=>p.orientationLabel==='稻香村');assert.equal(named.length,1);assert.equal(named[0].id,'daoxiangcun-qili-west');
 });
 const cross=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
 const properIntersection=(a,b,c,d)=>cross(a,b,c)*cross(a,b,d)<-1e-8&&cross(c,d,a)*cross(c,d,b)<-1e-8;
@@ -82,6 +110,20 @@ test('labels remain readable and collision-free on desktop and phone',()=>{
   for(const l of layout.labels){assert.ok(l.fontPx>=18);assert.ok(Math.abs(l.fontUnits*metrics.scale-l.fontPx)<1e-9);const[x,y,w,h]=l.screenBounds;assert.ok(x>=12&&y>=12&&x+w<=width-12&&y+h<=height-12);}
   for(let i=0;i<layout.labels.length;i++)for(let j=i+1;j<layout.labels.length;j++)assert.ok(!overlaps(layout.labels[i].screenBounds,layout.labels[j].screenBounds));
  }
+});
+
+test('actual recovered block viewport keeps Sili, Liuli and Qili orientation labels visible',()=>{
+ for(const[width,height,side,x,y]of[[1280,720,896,-31.9196,-27.567],[646,528,528,-24.6769,-35.4591]]){
+  const camera={zoom:1.8,x,y},metrics=mapMetrics(camera,width,height,side);
+  const layout=overviewLabelLayout(assembly,{periodId:'window-2000',camera},loaded,metrics);
+  for(const id of ['sili','liuli','qili']){const label=layout.labels.find(l=>l.id==='compound-'+id);assert.ok(label,id+' at '+width);assert.ok(pointInPolygon(label.position,assembly.painted.compounds.find(c=>c.id===id).mask),'name must stay with its own registered group');}
+ }
+});
+
+test('Qili west frontage name stays readable in the actual near overview view',()=>{
+ const camera={zoom:2.7,x:-.4464,y:-46.4844},metrics=mapMetrics(camera,1280,720,896);
+ const layout=overviewLabelLayout(assembly,{periodId:'window-2000',camera},loaded,metrics);
+ assert.ok(layout.labels.some(l=>l.id==='orientation-daoxiangcun-qili-west'&&l.text==='稻香村'));
 });
 test('dense labels drop lower priorities instead of shrinking text',()=>{
  const candidates=Array.from({length:25},(_,i)=>({id:String(i),text:'记忆地点',kind:'place',priority:25-i,minLevel:0,positions:[[600,600]]}));
