@@ -1,0 +1,62 @@
+# DM-YUNBAI-KANDAN-20261028 — 云柏鞋城至看丹桥街段核验与主体接入
+
+## Intent and authority
+
+Initial standalone scope: the user requested one isolated street sample around the Xinhua Street junction, from Yunbai shoe store to Kandan Bridge, using permitted geographic conclusions. The immediate clarification defines flattening as replacing a standing building on the map with a planar block, preserving its ground position and orientation. Research and standalone sample construction were authorized at that stage. The subsequent explicit native-integration authority and delivery are recorded below; production overview art replacement and deployment remain outside scope.
+
+Base: `StarObserverPro/DigitalMemory` at `f8d7345fe29890f0482828e8f49cf2af8e6aeffe`; local carrier `agent/dm-yunbai-kandan-study`. Current source geometry and selected outline scene are read-only reference inputs. The user's subsequent correction also updates the relevant canonical documentation: visual front/rear relationships take priority over exact shop extents, and unfamiliar upper rear masses may remain open. Trials, source views, scripts and standalone output remain outside the checkout. Documentation correction does not integrate the sandbox runtime/assets.
+
+Documentation delivery is rebased onto `18c8c40f4f96b16fff88b1671c0a01b86b2ee197`, preserving the concurrently merged street-transition documentation. The sample's original source baseline remains unchanged.
+
+## Scope and acceptance
+
+- Audit continuous frontage: detached shops before rear housing, integrated ground-floor retail, podium attachment, setbacks, gaps, entrances and broad height classes. Unresolved relationships remain explicit.
+- Produce a standalone reviewable geometry sample and map standing/planar comparison. Planar blocks have no facade or visible height; source footprint, orientation and height metadata are retained.
+- Preserve the real-time outline approach for street review. Flat planning graphics are audit materials, not selected production overview artwork. No shop-by-shop decorative reconstruction or complete estate interior.
+- Inspect actual rendered views and segment movement; bind results to the delivered revision. The user accepted r2's broad Yunbai massing relationship; the later open-upper treatment needs its own visual review.
+
+Owners read: MAP_ASSEMBLY (representation/source separation), LAYER_COMPOSITION (street-edge segments), GEO_DATA_RUNBOOK (location and historical audits), XINHUA_OUTLINE_WORKFLOW (massing then style), VERIFICATION (geographic/visual/engineering evidence), attention README (sandbox scope).
+
+
+
+## Mainline integration — 2026-10-28
+
+Lifecycle: delivered; active route removed. User accepts the approximate five/six-storey treatment and explicitly requests integrating the Yunbai–Kandan segment into main, restricted to the workflow, geometry and geography. Native production implementation, applicable tests, a reviewable PR and main merge are authorized; deployment is not. Do not copy or connect the sandbox application, UI, server, dependencies, original images, comparison captures or trial scripts. Use its accepted source-linked measurements as audit input, then implement through the existing selected scene, spatial registration, drawing/resource owners and application session.
+
+Base: `5c6517b1fd03f8629a4d1087de93bee9a87c5825`; carrier `agent/dm-yunbai-corridor-integration`. Preserve stable source IDs/footprints and unrelated Sanli/corridor geometry. Apply the accepted low-frontage and lower-residence interpretation with source heights retained; the three relevant tall rear masses retain approximately five/six visible storeys with an open upper silhouette. Keep route access, important gaps, the distinct Yunbai/Daoxiangcun identities and existing bridge navigation. Map flattening remains an audit comparison, not authorization to replace production raster overview art. No exact shop doorway/floor-count research is activated.
+
+Acceptance: native main-app entry and travel through this segment, lower/front vs tall/rear silhouette at real walking views, map/return/re-entry behavior, source/registration/hash consistency and resource cleanup. Screenshots and validation output remain outside Git. Native delivery: `yunbai-kandan-native-r1`, scene `xinhua-corridor-layout-r5` / art `xinhua-corridor-outline-r5`, registration `xinhua-corridor-integrated-r2`. Scene SHA-256 `0bb3ecf8ec206fc1e73d5723bafd73061b03f8fb2f7df507ce98cc7c17a4a4b3`; drawing SHA-256 `435f2325db27655a8ffd0248424ede264cf36dbecf765ca56b6acdce2eb9e29b`.
+
+- Following the same-change documentation review, `npm run check` passes 93 application tests, 17 selected-scene tests and the pinned-hash build. Regressions cover source geometry/height preservation, all corridor destinations and the full 146 m segment, no false roof cap, and fade-material release. 79 affected local documentation targets resolve; whitespace checks pass.
+- Actual built-main entry in the in-app browser reaches Yunbai from the Xinhua starting area (537.46 m travelled on the selected path). Full reload restores the Yunbai position at [-462, 26]. On the final source revision, the return walk reaches Kandan Bridge at [-443, 186], adding approximately 176.75 m, with separate near/far and bridge captures outside Git. The initial approach observation preceded removal of an unnecessary disconnected background road patch; navigation and building geometry were unchanged by that visual cleanup. Keyboard motion, camera rotation/zoom, minimap collapse, menu/map pause and immediate re-entry were also observed. Paused frame serial stayed at 10997 and re-entry retained [-431.77, 110.47]. No captured warning/error logs. Final consumer checks and console capture are retained in `native-browser-check.json` outside the repository.
+- Documentation owners: DATA_MODEL, GEO_DATA_LINEAGE, XINHUA_OUTLINE_WORKFLOW, selected scene README, STATUS and this packet. User acceptance covers the massing/height direction and native main integration; precise historic shop extents and full chronology remain open. Published-head CI and merge are tracked in the corresponding PR. No deployment.
+- Next action only on a new request: review this native segment and refine a specific visible relationship if needed. No exact floor-count research, overview-art replacement or other street expansion is activated.
+
+## R4 height-range clarification — 2026-10-28
+
+Lifecycle: delivered; active route removed. The user now selects approximately five to six storeys as the useful visible height band: lower buildings can retain their full street silhouette; taller ordinary background masses may stop around that band without needing their exact total storey count. This is an approximate drawing choice, not a requirement for floor measurement. Preserve source heights and the accepted broad geometry; keep the sample isolated. Documentation carrier: `agent/dm-yunbai-five-six-storeys`, based on `e01c8ee980dbeb6e08952a99baab3e1adafde581`.
+
+- Independent `yunbai-kandan-study-r4`, application SHA-256 `aaa75634a6ed845439b6af3b7517959c1b8f281a8acc3ecdd72c1c24272c026a`: the three towers retain their full lower fill to approximately 18 m, then fade through 24 m; selected vertical lines end at 18–20.1 m without a horizontal cap. These sample metres approximate the requested band, not a universal or historically measured floor height. Five lower objects keep their complete geometry.
+- Near/far same-camera full/open renders were inspected in the existing in-app browser and saved as `rear-comparison-near-r4.png` / `rear-comparison-far-r4.png`. The lower façade was also inspected from the route's southern segment. Captured warning/error logs were empty. `browser-check-r4.json` and `verification-r4.json` retain this revision's evidence; the earlier full 146 m walk remains R3 evidence, not a new R4 walk claim.
+- Eight building records, source/study heights, footprints, coordinate frame and route compare exactly equal to R3. Application/server syntax checks pass. The separate R3 engineering snapshots are retained outside the checkout.
+- The approximate height rule is accepted; R4's specific appearance remains for user review. Canonical workflow, assembly, verification and status are aligned. Sample code/assets remain outside Git; no production integration or deployment.
+- Next action only on request: review the retained height band and continue isolated refinement, or integrate selected work with explicit authorization. No per-building exact floor-count research is activated.
+
+## R3 delivery and earlier correction — 2026-10-28
+
+Lifecycle: delivered; active route removed. User confirms the Yunbai sample broadly conveys the intended relationship. Exact shop boundaries are not the goal; the street-level relationship between foreground and background masses is. Keep front masses and important gaps legible; unfamiliar rear buildings may lose their upper outline and remain open, especially where normal close walking views cannot see their full height. Do not turn those omissions into shorter closed buildings. Preserve source footprint/height and restrict implementation to the independent sample.
+
+- Revision: `yunbai-kandan-study-r3`; application SHA-256 `272d2f95da04e8cd8317b43ccbb52eec4f17b29d8408f5f9604ba533736e59b8`. Full sample hashes are in the external `evidence/verification-r3.json`; R2 remains separately retained.
+- Three rear towers retain their source footprints/heights. Lower exposed contours end at varied heights without a horizontal cap; fill returns gradually to the background. Foreground geometry, gaps, route and the eight exported source objects are unchanged from R2. The drawing limits are sample parameters, not new project-wide height thresholds.
+- Same-camera near/far closed/open WebGL comparisons were rendered and inspected in the in-app browser (`rear-comparison-near.png`, `rear-comparison-far.png`). The full 146 m walk completed, map standing/flat checks remained consistent, and captured warning/error logs were empty (`browser-check-r3.json`). These observations apply to this independent consumer.
+- Canonical alignment: XINHUA_OUTLINE_WORKFLOW owns selective rear contours; GEO_DATA_RUNBOOK and VERIFICATION distinguish visual adequacy from source precision; MAP_ASSEMBLY separates street omission from map flattening; STATUS separates accepted broad massing from pending R3 drawing review.
+- Approval and external effects: R2 broad geometry accepted; R3 specific appearance awaits user review. Only the workflow/evidence documentation enters the repository PR. Sample code, original references and screenshots stay outside Git. No production runtime integration or deployment.
+- R3's review handoff is superseded by the five/six-storey R4 clarification above. Metre-accurate shop research and invisible structural connections remain outside the default next steps; integration requires explicit authorization.
+
+## Earlier r2 delivery — 2026-10-28
+
+- Lifecycle: delivered; active route removed. Native browser interaction remains excluded after the user's correction; the completed sample was inspected in the in-app browser.
+- Independent revision `yunbai-kandan-study-r2`: approximately 146 m route, eight source-linked volumes, five audit segments, standing/zero-height-planar comparison, street review and local evidence gallery. Stored outside the checkout in the task's `yunbai-kandan` artifact folder; starts independently with `node server.mjs` at `http://127.0.0.1:4179/`.
+- Geographic gaps: exact former Yunbai doorway and extent; whether low commercial volumes physically connect to the towers; metre-accurate setbacks; full historical chronology. User-authored old-site identity, observed massing, estimated dimensions and unknown construction connections remain separate.
+- Static checks: `node --check app.mjs`, `node --check server.mjs`; 147 route samples intersect no retained building footprint; source-coordinate round trip error below 0.001 m; 16 local HTML references resolve. Flat scene has zero extrusions, unchanged eight IDs/footprints/stored heights. These checks establish sample consistency, not geographic accuracy or visual approval.
+- The former proposed next step of researching A's exact frontage and B/C's structural connections is superseded by the user's correction. R3's visual review is the current handoff; integration remains separately authorized.
