@@ -59,10 +59,31 @@ export function animateFrames({ duration, draw, signal, requestFrame = requestAn
   });
 }
 
+// One continuous rounded silhouette and two curved face seams. Sampling the
+// authored curves once lets the pencil follow the exact ink path as it grows.
+function curvePoints(start, segments) {
+  const points = [start];
+  for (const [cx1, cy1, cx2, cy2, x, y] of segments) {
+    const [sx, sy] = points.at(-1);
+    for (let step = 1; step <= 12; step++) {
+      const t = step / 12, u = 1 - t;
+      points.push([u ** 3 * sx + 3 * u * u * t * cx1 + 3 * u * t * t * cx2 + t ** 3 * x,
+        u ** 3 * sy + 3 * u * u * t * cy1 + 3 * u * t * t * cy2 + t ** 3 * y]);
+    }
+  }
+  return points;
+}
 const BOX_STROKES = [
-  [[0, 50], [83, 0], [218, 43], [133, 99], [0, 50]],
-  [[0, 50], [0, 166], [133, 216], [133, 99]],
-  [[218, 43], [218, 158], [133, 216]]
+  curvePoints([24, 42], [
+    [42, 29, 65, 13, 77, 7], [83, 3, 89, 3, 101, 7],
+    [130, 16, 181, 31, 204, 40], [214, 44, 218, 49, 218, 60],
+    [218, 84, 217, 130, 216, 148], [216, 157, 213, 162, 204, 169],
+    [185, 183, 160, 201, 143, 211], [137, 215, 131, 216, 123, 212],
+    [92, 202, 34, 182, 13, 174], [4, 171, 0, 164, 0, 154],
+    [0, 125, 1, 83, 1, 65], [1, 55, 8, 50, 24, 42]
+  ]),
+  curvePoints([4, 55], [[30, 64, 82, 86, 118, 96], [127, 100, 134, 100, 144, 95], [164, 82, 196, 60, 215, 50]]),
+  curvePoints([132, 99], [[131, 126, 133, 184, 133, 213]])
 ];
 const strokeLength = points => points.slice(1).reduce((sum, p, i) => sum + Math.hypot(p[0] - points[i][0], p[1] - points[i][1]), 0);
 const BOX_LENGTH = BOX_STROKES.reduce((sum, points) => sum + strokeLength(points), 0);
@@ -81,10 +102,12 @@ function line(ctx, points, length = Infinity) {
 
 function drawBox(ctx, progress, x, y, scale) {
   ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale);
-  ctx.lineWidth = 4.5; ctx.strokeStyle = '#292b28'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.lineWidth = 7.2; ctx.strokeStyle = '#11120f'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   if (progress > .82) {
-    ctx.fillStyle = '#9b9f9026';
-    ctx.beginPath(); ctx.moveTo(133, 99); ctx.lineTo(218, 43); ctx.lineTo(218, 158); ctx.lineTo(133, 216); ctx.closePath(); ctx.fill();
+    ctx.save(); ctx.globalAlpha = smooth((progress - .82) / .18) * .8;
+    ctx.fillStyle = '#fffbee'; ctx.beginPath(); ctx.moveTo(...BOX_STROKES[0][0]);
+    for (const point of BOX_STROKES[0].slice(1)) ctx.lineTo(...point);
+    ctx.closePath(); ctx.fill(); ctx.restore();
   }
   let remaining = BOX_LENGTH * clamp(progress), tip = BOX_STROKES[0][0];
   for (const points of BOX_STROKES) {
