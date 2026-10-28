@@ -1,31 +1,61 @@
 # Repository status
 
-## Accepted Sanli outline integration — 2026-10-27, review branch
+## Selected consumer and integration baseline — 2026-10-27
 
-The user approved sanli-outline-r5 for intake and integration. The supported main overview→street entry now lazy-loads the selected full Sanli/junction close view, including continuous outline person, sparse motion, north-up collapsible minimap, compass, irregular rounded UI and local ZCOOL KuaiLe. Existing overview assets and retained schoolboy source/rig are unchanged. Session owns the local pose/camera/path; public registration/hash, spatial frame and explicit temporal membership select the working composite. Returning to map releases the renderer and input; re-entry and reload preserve a valid same-entry pose.
+The resource-management work starts from main `928528b36596bbc4ac64b8d34638c1dae6f0f963`. The selected Xinhua/Sanli outline scene and corridor extension are already merged through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25), merge commit `67baf01065f15f9d83a6b4d2903667197582e61b`; the following [PR #26](https://github.com/StarObserverPro/DigitalMemory/pull/26) added location-verification/documentation rules. Neither merge is evidence of a deployment.
 
-The accepted junction intake is carried into this branch from4d919e5 on current main1242dbd; unrelated dirty overview artwork remains in the original checkout. Reusable style, expansion/filtering/validation lessons and controlled intake process live in [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md), with selected data/code/licences in [Sanli scene](../scenes/xinhua-sanli-outline/README.md). Geographic correction history, raw photos, private inputs and screenshots are excluded. Visual selection does not certify a historical year or all inferred surfaces.
+| Surface / concern | Supported state |
+| --- | --- |
+| Overview | Three tiers of the existing R6 illustrated map, no person/player marker; its raster-art contract remains separate from the street. |
+| Xinhua street entry | `outline-stage.js` loads `scenes/xinhua-sanli-outline/`, currently `xinhua-corridor-outline-r4` with `xinhua-corridor-integrated-r1` registration. The roughly 875 m corridor includes the preserved Sanli/junction, western Qili frontage and eastern Xinhua. |
+| Selected close-view presentation | Continuous outline person, sparse retracting motion, perspective camera, collapsible north-up minimap, compass, irregular navigation UI and local ZCOOL KuaiLe. |
+| State and sources | Application session owns local position/path/camera and return context; spatial/time owners retain registration and explicit working-composite membership. Source bytes and revisions are pinned. |
+| Geographic limits | Named Daoxiangcun frontage was checked against its public map POI and dated west-frontage panorama. Shop/forecourt extents and bridge heights remain estimates; working-composite period membership is not historical-year certification. |
+| Retained legacy modules | GLB student, schoolwear palettes and graybox/courtyard fixtures remain source/evidence, not the selected Xinhua consumer. Their older smoke and unresolved donor-rights/appearance issues retain that scope. |
+| General target gaps | No complete route-attachment dispatcher, note/sequence authoring, private archive or World Labs-generated environment is claimed. |
 
-Local validation:55 application tests plus12 selected-scene tests and build passed; actual built entry/walk/menu/return/reload observed at runtime commit748aabe. Source/font byte and documentation-link checks passed. CI status remains a separate GitHub result.
+Prior corridor validation is recorded against runtime commit `c887e311b52b91844c1aef22b9d209819c457dbd`: 57 application tests, 12 scene tests, build, all 24 destinations reachable, and actual built entry/walk to the west forecourt/turn/map return/reload with restored pose and no observed browser warnings/errors. This is earlier revision-bound evidence, not a test result for the later runtime-residency changes. See [the corridor packet](attention/tasks/DM-XINHUA-CORRIDOR-20261027.md).
 
-Verification/delivery record: [DM-SANLI-INTEGRATE-20261027](attention/tasks/DM-SANLI-INTEGRATE-20261027.md). PR branch only; main is not merged and nothing is deployed. Earlier street-renderer/character status entries below are historical where this consumer supersedes them.
+The current resource task and its evidence are recorded in [DM-RUNTIME-RESIDENCY-20261027](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md); [RUNTIME](RUNTIME.md) owns concrete lifecycle behavior. Its mixed code/documentation authorization covers a PR, not merge or deployment. Only [current routing](attention/current.json) identifies active work.
 
+## Runtime residency implementation — 2026-10-27
 
-## Integration checkpoint — 2026-10-26 (authoritative current main)
+The current change separates a suspended stage from final disposal, retains one compatible stage for 60 seconds, uses spatial drawing factories and a bounded inactive warm cache, assigns explicit shared-resource owners, and constructs navigation once with on-demand grid evaluation. It also bounds reusable public-record caches and rejects stale asynchronous loads. Complete limits, including the unchanged full camera frustum and whole-JSON download, are in [RUNTIME](RUNTIME.md#bounded-runtime-resources--dm-runtime-residency-20261027).
 
-Older packets/branch descriptions below are historical. This checkpoint reconciles the user's latest decision with merged code.
+An initial authoring comparison used the same corridor data, default position `(-36, 9)`, 1280×800 viewport and shared Chromium/SwiftShader environment against main `928528b`. These are scene/renderer counters, not GPU-memory or hardware-FPS measurements:
 
-- **Live student**: [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) merged a male skinned GLB on 2026-10-23 (red junior/blue high-school uniforms, KayKit idle/walk). Running `src/explorer/schoolboy.js` normalizes it to **1.4 presentation units** with `headBoneScale=0.48`. The user finds it a little stocky, and on 2026-10-26 explicitly chose to **use it as-is**: do not further adjust physical proportions, perceived size, height or head/body ratios now. The old **2× apparent-size** result in [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) was a synthetic placeholder comparison, not a live GLB multiplier or mandatory future task. Chromium WebGL smoke was completed; detailed gait/foot planting and final aesthetics are not approved. The donor geometry still lacks explicit independent licensing proof; see [avatar source notes](../assets/characters/schoolboy/README.md).
+| Observation | Main baseline | Resource-change worktree |
+| --- | --- | --- |
+| Render calls at the sampled default view | 824 | 203 |
+| Renderer geometry count | 825 | 205 |
+| Drawing chunks | No spatial residency owner | 88 registered; 27 resident/active; 0 warm |
+| Navigation initialization | Full-grid walkability pre-scan | 699,141 logical cells; 153 cached at the sampled entry |
+
+The fixed-view images retained the accepted visible composition on inspection; the initial camera settling differed by roughly 0.005 m in height, so this is not a pixel-identical comparison. Entry duration in this one local run is not a formal benchmark. Final regression results, tested head, actual browser flow and PR/CI status must be taken from the current task packet; initial authoring observations do not establish that final acceptance has passed.
+
+## Historical selected-Sanli intake — 2026-10-27
+
+The user selected `sanli-outline-r5` for intake and integration. The initial adapter established the application-owned pose/camera/path, registered local frame, explicit temporal membership and lazy outline entry. At that revision, leaving the map entry disposed its renderer/input; later lifecycle behavior is documented in RUNTIME. The original intake preserved unrelated overview artwork and retained the schoolboy source/rig.
+
+Initial validation at `748aabee47a072b3762a19e790f6e5d7a5ce2201` recorded 55 application tests plus 12 scene tests and build, with actual entry/walk/menu/return/reload, source/font byte and documentation-link checks. [DM-SANLI-INTEGRATE-20261027](attention/tasks/DM-SANLI-INTEGRATE-20261027.md) preserves that delivery. The subsequent corridor request and PR #25 superseded its original unmerged state.
+
+Reusable contour, expansion and validation rules are in [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md); selected code/data/licences are in [the scene](../scenes/xinhua-sanli-outline/README.md). Trial screenshots, raw photos and private inputs stay outside Git. Visual selection never certifies every inferred surface or historical year.
+
+## Historical integration checkpoint — 2026-10-26
+
+All dated entries below describe their own revision. This checkpoint predates the selected outline consumer and records what was current then; it is not today's runtime or active-task index.
+
+- **Student at that checkpoint**: [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) merged a male skinned GLB on 2026-10-23 (red junior/blue high-school uniforms, KayKit idle/walk). `src/explorer/schoolboy.js` normalizes it to **1.4 presentation units** with `headBoneScale=0.48`. On 2026-10-26 the user chose to **use it as-is** despite its stocky appearance. The old **2× apparent-size** result in [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) was a synthetic placeholder comparison, not a live GLB multiplier or mandatory future task. Chromium WebGL smoke was completed; detailed gait/foot planting and final aesthetics were not approved. The donor geometry still lacks explicit independent licensing proof; see [avatar source notes](../assets/characters/schoolboy/README.md).
 - **Marble 2 / World Labs**: [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) consolidates the proposed local Codex setup and camera/geometry constraints. **No World Labs generation, upload, export, installed runtime adapter or produced scene.** Local CLI/auth/account capabilities are not verified at this checkpoint.
 - **桥南／桥北 history**: [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) holds public evidence, naming and chronology uncertainties only. No new bridge geometry registration, map drawing or private-memory material was added.
 - **Product / map**: [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) merged the area → street/route → roadside attachment documentation contract, not a complete running dispatcher or authoring backend. The existing Xinhua R6 map and 161 selected masses were untouched.
-- **Parked concept**: a future **Keith Haring-inspired** sparse box/line treatment with selective color on memorable elements, recorded in [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md), is *not yet an accepted visual system or active assignment*.
-- **Agent**: `docs/attention/current.json` still has `"active": []`. No generation, private-publication, new implementation, deployment or successor task is activated by this documentation integration.
+- **Concept then parked**: the Keith Haring-inspired sparse box/line idea had no selected implementation at that checkpoint. The accepted 2026-10-27 outline scene above subsequently resolved it for the close view.
+- **Agent then**: the task index had `"active": []`; the documentation integration did not activate generation, private publication or deployment. Consult current routing for later authorized work.
 
 
-## Male Y2K school-student rig — DM-0019 (merged; provisional appearance)
+## Historical male Y2K school-student rig — DM-0019
 
-The Xinhua street runtime now has a 3D skinned male-student candidate with independently replaceable hair, jacket, trousers and shoes, plus KayKit `Idle_A` and `Walking_A` source clips. The previous ball/cylinder walker is removed from the **browser player's** mesh group when the stage initializes; isolated prototype tests still contain that geometry. Red/white junior and blue/white high-school kits use one shared mesh and a bind-space jersey/stripe shader, without copying the user's private photograph or a school logo. Street picking/route registration are unchanged.
+That street revision introduced a 3D skinned male-student candidate with independently replaceable hair, jacket, trousers and shoes, plus KayKit `Idle_A` and `Walking_A` source clips. Its stage removes the earlier ball/cylinder walker from the browser player's mesh group; isolated prototype tests retain that geometry. Red/white junior and blue/white high-school kits use one shared mesh and a bind-space jersey/stripe shader, without copying the user's private photograph or a school logo. The selected outline scene later replaced this consumer, while retaining the assets and evidence.
 
 Status: merged into main via [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) on 2026-10-23. **Chromium WebGL runtime smoke now passes**: CI [run 39486090781](https://github.com/StarObserverPro/DigitalMemory/actions/runs/39486090781) verified 50 Node tests, build, live red/blue menu switch, registered walking displacement (0.18 scene units), mobile fit and reload persistence with zero HTTP/page errors. Six temporary screenshots are in CI artifacts. Detailed planted-feet animation review, user aesthetics and the donor's independently documented geometry CC0 grant remain **open** after integration and need resolution before claiming the third-party geometry is fully cleared for ongoing redistribution. Evidence and source lineage: [DM-0019](attention/tasks/DM-0019.md), [asset README](../assets/characters/schoolboy/README.md). The older r3 street CPU screenshots do **not** validate this GLB model.
 
@@ -67,7 +97,7 @@ Follow-up research read primary-source hand-drawn route-map, journal/watercolor,
 
 Delivery contains documentation and ignore rules only. Trial images, visual examples and dedicated demonstration scripts are excluded from the new branch and its history; future visual examples also stay out of Git. Runtime, manifests, registrations and hosting are unchanged. Existing R4 SVG art/fallback still requires a later consumer migration. See [DM-0015](attention/tasks/DM-0015.md) and [current art contract](HANDPAINTED_MAP_ART.md).
 
-## Current overview correction — DM-0009
+## Historical overview correction — DM-0009
 
 Soft paper-compatible roads replace the heavy black overview bars. Context continuations and Four Ring service roads use public source geometry. All feature anchors now share the road projection; the three Sanli symbols remain inside Sanli instead of being spread across Wuli. Thumbnail art retains aspect ratio. A local pen-like handwritten font and screen-pixel label placement keep names readable at all three tiers and on narrow screens; label budgets and collision checks suppress excess names.
 
@@ -154,6 +184,4 @@ The documentation baseline was delivered in PR #1 and is present at base `002390
 
 ## Historical suggested action (not active)
 
-That old scenic-flat review predates the merged volumetric student. Refer to the 2026-10-26 checkpoint and the empty active-task index instead. Keep future art expansion, historical registration and private archive work unactivated until directed. Technical verification is not user aesthetic or historical approval.
-
-Corridor integration revision xinhua-corridor-integrated-r1 extends the selected street consumer to western Qili/Fourth Ring frontage and eastern Xinhua. Daoxiangcun west frontage has map/panorama evidence. Integration validation and merge outcome are recorded in DM-XINHUA-CORRIDOR-20261027.
+That old scenic-flat review predates both the GLB and the selected outline street. Refer to the current consumer section and active-task index. Historical suggestions do not activate future art expansion, registration or private archive work. Technical verification is not user aesthetic or historical approval.

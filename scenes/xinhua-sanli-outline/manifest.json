@@ -5,18 +5,24 @@
   "geometryRevision": "xinhua-corridor-layout-r4",
   "approval": "user-authorized-correction-and-main-integration-2026-10-27",
   "files": {
-    "runtime.mjs": "41cdc1d06d951ea190409248e297dcb87ea1899a6e7d59f1e4754485c9f7f7c3",
-    "drawing.mjs": "33676c25e5d338c3fc49bf020405a26d3221efdd3da7174541ff4125db214367",
+    "runtime.mjs": "e335df49965250295093a8a1f17fa20e3c93f6cf11474b274d59664d0ba8970e",
+    "drawing.mjs": "972faba05cb19d60615100f881c178e7f4f0e8b2603d51bf851c3097f1252f5c",
     "avatar.mjs": "f1cf62a14cd0e9212993ce5c5a5b28d15693ad92f76e5a555067709e985b5ff9",
     "motion.mjs": "cdc9f4c1d0bca5371e6bf9bfeacb2e06bba2a66adfcc6d7e6317788f87e34a74",
-    "navigation.mjs": "4bfe1b61d22556fa89ea0245f986cf060aa4ec935f21ca72270afcbac7d59e5f",
+    "navigation.mjs": "8bbbd0ccd0bdd0de69f61283f8444b1bd66e37e4d8d9a54783fc1002b7293bfc",
     "ink-occlusion.mjs": "70b0bc216843de902fd466d89c7a581c2598be967f881abc884c261cdc2a14c7",
-    "site-details.mjs": "9c671b68124cd77de2e7b528858054d1ca35cb0969d421a335c7983842461e81",
+    "site-details.mjs": "6e777a33f9fa5dd97eddcea7e6127f88685533150171d6e62ee4a46e89b5d034",
     "navigation-ui.mjs": "cbe8019e526010d2abf188202e2bdecb4c000060a52cf3647aa27da4f5bbba00",
     "style.css": "7d192a4d8d203a62d98494f57f717da70ae4d4f4135533dc60b46be7a3495081",
     "scene-data.json": "79ddf20177ce72527aaa6efb148841acbaa58fa62d280ead4c58cf3839882637",
     "fonts/ZCOOLKuaiLe-Regular.ttf": "812a6fc1fe54b6d73a419245c32dfeba8aa33104d5be90d1cf6af082007cb71d",
     "fonts/OFL.txt": "538078469839b4a2e7ad22bef4ebe41681a4e53749bb2a072144024f1d6d703d",
-    "street-props.mjs": "73a880a0f7eb4e935cadcffcae832e8c406ea3ae37de163df7d7e8acf8cef9d0"
+    "street-props.mjs": "212787e07e3219d2a0ca6ec00feab67db1c3c084bbccc93855a98f125e597757",
+    "spatial-drawing.mjs": "6077e4e8e1e07cbb66612cc6a79910affaf4c9a35dc6e4dbd6c599eac2854ac5",
+    "../../src/engine/frame-loop.js": "d46ba493f9c7c1b8c9453f89d429a6baa777b756f945375db719cc6bc86de82e",
+    "../../src/engine/spatial-index.js": "095bcbb6b8764597d40ff7dbdcaab2d469c2440af6c4fafae0bbb47979f7f333",
+    "../../src/engine/resource-scope.js": "5c06a2fbb8671ab25540849d567cf5eb2676b18d92554fc256d9a451499aac19",
+    "../../src/engine/chunk-residency.js": "dddfb085f39d2bf621b4d3326b3daabdce959896754326d792e5163d086dc7e0",
+    "../../src/engine/navigation-grid.js": "980c3fbf0f7c27cc8d2ffa37474669b214d3af48b2caf161fd99adf041971f04"
   }
 }

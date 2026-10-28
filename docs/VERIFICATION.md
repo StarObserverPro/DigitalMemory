@@ -1,8 +1,8 @@
 # Verification and acceptance
 
-> Historical DM-0004 observations: 17 domain tests and 14 browser checks were recorded for that revision. They do not verify the new route-first contract or the current release. Read [STATUS](STATUS.md) and [evidence](../evidence/README.md) for revision-bound results.
+> Read [STATUS](STATUS.md) and the selected task's evidence first. Old DM-0004 counts, legacy GLB smoke and standalone outline screenshots remain bound to their own consumer/revision; none automatically verifies the current built entry or a later runtime change.
 
-Status: acceptance contract. DM-0003 implements the corrected illustrated-map/scenic-flat subset; DM-0002 is earlier rejected visual history; see [runtime delivery](STATUS.md) and [evidence](../evidence/README.md). Unexercised scenarios below remain future requirements.
+Status: acceptance contract. The current built Xinhua entry is the selected outline corridor; [RUNTIME](RUNTIME.md) separates implemented behavior from broader targets. The scenarios below require recorded observations before they may be called passed. Earlier runtime and rejected visual records remain historical evidence.
 
 ## Evidence levels
 
@@ -12,11 +12,15 @@ Private evidence must stay private. Public PR summaries can identify the test an
 
 ## Every-PR documentation check
 
-At each initial PR submission or update, check the **entire diff vs the current base** and align affected canonical files before pushing. The PR description should identify: (1) which product/architecture/data/art/runbook/status/task documents were updated (or a specific reason **none** needed changes); (2) their correspondence to what is actually implemented, tested, proposed or unresolved; and (3) any link or wording checks. Repeat the check on the **final head before merge**, especially after rebases, merges from main, or changed implementation scope.
+Read the relevant canonical docs before implementation. Keep them aligned during the change, then check the **entire diff vs the current base** and complete documentation consistency/link review **before tests/build/CI**. Open or update the PR with those actual results. A GitHub job requiring a push/PR event is checked after that event against its actual head; a queued or earlier-head result is not current evidence.
+
+The PR description identifies: (1) the task scope recorded before construction, including sandbox work; (2) the canonical docs updated, or a specific reason **none** need changes; (3) their correspondence to implemented, tested, proposed and unresolved behavior; and (4) documentation and validation observations. A sandbox scope records purpose, base, boundaries, acceptance, output destination and status in the existing matching packet. Trial files remain outside Git. Repeat the full documentation check on the **final head before any authorized merge**, especially after rebases, merges from main or scope changes.
 
 Do not say a branch-only feature is already on main, conflate browser tests with aesthetic acceptance, or leave a historical "pending integration" claim as the new present tense. Prefer stable, evidence-bound descriptions that remain accurate once a PR merges, with exact PR/commit provenance in the delivery statement. This requirement does **not** force unrelated documentation churn, private information into public files, or publication/deployment. The [pull-request template](../.github/PULL_REQUEST_TEMPLATE.md) records the result.
 
-## Documentation acceptance for this task
+## Historical architecture-document baseline — DM-0001
+
+These IDs describe the initial documentation-only task. Its D07 exclusion is not a ban on later user-authorized runtime work; each current task records its own observable acceptance.
 
 | ID | Acceptance |
 | --- | --- |
@@ -30,7 +34,7 @@ Do not say a branch-only feature is already on main, conflate browser tests with
 
 Semantic review of D01–D05/D07 is an author review against the current user request. Do not describe it as independent or user acceptance. D06 is a reproducible mechanical check whose exact tested head belongs in delivery evidence.
 
-## Future executable scenarios
+## Cross-cutting executable scenarios
 
 | ID | Scenario and required observation |
 | --- | --- |
@@ -55,11 +59,11 @@ Semantic review of D01–D05/D07 is an author review against the current user re
 | P02 | Export restores IDs, revisions, portals, sources and approvals into a clean instance; deletion/withdrawal removes the relevant reachable derivatives. |
 | L01 | A synthetic large archive matching the anticipated ingestion volume remains paginated and browsable; initial scene does not download every memory or source. |
 
-Select scenarios according to the changed behavior; do not build a project-wide gate maze before there is a runtime. Numerical performance budgets and supported devices are to be measured and set during the first implementation packet, not fabricated here.
+Select scenarios according to the changed behavior and relevant consumer. Keep gates bounded to actual risks rather than running an unrelated project-wide matrix. Resource caps are declared implementation policies; physical-device performance and supported-device targets require measurements, not assumed outcomes from those caps.
 
 ## Route-first and local-change acceptance additions
 
-These are future executable requirements, not passed tests in this documentation delivery.
+These are target requirements. A retained prototype may cover part of one scenario; only explicit current-consumer evidence establishes the complete result.
 
 | ID | Required observation |
 | --- | --- |
@@ -94,6 +98,22 @@ Every delivery states: files/assets changed, exact branch/head, acceptance evide
 Check scene registration/hash and privacy before mount, local-frame round trips, session return/reload, explicit time membership and invalid saved-state rejection. Check all continuous routes, gates/fences/non-road masks, fixture collision and screen-mask budget. Then use the actual built main entry for pointer/keyboard walk, camera/compass, minimap collapse, menu pause, map exit/re-entry, reload and failed-load recovery. Standalone r5 screenshots prove the approved look, not main integration. Keep browser captures outside Git and bind compact observations to the selected manifest and tested commit.
 
 For outline figure visibility, bind foot/head projection and actual screenshot to the same pose/yaw, then retrace the point before changing camera or masking. Screen-in-bounds diagnostics do not replace visible figure review.
+
+## Runtime lifecycle and residency checks
+
+Use the actual main outline entry, plus focused tests for its shared runtime modules. Record these outcomes independently:
+
+| Concern | Required observation |
+| --- | --- |
+| Frame ownership | Menu, inactive scene and hidden page stop scheduled work; resume has one frame chain; final disposal is idempotent and removes listeners/observers. |
+| Retention and expiry | A return within the retained-stage window reuses one stage/navigation owner with the same valid session pose; expiry or incompatible registration disposes it and later creates a fresh valid stage. |
+| Spatial residency | Camera-selected chunks activate; inactive retained chunks receive no dynamic updates; warm-count, estimated-byte and idle-age limits cause deterministic eviction during updates. A paused scene does not run an independent 15-second eviction timer; test its separate retained-stage expiry. Report active and warm populations separately. |
+| Resource ownership | Unique resources release once; a chunk cannot dispose a material/geometry owned by a still-live scene or another chunk. Final cleanup covers line meshes, textures, scopes and renderer resources actually used. |
+| Late results | Scene/module/font or other async completion cannot remount or mutate a disposed/replaced scene; cleanup cannot cancel a newer owner. |
+| Navigation | Build the navigation owner once for the loaded scene, preserve registered collision and every current destination, and bound reusable caches. Exercise the separate 50,000-node search and 32,768-candidate nearest-query limits; exhaustion must fail safely with a diagnostic flag. Cache size is distinct from temporary search storage. |
+| Appearance | Same selected data, camera/pose and viewport preserve visible silhouettes, contour width, depth/ink occlusion and the grounded person on desktop and phone. A shorter residency radius must not erase visible distant ink. |
+
+Keep render counters, geometry/texture counts and estimated resource bytes distinct from measured GPU memory. A bounded cache and a successful SwiftShader walkthrough establish lifecycle behavior in that environment, not hardware frame-time improvement. Capture actual frame cadence or GPU timing separately before claiming a performance gain; neither CPU submission time nor a passing test is a GPU benchmark.
 
 Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
 

@@ -7,14 +7,17 @@ State the user-authorized result and task packet. Do not paste private source ma
 - Exact base / tested head:
 - Affected places, periods, scenes, batches or contract owners:
 - Exclusions and any approved scope changes:
+- Existing task scope recorded before construction, including sandbox work; deliverable/evidence destinations:
 
 ## Documentation alignment (required on every PR push/update)
 
-- [ ] Compared the full PR diff against the latest base and checked the affected canonical docs.
+- [ ] Read the affected canonical docs before implementation and recorded/reused the repository task scope.
+- [ ] Compared the full PR diff against the latest base and reviewed documentation **before tests/build/CI**.
 - [ ] Updated relevant docs **in this PR**, or explicitly justified why existing documentation is still accurate.
 - [ ] Checked local links, stale status/handoff wording, and the distinction between proposed, tested, merged and deployed.
 - Docs updated (paths), **or** "none — reason":
 - Remaining documentation uncertainty (if any; not an automatically activated task):
+- Validation after documentation review (local results and actual-head GitHub CI; identify pending event-triggered checks):
 
 ## Evidence
 

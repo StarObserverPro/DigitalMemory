@@ -4,7 +4,7 @@ This is a short routing surface, not a requirement to read the entire repository
 
 ## Preserve the intended result
 
-DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence. The overview has no person or player marker. Three overview tiers precede a moderately elevated chibi street view, currently using a skinned male student and modular street grayboxes; illustrated surfaces, fog and directional cues remain visual goals. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
+DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence and no person or player marker. Three overview tiers lead to the selected Xinhua/Sanli outline street: restrained building contours, a continuous outline person, sparse motion and a perspective walking camera. The earlier skinned student and graybox street remain legacy assets/modules, not the current Xinhua consumer. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
 
 Phase 1 prioritizes the walking-memory network around 新华街, with 南开西里 and the two historical school sites. Do not add the high-school cycling corridor, silently substitute modern school campuses, invent exact routes, or publish private source material. [PHASE_1](docs/PHASE_1.md) is the scope owner.
 
@@ -16,7 +16,7 @@ The normal journey is area overview → registered street/route → roadside att
 
 Preserve source geometry while selecting what to show. A familiar gate and a few compatible masses may represent an unfamiliar compound. Wall/railing segments, detached frontage rooms, gates, occupancy and appearance must be independently revisable. Repeated changes at one site retain location identity and uncertain dating; reconstruction does not supply missing memories. New content never automatically creates a free-roaming interior.
 
-The 2026-10-26 checkpoint reconciles the already merged character with old street-calibration, World Labs and public bridge documents. It triggers no runtime work, paid generation, private-content publication or deployment; Keith Haring-inspired sparse art is parked only.
+The selected Keith Haring-inspired close-view treatment and its Xinhua corridor extension are recorded in [the outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md). The overview retains its raster-art contract. Earlier character calibration, World Labs setup and public bridge research remain separately scoped records; reading them does not activate new generation, private-content publication or deployment.
 
 具名地点落图前必须执行 [地理核验流程](docs/GEO_DATA_RUNBOOK.md#具体地点落图前的核验顺序)：地图POI、对应建筑侧/朝向与街景交叉核对；地址文字不足以定位门脸。工程检查和地理核验分列，具体证据要求见 [验收](docs/VERIFICATION.md#具名地点的地理验收与工程验收)。
 
@@ -24,8 +24,8 @@ The 2026-10-26 checkpoint reconciles the already merged character with old stree
 
 1. Identify the request and its authorized effects: investigation, repository modification, content approval, integration, publication, or deployment. These are different permissions.
 2. Read [current routing](docs/attention/current.json). Select only the task matching this request. No active row means no task is implicitly running.
-3. Read that task packet. For newly authorized construction without a packet, create a bounded packet from [the template](docs/attention/TASK.template.md). Analysis alone does not create executing state.
-4. Load the relevant canonical sections below, then current source files. Read the packet's latest next-action/evidence section last. Do not concatenate documentation, old handoffs, or recollections into context.
+3. Read that task packet. Before newly authorized construction, including work in a sandbox or a separate checkout, create or reuse a bounded packet in the repository; [the sandbox-scope rule](docs/attention/README.md#sandbox-work-still-has-a-repository-scope) specifies the minimum record. Analysis alone does not create executing state.
+4. Load the relevant canonical sections below before changing implementation, then current source files. Read the packet's latest next-action/evidence section last. Keep those owners aligned during implementation and complete the documentation review before validation/CI and PR delivery. Do not concatenate documentation, old handoffs, or recollections into context.
 
 | Need | Read |
 | --- | --- |
@@ -34,7 +34,7 @@ The 2026-10-26 checkpoint reconciles the already merged character with old stree
 | Accepted Xinhua/Sanli outline style and integration | [XINHUA_OUTLINE_WORKFLOW](docs/research/XINHUA_OUTLINE_WORKFLOW.md) / [selected scene](scenes/xinhua-sanli-outline/README.md) |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
 | GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
-| Live avatar vs historic 2× review | `docs/STREET_PROTOTYPE.md` / `docs/STREET_VISUAL_CALIBRATION.md` |
+| Selected outline person vs retained student / historic 2× review | `docs/STREET_PROTOTYPE.md` / `docs/STREET_VISUAL_CALIBRATION.md` |
 | World Labs / Marble 2, no generation | `docs/WORLDLABS_HANDOFF.md` |
 | Bridge public research | `docs/research/FENGTAI_BRIDGES_ZHENGYANG.md` |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
@@ -45,7 +45,7 @@ One primary work item and up to two genuine dependencies are the default attenti
 
 ## Construction boundaries
 
-Map artwork must be hand-painted raster imagery. SVG is for planning/registration, invisible masks/hit geometry and ordinary UI/text, never visible buildings, trees, grass, clutter or an emergency art fallback. Rasterizing an SVG stand-in does not satisfy this rule. Preserve building height class and dense storey rhythm: a 23-storey tower cannot become a few-storey icon. Read [hand-painted map art](docs/HANDPAINTED_MAP_ART.md) before new generation; context-filled generation, shared projection and final-size evidence supersede the older tiny-isolated-sprite recipe.
+Overview artwork must be hand-painted raster imagery. SVG is for planning/registration, invisible masks/hit geometry and ordinary UI/text, never visible overview buildings, trees, grass, clutter or an emergency art fallback. Rasterizing an SVG stand-in does not satisfy this rule. The selected outline close view uses its separate approved real-time geometry/contour workflow. Preserve building height class: a 23-storey tower cannot become a few-storey icon. Read [hand-painted map art](docs/HANDPAINTED_MAP_ART.md) before new overview generation; context-filled generation, shared projection and final-size evidence supersede the older tiny-isolated-sprite recipe.
 
 Repository art storage is production-only: do not commit visual trials, examples, contact sheets, unused generations or one-off demonstration scripts. Keep their files outside the checkout, retain only concise decisions in documentation, and add raster assets only when selected for actual product use. A later deletion does not remove binaries from Git history; prepare a clean branch before the first push.
 
@@ -62,6 +62,8 @@ Investigate dependencies as needed, but expand modification or external effects 
 用户明确要求的文档类修正，默认完成定位规范所有者、修改关联文档、核对事实与链接、提交、创建或更新PR，以及必要检查通过后合并main；无需逐步或在合并前再次询问。2026-10-27用户已明确授权这一完整流程。修订必须以用户要求及可核实事实为限，不能借文档修正扩展为运行时代码、美术资产、私人资料公开或生产部署。若存在真实的内容歧义、权限阻断或检查失败，先完成不受影响的部分，再明确报告具体问题；不能将其作为省略验证的理由。
 
 ## Required documentation alignment with every PR push
+
+Use this order for both a new PR and an update: **read the relevant canonical docs → change implementation and affected owners together → review the full diff and documentation consistency → run applicable tests/build/CI → open or update the PR with the actual evidence**. Reading documentation only after CI is not an alignment pass. If a GitHub check runs only after a push or PR event, finish the documentation review first, then check that run against the published head; do not describe a queued or earlier-head run as passed.
 
 **Every initial PR push and every subsequent update must include a documentation alignment pass on the same proposed change.** Compare the full branch diff against the current base, identify affected canonical owners through [the documentation map](docs/README.md), and update those owners **in the same PR** wherever behavior, interfaces, data/evidence, visual decisions, scopes, implementation status or known gaps changed. Update [STATUS](docs/STATUS.md) only for supported present-tense facts, relevant decision/contract pages for approved changes, and the task packet for tested revisions and handoff. Update README/Agent entry links when routing changes; do not create duplicate current specifications or rewrite unrelated history.
 

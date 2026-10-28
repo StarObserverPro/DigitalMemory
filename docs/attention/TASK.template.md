@@ -13,6 +13,7 @@
 - Relevant place/route/period/scene/content-batch IDs and revisions:
 - Allowed changes and protected boundaries:
 - Canonical contract sections and present owners to read:
+- Sandbox/checkout scope and production deliverable destination; external evidence destination (no private paths):
 - One primary outcome; genuine dependencies, if any:
 - Facts already observed:
 - Assumptions, uncertainty and unresolved choices:
@@ -28,6 +29,7 @@
 - Proposed implementation path (adaptable within authority):
 - Cost/attempt envelope appropriate to this task:
 - Reserved verification and closure work:
+- Documentation sequence: read owners before implementation; align/review docs before tests/build/CI; report results in PR:
 - Stop/replan triggers and rollback/recovery:
 
 ## Current state — keep this concise and read last
@@ -39,4 +41,4 @@
 - Exact next action:
 - At delivery: tested/reviewed head, retained gaps, user/content approval state, PR/merge/publication state, active-route removal.
 
-Keep long attempt logs and private source content elsewhere. An empty template is not activation. Never embed private transcripts, personal photos, precise residential coordinates, secrets, or private storage links in a public packet.
+Use the same packet for sandbox work within its authorized scope; purpose, base, boundaries, acceptance, output destination and status must be recorded before construction. Keep long attempt logs and trial files elsewhere. An empty template is not activation. Never embed private transcripts, personal photos, precise residential coordinates, secrets, or private storage links in a public packet.

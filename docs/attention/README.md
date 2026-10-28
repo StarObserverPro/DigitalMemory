@@ -20,7 +20,17 @@ During authorized construction, create a missing packet from [TASK.template.md](
 
 On delivery or stop, update the existing packet with tested revision, observations/gaps and next action; remove its active row in the closure change. The retained packet becomes cold history. Do not create an active successor merely to keep a queue occupied. A later user request may activate a new packet referencing the old one.
 
+### Sandbox work still has a repository scope
+
+An authorized sandbox study, temporary implementation or separate-checkout experiment still starts with a scope record in this repository. Reuse the matching task packet and its active route; create a new packet only when the work is a genuinely separate authorized task. A local folder name or a chat-only plan is insufficient handoff.
+
+Before construction, record at least: intended result, exact repository/base and carrier, allowed changes and exclusions, observable acceptance, deliverable/evidence destination, and current status/next action. State which production paths may eventually receive selected work and that trial files remain outside Git. Keep private paths, source material and credentials out of the public packet.
+
+This record preserves the task across sandboxes and sessions; it is not a request for permission at every step. Update it when scope, baseline, a material decision or delivery status changes. Routine attempts stay within the existing packet. Trial images, screenshots, raw references and one-off demonstrations continue to live outside the checkout under the production-only storage rule.
+
 ### PR-time documentation alignment
+
+The working sequence is **read the relevant canonical owners → implement and update those owners → inspect the complete diff and documentation → validate/test/build/CI → open or update the PR**. Complete the documentation pass before validation, rather than adding a status paragraph after tests have already run. A check that requires a GitHub push/PR event is inspected after that event against its actual head; record it separately from local results.
 
 For **every new PR and every push to an existing PR**, reconcile the complete proposed diff with its canonical docs **in that PR branch**, rather than postponing a documentation sweep until later. Update the affected contract, [STATUS](../STATUS.md) for observed state, source/evidence and task handoff as applicable; preserve uncertain or incomplete outcomes without claiming a merge, release or visual approval. Check links and stale references on the final PR head. The [repository PR template](../../.github/PULL_REQUEST_TEMPLATE.md) requires a short list of updated docs, or an explicit explanation why no document should change. A code-only fix is allowed when its existing documentation remains accurate and that reasoning is stated; bulk touching unrelated documents is not required.
 
