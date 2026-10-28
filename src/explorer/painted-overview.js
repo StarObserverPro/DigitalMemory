@@ -76,7 +76,7 @@ export function paintedOverviewMarkup(assembly,assets,state,available){
    standing.push({id:p.id,depth:p.depth,html:`<g data-compound="${esc(c.id)}" data-part="${esc(p.id)}" data-storeys="${p.storeys}" data-kind="${p.kind}" data-ground-anchor="${p.origin.join(',')}" mask="url(#${id})">${image(assets[c.assetRef],rect,'data-uniform-scale="'+c.frame.modelUnitsPerPixel+'"')}</g>`});
   }
  }
- if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if(available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
+ if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if((!l.periodIds||l.periodIds.includes(state.periodId))&&available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
  for(const f of painted.frontages)if(f.periodIds.includes(state.periodId)&&available.includes(f.assetRef)){
   const id='painted-frontage-'+f.id,[x,y,w,h]=f.rect;
   defs.push(`<clipPath id="${id}"><path d="${path(f.sourceClip.map(([u,v])=>[x+u*w,y+v*h]))}"/></clipPath>`);
@@ -103,6 +103,7 @@ function compileRegisteredVolumes(source,registration,transform,assets,options){
    }
    const[x,y,w,h]=p.renderBounds;
    if(!p.renderBounds.every(Number.isFinite)||w<=0||h<=0)throw new Error('Invalid registered raster bounds: '+p.id);
+   if(p.labelObstacleBounds){const[a,b,c,d]=p.labelObstacleBounds;if(!p.labelObstacleBounds.every(Number.isFinite)||c<=0||d<=0||a<x-1e-8||b<y-1e-8||a+c>x+w+1e-8||b+d>y+h+1e-8)throw new Error('Invalid raster ink bounds: '+p.id);}
    for(const level of[0,1,2]){
     const rep=p.levels[level],a=assets[rep?.assetRef],q=rep?.crop;
     if(!a||!q||q.length!==4||q.some(n=>!Number.isFinite(n))||q[0]<0||q[1]<0||q[0]+q[2]>a.width||q[1]+q[3]>a.height||Math.abs(q[2]/q[3]-w/h)>1e-8)throw new Error('Invalid registered atlas crop: '+p.id);
@@ -129,6 +130,6 @@ function registeredVolumesMarkup(assembly,assets,state,available){
   const body=`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${rep.crop.join(' ')}" preserveAspectRatio="xMidYMid meet" overflow="hidden"><image width="${a.width}" height="${a.height}" href="${esc(a.url)}"/></svg>`;
   standing.push({id:p.id,depth:p.depth,html:`<g data-compound="${esc(c.id)}" data-part="${esc(p.id)}" data-kind="${esc(p.kind)}" data-storeys="${p.storeys}" data-detail-level="${level}" data-ground-anchor="${p.origin.join(',')}"${p.id==='sanli-opposite-detached-frontage'?' data-frontage="sanli-opposite-detached-frontage"':''}>${body}</g>`});
  }
- if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if(available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
+ if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if((!l.periodIds||l.periodIds.includes(state.periodId))&&available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
  return `<g data-layer="pale-context">${base}</g><g data-layer="road-art" data-raster-roads="true">${ground}</g><g data-layer="solid-places">${standing.sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(s=>s.html).join('')}</g>`;
 }

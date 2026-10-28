@@ -1,5 +1,13 @@
 # Hand-painted overview art: production direction
 
+## Selected local travel-map recovery — 2026-10-28
+
+The user explicitly requested recovering the better 2026-10-26/27 local artwork and geographic corrections into the actual application overview. `xinhua-travel-r7` restores the complete local block's sparse directional pencil/marker gestures, red balcony bands on the Sili/Liuli slabs, quiet flat context and registered yard colour. It replaces the rejected R6 finish at the existing raster consumer. All 161 baseline physical outlines remain unchanged; 30 previously reviewed source-linked context masses and four selected Qili frontage reconstructions bring the plan to 195 objects. The full source polygons, including inner rings, remain separate from the renderer's outer-ring projection.
+
+Sili's four principal source masses are separate from Liuli and from the unlabelled background east of Hanzhuang Road. One formerly two-storey estimate is restored to the locally checked approximately six-storey family. Qili's four frontage masses share the selected street scene's registered coordinates; Daoxiangcun remains on the west-facing frontage. Counts describe source/reconstruction objects, not a verified building-number inventory. Precise floor counts, frontage extents and historical dating retain their evidence limits.
+
+The three levels retain one projection, bounds, anchors and sparse mark hierarchy. Enlarging the map does not add pane grids, surface grit or repeated fine hatching. The user selected recovery and local integration; final visual judgement is still open. Selected files and provenance are in [the asset README](../assets/modules/xinhua-travel-r7/README.md) and [repair record](attention/tasks/DM-MAP-REPAIR-20261028.md). The R6 compiler is guarded against overwriting this selection. Recovered rasters are current inputs, not trial images.
+
 ## Scope and selected outline close view — 2026-10-27
 
 This page owns the **overview's raster artwork**. The user subsequently selected the Keith Haring-inspired Xinhua/Sanli close view, which uses original real-time masses, sparse contours, a continuous outline person and restrained motion. That approved treatment supersedes the 2026-10-26 parked idea for the selected street only; [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns its drawing and occlusion rules. It does not replace the overview with vector buildings or turn every other view into the same renderer. The GLB remains a retained legacy asset, not the selected street person.
@@ -17,7 +25,7 @@ Simplify by selecting forms, edge density, pigment contrast and object count; co
 
 These are representation-selection rules. The height/projection requirements below still apply wherever an actual tall building is represented. They do not require drawing every hidden building, and they do not authorize shrinking corrected residential towers into gate symbols.
 
-## Current mass-first implementation — DM-0018
+## R6 mass-first implementation — DM-0018; rejected 2026-10-28
 
 The DM-0018 request permits simple rectangular/footprint-based masses, with wax colour blocks or coloured-pencil hatching, followed by more detail when enlarged. R6 applies that instruction to a source-linked spatial plan. One selected image-generated material atlas supplies broad wax, directional pencil, roofs and facade marks. An offline compositor projects these raster materials onto the registered volume faces; it does not render visible SVG surfaces, add synthetic grain, or reshape a whole generated compound to fit geography. This surface-material method is distinct from the contextual-scene method below and is the Xinhua overview implementation.
 
@@ -25,7 +33,7 @@ Far scale simplifies small contour steps and omits small low-rise bodies; main m
 
 `content/reference/xinhua-spatial-plan.json` owns selected outlines, source IDs, exclusions, compound boundaries and independent floor estimates. `scripts/build-xinhua-art.py` builds the selected rasters and runtime registration from that plan. The production material atlas is a build input, not a style comparison or example sheet. Runtime uses three packed raster levels per compound. No private photographs, source satellite images, QA renders or unused generations belong in Git.
 
-The user has not yet approved R6 aesthetics. The old R5 geography was rejected; its visual success claims below are historical, not current geographic acceptance. Estimates remain estimates, with ranges and source roles; a generic typology estimate is not a verified count within 20%.
+On 2026-10-28 the user rejected the current R6 finish and explicitly retained the hand-drawn travel-map direction while requiring removal of the material-covered block appearance. The user also rejected the overview geography of Sili, Liuli and Qili. The main overview still consumes this R6 implementation; retaining it in source is not acceptance. The [repair investigation](attention/tasks/DM-MAP-REPAIR-20261028.md) records the consumer/version mismatch and remaining geographic review. No replacement art has been selected. The old R5 geography was rejected; its visual success claims below are historical, not current geographic acceptance. Estimates remain estimates, with ranges and source roles; a generic typology estimate is not a verified count within 20%.
 
 ## Visible art and planning have different owners
 

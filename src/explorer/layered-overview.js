@@ -76,8 +76,14 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
   const compounds=assembly.painted?visiblePaintedCompounds(assembly,state,availableAssets):visibleCompoundTrials(assembly,state,availableAssets);
   for(const c of compounds){
     const[x,y,w,h]=bounds(c.mask),top=assembly.painted?Math.min(...c.parts.map(p=>p.visualBounds[1])):y;
-    const positions=c.labelPositionsGeo?c.labelPositionsGeo.map(assembly.transform.toImage):[[x+w/2,y+h/2],[x+w/2,y+h+24/s],[x+w/2,top-24/s],[x+w+66/s,y+h/2],[x-66/s,y+h/2],...[.25,.75].flatMap(t=>[[x+w*t,y+h*.6],[x+w*t,y+h*.85]])];
-    candidates.push({id:'compound-'+c.id,text:c.shortLabel||c.label,kind:'place',priority:c.id==='sanli'?106:c.id==='school'?104:99,minLevel:c.id==='sanli'?0:1,positions});
+    const registeredName=!!c.labelWithinGroup;
+    const positions=registeredName?[.5,.35,.65,.2,.8].flatMap(v=>[.5,.35,.65,.2,.8].map(u=>[x+w*u,y+h*v])).filter(p=>pointInPolygon(p,c.mask)):c.labelPositionsGeo?c.labelPositionsGeo.map(assembly.transform.toImage):[[x+w/2,y+h/2],[x+w/2,y+h+24/s],[x+w/2,top-24/s],[x+w+66/s,y+h/2],[x-66/s,y+h/2],...[.25,.75].flatMap(t=>[[x+w*t,y+h*.6],[x+w*t,y+h*.85]]),...[48,72].flatMap(pad=>[.5,.25,.75].map(t=>[x+w*t,y+h+pad/s]))];
+    candidates.push({id:'compound-'+c.id,text:c.shortLabel||c.label,kind:'place',priority:c.id==='sanli'?106:c.id==='school'?104:99,minLevel:c.id==='sanli'?0:1,positions,vertical:!!c.labelVertical,overlapOwnArt:registeredName?'compound-'+c.id:undefined});
+    for(const p of c.parts||[])if(p.orientationLabel){
+      const[x,y,w,h]=p.visualBounds;
+      const positions=[...around(x+w/2,y+h/2,w,h),...[50,74,98].flatMap(pad=>[0,-25,25].map(offset=>[x+w/2+offset/s,y+h+pad/s]))];
+      candidates.push({id:'orientation-'+p.id,text:p.orientationLabel,kind:'place',priority:96,minLevel:p.orientationLabelMinLevel??2,positions});
+    }
   }
   for(const p of assembly.parcels) {
     if(compounds.some(c=>p.label.includes(c.id==='wuli-west'?'新华街五里':c.label)))continue;
@@ -104,7 +110,7 @@ export function overviewLabelLayout(assembly,state,availableAssets,metrics=mapMe
     positions.sort((a,b)=>Math.hypot(a[0]-center[0],a[1]-center[1])-Math.hypot(b[0]-center[0],b[1]-center[1]));
     candidates.push({id:'road-name-'+text,text,kind:'road',vertical:text==='西四环南路',priority:importance[text]||30,minLevel:(importance[text]||30)>=90?0:1,positions});
   }
-  const obstacles=assembly.painted?[...compounds.flatMap(c=>c.parts.filter(p=>(p.minLevel||0)<=level).map(p=>p.visualBounds)),...assembly.painted.landmarks.filter(l=>availableAssets.includes(l.assetRef)).map(l=>l.rect)]:[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))];
+  const obstacles=assembly.painted?[...compounds.flatMap(c=>c.parts.filter(p=>(p.minLevel||0)<=level).flatMap(p=>(p.labelObstacles||[p.labelObstacleBounds||p.visualBounds]).map(bounds=>({bounds,owner:'compound-'+c.id,context:p.reviewDepiction==='flat-context'||p.kind==='shop'&&p.storeys<=2&&!p.orientationLabel})))),...assembly.painted.landmarks.filter(l=>(!l.periodIds||l.periodIds.includes(state.periodId))&&availableAssets.includes(l.assetRef)).map(l=>l.rect)]:[...plan.features.map(f=>f.bounds),...compounds.map(c=>bounds(c.mask))];
   return placeMapLabels(candidates,obstacles,metrics,level);
 }
 export function overviewLabelsMarkup(assembly,state,availableAssets,metrics=mapMetrics(state.camera)) {
