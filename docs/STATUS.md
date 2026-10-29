@@ -1,5 +1,9 @@
 # Repository status
 
+## Former primary-school historical geography — 2026-10-29
+
+The [public-source research record](research/FENGTAI_PRIMARY_OLD_SITE.md) establishes documentary relocation/expansion relationships and preserves the 东安街头条2号 / 6号 address conflict. It separates 2006/2012 plans from later accounts, catalogue leads from read source pages, and the 2011-02-01 image acquisition from its 2014 Wayback release. Critical imagery gaps and absent dated 1990s gate evidence leave the former campus boundary, gate, access-lane direction and neighboring factory unresolved. No runtime placement, map artwork, travel destination or deployment is added. Both historical-school registry records remain unchanged. The [bounded research packet](attention/tasks/DM-PRIMARY-HISTORY-20261029.md) records validation and the next evidence needed.
+
 ## Direct crossings and destination travel — 2026-10-29
 
 The user requests direct Xinhua crossings, a compact grouped destination interface, and arriving after a short transition instead of compulsory long walking. The implementation admits registered carriageways, separates the existing 25 destinations into a searchable four-region picker, and adds direct destination travel from the overview/street plus a persisted ground-click preference. Landing clears movement and snaps the camera under a short paper dissolve. Walking remains available through ground clicks and keyboard input. Existing place anchors, source geometry, artwork, periods and the ordinary journal entry presentation are preserved. The existing WebGL CI walkthrough also exercises the new menu/travel flow, cancellation, ground-click mode and persisted arrival at desktop/phone sizes. A richer dedicated travel animation is deferred. Revision-bound verification, outstanding visual evidence, PR and publication state belong in [the travel packet](attention/tasks/DM-MEMORY-TRAVEL-20261029.md); implementation alone does not establish user visual approval.

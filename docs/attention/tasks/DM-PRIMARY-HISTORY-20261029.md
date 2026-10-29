@@ -19,4 +19,10 @@
 
 ## Current state
 
-Scope recorded before document construction. Source inspection is under way; no completed location or historical gate is asserted. Next action: finish the source ledger and dated imagery limitations, align canonical docs, then validate the documentation-only diff.
+- Research record delivered as a documentation-only package; no runtime construction is activated. `current.json` remains unchanged and empty.
+- Evidence: 2006/2012 relocation plans; 2007 address 2 versus 2006 address 6; later expansion account; catalogue-only gazetteer/map leads; an undated gate photo; 11 of 16 zoom-17 historical tiles inspected. The sampled acquisition is 2011-02-01, not the 2014 release date.
+- Missing: a registered 1990s parcel/gate, lane direction, factory identity, full critical historical-imagery coverage, and actual school-history source pages. The 2012-12 item remains a future-layout passage, not a move-completion certificate.
+- Validation: reviewed the full six-file documentation diff against the pinned base; checked 105 local Markdown link targets without failures; checked 21 source entries and the 11-success/5-missing imagery matrix. Only documentation paths are changed, preserving the null/unresolved registry and empty active routing byte-for-byte. Remote event-triggered checks are inspected against the published head and reported in the PR.
+- User content/art approval: no new content/art approval claimed. PR integration follows standing documentation authorization; this package requests no deployment and redistributes no source images.
+- Next research action, unactivated: obtain G1's school/street original pages or the former-school-site portion of the pre-expansion survey/transfer drawing; only then test a parcel and approach-lane hypothesis. G3 identifies a school-history material lead. Keep both historical-school spatial records unresolved until evidence closes that loop.
+- Recovery: revert this documentation change; there is no runtime or content-data migration.
