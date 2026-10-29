@@ -9,6 +9,7 @@ on:
       - 'src/explorer/outline-stage.js'
       - 'src/explorer/main.js'
       - 'src/explorer/entry-transition.js'
+      - 'src/explorer/travel-*.js'
       - 'src/explorer/journal-*.js'
       - 'src/explorer/styles.css'
       - 'src/application/session.js'
@@ -26,6 +27,7 @@ on:
       - 'tests/schoolboy.browser.mjs'
       - 'tests/entry-transition.browser.mjs'
       - 'tests/entry-transition.test.mjs'
+      - 'tests/travel-transition.browser.mjs'
       - 'scripts/serve.mjs'
       - '.github/workflows/student-avatar-check.yml'
   workflow_dispatch:
@@ -57,6 +59,19 @@ jobs:
           CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
           ENTRY_EVIDENCE_DIR: ${{ runner.temp }}/entry-transition
         run: node tests/entry-transition.browser.mjs
+      - name: Paper plane travel walkthrough
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+          TRAVEL_EVIDENCE_DIR: ${{ runner.temp }}/travel-transition
+        run: node tests/travel-transition.browser.mjs
+      - name: Preserve travel transition review captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: travel-transition
+          path: ${{ runner.temp }}/travel-transition
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Preserve entry transition review captures
         if: always()
         uses: actions/upload-artifact@v4
