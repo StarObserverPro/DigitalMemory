@@ -28,7 +28,8 @@
         -25.346156893466695,
         -98.39498122735615
       ],
-      "source": "Approximate spatial result; historical validity unresolved",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
+
       "positionUncertaintyMetres": 15,
       "accessScope": "Outside the entrance only; present-day gate access does not establish historical access",
       "wgs84": [
@@ -47,7 +48,8 @@
         76.36620200451625,
         -58.01037141240707
       ],
-      "source": "Approximate spatial result; historical validity unresolved",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
+
       "positionUncertaintyMetres": 15,
       "accessScope": "Outside the entrance only; no compound interior implied",
       "wgs84": [
@@ -62,7 +64,7 @@
         4.3516138056133435,
         -9.698631722402668
       ],
-      "source": "Approximate spatial result; historical validity unresolved",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "wgs84": [
         116.28495906943029,
         39.84225872177009
@@ -80,7 +82,7 @@
         13.05431251934475
       ],
       "distanceAlongMainRoadMetres": 30,
-      "source": "30 m along OSM Xinhua centreline from node 534302826, north-side pedestrian approach",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "wgs84": [
         116.28454585786716,
         39.84212697407692
@@ -131,7 +133,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -195,7 +197,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -655,7 +657,7 @@
       "height": 27.6,
       "storeys": 9,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -839,7 +841,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "三里8号楼",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1071,7 +1073,7 @@
       "height": 10.2,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1327,7 +1329,7 @@
       "height": 13.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1383,7 +1385,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1431,7 +1433,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "天悦园",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "restaurant-frontage",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1479,7 +1481,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1527,7 +1529,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1575,7 +1577,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1623,7 +1625,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1691,7 +1693,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1739,7 +1741,7 @@
       "height": 9.1,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "sparse-service-windows",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1787,7 +1789,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1835,7 +1837,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1883,7 +1885,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1999,7 +2001,7 @@
       "height": 12.9,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2055,7 +2057,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2167,7 +2169,7 @@
       "height": 42.1,
       "storeys": 14,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "cream-red-retail",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2299,7 +2301,7 @@
       "height": 30.5,
       "storeys": 10,
       "label": "",
-      "heightEvidence": "Approximate spatial result; historical validity unresolved",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "cream-red-retail",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
