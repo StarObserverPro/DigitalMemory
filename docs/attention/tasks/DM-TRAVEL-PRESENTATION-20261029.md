@@ -5,7 +5,7 @@
 The user requests a comparison of lightweight memoir travel presentations, one working sample based on current main and existing art, desktop/phone/reduced-motion verification, and an independent review PR. Repository changes and PR delivery are authorized; merge and deployment are excluded.
 
 - Repository: `StarObserverPro/DigitalMemory`.
-- Exact base: `94cb3b3c1f299d9cd13e71adea40f550bc2f9c5c` (merged PR #35).
+- Initial exact base: `94cb3b3c1f299d9cd13e71adea40f550bc2f9c5c` (merged PR #35). Latest main `2cac134fdd2be0d1ab074662c14f723857faabb7` was incorporated after concurrent documentation-only PR #36; its school research is preserved.
 - Carrier: `agent/paper-plane-travel-20261029`; separate checkout, same bounded scope.
 - Preserve registered landing, cancellation, keyboard walking, period/camera/session ownership, reduced motion and optional free walking. Keep ordinary map-to-street journal writing distinct.
 
