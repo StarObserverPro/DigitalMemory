@@ -18,7 +18,9 @@ export function makeNavigation(data){
  const segmentBounds=(a,b)=>bounds([a,b]);
  const polygonContains=(p,g)=>inside(p,g.ring)&&!(g.holes||[]).some(h=>inside(p,h));
  for(const g of [...(data.nonRoadAreas||[]),...(data.greenAreas||[])])surfaces.insert(serial++,bounds(g.ring),{g,excluded:true});
- for(const g of data.paving||[])surfaces.insert(serial++,bounds(g.ring),{g,excluded:false});
+ // Road colour and pedestrian access are independent: this memoir allows
+ // crossing the registered carriageway wherever the ground is unobstructed.
+ for(const g of [...(data.paving||[]),...(data.corridorRoadSurfaces||[]),...(data.roadSurfaces||[])])surfaces.insert(serial++,bounds(g.ring),{g,excluded:false});
  function circle(position,radius){
   if(!(radius>0))return;
   const box=bounds([position],radius),point=p=>Math.hypot(p[0]-position[0],p[1]-position[1])<radius;
@@ -48,7 +50,7 @@ export function makeNavigation(data){
   if(candidates.some(({g,excluded})=>excluded&&polygonContains(p,g)))return false;
   if(candidates.some(({g,excluded})=>!excluded&&polygonContains(p,g)))return true;
   const n=basis(p,N),e=basis(p,E),left=n.s<45?31:n.s<80?22:15;
-  let yes=(n.s>=4&&n.s<=data.northLength&&((n.d>=-left&&n.d<=-5.35)||(n.d>=5.35&&n.d<=18))) || (e.s>=-31&&e.s<=data.eastLength&&((e.d>=-20&&e.d<=-6.7)||(e.d>=6.7&&e.d<=12&&e.s<10))) || (n.s>=5&&n.s<=9&&Math.abs(n.d)<18);
+  let yes=(n.s>=4&&n.s<=data.northLength&&n.d>=-left&&n.d<=18) || (e.s>=-31&&e.s<=data.eastLength&&e.d>=-20&&e.d<=12) || (n.s>=5&&n.s<=9&&Math.abs(n.d)<18);
   for(const g of [data.landmarks.north,data.landmarks.east])if(segmentDistance(p,g.position,g.anchor)<3.7)yes=true;
   return yes;
  }
@@ -61,7 +63,11 @@ export function makeNavigation(data){
   return true;
  }
  const grid=createNavigationGrid({bounds:b,isWalkable:walkable,clear});
- return {walkable,route:grid.route,closest:grid.closest,clear,blocked,get cellCount(){return grid.cellCount;},stats:grid.stats,
+ function route(from,to,maxSnap=8){
+  if(walkable(from)&&walkable(to)&&clear(from,to))return [[...from],[...to]];
+  return grid.route(from,to,maxSnap);
+ }
+ return {walkable,route,closest:grid.closest,clear,blocked,get cellCount(){return grid.cellCount;},stats:grid.stats,
   dispose(){if(disposed)return;disposed=true;grid.dispose();surfaces.clear();obstacles.clear();edges.clear();}};
 }
 export function routeLength(path){return path?path.slice(1).reduce((s,p,i)=>s+Math.hypot(p[0]-path[i][0],p[1]-path[i][1]),0):Infinity;}

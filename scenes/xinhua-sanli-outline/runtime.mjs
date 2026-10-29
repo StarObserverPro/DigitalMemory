@@ -8,14 +8,15 @@ import {makeSiteDetails} from './site-details.mjs';
 import {makeNavigationUI} from './navigation-ui.mjs';
 import {createFrameLoop} from '../../src/engine/frame-loop.js';
 import {createResourceScope} from '../../src/engine/resource-scope.js';
+import {destinationGroups,resolveLanding} from '../../src/explorer/destinations.js';
 
-export async function mountOutline({container,sceneData,navigation,readState,writeState,isActive,isVisible,onMenu}){
+export async function mountOutline({container,sceneData,navigation,readState,writeState,isActive,isVisible,onMenu,onTravel,readTravelMode=()=> 'walk'}){
  let disposed=false,suspended=false,windowFocused=true,externalMenu=false,entryProgress=null;
  const listeners=new AbortController();
  const listen=(element,type,fn,options={})=>element.addEventListener(type,fn,{...options,signal:listeners.signal});
  const host=document.createElement('div');host.className='outline-host';host.style.cssText='position:absolute;inset:0';container.append(host);
  const root=host.attachShadow({mode:'open'});
-root.innerHTML=`<link rel="stylesheet" href="${new URL('./style.css',import.meta.url)}"><div id="outline-root"><main id="stage" aria-label="新华街可行走场景"><canvas id="scene" tabindex="0" aria-label="街道。点击地面行走，拖动转向，滚轮缩放。WASD或方向键移动，Shift快走。"></canvas></main><button id="menu" aria-label="打开菜单" aria-haspopup="dialog" aria-controls="panel" aria-expanded="false" title="打开菜单"><svg class="menu-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path class="menu-paper" d="M16 11 Q29 7 44 12 Q53 17 51 30 L53 43 Q48 53 34 52 L20 54 Q9 49 11 37 L9 24 Q9 15 16 11Z"/><g class="menu-ink"><path d="M21 23 Q29 21 40 24 M20 32 Q31 34 42 31 M23 41 Q32 38 40 41"/><path class="menu-rays" d="M4 14 1 10 M28 4 28 1 M57 19 62 16 M57 48 62 51 M8 53 4 57"/></g></svg></button><dialog id="panel"><button id="close" aria-label="关闭菜单">×</button><h1>新华街 · 沿街走走</h1><p>点击地面行走，拖动转向。<br>WASD / 方向键移动，Shift 快走，滚轮缩放。</p><div id="destinations"><button data-go="court">走进南侧塔楼内院</button><button data-go="bins">走到门内大垃圾桶</button><button data-go="plaza">走到中庭小广场</button><button data-go="garden">走到中央绿地旁</button><button data-go="mid">走到中部板楼院路</button><button data-go="rear">走到后排楼间</button><button data-go="northCourt">走到北侧两塔之间</button><button data-go="eastCourt">走到丰台分院方向</button><button data-go="north">走到向阳街门</button><button data-go="east">走到新华街门</button><button data-go="south">走到新华街路口</button><button data-go="west">沿新华街向西走30米</button></div><button id="reset">回到起点</button></dialog><div id="notice" role="status" aria-live="polite"></div><div id="load" role="status">正在打开这段街道…</div></div>`;
+root.innerHTML=`<link rel="stylesheet" href="${new URL('./style.css',import.meta.url)}"><div id="outline-root"><main id="stage" aria-label="新华街可行走场景"><canvas id="scene" tabindex="0" aria-label="街道。点击地面行走，拖动转向，滚轮缩放。WASD或方向键移动，Shift快走。"></canvas></main><button id="menu" aria-label="打开菜单" aria-haspopup="dialog" aria-controls="panel" aria-expanded="false" title="打开菜单"><svg class="menu-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path class="menu-paper" d="M16 11 Q29 7 44 12 Q53 17 51 30 L53 43 Q48 53 34 52 L20 54 Q9 49 11 37 L9 24 Q9 15 16 11Z"/><g class="menu-ink"><path d="M21 23 Q29 21 40 24 M20 32 Q31 34 42 31 M23 41 Q32 38 40 41"/><path class="menu-rays" d="M4 14 1 10 M28 4 28 1 M57 19 62 16 M57 48 62 51 M8 53 4 57"/></g></svg></button><dialog id="panel"><button id="close" aria-label="关闭菜单">×</button><h1>新华街 · 沿街走走</h1><p>点击地面行走，拖动转向。<br>WASD / 方向键移动，Shift 快走，滚轮缩放。</p><div id="destinations"></div><button id="reset">回到起点</button></dialog><div id="notice" role="status" aria-live="polite"></div><div id="load" role="status">正在打开这段街道…</div></div>`;
 root.querySelector('#menu').removeAttribute('aria-controls');
  const canvas=root.querySelector('#scene'),load=root.querySelector('#load'),panel=root.querySelector('#panel'),notice=root.querySelector('#notice');
  let renderer,world,camera,drawing,site,character,motion,navigationUI,observer,loop;
@@ -50,7 +51,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   navigationUI=makeNavigationUI(data,{host:root.querySelector('#outline-root'),storage:null});
   character.update(state,0);
   const keys=new Set(),raycaster=new T.Raycaster(),pointer=new T.Vector2(),plane=new T.Plane(new T.Vector3(0,1,0),0),hit=new T.Vector3();
-  let down=null,noticeUntil=0,lastSave=0,lastDom=0,lastStrokeAuditRevision=-1;
+  let down=null,noticeUntil=0,lastSave=0,lastDom=0,lastStrokeAuditRevision=-1,cameraSnap=false;
   const goalMarker=new T.Group(),diamond=[[0,.07,-.22],[.22,.07,0],[0,.07,.22],[-.22,.07,0],[0,.07,-.22]];
   drawing.stroke(diamond,drawing.detailInk,goalMarker);world.add(goalMarker);goalMarker.visible=false;
   function say(text,seconds=2.5){notice.textContent=text;notice.classList.add('show');noticeUntil=performance.now()+seconds*1000;}
@@ -84,13 +85,32 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    state.path=route;state.destination=name;goalMarker.position.set(route.at(-1)[0],0,route.at(-1)[1]);goalMarker.visible=true;commit();return true;
   }
   function clear(){if(disposed)return;Object.assign(state,readState());clearKeys();state.path=[];state.destination=null;goalMarker.visible=false;commit();}
+  function arrive(point,id=null){
+   if(disposed)return false;
+   const landing=resolveLanding(nav,point);if(!landing)return false;
+   Object.assign(state,readState());clearKeys();
+   state.position=landing;state.path=[];state.destination=null;state.walking=false;goalMarker.visible=false;cameraSnap=true;
+   if(id&&!state.visited.includes(id))state.visited.push(id);
+   commit();return true;
+  }
+  function travel(point,id=null){
+   if(!inputActive())return false;
+   const landing=resolveLanding(nav,point);if(!landing){say('换一块空地试试');return false;}
+   if(onTravel)onTravel({position:landing,id,label:id?data.landmarks[id]?.label:null});else arrive(landing,id);
+   return true;
+  }
   function focus(){if(inputActive())canvas.focus({preventScroll:true});}
   function openMenu(){clearKeys();if(onMenu)onMenu();else{root.querySelector('#menu').setAttribute('aria-expanded','true');panel.showModal();}refresh();}
   listen(root.querySelector('#menu'),'click',openMenu);
   listen(root.querySelector('#close'),'click',()=>panel.close());
   listen(panel,'close',()=>{root.querySelector('#menu').setAttribute('aria-expanded','false');clearKeys();refresh();focus();});
   listen(panel,'click',e=>{if(e.target===panel){const r=panel.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)panel.close();}});
-  for(const button of root.querySelectorAll('[data-go]'))listen(button,'click',()=>{const goal=data.landmarks[button.dataset.go];panel.close();refresh();if(goal)setDestination(goal.position,goal.id);});
+  const standaloneTargets=root.querySelector('#destinations');standaloneTargets.replaceChildren();
+  for(const region of destinationGroups(data.landmarks)){
+   const section=document.createElement('details'),summary=document.createElement('summary');summary.textContent=region.label;section.append(summary);
+   for(const goal of region.places){const button=document.createElement('button');button.textContent=goal.label;button.dataset.go=goal.id;listen(button,'click',()=>{panel.close();refresh();travel(goal.position,goal.id);});section.append(button);}
+   standaloneTargets.append(section);
+  }
   listen(root.querySelector('#reset'),'click',()=>{state.position=[...start];state.path=[];state.destination=null;goalMarker.visible=false;state.yaw=Math.PI/6;state.distance=23;panel.close();commit();refresh();});
   listen(window,'keydown',e=>{
    if(!inputActive()||e.target.closest?.('input,textarea,select,[contenteditable=true]'))return;
@@ -103,7 +123,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   listen(document,'visibilitychange',()=>{if(document.hidden)clear();refresh();});
   listen(canvas,'pointerdown',e=>{if(!inputActive()||e.button!==0)return;canvas.focus();canvas.setPointerCapture(e.pointerId);down={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:0};});
   listen(canvas,'pointermove',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const dx=e.clientX-down.lastX,dy=e.clientY-down.lastY;down.moved+=Math.abs(dx)+Math.abs(dy);if(down.moved>6){state.yaw-=dx*.006;state.pitch=T.MathUtils.clamp(state.pitch+dy*.0025,.38,1.0);commit();}down.lastX=e.clientX;down.lastY=e.clientY;});
-  listen(canvas,'pointerup',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const click=down.moved<7;down=null;if(click){const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);if(raycaster.ray.intersectPlane(plane,hit))setDestination([hit.x,hit.z]);}});
+  listen(canvas,'pointerup',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const click=down.moved<7;down=null;if(click){const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);if(raycaster.ray.intersectPlane(plane,hit)){const p=[hit.x,hit.z];if(readTravelMode()==='jump')travel(p);else setDestination(p);}}});
   listen(canvas,'pointercancel',()=>down=null);
   listen(canvas,'wheel',e=>{if(!inputActive())return;e.preventDefault();state.distance=T.MathUtils.clamp(state.distance+e.deltaY*.025,12,43);commit();},{passive:false});
   const size=new T.Vector2();
@@ -140,7 +160,8 @@ root.querySelector('#menu').removeAttribute('aria-controls');
     desired.lerp(new T.Vector3(state.position[0]+s*9,88,state.position[1]+c*9),1-entryProgress);
     target.lerp(new T.Vector3(state.position[0],.9,state.position[1]),1-entryProgress);
     camera.position.copy(desired);
-   }else camera.position.lerp(desired,1-Math.exp(-dt*9));
+   }else if(cameraSnap)camera.position.copy(desired);else camera.position.lerp(desired,1-Math.exp(-dt*9));
+   cameraSnap=false;
    camera.lookAt(target);camera.updateMatrixWorld();
    drawing.update(camera,state.elapsed,reducedMotion.matches||entryProgress!==null);site.update(camera);navigationUI.update(state,Math.atan2(camera.position.x-target.x,camera.position.z-target.z),now);motion.update(camera,state,reducedMotion.matches||entryProgress!==null);
    const submittedAt=performance.now();updateMs=submittedAt-frameStarted;
@@ -153,7 +174,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   host.dataset.strokeAudit=JSON.stringify(drawing.audit);host.dataset.geometryRevision=data.revision;host.dataset.navCells=String(nav.stats?.().cachedCells??nav.cellCount);
   sync();refresh();
   return {
-   refresh,focus,clear,dispose,
+   refresh,focus,clear,dispose,arrive,
    setEntryView(progress){
     if(disposed)return;
     entryProgress=Number.isFinite(progress)?T.MathUtils.clamp(progress,0,1):null;
@@ -164,7 +185,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    menuState(open){externalMenu=Boolean(open);root.querySelector('#menu').setAttribute('aria-expanded',String(open));refresh();},
    suspend(){if(disposed)return;suspended=true;refresh();},
    resume(){if(disposed)return;suspended=false;refresh();},
-   go(id){const goal=data.landmarks[id];return Boolean(goal&&setDestination(goal.position,id));},
+   go(id){const goal=data.landmarks[id];return Boolean(goal&&travel(goal.position,id));},
    inspect:()=>{if(!disposed)sync();return {...host.dataset,nearEntrance:false};}
   };
  }catch(error){dispose();throw error;}
