@@ -20,7 +20,15 @@ The initial overview is an illustrated travel-journal map: individual building v
 
 Selecting a supported street enters a grounded, elevated third-person view. The current Xinhua/Sanli consumer uses registered building masses, quiet filled surfaces, sparse continuous black contours and the outline person under a perspective camera. The figure appears only after street entry. Earlier paper flats, half-body framing and the orthographic GLB graybox are historical presentations, not current camera or art requirements. Preserve recognizable street relationships, ordinary depth occlusion and a readable walking surface without expanding every background parcel into a detailed city model.
 
-The selected street uses click/tap destinations on walkable ground, camera-relative arrow/WASD movement, drag to orbit and wheel camera-distance control. Character facing and camera orbit are independent. Menu destinations walk continuously through supported paths. Opening a menu, blur, visibility change and inactive scenes stop movement; there is no persistent control pad. Returning to the overview preserves its route/camera context, and re-entry restores a valid registered close-view pose. General attachment dispatch and the legacy synthetic courtyard interaction are not claimed as active outline-scene features. Future note/sequence/interior activation must preserve the return contract below.
+The selected street uses click/tap destinations on traversable ground, camera-relative arrow/WASD movement, drag to orbit and wheel camera-distance control. Character facing and camera orbit are independent. Xinhua can be crossed directly wherever the road and ground are unobstructed; no crossing-node detour is required. Buildings, fences, fixtures and planted boundaries still determine valid ground. Opening a menu, blur, visibility change and inactive scenes stop movement; there is no persistent control pad. Returning to the overview preserves its route/camera context, and re-entry restores a valid registered close-view pose. General attachment dispatch and the legacy synthetic courtyard interaction are not claimed as active outline-scene features. Future note/sequence/interior activation must preserve the return contract below.
+
+### Destination travel
+
+The closed menu exposes one “想去哪儿” entry instead of a flat landmark list. Its separate picker groups the existing 25 registered scene anchors into four initially collapsed regions: 新华街西段、新华街路口与东段、新华街三里、看丹桥与七里西侧. Search expands only matching groups, and a secondary map-search entry retains places outside this supported street. Future uncategorized scene anchors remain reachable in an “其他地点” group.
+
+Choosing a supported destination relocates directly to its valid ground after a short paper dissolve, independent of walking distance or route connectivity. It works from the overview and entered street. The period and street camera orientation/distance persist; the camera snaps under opaque cover and movement resumes with an empty path. Normal travel is about 0.82 seconds after scene readiness; reduced motion uses about 0.18 seconds. Slow initial loading holds the paper. Escape, the touch-accessible cancel button, page hiding or a superseding request cancels before landing without moving the person. Once the covered landing is committed, cancellation keeps the new valid position.
+
+The picker also offers “平时点地面时：慢慢走 / 直接过去”. Walking is the initial ground-click preference; choosing direct travel makes ground clicks relocate using the same transition. The preference persists and survives nested returns. Arrow/WASD movement always remains walking. Picking a named destination always travels directly, regardless of the ground-click preference. Richer dedicated transition artwork is a later optional design task; the existing hand-drawn journal remains the ordinary “到街上走走” entry presentation.
 
 The board-game reference supplies readable spatial relationships and character movement. There are no route cells, dice, property prices or compulsory turns. Geographic nodes, illustration anchors and actual historical entrances have distinct approval states.
 
@@ -38,13 +46,13 @@ Entry blocks navigation until the scene is ready and the presentation finishes. 
 | --- | --- | --- |
 | Town/neighborhood overview | Zoom/reframe toward a relevant registered route; orientation labels may remain visible | Open a building's memory, image stack or interior directly |
 | Street-surroundings overview | Select the supported street/route position and enter its street scene | Make every visible gate an independent overview portal |
-| Entered street/route | Approach/focus a nearby attachment on the correct walking side, then activate it | Reach a door across a wall, fence, carriageway or different elevation |
+| Entered street/route | Walk or travel to the attachment's valid registered ground, then activate it | Activate through solid boundaries or fabricate an unregistered arrival position |
 | Note or illustrated sequence | Read/turn pages, then return to the saved street context | Pretend page turns are walking through a measured interior |
 | Local explorable scene | Move only within its approved local space and use nested attachments | Automatically expand an entire campus/hospital |
 
 The area → line → point hierarchy is conceptual, not a demand for a fixed number of zoom clicks. A route can be chosen as soon as it is legible at the current tier; normally the overview never enters place content. A search result first resolves the correct route/side and focuses its attachment. Restoring an existing interior session is an explicit resume path with its saved return stack, not a new map shortcut.
 
-A gate can be conspicuous artwork and still have no reader-facing action. A private author can attach a note to it without creating an interior. Available local actions must be discoverable on approach, focus or the closed menu's accessible list; avoid persistent floating markers. A click target belongs to the registered attachment, not to the entire footprint or all opaque pixels of an enlarged icon.
+A gate can be conspicuous artwork and still have no reader-facing action. A private author can attach a note to it without creating an interior. Available local actions must be discoverable on approach, focus or the menu's grouped destination picker; avoid persistent floating markers. A click target belongs to the registered attachment, not to the entire footprint or all opaque pixels of an enlarged icon.
 
 ## One roadside attachment, three content outcomes
 
