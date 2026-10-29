@@ -12,10 +12,10 @@
     "source": {
       "provider": "Overture Maps",
       "release": "latest-STAC-as-of-2026-10-19",
+
       "license": "ODbL-1.0",
       "attribution": "© OpenStreetMap contributors, Overture Maps Foundation, and source contributors",
-      "url": "https://docs.overturemaps.org/guides/buildings/"
-    },
+      "url": "https://docs.overturemaps.org/guides/buildings/"},
     "usage": "geographic QA reference only; NOT historically validated 3D or approved map geometry",
     "caution": "Some outlines are roofprints rather than ground footprints; absent height/floors never inferred."
   },
