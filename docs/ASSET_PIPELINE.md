@@ -14,17 +14,19 @@ Status: production contract, with selected Xinhua travel-map R7 rasters recovere
 
 ## Two products, not one flattened picture
 
+This pipeline supplies the visual-engine layer in [the four-layer scope](ARCHITECTURE.md#layer-scopes). It consumes registered spatial results and approved content requirements, then produces pinned render assets and presentation parameters. UI owns entry/reading behavior; geography owns identity, coordinates and temporal applicability; memory attachment owns the meaning and target binding. A selected appearance cannot silently change any of those owners. Overview raster art, realtime street contours and screen-space transition illustration keep separate medium and acceptance contracts.
+
 The selected journal entry combines the accepted Haring-inspired raster hand, 30 selected transparent doodles and 38 user-reviewed fictional fragments on an unframed warm page. Built-in ImageGen produced grouped sheets; individual RGBA cells were cropped losslessly and two misdrawn cells corrected. Only selected individual PNGs are production assets under assets/transitions/doodles-r1; group sheets, contact sheets and trials stay outside Git. The doodles use rounded bold black contours with incomplete pale colored-pencil/watercolor marks. Runtime drawing paths are derived from the delivered ink, not substitute overview geometry; they progressively reveal the original raster and finish its wash. Code supplies sparse accents. The Long Cang-derived local font subset covers all revised text/date glyphs; its renamed family, license and each delivery hash are retained in the transition package. No images or memory records are generated while browsing, and decorative copy does not establish a named place's registration or history. The accepted simple overhead/cloud camera alternative remains separate.
 
-Maintain a **registration package** and a **presentation package**. The first contains evidence, source dates, geometry, transforms, classified regions and uncertainty. The second contains illustrated ground tiles, textures, simple volumes, sprites, interior images and labels. Both share stable spatial IDs and explicit transform versions.
+Maintain a **registration package** and a **presentation package**. The first contains permitted geographic results: geometry, coordinate frame/transform revision, classified regions, temporal applicability, uncertainty and minimum required licence attribution. It contains no investigation records or source ledger. The second contains selected illustrated ground tiles, textures, simple volumes, sprites, interior images, labels and display parameters. Both reference stable spatial IDs and explicit transform versions; display height, open contours and symbolic size never overwrite source geometry.
 
 The historical map/satellite layer is a workbench reference, not the default viewer surface. The illustrative surface may simplify detail while preserving the relationships that make the walking route recognizable. Do not mistake a visually seamless image for a geographically registered map.
 
-> For Xinhua/Sanli, **source coordinates precede painting**. Read the [geographic result contract](GEO_DATA_LINEAGE.md) and [result-publication rules](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
+> For Xinhua/Sanli, **registered coordinates precede painting**. Read the [geographic result contract](GEO_DATA_LINEAGE.md) and [result-publication rules](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. [MAP_ASSEMBLY](MAP_ASSEMBLY.md) owns registered rendering; [Xinhua spatial results](research/XINHUA_SPATIAL_PIPELINE.md) retains permitted conclusions only.
 
 ### Destination travel paper plane — 2026-10-29
 
-The travel-only sample reuses `assets/modules/paper-r2.png`, the existing outline font, warm page, rounded black contour and sparse pale wash palette. `travel-drawing.js` draws one folded paper plane and a short broken ink trail as transient screen-space decoration; a solid textured paper layer masks relocation. This is ordinary transition illustration, not visible overview geometry or registered route art. It adds no generated raster, newspaper text, dated fragment or memory record. The plane and diagonal paper sweep remain distinct from the ordinary hand/doodle/journal entry. The [comparison and verification packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md) records the proposed aesthetic and its review status.
+The integrated destination passage reuses `assets/modules/paper-r2.png`, the existing outline font, warm page, rounded black contour and sparse pale wash palette. `travel-drawing.js` draws one folded paper plane and a short broken ink trail as transient screen-space decoration; a solid textured paper layer masks relocation. This is ordinary transition illustration, not visible overview geometry or registered route art. It adds no generated raster, newspaper text, dated fragment or memory record. The plane and diagonal paper sweep remain distinct from the ordinary hand/doodle/journal entry. The [presentation packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md) retains revision-bound visual checks and delivery status.
 
 ## Choose the minimum useful representation before researching depth
 
@@ -43,13 +45,13 @@ Research remains necessary for an actual claim being made. Stop deep rear-layout
 
 Do not promote a sequence to a scene simply because many images can be generated. Likewise, do not require exact campus extent before placing a supported gate at its street-facing anchor. Existing minimal licence attribution and result uncertainty, coordinate conversion and permission requirements still apply to every data source actually used.
 
-## Reference intake
+<a id="reference-intake"></a>
 
-Record source identity, actual capture/publication date or range, coverage, resolution where known, original coordinate system, permitted coordinate transform, access conditions, and reuse/publication status. A catalog listing is not a downloaded source; a satellite's nominal capability is not proof of Phase 1 coverage.
+## Registration and asset intake
 
-Research around 2000–2005 first. Candidate 1990/1995/2000/2005/2010 buckets are search windows, not required exact acquisition dates. Prior conversational leads are unverified leads until a task inspects the actual source and records its coverage. Public display, derived art use, and private reference use may need different treatment; record the decision rather than assuming all online images are unrestricted.
+Geographic verification happens outside this repository. Intake accepts only the resulting stable IDs, permitted geometry/relations, coordinate-system and transform contract, applicable period/range, certainty and minimum required licence information. Unknown entrances, dates and road relationships remain unknown. Do not publish how a location was investigated or attach a source/candidate list under asset metadata.
 
-Preserve the source file without replacing it with a reconstruction. Registration uses control points or another explicit transformation with a revision and error notes. Record unverified school addresses and uncertain road segments rather than filling them from current geography.
+For selected art, record production path, content hash, version, dimensions, technical transform and reuse/publication status. Original photographs and private authoring references stay in the authorized private archive; a product delivery includes only the cleared asset and necessary usage information. Permission to reference an image does not imply permission to redistribute it. Generated or stylized output never becomes an independent geographic fact.
 
 ## From registration to a stylized base
 
@@ -63,7 +65,7 @@ Avoid double perspective: if raised buildings will be real boxes/sprites, the gr
 
 ## Tiling and seams
 
-Every tile recipe declares its core world extent, a larger padded extent, output dimensions, style revision, transform revision, geometry/mask hashes and source references. Neighboring tiles share world coordinates and references across their overlap. An initial overlap of roughly 10–20% is a tunable experiment, not a guaranteed seam solution or required production value.
+Every tile recipe declares its core world extent, a larger padded extent, output dimensions, style revision, transform revision and registered geometry/mask hashes. Neighboring tiles share the same registered frame across their overlap. An initial overlap of roughly 10–20% is a tunable experiment, not a guaranteed seam solution or required production value.
 
 Generate in padded extents. Compare overlaps in the same registered frame. Lock reliable overlapping landmarks and road edges; blend low-information texture areas and, when necessary, repair a narrow joint using both neighbors as constraints. A shared prompt or seed does not guarantee identical buildings, lines or colors.
 
@@ -89,7 +91,7 @@ A target manifest records exact asset/text revisions, source type, approximate p
 
 ## One photograph, many useful derivatives
 
-Preserve the original and annotate regions: facade, roof, street surface, boundary wall, background building, window pattern, or color/material reference. Each derived crop/material/model parameter points back to the original region. Keep camera location distinct from the location of visible subjects.
+Within authorized private authoring, preserve the original and annotate regions such as facade, roof, street surface, boundary or material reference. Keep private derivative/original associations there, with camera location distinct from the location of visible subjects. Public geographic records receive only permitted conclusions and uncertainty, never these source-tracing records.
 
 A newer photo can inform a plausible material or unchanged shape, but cannot establish that the same object existed in an earlier period without supporting evidence. Record that use as inference. A generated derivative must never become a new independent historical source in subsequent rounds.
 
@@ -103,7 +105,7 @@ Review **registration**, **appearance**, **text**, and **publication** separatel
 
 ## Publication package
 
-Publish only selected revisions and the required derivatives, with source-type labels and usage metadata appropriate to the audience. Keep trial paintings, visual examples, contact sheets, unused generations, intermediate masks, batch prompt dumps and one-off example scripts outside the repository. Commit only selected production assets and concise necessary provenance; see [repository storage](HANDPAINTED_MAP_ART.md#repository-storage). The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
+Publish only selected revisions and required derivatives, with appropriate source-type labels, technical version/hash and necessary usage metadata. Keep trial paintings, visual examples, contact sheets, unused generations, intermediate masks, batch prompt dumps and one-off example scripts outside the repository. Commit selected production assets only; geographic metadata remains conclusion-only, including for an otherwise approved asset. See [repository storage](HANDPAINTED_MAP_ART.md#repository-storage). The package must be replaceable/withdrawable without losing the private author's archive, subject to authorized deletion requirements.
 
 ## Historical dual-scale illustration assets — DM-0003
 
@@ -119,4 +121,4 @@ Two original transparent sheets and fifteen cropped small-scale compound/buildin
 
 ## Selected Sanli intake
 
-The accepted sanli-outline-r5 runtime/data/font is production-selected and integrated through the existing street entry. Retain exact source IDs, original geometry, dependency/font licences and immutable hashes. Do not intake sandbox snapshots, rejected images, raw reference photos or one-off builders that depend on private local paths. Geographic corrections belong in final scene data unless they expose a reusable acquisition/filtering/validation lesson; the [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) owns those lessons.
+The accepted Sanli runtime/data/font is production-selected and integrated through the existing street entry. Retain stable record IDs, original geometry, dependency/font licences and immutable hashes. Do not intake sandbox snapshots, rejected images, raw reference photos or one-off builders that depend on private local paths. Geographic corrections enter permitted final scene data and its affected registrations; reusable drawing and runtime rules belong in the [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md). Investigation/acquisition history has no repository destination.

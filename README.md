@@ -17,6 +17,7 @@ The current design follows **area → street/route → roadside attachment**. Al
 | Question | Canonical document |
 | --- | --- |
 | How should these documents be read together? | [Documentation and ownership map](docs/README.md) |
+| What may UI, visual engine, geography and memory attachment work change? | [Four-layer scope and shared state](docs/ARCHITECTURE.md#layer-scopes), then [cross-layer changes](docs/ARCHITECTURE.md#cross-layer-changes) |
 | What are we making, and what must not drift? | [Product contract](docs/PRODUCT.md) |
 | What is actually implemented or still unknown? | [Repository status](docs/STATUS.md) |
 | What is the first geographic and experiential scope? | [Phase 1](docs/PHASE_1.md) |
@@ -24,11 +25,11 @@ The current design follows **area → street/route → roadside attachment**. Al
 | How are location, time, evidence, and memory represented? | [Data model](docs/DATA_MODEL.md) |
 | How does the application feel and behave? | [Interaction contract](docs/INTERACTION.md) |
 | How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
-| Where did Xinhua/Sanli building geometry actually come from, and what is verified? | [Geographic source chain](docs/GEO_DATA_LINEAGE.md) |
-| How does an Agent acquire and audit the next map area without guessing buildings? | [Geodata acquisition / QA runbook](docs/GEO_DATA_RUNBOOK.md) |
+| Which geographic results and uncertainties may the application consume? | [Geographic result contract](docs/GEO_DATA_LINEAGE.md) |
+| How may registered geography change without crossing layer or privacy boundaries? | [Geographic scope and result rules](docs/GEO_DATA_RUNBOOK.md) |
 | Which street scene/person is running, and which character studies are historical? | [Selected street and legacy prototypes](docs/STREET_PROTOTYPE.md), [historical scale review](docs/STREET_VISUAL_CALIBRATION.md) and [outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md) |
 | Where is the future World Labs handoff? | [Marble 2 documentation — no generation](docs/WORLDLABS_HANDOFF.md) |
-| Where is bridge/Zhengyang public research? | [Fengtai bridge research](docs/research/FENGTAI_BRIDGES_ZHENGYANG.md) |
+| Which bridge/Zhengyang geographic conclusions are available? | [Fengtai bridge conclusions](docs/research/FENGTAI_BRIDGES_ZHENGYANG.md) |
 | How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
 | What demonstrates that work actually succeeded? | [Verification](docs/VERIFICATION.md) |
 | Which architecture choices are settled or deferred? | [Decision register](docs/DECISIONS.md) |
@@ -44,7 +45,7 @@ Use approximately 2000–2005 as the first base-map reference period. Other peri
 
 This repository is public. Keep implementation, architecture, synthetic test fixtures, and publication-cleared manifests here. Do not commit original personal recordings, transcripts, private photos, precise residential coordinates, secrets, or restricted imagery. The private archive and any selected public presentation are separate authorization boundaries; see [content and publication](docs/CONTENT_PIPELINE.md).
 
-The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Each future asset needs its own provenance, usage status, and publication decision.
+The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Selected assets need usage status and a publication decision. Geographic records contain conclusions, uncertainty and minimum required licence attribution; investigation and source-tracing records must never be published in any repository surface.
 
 The street remains a bounded working reconstruction, with source and dimensional uncertainty recorded separately from visual approval. It is not a complete historical route or a private content archive. Current implementation, exact verification, merge and deployment provenance belong in [STATUS](docs/STATUS.md). Selected scene operation and licences are in [the scene README](scenes/xinhua-sanli-outline/README.md).
 

@@ -1,8 +1,19 @@
-# Documentation map: area → route → roadside attachment
+# Documentation map: four layers, one application
 
-**Current routing, 2026-10-27:** The supported Xinhua entry uses the selected Sanli outline scene and corridor extension, merged through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25). The continuous outline person, restrained motion and navigation UI are the active close-view treatment. Overview raster art remains separate; the retained GLB student, 2× study and graybox camera are historical/legacy references. Read [STATUS](STATUS.md) for exact implementation and evidence, [RUNTIME](RUNTIME.md) for current lifecycle and known gaps.
+**Current routing, 2026-10-29:** Start from [the four-layer scope](ARCHITECTURE.md#layer-scopes), then read the owner for the intended change. The current application combines the R7 hand-painted overview, selected Xinhua/Sanli outline corridor, resource residency, grouped direct travel, journal entry and paper-plane destination passage. The retained GLB student, 2× study and graybox camera are legacy references. [STATUS](STATUS.md) separates the current baseline from dated delivery records; [RUNTIME](RUNTIME.md) identifies actual owners and implementation gaps.
 
 The [absolute geographic publication boundary](CONTENT_PIPELINE.md#地理资料的绝对公开边界) applies to all repository surfaces. Only conclusions and uncertainty may be published; investigation records are excluded.
+
+## Four-layer reading route
+
+| 本次要改什么 | 先读的规范 | 配合核对 |
+| --- | --- | --- |
+| UI：菜单、控件、阅读和转场体验 | [INTERACTION](INTERACTION.md) | [RUNTIME](RUNTIME.md) 的实际命令/取消入口；文字含义变化查 CONTENT_PIPELINE |
+| 视觉引擎：绘制、相机、导航计算、资源 | [RUNTIME](RUNTIME.md)、[ASSET_PIPELINE](ASSET_PIPELINE.md) | MAP_ASSEMBLY 的源数据/显示表达分离；选定近景与总览各自美术契约 |
+| 地图地理：稳定 ID、坐标、注册、时期适用 | [DATA_MODEL](DATA_MODEL.md)、[GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md) 的可用结果；按依赖检查地图命中、近景、导航、目的地和挂载 |
+| 记忆挂载：原意、编辑版本、目标绑定 | [CONTENT_PIPELINE](CONTENT_PIPELINE.md)、[DATA_MODEL](DATA_MODEL.md) | INTERACTION 的激活/返回契约；RUNTIME 的原型能力与未实现部分 |
+
+层级边界和跨层规则只由 ARCHITECTURE 维护；本页负责导航，各层文档负责细节。PRODUCT/PHASE_1 管目标范围，VERIFICATION 管验收，STATUS 管已观察状态，任务包管本次执行。新任务更新这些既有所有者，不另建一套并列现行规范。
 
 ## Read by question, not by historical task number
 
@@ -10,15 +21,15 @@ The [absolute geographic publication boundary](CONTENT_PIPELINE.md#地理资料�
 | --- | --- | --- |
 | What experience are we preserving? | [PRODUCT](PRODUCT.md) | [PHASE_1](PHASE_1.md) owns geographic scope. |
 | What can be entered from each view? | [INTERACTION](INTERACTION.md) | [ILLUSTRATION_MAPPING](ILLUSTRATION_MAPPING.md) owns overview/street correspondence. |
-| Who resolves location, interaction and scene loading? | [ARCHITECTURE](ARCHITECTURE.md) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
+| Who owns the four layers, shared state and cross-layer changes? | [ARCHITECTURE](ARCHITECTURE.md#layer-scopes) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
 | Which street/person is active vs the retained GLB and older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
 | Which historical school-site conclusions are available? | [Site conclusions](research/FENGTAI_PRIMARY_OLD_SITE.md) | Historical boundaries and entrances remain unresolved; [PHASE_1](PHASE_1.md) owns scope. |
 | What is the World Labs/Marble 2 status? | [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) | Future handoff only; no generated environment. |
 | Which geographic conclusions describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
-| What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) define permitted spatial results; [ASSET_WORKFLOW_VALIDATION](ASSET_WORKFLOW_VALIDATION.md) retains superseded trial measurements. |
-| Which source plan, overview recovery and older studies matter? | [Xinhua spatial pipeline](research/XINHUA_SPATIAL_PIPELINE.md), [Xinhua building survey](research/XINHUA_BUILDING_SURVEY.md) | The pipeline owns selected R7 recovery and historical R6 assembly. [LOCAL_VISUAL_REFERENCES](LOCAL_VISUAL_REFERENCES.md) retains generic drawing constraints only. |
+| Which inputs and assets are needed for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) define permitted spatial results; [ASSET_WORKFLOW_VALIDATION](ASSET_WORKFLOW_VALIDATION.md) retains superseded engineering trial measurements. |
+| Which current geographic results support map assembly? | [Xinhua spatial results](research/XINHUA_SPATIAL_PIPELINE.md), [Xinhua building results](research/XINHUA_BUILDING_SURVEY.md) | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) owns assembly; [LOCAL_VISUAL_REFERENCES](LOCAL_VISUAL_REFERENCES.md) retains generic drawing constraints only. |
 | How do we reuse the accepted Xinhua close-street outline process? | [Xinhua outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) | [Selected runnable scene](../scenes/xinhua-junction-outline/README.md); [Integrated Sanli close view](../scenes/xinhua-sanli-outline/README.md), reached through the main street entry; overview raster art remains unchanged. |
 | How do new observations become notes, sequences and environment revisions? | [CONTENT_PIPELINE](CONTENT_PIPELINE.md) | Original/private material stays outside public Git. |
 | What is accepted, tested, merged or released? | [VERIFICATION](VERIFICATION.md), [STATUS](STATUS.md) | Task packets identify exact observations, not new requirements. |
@@ -27,7 +38,7 @@ The [absolute geographic publication boundary](CONTENT_PIPELINE.md#地理资料�
 
 ## The integrated experience
 
-The overview gives area-level orientation through three detail tiers, without a person. Its normal navigation target is a registered street or route segment. Entering that line creates the grounded street experience. Gates, doors, street objects and remembered positions are attachments encountered along that route; they are not an independent field of overview shortcuts.
+The overview gives area-level orientation through three detail tiers, without a person. Its normal navigation target is a registered street or route segment. The grouped destination picker can also take the reader directly to supported street ground, with free walking retained. Arriving does not itself open a note or interior. Gates, doors, street objects and remembered positions supply the route-context anchors for content activation.
 
 At a roadside attachment, the same activation contract opens a note, a finite illustrated sequence, or a separately loaded local scene. These are content choices, not categories dictated by whether the institution is a school, hospital or shop. A recognizable gate can be sufficient; a large parcel need not be fully modeled. A small familiar corner may deserve more spatial interaction than a large hospital.
 

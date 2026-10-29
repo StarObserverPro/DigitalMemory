@@ -1,6 +1,6 @@
 # Recollection intake, editing, review and publication
 
-Status: authoring contract; no personal-content archive is connected or implemented.
+Status: authoring contract, layer boundaries reconciled on 2026-10-29; no personal-content archive is connected or implemented. The repository retains public synthetic memory/portal fixtures; the default selected entry does not display these demonstrations. The private intake, review and release workflow below remains a required design, not a running service.
 
 ## 地理资料的绝对公开边界
 
@@ -12,11 +12,28 @@ Status: authoring contract; no personal-content archive is connected or implemen
 
 旧规范中要求公开地理证据链、来源索引、检索记录、逐次纠错或调查交接的条款全部失效。普通删除提交仍会留下Git历史与旧PR差异；不得据此宣称历史内容已清除。
 
+<a id="memory-attachment-discipline"></a>
+
+## 记忆挂载层的 scope 与交付纪律
+
+本层接收获准处理的记忆原文、选定图片和既有地点/路线登记，整理为有稳定身份、时间边界和使用范围的内容版本，再经登记入口交给 UI 阅读。记录语义由 [DATA_MODEL](DATA_MODEL.md#memory-attachment-contract)维护；跨层职责以 [ARCHITECTURE](ARCHITECTURE.md#layer-scopes)为准。
+
+- **内容原意由输入决定。** 地点卡、照片、生成画面或顺手写出的台词不能补齐未提供的经历、人物、情绪或日期。外部背景与记忆正文分开，未知信息保留未知。
+- **地理锚点由地图地理层提供。** 本层引用地点/入口及登记版本；有位置疑问时留下待确认关联，不自行吸附到最近道路、换一个现代地址或修改门的位置。
+- **展示深度按内容选择。** 一段 note、一组有限图片或一个 local scene 共用挂载契约；新增片段首先更新内容引用。只有明确选定更深交互时才增加场景，学校、商店等名称不自动创建室内世界。
+- **直达与打开内容是两个动作。** 目的地菜单先到达受支持的街面位置；纸飞机、日记和涂鸦属于转场展示。`journal-catalog.js` 中经审阅的虚构短句不能写入记忆目录、绑定为用户经历或充当地理事实。
+- **返回与状态由 application session 管。** 内容加载应保留入口和原来的位置/时期/镜头；关闭、失败或取消交回同一语境。记忆页面不能私建另一套位置、时期或返回栈。
+- **文字、外观与公开范围分别审核。** 技术合并、接受画风、允许私下挂载内容各自有明确含义；公开清单只包含对相应受众获准使用的具体版本。原文、源图片及私人审核关系不随之进入 Git、日志或构建包。
+
+改稿只更新相关片段和内容版本，保留地点、入口及无关内容；note/sequence/scene 的类型变化须同时对齐交互与运行时加载/清理说明。若确需改空间登记，按独立的地理变更列出受影响入口和显式重映射，不能夹带在内容文案修改里。
+
+交付至少检查原意与不确定性、入口与内容引用、时期关系、版本与受众、原上下文恢复和公开包内容。采用合成数据验证工程接口；真实内容的审核仍针对其获准版本。通用挂载分发、有限 sequence 阅读器和私有持久写入尚待实现，现有 demo 入口不构成这些能力的完成证明。
+
 ## Preserve input before interpretation
 
-Accept free-form text, audio and photographs in batches. Save the original privately with source ID, checksum and recording metadata. Attach the current location, period and view as suggestions, not unquestionable truth: the user may describe a different place or jump between decades during one input.
+The intended private intake accepts free-form text, audio and photographs in batches and saves the original privately with source ID, checksum and recording metadata. Attach the current location, period and view as suggestions, not unquestionable truth: the user may describe a different place or jump between decades during one input. Until that durable intake exists, do not describe a browser selection or a documentation update as a saved memory.
 
-Extract coherent fragments and source-supported statements. Keep source spans/crops so a reviewer can see why a word, place, period, or reconstruction parameter was proposed. An extraction model's confidence is neither historical verification nor the user's approval.
+Extract coherent fragments and source-supported statements. Keep source spans/crops inside the authorized private authoring boundary so a reviewer can compare a proposed edit with its input. These private content records do not authorize publishing geographic investigation material. An extraction model's confidence is neither historical verification nor the user's approval.
 
 Unresolved place/date associations enter a private review queue. Repeated inputs can be related or merged for display after review, without discarding their distinct originals. Contradictions and corrections remain visible in authoring history. The system must not require the user to complete a metadata form before a recollection can be retained.
 
@@ -77,7 +94,7 @@ Approval may be per item or an explicitly defined batch. Do not equate “this l
 
 Alternative transitions include `needs_revision`, `rejected`, `superseded`, and `withdrawn`. These are content states, not code/PR states. A code merge cannot automatically advance them. A new visual or textual revision is a new review subject; previously approved unrelated revisions remain usable.
 
-The workbench shows before/after text and images with original sources reachable. After the user confirms a scoped batch, the release builder attaches the approved revisions to the chosen scene. No automatic publication from a generator output directory or ingestion job is allowed.
+The proposed workbench must show before/after text and images with originals reachable only within the authorized private boundary. Once implemented, a release builder can attach the confirmed revisions of a scoped batch to the chosen scene and audience. No automatic publication from a generator output directory or ingestion job is allowed.
 
 ## Private archive and public repository
 

@@ -54,6 +54,8 @@ Latest explicit user corrections supersede stale packet assumptions. Preserve pe
 
 ## Concurrent work and ownership
 
+Use the [four-layer scope and cross-layer change table](../ARCHITECTURE.md#layer-scopes) before assigning edits. Each packet declares one primary layer, every touched layer, authoritative inputs, permitted outputs, shared-state owner and affected consumers. UI/visual work does not silently acquire geography or memory-authoring scope; editing an attachment target does not acquire coordinate authority. File ownership coordinates concurrent edits, while domain ownership determines which contracts must change together.
+
 Independent tiles, scenes or content batches may proceed concurrently when their geometry/style/template/release dependencies do not conflict. Keep each task's place/period/source/revision ownership explicit. A geographic tile boundary alone is not a safe edit boundary if both tasks modify the same underlying road or approved material template.
 
 Use expected revisions for content updates and fresh branch/head comparisons for Git. Classify collisions by shared data/contract/acceptance, not just adjacent filenames. Compatible leaf work may adapt to a new base; coordinate-system, identity, schema, chronology or publication-boundary changes require a dedicated reviewable change. Do not let an old packet freeze unrelated progress.

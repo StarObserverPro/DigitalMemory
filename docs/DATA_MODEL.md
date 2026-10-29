@@ -1,6 +1,30 @@
 # Data model and registration contract
 
-Status: integrated logical contract, 2026-10-19. The prototype implements parts of registration, time, session, BuildingShell/FrontageSlot/Entrance composition and exact-period occupancy. The generalized route attachment, three-way activation and repeated-observation contracts below are targets, not a completed schema migration. [RUNTIME](RUNTIME.md) and [STATUS](STATUS.md) own implementation evidence.
+Status: logical contract, with layer boundaries reconciled on 2026-10-29. The prototype implements parts of registration, time, session, BuildingShell/FrontageSlot/Entrance composition and exact-period occupancy. The generalized route attachment, three-way activation and repeated-observation contracts below are targets, not a completed schema migration. [RUNTIME](RUNTIME.md) and [STATUS](STATUS.md) own implementation evidence.
+
+<a id="memory-attachment-contract"></a>
+
+## 记忆挂载层：身份、入口与内容的边界
+
+本层负责把获准使用的记忆内容绑定到既有地点和路线语境，定义入口打开什么、采用哪个内容版本，以及关闭后返回哪里。[四层总表](ARCHITECTURE.md#layer-scopes)统一各层职责；本节拥有挂载记录的语义，[CONTENT_PIPELINE](CONTENT_PIPELINE.md#memory-attachment-discipline)拥有内容整理、审核与发布纪律。
+
+| 对象 | 所有权与输入输出 | 修改边界 |
+| --- | --- | --- |
+| `Place` / `Route` | 地图地理层提供稳定 ID、登记版本、位置及有效时期 | 内容改稿不能新建替代 ID、移动地点或重画路线 |
+| `RouteAttachment`（目标契约） | 引用已登记的入口/路线位置及版本，再关联内容目标；空间锚点由地图地理层维护，目标关联由记忆挂载层维护 | 改门、改边、改侧向须显式重映射；加一条记忆不改变原入口 |
+| `InteractionTarget`（目标契约） | 返回获准使用的 `note`、`sequence`、`scene` 之一，或无可用内容 | 地点类别、面积、模型精度和已有图片均不能自行决定交互深度 |
+| `MemoryFragment` / `TextRevision` | 保存记忆身份、原意、时间不确定性与所选文字版本；向 UI 提供可展示内容及时间关系 | 原文、外部背景、推断和装饰文案保持各自身份；不补写未经提供的经历 |
+| 激活与返回上下文 | 接收当前路线、时期和入口；由 application session 保存位置、镜头及返回栈 | 内容页面与场景各自不能再维护一份权威位置或持久化栈 |
+
+文字、图片顺序或内容目标变化只使相应内容及清单失效；地理登记和无关场景继续复用。把 note 改为 sequence/scene 是显式目标版本变更，须保留入口身份与返回语境，并同步交互、加载/销毁和验收说明。读取其他时期的记忆不会自动改变当前环境。
+
+### 当前实现与待实现接口
+
+当前 [`PublicRepository.memories()`](../src/adapters/public-repository.js)按 `manifest.memoryChunks` 和 `placeIds` 读取公开记录，以 `relateTime` 计算时间关系，默认过滤合成示例。当前 [`main.js`](../src/explorer/main.js)的地点卡显示这些记录，`portalId` 交给 `loadScene()`；[`createPortalController()`](../src/application/session.js)在加载成功后写入 session，并拒绝已取消或过期的响应。
+
+当前公开记忆清单仅登记合成示例，演示场景目标是 `demo-courtyard` / `demo-room`。主应用的 `includeDemo` 为 false，选定轮廓场景不开放旧 courtyard 门入口；这些演示代码/fixtures 不等于默认界面可用的记忆内容。这条地点卡与 demo portal 路径尚未实现通用 `RouteAttachment`、独立 sequence 阅读器或三类目标的统一分发；选定轮廓街景的目的地直达也只是到达地面位置。后续接入真实内容须按上述契约完成实现和验证，不能直接把 demo 路径或转场日记当成已有的记忆系统。
+
+最小验收覆盖：同一地点多入口、同一入口多片段；登记修正后显式重映射而记忆 ID 不变；未知时期保持未知；无内容/加载失败/取消后仍可返回原上下文；文字改稿不影响地理与场景资源。当前尚未实现的接口保留为验收要求，不记为已通过。
 
 ## Geography is the lookup skeleton, not a mutable primary-key string
 
@@ -14,6 +38,8 @@ A `Place` is a stable site/location identity. Its geometry can be a point, line,
 
 Mutable records carry `id`, `schemaVersion`, `revision`, created/updated metadata, source/authority references, and privacy/access class. Changes that affect reviewed content create a new revision with a parent; they do not overwrite approved evidence. Revision checks prevent concurrent lost updates. IDs stay stable across export/import and do not expose residential addresses.
 
+These are logical authoring fields, not a public payload whitelist. Original inputs, source spans and review links belong to authorized private authoring records. Public data is a separately cleared projection. Geographic records expose permitted conclusions, uncertainty and operational registration metadata only; source/evidence fields must not publish investigation records or links to them. [The absolute publication boundary](CONTENT_PIPELINE.md#地理资料的绝对公开边界) applies to every record and derivative, including opaque metadata that would reveal a prohibited association.
+
 An unresolved value is null/unknown, never a fabricated coordinate, zero date, or default fact. Retain original date expressions and uncertainty. Examples in tests must be synthetic and marked as such; no precise real-world personal fixtures are supplied by this architecture.
 
 ## Core records
@@ -21,11 +47,11 @@ An unresolved value is null/unknown, never a fabricated coordinate, zero date, o
 | Record | Required meaning and principal fields |
 | --- | --- |
 | `Place` | Stable ID, user label/aliases, kind, optional parent place, geometry revision references. Importance and familiarity are independent of map footprint. |
-| `GeometryRevision` | Place ID, geometry or unresolved status, canonical CRS, original source CRS, transform revision, effective period if relevant, evidence references, registration precision/uncertainty and approval. |
+| `GeometryRevision` | Place ID, geometry or unresolved status, canonical CRS, permitted input CRS and transform revision, effective period if relevant, registration precision/uncertainty and approval. Public records contain geographic results only. |
 | `Route` / `RouteRevision` | Stable route identity; ordered registered segments and anchors; traversal mode; associated periods. Unknown connectors are explicit gaps, not assumed straight or shortest paths. |
 | `Institution` | School/organization identity independent of its buildings or contemporary address. |
 | `Occupancy` | Institution ID, site/place ID, uncertain valid-time interval, evidence references and status. A change of tenant does not move the place. |
-| `SourceRecord` | Original oral input, historical photo/map/imagery, external text, capture/date metadata, checksum, private asset reference, rights/access status. |
+| `SourceRecord` | Private authoring record for original input or permitted supporting media: capture/date metadata, checksum, private asset reference and rights/access status. It is not a public geographic investigation index. |
 | `Statement` | A source-supported assertion, source span/crop, subject/place/period associations, modality and uncertainty. User recollection, external observation, and reconstruction inference are separate origins. |
 | `MemoryFragment` | One coherent recollection, habit, impression, route description or event; one or many place/route links; uncertain time; original source spans; selected text revisions. |
 | `TextRevision` | Fragment ID, editorial stage, text, supporting statement/span IDs, parent revision, wording approval. No added substantive claim. |
@@ -83,7 +109,7 @@ A frontage host is explicit: attached to a supported building, a detached shell,
 
 ## Coordinates and precision
 
-The implemented geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve the coordinate system and permitted coordinate transform of every input; never assume a Chinese consumer-map coordinate, historical sheet, screenshot pixel, and satellite coordinate are interchangeable. Each acquisition/registration task must verify its transform and relevant source terms; [the geographic runbook](GEO_DATA_RUNBOOK.md) records that procedure.
+The implemented geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve each permitted coordinate frame and transform revision; map-provider coordinates, image pixels and geographic coordinates are not interchangeable. Verify geographic conclusions outside the repository, then record only the accepted result, uncertainty and runtime transform contract permitted by [the geographic result rules](GEO_DATA_RUNBOOK.md).
 
 Store geometry separately from display offsets, building height, stylization, and camera projection. Building height can be an approximate parameter with its own evidence; changing it must not silently change the footprint. Source positional uncertainty, reconstruction accuracy, and personal familiarity are independent fields. Satellite resolution is not a measure of personal importance.
 
@@ -130,7 +156,7 @@ A release can deliberately select a compatible approximate-period composite with
 
 ## Temporal query result
 
-The temporal resolver returns `current`, `earlier`, `later`, `overlapping`, or `unknown` relation, with the evidence/revision that produced it. Color is a presentation of that result, not its storage representation. When bounds overlap or chronology is unclear, do not force an earlier/later label.
+The implemented `relateTime()` returns a `current`, `earlier`, `later`, `overlapping`, or `unknown` relation string. A future query envelope should also identify the selected record revisions without exposing private authoring evidence. Color is a presentation of the relation, not its storage representation. When bounds overlap or chronology is unclear, do not force an earlier/later label.
 
 For a scene, return an explicit compatible environment revision or `no_supported_state`. A nearest source date can be offered for inspection but cannot silently become the active period. Other-time memories remain reachable through route-context attachments or a deliberate local time/history view; their historical buildings are not automatically inserted as physical obstacles or direct overview portals.
 
@@ -138,7 +164,7 @@ For a scene, return an explicit compatible environment revision or `no_supported
 
 One recording may yield several fragments; each retains its source spans and the recording's ID. Several recordings may support a merged display fragment without deleting their differences. Potential duplicates are review candidates, not automatic deletions. A recurring habit is a single meaningful record with duration/frequency as actually stated, not thousands of synthetic events.
 
-A photo can support a road edge, facade texture, window pattern, and background building simultaneously. Store crop/region annotations and source relations rather than duplicating an untraceable crop into each asset. A photo's capture position is not the location of every visible object. Distinguish camera position, viewing direction, visible subject region, and uncertain geolocation.
+A permitted photo can support several private authoring records. Keep any source spans or region annotations in that private boundary and publish only cleared derivatives. Capture position and subject location are distinct; a photograph does not give every visible object the camera's coordinates. Geographic result publication remains subject to the conclusion-only rule above.
 
 Original photograph, restored/edited photograph, composite, and reconstructed image are distinct provenance classes. Generated output can reference evidence but never becomes an independent source proving the scene. A user approving an overall likeness does not certify each window, sign, person, or color as factual.
 
