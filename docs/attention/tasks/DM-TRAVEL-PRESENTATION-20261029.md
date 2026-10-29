@@ -28,10 +28,10 @@ Selected for the sample: one outlined paper plane, a restrained fading pencil tr
 
 | ID | Observable outcome | Evidence |
 | --- | --- | --- |
-| PRESENT-A01 | Named and ground-click travel use the selected passage; ordinary journal entry remains distinct | Pending actual consumer replay |
-| PRESENT-A02 | Fully opaque paper covers arrival; no route flight or camera/period preference changes | Pending seam and landing checks |
-| PRESENT-A03 | Escape/touch/hidden/superseding cancellation cleans up; no late relocation before commit | Pending cancellation replay |
-| PRESENT-A04 | Desktop, narrow phone, resize and reduced motion fit; keyboard/free walking and return persist | Pending browser + existing regressions |
+| PRESENT-A01 | Named and ground-click travel use the selected passage; ordinary journal entry remains distinct | Real built-app menu/ground-click travel passes; existing journal/cloud entry replay also passes. |
+| PRESENT-A02 | Fully opaque paper covers arrival; no route flight or camera/period preference changes | Covered frame has solid RGB(250,247,237), opacity 1 and no clipping; registered landing, empty path, camera and period retained. |
+| PRESENT-A03 | Escape/touch/hidden/superseding cancellation cleans up; no late relocation before commit | Escape, touch, post-commit, visibility and delayed-load cancellation/retry pass; the existing superseding generation owner is unchanged, with no separate UI trigger exercised. |
+| PRESENT-A04 | Desktop, narrow phone, resize and reduced motion fit; keyboard/free walking and return persist | 1280×800 DPR 1; 390×844 and rotated 844×390 DPR 2; 90/1/90 ms reduced fade; keyboard and existing persistence/return checks pass. |
 
 ## Working envelope
 
@@ -39,9 +39,11 @@ Use a bounded animation with no persistent loop, asset fetch or new renderer. Re
 
 ## Current state
 
-- Lifecycle: executing; implementation phase: authoring.
-- Baseline and PR #35 confirmed; no open competing PR observed.
-- Canonical documentation aligned and full diff reviewed before validation. Local syntax, 99 application tests, 17 scene tests, production build/pinned hashes, 89 affected-document file links and diff whitespace pass.
-- The browser extension timed out; cloud browser cannot reach this checkout preview, and no local Chrome is installed. The added real built-app CI replay is required for rendered desktop/phone/reduced-motion evidence; local build is not visual acceptance.
-- No merge, deployment or user aesthetic approval.
-- Next action: inspect published-head WebGL CI and its representative captures, refine any observed issue, then close routing and deliver the independent PR.
+- Lifecycle: delivered; verification complete for the recorded runtime revision. Active routing is closed; the aesthetic remains a sample for user review.
+- Baseline and PR #35 confirmed; concurrent documentation-only PR #36 incorporated without changing its research.
+- Canonical documentation aligned and full diff reviewed before validation. Local syntax, 99 application tests, 17 scene tests, production build/pinned hashes, 91 affected-document file links and diff whitespace pass.
+- Actual runtime verified at `e3d6b260f73dd323a76592e2ba1ec8db4f82ee8a`, tree `3502296978c6210d57b311d1d161eff50c3267eb`. Selected outline integration run `40931409002` and street/resource/journal/travel run `40931409135` both pass. The final closure changes only this packet/current routing; production code, assets and browser checks retain these verified bytes.
+- Downloaded and visually inspected desktop approach/opaque cover/reveal/arrival and phone portrait/rotated/reduced frames from the real CI consumer. No application console/runtime/HTTP errors were recorded. WebGL2 ran on ANGLE/SwiftShader: this verifies the rendered flow and emulated phone layout, not physical-device performance.
+- Review evidence: [travel captures and JSON](https://github.com/StarObserverPro/DigitalMemory/actions/runs/40931409135/artifacts/12922258399), including delayed first-load cover. Trial/capture binaries remain outside Git. Local browser extension/preview access was unavailable; CI is the real browser evidence.
+- Independent [PR #37](https://github.com/StarObserverPro/DigitalMemory/pull/37) is open. No merge, deployment or user aesthetic approval.
+- Next action, unactivated: user reviews the plane passage in PR #37. To run it, check out the carrier, run `npm run dev`, then choose a supported destination through “想去哪儿”. Ordinary “到街上走走” retains its separate journal. Rollback is a revert of this scoped presentation change; no data migration is needed.
