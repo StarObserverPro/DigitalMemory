@@ -17,7 +17,7 @@
 | H03 | Leave `site-primary-old.geometry` null and registration unresolved; no modern-campus substitution or candidate geometry in runtime data. |
 | H04 | Review the full documentation diff, local link targets and published-head checks; preserve exact next research actions. |
 
-## Current state
+## First delivery — retained history
 
 - Research record delivered as a documentation-only package; no runtime construction is activated. `current.json` remains unchanged and empty.
 - Evidence: 2006/2012 relocation plans; 2007 address 2 versus 2006 address 6; later expansion account; catalogue-only gazetteer/map leads; an undated gate photo; 11 of 16 zoom-17 historical tiles inspected. The sampled acquisition is 2011-02-01, not the 2014 release date.
@@ -26,3 +26,15 @@
 - User content/art approval: no new content/art approval claimed. PR integration follows standing documentation authorization; this package requests no deployment and redistributes no source images.
 - Next research action, unactivated: obtain G1's school/street original pages or the former-school-site portion of the pre-expansion survey/transfer drawing; only then test a parcel and approach-lane hypothesis. G3 identifies a school-history material lead. Keep both historical-school spatial records unresolved until evidence closes that loop.
 - Recovery: revert this documentation change; there is no runtime or content-data migration.
+
+## Reopened evidence acquisition — 2026-10-29
+
+- Explicit correction: research the former campus as it existed before 1999; post-1999 material only supports this task when it explicitly dates its historical subject before that cutoff. Later site conditions, relocation plans and 2011 imagery do not establish the 1990s entrance.
+- Carrier: `agent/fengtai-primary-pre1999-evidence`, exact base `c350fc7bbceb44d573bdf92decd9611e2d266195`.
+- Scope: read public historical sources and revise this packet, the source ledger, PHASE_1, geographic lineage, documentation routing and observed research status. Preserve the spatial registry and private information; source images remain outside Git. No deployment.
+- Actual new evidence: normal Google Books in-volume search exposes the 1993 gazetteer p.488 school/address/adjacent-land descriptions and pp.12/21 street dimensions. Access is to search snippets, not complete scanned pages. Full image/entrance matching remains open.
+- Current result: p.488 supports 东安街头条2号 and the school's position north of 丰台二中; its east and west/north neighbors are separately named. The 2006 6号 entry is a later conflict. Gazetteer pp.12/21 describe the head-street endpoints and dimensions, not the lane. The source ledger preserves the exact four-side wording and the snippet/full-page distinction.
+- Supporting map access: the 1988 CIA 1:15,000 sheets 4 and 5, plus part of sheet 5's index, were visually inspected. No school/gate registration was inferred from broad institutional areas.
+- Documentation alignment: revised the existing source ledger, PHASE_1, geographic lineage, documentation map, present research status and this packet. Preserved both school registry records and empty current routing.
+- Validation: full proposed six-Markdown-file diff and internal link targets checked in memory against the pinned repository tree. All four workflow definitions were read; their event/path filters do not apply to this documentation-only follow-up. Actual published-head checks are inspected in the PR. No runtime test/build or CI pass is claimed.
+- Status: source/documentation follow-up delivered; no runtime executing state. Exact next action, unactivated: obtain the complete 1993 pp.488/12/21 with adjacent pages and use a pre-1999 map/photo to match the named neighboring land; resolve the gate and lane independently. Neighboring factory remains unknown.
