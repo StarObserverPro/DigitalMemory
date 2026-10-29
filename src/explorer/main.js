@@ -8,11 +8,14 @@ import { createSession, createPortalController } from '../application/session.js
 import { PublicRepository } from '../adapters/public-repository.js';
 import { restoreSession, saveSession } from '../adapters/session-storage.js';
 import { createEntryTransition } from './entry-transition.js';
+import { createTravelTransition } from './travel-transition.js';
+import { destinationGroups } from './destinations.js';
 const $ = id => document.getElementById(id);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let repository, manifest, registry, session, portals, includeDemo = false, queryGeneration = 0, sceneData = null, loading = false;
 let streetLoadGeneration=0,streetLoadController=null,streetLoadKey=null,stageSlot=null;
 let entryTransition = null;
+let destinationLandmarks = null, destinationQueryGeneration = 0;
 let overviewAssembly, mapDragged=false; const availableMapAssets=new Set();
 let composition, mapContext, moduleAssets, mapping, stage = null, startingStage = false, lastRenderKey = '', lastArtKey = '', saveTimer, mapDestination = null; const mapKeys = new Set();
 const relationLabels = { current: '这段时间', earlier: '更早的片段', later: '更晚的片段', overlapping: '时间有交叠', unknown: '时间关系未定' };
@@ -66,6 +69,7 @@ function render() {
   refreshStage();
   const state = session.get();
   $('simple-entry').checked = state.entryTransition === 'simple';
+  for (const button of document.querySelectorAll('[data-travel-mode]')) button.setAttribute('aria-pressed', String(button.dataset.travelMode === state.travelMode));
   const location = mapping.locate(state.route);
   $('map-person').style.left = `${location.art[0] / 12}%`;
   $('map-person').style.top = `${location.art[1] / 12}%`;
@@ -80,7 +84,6 @@ function render() {
   lastRenderKey = key;
   $('app').classList.toggle('outline-active',state.view==='street'&&state.sceneId==='map'&&!!stage?.landmarks);
   $('uniform-toggle').hidden=!!stage?.landmarks&&state.view==='street';
-  $('outline-destinations').hidden=state.view!=='street'||state.sceneId!=='map'||!stage?.landmarks;
   $('street-stage').hidden = state.view !== 'street' || state.sceneId !== 'map';
   $('period-label').textContent = currentPeriod().label;
   $('uniform-label').textContent = state.characterId==='youth'?'高中蓝白':'初中红白';
@@ -112,6 +115,28 @@ function render() {
 }
 function renderMarkers() { $('markers').replaceChildren(); }
 function renderRoadLabels() { $('road-labels').replaceChildren(); }
+function renderDestinations(query = '') {
+  if (!destinationLandmarks) return;
+  const groups = destinationGroups(destinationLandmarks, query);
+  $('destination-groups').innerHTML = groups.length ? groups.map(group => `<details class="destination-group"${query.trim() ? ' open' : ''}><summary>${escape(group.label)}<small>${group.places.length} 处</small></summary><div class="destination-list">${group.places.map(place => `<button data-travel-go="${escape(place.id)}"><span>${escape(place.label)}</span><span aria-hidden="true">↗</span></button>`).join('')}</div></details>`).join('') : '<p class="empty">这段街上暂时没有找到这个地方。</p>';
+  for (const button of $('destination-groups').querySelectorAll('[data-travel-go]')) button.addEventListener('click', () => {
+    const goal = destinationLandmarks[button.dataset.travelGo];
+    $('destinations-dialog').close();
+    enterStreet({ destination: goal });
+  });
+}
+async function openDestinations() {
+  const generation = ++destinationQueryGeneration;
+  $('destination-search').value = '';
+  $('destination-groups').textContent = '正在找这段街上的地方……';
+  showDialog('destinations-dialog'); $('destination-search').focus();
+  try {
+    destinationLandmarks = stage?.landmarks || (await repository.loadOutline()).data.landmarks;
+    if (generation === destinationQueryGeneration && $('destinations-dialog').open) renderDestinations($('destination-search').value);
+  } catch {
+    if (generation === destinationQueryGeneration && $('destinations-dialog').open) $('destination-groups').textContent = '地点暂时打不开，关上后可以再试一次。';
+  }
+}
 function renderPlaces(query = '') {
   const results = registry.all().filter(p => p.label.includes(query.trim()));
   $('place-results').innerHTML = results.length ? results.map(p => `<button class="place-result" data-place="${escape(p.id)}"><span>${escape(p.label)}</span><small>${p.geometry ? '打开地点 ↗' : '旧址待定位'}</small></button>`).join('') : '<p class="empty">暂时没有这个地点。</p>';
@@ -191,7 +216,10 @@ function wireControls() {
 
   window.addEventListener('pagehide',event=>{saveSession(localStorage,session.get());cancelStreetLoad();if(event.persisted)stage?.suspend?.();else{stageSlot?.dispose();stage=null;repository.dispose();}});
   window.addEventListener('pageshow',event=>{if(event.persisted)refreshStage();});
-  $('find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
+  $('find-button').addEventListener('click', openDestinations);
+  $('map-find-button').addEventListener('click', () => { renderPlaces(); showDialog('find-dialog'); $('place-search').focus(); });
+  $('destination-search').addEventListener('input', event => renderDestinations(event.target.value));
+  for (const button of document.querySelectorAll('[data-travel-mode]')) button.addEventListener('click', () => session.dispatch({ type: 'travel-mode', mode: button.dataset.travelMode }));
   $('help-button').addEventListener('click', () => showDialog('help-dialog'));
   $('options-button').addEventListener('click', () => showDialog('options-dialog'));
   $('simple-entry').addEventListener('change', event => {
@@ -228,8 +256,8 @@ function wireControls() {
   document.addEventListener('keydown', e => { if (e.key !== 'Escape') return; if(startingStage){cancelStreetLoad();notify();}const dialog = document.querySelector('dialog[open]'); if (dialog) { e.preventDefault(); e.stopImmediatePropagation(); dialog.close(); queryGeneration++; portals.cancel(); loading=false; notify(); } }, true);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { portals.cancel(); if (!document.querySelector('dialog[open]') && session.get().sceneId !== 'map') back(); } });
 }
-async function enterStreet() {
-  const requestedKey=JSON.stringify([session.get().route,session.get().periodId]);
+async function enterStreet({ destination = null } = {}) {
+  const requestedKey=JSON.stringify([session.get().route,session.get().periodId,destination?.position]);
   if(startingStage){if(streetLoadKey===requestedKey)return;cancelStreetLoad();}
   streetLoadKey=requestedKey;
   mapDestination = null; mapKeys.clear();
@@ -238,33 +266,37 @@ async function enterStreet() {
   const token=++streetLoadGeneration;
   const request=new AbortController();streetLoadController=request;
   const fromMap = session.get().view === 'map';
-  let transition = null, entered = false;
+  let transition = null, entered = false, relocated = false;
   request.signal.addEventListener('abort', () => {
     transition?.cancel();
     // Dispatch even when still on the map: a newly mounted stage must enter its
     // bounded suspended slot if the drawing is cancelled before the reveal.
-    if (fromMap && session.get().sceneId === 'map') session.dispatch({ type: 'view', view: 'map' });
+    if (fromMap && !relocated && session.get().sceneId === 'map') session.dispatch({ type: 'view', view: 'map' });
     if (fromMap && !document.hidden) $('menu-button').focus({ preventScroll: true });
   }, { once: true });
-  startingStage = true; notify('正在走到街上……');
+  startingStage = true; stage?.clear(); stage?.refresh(); notify(destination ? '正在换个地方……' : '正在走到街上……');
   try {
-    transition = createEntryTransition({ container: $('app'), street: $('street-stage'), mode: session.get().entryTransition, signal: request.signal,
-      onCancel: () => { cancelStreetLoad(); notify(); $('menu-button').focus(); } });
+    const options = { container: $('app'), street: $('street-stage'), mode: session.get().entryTransition, signal: request.signal,
+      onCancel: () => { cancelStreetLoad(); notify(); stage?.focus?.(); if (!stage) $('menu-button').focus(); } };
+    transition = destination ? createTravelTransition({ ...options, label: destination.label }) : createEntryTransition(options);
     entryTransition = transition;
     const { createOutlineStage,createRetainedStageSlot } = await import('./outline-stage.js');
     if(token!==streetLoadGeneration)return;
-    if(!stageSlot)stageSlot=createRetainedStageSlot({onEvict:previous=>{if(stage===previous){stage=null;lastRenderKey='';$('outline-destinations').replaceChildren();}}});
+    if(!stageSlot)stageSlot=createRetainedStageSlot({onEvict:previous=>{if(stage===previous){stage=null;lastRenderKey='';}}});
     if(stage&&!stage.compatible())discardStage();
     if (!stage) {
-      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,signal:request.signal,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||startingStage||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog')});
+      const candidate = await createOutlineStage({container:$('stage-canvas'),session,mapping,repository,signal:request.signal,isCurrent:()=>token===streetLoadGeneration,blocked:()=>loading||startingStage||!!document.querySelector('dialog[open]'),onMenu:()=>showDialog('menu-dialog'),onTravel:destination=>enterStreet({destination})});
       if(!candidate||token!==streetLoadGeneration){candidate?.dispose();if(token===streetLoadGeneration)notify();return;}
       stageSlot.set(candidate);stage=candidate;
-      const targets=$('outline-destinations');targets.replaceChildren();
-      for(const g of Object.values(stage.landmarks)){const button=document.createElement('button');button.textContent=g.label;button.dataset.outlineGo=g.id;button.addEventListener('click',()=>{closeMenuDialog();stage?.go(g.id);});targets.append(button);}
+      destinationLandmarks=stage.landmarks;
       const origin=session.get().outline;
       $('stage-canvas').dataset.outlineRevision=origin.revision;
     }
     if (!await transition.prepared || token !== streetLoadGeneration) return;
+    if (destination) {
+      if (!stage.arrive(destination.position, destination.id)) throw Error('No nearby landing ground');
+      relocated = true;
+    }
     session.dispatch({ type: 'select-place', id: 'place-xinhua' });
     session.dispatch({ type: 'view', view: 'street' });
     refreshStage();

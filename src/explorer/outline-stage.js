@@ -48,7 +48,7 @@ export function createRetainedStageSlot({
 
 /** Adapts the renderer to the one application session and registered route. */
 export async function createOutlineStage({
-  container, session, mapping, repository, blocked = () => false, onMenu,
+  container, session, mapping, repository, blocked = () => false, onMenu, onTravel,
   isCurrent = () => true, signal,
   loadRuntime = () => import('../../scenes/xinhua-sanli-outline/runtime.mjs'),
   createNavigation = makeNavigation
@@ -99,7 +99,8 @@ export async function createOutlineStage({
         if (!published || !compatible()) return;
         session.dispatch({ type: 'outline-state', value: { ...session.get().outline, ...patch } });
       },
-      isVisible: visible, isActive: () => visible() && !blocked(), onMenu
+      isVisible: visible, isActive: () => visible() && !blocked(), onMenu, onTravel,
+      readTravelMode: () => session.get().travelMode
     });
     if (!currentRequest()) { dispose(); return null; }
     published = true;

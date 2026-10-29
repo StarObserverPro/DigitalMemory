@@ -1,7 +1,7 @@
 // Real main-entry smoke: the selected outline scene owns one reusable WebGL runtime.
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
-import {mkdir, writeFile} from 'node:fs/promises';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
 const port=Number(process.env.STUDENT_QA_PORT||43179);
@@ -136,9 +136,86 @@ try{
     assert.equal(await cancelledPage.locator('.outline-host').count(),1);
     evidence.cancelledLoadRecovered=true;
   }finally{await cancelledContext.close();}
+
+  // Exercise the memoir's destination travel through the actual menu and
+  // canvas, with the same WebGL owner and application session as walking.
+  const landmarks=JSON.parse(await readFile('scenes/xinhua-sanli-outline/scene-data.json')).landmarks;
+  evidence.travel=[];
+  const picker=async()=>{
+    await menu().click();
+    assert.equal(await page.locator('#menu-dialog [data-travel-go]').count(),0,'destinations must stay out of the main menu');
+    await page.locator('#find-button').click();
+    await page.locator('.destination-group').first().waitFor();
+    assert.equal(await page.locator('.destination-group').count(),4);
+    assert.equal(await page.locator('.destination-group[open]').count(),0);
+  };
+  const choose=async(id)=>{
+    await picker();
+    await page.locator('#destination-search').fill(landmarks[id].label);
+    const before=(await inspect()).session.outline,started=Date.now();
+    await page.locator('[data-travel-go="'+id+'"]').click();
+    await page.waitForFunction(()=>!digitalMemory.inspect().entryTransition&&digitalMemory.inspect().session.view==='street');
+    await waitFrames();
+    const after=(await inspect()).session.outline;
+    assert(Math.hypot(...after.position.map((v,i)=>v-landmarks[id].position[i]))<=3,id+' must land at its existing anchor');
+    assert.deepEqual(after.path,[]);assert.equal(after.destination,null);
+    if(before){
+      assert.equal(after.distanceWalked,before.distanceWalked,'jump distance must not become walking');
+      for(const key of ['yaw','distance','pitch'])assert.equal(after[key],before[key]);
+    }
+    evidence.travel.push({id,elapsedMs:Date.now()-started,position:after.position,distanceWalked:after.distanceWalked});
+    return after;
+  };
+  await page.setViewportSize({width:1280,height:800});await waitFrames();
+  await menu().click();await page.locator('#leave-street').click();
+  await choose('yunbai'); // Map -> remote street anchor, without the long journal.
+  const travelHost=await host.elementHandle();
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  const far=await choose('eastEnd');
+  assert(await travelHost.evaluate(el=>el===document.querySelector('.outline-host')),'long jumps reuse the one scene owner');
+  assert(evidence.travel[0].position[0]<-450&&far.position[0]>370,'cover the full scene, not only adjacent anchors');
+  await picker();await page.screenshot({path:evidenceDir+'/outline-destinations-desktop.png'});
+  await page.locator('#destination-search').fill('看丹桥');
+  await page.locator('[data-travel-go="kandanBridge"]').click();
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(()=>!digitalMemory.inspect().entryTransition);
+  assert.deepEqual((await inspect()).session.outline.position,far.position,'Escape before cover commits must leave the origin');
+  assert.equal(await page.locator('.memory-travel').count(),0);
+  await waitFrames();evidence.travelCancelledBeforeLanding=true;
+
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await picker();await page.locator('[data-travel-mode="jump"]').click();
+  await page.getByRole('button',{name:'关闭地点选择',exact:true}).click();await waitFrames();
+  assert.equal((await inspect()).session.travelMode,'jump');
+  const walkingStart=(await inspect()).session.outline.distanceWalked,at=await read();
+  await canvas.focus();await page.keyboard.down('ArrowUp');
+  await page.waitForFunction(p=>document.querySelector('.outline-host').dataset.position!==p,at);await page.keyboard.up('ArrowUp');
+  assert((await inspect()).session.outline.distanceWalked>walkingStart,'keyboard remains walking in jump mode');
+  const clickOrigin=(await inspect()).session.outline,foot=JSON.parse(await host.getAttribute('data-avatar-projection')).foot;
+  const clickBox=await canvas.boundingBox();
+  await page.mouse.click(clickBox.x+(foot[0]+1)/2*clickBox.width+20,clickBox.y+(1-foot[1])/2*clickBox.height-10);
+  await page.waitForFunction(p=>!digitalMemory.inspect().entryTransition&&Math.hypot(...digitalMemory.inspect().session.outline.position.map((v,i)=>v-p[i]))>.1,clickOrigin.position);
+  const clicked=(await inspect()).session.outline;
+  assert.equal(clicked.distanceWalked,clickOrigin.distanceWalked,'ground-click jump must not enqueue walking');
+  assert.deepEqual(clicked.path,[]);evidence.groundClickTravel=true;
+
+  await page.reload();await page.waitForFunction(()=>globalThis.__VISUAL_READY__===true);
+  assert.equal((await inspect()).session.travelMode,'jump');
+  await openStreet();
+  assert.deepEqual((await inspect()).session.outline.position,clicked.position,'reload/re-entry retains the arrival');
+  await page.setViewportSize({width:390,height:844});await waitFrames();
+  await picker();
+  const pickerBox=await page.locator('#destinations-dialog').boundingBox();
+  assert(pickerBox.x>=0&&pickerBox.x+pickerBox.width<=390);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.screenshot({path:evidenceDir+'/outline-destinations-phone.png'});
+  await page.locator('#destination-search').fill('云柏');await page.locator('[data-travel-go="yunbai"]').click();
+  await page.waitForFunction(()=>!digitalMemory.inspect().entryTransition);
+  assert(Math.hypot(...(await inspect()).session.outline.position.map((v,i)=>v-landmarks.yunbai.position[i]))<=3);
+  evidence.phoneDestinationTravel=true;
   assert.deepEqual(evidence.errors,[]);
   await writeFile(evidenceDir+'/outline-runtime.json',JSON.stringify(evidence,null,2));
-  console.log('Main WebGL entry passed: render, walk, true menu pause, heading, retained re-entry, chunk eviction, phone fit, real warm expiry and rebuilt state.');
+  console.log('Main WebGL entry passed: render, walk, pause, lifetime, grouped picker, map/street destination travel, cancellation, ground-click mode, persisted arrival and phone travel.');
 }finally{
   await context?.close();await browser?.close();server.kill();
 }
