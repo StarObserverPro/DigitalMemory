@@ -29,11 +29,12 @@ These planning aliases are not geocoded runtime IDs. Contemporary reference geom
 
 Keep the institution separate from a geographic site and from the institution's occupancy of that site. School moves must not relocate old memories.
 
-The [former-primary-school historical-geography record](research/FENGTAI_PRIMARY_OLD_SITE.md), checked 2026-10-29 against main `94cb3b3`, separates public evidence from unlocated entrance hypotheses:
+The [former-primary-school historical-geography record](research/FENGTAI_PRIMARY_OLD_SITE.md), updated 2026-10-29 at baseline `c350fc7`, now uses evidence explicitly describing the pre-1999 campus:
 
-- Contemporary 2006 and 2012 reports document the planned transfer of the former 丰台一小 site into 丰台二中 and the move of 丰台一小 into the former 十二中 junior campus. Later public material corroborates the relocation/expansion history. This supports the institution/site relationship, not the 1990s parcel boundary or gate.
-- A 2007 directory lists 东安街头条2号; a 2006 examination-site list instead gives 6号. Preserve that address conflict. Modern 东安街1号 belongs to a later occupancy and does not locate the remembered primary-school entrance.
-- No dated 1990s gate photograph, registered old access lane or identified adjacent factory was established. The partial 2011 imagery does not close those gaps. Both historic-school runtime records remain unresolved.
+- In-volume search of the 1993 gazetteer, result labelled p.488, places the school at 东安街头条2号, with 第二炮兵宿舍楼 east, 丰台二中 south, and 总后第二休干所 west/north. This establishes dated adjacency; the full scanned page and a registered historical parcel are still missing.
+- Gazetteer pp.12/21 search snippets separately describe 东安街头条 from 丰台路 to 西仓库, about 500 m long and 16–18 m overall width. These are main-street dimensions, not school-lane dimensions.
+- The 2006 6号 listing remains a later conflict, below the 1993 2号 evidence for this task. Later relocation plans, current addresses and 2011 imagery do not establish the pre-1999 entrance.
+- Gate position/orientation, access-lane alignment and neighboring factory remain unlocated. Both historic-school runtime records remain unchanged and unresolved.
 - The newer 十二中 junior campus opposite 南开西里 is not the campus relevant to these junior-school recollections; this remains a user-supplied scope constraint.
 - The senior-school site at 丰益桥 belongs to a later, different interaction corridor.
 

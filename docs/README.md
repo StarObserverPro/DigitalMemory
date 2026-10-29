@@ -13,7 +13,7 @@ The area → route → attachment target was integrated on 2026-10-19. This page
 | Who resolves location, interaction and scene loading? | [ARCHITECTURE](ARCHITECTURE.md) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
 | Which street/person is active vs the retained GLB and older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
 | What is the World Labs/Marble 2 status? | [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) | Future handoff only; no generated environment. |
-| Where is the 1990s former primary-school site, and which entrances remain unlocated? | [Former-primary-school research](research/FENGTAI_PRIMARY_OLD_SITE.md) | [PHASE_1](PHASE_1.md) owns scope; old/new addresses, partial 2011 imagery, lane and factory gaps stay separate. |
+| Where is the 1990s former primary-school site, and which entrances remain unlocated? | [Former-primary-school research](research/FENGTAI_PRIMARY_OLD_SITE.md) | [PHASE_1](PHASE_1.md) owns scope; 1993 gazetteer snippets support the old address/adjacency; later imagery is archived separately, and gate/lane/factory remain unresolved. |
 | What public sources describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
