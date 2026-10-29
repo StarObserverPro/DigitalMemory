@@ -1,6 +1,6 @@
 ## Intended outcome
 
-State the user-authorized result and task packet. Do not paste private source material.
+State the user-authorized engineering result and task packet. Geographic investigation has no public packet; publish only permitted conclusions. Never paste investigation history, source ledgers, queries, proof chains or identifying context.
 
 ## Scope and identity
 
@@ -14,6 +14,7 @@ State the user-authorized result and task packet. Do not paste private source ma
 - [ ] Read the affected canonical docs before implementation and recorded/reused the repository task scope.
 - [ ] Compared the full PR diff against the latest base and reviewed documentation **before tests/build/CI**.
 - [ ] Updated relevant docs **in this PR**, or explicitly justified why existing documentation is still accurate.
+- [ ] Checked the full diff and metadata for prohibited geographic investigation records, including deleted-content descriptions and CI output.
 - [ ] Checked local links, stale status/handoff wording, and the distinction between proposed, tested, merged and deployed.
 - Docs updated (paths), **or** "none — reason":
 - Remaining documentation uncertainty (if any; not an automatically activated task):

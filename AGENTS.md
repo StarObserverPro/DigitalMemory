@@ -2,6 +2,16 @@
 
 This is a short routing surface, not a requirement to read the entire repository. Work only in `StarObserverPro/DigitalMemory`. `crystal-garden` is a read-only methodological reference, never an implicit write target or runtime dependency.
 
+## 地理资料的绝对公开边界
+
+地理查证仅可向本仓库注入可用于产品的结论和必要的确定程度。**绝对禁止提交或披露挖掘、检索、论证、溯源及其过程记录**，包括检索词、查询链接/参数、阅读或访问记录、资料清单、证据链、候选与排除过程、反复调查轨迹、后续追查计划、用户提问动机及个人关联。材料来自公开网站也不能豁免此禁令。
+
+此规则覆盖正文、历史任务包、数据和素材元数据、代码注释、提交信息、分支名、Issue/PR正文与评论、CI日志和制品。不得将过程改名为“公开研究”“证据账本”“冷历史”“交接”继续留存，也不得在删除说明里复述被删内容。仓库任务范围只写工程目标、允许的结果、实现边界和检查状态；地理调查本身无需在仓库建立任务或留痕。
+
+公开结果可写地点、空间关系、有效时期、近似范围以及“已确认／近似／未知”；不得附带如何得出该结果或为何关注该地点。产品许可所必需的第三方署名只保留最小许可信息，不扩展为调查档案。核验在仓库外完成；无法公开过程时仍须保证结论准确，未知保持未知。
+
+旧规范中要求公开地理证据链、来源索引、检索记录、逐次纠错或调查交接的条款全部失效。普通删除提交仍会留下Git历史与旧PR差异；不得据此宣称历史内容已清除。
+
 ## Preserve the intended result
 
 DigitalMemory is a geographically registered, stylized, sparse-time memory application. The overview is a hand-drawn/cartoon/travel-journal map with stable real-node correspondence and no person or player marker. Three overview tiers lead to the selected Xinhua/Sanli outline street: restrained building contours, a continuous outline person, sparse motion and a perspective walking camera. The earlier skinned student and graybox street remain legacy assets/modules, not the current Xinhua consumer. Image-based interiors are sufficient. It is not a GIS viewer, article website, full 3D reconstruction, or Monopoly rules engine.
@@ -18,15 +28,15 @@ The registered destination picker may take the reader directly to supported stre
 
 Preserve source geometry while selecting what to show. A familiar gate and a few compatible masses may represent an unfamiliar compound. Wall/railing segments, detached frontage rooms, gates, occupancy and appearance must be independently revisable. Repeated changes at one site retain location identity and uncertain dating; reconstruction does not supply missing memories. New content never automatically creates a free-roaming interior.
 
-The selected Keith Haring-inspired close-view treatment and its Xinhua corridor extension are recorded in [the outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md). The overview retains its raster-art contract. Earlier character calibration, World Labs setup and public bridge research remain separately scoped records; reading them does not activate new generation, private-content publication or deployment.
+The selected Keith Haring-inspired close-view treatment and its Xinhua corridor extension are recorded in [the outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md). The overview retains its raster-art contract. Earlier character calibration and World Labs setup remain separately scoped records; reading them does not activate new generation, private-content publication or deployment.
 
-具名地点落图前必须执行 [地理核验流程](docs/GEO_DATA_RUNBOOK.md#具体地点落图前的核验顺序)：地图POI、对应建筑侧/朝向与街景交叉核对；地址文字不足以定位门脸。工程检查和地理核验分列，具体证据要求见 [验收](docs/VERIFICATION.md#具名地点的地理验收与工程验收)。
+具名地点落图前须在仓库外完成适当核验；仅把结论和确定程度注入空间资料。工程检查可记录，地理调查过程绝不入库。见 [地理结果规则](docs/GEO_DATA_RUNBOOK.md)。
 
 ## Read only what this task needs
 
 1. Identify the request and its authorized effects: investigation, repository modification, content approval, integration, publication, or deployment. These are different permissions.
 2. Read [current routing](docs/attention/current.json). Select only the task matching this request. No active row means no task is implicitly running.
-3. Read that task packet. Before newly authorized construction, including work in a sandbox or a separate checkout, create or reuse a bounded packet in the repository; [the sandbox-scope rule](docs/attention/README.md#sandbox-work-still-has-a-repository-scope) specifies the minimum record. Analysis alone does not create executing state.
+3. Read that task packet. Before newly authorized engineering construction, including work in a sandbox or a separate checkout, create or reuse a bounded packet in the repository; [the sandbox-scope rule](docs/attention/README.md#sandbox-work-still-has-a-repository-scope) specifies the minimum record. Geographic investigation must never create a public investigation packet; publish only permitted conclusions. Analysis alone does not create executing state.
 4. Load the relevant canonical sections below before changing implementation, then current source files. Read the packet's latest next-action/evidence section last. Keep those owners aligned during implementation and complete the documentation review before validation/CI and PR delivery. Do not concatenate documentation, old handoffs, or recollections into context.
 
 | Need | Read |
@@ -35,10 +45,10 @@ The selected Keith Haring-inspired close-view treatment and its Xinhua corridor 
 | Ownership / contracts / persistence | `docs/ARCHITECTURE.md` / `docs/DATA_MODEL.md` |
 | Accepted Xinhua/Sanli outline style and integration | [XINHUA_OUTLINE_WORKFLOW](docs/research/XINHUA_OUTLINE_WORKFLOW.md) / [selected scene](scenes/xinhua-sanli-outline/README.md) |
 | Map / time / portals / visual work | `docs/INTERACTION.md` / `docs/ASSET_PIPELINE.md` / `docs/MAP_ASSEMBLY.md` |
-| GIS acquisition, source provenance, building-position QA | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
+| Geographic conclusions, uncertainty and publication boundary | `docs/GEO_DATA_LINEAGE.md` / `docs/GEO_DATA_RUNBOOK.md` |
 | Selected outline person vs retained student / historic 2× review | `docs/STREET_PROTOTYPE.md` / `docs/STREET_VISUAL_CALIBRATION.md` |
 | World Labs / Marble 2, no generation | `docs/WORLDLABS_HANDOFF.md` |
-| Bridge public research | `docs/research/FENGTAI_BRIDGES_ZHENGYANG.md` |
+| Bridge geographic conclusions | `docs/research/FENGTAI_BRIDGES_ZHENGYANG.md` |
 | Oral input / wording / approval / privacy | `docs/CONTENT_PIPELINE.md` |
 | Acceptance / actual completion | `docs/VERIFICATION.md` / `docs/STATUS.md` |
 | Cross-session or concurrent work | `docs/attention/README.md` |

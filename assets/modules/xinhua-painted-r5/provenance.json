@@ -246,14 +246,7 @@
       ]
     }
   ],
-  "sourceReferences": [
-    "https://www.openstreetmap.org/copyright",
-    "https://livingatlas.arcgis.com/wayback/",
-    "https://www.bjft.gov.cn/ftq/ftsq/202203/6ef2959837664a118b049f3c7023e7ab.shtml",
-    "https://www.bjft.gov.cn/ftq/ftjdgk/202203/28c925dacc15411eaa269afe6c863a7a.shtml",
-    "https://www.amap.com/place/B000A7VR6S",
-    "https://lbs.amap.com/api/webservice/guide/api/convert"
-  ],
+
   "historicalImagery": {
     "waybackRelease": "2014-02-20",
     "acquisitionAtQueriedLocation": "2011-02-01",
@@ -354,7 +347,7 @@
   "sanliGeometry": {
     "basis": "photographic references held outside Git, public plan relationships and Esri imagery",
     "layout": "three cream/red-cap towers across the south; two white/green flat-top towers at the northern corners; three shorter rear slabs, one long north court-edge slab and one perpendicular east slab; shared open court and small ancillary block",
-    "groundReference": "https://www.amap.com/place/B000A7VR6S",
+
     "coordinates": "GCJ-02 reference base picks converted to WGS84 before registration; approximate, not surveyed",
     "dateLimit": "photographs and current plan constrain morphology, not individual construction/planting dates",
     "privacy": "reference photos and residential-person associations excluded"

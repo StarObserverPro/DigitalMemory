@@ -8,7 +8,7 @@ This is a small routing system for keeping intent intact across many chats, task
 
 **One live packet:** [current.json](current.json) routes an explicitly activated task to its packet. The packet preserves purpose, scope, baseline, period/place/batch context, acceptance and the exact next action. Its implementation route may evolve within authority.
 
-**Cold detail:** previous tasks, source evidence, source imagery and transcripts, rejected hypotheses, detailed historical discussion, and roadmap ideas. Load an exact cited portion only when it answers the current question. Past work does not consume attention simply because its PR is still open.
+**Cold engineering detail:** previous implementation tasks and roadmap ideas. Geographic investigation details are prohibited in the repository and are never a cold archive. Load an exact cited portion only when it answers the current question. Past work does not consume attention simply because its PR is still open.
 
 ## Activation and lifecycle
 
@@ -16,7 +16,7 @@ A current explicit user request can activate a bounded task. A roadmap, branch, 
 
 A lightweight task lifecycle is `executing`, `delivered`, `parked`, `cancelled`, or `superseded`. Only executing tasks belong in `current.json`. Implementation phase may be `planning`, `authoring`, `verification`, or `blocked` while executing. Keep review, user approval and integration status as separate facts: delivered does not mean approved or merged.
 
-During authorized construction, create a missing packet from [TASK.template.md](TASK.template.md) rather than asking for an already-granted alignment again. For an analysis-only request, use the relevant documents without manufacturing execution state.
+For geographic investigation, do not create a public task packet or investigation handoff; only permitted conclusions may enter product documentation. During authorized engineering construction, create a missing packet from [TASK.template.md](TASK.template.md) rather than asking for an already-granted alignment again. For an analysis-only request, use the relevant documents without manufacturing execution state.
 
 On delivery or stop, update the existing packet with tested revision, observations/gaps and next action; remove its active row in the closure change. The retained packet becomes cold history. Do not create an active successor merely to keep a queue occupied. A later user request may activate a new packet referencing the old one.
 
@@ -46,11 +46,11 @@ Read the latest next-action/evidence summary last so the work resumes from curre
 
 ## What a packet must preserve
 
-Keep the accepted outcome and why it matters; explicit exclusions; authorization source and allowed external effects; exact repository/carrier/base; affected geographic anchors, period/scene/batch revisions; relevant contract owners; acceptance IDs and observable results; known facts versus assumptions; unresolved contradictions; resource envelope; and one executable next action.
+Keep the accepted engineering outcome; explicit exclusions; authorization source and allowed external effects; exact repository/carrier/base; affected geographic anchors, period/scene/batch revisions; relevant contract owners; acceptance IDs and observable results; known facts versus assumptions; unresolved contradictions; resource envelope; and one executable next action.
 
 For an image task, the acceptance target includes view, place, period, style revision and source/material references. For a text task, include the source spans and the allowed editorial transformation. For shared-geometry or time-resolver work, identify impacted consumers rather than merely listing filenames.
 
-Latest explicit user corrections supersede stale packet assumptions. Record the change and source; preserve prior evidence as prior evidence. Never let a compressed summary turn proposed work into completed work, an inference into a recollection, or a visual approval into a historical fact.
+Latest explicit user corrections supersede stale packet assumptions. Preserve permitted engineering results only; never retain geographic investigation history. Never let a compressed summary turn proposed work into completed work, an inference into a recollection, or a visual approval into a historical fact.
 
 ## Concurrent work and ownership
 

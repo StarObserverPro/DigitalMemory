@@ -28,8 +28,8 @@
         -22.16508022305927,
         -99.85469051930083
       ],
-      "source": "User-corrected narrow gate on fence; prior approximate source anchor retained separately",
-      "sourceUid": "d11d0e2a2ec203d7b54f544f",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
+
       "positionUncertaintyMetres": 15,
       "accessScope": "Outside the entrance only; present-day gate access does not establish historical access",
       "wgs84": [
@@ -52,8 +52,8 @@
         80.23510208476569,
         -49.575616877786324
       ],
-      "source": "User-corrected narrow gate on fence; prior approximate source anchor retained separately",
-      "sourceUid": "17a7d37d845bf5d2d92f28a8",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
+
       "positionUncertaintyMetres": 15,
       "accessScope": "Outside the entrance only; no compound interior implied",
       "wgs84": [
@@ -72,7 +72,7 @@
         4.3516138056133435,
         -9.698631722402668
       ],
-      "source": "OSM node 534302826, inspected Baidu junction panos",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "wgs84": [
         116.28495906943029,
         39.84225872177009
@@ -90,7 +90,7 @@
         13.05431251934475
       ],
       "distanceAlongMainRoadMetres": 30,
-      "source": "30 m along OSM Xinhua centreline from node 534302826, north-side pedestrian approach",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "wgs84": [
         116.28454585786716,
         39.84212697407692
@@ -103,7 +103,7 @@
         53.28952923182699,
         -94.8695213134875
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "garden": {
@@ -113,7 +113,7 @@
         32.66081770677577,
         -147.0179274331017
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "mid": {
@@ -123,7 +123,7 @@
         32.893061770300676,
         -220.8416774238395
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "rear": {
@@ -133,7 +133,7 @@
         -21.588452916073095,
         -250.8544173433876
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "northCourt": {
@@ -143,7 +143,7 @@
         -41.3397823144833,
         -289.1020968415676
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "eastCourt": {
@@ -153,7 +153,7 @@
         117.93416376765327,
         -208.1526675698016
       ],
-      "source": "Registered footprint / satellite spatial inference; scene waypoint, not a surveyed gate or historical destination",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 6
     },
     "bins": {
@@ -163,7 +163,7 @@
         70.73052130076316,
         -73.16579362326557
       ],
-      "source": "User-confirmed historical remembered landmark, immediately right after entering Xinhua gate; shape/count approximate",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 5
     },
     "plaza": {
@@ -173,7 +173,7 @@
         58.109431070035164,
         -158.6956017686591
       ],
-      "source": "User-confirmed place existence; provisional central-court position",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "positionUncertaintyMetres": 15
     },
     "westEnd": {
@@ -183,7 +183,7 @@
         -402.84720838020394,
         178.40719088023874
       ],
-      "source": "public OSM street + reconstruction waypoint; not a historical entrance"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "westWide": {
       "id": "westWide",
@@ -192,7 +192,7 @@
         -209.22299384689364,
         85.23135441177227
       ],
-      "source": "public OSM street + reconstruction waypoint; not a historical entrance"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "eastWide": {
       "id": "eastWide",
@@ -201,7 +201,7 @@
         254.72778665118864,
         -128.47919354869296
       ],
-      "source": "public OSM street + reconstruction waypoint; not a historical entrance"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "eastEnd": {
       "id": "eastEnd",
@@ -210,7 +210,7 @@
         376.71531075804995,
         -174.23866072099497
       ],
-      "source": "public OSM street + reconstruction waypoint; not a historical entrance"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "southEdge": {
       "id": "southEdge",
@@ -219,7 +219,7 @@
         161.07307833490339,
         -68.02125292502376
       ],
-      "source": "public OSM street + reconstruction waypoint; not a historical entrance"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "westShops": {
       "id": "westShops",
@@ -228,7 +228,7 @@
         -336.51696550725416,
         147.90638957247896
       ],
-      "source": "street frame / user-corrected west frontage; reconstruction waypoint"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "wuliForecourt": {
       "id": "wuliForecourt",
@@ -237,7 +237,7 @@
         -221.82311662192166,
         93.61210056317341
       ],
-      "source": "street frame / user-corrected west frontage; reconstruction waypoint"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "daoxiangcunPlaza": {
       "id": "daoxiangcunPlaza",
@@ -246,7 +246,7 @@
         112
       ],
       "label": "稻香村 · 七里西侧前场",
-      "source": "user named anchor / public source registration; exact local approach approximate"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "kandanBridge": {
       "id": "kandanBridge",
@@ -255,7 +255,7 @@
         186.37389067024768
       ],
       "label": "看丹桥 · 桥下北侧",
-      "source": "user named anchor / public source registration; exact local approach approximate"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "bridgeWest": {
       "id": "bridgeWest",
@@ -264,7 +264,7 @@
         195.07124377763526
       ],
       "label": "看丹桥西侧",
-      "source": "user named anchor / public source registration; exact local approach approximate"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "kandanView": {
       "id": "kandanView",
@@ -273,7 +273,7 @@
         177.41716493503583
       ],
       "label": "看丹桥东侧",
-      "source": "user named anchor / public source registration; exact local approach approximate"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "bridgePanorama": {
       "id": "bridgePanorama",
@@ -282,7 +282,7 @@
         187.96421478847702
       ],
       "label": "看丹桥与广场方向",
-      "source": "user named anchor / public source registration; exact local approach approximate"
+      "source": "Approximate registered scene geometry; historical validity unresolved"
     },
     "yunbai": {
       "id": "yunbai",
@@ -295,7 +295,7 @@
         -454.59635,
         22.18907
       ],
-      "source": "User-identified historical area at current group-buy supermarket marker on Qili west frontage; 2013 imagery and 2011 aerial massing audit",
+      "source": "Approximate registered scene geometry; historical validity unresolved",
       "identityStatus": "user-authored-historical-anchor",
       "extentStatus": "approximate-frontage-area-not-an-exact-doorway",
       "positionUncertaintyMetres": 10.2
@@ -345,7 +345,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -409,7 +409,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -869,7 +869,7 @@
       "height": 27.6,
       "storeys": 9,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1053,7 +1053,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "三里8号楼",
-      "heightEvidence": "User-confirmed 24 storeys; 71.1 m is an illustrative conversion, not measured",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1285,7 +1285,7 @@
       "height": 10.2,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1541,7 +1541,7 @@
       "height": 13.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -1597,7 +1597,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1645,7 +1645,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "天悦园",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "restaurant-frontage",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1693,7 +1693,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1741,7 +1741,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1789,7 +1789,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1837,7 +1837,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1905,7 +1905,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 3
@@ -1953,7 +1953,7 @@
       "height": 9.1,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "sparse-service-windows",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2001,7 +2001,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2049,7 +2049,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2097,7 +2097,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2213,7 +2213,7 @@
       "height": 12.9,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2269,7 +2269,7 @@
       "height": 5.3,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2381,7 +2381,7 @@
       "height": 42.1,
       "storeys": 14,
       "label": "",
-      "heightEvidence": "listing-family-estimate-body-assignment-unverified",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "cream-red-retail",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2513,7 +2513,7 @@
       "height": 30.5,
       "storeys": 10,
       "label": "",
-      "heightEvidence": "listing-family-estimate-body-assignment-unverified",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "cream-red-retail",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2901,7 +2901,7 @@
       "height": 76.9,
       "storeys": 26,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2949,7 +2949,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -2997,7 +2997,7 @@
       "height": 10.2,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3045,7 +3045,7 @@
       "height": 10.2,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3093,7 +3093,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3445,7 +3445,7 @@
       "height": 76.9,
       "storeys": 26,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3677,7 +3677,7 @@
       "height": 27.6,
       "storeys": 9,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3725,7 +3725,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3773,7 +3773,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4
@@ -3821,7 +3821,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -3873,7 +3873,7 @@
       "height": 42.1,
       "storeys": 14,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -3925,7 +3925,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -3977,7 +3977,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4029,7 +4029,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4081,7 +4081,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4133,7 +4133,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4205,7 +4205,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4257,7 +4257,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4329,7 +4329,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4397,7 +4397,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4605,7 +4605,7 @@
       "height": 68.2,
       "storeys": 23,
       "label": "",
-      "heightEvidence": "listing-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4829,7 +4829,7 @@
       "height": 68.2,
       "storeys": 23,
       "label": "",
-      "heightEvidence": "listing-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -4881,7 +4881,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5117,7 +5117,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5169,7 +5169,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5221,7 +5221,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5273,7 +5273,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5341,7 +5341,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5409,7 +5409,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5477,7 +5477,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5561,7 +5561,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5613,7 +5613,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5697,7 +5697,7 @@
       "height": 7.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5801,7 +5801,7 @@
       "height": 13.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -5981,7 +5981,7 @@
       "height": 10.2,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6565,7 +6565,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6617,7 +6617,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6669,7 +6669,7 @@
       "height": 15.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6721,7 +6721,7 @@
       "height": 4.9,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6805,7 +6805,7 @@
       "height": 15.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6873,7 +6873,7 @@
       "height": 11.7,
       "storeys": 3,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -6989,7 +6989,7 @@
       "height": 15.1,
       "storeys": 4,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -7041,7 +7041,7 @@
       "height": 8.3,
       "storeys": 2,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "facade": "",
       "silhouetteStrokes": 1,
       "maxFacadeStrokes": 4,
@@ -7093,7 +7093,7 @@
       "height": 18.9,
       "storeys": 6,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "sourceIds": [
         "fe02b2dd-93ad-4b4b-bc1e-673c45df7be2"
       ],
@@ -7144,7 +7144,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "sourceIds": [
         "f4117f10-8e48-4b19-a528-0a512a9f1575"
       ],
@@ -7195,7 +7195,7 @@
       "height": 71.1,
       "storeys": 24,
       "label": "",
-      "heightEvidence": "listing-and-photo-height-family",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "sourceIds": [
         "75ce6030-8ec8-46d5-ae66-7a6b02973c4f"
       ],
@@ -7246,7 +7246,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "sourceIds": [
         "3ce43988-fe71-4630-a36f-b63b505642e3"
       ],
@@ -7297,7 +7297,7 @@
       "height": 4.4,
       "storeys": 1,
       "label": "",
-      "heightEvidence": "photo-typology-estimate",
+      "heightEvidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "sourceIds": [
         "37f84561-d0e5-42b7-9525-29da1ceee187"
       ],
@@ -7467,7 +7467,7 @@
       "yaw": 2.09549458392803,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-1",
@@ -7478,7 +7478,7 @@
       "yaw": 1.97549458392808,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-2",
@@ -7489,7 +7489,7 @@
       "yaw": 1.9754945839280311,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-3",
@@ -7500,7 +7500,7 @@
       "yaw": 2.097928640421841,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-4",
@@ -7511,7 +7511,7 @@
       "yaw": 1.9779286404218515,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-5",
@@ -7522,7 +7522,7 @@
       "yaw": 1.9851842547927654,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-6",
@@ -7533,7 +7533,7 @@
       "yaw": 2.10518425479279,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-7",
@@ -7544,7 +7544,7 @@
       "yaw": 1.9851842547927783,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-8",
@@ -7555,7 +7555,7 @@
       "yaw": 1.9851842547927663,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-9",
@@ -7566,7 +7566,7 @@
       "yaw": 2.1051842547927975,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-10",
@@ -7577,7 +7577,7 @@
       "yaw": 1.9621518669299536,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-11",
@@ -7588,7 +7588,7 @@
       "yaw": 1.962151866929958,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-12",
@@ -7599,7 +7599,7 @@
       "yaw": 2.082151866929944,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-13",
@@ -7610,7 +7610,7 @@
       "yaw": 1.8744554852265283,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-14",
@@ -7621,7 +7621,7 @@
       "yaw": 1.87445548522653,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-15",
@@ -7632,7 +7632,7 @@
       "yaw": 1.994455485226507,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-16",
@@ -7643,7 +7643,7 @@
       "yaw": 1.8555146963869056,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "corridor-car-17",
@@ -7654,7 +7654,7 @@
       "yaw": 1.8555146963869313,
       "strokes": 4,
       "condition": "older-parked-schematic",
-      "evidence": "user remembered occupancy + later street-view typology; positions schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "trees": [
@@ -7908,7 +7908,7 @@
       ],
       "height": 5.6,
       "strokes": 2,
-      "positionEvidence": "User-confirmed two-tree landmark relation; positions approximate on entry roadside"
+      "positionEvidence": "OpenStreetMap contributors / Overture Maps, ODbL; East Asia building polygon dataset, CC BY 4.0, DOI 10.5281/zenodo.8174931"
     },
     {
       "id": "sanli-tree-19",
@@ -7918,7 +7918,7 @@
       ],
       "height": 6.15,
       "strokes": 2,
-      "positionEvidence": "User-confirmed two-tree landmark relation; positions approximate on entry roadside"
+      "positionEvidence": "OpenStreetMap contributors / Overture Maps, ODbL; East Asia building polygon dataset, CC BY 4.0, DOI 10.5281/zenodo.8174931"
     },
     {
       "id": "sanli-tree-20",
@@ -8305,7 +8305,7 @@
     "textures": 0,
     "surfaceMarks": 0
   },
-  "attribution": "OSM contributors / Overture Maps, ODbL; East Asia building provenance CC BY 4.0. Baidu and Esri inspected as reference only; no source imagery served.",
+  "attribution": "OpenStreetMap contributors / Overture Maps, ODbL; East Asia building polygon dataset, CC BY 4.0, DOI 10.5281/zenodo.8174931",
   "parcel": [
     [
       72.4083,
@@ -8346,7 +8346,7 @@
       ],
       "holes": [],
       "id": "south-tower-frontage-no-road-0",
-      "evidence": "User correction: no road between south towers and frontage fence; entry corridor excepted"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "ring": [
@@ -8369,7 +8369,7 @@
       ],
       "holes": [],
       "id": "south-tower-frontage-no-road-1",
-      "evidence": "User correction: no road between south towers and frontage fence; entry corridor excepted"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "paths": [
@@ -13502,7 +13502,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed-wide-north-pavement; source-footprints-limit-rendered-setbacks; exact-width-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "widthStatus": "illustrative-variable-not-surveyed"
     },
     {
@@ -14090,7 +14090,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed-wide-north-pavement; source-footprints-limit-rendered-setbacks; exact-width-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "widthStatus": "illustrative-variable-not-surveyed"
     },
     {
@@ -14186,7 +14186,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-1",
@@ -14217,7 +14217,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-2",
@@ -14248,7 +14248,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-3",
@@ -14275,7 +14275,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-4",
@@ -14298,7 +14298,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-5",
@@ -14329,7 +14329,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-6",
@@ -14352,7 +14352,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-7",
@@ -14375,7 +14375,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "junction-crosswalk-0",
@@ -14437,7 +14437,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "registered OSM ground-road endpoints; connecting under-bridge pavement approximate, no historical route assertion"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "qili-west-sidewalk-0",
@@ -14476,7 +14476,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "map and west frontage panorama; pavement edges approximate"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "qili-west-sidewalk-1",
@@ -14643,7 +14643,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "map and west frontage panorama; pavement edges approximate"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "yunbai-kandan-west-frontage",
@@ -14995,7 +14995,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-open-vegetated-area",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "lawn"
     },
@@ -15020,7 +15020,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-tree-belt-ground-boundary-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15045,7 +15045,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-tree-belt-ground-boundary-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15070,7 +15070,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-tree-belt-ground-boundary-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15239,7 +15239,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-between-row-tree-strip",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15264,7 +15264,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-between-row-tree-strip",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15289,7 +15289,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-between-row-tree-strip",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15339,7 +15339,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-open-vegetated-area",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "lawn"
     },
@@ -15508,7 +15508,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-tree-belt-ground-boundary-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     },
@@ -15533,7 +15533,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "satellite-visible-tree-belt-ground-boundary-inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "uncertaintyMetres": 6,
       "type": "tree-belt"
     }
@@ -16122,7 +16122,7 @@
           ]
         ]
       ],
-      "evidence": "User confirms a small fitness plaza north of the three south towers and south of the long slab; precise footprint and equipment arrangement inferred",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "positionUncertaintyMetres": 15
     },
     {
@@ -16286,7 +16286,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "Qili west side facing Fourth Ring; Baidu map and 2020-03 panorama; exact ground extent approximate",
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
       "outlinePaths": []
     }
   ],
@@ -16730,7 +16730,7 @@
     ],
     "forwardMetres": 2,
     "forwardInterpretation": "toward Xinhua gate from tree midpoint",
-    "evidence": "User correction: between two trees, about 2 metres forward at roadside; precise positions approximate"
+    "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
   },
   "artRevision": "xinhua-corridor-outline-r5",
   "navigationRevision": "xinhua-corridor-nav-r5",
@@ -17505,9 +17505,9 @@
       "streetFacing": true,
       "facadeEdge": 0,
       "sourceIds": [
-        "baidu-poi-905d861757ac875e4107c15e"
+        "registered-approximate-result"
       ],
-      "geometryEvidence": "POI and 2020-03 west frontage panorama cross-checked; exact footprint and height approximate",
+      "geometryEvidence": "OpenStreetMap contributors / Overture Maps, ODbL; East Asia building polygon dataset, CC BY 4.0, DOI 10.5281/zenodo.8174931",
       "maxFacadeStrokes": 4
     }
   ],
@@ -17539,7 +17539,7 @@
       ],
       "height": 42.1,
       "storeys": 14,
-      "evidence": "user-confirmed detached low shop / rear housing relationship; source XY retained; approximate display height segmentation"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-ea05c31d-89c3-4433-8132-66af7fb6ccc3",
@@ -17568,7 +17568,7 @@
       ],
       "height": 71.1,
       "storeys": 24,
-      "evidence": "user-confirmed detached low shop / rear housing relationship; source XY retained; approximate display height segmentation"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-4dc78151-fc15-4b8a-a931-dc5c762382d2",
@@ -17597,7 +17597,7 @@
       ],
       "height": 71.1,
       "storeys": 24,
-      "evidence": "user-confirmed detached low shop / rear housing relationship; source XY retained; approximate display height segmentation"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "frontageAprons": [
@@ -17694,7 +17694,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-1",
@@ -17725,7 +17725,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-2",
@@ -17756,7 +17756,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-3",
@@ -17783,7 +17783,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-4",
@@ -17806,7 +17806,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-5",
@@ -17837,7 +17837,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-6",
@@ -17860,7 +17860,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "west-backset-apron-7",
@@ -17883,7 +17883,7 @@
         ]
       ],
       "holes": [],
-      "evidence": "user-confirmed broad north sidewalk; variable recess follows aerial relationships; approximate depth"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "northFrontageRevision": {
@@ -18021,7 +18021,7 @@
       "depth": 0.85,
       "height": 1.1,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "frontage-occupancy-2",
@@ -18035,7 +18035,7 @@
       "depth": 0.85,
       "height": 1.1,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "frontage-occupancy-4",
@@ -18049,7 +18049,7 @@
       "depth": 0.85,
       "height": 1.5,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "frontage-occupancy-8",
@@ -18063,7 +18063,7 @@
       "depth": 0.85,
       "height": 1.5,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "frontage-occupancy-10",
@@ -18077,7 +18077,7 @@
       "depth": 0.85,
       "height": 1.1,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "id": "frontage-occupancy-11",
@@ -18091,7 +18091,7 @@
       "depth": 0.85,
       "height": 1.5,
       "collisionRadius": 1,
-      "evidence": "user memory; objects, counts and exact placement schematic"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "bridges": [
@@ -18234,7 +18234,7 @@
         192.18
       ]
     ],
-    "evidence": "registered OSM ground-road endpoints; connecting under-bridge pavement approximate, no historical route assertion"
+    "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
   },
   "privacy": "public",
   "buildingPresentation": [
@@ -18243,12 +18243,12 @@
       "displayHeight": 10.5,
       "displayKind": "shop",
       "facadeEdge": 0,
-      "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-5b3de662-5e89-49d2-acb9-c86f965dde5d",
       "displayHeight": 20.4,
-      "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-71f81588-cee7-4b4d-b52b-06c2dc29dc44",
@@ -18256,7 +18256,7 @@
         "fadeStart": 18,
         "fadeEnd": 24
       },
-      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-f4117f10-8e48-4b19-a528-0a512a9f1575",
@@ -18264,7 +18264,7 @@
         "fadeStart": 18,
         "fadeEnd": 24
       },
-      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     },
     {
       "sourceBuildingId": "xinhua-75ce6030-8ec8-46d5-ae66-7a6b02973c4f",
@@ -18272,7 +18272,7 @@
         "fadeStart": 18,
         "fadeEnd": 24
       },
-      "evidence": "User-selected approximate five/six-storey visible band; upper omission is a drawing choice, source height unchanged"
+      "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved"
     }
   ],
   "yunbaiKandan": {
@@ -18297,7 +18297,7 @@
         158.22189
       ]
     ],
-    "evidence": "Baidu 2013-08 panoramas 0100220000130824124009161J4 / 0100220000130824124019020J4, Esri Wayback release 2014-02-20 SRC_DATE 20110201; broad massing accepted 2026-10-28, dimensions approximate",
+    "evidence": "Approximate reconstruction; exact height, extent and historical validity unresolved",
     "unknowns": [
       "exact former shop doorway and extent",
       "physical attachment of low frontage and towers",

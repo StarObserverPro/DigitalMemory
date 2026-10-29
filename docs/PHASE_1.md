@@ -1,10 +1,10 @@
 # Phase 1: compact walking-memory network
 
-Status: user-directed scope; geographic registration and historical-address research are not yet complete.
+Status: selected geographic scope; historical registration remains incomplete.
 
 ## Scope decision
 
-Prioritize **新华街**, then connect the relevant portions of **南开西里**, **丰台一小旧址**, and **十二中初中旧址** through the user's actual walked segments. 新华街 receives the highest initial interaction and recollection density because the user identified roughly ten years of repeated walking there. That duration is not an exact calendar range.
+Prioritize **新华街**, with **南开西里**, **丰台一小旧址**, and **十二中初中旧址** as additional project anchors. Only explicitly registered street segments become navigable.
 
 This is a network of routes associated with different periods, not the asserted itinerary `南开西里 → 新华街 → 丰台一小 → 十二中`. Do not invent which entrance, side street, or crossing was used. Do not route with today's shortest-path result and call it the historical walk.
 
@@ -29,14 +29,7 @@ These planning aliases are not geocoded runtime IDs. Contemporary reference geom
 
 Keep the institution separate from a geographic site and from the institution's occupancy of that site. School moves must not relocate old memories.
 
-The [former-primary-school historical-geography record](research/FENGTAI_PRIMARY_OLD_SITE.md), updated 2026-10-29 at baseline `c350fc7`, now uses evidence explicitly describing the pre-1999 campus:
-
-- In-volume search of the 1993 gazetteer, result labelled p.488, places the school at 东安街头条2号, with 第二炮兵宿舍楼 east, 丰台二中 south, and 总后第二休干所 west/north. This establishes dated adjacency; the full scanned page and a registered historical parcel are still missing.
-- Gazetteer pp.12/21 search snippets separately describe 东安街头条 from 丰台路 to 西仓库, about 500 m long and 16–18 m overall width. These are main-street dimensions, not school-lane dimensions.
-- The 2006 6号 listing remains a later conflict, below the 1993 2号 evidence for this task. Later relocation plans, current addresses and 2011 imagery do not establish the pre-1999 entrance.
-- Gate position/orientation, access-lane alignment and neighboring factory remain unlocated. Both historic-school runtime records remain unchanged and unresolved.
-- The newer 十二中 junior campus opposite 南开西里 is not the campus relevant to these junior-school recollections; this remains a user-supplied scope constraint.
-- The senior-school site at 丰益桥 belongs to a later, different interaction corridor.
+The [historical-site conclusions](research/FENGTAI_PRIMARY_OLD_SITE.md) retain the former primary-school address and broad relative location. Both historical school boundaries and entrances remain unresolved. Current campuses do not substitute for those identities.
 
 Resolve the historical institution/site and the supported street-facing entrance or uncertain range before activating a school attachment. Exact rear campus extent is only needed if the selected representation uses it; it is not a prerequisite for a gate/note. Current school-name search is insufficient, and no exact address is invented.
 
@@ -67,7 +60,7 @@ The hospitals and other complex institutions discussed as interaction examples a
 
 Initial validation should use one bounded Xinhua route with a gate/note, a synthetic image sequence and a small local-scene return path. Include one editable wall/railing/frontage segment and a synthetic same-site sequence with uncertain dates. This is a suggested future acceptance fixture, not authorization to construct it now.
 
-Calendar windows remain approximate. The repository's historical-source ledger separately records a queried 2011-02-01 capture for partial Wayback coverage and broad 2000/2001 previews; it does not establish a complete 2000, 2005 or 2010 satellite base. Read [the source survey](research/XINHUA_BUILDING_SURVEY.md) for the actual evidence rather than turning a planning year into a capture date.
+Calendar windows remain approximate. No complete historical satellite base is established by the selected data.
 
 ## Bounded implementation sequence — not activated work
 

@@ -1,12 +1,12 @@
 # Repository status
 
+## Public content boundary — 2026-10-29
+
+Geographic pages and metadata contain permitted conclusions and uncertainty only. Investigation records and acquisition automation are excluded. Existing production geometry, height values, navigation and selected art are preserved. Ordinary commits do not purge historical copies.
+
 ## Paper-plane destination passage — 2026-10-29
 
 The travel presentation sample uses one outlined plane, a short broken ink arc and a diagonal warm-paper cover/reveal. Landing remains registered and commits under fully opaque paper. The passage is about 1.57 seconds, or a short static fade under reduced motion; the ordinary journal entry stays separate. No scene geometry, place registration, historical copy or production deployment changes are included. Actual checks, review status and remaining evidence belong in [the presentation packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md).
-
-## Former primary-school historical geography — 2026-10-29
-
-The [research record](research/FENGTAI_PRIMARY_OLD_SITE.md) now contains read pre-1999 documentary evidence: normal Google Books in-volume search of the 1993 gazetteer exposes p.488's 东安街头条2号 address and east/south/west-north adjacent units, placing the former school north of the then 丰台二中. Results labelled pp.12/21 give the separate main-street endpoints and dimensions. Access is to original-book search snippets, not complete scanned pages. The 2006 6号 listing is a later conflict; post-1999 site conditions and 2011 imagery are excluded from this entrance investigation. Two 1988 CIA map sheets were visually inspected but yielded no identified school gate. Parcel registration, gate/orientation, lane alignment and factory identity remain unresolved; both school registry records are unchanged. The [research packet](attention/tasks/DM-PRIMARY-HISTORY-20261029.md) records the scoped follow-up and validation.
 
 ## Direct crossings and destination travel — 2026-10-29
 
@@ -48,7 +48,7 @@ The resource-management work starts from main `928528b36596bbc4ac64b8d34638c1dae
 | Xinhua street entry | `outline-stage.js` loads `scenes/xinhua-sanli-outline/`, currently `xinhua-corridor-outline-r5` with `xinhua-corridor-integrated-r2` registration. The roughly 875 m corridor includes the preserved Sanli/junction, western Qili frontage and eastern Xinhua. |
 | Selected close-view presentation | Continuous outline person, sparse retracting motion, perspective camera, collapsible north-up minimap, compass, irregular navigation UI and local ZCOOL KuaiLe. |
 | State and sources | Application session owns local position/path/camera and return context; spatial/time owners retain registration and explicit working-composite membership. Source bytes and revisions are pinned. |
-| Geographic limits | Named Daoxiangcun frontage was checked against its public map POI and dated west-frontage panorama. Shop/forecourt extents and bridge heights remain estimates; working-composite period membership is not historical-year certification. |
+| Geographic limits | Daoxiangcun occupies the west-facing frontage. Shop/forecourt extents and bridge heights remain estimates; working-composite period membership is not historical-year certification. |
 | Retained legacy modules | GLB student, schoolwear palettes and graybox/courtyard fixtures remain source/evidence, not the selected Xinhua consumer. Their older smoke and unresolved donor-rights/appearance issues retain that scope. |
 | General target gaps | No complete route-attachment dispatcher, note/sequence authoring, private archive or World Labs-generated environment is claimed. |
 
@@ -87,7 +87,6 @@ All dated entries below describe their own revision. This checkpoint predates th
 
 - **Student at that checkpoint**: [PR #22](https://github.com/StarObserverPro/DigitalMemory/pull/22) merged a male skinned GLB on 2026-10-23 (red junior/blue high-school uniforms, KayKit idle/walk). `src/explorer/schoolboy.js` normalizes it to **1.4 presentation units** with `headBoneScale=0.48`. On 2026-10-26 the user chose to **use it as-is** despite its stocky appearance. The old **2× apparent-size** result in [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) was a synthetic placeholder comparison, not a live GLB multiplier or mandatory future task. Chromium WebGL smoke was completed; detailed gait/foot planting and final aesthetics were not approved. The donor geometry still lacks explicit independent licensing proof; see [avatar source notes](../assets/characters/schoolboy/README.md).
 - **Marble 2 / World Labs**: [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) consolidates the proposed local Codex setup and camera/geometry constraints. **No World Labs generation, upload, export, installed runtime adapter or produced scene.** Local CLI/auth/account capabilities are not verified at this checkpoint.
-- **桥南／桥北 history**: [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) holds public evidence, naming and chronology uncertainties only. No new bridge geometry registration, map drawing or private-memory material was added.
 - **Product / map**: [PR #21](https://github.com/StarObserverPro/DigitalMemory/pull/21) merged the area → street/route → roadside attachment documentation contract, not a complete running dispatcher or authoring backend. The existing Xinhua R6 map and 161 selected masses were untouched.
 - **Concept then parked**: the Keith Haring-inspired sparse box/line idea had no selected implementation at that checkpoint. The accepted 2026-10-27 outline scene above subsequently resolved it for the close view.
 - **Agent then**: the task index had `"active": []`; the documentation integration did not activate generation, private publication or deployment. Consult current routing for later authorized work.
@@ -117,7 +116,7 @@ Original imagegen wax/pencil materials are composed onto those geographic masses
 
 ## Sanli licensed footprint benchmark — DM-0017
 
-The source acquisition was merged through PR 15, and the later DM-0018 production spatial plan uses the related Overture geographic evidence. This is **data acquisition**, not commercial 3D reconstruction or individual-building address verification. The [source lineage](GEO_DATA_LINEAGE.md) and [repeatable QA runbook](GEO_DATA_RUNBOOK.md) explain the actual data chain, CLI invocation, source hashes, geodetic conversion, limitations and promotion gates.
+The retained geographic dataset supplies contemporary footprints with unknown historical validity and no native heights. The [geographic result contract](GEO_DATA_LINEAGE.md) defines permitted data and attribution.
 
 The bounded 2026-10-19 Sanli snapshot contains 249 retained polygons, including 34 objects with more than 80% of their area within the registered estate (14 over 300 m²). The dataset contains zero source-provided building heights/storey counts and zero building-part features here. Four named OSM roads and four nearby (outside-Sanli) centreline-proximity flags are retained. These counts do not establish actual apartment-building identities, surveyed heights or historical conditions. The later R6 review separately selects 161 masses across 11 Xinhua groups and records inferred Z evidence; see DM-0018 above. The original acquisition had no independent deployment.
 
@@ -126,8 +125,6 @@ The bounded 2026-10-19 Sanli snapshot contains 249 retained polygons, including 
 The requested corridor now uses eleven selected compound/large-parcel raster paintings: nine residential units (Wuli east/west separate), heating plant and the background 丰台一中 campus. Sanli retains five tall blocks and five lower slabs; the east keeps earlier low fabric up to Zaojia Street. Three short southern shop groups are detached from residential buildings, including the retained frontage opposite Sanli. Building counts and minor footprints are a contextual reconstruction, not an exact historical inventory.
 
 Sixteen production rasters replace the current overview's visible SVG buildings, vegetation, yard decoration and road/ground artwork. SVG supplies only invisible masks and ordinary labels. The overview's legacy vector rendering branch is removed, including missing-image/configuration fallback. One north-up cartographic-oblique projection, scalar frame registration and coherent compound calibration preserve tower proportions and road clearance. Sanli was rebuilt after the user rejected the count-based arrangement: three cream/red-cap towers across the southern row, two white/green flat-top towers at the northern corners, five differently oriented/length slabs and an open shared court. The three stable source feature IDs now link to detailed painted footprints; their obsolete rectangular glyph reservations are retired, with an executable polygon/road clearance check retained. Ground art and raised bodies render separately in depth order. Geographic place identity, walking route, street scene and personal-school anchors are unchanged.
-
-Forty-six automated tests and the build pass. A refreshed map-font subset covers every new compound label. Native actual-consumer rendering is recorded in [DM-0016](attention/tasks/DM-0016.md). Native views cover three tiers, two closer subareas and a phone budget; these are not browser screenshots or a gesture walkthrough. Partial Wayback imagery has a queried 2011-02-01 capture date; it is not a complete old satellite base. Raw references, rejected generations, guides, examples and QA images are excluded from the outgoing Git history. Only selected product rasters and concise provenance are added. User aesthetic/historical approval and merge/deployment remain separate and pending.
 
 ## Art specification and prior verdict — DM-0015
 
@@ -159,7 +156,7 @@ The latest target is captured in [MAP_ASSEMBLY](MAP_ASSEMBLY.md): three overview
 
 Implemented: a pure map assembly planner and local insertion/revision command, explicit accepted-period resolver, independent road-band profiles, conservative road/feature reservations and context exclusions, loaded-asset filtering, deterministic label selection and a synthetic fixture. See DM-0007 for tested revision and review status.
 
-Not implemented by this foundation: real Fengtai underpass registration, polygon/alpha compositing, production art, compound child rendering, overview/session/street wiring, durable memory writes or a new deployment. Amap/Baidu street-view verification of the tall wall remains unavailable in this attempt. The accepted general drawing direction is not approval of previous cutout defects or invented site layouts.
+Not implemented by this foundation: real Fengtai underpass registration, polygon/alpha compositing, production art, compound child rendering, overview/session/street wiring, durable memory writes or a new deployment. The tall wall has no registered measured profile. The accepted general drawing direction is not approval of previous cutout defects or invented site layouts.
 
 ## Previous correction — DM-0005
 

@@ -5,72 +5,7 @@
   "crs": "EPSG:4326",
   "projectionId": "north-up-orthographic-rise-r1",
   "sourceNotice": "Source footprints/roofprints and practical height estimates are separate. No source-native heights were available. Contemporary references orient a memory composite; building dates and individual storey counts remain uncertain.",
-  "sources": [
-    {
-      "id": "overture-2026-09-23.1",
-      "path": "xinhua-open-geometry.geojson",
-      "license": "ODbL-1.0",
-      "sourceFeatureCount": 774,
-      "nativeHeightCount": 0
-    },
-    {
-      "id": "school-boundary",
-      "url": "https://www.openstreetmap.org/way/961273731",
-      "version": 3,
-      "retrieved": "2026-10-19",
-      "license": "ODbL-1.0"
-    },
-    {
-      "id": "reference-overhead-2026",
-      "provider": "Esri World Imagery",
-      "accessed": "2026-10-19",
-      "captureDate": null,
-      "role": "visual registration reference; imagery not redistributed"
-    },
-    {
-      "id": "bali-5i5j-23",
-      "urls": [
-        "https://bj.5i5j.com/sold/505080063.html",
-        "https://bj.5i5j.com/sold/504402413.html"
-      ],
-      "reportedStoreys": 23,
-      "role": "compound height family; individual IDs not resolved"
-    },
-    {
-      "id": "wuli-east-5i5j",
-      "url": "https://bj.5i5j.com/ershoufang/428917/",
-      "reportedStoreys": [
-        10,
-        14
-      ],
-      "role": "height family; assignment to each curved body is approximate"
-    },
-    {
-      "id": "xinhua-building-survey",
-      "path": "../../docs/research/XINHUA_BUILDING_SURVEY.md"
-    },
-    {
-      "id": "reported-sanli-front-family",
-      "role": "reported 23-storey tower family, no personal building association"
-    },
-    {
-      "id": "reference-ground-views",
-      "role": "non-published photo/3D reference for relative height and mass; no private images bundled"
-    },
-    {
-      "id": "baidu-junction-public-views",
-      "provider": "Baidu Maps panorama",
-      "panoramaIds": [
-        "0100220000130823140055500J4",
-        "09002200121902241411299332Q"
-      ],
-      "captureMonths": [
-        "2013-08",
-        "2019-02"
-      ],
-      "role": "Public junction appearance reference only; images not redistributed. Does not date-confirm the approximately 2000-era memory composite."
-    }
-  ],
+  "sources": [{"id": "permitted-spatial-data", "license": "ODbL; East Asia upstream CC BY 4.0", "attribution": "OpenStreetMap contributors; Overture Maps; East Asia building polygon dataset, DOI 10.5281/zenodo.8174931"}],
   "compounds": [
     {
       "id": "qili",
@@ -1890,10 +1825,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -1944,7 +1876,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -1996,7 +1928,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -2048,7 +1980,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -2099,10 +2031,7 @@
           13,
           15
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2152,10 +2081,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2205,10 +2131,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2258,10 +2181,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2311,10 +2231,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2365,7 +2282,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -2417,7 +2334,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -2469,7 +2386,7 @@
           27
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -2528,10 +2445,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2581,10 +2495,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2634,10 +2545,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2687,10 +2595,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2752,10 +2657,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2805,10 +2707,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2858,10 +2757,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2911,10 +2807,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -2976,10 +2869,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3029,10 +2919,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3090,10 +2977,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3151,10 +3035,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3293,7 +3174,7 @@
           24
         ],
         "sources": [
-          "bali-5i5j-23"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -3433,7 +3314,7 @@
           24
         ],
         "sources": [
-          "bali-5i5j-23"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -3484,10 +3365,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3549,10 +3427,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3698,10 +3573,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3751,10 +3623,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3804,10 +3673,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3857,10 +3723,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -3918,10 +3781,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4059,10 +3919,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4120,10 +3977,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4181,10 +4035,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4250,10 +4101,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4303,10 +4151,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4356,10 +4201,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4409,10 +4251,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4478,10 +4317,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4531,10 +4367,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4584,10 +4417,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4653,10 +4483,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -4903,7 +4730,7 @@
           29
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -4954,10 +4781,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -5007,10 +4831,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -5314,10 +5135,7 @@
           8,
           10
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -5367,10 +5185,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -5420,10 +5235,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -5564,7 +5376,7 @@
           24
         ],
         "sources": [
-          "reported-sanli-front-family"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -5810,7 +5622,7 @@
           29
         ],
         "sources": [
-          "xinhua-building-survey"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -5957,10 +5769,7 @@
           8,
           10
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6010,10 +5819,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6136,7 +5942,7 @@
           24
         ],
         "sources": [
-          "reported-sanli-front-family"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -6187,10 +5993,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6313,7 +6116,7 @@
           24
         ],
         "sources": [
-          "reported-sanli-front-family"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -6380,10 +6183,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6441,10 +6241,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6494,10 +6291,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       },
       "facadeTreatment": "restaurant-frontage",
@@ -6554,10 +6348,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6607,10 +6398,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6660,10 +6448,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6713,10 +6498,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6766,10 +6548,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6831,10 +6610,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -6885,7 +6661,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -6937,7 +6713,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -6989,7 +6765,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7041,7 +6817,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7093,7 +6869,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7149,7 +6925,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7201,7 +6977,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7252,10 +7028,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -7306,7 +7079,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7358,7 +7131,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7410,7 +7183,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7462,7 +7235,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7514,7 +7287,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7582,7 +7355,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7633,10 +7406,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -7687,7 +7457,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7739,7 +7509,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7807,7 +7577,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7859,7 +7629,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7911,7 +7681,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -7963,7 +7733,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8015,7 +7785,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8127,7 +7897,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8179,7 +7949,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8231,7 +8001,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8283,7 +8053,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8335,7 +8105,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8387,7 +8157,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8439,7 +8209,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8491,7 +8261,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8543,7 +8313,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8595,7 +8365,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8647,7 +8417,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8699,7 +8469,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8751,7 +8521,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8803,7 +8573,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8855,7 +8625,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8907,7 +8677,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -8959,7 +8729,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9011,7 +8781,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9063,7 +8833,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9115,7 +8885,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9167,7 +8937,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9219,7 +8989,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9279,7 +9049,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9331,7 +9101,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9383,7 +9153,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9435,7 +9205,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9487,7 +9257,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9595,7 +9365,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9647,7 +9417,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9699,7 +9469,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9751,7 +9521,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9803,7 +9573,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9867,7 +9637,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -9918,10 +9688,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -9971,10 +9738,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10024,10 +9788,7 @@
           5,
           7
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10085,10 +9846,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10138,10 +9896,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10191,10 +9946,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10245,7 +9997,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10304,10 +10056,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10358,7 +10107,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10410,7 +10159,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10462,7 +10211,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10514,7 +10263,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10566,7 +10315,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10618,7 +10367,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10669,10 +10418,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10723,7 +10469,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10791,7 +10537,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10867,7 +10613,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -10918,10 +10664,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -10972,7 +10715,7 @@
           3
         ],
         "sources": [
-          "reference-overhead-2026"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }
@@ -11031,10 +10774,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11084,10 +10824,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       },
       "facadeTreatment": "sparse-service-windows",
@@ -11144,10 +10881,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11197,10 +10931,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11250,10 +10981,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11347,10 +11075,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11400,10 +11125,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11461,10 +11183,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11514,10 +11233,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11567,10 +11283,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11636,10 +11349,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11697,10 +11407,7 @@
           2,
           4
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11782,10 +11489,7 @@
           3,
           5
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11835,10 +11539,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11888,10 +11589,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11941,10 +11639,7 @@
           1,
           3
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -11994,10 +11689,7 @@
           1,
           2
         ],
-        "sources": [
-          "reference-overhead-2026",
-          "reference-ground-views"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       }
     },
@@ -12082,10 +11774,7 @@
           12,
           16
         ],
-        "sources": [
-          "wuli-east-5i5j",
-          "reference-overhead-2026"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       },
       "facadeTreatment": "cream-red-retail",
@@ -12197,10 +11886,7 @@
           8,
           12
         ],
-        "sources": [
-          "wuli-east-5i5j",
-          "reference-overhead-2026"
-        ],
+        "sources": ["approximate-height-result"],
         "individualStoreyCountVerified": false
       },
       "facadeTreatment": "cream-red-retail",
@@ -12257,7 +11943,7 @@
           2
         ],
         "sources": [
-          "user-retained-frontage"
+          "approximate-height-result"
         ],
         "individualStoreyCountVerified": false
       }

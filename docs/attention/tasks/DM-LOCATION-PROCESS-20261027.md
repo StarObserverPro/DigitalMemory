@@ -1,7 +1,5 @@
-# 具名地点定位流程补充
+# Geographic result rules
 
-用户要求记住流程性问题并补充文档。范围仅为流程文档与授权的记忆更新，基于main 67baf01065f15f9d83a6b4d2903667197582e61b；无运行时改动。
+Status: delivered; inactive.
 
-已补充GEO_DATA_RUNBOOK的定位顺序/证据/纠错规则，轮廓制作流程的结构表达与报告要求，VERIFICATION的地理与工程验收分离，并在AGENTS加入入口。只记录可复用教训，不记录私人经历或纠错流水账。
-
-验收：检查相对文档链接、关键规则覆盖及diff空白；不运行无关应用测试。用户进一步授权本次合并，并授权以后明确要求的文档修正直接完成修改、检查、PR及main合并。持续授权已写入AGENTS与主文档索引。文档修订和本地验收完成；远端合并结果以关联PR记录为准，活动路由为空。
+The [geographic rules](../../GEO_DATA_RUNBOOK.md) and [verification](../../VERIFICATION.md) separate geographic conclusions from engineering acceptance. The absolute publication boundary supersedes older process-record requirements. Documentation-only correction authority remains in AGENTS.

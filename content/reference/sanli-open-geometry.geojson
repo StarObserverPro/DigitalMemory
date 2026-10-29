@@ -12,15 +12,10 @@
     "source": {
       "provider": "Overture Maps",
       "release": "latest-STAC-as-of-2026-10-19",
-      "retrievedUTC": "2026-10-19T08:11:53+00:00",
+
       "license": "ODbL-1.0",
       "attribution": "© OpenStreetMap contributors, Overture Maps Foundation, and source contributors",
-      "url": "https://docs.overturemaps.org/guides/buildings/",
-      "downloadSha256": {
-        "building": "e1ca39a7ce25ce2c05a400f580e4dc15af5d6c9a98992d405dce6538fb095aae",
-        "building_part": "b282fe0a1b482f0f5cfe8e199a8f84ad3b03117f83f1369a7a2ed021e7473d15"
-      }
-    },
+      "url": "https://docs.overturemaps.org/guides/buildings/"},
     "usage": "geographic QA reference only; NOT historically validated 3D or approved map geometry",
     "caution": "Some outlines are roofprints rather than ground footprints; absent height/floors never inferred."
   },

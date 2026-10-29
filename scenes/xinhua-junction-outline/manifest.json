@@ -10,9 +10,9 @@
   "historicalAcceptance": false,
   "sourceHashes": {
     "sources/entrance-roads-osm.xml": "b249f11f78a2af07be6099e04b2fcf723910834b029420cf65ccb35e07569d19",
-    "sources/ENTRANCES.md": "d6b1ca2b057d3e1ee2384fdda4a45a097843cccc17e7d29de7c3a51980bb06f3",
-    "sources/orientation.json": "6e6c0270965530aef460c824df23a027db1429cb7795b7976786163c33259840",
-    "sources/xinhua-spatial-plan.json": "7700fae51f41872268f9e4a492640ebc71931301d340153769a0b8e8423d9a4f"
+    "sources/ENTRANCES.md": "d1a0a1766fbad38b83a9e2e048c9f14852d8d8bf2034100340ae6ed3692ec0bc",
+    "sources/orientation.json": "d3896719bcd1a9a4e423e6bb9de649b84a28ec31e28b7376f1d804988df69150",
+    "sources/xinhua-spatial-plan.json": "37d1075f27cf117d8ac2bb5a1df38c8175b6b188f5fe4e8c4fbede8ec4fe3d00"
   },
   "runtimeHashes": {
     "index.html": "c748465292dbb4b20eb23a368c489b3d802b851340cd30a4fa6f4c4e5d0cd666",

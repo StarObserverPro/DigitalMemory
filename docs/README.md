@@ -2,7 +2,7 @@
 
 **Current routing, 2026-10-27:** The supported Xinhua entry uses the selected Sanli outline scene and corridor extension, merged through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25). The continuous outline person, restrained motion and navigation UI are the active close-view treatment. Overview raster art remains separate; the retained GLB student, 2× study and graybox camera are historical/legacy references. Read [STATUS](STATUS.md) for exact implementation and evidence, [RUNTIME](RUNTIME.md) for current lifecycle and known gaps.
 
-The area → route → attachment target was integrated on 2026-10-19. This page routes readers to existing owners; it is not a second schema or evidence that every target contract has been implemented. Marble 2 remains a future handoff with no actual generation, and bridge research retains its public-source boundaries.
+The [absolute geographic publication boundary](CONTENT_PIPELINE.md#地理资料的绝对公开边界) applies to all repository surfaces. Only conclusions and uncertainty may be published; investigation records are excluded.
 
 ## Read by question, not by historical task number
 
@@ -12,13 +12,13 @@ The area → route → attachment target was integrated on 2026-10-19. This page
 | What can be entered from each view? | [INTERACTION](INTERACTION.md) | [ILLUSTRATION_MAPPING](ILLUSTRATION_MAPPING.md) owns overview/street correspondence. |
 | Who resolves location, interaction and scene loading? | [ARCHITECTURE](ARCHITECTURE.md) | [RUNTIME](RUNTIME.md) reports the implementation seams. |
 | Which street/person is active vs the retained GLB and older 2× test? | [STREET_PROTOTYPE](STREET_PROTOTYPE.md) | [STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md) is historical visual evidence. |
+| Which historical school-site conclusions are available? | [Site conclusions](research/FENGTAI_PRIMARY_OLD_SITE.md) | Historical boundaries and entrances remain unresolved; [PHASE_1](PHASE_1.md) owns scope. |
 | What is the World Labs/Marble 2 status? | [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) | Future handoff only; no generated environment. |
-| Where is the 1990s former primary-school site, and which entrances remain unlocated? | [Former-primary-school research](research/FENGTAI_PRIMARY_OLD_SITE.md) | [PHASE_1](PHASE_1.md) owns scope; 1993 gazetteer snippets support the old address/adjacency; later imagery is archived separately, and gate/lane/factory remain unresolved. |
-| What public sources describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
+| Which geographic conclusions describe Fengtai bridges? | [FENGTAI_BRIDGES_ZHENGYANG](research/FENGTAI_BRIDGES_ZHENGYANG.md) | [FENGTAI_UNDERPASS](research/FENGTAI_UNDERPASS.md) owns profile detail. |
 | How do routes, attachments, images and repeated changes retain identity? | [DATA_MODEL](DATA_MODEL.md) | [LAYER_COMPOSITION](LAYER_COMPOSITION.md) owns street-edge assembly. |
 | What is drawn, omitted, symbolized or walkable? | [MAP_ASSEMBLY](MAP_ASSEMBLY.md) | [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md) owns the medium, projection and final-size checks. |
-| What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) preserve source provenance; [ASSET_WORKFLOW_VALIDATION](ASSET_WORKFLOW_VALIDATION.md) retains superseded trial measurements. |
-| Which source plan, overview recovery and older studies matter? | [Xinhua spatial pipeline](research/XINHUA_SPATIAL_PIPELINE.md), [Xinhua building survey](research/XINHUA_BUILDING_SURVEY.md) | The pipeline owns selected R7 recovery and historical R6 assembly. [LOCAL_VISUAL_REFERENCES](LOCAL_VISUAL_REFERENCES.md) and `research/xinhua-image-observations.json` retain dated observations, not current placement instructions. |
+| What must be researched or generated for one accepted representation? | [ASSET_PIPELINE](ASSET_PIPELINE.md) | [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md), [GEO_DATA_RUNBOOK](GEO_DATA_RUNBOOK.md) define permitted spatial results; [ASSET_WORKFLOW_VALIDATION](ASSET_WORKFLOW_VALIDATION.md) retains superseded trial measurements. |
+| Which source plan, overview recovery and older studies matter? | [Xinhua spatial pipeline](research/XINHUA_SPATIAL_PIPELINE.md), [Xinhua building survey](research/XINHUA_BUILDING_SURVEY.md) | The pipeline owns selected R7 recovery and historical R6 assembly. [LOCAL_VISUAL_REFERENCES](LOCAL_VISUAL_REFERENCES.md) retains generic drawing constraints only. |
 | How do we reuse the accepted Xinhua close-street outline process? | [Xinhua outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) | [Selected runnable scene](../scenes/xinhua-junction-outline/README.md); [Integrated Sanli close view](../scenes/xinhua-sanli-outline/README.md), reached through the main street entry; overview raster art remains unchanged. |
 | How do new observations become notes, sequences and environment revisions? | [CONTENT_PIPELINE](CONTENT_PIPELINE.md) | Original/private material stays outside public Git. |
 | What is accepted, tested, merged or released? | [VERIFICATION](VERIFICATION.md), [STATUS](STATUS.md) | Task packets identify exact observations, not new requirements. |
@@ -45,9 +45,9 @@ A stable location supports successive observations and alternative environment s
 
 PRODUCT, PHASE_1, ARCHITECTURE, DATA_MODEL, INTERACTION and the production contracts describe required behavior. RUNTIME and STATUS identify the implemented subset and the selected consumer. A requirement for a note/sequence/local-scene dispatcher, editable frontage intervals or a private archive does not establish that those capabilities exist.
 
-STREET_VISUAL_CALIBRATION, ASSET_WORKFLOW_VALIDATION, LOCAL_VISUAL_REFERENCES and dated sections in STATUS retain their original fixtures and verdicts. World Labs camera/CLI guidance retains its checked date and must be revalidated before any future authorized submission. Public geographic research retains its source dates, approximate dimensions and unresolved identities. Do not silently convert an older trial's counts, camera, completion state or permission into the present contract.
+STREET_VISUAL_CALIBRATION, ASSET_WORKFLOW_VALIDATION, LOCAL_VISUAL_REFERENCES and dated sections in STATUS retain their original fixtures and verdicts. World Labs camera/CLI guidance retains its checked date and must be revalidated before any future authorized submission. Geographic pages retain only permitted conclusions and uncertainty. Do not silently convert an older trial's counts, camera, completion state or permission into the present contract.
 
-Task packets preserve exact scope, source base, observations and handoff. Only [current.json](attention/current.json) identifies actively executing work; an old “next action” is not an autonomous task. Reading and reconciling documentation does not change source geometry, content approval or deployment state.
+Engineering task packets preserve exact scope, implementation base, checks and handoff. Geographic investigation is excluded from packets. Only [current.json](attention/current.json) identifies actively executing work; an old “next action” is not an autonomous task. Reading and reconciling documentation does not change source geometry, content approval or deployment state.
 
 ## Construction and PR sequence
 

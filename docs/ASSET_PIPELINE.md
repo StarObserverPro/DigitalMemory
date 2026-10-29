@@ -20,7 +20,7 @@ Maintain a **registration package** and a **presentation package**. The first co
 
 The historical map/satellite layer is a workbench reference, not the default viewer surface. The illustrative surface may simplify detail while preserving the relationships that make the walking route recognizable. Do not mistake a visually seamless image for a geographically registered map.
 
-> For Xinhua/Sanli, **source coordinates precede painting**. Read the [measured geographic source chain](GEO_DATA_LINEAGE.md) and [acquisition/QA runbook](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
+> For Xinhua/Sanli, **source coordinates precede painting**. Read the [geographic result contract](GEO_DATA_LINEAGE.md) and [result-publication rules](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
 
 ### Destination travel paper plane — 2026-10-29
 
@@ -41,11 +41,11 @@ First identify the route attachment and its memory role; then select overview/st
 
 Research remains necessary for an actual claim being made. Stop deep rear-layout/year research when it cannot change the chosen representation, route relationship or meaning. Modern source data may remain reference-only. A correct source date does not date the user's recollection. Material/type completion is reconstruction and never becomes a new source.
 
-Do not promote a sequence to a scene simply because many images can be generated. Likewise, do not require exact campus extent before placing a supported gate at its street-facing anchor. Existing source provenance, coordinate conversion and permission requirements still apply to every data source actually used.
+Do not promote a sequence to a scene simply because many images can be generated. Likewise, do not require exact campus extent before placing a supported gate at its street-facing anchor. Existing minimal licence attribution and result uncertainty, coordinate conversion and permission requirements still apply to every data source actually used.
 
 ## Reference intake
 
-Record source identity, actual capture/publication date or range, coverage, resolution where known, original coordinate system, processing history, access conditions, and reuse/publication status. A catalog listing is not a downloaded source; a satellite's nominal capability is not proof of Phase 1 coverage.
+Record source identity, actual capture/publication date or range, coverage, resolution where known, original coordinate system, permitted coordinate transform, access conditions, and reuse/publication status. A catalog listing is not a downloaded source; a satellite's nominal capability is not proof of Phase 1 coverage.
 
 Research around 2000–2005 first. Candidate 1990/1995/2000/2005/2010 buckets are search windows, not required exact acquisition dates. Prior conversational leads are unverified leads until a task inspects the actual source and records its coverage. Public display, derived art use, and private reference use may need different treatment; record the decision rather than assuming all online images are unrestricted.
 
