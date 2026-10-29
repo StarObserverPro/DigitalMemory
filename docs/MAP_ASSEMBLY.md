@@ -1,4 +1,26 @@
-# A layered map that can be completed one memory at a time
+# Map geography and visual assembly
+
+<a id="map-geography-scope"></a>
+
+## 地图地理层：scope 与纪律
+
+本层维护“地点是什么、空间关系是什么、适用于什么时期及有多确定”。它向 UI、视觉引擎和记忆挂载提供同一套登记结果；四层分工见 [ARCHITECTURE](ARCHITECTURE.md#layer-scopes)。本页同时规定这些结果如何用于地图构图，下面的画面组成层不增加新的数据所有者。
+
+| 边界 | 所有权与交付 |
+| --- | --- |
+| 输入 | 允许公开的地点身份、空间关系、几何、高度、有效时期及确定程度；地理调查过程不进入仓库。 |
+| 权威记录 | 稳定 place/node/edge ID、几何修订、坐标基准与单位、注册 frame、道路分层与连接关系；时间资料保留适用范围，由 temporal resolver 选择当前环境。 |
+| 输出 | 同版本的注册位置、坐标转换、路段与入口关系，以及供绘制、导航、目的地落点和记忆挂载使用的空间约束。 |
+| 表达派生 | 绘图锚点、显示高度、开放上部轮廓、裁剪、遮挡、标签包围盒和细节档位各自记录。它们引用源记录，不反写原始 footprint、高度、身份或年代。 |
+| 改动单位 | 明确的地点、路段、建筑或注册 frame 修订，以及实际受影响的消费者；地图分块、菜单分组和美术包不能成为地点身份。 |
+
+**修改纪律：**源几何与显示几何分别维护。缩小图标、略去高楼上部、改变显示高度或淘汰离屏资源，都不移动建筑占地、门口或记忆锚点。UI 不从标签位置反算地理坐标；渲染器不为避免画面重叠而移动登记对象；记忆文字不自动补出入口、年代或路线。未知位置保持未注册，近似值保留近似标记。
+
+**通行边界：**道路的真实分层与连接由空间记录表达，读者如何移动由已批准的交互规则决定。当前新华街近景允许在无障碍地面直接横穿；导航仍检查建筑原始占地、墙、围栏等障碍。该规则不把道路改成新的历史步行路线，也不解除桥梁层级或其他场景的边界。具名目的地只把读者送到已支持的街景地面；名称、菜单分组或到达事件都不自动创建或打开记忆。
+
+**跨层同步：**改动 ID、footprint、frame、路段连接、入口位置或时期成员前，在任务/PR 列出受影响的注册与哈希、总览命中、街景导航、目的地落点、既有内容锚点和选定素材。只更新依赖该修订的局部对象；若变化影响共享 frame，则明确完整影响范围。通用 `RouteAttachment` 的重新映射仍属目标契约，不能把未实现的迁移写成已有自动化。改动分类与同步责任见 [跨层变更表](ARCHITECTURE.md#cross-layer-changes)。
+
+**验收：**检查身份不漂移、转换可往返、总览与近景落在同一注册位置、时期选择不借用未支持的状态，并对受影响的命中、导航、直达落点和已有挂载逐项验证。纯视觉改动应能证明源几何与锚点未变；纯地理改动应说明哪些派生结果已重新验证。实际画面和交互检查遵循 [VERIFICATION](VERIFICATION.md)，工程通过只证明实现符合已给定结果。
 
 > DM-0015: [hand-painted map art](HANDPAINTED_MAP_ART.md) is the current medium/projection/height-identity contract. SVG defines planning geometry, never visible map artwork. The r4 vector fallback and procedural yard decorations below describe a superseded implementation, not accepted art. Isometric studies must share their ground/roof/vertical axes; do not paste a new-camera building onto the old north-up ground or distort it to fit.
 
@@ -12,9 +34,11 @@ Registered R7 objects also carry conservative rectangles covering the union of a
 
 Sili's narrow north/south group uses a vertical 四里 label at the same readable type size, keeping the name inside its group in an ordinary narrow app panel.
 
-## Current experience contract — 2026-10-19
+<a id="current-experience-contract--2026-10-19"></a>
 
-The normal interaction hierarchy is overview area → registered route/street → roadside attachment. Overview gates, hospital signs and compound silhouettes are orientation representations; visible does not mean directly enterable. Route attachments resolve note, static sequence or local scene only after street entry. [INTERACTION](INTERACTION.md) and [DATA_MODEL](DATA_MODEL.md) own the details.
+## Current experience contract — 2026-10-29
+
+The normal interaction hierarchy is overview area → registered route/street → roadside attachment. Overview gates, hospital signs and compound silhouettes are orientation representations; visible does not mean directly enterable. The registered destination picker can also reach supported street ground directly. Note, static sequence and local-scene activation share the route-attachment target contract; its general dispatcher remains unimplemented. [INTERACTION](INTERACTION.md) and [DATA_MODEL](DATA_MODEL.md) own the details and implemented subset.
 
 The acquired source plan remains available, but not every source footprint must be painted. Select depiction by observed street interface, familiarity and memory purpose independently of geometric confidence. Large unfamiliar compounds may be represented by a recognizable gate and sparse compatible masses, or omitted at town scale. Unknown interior extent is not a reason to invent a precise closed boundary.
 
@@ -26,7 +50,7 @@ Preserve the source geometry and building orientations in the selected spatial p
 
 The entire viewport is a lightly drawn city. Overview roads use soft gray pen edges and a paper-compatible wash; they do not imitate black asphalt or advertise clickability through dark fill. The entered street may use asphalt and sidewalk materials. A few recognizable landmarks and registered memories have full color and solid silhouettes. Between them, pale roof patterns and vegetation suggest what occupies the land without pretending that every shop or building is known. Adding a recollection changes only the relevant local content/representation; it does not automatically increase geometric detail or historical certainty.
 
-The distinction is **visual emphasis**, not a truth score. A vividly remembered reconstruction may still be historically uncertain; a well-documented neighboring building may remain pale because it is context. Store evidence, date support, author approval, visual emphasis and publication permission separately.
+The distinction is **visual emphasis**, not a truth score. A vividly remembered reconstruction may still be historically uncertain; a supported neighboring building may remain pale because it is context. Keep certainty, period support, author approval, visual emphasis and publication permission separate. Geographic files contain conclusions and uncertainty only.
 
 ## Composition layers
 
@@ -68,19 +92,19 @@ A small remembered shop may be omitted at town scale. If its solid representatio
 | Bridge-north KFC; bridge-north McDonald's; bridge-south McDonald's | Neighborhood | Three distinct place records. Precise site/period still requires evidence; unresolved records stay out of the rendered map. |
 | 丰台花园, the intended 党校, public exterior of large compounds | Neighborhood; major park silhouette can appear farther out | Verify which place is meant before placing it. Sparse surroundings extend beyond the registration scope. |
 | Gates, detached commercial rooms, small shops and remembered corners | Street surroundings | Place as short independently replaceable units; do not imply every residential ground floor is retail. |
-| Former “富士商场”, unidentified school-front street and old school entrances | No automatic placement | Keep as research candidates until identity/location is resolved; never substitute a current institution or an approximate named shop. |
+| Unresolved named sites, street associations and old entrances | No automatic placement | Keep identity/location unresolved; never substitute a current institution or an arbitrary named frontage. |
 
-This is a content allocation rule, not a claim that every listed object has been drawn or registered. The residential survey remains in [PR5](https://github.com/StarObserverPro/DigitalMemory/pull/5).
+This is a content allocation rule, not a claim that every listed object has been drawn or registered. Current spatial results and uncertainty are governed by [GEO_DATA_LINEAGE](GEO_DATA_LINEAGE.md).
 
 ## Filling places without a specific memory
 
 Use three levels of contextual specificity, constrained by evidence and independently selected for memory relevance/visible extent. Better evidence permits detail; it does not require displaying it:
 
 1. **Land use / vegetation only:** a soft warm-gray or green wash where even building type is uncertain. Do not invent roof ridges, hutongs or shop signs.
-2. **Known building family and orientation:** pale repeated long slabs, compact tower silhouettes or irregular low-roof grain. Preserve approximate density, orientation, open space and green coverage from satellite/reference evidence; window counts and minor unit differences are irrelevant.
+2. **Known building family and orientation:** pale repeated long slabs, compact tower silhouettes or irregular low-roof grain. Preserve the permitted conclusions about approximate density, orientation, open space and green coverage; window counts and minor unit differences are irrelevant.
 3. **Known arrangement:** a subdued compound drawing with independently addressable building groups and yard patches. Important gaps, gates and frontage setbacks remain editable.
 
-Satellite imagery is a reference layer in the authoring workspace. Extract roof orientation, massing, approximate height family and vegetation into original compatible art; do not mix a raw photo tile with illustrated streets as the default finished map. A current satellite image alone does not prove a 2005 layout. Keep source acquisition dates and supported periods in the recipe.
+Original compatible art consumes supported roof orientation, massing, approximate height family and vegetation. Raw reference imagery stays outside the public repository and is not the default finished map. Contemporary geometry does not establish a 2005 layout. Recipes retain applicable periods and uncertainty, without acquisition or investigation records.
 
 Each patch can have period-specific recipes (for example low housing versus later tower/slab massing). Its fallback recipe must be a neutral land/vegetation wash, not a silently borrowed modern roof pattern. Context is **non-interactive and unnamed**. Its components never become places, doors or historical evidence just because a generator drew them. The paper wash covers missing/out-of-view patches; neighboring patches use consistent palettes, world-anchored texture and padded seams. Loading a new patch must not scatter or randomize accepted neighbors.
 
@@ -118,9 +142,10 @@ If a new object overlaps an accepted neighbor, reject silent placement. Locally 
 
 ### Ground reservation is not image size
 
-Each object needs three separate envelopes:
+Keep physical geometry and presentation envelopes separate:
 
-- **Ground footprint/reservation:** land actually occupied; collision checks use this.
+- **Source ground footprint:** registered occupied ground, retained independently of the artwork; scene collision derives from the applicable physical records.
+- **Drawing ground reservation:** the planner's exclusion/placement area in the registered illustration layout; a conservative rectangle is not an exact footprint or a street collision mesh.
 - **Paint silhouette and shadow mask:** what the illustration covers above the ground; canopy/roof overhang does not enlarge the geographic footprint.
 - **Hit area/entrance:** selectable ground-associated region and route connection; not every transparent part of a PNG is clickable.
 
@@ -147,9 +172,9 @@ The Fengtai bridge area must explicitly distinguish:
 - Tall concrete retaining walls, abutments, bridge holes, railings and the visible ground above the wall, owned by the road/structure assembly.
 - Any building beyond/above the wall as a separately placed building, never painted into the wall asset.
 
-The reported roughly 7–10 m wall is a **user-described range, unmeasured and not yet localized to an exact side or run**. Do not confuse retaining-wall height with a bridge's vehicle clearance. The planner supports independent heights and explicit occlusion, but its synthetic profile numbers are not the actual Fengtai cross section. [Underpass evidence and missing observations](research/FENGTAI_UNDERPASS.md) record the boundary.
+The roughly 7–10 m retaining-wall range remains **approximate, unmeasured and not localized to an exact side or run**. Retaining-wall height and a bridge's vehicle clearance are separate dimensions. The planner supports independent heights and explicit occlusion; its synthetic profile numbers do not establish the actual cross section. [Underpass conclusions](research/FENGTAI_UNDERPASS.md) retain the uncertainty.
 
-Connectivity must be explicit: a bridge passing over a road is not an at-grade junction. Walking/cycling routes attach to service-road, sidewalk or shared-lane edges, never the expressway main carriageway. Separate adjacency for the main road does not imply the pedestrian can cross it. A nearby gate connects to the correct side/path and height, not just to the closest line on a flat picture.
+Connectivity must be explicit: a bridge passing over a road is not an at-grade junction. Geographic walking/cycling route registration uses the supported service-road, sidewalk or shared-lane edges rather than the expressway main carriageway. The selected Xinhua scene separately permits direct crossing of unobstructed registered road surfaces under [INTERACTION](INTERACTION.md#destination-travel). A nearby gate connects to the correct side/path and height, not just to the closest line on a flat picture. A drawing-band classification and the active scene's navigation policy serve different purposes.
 
 ## Time, emphasis and scale are independent axes
 
@@ -166,8 +191,9 @@ A mid-2000s working scene is approximate; do not assign every current rear Sanli
 | Spatial registry / illustration mapping | Stable place and route identities, source geometry revisions, reviewed drawing anchors | `registrationRef`, shared `layoutRevision`, derived drawing reservations |
 | Road assembly | Per-band profile, main/service/walk mode, structures, explicit junction and occlusion relations | Period-selected road parts and protected ground space |
 | Compound container | Child shell/gate/fence/frontage identities; local composition revision | Grouped overview representation or detailed children, never both duplicated |
-| Context patch recipe | Typology, orientation, vegetation ratio, source age/status, style revision, deterministic seed and extent | Pale filling with local exclusion masks; never new place IDs |
-| Memory / landmark object | Existing place ID, emphasis, approved environment states and representations | Solid object where supported and visible |
+| Context patch recipe | Typology, orientation, vegetation ratio, supported period/uncertainty, style revision, deterministic seed and extent | Pale filling with local exclusion masks; never new place IDs |
+| Landmark representation | Existing place ID, accepted environment-state reference, emphasis and display revisions | Solid object where supported and visible; no independent geography or chronology |
+| Memory attachment | Approved content target and its registered route/place association | Content access at a supported anchor, with unchanged geographic identity; the general dispatcher remains a target contract |
 | Temporal resolver | Explicit supported membership and conflicts | `resolvePeriodState`, without nearest-year fallback |
 | Session | Current period, route, view, zoom tier and return state | Same location across overview and street; no duplicate map-player state |
 | Assembly planner | Selection, exclusion regions, road order, local invalidation, label selection | Render plan, not source geometry or private persistence |
@@ -202,12 +228,12 @@ This was the remaining-work list at that foundation. Later overview tiers, raste
 
 The road layer now includes contemporary source continuations and source Four Ring service roads, painted with the same soft palette on both sides of the original focus boundary. Two passes (all edges, then all interiors) prevent artificial caps at connected OSM way boundaries. Broad overview width is a drawing choice, independent of the street scene's physical cross-section. Underpass profiles and wall heights remain unmeasured.
 
-`overview-registration.json` owns public source anchors and parcel membership; `spatial.js` supplies their projection. The three Sanli symbols are approximate roof-centre picks from a retained georeferenced satellite reference, with 30 m uncertainty and no numbered-building/doorway claim. Nankai's two symbols represent parcel-interior typology, not specific buildings. A parcel membership failure rejects the assembly; the renderer cannot shift buildings to pass collision checks. Ground reservations are separate from proportional artwork. Long diagonal roads are reserved with short conservative pieces so a broad bounding box does not displace nearby buildings.
+`overview-registration.json` owns public registered anchors and parcel membership; `spatial.js` supplies their projection. In this historical fixture, the three Sanli symbols have 30 m positional uncertainty and no numbered-building/doorway claim. Nankai's two symbols represent parcel-interior typology, not specific buildings. A parcel membership failure rejects the assembly; the renderer cannot shift buildings to pass collision checks. Ground reservations are separate from proportional artwork. Long diagonal roads are reserved with short conservative pieces so a broad bounding box does not displace nearby buildings.
 
 The screen-space label pass uses 18–19 px road names and 21–23 px place names, with a locally bundled pen-like font. Desktop count ceilings are 10 / 14 / 18 and character ceilings 52 / 72 / 96; narrow screens use 7 / 10 / 12 and 35 / 50 / 64. These are ceilings, not quotas. Names must fit the viewport, avoid the menu, other names and solid icons. Important names try alternate positions; lower-priority names disappear instead of getting smaller. Map pixels and camera zoom are both accounted for. The implementation follows the pixel sizing and collision/alternate-anchor approach in [Mapbox's style specification](https://docs.mapbox.com/style-spec/reference/layers/#layout-symbol-text-size) and [label placement guide](https://docs.mapbox.com/help/troubleshooting/optimize-map-label-placement/); the numerical sizes and budgets are our own readable-map tuning, not a claimed universal standard.
 
 ## Historical DM-0012 compound illustration trial
 
-Three compound images now share the source-road coordinate transform through explicit registry control points. Seven and Wuli-west use taller modern northern forms; Liuli uses southern red-brick walkups, following the user's latest typology correction. Exact northern floor counts remain unresolved; prior six-storey listing claims are not erased. This is trial appearance, not evidence of construction dates.
+The three historical compound images shared the source-road coordinate transform through explicit registry control points. Seven and Wuli-west used taller modern northern forms; Liuli used southern red-brick walkups. Exact northern floor counts remained unresolved in that trial. These appearance records do not establish construction dates or supersede the selected R7 representation.
 
 `trialCompounds` owns the source control frame, fit evidence and context mask. `compound-overview.js` derives rendering matrices only. Missing images leave pale context intact. Road corridors stay separately masked/painted; zoom never moves the fitted anchors. No new player marker or exposed controls. Labels use the existing collision/budget system. The current batch is whole-compound illustration, not individually editable raster buildings.

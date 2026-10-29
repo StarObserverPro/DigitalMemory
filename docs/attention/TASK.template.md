@@ -10,6 +10,8 @@
 
 ## Scope and context
 
+- Primary layer / touched layers: UI / visual engine / map geography / memory attachment (see ARCHITECTURE).
+- Authoritative inputs, permitted outputs, shared-state owner and cross-layer dependencies; what must remain unchanged:
 - Relevant place/route/period/scene/content-batch IDs and revisions:
 - Allowed changes and protected boundaries:
 - Canonical contract sections and present owners to read:
@@ -17,6 +19,7 @@
 - One primary outcome; genuine dependencies, if any:
 - Facts already observed:
 - Assumptions, uncertainty and unresolved choices:
+- Current implementation vs target-only contract; actual consumer and layer-specific acceptance:
 
 ## Acceptance
 

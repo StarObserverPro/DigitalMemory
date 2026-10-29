@@ -10,11 +10,27 @@ Keep document consistency, domain tests, build results, runtime observations, vi
 
 Private evidence must stay private. Public PR summaries can identify the test and result without attaching personal originals, private URLs or exact residential coordinates.
 
+<a id="layer-acceptance"></a>
+
+## 按层选择验收
+
+[四层 scope](ARCHITECTURE.md#layer-scopes)决定本次验收对象。先检查真实改动触及的消费者；跨层修改同时验证接缝。下表规定应观察什么，不代表这些能力已实现或本次已通过。
+
+| 层 / 接缝 | 必须核对的实际结果 | 不能据此替代的判断 |
+| --- | --- | --- |
+| UI | 实际入口的菜单/搜索/阅读、桌面与窄屏、键盘/触摸、关闭/返回、加载失败与取消；交互不把开发状态带入产品 | DOM 或截图存在不等于操作与返回可用 |
+| 视觉引擎 | 改动视图的实际绘制、相机/遮挡/人物脚底；涉及资源时检查暂停、重入、淘汰、最终释放与晚到响应；视觉变更给出同条件可比较结果 | 构建成功不等于画面合格；暖缓存预算不等于总显存或实机性能 |
+| 地图地理 | 稳定 ID、源几何/高度、坐标框架、时期与确定程度；受影响的注册、地图命中、近景、导航、目的地和挂载引用一致 | 栅格或重建外观不构成历史确认；工程验收不记录地理调查过程 |
+| 记忆挂载 | 原意与版本、空间锚点、时期关系、发布范围、按类型加载、缺失内容、取消和返回；纯文字更新不移动地点或重建无关场景 | 合成示例 portal 不证明通用 dispatcher 或私有档案可用 |
+| 地点直达 / 普通入街 | 两条展示流程保持区别；直达在遮挡时提交合法落点并清路径，保留时期/镜头；取消不让旧请求覆盖新 session | 动画结束不等于成功到达，目的地到达不等于打开记忆 |
+
+**仅文档修改**核对规范所有者、当前源码映射、目标/实现区分、完整差异、链接/锚点、隐私边界和任务状态。没有运行时/资产/数据改动时，不增加模拟实现的测试或重复视觉截图。既有检查若由路径过滤跳过，应在发布 head 查询后报告“未触发”；不能写成“CI 已通过”，也不能借旧提交结果补足本次证据。
+
 ## Every-PR documentation check
 
 Read the relevant canonical docs before implementation. Keep them aligned during the change, then check the **entire diff vs the current base** and complete documentation consistency/link review **before tests/build/CI**. Open or update the PR with those actual results. A GitHub job requiring a push/PR event is checked after that event against its actual head; a queued or earlier-head result is not current evidence.
 
-The PR description identifies: (1) the task scope recorded before construction, including sandbox work; (2) the canonical docs updated, or a specific reason **none** need changes; (3) their correspondence to implemented, tested, proposed and unresolved behavior; and (4) documentation and validation observations. A sandbox scope records purpose, base, boundaries, acceptance, output destination and status in the existing matching packet. Trial files remain outside Git. Repeat the full documentation check on the **final head before any authorized merge**, especially after rebases, merges from main or scope changes.
+The PR description identifies: (1) the task scope recorded before construction, including sandbox work and primary/touched layers; (2) authoritative inputs, permitted outputs and cross-layer impacts; (3) the canonical docs updated, or a specific reason **none** need changes; (4) their correspondence to implemented, tested, proposed and unresolved behavior; and (5) documentation and layer-specific validation observations. A sandbox scope records purpose, base, boundaries, acceptance, output destination and status in the existing matching packet. Trial files remain outside Git. Repeat the full documentation check on the **final head before any authorized merge**, especially after rebases, merges from main or scope changes.
 
 Do not say a branch-only feature is already on main, conflate browser tests with aesthetic acceptance, or leave a historical "pending integration" claim as the new present tense. Prefer stable, evidence-bound descriptions that remain accurate once a PR merges, with exact PR/commit provenance in the delivery statement. This requirement does **not** force unrelated documentation churn, private information into public files, or publication/deployment. The [pull-request template](../.github/PULL_REQUEST_TEMPLATE.md) records the result.
 

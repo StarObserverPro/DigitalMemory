@@ -2,11 +2,27 @@
 
 Status: the three-tier overview and selected Xinhua/Sanli outline close view are implemented. [RUNTIME](RUNTIME.md) records the current consumer/lifecycle; [STREET_PROTOTYPE](STREET_PROTOTYPE.md) separates it from legacy GLB/graybox evidence.
 
-Implementation update: the first planar explorer, shared registration transform, sparse-time/session modules, public adapter and candidate assets now exist; [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps. The integrated requirements below remain the target, not a claim of complete capability.
+The current consumer includes the grouped destination picker, walking/direct travel and separate journal-entry/paper-plane presentations. General roadside note/sequence/scene dispatch, other-time attachment presentation, route-memory browsing and private capture remain target contracts. [RUNTIME](RUNTIME.md) records the implemented subset and explicit gaps.
+
+## UI scope and change discipline
+
+UI owns what the reader can see, choose, cancel and return from: control hierarchy, labels, menu/dialog layout, focus, keyboard/touch behavior, accessibility and transition presentation. It consumes registered destinations, resolved availability and session state; it emits selection/navigation commands through the application owner. The [four-layer scope table](ARCHITECTURE.md#layer-scopes) owns cross-layer authority.
+
+| UI responsibility | Boundary to preserve |
+| --- | --- |
+| Group and search existing destinations | A menu group is presentation metadata. It cannot create a place, coordinate, entrance, historical period or memory attachment. |
+| Show a selected place, period or preference | The application session owns the value. Dialog state may be temporary; UI must not keep a second authoritative location, camera, period or return stack. |
+| Request street entry or direct travel | The application entry owner loads a compatible stage and commits validated ground through its adapter. A button/overlay uses the registered mapping; it cannot invent a pixel-to-ground transform or write a landing independently. |
+| Present entry/travel animation | Screen-space paper, handwriting, doodles and plane motion may change locally; registered geography, actual arrival and approved memory text remain owned elsewhere. |
+| Open and close reading content | Use the typed attachment and return contract when implemented. A current street waypoint or decorative landmark is not an implemented memory portal. |
+
+`src/explorer/main.js` currently contains both DOM handlers and application orchestration; sharing a file does not combine their authority. `destinations.js` groups existing anchors. `entry-transition.js`, `journal-drawing.js`, `travel-transition.js` and `travel-drawing.js` render transient presentations; their catalogs and animation progress are not the memory catalog or session archive.
+
+UI-only changes preserve registration, data revisions, content approval and movement rules. Changes to destination availability, landing behavior, period selection or attachment activation cross layers and must identify the affected owner and acceptance in the same task/PR. Review the actual desktop and phone-size consumer for legibility, focus/closing, modal input blocking, cancellation, reduced motion and return state when those behaviors change; [VERIFICATION](VERIFICATION.md) owns the acceptance detail. Documentation-only clarification does not establish new visual or runtime acceptance.
 
 ## One dominant scene
 
-Open into the illustrated map, or resume the last valid place, period and view. Keep the map/scene as the dominant surface. Do not reserve permanent sidebars for articles, source lists, developer panels, or project statistics.
+The current runtime opens/reloads into a usable illustrated map and retains valid route, period and street pose for the next entry. An explicit future content-resume flow must retain its valid origin stack. Keep the map/scene as the dominant surface. Do not reserve permanent sidebars for articles, source lists, developer panels, or project statistics.
 
 The overview's only persistent control is one menu button. The selected outline street additionally has its approved compact compass and collapsible north-up minimap. Menus start closed and stay closed on map/street transitions and return. Time, search, zoom, street entry/exit, nearby actions and help live inside the menu. No title card, toolbar, instruction strip, direction pad, debug panel, composition controls, mapping inspector, sample badge or construction message overlays the scene. Do not reintroduce developer wording even inside consumer menus. Read-only QA state belongs in code and evidence, not the product UI.
 
@@ -52,7 +68,7 @@ Entry blocks navigation until the scene is ready and the presentation finishes. 
 
 The area → line → point hierarchy is conceptual, not a demand for a fixed number of zoom clicks. A route can be chosen as soon as it is legible at the current tier; normally the overview never enters place content. A search result first resolves the correct route/side and focuses its attachment. Restoring an existing interior session is an explicit resume path with its saved return stack, not a new map shortcut.
 
-A gate can be conspicuous artwork and still have no reader-facing action. A private author can attach a note to it without creating an interior. Available local actions must be discoverable on approach, focus or the menu's grouped destination picker; avoid persistent floating markers. A click target belongs to the registered attachment, not to the entire footprint or all opaque pixels of an enlarged icon.
+A gate can be conspicuous artwork and still have no reader-facing action. The target authoring contract permits a note without creating an interior. Future attachment actions must be discoverable on approach, focus or an appropriate menu action; avoid persistent floating markers. The current grouped destination picker selects street ground and does not implement content activation. A content click target belongs to the registered attachment, not to the entire footprint or all opaque pixels of an enlarged icon.
 
 ## One roadside attachment, three content outcomes
 
@@ -121,4 +137,4 @@ An early-2000s illustrated-memory language is established. The selected outline 
 
 The accepted sanli-outline-r5 close view now owns the supported Xinhua street entry. This scoped view adds a compact north-up collapsible minimap and compass beside its one menu; the overview and unrelated views retain the menu-only rule. The grouped menu takes the reader directly to registered street ground; free walking remains available and travel does not create memory content. Its menu returns to the same overview route/camera, and re-entry restores the registered close-view pose. The selected continuous outline person replaces the schoolwear presentation only in this close view.
 
-Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named shop frontage requires map POI and dated imagery; numerical ground extents remain approximate.
+Corridor extension uses the existing outline registration and application session. Data-driven destinations include Xinhua east/west, Kandan Bridge and Qili west-facing Daoxiangcun forecourt. The stable scene ID is retained; registration revision invalidates stale poses. Three display masses are segmented above detached low shops while source footprints remain intact. Named frontage consumes permitted geographic conclusions and their uncertainty; numerical ground extents remain approximate.

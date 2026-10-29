@@ -1,16 +1,29 @@
 # Repository status
 
+## Current baseline by layer — 2026-10-29
+
+Core documentation was reconciled against main `68df5f3ba5d97e6b5e5cc9ee7ac43ba83d96eda0`. The [architecture scope](ARCHITECTURE.md#layer-scopes) defines ownership; this table reports the implemented subset. This documentation pass does not change runtime code, assets, geographic values or deployment.
+
+| Layer | Present in the selected application | Remaining boundary |
+| --- | --- | --- |
+| UI | Closed-menu overview/street flow, grouped searchable destinations, direct travel and optional walking, ordinary journal/cloud entry and a separate paper-plane destination passage | Destination arrival does not open memory content; UI is not a second session or geography owner. |
+| Visual engine | R7 hand-painted overview and selected outline corridor; perspective walking camera/person, derived presentation heights/contours, on-demand drawing, bounded warm resources and retained stage lifecycle | Full scene JSON is still downloaded; warm-cache limits are not a total-memory bound. Network chunk streaming and automatic LOD are not implemented. |
+| Map geography | Stable registered identities, coordinate/illustration mapping, explicit period resolution and current scene/destination records | Approximate and unknown geography remain explicit; source geometry and display choices stay separate. Only permitted conclusions and uncertainty may be published. |
+| Memory attachment | Public-query/place-card and session-return code seams; synthetic memories and nested portal fixtures are retained demonstrations, hidden from the default selected entry | General RouteAttachment + note/sequence/scene dispatch, independent sequence reader/editor, private archive and authoring/release backend remain target contracts. |
+
+The documentation task [DM-CORE-LAYER-SCOPES-20261029](attention/tasks/DM-CORE-LAYER-SCOPES-20261029.md) records this scope and its checks. Sections below retain their dated runtime/fixture evidence; older scope or approval wording does not reactivate work or override this current baseline. Implementation, user approval, merge and deployment remain separately reported facts.
+
 ## Public content boundary — 2026-10-29
 
-Geographic pages and metadata contain permitted conclusions and uncertainty only. Investigation records and acquisition automation are excluded. Existing production geometry, height values, navigation and selected art are preserved. Ordinary commits do not purge historical copies.
+Geographic publication is limited to permitted conclusions and uncertainty. Investigation records and acquisition automation are excluded. Existing production geometry, height values, navigation and selected art are preserved. Ordinary commits do not purge historical copies.
 
 ## Paper-plane destination passage — 2026-10-29
 
-The travel presentation sample uses one outlined plane, a short broken ink arc and a diagonal warm-paper cover/reveal. Landing remains registered and commits under fully opaque paper. The passage is about 1.57 seconds, or a short static fade under reduced motion; the ordinary journal entry stays separate. No scene geometry, place registration, historical copy or production deployment changes are included. Actual checks, review status and remaining evidence belong in [the presentation packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md).
+The integrated destination presentation uses one outlined plane, a short broken ink arc and a diagonal warm-paper cover/reveal. Landing remains registered and commits under fully opaque paper. The passage is about 1.57 seconds, or a short static fade under reduced motion; the ordinary journal entry stays separate. [PR #37](https://github.com/StarObserverPro/DigitalMemory/pull/37) is merged. Revision-bound checks, review status and delivery scope belong in [the presentation packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md); this documentation pass makes no new deployment claim.
 
 ## Direct crossings and destination travel — 2026-10-29
 
-The user requests direct Xinhua crossings, a compact grouped destination interface, and arriving after a short transition instead of compulsory long walking. The implementation admits registered carriageways, separates the existing 25 destinations into a searchable four-region picker, and adds direct destination travel from the overview/street plus a persisted ground-click preference. Landing clears movement and snaps the camera under opaque paper. Walking remains available through ground clicks and keyboard input. Existing place anchors, source geometry, artwork, periods and the ordinary journal entry presentation are preserved. The existing WebGL CI walkthrough also exercises the new menu/travel flow, cancellation, ground-click mode and persisted arrival at desktop/phone sizes. The initial simple dissolve is superseded by the separately scoped presentation sample above. Revision-bound verification, outstanding visual evidence, PR and publication state belong in [the travel packet](attention/tasks/DM-MEMORY-TRAVEL-20261029.md); implementation alone does not establish user visual approval.
+The user requests direct Xinhua crossings, a compact grouped destination interface, and arriving after a short transition instead of compulsory long walking. The implementation admits registered carriageways, separates the existing 25 destinations into a searchable four-region picker, and adds direct destination travel from the overview/street plus a persisted ground-click preference. Landing clears movement and snaps the camera under opaque paper. Walking remains available through ground clicks and keyboard input. Existing place anchors, source geometry, artwork, periods and the ordinary journal entry presentation are preserved. The existing WebGL CI walkthrough also exercises the new menu/travel flow, cancellation, ground-click mode and persisted arrival at desktop/phone sizes. The initial simple dissolve is superseded by the integrated destination presentation above. Revision-bound verification, outstanding visual evidence, PR and publication state belong in [the travel packet](attention/tasks/DM-MEMORY-TRAVEL-20261029.md); implementation alone does not establish user visual approval.
 
 ## Paired journal doodles — 2026-10-28
 
