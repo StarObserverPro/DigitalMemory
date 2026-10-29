@@ -22,6 +22,10 @@ The historical map/satellite layer is a workbench reference, not the default vie
 
 > For Xinhua/Sanli, **source coordinates precede painting**. Read the [measured geographic source chain](GEO_DATA_LINEAGE.md) and [acquisition/QA runbook](GEO_DATA_RUNBOOK.md) before positioning buildings or making new imagery. The [R6 implementation record](research/XINHUA_SPATIAL_PIPELINE.md) owns the later reviewed source-selection-to-render transition.
 
+### Destination travel paper plane — 2026-10-29
+
+The travel-only sample reuses `assets/modules/paper-r2.png`, the existing outline font, warm page, rounded black contour and sparse pale wash palette. `travel-drawing.js` draws one folded paper plane and a short broken ink trail as transient screen-space decoration; a solid textured paper layer masks relocation. This is ordinary transition illustration, not visible overview geometry or registered route art. It adds no generated raster, newspaper text, dated fragment or memory record. The plane and diagonal paper sweep remain distinct from the ordinary hand/doodle/journal entry. The [comparison and verification packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md) records the proposed aesthetic and its review status.
+
 ## Choose the minimum useful representation before researching depth
 
 The 2026-10-27 selected Xinhua junction close-scene and its [reusable outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md) retain the accepted spatial/contour process, sparse retracting motion and ink-occlusion rules. The junction library remains a reusable source; the accepted Sanli extension is now integrated at the main street entry, while overview raster art remains unchanged. Omit overhead wires by default in this near-scene family: their uncertain time-dependent layout adds research/rendering work without improving the selected memory representation. Retain sparse simplified lamps; reopen wire depiction only for an explicitly selected memory-relevant object. The scene manifest pins the selected version; technical parameters remain local calibration values.

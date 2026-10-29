@@ -40,7 +40,12 @@ dialog.street-transition::backdrop{background:transparent;backdrop-filter:none}
 .travel-mode{margin:22px 0 12px;padding:0;border:0}.travel-mode legend{font-size:12px;margin-bottom:8px;color:#717460}.travel-modes{display:flex;gap:8px}.travel-modes button{flex:1;min-height:44px;border:1px solid #bcc3ae;border-radius:12px;font-size:14px}.travel-modes button[aria-pressed=true]{background:#e4e5c9;border:2px solid #4d5d45;color:#35432f}
 .map-find-button{min-height:48px;display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;font-size:13px;color:#727766}
 .outline-active #destinations-dialog{font-family:"Sanli Happy",system-ui,sans-serif;color:#24251f;background:#faf9f4;border:3px solid #24251f;border-radius:23px 18px 25px 16px}.outline-active .destination-list button{font-size:16px;border:2px solid #24251f}.outline-active .destination-list button:hover{background:#f2df90}
-dialog.memory-travel{position:fixed;inset:0;margin:0;padding:24px;border:0;border-radius:0;width:100vw;height:100dvh;max-width:none;max-height:none;display:grid;place-items:center;overflow:hidden;background:#faf7ed url(../../assets/modules/paper-r2.png) center/800px;box-shadow:none;opacity:0;touch-action:none}
-dialog.memory-travel::backdrop{background:transparent;backdrop-filter:none}.memory-travel .travel-name{font-family:"Sanli Happy","Memory CJK",system-ui,sans-serif;font-size:clamp(22px,4vw,32px);color:#3d4437;letter-spacing:.08em;text-align:center;max-width:90vw}
-.travel-cancel{position:absolute;left:max(24px,env(safe-area-inset-left));bottom:max(24px,env(safe-area-inset-bottom));padding:10px 16px;min-height:44px;border-radius:12px;font-size:13px;background:#faf7eddb}
+dialog.memory-travel{position:fixed;inset:0;margin:0;padding:0;border:0;border-radius:0;width:100vw;height:100dvh;max-width:none;max-height:none;display:block;overflow:hidden;background:transparent;box-shadow:none;opacity:0;touch-action:none}
+dialog.memory-travel::backdrop{background:transparent;backdrop-filter:none}
+.travel-paper{position:absolute;inset:0;background:#faf7ed url(../../assets/modules/paper-r2.png) center/800px;pointer-events:none}
+.memory-travel canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.memory-travel .travel-name{position:absolute;top:54%;left:50%;transform:translateX(-50%);width:min(480px,calc(100% - 64px));margin:0;font-family:"Sanli Happy","Memory CJK",system-ui,sans-serif;font-size:clamp(22px,4vw,32px);line-height:1.6;color:#3d4437;letter-spacing:.08em;text-align:center;overflow-wrap:anywhere;pointer-events:none}
+.travel-cancel{position:absolute;left:max(24px,env(safe-area-inset-left));bottom:max(24px,env(safe-area-inset-bottom));padding:10px 16px;min-height:44px;border-radius:17px 20px 16px 19px;font-size:13px;background:#faf7edef}
+.travel-cancel:hover{background:#fffdf6}.travel-cancel:focus-visible{outline:3px solid #35392f;outline-offset:3px}
+.travel-reduced canvas{display:none}
 @media(max-width:560px){.destination-list{grid-template-columns:1fr}.destination-group summary{font-size:16px}.destination-list button{min-height:48px}}
