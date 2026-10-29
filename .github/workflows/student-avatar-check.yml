@@ -9,6 +9,7 @@ on:
       - 'src/explorer/outline-stage.js'
       - 'src/explorer/main.js'
       - 'src/explorer/entry-transition.js'
+      - 'src/explorer/journal-*.js'
       - 'src/explorer/styles.css'
       - 'src/application/session.js'
       - 'src/adapters/session-storage.js'

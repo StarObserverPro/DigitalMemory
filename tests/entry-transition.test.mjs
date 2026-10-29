@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { animateFrames, chooseJournal, JOURNAL_LINES, journalTiming, journalMoment } from '../src/explorer/entry-transition.js';
+import { animateFrames, chooseJournal, JOURNAL_LINES, journalTiming, journalMoment, JOURNAL_ENTRIES, JOURNAL_ASSETS } from '../src/explorer/entry-transition.js';
+import { journalLayout, doodleMoment } from '../src/explorer/journal-drawing.js';
+import { existsSync } from 'node:fs';
 import { createSession } from '../src/application/session.js';
 import { restoreSession, saveSession } from '../src/adapters/session-storage.js';
 
@@ -44,11 +46,11 @@ test('already-cancelled and draw-cancelled entries cannot schedule work', async 
   scheduler.tick(10); assert.equal(await done, false); assert.equal(scheduler.pending.size, 0);
 });
 
-test('five journal variants remain reachable without consecutive repeats', () => {
-  assert.equal(JOURNAL_LINES.length, 5);
-  for (let previous = -1; previous < 5; previous++) {
-    const seen = new Set(Array.from({ length: 20 }, (_, n) => chooseJournal(() => n / 20, previous)));
-    assert.equal(seen.size, previous === -1 ? 5 : 4);
+test('all 38 paired journal variants remain reachable without consecutive repeats', () => {
+  assert.equal(JOURNAL_LINES.length, 38);
+  for (let previous = -1; previous < 38; previous++) {
+    const seen = new Set(Array.from({ length: 76 }, (_, n) => chooseJournal(() => n / 76, previous)));
+    assert.equal(seen.size, previous === -1 ? 38 : 37);
     assert(!seen.has(previous));
   }
 });
@@ -77,7 +79,7 @@ test('transition preference persists without changing the map or route, includin
 test('journal allows time to read and continues writing smoothly between object pose changes', () => {
   for (const lines of JOURNAL_LINES) {
     const timing = journalTiming(lines);
-    assert(timing.duration + 900 >= 14500 && timing.duration + 900 <= 16500);
+    assert(timing.duration + 900 >= 10000 && timing.duration + 900 <= 18500);
     assert.equal(journalMoment(timing.drawEnd + 100, timing).beat, 'pause');
     assert.equal(journalMoment(timing.exitEnd + 1000, timing).beat, 'reading');
     const row = timing.rows[1];
@@ -92,5 +94,44 @@ test('journal allows time to read and continues writing smoothly between object 
       assert.equal(journalMoment(next, timing).progress, journalMoment(end, timing).progress);
     }
     assert.equal(journalMoment(timing.duration, timing).progress, 1);
+  }
+});
+
+
+test('reviewed copy retains source numbers, paired files and the two-bus observation', () => {
+  assert.equal(new Set(JOURNAL_ENTRIES.map(e => e.id)).size, 38);
+  assert.equal(Object.keys(JOURNAL_ASSETS).length, 30);
+  const byId = Object.fromEntries(JOURNAL_ENTRIES.map(e => [e.id, e]));
+  assert.equal(byId['17'].text, '我都走到看丹桥了，哎呀，没拿伞。');
+  assert.equal(byId['19'].text, '下雪挺好看，就是没积住。鞋都湿了。');
+  assert.equal(byId['22'].text, '等半天没来，一来来两辆。');
+  assert.equal(byId['22'].copies, 2); assert.equal(byId['22'].asset, 'bus');
+  assert.equal(byId['42'].text, '橡皮粘尺子上了。');
+  assert.equal(byId['47'].asset, 'yogurt');
+  for (const id of ['15','16','25','27','28','29','36','37','38','39','45','46']) assert(!byId[id]);
+  for (const entry of JOURNAL_ENTRIES) {
+    const asset = JOURNAL_ASSETS[entry.asset]; assert(asset);
+    assert(existsSync(new URL('../assets/transitions/doodles-r1/' + asset.file, import.meta.url)));
+  }
+  for (const asset of Object.values(JOURNAL_ASSETS)) {
+    assert(asset.paths.length > 0);
+    for (const progress of [0,.1,.5,.85,1]) {
+      const moment = doodleMoment(asset, progress);
+      assert(moment.tip.every(Number.isFinite));
+    }
+  }
+});
+
+test('every fragment and its complete one/two-object group fit phone and desktop pages', () => {
+  for (const [width,height] of [[320,568],[390,844],[430,844],[646,528],[1280,800]]) {
+    for (let i=0; i<JOURNAL_ENTRIES.length; i++) {
+      const entry=JOURNAL_ENTRIES[i], lines=JOURNAL_LINES[i];
+      assert.equal(lines.slice(1).join(''),entry.text, 'wrapping preserves exact copy');
+      const l=journalLayout(width,height,lines,entry.copies);
+      assert(l.artX>=width*.13-1 && l.artX+l.groupWidth<=width*.87+1, entry.id);
+      assert(l.artY+l.size<=height-89, entry.id);
+      assert(l.font>=17, entry.id+' remains readable');
+      for (const row of lines.slice(1)) assert([...row].length*l.font*1.03<=width*.74+1,entry.id);
+    }
   }
 });
