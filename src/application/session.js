@@ -3,6 +3,7 @@ import { CHARACTER_PROFILES } from '../domain/composition.js';
 export const initialSession = Object.freeze({ schemaVersion: 1, placeId: null, periodId: 'window-2000', styleId: 'journal', sceneId: 'map', selectedMemoryId: null, camera: { x: 0, y: 0, zoom: 1 }, mode: 'walking', view: 'map', route: { edgeId: 'xinhua-edge-4', t: .70, direction: 1 }, street: { lateral: 5.5, heading: 0, cameraYaw: 0, target: null }, returnStack: [] });
 export function reduceSession(state, command, mapping) {
   switch (command.type) {
+    case 'travel-mode': return ['walk', 'jump'].includes(command.mode) ? { ...state, travelMode: command.mode } : state;
     case 'entry-transition': return ['journal', 'simple'].includes(command.mode) ? { ...state, entryTransition: command.mode } : state;
     case 'outline-state': {
       const value=command.value;
@@ -28,13 +29,14 @@ export function reduceSession(state, command, mapping) {
     case 'style': return { ...state, styleId: command.id };
     case 'camera': return { ...state, camera: { ...state.camera, ...command.camera, zoom: Math.max(1, Math.min(3, command.camera.zoom ?? state.camera.zoom)) } };
     case 'enter': return { ...state, sceneId: command.sceneId, returnStack: [...state.returnStack, structuredClone({ ...state, returnStack: [] })] };
-    case 'back': { const previous = state.returnStack.at(-1); return previous ? { ...previous, entryTransition: state.entryTransition, returnStack: state.returnStack.slice(0, -1) } : state; }
+    case 'back': { const previous = state.returnStack.at(-1); return previous ? { ...previous, entryTransition: state.entryTransition, travelMode: state.travelMode, returnStack: state.returnStack.slice(0, -1) } : state; }
     default: throw new Error(`Unknown command: ${command.type}`);
   }
 }
 export function createSession(saved = null, mapping = null) {
   let state = structuredClone({ ...initialSession, characterId:'child',frontagePreview:'none',layers:{roads:true,buildings:true,frontages:true,person:true}, ...saved });
   state.entryTransition = state.entryTransition === 'simple' ? 'simple' : 'journal';
+  state.travelMode = state.travelMode === 'jump' ? 'jump' : 'walk';
   state.street={...initialSession.street,...state.street,target:null};
   state.street.lateral=Math.max(STAGE.lateralMin,Math.min(STAGE.lateralMax,state.street.lateral));
   const listeners = new Set();
