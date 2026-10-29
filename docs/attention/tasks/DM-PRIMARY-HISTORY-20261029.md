@@ -26,3 +26,11 @@
 - User content/art approval: no new content/art approval claimed. PR integration follows standing documentation authorization; this package requests no deployment and redistributes no source images.
 - Next research action, unactivated: obtain G1's school/street original pages or the former-school-site portion of the pre-expansion survey/transfer drawing; only then test a parcel and approach-lane hypothesis. G3 identifies a school-history material lead. Keep both historical-school spatial records unresolved until evidence closes that loop.
 - Recovery: revert this documentation change; there is no runtime or content-data migration.
+
+## Reopened evidence acquisition — 2026-10-29
+
+- Explicit correction: research the former campus as it existed before 1999; post-1999 material only supports this task when it explicitly dates its historical subject before that cutoff. Later site conditions, relocation plans and 2011 imagery do not establish the 1990s entrance.
+- Carrier: `agent/fengtai-primary-pre1999-evidence`, exact base `c350fc7bbceb44d573bdf92decd9611e2d266195`.
+- Scope: read public historical sources and revise this packet, the source ledger, PHASE_1, geographic lineage, documentation routing and observed research status. Preserve the spatial registry and private information; source images remain outside Git. No deployment.
+- Actual new evidence: normal Google Books in-volume search exposes the 1993 gazetteer p.488 school/address/adjacent-land descriptions and pp.12/21 street dimensions. Access is to search snippets, not complete scanned pages. Full image/entrance matching remains open.
+- Status: documentation authoring; this is analysis/source work and does not create runtime executing state. Next: align the affected owners around these dated facts, then review and validate the entire proposed documentation diff.
