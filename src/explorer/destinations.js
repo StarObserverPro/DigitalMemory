@@ -3,16 +3,17 @@ const regions = [
   { id: 'xinhua-west', label: '新华街西段', ids: ['west', 'westWide', 'wuliForecourt', 'westShops', 'westEnd'] },
   { id: 'xinhua-east', label: '新华街路口与东段', ids: ['south', 'eastWide', 'eastEnd', 'southEdge'] },
   { id: 'sanli', label: '新华街三里', ids: ['east', 'north', 'bins', 'court', 'plaza', 'garden', 'mid', 'rear', 'northCourt', 'eastCourt'] },
-  { id: 'kandan', label: '看丹桥与七里西侧', ids: ['kandanBridge', 'kandanView', 'bridgeWest', 'bridgePanorama', 'daoxiangcunPlaza', 'yunbai'] }
+  { id: 'kandan', label: '看丹桥与七里西侧', ids: ['kandanBridge', 'kandanView', 'bridgeWest', 'bridgePanorama', 'daoxiangcunPlaza', 'yunbai'] },
+  { id: 'fourth-ring', label: '四环与丰台大桥', ids: ['fourth-ring-kefeng','fourth-ring-fufeng','fourth-ring-kandan','fourth-ring-fengtai','fourth-ring-beidadi','fourth-ring-fengbei'] }
 ];
 
-export function destinationGroups(landmarks, query = '') {
+export function destinationGroups(landmarks, query = '', periodId = null) {
   const known = new Set(regions.flatMap(region => region.ids));
   const extra = Object.keys(landmarks).filter(id => !known.has(id));
   const needle = query.trim().toLocaleLowerCase();
   return [...regions, { id: 'other', label: '其他地点', ids: extra }].map(region => ({
     id: region.id, label: region.label,
-    places: region.ids.map(id => landmarks[id]).filter(place => place &&
+    places: region.ids.map(id => landmarks[id]).filter(place => place && (!periodId||!place.periodIds||place.periodIds.includes(periodId)) &&
       (!needle || `${region.label} ${place.label}`.toLocaleLowerCase().includes(needle)))
   })).filter(region => region.places.length);
 }

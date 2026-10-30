@@ -1,5 +1,7 @@
 # Map, image and scene asset pipeline
 
+The selected Fourth Ring close view is code-native geometry/ink under `scenes/fengtai-bridges/`, consumed by the existing outline street. Coordinates remain separate from line width, lamp ray marks and quiet colors. Every lamp has three fixed rounded black strokes without internal fixture detail or glare composition. The selected scene manifest pins these runtime modules. Trial viewers, original references, screenshots and diagnosis variants are excluded from production assets.
+
 > **2026-10-27 current consumers:** The overview keeps its hand-painted rasters; the selected Xinhua/Sanli close view uses the accepted [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md). The GLB student is a retained legacy asset. [WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) remains documentation only, with no World Labs generation/output/importer.
 
 > DM-0015 correction: [hand-painted map art](HANDPAINTED_MAP_ART.md) owns visible medium, contextual generation, tower identity and projection/scale acceptance. SVG is planning only, never map art or a runtime art fallback. The older ≤1.5 native/display ratio is a recorded r4 experiment, not a universal requirement; it must not erase paint or tower storeys. Never repair raised art with unrestricted affine fitting.

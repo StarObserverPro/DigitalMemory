@@ -131,6 +131,7 @@ export class PublicRepository {
       if (hash !== registration.sha256) throw Error('Outline checksum mismatch');
       const data = JSON.parse(new TextDecoder().decode(bytes));
       if (data.privacy !== 'public' || data.revision !== registration.dataRevision || data.artRevision !== registration.artRevision) throw Error('Outline revision mismatch');
+      if(data.bridgeCorridor){const f=data.bridgeCorridor.frame,r=registration.bridgeFrame;if(!r||JSON.stringify(f.origin)!==JSON.stringify(r.origin)||f.sx!==r.sx||f.sz!==r.sz)throw Error('Bridge frame mismatch');}
       return { registration, data };
     }, options);
   }

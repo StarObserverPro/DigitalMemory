@@ -46,7 +46,7 @@ try{
     await waitFrames();
   };
   await openStreet();
-  assert.equal(await host.getAttribute('data-art-revision'),'xinhua-corridor-outline-r5');
+  assert.equal(await host.getAttribute('data-art-revision'),'xinhua-fourth-ring-outline-r6');
   await page.waitForFunction(()=>JSON.parse(document.querySelector('.outline-host').dataset.navigationUi).fontReady);
   const projection=JSON.parse(await host.getAttribute('data-avatar-projection'));
   assert(projection.visible);assert(projection.foot.slice(0,2).every(v=>Math.abs(v)<1));assert(projection.head.slice(0,2).every(v=>Math.abs(v)<1));
@@ -146,7 +146,7 @@ try{
     assert.equal(await page.locator('#menu-dialog [data-travel-go]').count(),0,'destinations must stay out of the main menu');
     await page.locator('#find-button').click();
     await page.locator('.destination-group').first().waitFor();
-    assert.equal(await page.locator('.destination-group').count(),4);
+    assert.equal(await page.locator('.destination-group').count(),5);
     assert.equal(await page.locator('.destination-group[open]').count(),0);
   };
   const choose=async(id)=>{
@@ -161,7 +161,8 @@ try{
     assert.deepEqual(after.path,[]);assert.equal(after.destination,null);
     if(before){
       assert.equal(after.distanceWalked,before.distanceWalked,'jump distance must not become walking');
-      for(const key of ['yaw','distance','pitch'])assert.equal(after[key],before[key]);
+      assert.equal(after.yaw,landmarks[id].cameraYaw??before.yaw);
+      for(const key of ['distance','pitch'])assert.equal(after[key],before[key]);
     }
     evidence.travel.push({id,elapsedMs:Date.now()-started,position:after.position,distanceWalked:after.distanceWalked});
     return after;
@@ -171,6 +172,10 @@ try{
   await choose('yunbai'); // Map -> remote street anchor, without the long journal.
   const travelHost=await host.elementHandle();
   await page.emulateMedia({reducedMotion:'no-preference'});
+  await choose('fourth-ring-fengtai');
+  const bridgeAudit=JSON.parse(await host.getAttribute('data-bridges'));
+  assert.equal(bridgeAudit.fixtures,16);assert.equal(bridgeAudit.rayPaths,48);assert(bridgeAudit.groundHeight<-5);
+  await page.screenshot({path:evidenceDir+'/outline-fourth-ring.png'});
   const far=await choose('eastEnd');
   assert(await travelHost.evaluate(el=>el===document.querySelector('.outline-host')),'long jumps reuse the one scene owner');
   assert(evidence.travel[0].position[0]<-450&&far.position[0]>370,'cover the full scene, not only adjacent anchors');

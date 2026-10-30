@@ -9,6 +9,7 @@ import {makeNavigationUI} from './navigation-ui.mjs';
 import {createFrameLoop} from '../../src/engine/frame-loop.js';
 import {createResourceScope} from '../../src/engine/resource-scope.js';
 import {destinationGroups,resolveLanding} from '../../src/explorer/destinations.js';
+import {makeNativeBridges} from '../fengtai-bridges/native.mjs';
 
 export async function mountOutline({container,sceneData,navigation,readState,writeState,isActive,isVisible,onMenu,onTravel,readTravelMode=()=> 'walk'}){
  let disposed=false,suspended=false,windowFocused=true,externalMenu=false,entryProgress=null;
@@ -19,7 +20,7 @@ export async function mountOutline({container,sceneData,navigation,readState,wri
 root.innerHTML=`<link rel="stylesheet" href="${new URL('./style.css',import.meta.url)}"><div id="outline-root"><main id="stage" aria-label="新华街可行走场景"><canvas id="scene" tabindex="0" aria-label="街道。点击地面行走，拖动转向，滚轮缩放。WASD或方向键移动，Shift快走。"></canvas></main><button id="menu" aria-label="打开菜单" aria-haspopup="dialog" aria-controls="panel" aria-expanded="false" title="打开菜单"><svg class="menu-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path class="menu-paper" d="M16 11 Q29 7 44 12 Q53 17 51 30 L53 43 Q48 53 34 52 L20 54 Q9 49 11 37 L9 24 Q9 15 16 11Z"/><g class="menu-ink"><path d="M21 23 Q29 21 40 24 M20 32 Q31 34 42 31 M23 41 Q32 38 40 41"/><path class="menu-rays" d="M4 14 1 10 M28 4 28 1 M57 19 62 16 M57 48 62 51 M8 53 4 57"/></g></svg></button><dialog id="panel"><button id="close" aria-label="关闭菜单">×</button><h1>新华街 · 沿街走走</h1><p>点击地面行走，拖动转向。<br>WASD / 方向键移动，Shift 快走，滚轮缩放。</p><div id="destinations"></div><button id="reset">回到起点</button></dialog><div id="notice" role="status" aria-live="polite"></div><div id="load" role="status">正在打开这段街道…</div></div>`;
 root.querySelector('#menu').removeAttribute('aria-controls');
  const canvas=root.querySelector('#scene'),load=root.querySelector('#load'),panel=root.querySelector('#panel'),notice=root.querySelector('#notice');
- let renderer,world,camera,drawing,site,character,motion,navigationUI,observer,loop;
+ let renderer,world,camera,drawing,site,character,motion,navigationUI,observer,loop,bridges;
  let nav=navigation,completedFrames=0,updateMs=0,submissionMs=0,previousDiagnosticTime=null;
  const intervals=[];
  // The adapter owns a supplied navigation index; a standalone mount owns its own.
@@ -27,7 +28,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   if(disposed)return;
   disposed=true;
   const cleanups=[()=>loop?.dispose(),()=>listeners.abort(),()=>observer?.disconnect(),()=>navigationUI?.dispose(),
-   ()=>drawing?.dispose(),()=>{
+   ()=>bridges?.dispose(),()=>drawing?.dispose(),()=>{
     if(!world)return;
     if(drawing?.releaseObject)drawing.releaseObject(world);
     else{const resources=createResourceScope();resources.trackObject(world);resources.dispose();}
@@ -43,6 +44,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   nav ||= makeNavigation(data);
   const start=nav.closest(data.spawn);if(!start)throw Error('No starting pavement');
   drawing=makeDrawing(world,data);site=makeSiteDetails(world,data,drawing);site.streetProps=makeStreetProps(world,data,drawing);
+  bridges=makeNativeBridges(world,data);
   const initial={position:[...start],yaw:Math.PI/6,distance:23,pitch:.68,path:[],walking:false,paused:false,visited:[],destination:null,elapsed:0,distanceWalked:0};
   const state={...initial,...readState()};
   const commit=()=>{if(!disposed)writeState(Object.fromEntries(['position','yaw','distance','pitch','path','visited','destination','distanceWalked'].map(k=>[k,structuredClone(state[k])])));};
@@ -63,7 +65,9 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   function sync(){
    if(lastStrokeAuditRevision!==drawing.auditRevision){host.dataset.strokeAudit=JSON.stringify(drawing.audit);lastStrokeAuditRevision=drawing.auditRevision;}
    const sorted=intervals.slice().sort((a,b)=>a-b),p95=sorted.length?sorted[Math.min(sorted.length-1,Math.floor(sorted.length*.95))]:0;
-   host.dataset.avatarProjection=JSON.stringify({foot:new T.Vector3(state.position[0],.1,state.position[1]).project(camera).toArray(),head:new T.Vector3(state.position[0],2.3,state.position[1]).project(camera).toArray(),camera:camera.position.toArray(),avatar:avatar.position.toArray(),visible:avatar.visible});
+   const floor=nav.height?.(state.position)??0;
+   host.dataset.avatarProjection=JSON.stringify({foot:new T.Vector3(state.position[0],floor+.1,state.position[1]).project(camera).toArray(),head:new T.Vector3(state.position[0],floor+2.3,state.position[1]).project(camera).toArray(),camera:camera.position.toArray(),avatar:avatar.position.toArray(),visible:avatar.visible});
+   host.dataset.bridges=JSON.stringify(bridges?{...bridges.audit,groundHeight:floor}:null);
    const navigationStats=nav.stats?.()||{cachedCells:nav.cellCount};host.dataset.navigation=JSON.stringify(navigationStats);host.dataset.navCells=String(navigationStats.cachedCells);host.dataset.ready='true';host.dataset.position=state.position.map(v=>v.toFixed(2)).join(',');host.dataset.yaw=state.yaw.toFixed(3);host.dataset.walking=String(state.walking);host.dataset.visited=state.visited.join(',');host.dataset.destination=state.destination||'';host.dataset.paused=String(state.paused);host.dataset.distanceWalked=state.distanceWalked.toFixed(2);
    host.dataset.renderer=renderer.info.render.calls+','+renderer.info.memory.geometries;
    host.dataset.frameSerial=String(completedFrames);host.dataset.frameLoop=JSON.stringify(loop?.inspect()||{paused:true,scheduled:false});
@@ -82,7 +86,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   function setDestination(p,name=null){
    if(!inputActive())return false;
    const route=nav.route(state.position,p,9);if(!route){say('沿铺地换个方向走走');return false;}
-   state.path=route;state.destination=name;goalMarker.position.set(route.at(-1)[0],0,route.at(-1)[1]);goalMarker.visible=true;commit();return true;
+   state.path=route;state.destination=name;goalMarker.position.set(route.at(-1)[0],nav.height?.(route.at(-1))??0,route.at(-1)[1]);goalMarker.visible=true;commit();return true;
   }
   function clear(){if(disposed)return;Object.assign(state,readState());clearKeys();state.path=[];state.destination=null;goalMarker.visible=false;commit();}
   function arrive(point,id=null){
@@ -90,6 +94,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    const landing=resolveLanding(nav,point);if(!landing)return false;
    Object.assign(state,readState());clearKeys();
    state.position=landing;state.path=[];state.destination=null;state.walking=false;goalMarker.visible=false;cameraSnap=true;
+   if(id&&Number.isFinite(data.landmarks[id]?.cameraYaw))state.yaw=data.landmarks[id].cameraYaw;
    if(id&&!state.visited.includes(id))state.visited.push(id);
    commit();return true;
   }
@@ -123,7 +128,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
   listen(document,'visibilitychange',()=>{if(document.hidden)clear();refresh();});
   listen(canvas,'pointerdown',e=>{if(!inputActive()||e.button!==0)return;canvas.focus();canvas.setPointerCapture(e.pointerId);down={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,moved:0};});
   listen(canvas,'pointermove',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const dx=e.clientX-down.lastX,dy=e.clientY-down.lastY;down.moved+=Math.abs(dx)+Math.abs(dy);if(down.moved>6){state.yaw-=dx*.006;state.pitch=T.MathUtils.clamp(state.pitch+dy*.0025,.38,1.0);commit();}down.lastX=e.clientX;down.lastY=e.clientY;});
-  listen(canvas,'pointerup',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const click=down.moved<7;down=null;if(click){const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);if(raycaster.ray.intersectPlane(plane,hit)){const p=[hit.x,hit.z];if(readTravelMode()==='jump')travel(p);else setDestination(p);}}});
+  listen(canvas,'pointerup',e=>{if(!inputActive()||!down||down.id!==e.pointerId)return;const click=down.moved<7;down=null;if(click){const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);const groundHit=bridges?.pick(raycaster,nav)||raycaster.ray.intersectPlane(plane,hit);if(groundHit){const p=[groundHit.x,groundHit.z];if(readTravelMode()==='jump')travel(p);else setDestination(p);}}});
   listen(canvas,'pointercancel',()=>down=null);
   listen(canvas,'wheel',e=>{if(!inputActive())return;e.preventDefault();state.distance=T.MathUtils.clamp(state.distance+e.deltaY*.025,12,43);commit();},{passive:false});
   const size=new T.Vector2();
@@ -131,7 +136,7 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    if(disposed)return;
    const {width:w,height:h}=host.getBoundingClientRect();if(!w||!h)return;
    renderer.getSize(size);if(size.x!==w||size.y!==h)renderer.setSize(w,h,false);
-   camera.aspect=w/h;camera.updateProjectionMatrix();drawing.resize(w,h);motion.resize(w,h);navigationUI.resize();host.dataset.viewport=w+','+h;
+   camera.aspect=w/h;camera.updateProjectionMatrix();drawing.resize(w,h);bridges?.resize(w,h);motion.resize(w,h);navigationUI.resize();host.dataset.viewport=w+','+h;
   }
   observer=new ResizeObserver(resize);observer.observe(host);resize();
   function movement(dt){
@@ -150,20 +155,20 @@ root.querySelector('#menu').removeAttribute('aria-controls');
    if(!refresh())return;
    const frameStarted=performance.now();
    if(previousDiagnosticTime!==null){intervals.push(Math.max(0,now-previousDiagnosticTime));if(intervals.length>120)intervals.shift();}previousDiagnosticTime=now;
-   Object.assign(state,readState());if(entryProgress===null)state.elapsed+=dt;movement(dt);character.update(state,dt);avatar.visible=entryProgress===null||entryProgress>.86;
-   const underBridge=data.bridges?.some(bridge=>bridge.deckRings.some(ring=>inside(state.position,ring))),narrow=camera.aspect<.8?1.2:1,d=state.distance*narrow,s=Math.sin(state.yaw),c=Math.cos(state.yaw),target=new T.Vector3(state.position[0]-s*3.5,.9,state.position[1]-c*3.5),desired=new T.Vector3(state.position[0]+s*d,underBridge?3.9:d*state.pitch,state.position[1]+c*d);
+   Object.assign(state,readState());if(entryProgress===null)state.elapsed+=dt;movement(dt);character.update(state,dt);const floor=nav.height?.(state.position)??0;avatar.position.y=floor+.11;avatar.visible=entryProgress===null||entryProgress>.86;
+   const underBridge=data.bridgeCorridor?nav.underBridge(state.position):data.bridges?.some(bridge=>bridge.deckRings.some(ring=>inside(state.position,ring))),narrow=camera.aspect<.8?1.2:1,d=state.distance*narrow,s=Math.sin(state.yaw),c=Math.cos(state.yaw),target=new T.Vector3(state.position[0]-s*3.5,floor+.9,state.position[1]-c*3.5),desired=new T.Vector3(state.position[0]+s*d,floor+(underBridge?3.9:d*state.pitch),state.position[1]+c*d);
    const direction=desired.clone().sub(target),length=direction.length();raycaster.set(target,direction.normalize());raycaster.far=length;
-   const candidates=drawing.collisionCandidates?drawing.collisionCandidates(target,desired):drawing.meshes;
+   const candidates=[...(drawing.collisionCandidates?drawing.collisionCandidates(target,desired):drawing.meshes),...(bridges?.meshes||[])];
    const hits=raycaster.intersectObjects(candidates,false);if(hits.length&&hits[0].distance<length-1)desired.copy(target).addScaledVector(direction,Math.max(5.2,hits[0].distance-1));
    if(entryProgress!==null){
     // Presentation-only camera: the session's valid street pose is never changed.
     desired.lerp(new T.Vector3(state.position[0]+s*9,88,state.position[1]+c*9),1-entryProgress);
-    target.lerp(new T.Vector3(state.position[0],.9,state.position[1]),1-entryProgress);
+    target.lerp(new T.Vector3(state.position[0],floor+.9,state.position[1]),1-entryProgress);
     camera.position.copy(desired);
    }else if(cameraSnap)camera.position.copy(desired);else camera.position.lerp(desired,1-Math.exp(-dt*9));
    cameraSnap=false;
    camera.lookAt(target);camera.updateMatrixWorld();
-   drawing.update(camera,state.elapsed,reducedMotion.matches||entryProgress!==null);site.update(camera);navigationUI.update(state,Math.atan2(camera.position.x-target.x,camera.position.z-target.z),now);motion.update(camera,state,reducedMotion.matches||entryProgress!==null);
+   drawing.update(camera,state.elapsed,reducedMotion.matches||entryProgress!==null);bridges?.update(camera);site.update(camera);navigationUI.update(state,Math.atan2(camera.position.x-target.x,camera.position.z-target.z),now);motion.update(camera,state,reducedMotion.matches||entryProgress!==null);
    const submittedAt=performance.now();updateMs=submittedAt-frameStarted;
    renderer.render(world,camera);submissionMs=performance.now()-submittedAt;completedFrames++;
    host.dataset.frameSerial=String(completedFrames);

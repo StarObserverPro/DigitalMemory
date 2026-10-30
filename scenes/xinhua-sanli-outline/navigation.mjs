@@ -1,5 +1,6 @@
 import { SpatialIndex } from '../../src/engine/spatial-index.js';
 import { createNavigationGrid } from '../../src/engine/navigation-grid.js';
+import { createBridgeAccess } from '../../src/engine/bridge-access.js';
 
 export function inside(p,ring){let v=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const a=ring[i],b=ring[j];if((a[1]>p[1])!==(b[1]>p[1])&&p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0])v=!v;}return v;}
 export function segmentDistance(p,a,b){const x=b[0]-a[0],z=b[1]-a[1],t=Math.max(0,Math.min(1,((p[0]-a[0])*x+(p[1]-a[1])*z)/(x*x+z*z)));return Math.hypot(p[0]-a[0]-t*x,p[1]-a[1]-t*z);}
@@ -10,7 +11,7 @@ export function segmentGap(a,b,c,d){
  return Math.min(segmentDistance(a,c,d),segmentDistance(b,c,d),segmentDistance(c,a,b),segmentDistance(d,a,b));
 }
 export function makeNavigation(data){
- const N=data.northDirection,E=data.eastDirection,b=data.bounds;
+ const N=data.northDirection,E=data.eastDirection,b=data.bounds,bridge=createBridgeAccess(data);
  const surfaces=new SpatialIndex(64),obstacles=new SpatialIndex(32),edges=new SpatialIndex(32);
  let serial=0,disposed=false;
  const bounds=(points,pad=0)=>({minX:Math.min(...points.map(p=>p[0]))-pad,maxX:Math.max(...points.map(p=>p[0]))+pad,minZ:Math.min(...points.map(p=>p[1]))-pad,maxZ:Math.max(...points.map(p=>p[1]))+pad});
@@ -35,7 +36,7 @@ export function makeNavigation(data){
   const ring=o.originalRing;
   obstacles.insert(serial++,bounds(ring,.45),p=>inside(p,ring)||ring.some((a,i)=>segmentDistance(p,a,ring[(i+1)%ring.length])<.4));
  }
- for(const bridge of data.bridges||[])for(const pier of bridge.piers)circle(pier.position,pier.collisionRadius);
+ if(!bridge)for(const bridge of data.bridges||[])for(const pier of bridge.piers)circle(pier.position,pier.collisionRadius);
  for(const e of [...(data.streetProps||[]),...(data.trashBins||[]),...(data.equipment||[])])circle(e.position,e.collisionRadius);
  for(const w of data.streetWalls||[])wall(w.points[0],w.points[1],.55);
  for(const f of data.fences||[])for(let i=1;i<f.points.length;i++)wall(f.points[i-1],f.points[i],f.collisionRadius||.55);
@@ -46,6 +47,7 @@ export function makeNavigation(data){
  }
  for(const t of data.trees)circle(t.position,.38);
  function inPaving(p){
+  if(bridge?.surface(p))return true;
   const candidates=surfaces.query(pointBounds(p));
   if(candidates.some(({g,excluded})=>excluded&&polygonContains(p,g)))return false;
   if(candidates.some(({g,excluded})=>!excluded&&polygonContains(p,g)))return true;
@@ -54,7 +56,7 @@ export function makeNavigation(data){
   for(const g of [data.landmarks.north,data.landmarks.east])if(segmentDistance(p,g.position,g.anchor)<3.7)yes=true;
   return yes;
  }
- function blocked(p){return !disposed&&obstacles.query(pointBounds(p)).some(test=>test(p));}
+ function blocked(p){return !disposed&&(bridge?.blocked(p)||obstacles.query(pointBounds(p)).some(test=>test(p)));}
  function walkable(p){return !disposed&&p[0]>=b.minX&&p[0]<=b.maxX&&p[1]>=b.minZ&&p[1]<=b.maxZ&&inPaving(p)&&!blocked(p);}
  function clear(a,c){
   if(disposed||edges.query(segmentBounds(a,c)).some(test=>test(a,c)))return false;
@@ -67,7 +69,7 @@ export function makeNavigation(data){
   if(walkable(from)&&walkable(to)&&clear(from,to))return [[...from],[...to]];
   return grid.route(from,to,maxSnap);
  }
- return {walkable,route,closest:grid.closest,clear,blocked,get cellCount(){return grid.cellCount;},stats:grid.stats,
-  dispose(){if(disposed)return;disposed=true;grid.dispose();surfaces.clear();obstacles.clear();edges.clear();}};
+ return {walkable,route,closest:grid.closest,clear,blocked,height:p=>bridge?.height(p)??0,underBridge:p=>bridge?.under(p)??false,get cellCount(){return grid.cellCount;},stats:grid.stats,
+  dispose(){if(disposed)return;disposed=true;bridge?.dispose();grid.dispose();surfaces.clear();obstacles.clear();edges.clear();}};
 }
 export function routeLength(path){return path?path.slice(1).reduce((s,p,i)=>s+Math.hypot(p[0]-path[i][0],p[1]-path[i][1]),0):Infinity;}

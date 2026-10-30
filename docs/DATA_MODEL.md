@@ -109,6 +109,8 @@ A frontage host is explicit: attached to a supported building, a detached shell,
 
 ## Coordinates and precision
 
+The selected outline registration pins `bridgeFrame` and `bridgePeriodIds`. The loader verifies the model's exact frame before mounting. Its local coordinates transform into the existing Xinhua metric frame; illustrations do not supply this transform. The temporal owner removes unsupported extension data/anchors before navigation and rendering. The new registration revision invalidates older saved outline poses through the existing revision check; stable place and destination IDs remain independent.
+
 The implemented geographic interchange frame is WGS84 longitude/latitude, explicitly tagged, with a documented local metric transform for scene rendering and corridor distances. Preserve each permitted coordinate frame and transform revision; map-provider coordinates, image pixels and geographic coordinates are not interchangeable. Verify geographic conclusions outside the repository, then record only the accepted result, uncertainty and runtime transform contract permitted by [the geographic result rules](GEO_DATA_RUNBOOK.md).
 
 Store geometry separately from display offsets, building height, stylization, and camera projection. Building height can be an approximate parameter with its own evidence; changing it must not silently change the footprint. Source positional uncertainty, reconstruction accuracy, and personal familiarity are independent fields. Satellite resolution is not a measure of personal importance.

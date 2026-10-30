@@ -117,7 +117,7 @@ function renderMarkers() { $('markers').replaceChildren(); }
 function renderRoadLabels() { $('road-labels').replaceChildren(); }
 function renderDestinations(query = '') {
   if (!destinationLandmarks) return;
-  const groups = destinationGroups(destinationLandmarks, query);
+  const groups = destinationGroups(destinationLandmarks, query, session.get().periodId);
   $('destination-groups').innerHTML = groups.length ? groups.map(group => `<details class="destination-group"${query.trim() ? ' open' : ''}><summary>${escape(group.label)}<small>${group.places.length} 处</small></summary><div class="destination-list">${group.places.map(place => `<button data-travel-go="${escape(place.id)}"><span>${escape(place.label)}</span><span aria-hidden="true">↗</span></button>`).join('')}</div></details>`).join('') : '<p class="empty">这段街上暂时没有找到这个地方。</p>';
   for (const button of $('destination-groups').querySelectorAll('[data-travel-go]')) button.addEventListener('click', () => {
     const goal = destinationLandmarks[button.dataset.travelGo];

@@ -1,3 +1,4 @@
+import {bridgeFrame} from '../../src/engine/bridge-access.js';
 export const headingDegrees=yaw=>(((-yaw*180/Math.PI)%360)+360)%360;
 export function mapProjection(bounds,width,height,padding=12){
  const scale=Math.min((width-padding*2)/(bounds.maxX-bounds.minX),(height-padding*2)/(bounds.maxZ-bounds.minZ));
@@ -20,6 +21,7 @@ export function makeNavigationUI(data,{host=document.body,storage=globalThis.loc
   width=matchMedia('(max-width:480px)').matches?136:170;height=matchMedia('(max-width:480px)').matches?152:190;dpr=Math.min(2,devicePixelRatio||1);
   for(const c of [canvas,layer]){c.width=Math.round(width*dpr);c.height=Math.round(height*dpr);}canvas.style.width=width+'px';canvas.style.height=height+'px';
   projection=mapProjection(bounds,width,height,10);const c=layer.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.fillStyle='#faf9f4';c.fillRect(0,0,width,height);
+  if(data.bridgeCorridor){const f=bridgeFrame(data.bridgeCorridor,data);path(c,data.bridgeCorridor.ring.map(p=>f.toWorld([p.x,p.z])));c.strokeStyle='#746047';c.lineWidth=2;c.stroke();}
   c.strokeStyle='#e0e1d8';c.lineWidth=4;for(const road of data.contextRoads||[]){path(c,road.points);c.stroke();}
   for(const dir of [data.northDirection,data.eastDirection]){path(c,[-35,350].map(s=>[dir[0]*s,dir[1]*s]));c.stroke();}
   for(const p of data.paving||[])polygon(c,p,'#e9e8df');for(const p of data.greenAreas||[])polygon(c,p,'#d6dfcc');for(const p of data.plazas||[])polygon(c,p,'#e7dcc6');

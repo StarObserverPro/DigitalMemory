@@ -1,5 +1,9 @@
 # Repository status
 
+## Fourth Ring native extension — 2026-10-29
+
+Selected bridge geometry, fixed ink and all-fixture Haring light marks are integrated into the native outline consumer as `xinhua-fourth-ring-layout-r6` / `xinhua-fourth-ring-outline-r6`, registered by `xinhua-fourth-ring-integrated-r3`. Six ground destinations join the existing menu for `window-2000`. Session, renderer and lifecycle retain their owners. Grade-aware movement/camera and replacement of duplicate Kandan/base-paper surfaces are part of this change. Local/browser/CI results belong to [the engineering packet](attention/tasks/DM-BRIDGES-2000-20261029.md). Historical dimensions remain approximate; no deployment is claimed.
+
 ## Current baseline by layer — 2026-10-29
 
 Core documentation was reconciled against main `68df5f3ba5d97e6b5e5cc9ee7ac43ba83d96eda0`. The [architecture scope](ARCHITECTURE.md#layer-scopes) defines ownership; this table reports the implemented subset. This documentation pass does not change runtime code, assets, geographic values or deployment.

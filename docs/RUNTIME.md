@@ -97,6 +97,14 @@ Use identical data, camera, viewport and execution environment when comparing be
 
 ## Run and check
 
+### Fourth Ring extension
+
+The selected street includes the registered Fourth Ring extension through `scenes/fengtai-bridges/native.mjs`. It shares the existing renderer, frame loop, session, menu/transition and disposal. Six supported ground anchors join the destination picker in `window-2000`. The temporal owner removes the extension and its anchors outside explicit membership.
+
+Navigation consumes the registered frame, side profiles and support footprints. Avatar feet, target markers, ground picks and the underpass camera use surface height. The former Kandan drawing is suppressed while the extension is active. Base paper has a hole across the depressed passage. Bridge geometry and fixed ink are scene-owned outside the existing warm chunk budget and are disposed with the stage; this does not add geographic streaming or a global cache guarantee.
+
+Registered bridge landings provide an along-passage camera heading. The shared camera still follows the session pose and tests solid surfaces; the heading avoids placing its default position across a nearby retaining wall. Direct travel does not add walking distance.
+
 Requires Node.js 22 or later. No dependency installation is needed for these commands:
 
 ```sh

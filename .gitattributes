@@ -1,5 +1,7 @@
 # The selected scene manifest pins engine source bytes, including LF endings.
 src/engine/*.js text eol=lf
+src/explorer/destinations.js text eol=lf
+src/domain/temporal.js text eol=lf
 scenes/**/*.js text eol=lf
 scenes/**/*.mjs text eol=lf
 scenes/**/*.css text eol=lf
