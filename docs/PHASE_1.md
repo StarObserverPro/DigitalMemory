@@ -12,6 +12,8 @@ The two residential-area labels identify project anchors only. Precise homes, un
 
 ## Construction canvas — 2026-10-17 request
 
+The authorized native Fourth Ring extension adds the Kefeng turn through Kandan, Fengtai bridge underpasses and Beidadi to a simple Fengbei end. It is an approximate 2000–2005 working composite with supported ground destinations, not an asserted itinerary. The newer Fengtai railway steel arch is excluded.
+
 The user authorized a first construction pass using an approximate square around 新华街, the southwest/west Fourth Ring section, 丰台大桥 and 丰台影剧院. The current 1.8 km orientation canvas uses contemporary OSM vectors; it is not a historical source package or an asserted walking route. Four public orientation points are implemented, and both old school-site identities remain unplaced. The first three board candidates were rejected as the main experience. The original follow-up requested an illustrated overview plus street-entry scenic flats; DM-0003 provided that bounded historical example. The selected close view is now the Xinhua/Sanli outline corridor described in [RUNTIME](RUNTIME.md), while the overview remains raster art. That earlier authorization does not activate new construction merely because this document is read today.
 
 ## Initial anchor register

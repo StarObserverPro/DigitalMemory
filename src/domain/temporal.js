@@ -19,3 +19,11 @@ export function resolvePeriodState(states, periodId) {
   if (selected.length > 1) throw new Error(`Conflicting accepted states for period: ${periodId}`);
   return selected[0] || null;
 }
+
+/** Extensions only join the selected street in their explicitly registered periods. */
+export function outlineForPeriod(source, registration, periodId) {
+  const data=structuredClone(source),enabled=!registration.bridgePeriodIds||registration.bridgePeriodIds.includes(periodId);
+  if(!enabled){if(data.bridgeCorridor?.baseBounds)data.bounds=data.bridgeCorridor.baseBounds;delete data.bridgeCorridor;}
+  data.landmarks=Object.fromEntries(Object.entries(data.landmarks).filter(([,place])=>!place.periodIds||place.periodIds.includes(periodId)));
+  return data;
+}

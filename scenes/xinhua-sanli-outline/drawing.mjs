@@ -42,7 +42,9 @@ export function makeDrawing(scene,data,options={}){
  const line=(name,points,material=groundInk,inkOwner=0)=>register({id:name+':'+partId++,bounds:boundsOf(points.map(p=>[p[0],p[2]]),.2,Math.min(...points.map(p=>p[1])),Math.max(...points.map(p=>p[1]))),build:()=>stroke(points,material,undefined,inkOwner)});
  function ribbon(dir,start,end,width){const r=[-dir[1],dir[0]],p=(s,d)=>[dir[0]*s+r[0]*d,dir[1]*s+r[1]*d];layer('road-ribbon',[p(start,-width/2),p(end,-width/2),p(end,width/2),p(start,width/2)],roadColor,.012);}
  const base=new T.Group();base.name='outline-base';scene.add(base);
- const ground=new T.Mesh(new T.PlaneGeometry(1600,1600),new T.MeshBasicMaterial({color:PAPER}));ground.rotation.x=-Math.PI/2;ground.position.y=-.03;base.add(ground);
+ const groundShape=new T.Shape([[-800,-800],[800,-800],[800,800],[-800,800]].map(p=>new T.Vector2(...p)));
+ if(data.bridgeCorridor)groundShape.holes.push(new T.Path(data.bridgeCorridor.groundCutout.map(p=>new T.Vector2(p[0],-p[1]))));
+ const ground=new T.Mesh(new T.ShapeGeometry(groundShape),new T.MeshBasicMaterial({color:PAPER}));ground.rotation.x=-Math.PI/2;ground.position.y=-.03;base.add(ground);
  ribbon(data.northDirection,-12,data.northLength+45,10.5);
  if(!data.corridor)ribbon(data.eastDirection,-65,data.eastLength+65,13.2);
  for(const p of data.corridorRoadSurfaces||[])layer('corridor-road',p.ring,roadColor,.012,p.holes);

@@ -10,7 +10,7 @@ const data = JSON.parse(await readFile('scenes/xinhua-sanli-outline/scene-data.j
 
 test('regional search preserves all scene anchors exactly once, including future anchors', () => {
   const groups = destinationGroups(data.landmarks);
-  assert.equal(groups.length, 4);
+  assert.equal(groups.length, 5);
   const ids = groups.flatMap(group => group.places.map(place => place.id));
   assert.equal(new Set(ids).size, ids.length);
   assert.deepEqual(ids.toSorted(), Object.keys(data.landmarks).toSorted());

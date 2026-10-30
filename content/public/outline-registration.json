@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "privacy": "public",
   "id": "xinhua-sanli-outline",
-  "revision": "xinhua-corridor-integrated-r2",
-  "dataRevision": "xinhua-corridor-layout-r5",
-  "artRevision": "xinhua-corridor-outline-r5",
+  "revision": "xinhua-fourth-ring-integrated-r3",
+  "dataRevision": "xinhua-fourth-ring-layout-r6",
+  "artRevision": "xinhua-fourth-ring-outline-r6",
   "data": "../../scenes/xinhua-sanli-outline/scene-data.json",
-  "sha256": "dc5c3a84d8228b8e8f918888587112e65b26a5941280bf4b5801c8e90f1918c8",
+  "sha256": "4b8d66ebca0da1ce41f9fb959b564648cd7b5cb85ac0f94111cc9ee35a2924cb",
   "placeIds": [
     "place-xinhua",
     "place-sanli"
@@ -33,5 +33,17 @@
       ],
       "historicalApproval": "unverified-working-composite"
     }
-  ]
+  ],
+  "bridgePeriodIds": [
+    "window-2000"
+  ],
+  "bridgeFrame": {
+    "origin": [
+      116.2776,
+      39.84565
+    ],
+    "sx": 85468.12963105878,
+    "sz": 111319.49,
+    "certainty": "approximate selected geometry"
+  }
 }

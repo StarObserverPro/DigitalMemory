@@ -1,6 +1,6 @@
 import { validOutlineState } from '../application/session.js';
 import { createLocalSceneFrame } from '../domain/spatial.js';
-import { resolvePeriodState } from '../domain/temporal.js';
+import { resolvePeriodState, outlineForPeriod } from '../domain/temporal.js';
 import { makeNavigation } from '../../scenes/xinhua-sanli-outline/navigation.mjs';
 
 /** One warm scene, with an expiry that is not extended by unrelated map renders. */
@@ -59,7 +59,8 @@ export async function createOutlineStage({
   const currentRequest = () => isCurrent() && !signal?.aborted && repository.epoch === epoch &&
     repository.manifest?.outlineScene === sourcePath && JSON.stringify(session.get().route) === routeKey &&
     session.get().periodId === requested.periodId;
-  const { registration, data } = await repository.loadOutline({ signal });
+  const { registration, data: sourceData } = await repository.loadOutline({ signal });
+  const data=outlineForPeriod(sourceData,registration,requested.periodId),bridgeEnabled=Boolean(data.bridgeCorridor);
   if (!currentRequest()) return null;
   const { mountOutline } = await loadRuntime();
   if (!currentRequest()) return null;
@@ -72,6 +73,7 @@ export async function createOutlineStage({
     const state = session.get();
     return JSON.stringify(state.route) === routeKey &&
       resolvePeriodState(registration.periodStates, state.periodId)?.id === environment.id &&
+      Boolean(sourceData.bridgeCorridor&&(!registration.bridgePeriodIds||registration.bridgePeriodIds.includes(state.periodId))) === bridgeEnabled &&
       (!published || state.outline?.revision === registration.revision);
   };
   const dispose = () => {
