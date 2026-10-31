@@ -124,3 +124,7 @@ Two original transparent sheets and fifteen cropped small-scale compound/buildin
 ## Selected Sanli intake
 
 The accepted Sanli runtime/data/font is production-selected and integrated through the existing street entry. Retain stable record IDs, original geometry, dependency/font licences and immutable hashes. Do not intake sandbox snapshots, rejected images, raw reference photos or one-off builders that depend on private local paths. Geographic corrections enter permitted final scene data and its affected registrations; reusable drawing and runtime rules belong in the [outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md). Investigation/acquisition history has no repository destination.
+
+## Selected landmark badge examples
+
+The [badge contract](HANDPAINTED_MAP_ART.md#landmark-badges) owns the approved text-free S/L family and its sparse hand-drawn style. Eighteen [cropped examples](../assets/examples/landmark-badges-r1/README.md) are explicitly authorized for repository storage as a bounded exception to production-only storage. They retain opaque paper backgrounds and are not runtime sprites. Their manifest pins dimensions and hashes. Integration, alpha preparation, geographic registration and final-size map verification remain separate work; no runtime consumer was added by this intake.

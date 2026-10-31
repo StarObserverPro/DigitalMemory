@@ -101,3 +101,7 @@ Before publishing or re-pushing the PR, use the [PR checklist](.github/PULL_REQU
 Bind observations to a commit or asset revision and to the actual consumer: a map tile, camera view, doorway, text panel, or export. Static code presence is not visual acceptance. A build is not a successful walkthrough. An aesthetically approved reconstruction is not a confirmed historical fact. An architecture document is not an implemented capability.
 
 Keep implementation, user content/aesthetic approval, merge, and publication statuses separate. Record missing evidence explicitly. On delivery or stop, preserve the packet and exact next action, remove its active route, and leave future work unactivated. [Attention guidance](docs/attention/README.md) owns the process; [verification](docs/VERIFICATION.md) owns acceptance.
+
+### Selected landmark badge example exception
+
+The explicit 2026-10-30 request authorizes the eighteen selected S/L crops in `assets/examples/landmark-badges-r1/` as reusable style examples. See [the canonical badge contract](docs/HANDPAINTED_MAP_ART.md#landmark-badges). This narrow exception does not authorize other trials/contact sheets, imply runtime integration, or establish geographic facts.
