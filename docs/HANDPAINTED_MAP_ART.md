@@ -156,3 +156,45 @@ Native renders of the actual consumer cover three tiers, west/east close views a
 
 
 During DM-0016 the user separately rejected the count-based Sanli layout. Four photographs and a public ground-plan reference now control its three-front/two-rear tower families, perpendicular eastern slab and open court. This correction is part of the requested working reconstruction, with user review still pending. Source-paint envelopes and invisible crops preserve roof edges; a no-overlap test alone does not establish a true layout.
+
+<a id="landmark-badges"></a>
+
+## 地标 badge：选定定义与风格（2026-10-30）
+
+Badge 是少量重要地标的象征性识别图形。S 以功能符号认方向，L 从同一符号衍生出中号场所意象。它不代替建筑实体、地块几何或街景模型。图形不写地点名，不强制旁挂文字，也不以陌生读者能辨认全部地点为目标。内部标识及未来交互所需的无障碍名称可以保留，不能因此恢复常驻可见标签。
+
+### 选定画法
+
+- Haring 式简笔概括：舒展连续的粗轮廓、自然轻微粗细变化、圆润收笔，少量明确色块和充足留白。
+- 每处保留两三个识别特征；以轮廓、色彩和少数重复形概括功能。删减窗格、车身零件、树丛、阴影和装饰，不因放大而自动补细节。
+- 避免机械对称的导览图标、均匀矢量描边、复杂建筑水彩、噪点做旧、光晕以及强制圆框。
+- 花园允许增加色彩而不增加线条：现有花瓣分为粉、黄、紫三色，大小版一致。
+- 两版保持语义、主色和视觉连续性；L 可改变构图表达场所，不能只是把 S 放大。无需对实际建筑进行精确复原。
+
+| 地标 | S 功能符号 | L 保留的识别特征 |
+| --- | --- | --- |
+| 丰台影剧院 | 放映符号 | 高台阶、抬高入口、厚重简洁门面；暂定艺术轮廓 |
+| 丰台火车站 | 绿色老式机车正面 | 绿色内燃机车、绿皮车厢、朴素旧雨棚；不用蓝白动车和现代曲面棚 |
+| 丰台花园 | 三色花 | 同一三色花、叶片、简洁园门 |
+| 世界公园 | 地球 | 地球、简化塔形与金字塔 |
+| 马厂公交总站 | 老式公交正面 | 成排车辆概括露天大车场，红白站牌，无候车棚 |
+| 机务段 | 铁路符号 | 机车、简洁库门、铁路符号 |
+| 丰台一中 | 书本 | 书本与简洁校门 |
+| 丰台医院（旧址） | 医疗十字 | 医疗十字与极简医院轮廓 |
+| 铁路医院 | 医疗十字 | 同类医院轮廓及小铁路符号 |
+
+这些是选定图形特征，不建立地点坐标、建筑年代或历史外观事实。
+
+### 缩放与未来接入限制
+
+最远景可隐藏全部 badge，仅保留必要主路名；中景按空间选择少量 S；近景在容纳得下时展开 L。不得把所有地标在所有档位强行显示。当前九组是候选呈现集合，不是一期空间范围扩张。
+
+未来接入须复用空间注册锚点、时期解析和现有相机；显示尺寸使用有限的屏幕像素预算，不随地图无限放大。先解析时期适用，再选 S/L。道路、路口与有效入口优先，拥挤时退回 S 或隐藏，不能移动真实坐标解决碰撞。切换保持锚点稳定；素材未就绪时保留 S。具体尺寸、切换阈值、动画和数量上限仍待真实地图与窄屏验证，本次没有实现。
+
+Badge 默认是认方向的呈现，不自动获得直达、打开记忆或室内入口能力。交互若后续启用，遵循 INTERACTION 的注册落地与挂载边界。
+
+### 已选范例与存储范围
+
+[九组 S/L 范例](../assets/examples/landmark-badges-r1/README.md)及其 manifest 是本次明确授权入库的十八张裁切图。此范围是 production-only 存储规则的特定例外；不开放其他试稿、整张对照图、未选生成物或一次性工具入库。
+
+当前 PNG 保留浅纸色不透明背景；裁切不等于透明抠图。它们是选定画风范例，尚未被运行时消费。实际接入前须做透明边缘或经审核的底色处理、统一锚点、最终尺寸与地图避让验证，并登记生产资产版本。不得把白底矩形直接冒充透明精灵。
