@@ -1,5 +1,9 @@
 # Repository status
 
+## Overview period selection — 2026-11-06
+
+The overview has an explicit approximate orientation display state across all six menu periods. Ground, buildings and labels retain shared temporal selection, with narrower residential-phase exclusions and no inferred school-stage dates. Qili taller residences and Sanli front towers use a later working phase; Sanli rear towers remain in the undated view. This updates overview display membership only; R7 images, spatial geometry and the separately registered close-street environment are retained. Checks, remaining chronological uncertainty and delivery state belong to [the engineering packet](attention/tasks/DM-OVERVIEW-PERIODS-20261106.md).
+
 ## Fourth Ring native extension — 2026-10-29
 
 Selected bridge geometry, fixed ink and all-fixture Haring light marks are integrated into the native outline consumer as `xinhua-fourth-ring-layout-r6` / `xinhua-fourth-ring-outline-r6`, registered by `xinhua-fourth-ring-integrated-r3`. Six ground destinations join the existing menu for `window-2000`. Session, renderer and lifecycle retain their owners. Grade-aware movement/camera and replacement of duplicate Kandan/base-paper surfaces are part of this change. Local/browser/CI results belong to [the engineering packet](attention/tasks/DM-BRIDGES-2000-20261029.md). Historical dimensions remain approximate; no deployment is claimed.

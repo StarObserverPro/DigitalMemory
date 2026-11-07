@@ -20,6 +20,14 @@ export function resolvePeriodState(states, periodId) {
   return selected[0] || null;
 }
 
+/** Display context is explicitly registered; it does not date a building's construction. */
+export function isOverviewItemVisible(overview, item, periodId) {
+  if (item.periodIds && !item.periodIds.includes(periodId)) return false;
+  if (!item.periodStateId) return !!item.periodIds;
+  const states = (overview.periodStates || []).filter(state => state.id === item.periodStateId);
+  return !!resolvePeriodState(states, periodId);
+}
+
 /** Extensions only join the selected street in their explicitly registered periods. */
 export function outlineForPeriod(source, registration, periodId) {
   const data=structuredClone(source),enabled=!registration.bridgePeriodIds||registration.bridgePeriodIds.includes(periodId);

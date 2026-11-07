@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createTransform, SpatialRegistry } from '../src/domain/spatial.js';
-import { relateTime, resolveEnvironment } from '../src/domain/temporal.js';
+import { relateTime, resolveEnvironment, isOverviewItemVisible } from '../src/domain/temporal.js';
 import { createSession, createPortalController } from '../src/application/session.js';
 import { PublicRepository } from '../src/adapters/public-repository.js';
 import { restoreSession, saveSession } from '../src/adapters/session-storage.js';
@@ -34,6 +34,20 @@ test('sparse time separates known windows, overlapping uncertainty and unmapped 
   for (const [time,relation] of [[{kind:'window',start:2001,end:2003},'current'],[{kind:'window',start:1995,end:1998},'earlier'],[{kind:'window',start:2008,end:2009},'later'],[{kind:'window',start:1995,end:2002},'overlapping'],[{kind:'stage',stageId:'primary'},'unknown'],[null,'unknown']]) assert.equal(relateTime(time,period),relation);
   assert.equal(relateTime({kind:'stage',stageId:'primary'},{kind:'stage',stageId:'primary'}),'current');
   assert.equal(resolveEnvironment([{placeId:'p',approval:'accepted',time:{kind:'window',start:1995,end:1996}}],'p',period).status,'no_supported_state');
+});
+test('overview context requires an accepted state and preserves narrower restrictions',()=>{
+ const state={id:'context',approval:'accepted',periodIds:['stage-primary','stage-middle','unknown']};
+ const overview={periodStates:[state]},item={periodStateId:'context'};
+ assert.equal(isOverviewItemVisible(overview,item,'stage-primary'),true);
+ assert.equal(isOverviewItemVisible(overview,item,'not-registered'),false);
+ assert.equal(isOverviewItemVisible(overview,{...item,periodIds:['stage-middle']},'stage-primary'),false);
+ assert.equal(isOverviewItemVisible(overview,{...item,periodIds:['stage-middle']},'stage-middle'),true);
+ assert.equal(isOverviewItemVisible({periodStates:[{...state,approval:'candidate'}]},item,'stage-primary'),false);
+ assert.equal(isOverviewItemVisible({},item,'stage-primary'),false);
+ assert.equal(isOverviewItemVisible(overview,{},'stage-primary'),false);
+ assert.equal(isOverviewItemVisible(overview,{periodIds:['unknown']},'unknown'),true);
+ assert.throws(()=>isOverviewItemVisible({periodStates:[state,{...state}]},item,'stage-primary'),/Conflicting accepted states/);
+ assert.equal(relateTime({kind:'window',start:1997,end:2000},{kind:'stage',stageId:'middle'}),'unknown');
 });
 test('nested portal return restores entire origin including selected memory, camera and period', async () => {
   const session=createSession();session.dispatch({type:'select-place',id:'p'});session.dispatch({type:'period',id:'other-time'});session.dispatch({type:'camera',camera:{x:12,y:-5,zoom:2}});session.dispatch({type:'select-memory',id:'fragment',placeId:'p'});

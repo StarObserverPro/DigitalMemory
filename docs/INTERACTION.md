@@ -82,6 +82,8 @@ These outcomes use the same street binding and may change through a content revi
 
 ## Current time and other-time entrances
 
+Changing the menu period preserves overview orientation context instead of clearing the whole building layer. The overview consumes its explicitly registered approximate display state in every supported menu period; that context is not a claim that every depicted shell existed then. Narrower building-phase restrictions still apply. Later unassigned phases remain available under “时间未定”, without assigning a calendar year to a school stage. Art, compound names and label obstacles use the same resolved visibility. The selected period, route and camera remain owned by session and survive reload.
+
 | Relation to current period | Intended treatment |
 | --- | --- |
 | Current/compatible | Normal scene color and emphasis |

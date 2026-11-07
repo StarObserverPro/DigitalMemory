@@ -1,4 +1,5 @@
 /** Raster imagery owns visible art. SVG paths below are invisible registration masks only. */
+import { isOverviewItemVisible } from '../domain/temporal.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const path=points=>'M'+points.map(p=>p.join(',')).join('L')+'Z';
 const bounds=points=>{const x=Math.min(...points.map(p=>p[0])),y=Math.min(...points.map(p=>p[1]));return[x,y,Math.max(...points.map(p=>p[0]))-x,Math.max(...points.map(p=>p[1]))-y];};
@@ -55,7 +56,9 @@ export function compilePaintedOverview(registration,transform,assets,options={})
 }
 
 const levelFor=state=>state.camera.zoom<1.5?0:state.camera.zoom<2.25?1:2;
-export const visiblePaintedCompounds=(assembly,state,available)=>assembly.painted.compounds.filter(c=>c.periodIds.includes(state.periodId)&&available.includes(c.assetRefsByLevel?.[levelFor(state)]||c.assetRef));
+export const visiblePaintedParts=(assembly,compound,state)=>compound.parts.filter(p=>(p.minLevel||0)<=levelFor(state)&&(!p.periodIds||isOverviewItemVisible(assembly.painted,p,state.periodId)));
+export const visiblePaintedCompounds=(assembly,state,available)=>assembly.painted.compounds.filter(c=>isOverviewItemVisible(assembly.painted,c,state.periodId)&&available.includes(c.assetRefsByLevel?.[levelFor(state)]||c.assetRef)&&visiblePaintedParts(assembly,c,state).length);
+export const visiblePaintedLandmarks=(assembly,state,available)=>assembly.painted.landmarks.filter(l=>isOverviewItemVisible(assembly.painted,l,state.periodId)&&available.includes(l.assetRef));
 export function paintedOverviewMarkup(assembly,assets,state,available){
  if(assembly.painted.renderer==='registered-raster-volumes-v1')return registeredVolumesMarkup(assembly,assets,state,available);
  const painted=assembly.painted,compounds=visiblePaintedCompounds(assembly,state,available),defs=[],ground=[],standing=[];
@@ -76,8 +79,8 @@ export function paintedOverviewMarkup(assembly,assets,state,available){
    standing.push({id:p.id,depth:p.depth,html:`<g data-compound="${esc(c.id)}" data-part="${esc(p.id)}" data-storeys="${p.storeys}" data-kind="${p.kind}" data-ground-anchor="${p.origin.join(',')}" mask="url(#${id})">${image(assets[c.assetRef],rect,'data-uniform-scale="'+c.frame.modelUnitsPerPixel+'"')}</g>`});
   }
  }
- if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if((!l.periodIds||l.periodIds.includes(state.periodId))&&available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
- for(const f of painted.frontages)if(f.periodIds.includes(state.periodId)&&available.includes(f.assetRef)){
+ for(const l of visiblePaintedLandmarks(assembly,state,available))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
+ for(const f of painted.frontages)if(isOverviewItemVisible(painted,f,state.periodId)&&available.includes(f.assetRef)){
   const id='painted-frontage-'+f.id,[x,y,w,h]=f.rect;
   defs.push(`<clipPath id="${id}"><path d="${path(f.sourceClip.map(([u,v])=>[x+u*w,y+v*h]))}"/></clipPath>`);
   standing.push({id:f.id,depth:f.groundAnchor[1],html:`<g data-frontage="${esc(f.id)}" data-kind="shop" clip-path="url(#${id})">${image(assets[f.assetRef],f.rect)}</g>`});
@@ -122,14 +125,14 @@ function compileRegisteredVolumes(source,registration,transform,assets,options){
 function registeredVolumesMarkup(assembly,assets,state,available){
  const painted=assembly.painted,level=levelFor(state),compounds=visiblePaintedCompounds(assembly,state,available),standing=[];
  const base=available.includes(painted.base.assetRef)?image(assets[painted.base.assetRef],painted.base.bounds,'data-raster-ground="true"'):'';
- const ground=painted.ground.periodIds.includes(state.periodId)&&available.includes(painted.ground.assetRef)?image(assets[painted.ground.assetRef],painted.ground.bounds,'data-registered-corridor="true"'):'';
- for(const c of compounds)for(const p of c.parts.filter(p=>(p.minLevel||0)<=level)){
+ const ground=isOverviewItemVisible(painted,painted.ground,state.periodId)&&available.includes(painted.ground.assetRef)?image(assets[painted.ground.assetRef],painted.ground.bounds,'data-registered-corridor="true"'):'';
+ for(const c of compounds)for(const p of visiblePaintedParts(assembly,c,state)){
   const rep=p.levels[level],a=assets[rep.assetRef],[x,y,w,h]=p.visualBounds;
   // The nested SVG is only an image viewport into a packed raster atlas.
   // Identical world bounds at every tier preserve scale, anchors and occlusion.
   const body=`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${rep.crop.join(' ')}" preserveAspectRatio="xMidYMid meet" overflow="hidden"><image width="${a.width}" height="${a.height}" href="${esc(a.url)}"/></svg>`;
   standing.push({id:p.id,depth:p.depth,html:`<g data-compound="${esc(c.id)}" data-part="${esc(p.id)}" data-kind="${esc(p.kind)}" data-storeys="${p.storeys}" data-detail-level="${level}" data-ground-anchor="${p.origin.join(',')}"${p.id==='sanli-opposite-detached-frontage'?' data-frontage="sanli-opposite-detached-frontage"':''}>${body}</g>`});
  }
- if(['window-2000','window-1995'].includes(state.periodId))for(const l of painted.landmarks)if((!l.periodIds||l.periodIds.includes(state.periodId))&&available.includes(l.assetRef))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
+ for(const l of visiblePaintedLandmarks(assembly,state,available))standing.push({id:l.featureId,depth:l.groundAnchor[1],html:`<g data-map-object="${esc(l.featureId)}">${image(assets[l.assetRef],l.rect)}</g>`});
  return `<g data-layer="pale-context">${base}</g><g data-layer="road-art" data-raster-roads="true">${ground}</g><g data-layer="solid-places">${standing.sort((a,b)=>a.depth-b.depth||a.id.localeCompare(b.id)).map(s=>s.html).join('')}</g>`;
 }

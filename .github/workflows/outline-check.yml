@@ -14,3 +14,10 @@ jobs:
         with:
           node-version: '22'
       - run: npm run check
+      - name: Overview period-switch browser regression
+        env:
+          CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+          OVERVIEW_EVIDENCE_DIR: ${{ runner.temp }}/overview-periods
+        run: |
+          npm install --no-save --ignore-scripts playwright-core@1.56.1
+          node tests/overview-periods.browser.mjs
