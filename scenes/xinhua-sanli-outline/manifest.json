@@ -42,6 +42,6 @@
     "../fengtai-bridges/stroke-topology.mjs": "15a334a0293ba836fcac8a8cda61468a3f2af0858f348414a225fad369827041",
     "../fengtai-bridges/underpass-lamps.mjs": "1ecc3348d78d9ac6314856b2ef00eda9d4df2aaf82ef6aeb96cc63fb2832c943",
     "../../src/engine/bridge-access.js": "550206cfb2552d9e38d48dcec91eda9be08b6256587298885e0a20106540a2ae",
-    "../../src/domain/temporal.js": "fb2b2a55794ca0732784ace49b717284fca2eb60d5421362dc876fed23e7509f"
+    "../../src/domain/temporal.js": "310dc626328fbe081dcc64a1a1c4cdd471ef9f86abd034701f69e63c8f42bab3"
   }
 }

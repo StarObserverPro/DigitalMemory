@@ -21,14 +21,55 @@ test('consumer uses raster artwork at all three detail levels and no overview pe
   assert.match(markup,new RegExp(`data-detail-level="${mapLevel(zoom)}"`));
  }
 });
+test('every menu period retains explicitly registered overview context at all three tiers',()=>{
+ for(const {id:period} of read('manifest').periods)for(const zoom of[1,1.8,2.7]){
+  const markup=render(zoom,loaded,period);
+  assert.match(markup,/data-part=/,period+' buildings');
+  assert.match(markup,/data-compound="sili"/,period+' low-rise context');
+  assert.match(markup,/data-registered-corridor=/,period+' ground');
+  const layout=overviewLabelLayout(assembly,{periodId:period,camera:{zoom}},loaded);
+  assert.ok(layout.labels.length>0,period+' labels');
+ }
+ const before=structuredClone(registration);
+ for(const period of read('manifest').periods)render(1.8,loaded,period.id);
+ assert.deepEqual(registration,before,'selection never authors dates or geometry');
+});
+test('later residential phases do not get inserted into earlier overview periods',()=>{
+ const qili=assembly.painted.compounds.find(c=>c.id==='qili').parts.filter(p=>p.periodIds);
+ const sanli=assembly.painted.compounds.find(c=>c.id==='sanli');
+ const late=sanli.parts.filter(p=>p.appearanceFamily==='green-flat-top');
+ for(const period of['window-1995','stage-preschool','stage-primary']){
+  const markup=render(1.8,loaded,period);
+  for(const p of [...qili,...sanli.parts.filter(p=>p.kind==='tower')])assert.ok(!markup.includes(`data-part="${p.id}"`));
+  assert.match(markup,/data-compound="sanli"/,'other Sanli context stays visible');
+ }
+ for(const period of['window-2000','stage-middle']){
+  const markup=render(1.8,loaded,period);
+  for(const p of qili)assert.ok(markup.includes(`data-part="${p.id}"`));
+  for(const p of late)assert.ok(!markup.includes(`data-part="${p.id}"`),'undated later phase stays out of earlier windows');
+ }
+ for(const p of late)assert.ok(render(1.8,loaded,'unknown').includes(`data-part="${p.id}"`));
+});
 test('unassociated periods and failed images cannot create fallback buildings',()=>{
- for(const period of['stage-primary','window-1995'])assert.doesNotMatch(render(1.8,loaded,period),/data-part=|data-frontage=|data-registered-corridor=/);
+ assert.doesNotMatch(render(1.8,loaded,'not-registered'),/data-part=|data-frontage=|data-registered-corridor=|data-map-object=/);
  assert.doesNotMatch(render(1.8,[]),/<image\b|data-part=|data-map-object=/);
  assert.doesNotMatch(render(1.8,loaded,'window-1995'),/data-map-object="heating-chimney-review"/);
  assert.match(render(1.8),/data-map-object="heating-chimney-review"/);
  const missing=render(1.8,loaded.filter(k=>k!==assembly.painted.compounds.find(c=>c.id==='sanli').assetRefsByLevel[1]));
  assert.doesNotMatch(missing,/data-compound="sanli"/);assert.match(missing,/data-compound="qili"/);
  assert.equal(layeredOverviewMarkup({...assembly,painted:null},assets,{periodId:'window-2000',camera:{zoom:1.8}},loaded,{includeLabels:false}),'');
+});
+test('labels and obstacles exclude the same period-hidden parts as painted art',()=>{
+ const changed=structuredClone(registration),compound=changed.paintedOverview.compounds.find(c=>c.id==='qili');
+ compound.periodIds=['window-2000'];
+ const hidden=make(changed),state={periodId:'stage-primary',camera:{zoom:2.7}};
+ assert.doesNotMatch(layeredOverviewMarkup(hidden,assets,state,loaded),/data-compound="qili"|data-map-label="compound-qili"|data-map-label="orientation-daoxiangcun-qili-west"/);
+ const baseline=overviewLabelLayout(assembly,state,loaded);
+ // Compilation owns landmark bounds. A hidden landmark's width cannot affect labels.
+ changed.paintedOverview.landmarks.find(l=>l.featureId==='heating-chimney-review').width=1e6;
+ compound.periodIds=undefined;
+ const excluded=overviewLabelLayout(make(changed),state,loaded);
+ assert.deepEqual(excluded.labels,baseline.labels);
 });
 test('source-linked masses retain geographic XY and evidenced height at every level',()=>{
  const plan=JSON.parse(fs.readFileSync('content/reference/xinhua-spatial-plan.json'));

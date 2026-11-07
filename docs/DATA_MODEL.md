@@ -156,6 +156,8 @@ An event belongs in the record only when supplied; a sequence of ordinary observ
 
 A release can deliberately select a compatible approximate-period composite with explicit memberships, or an authored remembered phase. It cannot silently combine mutually exclusive states or interpret the nearest dated image as historical truth. Reading a note/sequence and changing the active environment are separate commands.
 
+The overview separately registers an orientation display state in `paintedOverview.periodStates`. Ground, compounds and undated orientation landmarks refer to it by `periodStateId`; the temporal owner requires an accepted state with explicit menu-period membership. Its `historicalApproval: unverified-orientation-context` describes display applicability, not construction dates. A record's own `periodIds` narrows that context, and individual painted parts may carry explicit phase membership with `temporalCertainty`. Unknown dates remain unknown; no life-stage/calendar conversion is inferred. The street's environment registration and bridge-period rules remain separate consumers.
+
 ## Temporal query result
 
 The implemented `relateTime()` returns a `current`, `earlier`, `later`, `overlapping`, or `unknown` relation string. A future query envelope should also identify the selected record revisions without exposing private authoring evidence. Color is a presentation of the relation, not its storage representation. When bounds overlap or chronology is unclear, do not force an earlier/later label.

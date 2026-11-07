@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "privacy": "public",
-  "revision": "overview-registration-travel-r7",
+  "revision": "overview-registration-travel-r7-periods-r1",
   "geometryRevision": "fengtai-orientation-r1",
   "transformRevision": "local-equirectangular-r1",
   "crs": "WGS84",
@@ -2363,6 +2363,22 @@
   ],
   "paintedOverview": {
     "revision": "travel-r7",
+    "periodStates": [
+      {
+        "id": "overview-orientation-context",
+        "approval": "accepted",
+        "periodIds": [
+          "window-2000",
+          "window-1995",
+          "stage-preschool",
+          "stage-primary",
+          "stage-middle",
+          "unknown"
+        ],
+        "historicalApproval": "unverified-orientation-context",
+        "constructionChronology": "unknown-unless-explicitly-restricted"
+      }
+    ],
     "renderer": "registered-raster-volumes-v1",
     "projectionId": "north-up-orthographic-rise-r1",
     "base": {
@@ -2382,9 +2398,7 @@
         653,
         405
       ],
-      "periodIds": [
-        "window-2000"
-      ]
+      "periodStateId": "overview-orientation-context"
     },
     "compounds": [
       {
@@ -2677,9 +2691,7 @@
             39.84110976227855
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-qili-0",
         "assetRefsByLevel": [
           "painted-block-qili-0",
@@ -2878,6 +2890,12 @@
           },
           {
             "id": "xinhua-71f81588-cee7-4b4d-b52b-06c2dc29dc44",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "71f81588-cee7-4b4d-b52b-06c2dc29dc44"
             ],
@@ -3045,6 +3063,12 @@
           },
           {
             "id": "xinhua-f4117f10-8e48-4b19-a528-0a512a9f1575",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "f4117f10-8e48-4b19-a528-0a512a9f1575"
             ],
@@ -3212,6 +3236,12 @@
           },
           {
             "id": "xinhua-75ce6030-8ec8-46d5-ae66-7a6b02973c4f",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "75ce6030-8ec8-46d5-ae66-7a6b02973c4f"
             ],
@@ -3385,6 +3415,12 @@
           },
           {
             "id": "xinhua-5b3de662-5e89-49d2-acb9-c86f965dde5d",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "5b3de662-5e89-49d2-acb9-c86f965dde5d"
             ],
@@ -4777,9 +4813,7 @@
             39.84147894692165
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-wuli-west-0",
         "assetRefsByLevel": [
           "painted-block-wuli-west-0",
@@ -6638,9 +6672,7 @@
             39.841538996156785
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-wuli-east-0",
         "assetRefsByLevel": [
           "painted-block-wuli-east-0",
@@ -8357,9 +8389,7 @@
             39.84034494532863
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-sili-0",
         "assetRefsByLevel": [
           "painted-block-sili-0",
@@ -9320,9 +9350,7 @@
             39.839800552637705
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-bali-0",
         "assetRefsByLevel": [
           "painted-block-bali-0",
@@ -10318,9 +10346,7 @@
             39.83998990318884
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-liuli-0",
         "assetRefsByLevel": [
           "painted-block-liuli-0",
@@ -13549,9 +13575,7 @@
             39.84297837381265
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-sanli-0",
         "assetRefsByLevel": [
           "painted-block-sanli-0",
@@ -13561,6 +13585,10 @@
         "parts": [
           {
             "id": "xinhua-ca5d1563-4379-4a48-967b-a10ad18eb004",
+            "periodIds": [
+              "unknown"
+            ],
+            "temporalCertainty": "later-phase-exact-date-unknown",
             "sourceIds": [
               "ca5d1563-4379-4a48-967b-a10ad18eb004"
             ],
@@ -15473,6 +15501,12 @@
           },
           {
             "id": "xinhua-bac3da74-8990-41da-b13e-984e350b9147",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "bac3da74-8990-41da-b13e-984e350b9147"
             ],
@@ -15802,6 +15836,10 @@
           },
           {
             "id": "xinhua-c592bc41-d3d5-4839-ab76-bceffb38be55",
+            "periodIds": [
+              "unknown"
+            ],
+            "temporalCertainty": "later-phase-exact-date-unknown",
             "sourceIds": [
               "c592bc41-d3d5-4839-ab76-bceffb38be55"
             ],
@@ -16965,6 +17003,12 @@
           },
           {
             "id": "xinhua-6c39d597-ed4a-40bb-858c-3fae53c6e487",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "6c39d597-ed4a-40bb-858c-3fae53c6e487"
             ],
@@ -17429,6 +17473,12 @@
           },
           {
             "id": "xinhua-46aa4676-3cfc-4e3f-8d88-12ef672cf37c",
+            "periodIds": [
+              "window-2000",
+              "stage-middle",
+              "unknown"
+            ],
+            "temporalCertainty": "approximate-phase",
             "sourceIds": [
               "46aa4676-3cfc-4e3f-8d88-12ef672cf37c"
             ],
@@ -19437,9 +19487,7 @@
             39.8399507630338
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-yili-0",
         "assetRefsByLevel": [
           "painted-block-yili-0",
@@ -27814,9 +27862,7 @@
             39.8417463127052
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-erli-0",
         "assetRefsByLevel": [
           "painted-block-erli-0",
@@ -29041,9 +29087,7 @@
             39.840453009837745
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-railway-works-context-0",
         "assetRefsByLevel": [
           "painted-block-railway-works-context-0",
@@ -32455,9 +32499,7 @@
             39.8415936402195
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-heating-0",
         "assetRefsByLevel": [
           "painted-block-heating-0",
@@ -34013,9 +34055,7 @@
             39.8435311
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-school-0",
         "assetRefsByLevel": [
           "painted-block-school-0",
@@ -35947,9 +35987,7 @@
             39.841034572375484
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-hospital-old-0",
         "assetRefsByLevel": [
           "painted-block-hospital-old-0",
@@ -37974,9 +38012,7 @@
             39.839763416769834
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-xinhua-frontage-context-0",
         "assetRefsByLevel": [
           "painted-block-xinhua-frontage-context-0",
@@ -38660,9 +38696,7 @@
             39.841867697955074
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-hospital-east-0",
         "assetRefsByLevel": [
           "painted-block-hospital-east-0",
@@ -40222,9 +40256,7 @@
             39.84254941740351
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-wuli-north-context-0",
         "assetRefsByLevel": [
           "painted-block-wuli-north-context-0",
@@ -41193,9 +41225,7 @@
             39.842355021297394
           ]
         ],
-        "periodIds": [
-          "window-2000"
-        ],
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-block-qili-north-context-0",
         "assetRefsByLevel": [
           "painted-block-qili-north-context-0",
@@ -41817,6 +41847,7 @@
     "landmarks": [
       {
         "featureId": "theatre-symbol",
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-theatre",
         "width": 40,
         "sourceAnchor": [
@@ -41826,6 +41857,7 @@
       },
       {
         "featureId": "nankai-slab-1",
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-nankai-a",
         "width": 49,
         "sourceAnchor": [
@@ -41835,6 +41867,7 @@
       },
       {
         "featureId": "nankai-slab-2",
+        "periodStateId": "overview-orientation-context",
         "assetRef": "painted-nankai-b",
         "width": 49,
         "sourceAnchor": [
