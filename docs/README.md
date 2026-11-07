@@ -70,3 +70,5 @@ Read the relevant owners before implementation, keep them aligned with the chang
 ## 文档修正的完成标准
 
 明确提出的文档类修正按 [AGENTS 的持续授权](../AGENTS.md#文档类修正的持续授权)直接完成至main合并。先在本表定位规范所有者，同步受影响说明并检查事实、链接和状态一致性，再提交PR、完成适用检查与合并；交付时报告真实的合并结果。无需为同一已授权文档修正重复征求确认。运行时改动、素材公开和部署仍按各自授权范围执行。
+
+地标 badge 的定义、S/L 风格与显示限制统一见 [美术契约](HANDPAINTED_MAP_ART.md#landmark-badges)；[已选裁切范例](../assets/examples/landmark-badges-r1/README.md)供后续制作使用，尚未接入地图。

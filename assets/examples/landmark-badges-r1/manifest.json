@@ -1,0 +1,279 @@
+{
+  "version": "r1",
+  "role": "approved-style-examples",
+  "runtimeIntegrated": false,
+  "background": "opaque warm white; not alpha sprites",
+  "sourceType": "AI-generated illustration; not historical evidence",
+  "items": [
+    {
+      "key": "cinema",
+      "label": "丰台影剧院",
+      "variant": "s",
+      "file": "cinema-s.png",
+      "width": 125,
+      "height": 235,
+      "sha256": "e942ab6021f4ec43e4d9343fecc427cfba5f06d440a7512a044e8913910b4a56",
+      "crop": [
+        20,
+        125,
+        145,
+        360
+      ]
+    },
+    {
+      "key": "cinema",
+      "label": "丰台影剧院",
+      "variant": "l",
+      "file": "cinema-l.png",
+      "width": 365,
+      "height": 235,
+      "sha256": "5aaba4d5fc931be9f50d6fa553c930129c594cc9ca5eef07d2025681d35004d4",
+      "crop": [
+        145,
+        125,
+        510,
+        360
+      ]
+    },
+    {
+      "key": "station",
+      "label": "丰台火车站",
+      "variant": "s",
+      "file": "station-s.png",
+      "width": 107,
+      "height": 235,
+      "sha256": "7bdd9eb99131c9716b96782123de78b82199a6b86eb483fdae5d7d098fd554cd",
+      "crop": [
+        540,
+        125,
+        647,
+        360
+      ]
+    },
+    {
+      "key": "station",
+      "label": "丰台火车站",
+      "variant": "l",
+      "file": "station-l.png",
+      "width": 380,
+      "height": 235,
+      "sha256": "51957bbea35c6fb987eee1dbb8a02f4d95f766da8b8c5350377882019a25b4f1",
+      "crop": [
+        650,
+        125,
+        1030,
+        360
+      ]
+    },
+    {
+      "key": "garden",
+      "label": "丰台花园",
+      "variant": "s",
+      "file": "garden-s.png",
+      "width": 132,
+      "height": 235,
+      "sha256": "ce23271acf2b7c27dccb539734e1c95d9d1ccdb6a0fb8271abd125113a813369",
+      "crop": [
+        1050,
+        125,
+        1182,
+        360
+      ]
+    },
+    {
+      "key": "garden",
+      "label": "丰台花园",
+      "variant": "l",
+      "file": "garden-l.png",
+      "width": 325,
+      "height": 235,
+      "sha256": "9f5fb83cf4225ddaec3dc21eee7a0a96b9e30c88afbe2527d098bd4ff27a36eb",
+      "crop": [
+        1190,
+        125,
+        1515,
+        360
+      ]
+    },
+    {
+      "key": "world-park",
+      "label": "世界公园",
+      "variant": "s",
+      "file": "world-park-s.png",
+      "width": 125,
+      "height": 225,
+      "sha256": "ae3a55359faf6ac2ddcc903a0a6bfabf53eadf9e89bff7e93ae3a0a0c1fb831c",
+      "crop": [
+        20,
+        445,
+        145,
+        670
+      ]
+    },
+    {
+      "key": "world-park",
+      "label": "世界公园",
+      "variant": "l",
+      "file": "world-park-l.png",
+      "width": 365,
+      "height": 225,
+      "sha256": "c42f7c4530aa8e77b1367626be57da633cc38dc050849318a1435ff4c8bf8075",
+      "crop": [
+        145,
+        445,
+        510,
+        670
+      ]
+    },
+    {
+      "key": "machang-bus-terminal",
+      "label": "马厂公交总站",
+      "variant": "s",
+      "file": "machang-bus-terminal-s.png",
+      "width": 107,
+      "height": 225,
+      "sha256": "ce22de000fdccf411a79cc70d3545186f96d8e494829edc5592ff8e50c3cec1a",
+      "crop": [
+        540,
+        445,
+        647,
+        670
+      ]
+    },
+    {
+      "key": "machang-bus-terminal",
+      "label": "马厂公交总站",
+      "variant": "l",
+      "file": "machang-bus-terminal-l.png",
+      "width": 380,
+      "height": 225,
+      "sha256": "0d4558da881be71552ae2eef42fded92cc202dfcb59c6aa9c17e323ce4180955",
+      "crop": [
+        650,
+        445,
+        1030,
+        670
+      ]
+    },
+    {
+      "key": "locomotive-depot",
+      "label": "机务段",
+      "variant": "s",
+      "file": "locomotive-depot-s.png",
+      "width": 132,
+      "height": 225,
+      "sha256": "385270ffee189150bc6090f1b3b439fd7b61c046d0a5ef84d2043ae2d033e592",
+      "crop": [
+        1050,
+        445,
+        1182,
+        670
+      ]
+    },
+    {
+      "key": "locomotive-depot",
+      "label": "机务段",
+      "variant": "l",
+      "file": "locomotive-depot-l.png",
+      "width": 325,
+      "height": 225,
+      "sha256": "beb03bf489cd4c5f5535a5a5866b3a4dfa1f83bdba31a9cf2608c91fa1ae015b",
+      "crop": [
+        1190,
+        445,
+        1515,
+        670
+      ]
+    },
+    {
+      "key": "school-one",
+      "label": "丰台一中",
+      "variant": "s",
+      "file": "school-one-s.png",
+      "width": 125,
+      "height": 187,
+      "sha256": "846d73ee8394051122e1ac8802e3712f25318bac9b36f741d1477c5b598c4d9f",
+      "crop": [
+        20,
+        755,
+        145,
+        942
+      ]
+    },
+    {
+      "key": "school-one",
+      "label": "丰台一中",
+      "variant": "l",
+      "file": "school-one-l.png",
+      "width": 365,
+      "height": 187,
+      "sha256": "4e5b5ee088ddf252e365bb30bc15f01839bc698fcc1c0909afcd982f3c20bc1b",
+      "crop": [
+        145,
+        755,
+        510,
+        942
+      ]
+    },
+    {
+      "key": "hospital-old",
+      "label": "丰台医院（旧址）",
+      "variant": "s",
+      "file": "hospital-old-s.png",
+      "width": 107,
+      "height": 187,
+      "sha256": "81f173374bf7d17e3467b82f6a6fe54a5e28b860e56657fcfbebd815bf320f45",
+      "crop": [
+        540,
+        755,
+        647,
+        942
+      ]
+    },
+    {
+      "key": "hospital-old",
+      "label": "丰台医院（旧址）",
+      "variant": "l",
+      "file": "hospital-old-l.png",
+      "width": 380,
+      "height": 187,
+      "sha256": "8099ce83fa51032338b543e6ca831c3d2915e2b84fa2a8decd9e83ff6308529c",
+      "crop": [
+        650,
+        755,
+        1030,
+        942
+      ]
+    },
+    {
+      "key": "railway-hospital",
+      "label": "铁路医院",
+      "variant": "s",
+      "file": "railway-hospital-s.png",
+      "width": 132,
+      "height": 187,
+      "sha256": "96f2742b38bde93809f9913209d9a620229c9b6d14625ed558153cab88e3526b",
+      "crop": [
+        1050,
+        755,
+        1182,
+        942
+      ]
+    },
+    {
+      "key": "railway-hospital",
+      "label": "铁路医院",
+      "variant": "l",
+      "file": "railway-hospital-l.png",
+      "width": 325,
+      "height": 187,
+      "sha256": "0c6742811c13f68399a3e92b85871acc3d01ac94c54818164aa6771596d35cab",
+      "crop": [
+        1190,
+        755,
+        1515,
+        942
+      ]
+    }
+  ]
+}
