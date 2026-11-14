@@ -1,7 +1,7 @@
 name: Selected outline integration
 on:
   pull_request:
-    paths: ['src/**','scenes/**','content/public/outline-registration.json','scripts/build.mjs','tests/**','.github/workflows/outline-check.yml']
+    paths: ['src/**','server/**','scenes/**','content/public/outline-registration.json','scripts/build.mjs','scripts/public-export.mjs','tests/**','.github/workflows/outline-check.yml']
   workflow_dispatch:
 permissions:
   contents: read
