@@ -10,6 +10,8 @@ export function isPublicBuildPath(path) {
   if (path === 'index.html') return true;
   if (/^src\//.test(path)) return /\.(js|css)$/.test(path);
   if (/^content\/(public|reference)\//.test(path)) return /\.(json|geojson|md)$/.test(path);
+  // Asset authoring metadata is not a runtime dependency; only manifests ship as JSON.
+  if (/^assets\//.test(path) && /\.(json|geojson|xml)$/.test(path)) return /\/manifest\.json$/.test(path);
   if (/^(assets|scenes)\//.test(path)) return /\.(js|mjs|css|html|json|geojson|xml|png|webp|jpg|jpeg|svg|glb|woff|woff2|ttf|txt|md)$/.test(path) || /\/LICENSE$/.test(path);
   return false;
 }

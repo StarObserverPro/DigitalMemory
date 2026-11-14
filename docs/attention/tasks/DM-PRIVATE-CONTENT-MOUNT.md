@@ -16,8 +16,9 @@ Executable seams: PrivateRepository, content-mount lifecycle, authorization-firs
 
 ## Verification and handoff
 
-- Local Node.js 22.16: 26 synthetic private-boundary tests passed. They cover anonymous and wrong-audience requests, no-store/error redaction, route pagination, map/release mismatch, delayed responses after lock, blob revocation/caps, parent/MIME/hash/size checks, session projection and export/symlink boundaries.
+- Local Node.js 22.16: 27 synthetic private-boundary/export tests passed. They cover anonymous and wrong-audience requests, no-store/error redaction, route pagination, map/release mismatch, delayed responses after lock, blob revocation/caps, parent/MIME/hash/size checks, session projection and export/symlink boundaries.
 - Local environment cannot clone the full repository over the network; no local full-application build or visual test is claimed. Existing repository CI is the full-suite and overview-browser check authority for the published head.
+- First full CI at `7f1068c` passed 133 application and 17 selected-scene tests, then rejected asset authoring JSON during export. The correction excludes non-runtime asset JSON while retaining strict privacy checks for runtime manifests; synthetic regression coverage and core-document link checks were added. Final-head CI remains the delivery authority.
 - Actual Drive connector readback and permission checks are private operations, not public file identifiers or credentials.
 - No private `main.js` integration, verified login/logout provider, server deployment, live Drive API identity, end-to-end private browser test, backup restore, main merge or production enablement is claimed. See RUNTIME and PRIVATE_CONTENT_RUNBOOK.
 - Status: implementation prepared for review; full published-head CI results belong to the PR/check records. This packet does not activate ongoing work or automatic content publication.
