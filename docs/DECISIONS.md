@@ -1,80 +1,65 @@
 # Architecture decision register
 
-> **2026-10-27 current decision:** The selected Keith Haring-inspired Xinhua/Sanli outline scene and corridor extension supersede the earlier parked idea for this close view. Overview raster art remains separate. The GLB student's provisional-use decision and synthetic 2× trial remain legacy records, not instructions for the active outline person. Marble 2 has no generated output; bridge research remains public-source material. See [STATUS](STATUS.md) and [the outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md).
+本页只保留决策和取代关系，字段/运行细节交给规范所有者。现行近景是已批准的 Xinhua/Sanli 轮廓街景，R7 总览 raster 美术独立；GLB/2×/灰盒为历史保留，Marble 2 没有生成输出。公开地理仅结论与不确定性，不保留调查过程。
 
-This is the concise record of decisions and their authority, not a second copy of every contract. Detailed semantics live in the linked owners. A later change records its reason and affected decision IDs; it does not silently rewrite the original user constraint.
+## Current dual-source decisions
 
-## Integrated decisions — 2026-10-19
-
-| ID | Decision | Owner / supersession |
+| ID | 决策 | 依据与影响 |
 | --- | --- | --- |
-| ADR-013 | Normal discovery follows area → registered street/route → roadside attachment. Overview landmark visibility is not direct content access. | [INTERACTION](INTERACTION.md); supersedes the earlier direct map-to-classroom example. |
-| ADR-014 | A uniform attachment dispatches note, finite illustrated sequence or local scene; category/parcel size does not dictate depth. | [ARCHITECTURE](ARCHITECTURE.md), [DATA_MODEL](DATA_MODEL.md). |
-| ADR-015 | Source certainty, date support, familiarity, visual detail, collision and click behavior are independent. Unknown rear geometry can stay selectively omitted. | [MAP_ASSEMBLY](MAP_ASSEMBLY.md), [HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md). |
-| ADR-016 | Mixed boundaries, gates, detached frontage hosts, ground installations, occupancy and use are locally revisable. Not all commerce is apartment ground-floor retail. | [LAYER_COMPOSITION](LAYER_COMPOSITION.md); generalizes the r3 host constraint. |
-| ADR-017 | Stable locations carry repeated observations and separately versioned shell/use/appearance states; partial chronology and gaps remain explicit. | [DATA_MODEL](DATA_MODEL.md), [CONTENT_PIPELINE](CONTENT_PIPELINE.md). |
-| ADR-018 | New documentation consolidates existing owners; source research, actual runtime status and cold historical packets are distinct reading tracks. | [Documentation map](README.md), [STATUS](STATUS.md). |
+| ADR-019 | GitHub 公共程序/地图 + Drive 私有正文/图片/空间挂载；在生产运行时经授权结合，不在 build 合并 | 用户明确要求落实；具体化 ADR-009/012，取代“私有提供者仍未选定” |
+| ADR-020 | 网站会话授权与 Drive 服务凭据分离；后端每次按获准 release 检查和投影；默认关闭 | [ARCHITECTURE](ARCHITECTURE.md#dual-source-mount)；不把 ChatGPT 的连接当生产授权 |
+| ADR-021 | 保留 PublicRepository，私有层可独立挂载/卸载；内容更新不改地理/代码 | [DATA_MODEL](DATA_MODEL.md#private-release-v1)、[RUNTIME](RUNTIME.md#storage-seam)；取代旧“直接替换公共适配器”表述 |
+| ADR-022 | 公共构建使用已跟踪路径白名单；浏览状态保存字段投影，不保存完整 session | [RUNTIME](RUNTIME.md)；不能替代禁止提交私人资料的公开边界 |
 
-Basis: the user's current integration request and the accepted discussion of selective depiction/scene depth. These are product/architecture requirements, not runtime or visual approval. Cultural examples express the repeated-place feeling only; no book/game imitation is required. Existing ADR-001 through ADR-012 retain their applicable identity, privacy and scope constraints.
+本次交付为模块、空私有登记、测试及文档；没有选择并部署具体网站身份服务，没有私有街景 UI 接线或生产启用。精确交付状态在 [任务包](attention/tasks/DM-PRIVATE-CONTENT-MOUNT.md)，不得把技术选择当作已上线。
 
 ## Baseline decisions
 
-| ID | Decision | Basis / owner |
+| ID | Decision | Owner |
 | --- | --- | --- |
-| ADR-001 | Geography is the registration/query skeleton; opaque stable object IDs survive coordinate corrections. | User geography-first direction; technical identity design in [data model](DATA_MODEL.md). |
-| ADR-002 | Institutions, sites and time-bounded occupancy are separate. | User warning about relocated schools; [Phase 1](PHASE_1.md), [data model](DATA_MODEL.md). |
-| ADR-003 | Browsing has an active sparse period, with discoverable other-time entrances; route timeline is a separate function. | Explicit user interaction direction; [interaction](INTERACTION.md). |
-| ADR-004 | Stylized registered ground plus selective 2.5D volumes; interior destinations may be images rather than full geometry. | Explicit user visual/depth direction; [assets](ASSET_PIPELINE.md). |
-| ADR-005 | One session owns place/time/view/return stack; adapters do not create parallel state authorities. | Architecture design within authorized scope; [architecture](ARCHITECTURE.md). |
-| ADR-006 | Original input, organized statements and display text remain separate; no added substantive autobiographical meaning. | Explicit user editorial constraint; [content](CONTENT_PIPELINE.md). |
-| ADR-007 | Registration, wording, appearance, evidence and publication approvals are separate and revision-bound. | User batch-review workflow plus technical provenance design; [content](CONTENT_PIPELINE.md). |
-| ADR-008 | Approved scenes use pinned asset revisions; generation is authoring, never an implicit browse-time update. | Stability requirement and architecture design; [assets](ASSET_PIPELINE.md). |
-| ADR-009 | Public code repository and private memory archive are separate; publishing is an explicit additional effect. | Observed public repository plus privacy-preserving architecture; [content](CONTENT_PIPELINE.md). |
-| ADR-010 | Phase 1 is the compact walking network, with 新华街 first; no high-school cycling extension. | Latest explicit user scope, superseding the earlier longer route proposal; [Phase 1](PHASE_1.md). |
-| ADR-011 | Use a small task router and intent/evidence packet, not Crystal Garden's complete governance system. | User asks for selective borrowing; [attention](attention/README.md). |
-| ADR-012 | Logical modules first; select concrete app/storage/generation technology in bounded implementation tasks. | Initial pre-runtime architecture decision; current implementation is in [RUNTIME](RUNTIME.md). |
-
-User-defined requirements above are established project constraints. Technical choices are the v1 architecture proposed by this deliverable, not claims of separate user aesthetic acceptance or implemented behavior. Already authorized ordinary implementation choices do not need a new product-alignment meeting for every file.
+| ADR-001 | Geography is registration/query skeleton; stable opaque IDs survive coordinate corrections. | DATA_MODEL |
+| ADR-002 | Institutions, sites and time-bounded occupancy are separate. | DATA_MODEL / PHASE_1 |
+| ADR-003 | Active sparse period and discoverable other-time content; route timeline is independent. | INTERACTION |
+| ADR-004 | Stylized registered ground and selective volumes; interiors may be images, not full geometry. | ASSET_PIPELINE |
+| ADR-005 | One application session owns location/time/view/return stack. | ARCHITECTURE |
+| ADR-006 | Original, organized statements and display text are separate; no added autobiographical meaning. | CONTENT_PIPELINE |
+| ADR-007 | Registration, wording, appearance, use rights and publication approvals are distinct and revision-bound. | CONTENT_PIPELINE |
+| ADR-008 | Accepted scenes pin exact asset revisions; generation is authoring, not browse-time mutation. | ASSET_PIPELINE |
+| ADR-009 | Public code and private archive are separate; publication is an additional authorized effect. | ARCHITECTURE / CONTENT_PIPELINE; specified by ADR-019/020 |
+| ADR-010 | Phase 1 is a compact walking network prioritizing Xinhua; no high-school cycling extension. | PHASE_1 |
+| ADR-011 | Small task router/intent/evidence packet, not another project's whole governance system. | AGENTS / attention |
+| ADR-012 | Logical modules first; technology choices resolved by bounded implementation tasks. | ARCHITECTURE; Drive choice now ADR-019 |
+| ADR-013 | Area → registered street/route → roadside attachment; overview landmarks are not content portals. | INTERACTION |
+| ADR-014 | Common note/finite sequence/local-scene target contract; category/parcel size do not dictate depth. | DATA_MODEL; complete dispatcher still pending |
+| ADR-015 | Certainty, dating, familiarity, visual detail, collision and click behavior remain independent. | MAP_ASSEMBLY / HANDPAINTED_MAP_ART |
+| ADR-016 | Mixed boundaries, gates, detached frontage hosts, ground installations and uses are locally revisable. | LAYER_COMPOSITION |
+| ADR-017 | Stable places support repeated observations and separately versioned shape/use/appearance; chronology gaps remain. | DATA_MODEL / CONTENT_PIPELINE |
+| ADR-018 | Consolidate canonical owners; runtime status and historical engineering packets are separate tracks. | docs/README / STATUS; no public geographic process archive |
 
 ## First runtime decisions — DM-0002
 
-- Native ES modules and Node built-ins keep the first runtime install-free. SVG/bitmap layers share one transform; no renderer or dependency is imported from Crystal Garden.
-- The first canvas is an approximately 1.8 km square supported by contemporary OSM vectors, not a historical satellite slice. School registration remains unresolved.
-- A/C are reproducible vector candidates; B uses one built-in imagegen style-transfer result from the same skeleton. B remains a registration/art candidate and does not become geographic evidence.
-- Keep the few assets in `assets/maps/` with revision/checksum manifest; defer a separate image repository and private backend.
+Historical: native ES modules/Node built-ins, shared transform and small fixed-revision image packages were selected to keep the prototype install-free. Old A/C vector and B imagegen trials are not current art or geographic authority. Deferring the private provider at that checkpoint has now been superseded by ADR-019; no decision here makes the old scene the active consumer.
 
 ## Explicitly deferred
 
-Exact historical school coordinates, entrances and remembered walking segments; complete historical base-map coverage; exact life-stage date mapping; visual changes outside accepted scene revisions; private storage/authentication/archive provider; measured physical-device performance targets; later cycling/transit interaction; and unrequested deployment or public-content release. The selected outline style, font and camera are already concrete. Current activated runtime work and existing deliveries are reported in their task packet and STATUS rather than being re-deferred by this list.
-
-Deferral is not permission for an executor to invent values. It is also not a requirement to block unrelated work. A suitable activated packet can resolve the relevant choice and record evidence.
+Exact unsupported geography/entrances/dates, complete historical base-map coverage, life-stage/year mapping, unrequested visual revisions, production identity/deployment, private reader/authoring integration, measured device performance, later cycling/transit and unapproved public-content release. Drive as the storage provider is **not** still deferred. Unknowns do not license invented values or block unrelated authorized work.
 
 ## Reference reviewed for Agent construction
 
-Read-only reference snapshot: `StarObserverPro/crystal-garden` at commit `d60044a8bbe5682573bb518841baa3418d9d6efa`.
-
-- [Agent entry](https://github.com/StarObserverPro/crystal-garden/blob/d60044a8bbe5682573bb518841baa3418d9d6efa/AGENTS.md): outcome/fact/authority separation, focused boot, identity, actual evidence and delivery boundaries.
-- [Execution control guidance](https://github.com/StarObserverPro/crystal-garden/blob/d60044a8bbe5682573bb518841baa3418d9d6efa/docs/control/README.md): hot routing versus cold history, capsule ownership, sparse context selection and handoff.
-- [Context policy](https://github.com/StarObserverPro/crystal-garden/blob/d60044a8bbe5682573bb518841baa3418d9d6efa/docs/control/context-policy.json): bounded local attention without a global execution cap.
-
-Adopt the principles, not the full implementation. Do not import Crystal Garden's renderer, save keys, economy, deployment integration, gate manifests, artifact schedule, historical worklets, or gate-maintenance bureaucracy. It is not a dependency and was not modified for this task.
+`StarObserverPro/crystal-garden` at `d60044a8bbe5682573bb518841baa3418d9d6efa` remains a read-only methodology reference for outcome/authority separation, bounded attention and evidence. It is not a dependency or write target; do not import its renderer, economy, task bureaucracy or deploy permissions.
 
 ## D-010 — Illustrated overview, scenic-flat street, shared route identity (2026-10-17)
 
-User correction supersedes the earlier fixed map-camera assumption. Far view: hand-drawn, cartoon/cute or travel-journal map with explicit real-node correspondence. Close view: enter a street, put the person on its sidewalk, erect illustrated cinematic scenic flats; use fog and arrows beyond built scope. One `{edgeId,t}` location feeds both consumers, with separate art and geographic coordinates. DM-0003 implements an initial example; art and historical approvals remain separate.
+The overview/close view share registered route identity with separate art/geography coordinates. The original scenic-flat camera example was superseded by the selected outline close view; it did not authorize art to move real nodes or supply historical evidence.
 
 ## DM-0004 — composited places and independent frontages
 
-2026-10-18 user correction: roads, building shells, shops, people and entrances are independently reusable. Short facade sections replace the long street image. Time-specific shop occupancy cannot own the building or road. Local photos are inspected before drawing; ordinary apartment typology replaces generalized decorative courtyard streets. Exact historic occupants stay unknown. The avatar is an anonymous child profile, independent of calendar period. PR3 explicitly supersedes PR2; the user authorized merging and deploying this correction. See `LAYER_COMPOSITION.md` and `LOCAL_VISUAL_REFERENCES.md`.
+Roads, building shells, frontages, shops, entrances and people remain independently reusable. Occupancy does not own the building or road; a commercial frontage need not be apartment ground-floor retail. PR3's historical merge/deploy permission was scoped to that correction, not all future changes.
 
 ## 2026-10-27 — accepted Sanli outline and controlled integration
 
-User selected sanli-outline-r5 for intake and main integration. Preserve continuous sparse black contours, quiet faces, restrained retracting motion, outline person, muted green ground, irregular rounded navigation UI and local ZCOOL KuaiLe. This close-view decision leaves overview raster style and stable place/route ownership intact. Navigation compass/minimap are approved scoped additions. Keep final geography in the selected data; record position changes in prose only when they reveal reusable process lessons. Integrate through the existing route entry/session/spatial/time owners, then open a PR; GitHub merge and deployment remain separate effects.
-
-The subsequent corridor request authorized correction and merge through [PR #25](https://github.com/StarObserverPro/DigitalMemory/pull/25), merged at `67baf01065f15f9d83a6b4d2903667197582e61b`. That authorization does not carry forward to unrelated mixed-code PRs or deployment.
+Preserve sparse continuous contours, quiet surfaces, restrained motion, outline person, muted green ground, irregular navigation controls and local font. Approved compass/minimap are scoped additions. Corridor integration through PR #25 is historical delivery; it does not grant automatic merge/deploy authority to unrelated mixed work.
 
 ## 2026-10-27 — bounded runtime resources and documented sandbox scope
 
-The user authorized implementation of the resource-management improvements on current main and a reviewable PR, with no merge/deployment for that mixed task. Preserve selected geometry/art and existing session/spatial/time ownership. Separate active rendering, temporarily retained resources and final disposal; keep cache limits explicit and measure lifecycle behavior. [ARCHITECTURE](ARCHITECTURE.md), [RUNTIME](RUNTIME.md) and [the task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md) own the concrete design, implementation and evidence.
-
-Sandbox construction must have a repository scope before work begins, reusing an existing matching task packet. Purpose, baseline, boundaries, acceptance, output destination and status are the minimum; trial artifacts remain outside Git. Read canonical docs before implementation, align/review them before tests/build/CI, then open or update the PR with actual results. This augments ADR-011/ADR-018 without creating per-step approvals or a second task system.
+Resource work preserves geometry/art/ownership while separating active, retained and disposed resources, with explicit budgets and measured evidence. Sandbox work needs a repository scope before construction. Read canonical docs and align changes before checks/CI/PR; do not add per-step approval bureaucracy or a parallel task system.

@@ -2,8 +2,9 @@ import {createOverviewAssembly} from '../src/explorer/layered-overview.js';
 import {createComposition} from '../src/domain/composition.js';
 import {createIllustrationMapping} from '../src/domain/illustration.js';
 import {createTransform} from '../src/domain/spatial.js';
-import { cp, mkdir, rm, readFile, access } from 'node:fs/promises';
+import { mkdir, rm, readFile, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { exportPublicFiles } from './public-export.mjs';
 const manifest = JSON.parse(await readFile('content/public/manifest.json'));
 for (const asset of [...manifest.assets, ...Object.values(manifest.stageAssets || {}), ...Object.values(manifest.moduleAssets || {})]) {
   const bytes = await readFile(new URL(asset.url, new URL('../content/public/manifest.json', import.meta.url)));
@@ -23,9 +24,9 @@ createComposition(JSON.parse(await readFile('content/public/'+manifest.compositi
 createOverviewAssembly(JSON.parse(await readFile('content/public/'+manifest.composition)),JSON.parse(await readFile('content/public/'+manifest.context)),JSON.parse(await readFile('content/public/'+manifest.overviewRegistration)),createTransform(geometry.bounds),manifest.moduleAssets);
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist');
-for (const file of ['index.html', 'src', 'assets', 'content','scenes']) await cp(file, `dist/${file}`, { recursive: true });
+await exportPublicFiles(process.cwd(), 'dist');
 const registration=JSON.parse(await readFile('content/public/'+manifest.outlineScene));
 const outline=await readFile(new URL(registration.data,new URL('../content/public/',import.meta.url)));
 if(createHash('sha256').update(outline).digest('hex')!==registration.sha256)throw Error('Outline checksum mismatch');
 await access('dist/src/explorer/main.js');
-console.log('Built static application. Manifest checksums and public records verified.');
+console.log('Built tracked public application. Manifest checksums and public records verified.');

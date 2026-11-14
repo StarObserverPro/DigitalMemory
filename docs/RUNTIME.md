@@ -1,182 +1,96 @@
 # Current runtime and resource ownership
 
-The application uses native ES modules, selected raster artwork and a small static public repository adapter. The selected close street view lazy-loads a locally pinned Three.js runtime (0.180.0); no package installation or CDN request is required to run it. Current ownership is the R7 raster overview, the selected outline street, one application session and bounded reusable resources. [STATUS](STATUS.md) records implementation, validation, merge and deployment separately. Older graybox/GLB fixtures are described under [historical dual-scale sample](#historical-dual-scale-sample--dm-0010), not as the current consumer.
+本页只描述实际模块、消费者和已知缺口。验收/合并/部署分别记录在 [STATUS](STATUS.md) 与对应任务包；设计要求不自动成为已实现功能。
 
 ## Visual-engine scope and change discipline
 
-The visual engine turns approved geometry, display policies, assets and session state into frames and derived movement/collision results. Its scope includes camera projection, contours/fills, occlusion, animation, hit testing, navigation queries, frame scheduling and resource creation/suspension/disposal. The [four-layer scope table](ARCHITECTURE.md#layer-scopes) retains the data and product authorities; UI presentation is owned by [INTERACTION](INTERACTION.md).
+现行应用为原生 ES modules、R7 手绘总览与本地固定 Three.js 0.180.0 的 Xinhua/Sanli 轮廓街景，无需 npm 依赖安装或 CDN。`main.js`、`outline-stage.js`、`scenes/xinhua-sanli-outline/runtime.mjs` 是现行路径；旧 `stage.js`、GLB 学生和 courtyard 是保留的历史模块。
 
-| Input / output seam | Current owner and discipline |
-| --- | --- |
-| Data and environment into the scene | `PublicRepository` verifies the selected payload; spatial/time modules resolve the registered frame and supported environment. The engine consumes those results without inventing geometry or dates. |
-| Session into/out of the renderer | `outline-stage.js` supplies `readState`/`writeState` and writes validated outline state through `src/application/session.js`. The renderer's working state, temporary entry camera and retained stage are not separate persistence owners. |
-| Actual drawing and resources | `scenes/xinhua-sanli-outline/runtime.mjs` and `spatial-drawing.mjs` own the selected scene; `src/engine/` supplies shared lifecycle/query utilities. Legacy scene files do not become the active consumer by being present. |
-| Navigation and arrival | Navigation derives walkable ground from registered data and the approved movement policy. `main.js` coordinates travel; the renderer's `arrive()` validates/commits its landing through the session seam. UI animation cannot bypass this step. |
-| Reader input and temporary presentation | Only the active scene accepts navigation input. An entry/travel presentation may keep its existing scene loop drawing while navigation is blocked; hiding, cancellation and final disposal retain their own lifecycle semantics. |
-| Diagnostics | Read-only inspection reports the actual consumer, counters and limits. Diagnostics are engineering evidence and do not add a product HUD or certify historical facts. |
-
-Runtime work preserves accepted projection, line behavior, art revisions and source/display separation. Changing a cache or chunk size must not change stable place/destination IDs, source footprints/heights, period membership, memory associations or session return state. Display-height bands and omitted contours remain explicit drawing policies; they cannot rewrite the geographic source. Navigation-policy changes, camera/art changes and geometry corrections have different owners and acceptance even when one source file contains several of them.
-
-For an engine change, verify the affected path in the selected consumer: first entry and compatible re-entry, pause/resume, return/expiry/disposal, stale-load cancellation and the changed rendering/navigation behavior. Compare resource behavior using the same data, camera and viewport; preserve source values and registered landings. The [verification contract](VERIFICATION.md) specifies evidence. A documentation-only update needs source/contract checks, not a claim of newly measured frames or memory.
+视觉引擎消费地理/时期/素材/session，不拥有事实与身份。相机、轮廓、遮挡、命中、导航与资源变更不能改源 footprint、历史年份、记忆关联。导航 `arrive()` 在 session 边界提交可达落点；转场不能绕过地面验证。诊断只给工程检查，不恢复被拒绝的常驻调试 HUD。
 
 ## Selected overview recovery — 2026-10-28
 
-The overview registration is now `overview-registration-travel-r7-periods-r1`, retaining the same R7 image bytes and spatial frame. Its accepted orientation context explicitly covers all six menu periods. `isOverviewItemVisible()` resolves the context and any narrower record membership; shared painted selectors feed art, names and label obstacles. Individual residential phases remain restricted: Qili's taller residences and Sanli's front towers appear in `window-2000`, `stage-middle` and `unknown`; the two later rear towers are shown only in `unknown` while their exact dates remain unresolved. Other undated shapes are approximate orientation context. Stage/date association, street navigation/landings and the extension's `window-2000` membership are unchanged. [Period-switch repair](attention/tasks/DM-OVERVIEW-PERIODS-20261106.md) owns engineering checks and delivery state.
+`overview-registration-travel-r7-periods-r1` 使用同一 R7 图片和空间 frame。六个菜单时期有显式近似方向参照成员关系，个别住宅阶段仍有限定；艺术、标签和标签障碍共用选择器。街景扩展的 `window-2000` 成员关系不随总览改变，近似参照不能被描述为每栋建筑当年存在的证明。
 
-The 2026-10-28 recovery introduced `overview-registration-travel-r7` and the manifest's selected `xinhua-travel-r7` rasters through the existing `layeredOverviewMarkup` consumer. Its 195 registered objects include the recovered block and four Qili frontage masses from the selected street frame. Source geometry and full inner rings are retained; exterior rings drive existing road clearance and image registration. The sparse travel-map appearance shares files across identical level keys and adds no character or direct attachment shortcut. Daoxiangcun's west-frontage orientation label is limited to the near tier. Permitted result metadata is in `content/reference/xinhua-recovery-evidence.json`; raw images and comparison pages are not runtime inputs. This change does not replace the selected street/session/resource lifecycle below. [Repair verification](attention/tasks/DM-MAP-REPAIR-20261028.md) records actual homepage and return-flow evidence separately from source checks.
-
-The recovered chimney landmark retains its own registration and explicit `window-2000` working-composite membership. Engine JavaScript and scene text sources use LF checkout endings through `.gitattributes`, matching the exact bytes pinned by the selected scene manifest; checksum checks remain strict and are not regenerated to accept Windows newline conversion.
+R7 通过 `layeredOverviewMarkup` 消费已选注册与图片，保留原 geometry/inner rings、地理/图面分离、近/中/远层级和无总览人物。入街仍走同一登记路线。引擎/场景文本以 LF 保持固定哈希，不能为接受错误换行而更新素材哈希。
 
 ## Accepted Xinhua/Sanli close-view integration — 2026-10-27
 
-The selected scene manifest also pins the shared temporal module. The overview repair updates only that dependency's checksum to match its added selector; the scene's data/art revisions and its existing temporal functions retain their behavior.
+选定入口按需加载 outline-stage 而非旧灰盒。保留连续轮廓人物、稀疏动作、低饱和地面和获准的折叠小地图/罗盘；旧人物 smoke 不能证明新消费者。session 统一拥有姿态与返回；重新进入前核对登记、route、environment、碰撞。近景整体 JSON 与数据/美术版本按清单校验。
 
-The normal supported overview→street entry now lazy-loads scenes/xinhua-sanli-outline via outline-stage.js instead of the legacy stage.js. It keeps the approved continuous outline walker, sparse motion, muted green ground, irregular menu/minimap/compass outlines and locally served ZCOOL KuaiLe. Existing schoolwear code/assets remain; its old browser smoke is not evidence for this new consumer.
+<a id="fourth-ring-extension"></a>
+### Fourth Ring extension
 
-Application session owns outline pose/path/camera; reload opens a usable map then restores the valid pose on street entry, while a changed overview route gets its own entry. Returning to map cancels targets and suspends the selected stage under the retention policy below; the overview still has no person. The public registration fixes data/art revisions and explicit working-composite periods. Final layout estimates remain in data; no historical year or new private content was certified. `npm run test:outline` checks the selected library; `npm test` includes session/registration/loading tests; `npm run build` includes selected scenes and verifies hashes.
+Fourth Ring bridge/corridor 模块属于现行原生街景，以已登记 frame/period、地面目的地和既有导航/session 接入，不是独立 viewer。不得从本次私有内容改造推导新的桥梁位置、年份或通行事实。
 
 <a id="entry-presentation--dm-street-transition-20261028"></a>
-
 ## Entry and travel presentation
 
-### Direct destination travel — 2026-10-29
+普通地图入街使用手账绘制；地点直达使用独立纸飞机过场。38 条用户审核的虚构装饰文案和 30 个涂鸦属于展示层，**不是私有回忆数据库**。简化模式用临时俯瞰/云层/下降镜头；reduced-motion 采用短淡入，跳过手/涂鸦/字体加载。转场临时相机不持久化。
 
-`main.js` opens a separate regional destination picker, lazily reusing `loadOutline()` metadata when the street has not mounted. The main menu contains one destination action. `destinations.js` groups all existing anchors and filters them by place/region name. Selecting one reuses the normal stage loader with the `travel-transition.js` paper-plane overlay instead of the journal. Existing compatible stages and their single navigation instance are retained. Ground clicks can opt into this same travel path with the session-owned, locally persisted `travelMode`; keyboard input stays walking.
+直达菜单折叠分区、搜索已有地面锚点；点地面可选 walk/jump，键盘仍步行。无遮挡横穿不强制绕指定过街节点；碰撞/非通行区域保留。跳转在完全遮挡时提交，保留 yaw/distance/pitch 与累计步行距离，不横穿街区插值。纸飞机常规 cover/hold/reveal 为 650/160/760 ms，reduced-motion 为 90/1/90 ms；加载可延长静态遮挡阶段。
 
-The selected navigation now admits registered road surfaces and joins the junction carriageway to its sidewalks, preserving excluded planted areas and physical obstacles. An unobstructed direct route returns its exact endpoints before A*, so a crossing has no grid/crosswalk detour. Landing uses valid ground or a nearby point within three metres and does not call route search. At full cover, `arrive()` clears old input/path/destination, adds an optional visited anchor and writes the session through its existing seam. It preserves yaw, camera distance/pitch and accumulated walking distance; camera position snaps under the paper rather than interpolating across intervening streets. Rendering uses the existing temporary presentation override and frame loop. The normal passage has 650 ms cover, 160 ms covered rendering and 760 ms reveal; reduced motion uses 90/1/90 ms with no canvas motion or clipping sweep. `travel-drawing.js` supplies one plane and a short trailing broken ink arc. A solid existing-paper layer sweeps across the lens before arrival and clears in the same direction after the camera snap. A single transient canvas caps DPR at 2, and a ResizeObserver redraws its current frame on rotation without restarting travel. Initial scene loading can extend the covered hold with a static plane; there is no idle animation loop or new asset request.
-
-The entry owner's existing abort generation cancels Escape, touch cancellation, hiding and superseding requests. Cancellation before the covered arrival preserves position; cancellation after the commit retains the destination. Cleanup clears the frame callback, modal and camera override. No new historical/geometry/art revision or attachment dispatcher is introduced. The existing journal/simple entry selection remains separate. The original navigation delivery is recorded in [the travel packet](attention/tasks/DM-MEMORY-TRAVEL-20261029.md); presentation comparison and revision-bound verification belong in [the paper-plane packet](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md).
-
-### Ordinary map-to-street entry — DM-STREET-TRANSITION-20261028
-
-The existing enterStreet owner starts a cancellable journal overlay while the selected scene loads. It waits for the accepted hand sprite, only the selected doodle PNG and the complete local journal-font glyph set. entry-transition.js owns one bounded canvas and one abortable frame chain; journal-catalog.js stores 38 corrected fragments, their stable numbers, 30 selected asset mappings and image-derived ink paths; journal-drawing.js owns wrapping, responsive page layout, progressive raster masking and sparse accents. The fragments are fictional transition copy, separate from memory records. A cached promise per image avoids refetching decoded motifs; failed image loads evict that promise and use the existing retry path. Simple/reduced-motion entry skips hand/doodle/font loading. Each overlay reuses bounded 512px offscreen mask/layer canvases. Continuous ink/path progression is independent of small object pose shifts, and the hand pivots around registered pen tips. The raster is revealed along its derived ink paths; remaining sparse color completes in the last 16 percent of drawing. Fragment 22 draws two buses in the same group. The sequence keeps 650ms arrival, 3200ms drawing, 650ms pause, 1050ms pen travel, 210ms/glyph, 650ms line changes, 600ms withdrawal, 2100ms reading and 900ms reveal; total duration follows the corrected fragment length. Slow scene loads retain the completed page. The modal blocks background interaction. Cancellation, page hiding, superseding entry and failed loads retain the existing cleanup and map retry ownership. Accessibility status contains the selected date and exact fragment.
-
-The alternative `simple` mode renders a temporary 88-metre overhead camera, cloud cover and a descent to the valid final street camera. The selected renderer's `setEntryView()` bypasses navigation while allowing its existing frame loop to render; it hides street navigation UI until landing. The temporary camera is not included in session writes. The local session adapter persists `entryTransition` (`journal` by default, `simple` when enabled). Reduced motion uses a 180 ms fade. Final reveal/cancellation clears the override, modal, observer and frame callback before restoring normal control. The selected scene manifest pins the changed runtime/style bytes without changing geographic or art revisions.
-
-Original hand/pacing acceptance remains in [the transition packet](attention/tasks/DM-STREET-TRANSITION-20261028.md); paired-art integration evidence is in [the doodle packet](attention/tasks/DM-JOURNAL-DOODLES-20261028.md).
+取消、Escape、页面隐藏、替代请求和失败均释放 overlay/frame/camera override；落点提交前取消保留原位，提交后取消保留新位置。手账与纸飞机详细验收保留在 [手账任务](attention/tasks/DM-JOURNAL-DOODLES-20261028.md)、[直达展示任务](attention/tasks/DM-TRAVEL-PRESENTATION-20261029.md)和 [INTERACTION](INTERACTION.md)。
 
 ## Bounded runtime resources — DM-RUNTIME-RESIDENCY-20261027
 
-These are the implementation contracts of the current resource-management change. Its exact verification and PR state belong in the [task packet](attention/tasks/DM-RUNTIME-RESIDENCY-20261027.md) and [STATUS](STATUS.md); the description alone is not a measured performance result.
-
 ### Stage lifetime and frame scheduling
 
-`src/explorer/outline-stage.js` owns one retained stage slot. Returning to the overview stops input and animation immediately and starts a **60-second** expiry. Re-entering the same compatible registration, source path, repository epoch, route and resolved environment before expiry reuses that stage and its navigation instance. Repeated overview refreshes do not extend its deadline. An incompatible entry, expiry or final page exit disposes the old stage; a later entry builds a fresh one. A browser back/forward-cache page suspension can retain the stage under the same policy. A retained stage is a reuse optimization, never the authoritative position store.
+`outline-stage.js` 保留一个兼容舞台，回总览立刻停止输入/动画，**60 秒**后释放。重复 map render 不延长过期。兼容性涵盖 source path、repository epoch、登记/route/environment；不兼容、最终退出或过期清理 renderer、listeners、observer、导航和 WebGL context。
 
-`src/engine/frame-loop.js` owns a cancellable animation-frame chain. Menu opening, hidden/inactive page state and stage suspension cancel scheduling; resume starts one chain with a fresh time origin. Cancellation generations prevent an already queued callback from clearing or duplicating a newer chain. The active street still animates the accepted character and sparse environment: this change does not introduce idle-only rendering or a new visual frame-rate policy.
-
-The stage adapter creates navigation once and passes it into the renderer. Final disposal cancels the loop, aborts listeners, disconnects the resize observer, releases UI/drawing resources, disposes the renderer and releases its WebGL context. The adapter disposes its navigation instance; the standalone scene owns and disposes navigation only when it created it. Cleanup is idempotent. A suspended stage keeps its resources and guarded listeners until reuse or disposal, while those listeners cannot move the inactive scene.
+`frame-loop.js` 只有一条可取消链；菜单/隐藏/非激活/暂停停止调度，恢复重置时间基准。generation 阻止旧回调干扰新链。舞台复用不另存位置；这不是已实现的静止按需绘制策略。
 
 ### Spatial drawing residency
 
-`scenes/xinhua-sanli-outline/spatial-drawing.mjs` registers lightweight bounds and build functions before the first frame. Ordinary objects share **64-metre** cells; a long road or pavement span has its own owner so it does not enlarge an unrelated building cell. Three.js objects are created when a chunk becomes active or is needed for a camera collision query. A spatial index narrows candidate bounds, followed by the actual camera frustum and object bounds.
+轻量 metadata/factory 先登记，按 **64 米** cell 与独立长路 owner 构造可见资源。保留 **380 米** far plane；墨线不使用地面同款雾，不能拿雾终点截断远处轮廓。active、collision-pinned 与 warm 分开；warm 由 **15 秒**更新内未用或 LRU 控制在 **8 chunks / 估算 16 MiB**。暂停时不另起年龄计时器，60 秒舞台到期才整体释放。
 
-The camera's original **380-metre far plane** is preserved. Filled surfaces use the existing fog, but the accepted ink materials do not; using the fog endpoint as a visibility cutoff would erase distant contours. Chunk selection therefore uses the full camera frustum, with conservative bounds for thick screen-space strokes. This change does not alter line widths, geographic geometry or visual LOD.
-
-`src/engine/chunk-residency.js` distinguishes visible active chunks, temporarily pinned collision dependencies and inactive warm chunks. Warm chunks leave the scene graph and stop contributing to drawing updates. During active updates, **15 seconds** of inactivity or least-recently-used eviction enforces the warm policy of **8 chunks / an estimated 16 MiB**. The age check runs on updates, not a separate wall-clock timer: a paused stage can retain warm chunks until it resumes or its 60-second stage expiry disposes the whole scene. These caps apply to the warm cache only: the current frustum's active set and collision pins can exceed them. The registered object metadata, full scene data, base ground and shared resources also remain outside that warm budget. This is spatial GPU-resource residency, not a fixed total-memory ceiling.
-
-Camera selection and static camera-dependent work reuse their previous result when the camera is unchanged. Visible collections drive silhouette, small-object occlusion, facade and environment-detail work; navigation and camera collision use spatial candidates instead of scanning all rendered meshes. Visible animated elements continue their existing updates.
+warm 预算不包含全部 active、pins、metadata、整体场景 JSON、地面和共享资源，绝非总显存上限。相机不变复用选择/静态结果；动画对象仍更新。
 
 ### Resource owners and estimates
 
-`src/engine/resource-scope.js` deduplicates each owner's geometries, material arrays, textures and instanced buffers. A chunk borrows scene-shared materials/resources and releases only its own allocations. The scene releases shared resources once after disposing chunks. Detached warm chunks remain owned and are still disposed at final scene teardown. A late font-ready callback checks its chunk lifetime before repainting a destroyed sign texture.
-
-The byte counter estimates owned geometry buffers and texture storage; shared resources are excluded from each chunk's estimate to avoid double counting. It does not measure JavaScript heap, all shader/program costs, driver allocations or real GPU memory. Renderer geometry/texture counters and estimated bytes must be reported with those limits.
+`resource-scope.js` 去重释放 geometry/material/texture/instance buffer；借用资源由其 owner 释放一次。迟到字体回调检查存活；detached warm chunk 仍归场景负责。估算字节不是 JS heap、driver 显存或实测 GPU 内存。
 
 ### Data loading and navigation
 
-`PublicRepository` deduplicates in-flight reads and retains decoded public records in an LRU cache of at most **24 entries / 8 MiB of encoded JSON size**. Each caller receives its own clone. Cancelling one view detaches that consumer without aborting another consumer's shared fetch. Repository invalidation advances an epoch, aborts the underlying pending requests and clears reusable entries; stale responses cannot refill a newer epoch. The outline adapter checks source/revision/context compatibility before publishing session state or mounting a completed request.
+PublicRepository 去重请求、克隆返回记录，LRU **24 entries / 8 MiB encoded JSON**。单一消费者取消不破坏共享请求；invalidate 增 epoch、abort 和清缓存，旧响应不能填回。近景仍整体 JSON 下载/哈希校验，GPU chunk 淘汰不代表网络资料分片卸载。
 
-The selected outline is still downloaded as **one complete JSON payload**, checked against its SHA-256 and data/art revisions. GPU chunk eviction does not unload portions of that JSON. Encoded JSON size is a cache accounting proxy, not decoded heap usage, and a mounted stage can retain its own data after a repository entry is evicted. Network chunk manifests, geographic data streaming and incremental parsing are future work.
-
-`src/engine/navigation-grid.js` evaluates grid walkability on demand instead of pre-scanning the entire map. A spatial index supplies obstacle candidates, and A* is shared by the one scene navigation instance. Reusable caches are bounded at **32,768 cells / 16,384 edges** and released with navigation. A route expands at most **50,000 nodes**, and each nearest-walkable lookup checks at most **32,768 candidates**. Exhausting either work budget returns no route/result and exposes a diagnostic flag; normal route failure uses the existing “沿铺地换个方向走走” feedback. A long straight route's smoothing probes segments exponentially, then refines by binary search, instead of rechecking every growing prefix.
-
-The per-search frontier, scores and predecessor records are temporary allocations, separate from reusable-cache accounting; the node expansion limit bounds work rather than defining an exact byte ceiling. Searches remain synchronous, so a pathological query can still occupy the main thread up to its budget. This is not a hierarchical street graph or a worker-based path service, and a budget-exhausted result is not proof that no physical route exists.
+导航按需网格使用空间索引，缓存限 **32,768 cells / 16,384 edges**；A* 扩展最多 **50,000 nodes**，最近落点查询最多 **32,768 candidates**。预算耗尽返回诊断失败，不证明物理上不存在路径。搜索仍同步，无 worker/分层道路网络承诺。
 
 ### Diagnostics and remaining scale limits
 
-`digitalMemory.inspect()` and the mounted scene diagnostics expose loop state, completed frames, frame-interval p95, CPU update/submission timings, renderer calls/triangles/resource counts, residency and navigation/cache counters. GPU time is explicitly unavailable (`gpuMs: null`). A frame interval includes scheduling effects; CPU render submission is not GPU execution time. Hidden intervals are excluded by resetting the timing origin on resume.
+`digitalMemory.inspect()`/舞台诊断报告实际消费者、CPU/帧间隔、draw calls、资源/驻留/导航计数；GPU 时间不可用。公开诊断不得随着后续私有 UI 接入而包含正文、锚点、对象目录、受众或授权。真实设备性能需单独测量，本次没有新 FPS/视觉验收。
 
-Use identical data, camera, viewport and execution environment when comparing before/after results. Desktop/phone-size browser checks demonstrate the tested consumer and layout; SwiftShader measurements do not establish physical-device performance. This implementation leaves the full data payload, registered metadata, potentially large visible set, synchronous path search and continuously animated active street as remaining scale limits. It adds no automatic LOD, global road hierarchy or network streaming.
+## Run and implementation seams
 
-## Run and check
+Node.js 22+；`npm run dev`、`npm test`、`npm run test:outline`、`npm run build`。生产静态目录为 `dist`。构建维持既有几何/素材哈希，改用 `scripts/public-export.mjs` 的**已跟踪路径白名单**：index/src、公开 content/public/reference、允许的 assets/scenes 文件类型；排除 private/server/tests/evidence/candidates、隐藏路径、symlink、未跟踪文件，并检查 JSON 隐私/凭据字段。它不是免审公开 Git 的安全证明；任何真实私人资料仍禁止提交到任何目录。
 
-### Fourth Ring extension
+新运行时源文件要先纳入 Git index 才进入 build。server 和私有配置不会进入静态包。此构建不抓 Drive，不需要生产密钥；现行地理、图片和街景 manifest 字节未改。
 
-The selected street includes the registered Fourth Ring extension through `scenes/fengtai-bridges/native.mjs`. It shares the existing renderer, frame loop, session, menu/transition and disposal. Six supported ground anchors join the destination picker in `window-2000`. The temporal owner removes the extension and its anchors outside explicit membership.
-
-Navigation consumes the registered frame, side profiles and support footprints. Avatar feet, target markers, ground picks and the underpass camera use surface height. The former Kandan drawing is suppressed while the extension is active. Base paper has a hole across the depressed passage. Bridge geometry and fixed ink are scene-owned outside the existing warm chunk budget and are disposed with the stage; this does not add geographic streaming or a global cache guarantee.
-
-Registered bridge landings provide an along-passage camera heading. The shared camera still follows the session pose and tests solid surfaces; the heading avoids placing its default position across a nearby retaining wall. Direct travel does not add walking distance.
-
-Requires Node.js 22 or later. No dependency installation is needed for these commands:
-
-```sh
-npm run dev
-npm test
-npm run test:outline
-npm run build
-```
-
-Open `http://localhost:4173`. `npm run build` verifies map checksums and public package envelopes, then produces `dist/`. `node scripts/serve.mjs --dist` serves the built files. Relative asset URLs support hosting under a repository subpath as well as a domain root.
-
-Optional browser checks use Playwright installed separately. The selected outline consumer is exercised by `node tests/schoolboy.browser.mjs` (the filename is retained from the earlier consumer); `PLAYWRIGHT_MODULE` can supply an installed module path. It starts a built-file server and records outline results/screenshots under ignored `local-evidence/`; preserve needed evidence outside the checkout and keep it out of commits. `CHROMIUM_CDP_URL` can reuse the existing shared Chromium/CDP session; set `CHROMIUM_EXECUTABLE` when supplying a local binary instead. The selected gate requires WebGL2, a non-black pixel and completed app frames, then covers real input, pause/re-entry, residency and stage expiry. The older `node scripts/browser-check.mjs` remains an overview/legacy walkthrough, not selected-street acceptance; that older runner supports `CODEX_PRIMARY_RUNTIME_NODE_MODULES` dependency lookup. SwiftShader execution does not establish hardware-device performance.
-
-## Implemented ownership
-
-| Concern | Owner | Current behavior |
-| --- | --- | --- |
-| Place identity and registration | `src/domain/spatial.js` | Stable IDs; separate versioned WGS84 geometry; shared local metric and pixel transform; optimistic revision conflict; point-window and metric corridor queries |
-| Sparse time | `src/domain/temporal.js` | Five temporal relations; separate life stages and date windows; explicit unsupported environment; no nearest-year fallback |
-| Session and portals | `src/application/session.js` | One place/period/camera/selection/scene owner; nested return snapshots; rejected stale loads |
-| Data connection | `src/adapters/public-repository.js` | Manifest-directed public records; place-filtered memory chunks; bounded decoded-record reuse, in-flight deduplication and epoch invalidation; the selected outline remains one verified payload |
-| Browsing persistence | `src/adapters/session-storage.js` | Best-effort local session preferences only; validation and usable map origin on restore |
-| Overview and selected street | `src/explorer/`, `scenes/xinhua-sanli-outline/` | Raster overview without a person; perspective outline corridor with continuous figure, local navigation and a bounded retained stage; legacy graybox/GLB code is not the active entry |
-| Engine resources | `src/engine/` | Frame scheduling, spatial candidates, bounded warm residency, resource ownership and lazy navigation-grid caches; no domain identity or historical authority |
-| Illustration mapping | `src/domain/illustration.js` | Real-node / drawing-node correspondence, stable route edge/progress, metre-based street movement; one ordered Xinhua chain |
-| Selected resource manifests | `content/public/manifest.json`, `content/public/outline-registration.json`, `assets/modules/xinhua-travel-r7/` | Revision/checksum-pinned selected overview and outline packages; geographic registration and display assets remain separate |
-
-The raster is not an identity store. The initial A/B/C boards are historical fixtures, not active choices. The journal image and geographic map have independently authored coordinates linked by stable IDs. School names are not geocoders: unresolved campus geometry stays `null` until an approved registration result is available. Correcting a place geometry never changes its ID or rewrites linked memory records.
-
-## Current frame and uncertainty
-
-The square is approximately 1.8 km across, covering 新华街, the adjacent southwest/west Fourth Ring section, 丰台大桥 and 丰台影剧院. 南开西里 remains a general neighborhood anchor. This is the visual canvas, not a newly asserted walked itinerary. Roads/rails come from a selected contemporary OSM extract; historical registration remains open. No private home position is recorded.
-
-The original prototype filtered synthetic memory relationships and could return `no_supported_state`. Later Xinhua artwork has explicitly selected approximate working-composite membership, recorded in STATUS and the source plan; it still does not prove the entire orientation board existed in every chosen period. Do not place historical development notices over the ordinary scene.
+`session-storage.js` 使用 `session-projection.js` 只保存公共偏好、route/camera/街景姿态，丢弃 selectedMemoryId、scene/returnStack、授权、正文、任意额外字段及路径/访问历史。旧全量 session 尝试立即重写为投影，存储失败仍可浏览。内存中的 session 继续完整负责正常返回；私有 reader state 必须保持在独立临时 owner 内。
 
 ## New route-first contract: implementation gap register
 
-The shared location/session, ordered Xinhua chain, selected outline integration and separate composition/time owners are foundations. The older imagined courtyard/near-gate prototype remains a historical fixture, not the current outline attachment dispatcher.
-
-The following are **not claimed as implemented here**: general `RouteSceneRegistration`/`RouteAttachment` migration; a note/sequence/local-scene discriminated dispatcher; private notes attached to arbitrary objects; a durable static-sequence authoring/viewing flow; mixed boundary/frontage interval editing; multi-entrance route remapping; or observation/state-transition authoring across unknown dates.
-
-A future implementation must demonstrate overview route-only entry, correct-side approach, all three target types and exact return; localized wall/railing/detached-frontage edits; and same-site temporal revisions without nearest-year fallback. The proposed fields in DATA_MODEL must not be mistaken for the current JSON schema.
-
-The current contract forbids reintroducing former mapping inspectors, trial-shop controls or permanent debug labels. Resource diagnostics are developer evidence, not a new product HUD. Character-calibration and World Labs handoff targets remain separate; this resource change adds no authentication, generation request or deployment.
+尚未完整实现通用 RouteSceneRegistration/RouteAttachment 的场景 migration、note/sequence/scene 分发、任意街物激活、静态序列作者工具、临街间隔编辑、多入口迁移或不确定年代观察编辑。旧 demo portal 不证明这些能力；目的地直达只是落地。
 
 ## Storage seam
 
-The application currently reads static publication-cleared JSON. Replace the repository adapter behind the same `init/places/memories/loadScene` interface when a private archive is selected. Private record access must be enforced by an authenticated server and a scope-specific manifest. The browser never receives a private archive in this prototype; no login or remote write capability is claimed.
+**保留 PublicRepository，增加可撤卸 PrivateRepository，不用后者替换公开世界。** 当前 `main.js` 仍只接公开资料；私有基础模块存在但没有挂接默认界面，也没有伪密码按钮。
 
-Registration revisions and the full session are pure application modules, not editable authoring UI or a production database. Local storage is only a disposable browsing convenience. Real recordings, draft capture, source-span editing, review workflows and durable backup/export are future work.
+| 模块 | 已实现的范围 |
+| --- | --- |
+| `src/adapters/private-repository.js` | 同源 `/api/private/`，读取已验证会话/安全 manifest，地图版本检查、release revision 请求、no-store、迟到请求拒绝、过期锁定、临时图片释放 |
+| `src/application/content-mount.js` | 显式 mount/unmount、锁定清理通知、私有失败与公开 repository 生命周期分离 |
+| `server/private-api.mjs` | Web Request/Response handler，默认 503 关闭；逐请求调用可信 authorize，按 release 授权，route 分页、note/图片成员检查和白名单响应 |
+| `server/drive-store.mjs` | 注入服务器 token provider；精确 Drive 文件 ID、直属目录/MIME/大小/哈希验证；不递归扫描、不代理任意客户端 fileId |
+| `server/private-content.mjs` | 可执行 private release/note/attachment 子集及严格投影；不把作者记录 spread 给浏览器 |
+
+**未实现/未验证**：实际 Google token provider、网站密码/OIDC 登录与撤销、生产 API 部署、选定街景的私有入口和阅读 UI、跨标签/后退缓存端到端注销、真实档案读取、原文编辑/录音/备份恢复。`lock()` 只是客户端卸载，不是服务端 logout。完整上线须满足 [PRIVATE_CONTENT_RUNBOOK](PRIVATE_CONTENT_RUNBOOK.md) 的门槛。当前 Drive 的空 draft 登记不是生产内容。
 
 <a id="github-images-concrete-arrangement"></a>
-
 ## Public image packages and immutable URLs
 
-The current overview uses the selected `assets/modules/xinhua-travel-r7/` package; `assets/maps/` also retains earlier fixtures. The manifest stores each selected resource's URL, revision, SHA-256, dimensions and geometry/transform dependency, plus the minimal required license attribution. Runtime uses relative paths, so the same package works locally and when hosted. GitHub's image viewer is useful for review, but a GitHub `blob/...` page is an HTML page, not the URL to use as an image `src`. Resource metadata follows the absolute geographic publication boundary and never carries investigation records.
-
-If assets later warrant a separate public repository, preserve the same manifest contract and use either:
-
-1. An immutable raw URL pinned to the asset commit, such as `https://raw.githubusercontent.com/OWNER/ASSET_REPO/COMMIT/maps/file.png`, for a small prototype; or
-2. A hosted asset/release/object-store URL for larger traffic and image collections, with immutable revision names and hashes.
-
-Moving storage changes resource URLs, not place IDs, map registration, memory associations or hit testing. Keep bulk originals/private sources outside public Git. A future storage change must retain the same selected-manifest contract and remain within its own scope.
-
-Official reference: [GitHub image rendering and visual diffs](https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files).
+公开通用地图/转场资源继续用固定相对 URL、修订、SHA、尺寸和许可信息。GitHub blob 页不是 image src；需要迁移时用固定版本资源地址/CDN，不改地点身份/配准。个人原图与回忆插画留在受保护 Drive，不随公开资产迁移。公共素材是否可公开须独立审，不把全部“图片”归入同一个权限域。
 
 ## Historical dual-scale sample — DM-0010
 
-At that checkpoint, the three-tier overview remained unchanged and street entry used a grounded volumetric child, neutral building volumes and an elevated camera. Sidewalk click/drag and arrow keys/WASD controlled walking; a gate led to an imagined courtyard, with an exact return. Those controls and the menu-only layout describe the retained prototype. The selected outline consumer above has its own accepted compass/minimap exception and does not claim that old courtyard dispatcher.
-
-The sample remains the same 140 m reference centerline. It does not establish exact historical sidewalk widths, facades or a real gate. Details and native-vs-browser evidence limits are in [STREET_PROTOTYPE](STREET_PROTOTYPE.md). Additional overview candidates are stored separately in `assets/candidates/overview-r1/`; they are not automatically placed on the map.
+旧灰盒/GLB 学生、140 米参考中心线、假想 courtyard 和先前相机仅为历史原型；不构成现行消费者/授权证据。详见 [STREET_PROTOTYPE](STREET_PROTOTYPE.md)、[STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md)与历史任务包；本次不改人物、美术、地理或 World Labs 状态。
