@@ -1,111 +1,72 @@
-# Recollection intake, editing, review and publication
+# Recollection intake, editing, review and release
 
-Status: authoring contract, layer boundaries reconciled on 2026-10-29; no personal-content archive is connected or implemented. The repository retains public synthetic memory/portal fixtures; the default selected entry does not display these demonstrations. The private intake, review and release workflow below remains a required design, not a running service.
+本页拥有原意、内容整理、审核与受众纪律。GitHub 是公共程序库；Drive 是选定的私有档案提供者。文件夹/空登记已建立不等于真实内容已接入，生产登录/读取与作者工作台仍须按 [RUNTIME](RUNTIME.md#storage-seam) 和 [运维启用门槛](PRIVATE_CONTENT_RUNBOOK.md)分别验收。
 
 ## 地理资料的绝对公开边界
 
 地理查证仅可向本仓库注入可用于产品的结论和必要的确定程度。**绝对禁止提交或披露挖掘、检索、论证、溯源及其过程记录**，包括检索词、查询链接/参数、阅读或访问记录、资料清单、证据链、候选与排除过程、反复调查轨迹、后续追查计划、用户提问动机及个人关联。材料来自公开网站也不能豁免此禁令。
 
-此规则覆盖正文、历史任务包、数据和素材元数据、代码注释、提交信息、分支名、Issue/PR正文与评论、CI日志和制品。不得将过程改名为“公开研究”“证据账本”“冷历史”“交接”继续留存，也不得在删除说明里复述被删内容。仓库任务范围只写工程目标、允许的结果、实现边界和检查状态；地理调查本身无需在仓库建立任务或留痕。
+规则覆盖正文、历史任务包、数据/素材元数据、代码注释、提交信息、分支名、Issue/PR、CI 日志和制品。不得改名为公开研究、证据账本、冷历史或交接继续留存，也不得在删除说明里复述。任务包只写工程目标、允许结果、边界和检查；地理调查不在仓库建任务留痕。
 
-公开结果可写地点、空间关系、有效时期、近似范围以及“已确认／近似／未知”；不得附带如何得出该结果或为何关注该地点。产品许可所必需的第三方署名只保留最小许可信息，不扩展为调查档案。核验在仓库外完成；无法公开过程时仍须保证结论准确，未知保持未知。
-
-旧规范中要求公开地理证据链、来源索引、检索记录、逐次纠错或调查交接的条款全部失效。普通删除提交仍会留下Git历史与旧PR差异；不得据此宣称历史内容已清除。
+公开结果可写地点、空间关系、有效时期、近似范围和确定程度，不附取得过程或关注动机；最小许可署名不扩展为调查档案。旧规范要求公开溯源/调查记录的条款失效。普通删除提交不清除 Git 历史，不能宣称旧副本已消失。
 
 <a id="memory-attachment-discipline"></a>
-
 ## 记忆挂载层的 scope 与交付纪律
 
-本层接收获准处理的记忆原文、选定图片和既有地点/路线登记，整理为有稳定身份、时间边界和使用范围的内容版本，再经登记入口交给 UI 阅读。记录语义由 [DATA_MODEL](DATA_MODEL.md#memory-attachment-contract)维护；跨层职责以 [ARCHITECTURE](ARCHITECTURE.md#layer-scopes)为准。
+本层把获准内容、独立时间与既有地理语境整理为带稳定身份和版本的挂载。原意与范围由用户决定；[DATA_MODEL](DATA_MODEL.md#memory-attachment-contract)定义语义，[ARCHITECTURE](ARCHITECTURE.md#layer-scopes)定义跨层责任。
 
-- **内容原意由输入决定。** 地点卡、照片、生成画面或顺手写出的台词不能补齐未提供的经历、人物、情绪或日期。外部背景与记忆正文分开，未知信息保留未知。
-- **地理锚点由地图地理层提供。** 本层引用地点/入口及登记版本；有位置疑问时留下待确认关联，不自行吸附到最近道路、换一个现代地址或修改门的位置。
-- **展示深度按内容选择。** 一段 note、一组有限图片或一个 local scene 共用挂载契约；新增片段首先更新内容引用。只有明确选定更深交互时才增加场景，学校、商店等名称不自动创建室内世界。
-- **直达与打开内容是两个动作。** 目的地菜单先到达受支持的街面位置；纸飞机、日记和涂鸦属于转场展示。`journal-catalog.js` 中经审阅的虚构短句不能写入记忆目录、绑定为用户经历或充当地理事实。
-- **返回与状态由 application session 管。** 内容加载应保留入口和原来的位置/时期/镜头；关闭、失败或取消交回同一语境。记忆页面不能私建另一套位置、时期或返回栈。
-- **文字、外观与公开范围分别审核。** 技术合并、接受画风、允许私下挂载内容各自有明确含义；公开清单只包含对相应受众获准使用的具体版本。原文、源图片及私人审核关系不随之进入 Git、日志或构建包。
-
-改稿只更新相关片段和内容版本，保留地点、入口及无关内容；note/sequence/scene 的类型变化须同时对齐交互与运行时加载/清理说明。若确需改空间登记，按独立的地理变更列出受影响入口和显式重映射，不能夹带在内容文案修改里。
-
-交付至少检查原意与不确定性、入口与内容引用、时期关系、版本与受众、原上下文恢复和公开包内容。采用合成数据验证工程接口；真实内容的审核仍针对其获准版本。通用挂载分发、有限 sequence 阅读器和私有持久写入尚待实现，现有 demo 入口不构成这些能力的完成证明。
+文字、图片、位置、目标类型、受众分别审核。接受画风不确认史实；允许私下阅读不授权 Git/公开网站发布；代码合并不批准内容。新增片段先改内容引用，不能自动建校舍、整院或室内世界。关闭内容后由统一 session 返回原位置/时期/镜头。
 
 ## Preserve input before interpretation
 
-The intended private intake accepts free-form text, audio and photographs in batches and saves the original privately with source ID, checksum and recording metadata. Attach the current location, period and view as suggestions, not unquestionable truth: the user may describe a different place or jump between decades during one input. Until that durable intake exists, do not describe a browser selection or a documentation update as a saved memory.
+原始文字、忠实转录、照片/录音先在授权私有边界耐久保留。当前视图/地点/时期只是整理建议，不能强迫用户先填表，不能假定其讲述就发生在当前场景。录入跨地方/跨年代的内容拆成相关片段，保留来源跨度、原始不确定表达及重复/冲突关系。
 
-Extract coherent fragments and source-supported statements. Keep source spans/crops inside the authorized private authoring boundary so a reviewer can compare a proposed edit with its input. These private content records do not authorize publishing geographic investigation material. An extraction model's confidence is neither historical verification nor the user's approval.
-
-Unresolved place/date associations enter a private review queue. Repeated inputs can be related or merged for display after review, without discarding their distinct originals. Contradictions and corrections remain visible in authoring history. The system must not require the user to complete a metadata form before a recollection can be retained.
+原文不被编辑稿覆盖；模型提取置信度不是用户认可或历史验证。未决关联进入私有审核队列，不用现代校址、最近道路或精确日期填空。没有耐久保存就不声称“已经记下”。当前没有实现录音转录、批量录入或作者工作台。
 
 ## Three textual layers
 
-**Original:** the user's words or faithful transcript, with any transcription uncertainty preserved.
+**Original** 是用户原话或标出辨识不确定的忠实转录。**Organized record** 是有原文支持的陈述、关联和摘要。**Display passage** 可以去重复、调顺语序、合并相容片段，但每个实质意思必须由原文支持，或者明确标为外部背景/推断，不冒充个人记忆。
 
-**Organized record:** concise statements, associations and optional summaries supported by source spans. Structure can be rearranged; substantive meaning cannot be expanded.
-
-**Display passage:** an edited, readable version attached to a place, route or scene. It may improve rhythm, remove repetition, and combine equivalent phrases, but each substantive claim must remain supported by the original or be explicitly labeled external context, never written as the user's recollection.
-
-Editorial illustration only, not a real memory record:
-
-> Input: 我经常从那儿过，买一样的烧饼。
-> Permitted edit: 我常从这里经过，买同样的烧饼。
-
-Do not add “放学后”, “每天”, “热乎乎”, a friendly shopkeeper, a price, an emotion, or a smell unless the user actually supplied it. Do not convert “好像”, “大概”, or a life-stage phrase into a definite fact or exact date. Even a plausible detail is a new substantive claim.
-
-A reconstruction can use generic visual completion such as a representative room layout; the image must be marked reconstructed, and that completion must not migrate into the display passage as remembered fact.
+不得补写未提供的“每天”“放学后”、价格、感官、情绪或他人的举止；“好像”“大概”“小学时”不能改成确定事实/年份。重建图片可适度补全泛化场景，但要标明重建，其细节不回流进回忆正文。
 
 ## Attach a note before expanding a world
 
-The current route, object or doorway is an association suggestion. The author can add a few words to a named gate even when it has no interior scene. Resolve the exact place and route side only as far as supported; keep uncertain location ranges or area associations rather than inventing a point. A real private write still requires the durable authoring boundary—an architecture document or browser cache is not proof the note was archived.
-
-One attachment can accumulate several notes and selected images. Present them as a finite sequence only when that organization serves reading. A familiar, spatially meaningful subset can later gain a local scene. Preserve source spans and attachment/place identity through all these revisions. Do not turn every recollection into a request for expensive geometry.
+一个门、一段路边或某物位置可以挂短 note，无需已有室内。位置只能落实到证据支持的点/范围；未知保持未知。多张选定图片可随 note 阅读；独立有限 sequence/scene 只有明确选定更深交互时才增加，并保持入口身份与返回语境。
 
 ## Repeated observation is first-class content
 
-Extract separately: what was seen at a place; what physical/use change is described; when it was observed; and what relation to earlier/later observations is actually stated. Preserve “later”, “again”, “roughly”, “perhaps” and gaps in visits. Seeing renewed commercial use is not evidence that the old tenant or shell returned unchanged. A damage observation does not independently establish repair date or cause.
-
-Allow multiple observations of an ordinary wall, shopfront, yard or tree without forcing a dramatic event or merging them as duplicates. Link observations to versioned environment states where useful. Keep the distinction between temporal ordering, editorial picture order and physical adjacency.
-
-Narrative/artistic examples mentioned in conversation can clarify the feeling of repeatedly encountering one place. They do not automatically become named style mandates, story templates, borrowed characters or a requirement to reproduce a book/game. Uncertain titles and transcribed place labels are not silently corrected into authoritative entities.
-
-Public technical documentation may use synthetic examples of reuse/damage/reappearance. Do not publish the user's family names, exact anecdote, transcript, residence connection or an unresolved named-site mapping as part of a general architecture task.
+反复遇见、损坏、修复、变更用途和再次出现均保留原观察、时间与确定程度。同址多次回忆不合成虚假的连续年表；知道先后不补造持续时长。文化例子只帮助理解氛围，不能变成未经选择的画风或故事模板。技术示例必须合成，不把家人姓名、精确住址、真实轶事或未决私人关系写进公共文档。
 
 ## A batch is the unit of conversation, not a monolithic content object
 
-One user session can create many fragments. A batch manifest groups the proposed place/period associations, edited text revisions and visual proposals so they can be reviewed together. Individual fragments and assets retain their own IDs and revision histories.
-
-Use paginated queues, aliases, route-based retrieval, source links and duplicate suggestions for the expected volume of hundreds of fragments per month. An Agent loads only the current batch, affected places/periods and necessary evidence; it does not reread every previous transcript. Multiple batches can proceed independently when their revision/asset dependencies do not conflict.
+一次谈话/提交可产生许多片段，批次只用于集中审核，不成为不可分割的大文档。每个片段/素材保有稳定 ID、修订和关联。使用分页、局部查找、别名、重复建议；Agent 只读取当前批次和必要相邻资料，不能每次重新载入整个档案。
 
 ## Review dimensions
 
-| Dimension | Question | Consequence |
-| --- | --- | --- |
-| Wording | Does this preserve what was said, including uncertainty? | Allows the selected text revision to be displayed privately |
-| Registration | Is this the intended place, entrance, route side, and period association? | Allows that spatial/time association to become active |
-| Appearance | Does this visual version serve the remembered atmosphere? | Allows the selected scene/asset revision |
-| Evidence | Which individual assertions are supported, inferred, disputed, or unknown? | Updates claim metadata; not implied by overall likeness |
-| Publication | Which audience may see this exact content and these derivatives? | Allows only the selected public/shared/private release scope |
-
-Approval may be per item or an explicitly defined batch. Do not equate “this looks right” with confirmation of every detail. Do not interpret approval to attach content in a private project as authorization to expose it on a public site or in Git history.
+| 审核维度 | 它授权什么；不授权什么 |
+| --- | --- |
+| 文字 | 所选版本忠实可读；不授权公开或新增经历 |
+| 地理/时期 | 对应位置/时间及不确定性；不因图片漂亮而确认 |
+| 外观 | 选定图片/重建的表达；不把生成图当历史实证 |
+| 使用权 | 特定材料可在指定范围使用；公开网页来源不等于可转载 |
+| 受众/发布 | 精确版本可给指定读者看；不授权整个原稿库、原图或所有未来修订 |
 
 ## Proposed lifecycle
 
-`captured → organized → draft → in_review → approved_for_selected_use → included_in_release`
+`captured → organized → draft → in_review → approved_for_selected_use → included_in_release`。
 
-Alternative transitions include `needs_revision`, `rejected`, `superseded`, and `withdrawn`. These are content states, not code/PR states. A code merge cannot automatically advance them. A new visual or textual revision is a new review subject; previously approved unrelated revisions remain usable.
-
-The proposed workbench must show before/after text and images with originals reachable only within the authorized private boundary. Once implemented, a release builder can attach the confirmed revisions of a scoped batch to the chosen scene and audience. No automatic publication from a generator output directory or ingestion job is allowed.
+允许 needs_revision、rejected、superseded、withdrawn；它们不是 Git PR 状态。改文字/图/挂载产生新版本，只重审受影响维度。release builder 只能收集明确获准的修订；生成输出目录或自动导入任务不自动发布。
 
 ## Private archive and public repository
 
-The repository is public. Do not commit raw transcripts, recordings, private photos, precise residential locations, third-party identifiers, private object URLs, or unreviewed generated content into repository files, issues, PR bodies, CI artifacts or logs. Ignore rules are a convenience, not enforcement. Review staged content and export payloads explicitly.
+私有 Drive 包含原件、正文、展示派生物、空间挂载和私有运维配置。**位置本身公开，不代表“某人的回忆关联此位置”公开。** 不在公共清单、注释、PR、测试截图、遥测里泄露关系、目录 ID、文件 URL、EXIF、真实账户或未发布条数。
 
-Keep a durable private store for originals and derivatives. Public manifests use only cleared data and opaque references that cannot retrieve private assets without authorization. Signed/private URLs are not stored in public fixtures. A source being online is not equivalent to reusable or publication-cleared.
+生产服务身份仅需读取 registry、memoirs、media/display；不分享整个 root、operations 或 originals。访问者使用网站会话，不拿 Drive 服务凭据。每个正文/图片接口都验证会话和 release 成员资格，不能只保护目录页。
 
-When a runtime is implemented, private-workbench authorization must be enforced at the actual data boundary, not just by hiding navigation controls. A public build must not ship the entire private archive as a downloadable client bundle. Disable automatic personal-content telemetry and redact diagnostic logs.
+v1 使用 raw JSON + 精确文件哈希，采用 [DATA_MODEL 的可执行子集](DATA_MODEL.md#private-release-v1)。Draft release 保持不可读；上传依赖后再切换 release revision。未获准资料不因为落在同一个 Drive 文件夹就自动入册。新增真实内容不需要改公共地图或重新发布代码。
 
 ## Durability and corrections
 
-Ordinary editorial correction preserves the original and adds a revision. Backups and exports contain the selected records, assets, provenance, approvals, transforms and checksums; test restoration into a clean environment. Browser storage is not the only archive.
+Drive 不是自动备份证明。保留获准内容修订，并将记录、允许导出的原件/派生素材、关联、审核、变换与校验值备份，测试干净环境恢复。浏览器缓存和搜索索引都可丢弃，不能是唯一原件。
 
-User-authorized deletion requires a separate purge path covering originals, derived assets, indexes, caches and published manifests under the operator's control. Keep only permissible minimal tombstones. Do not promise to erase third-party copies beyond that control. This is another reason not to place personal originals in public Git history.
+用户要求删除有独立 purge 路径，处理原件、派生物、索引、release 引用和可控缓存；只保留被允许的最小 tombstone。授权读者已保存的副本和既有公共 Git 历史不能靠“退出登录”抹除。不承诺控制之外的删除。

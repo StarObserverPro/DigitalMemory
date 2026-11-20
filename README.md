@@ -1,52 +1,40 @@
 # DigitalMemory
 
-A geographically registered, sparse-time memory application. Browse an illustrated area, enter a street or route, and encounter roadside gates, objects and remembered positions. The same attachment can open a note, an illustrated sequence, or a small explorable scene; complete buildings and interiors are not the default unit of production.
+地理挂载、稀疏时间切片的数字回忆录。手绘总览帮助辨认地方，进入一段街或路线，再从沿街门口、物件和记得的位置打开内容。目标是保留人在环境中的印象，不是测绘城市、文章网站或需要反复赶路的网游。
 
-The purpose is to preserve impressions of living in an environment, not to produce a survey-grade reconstruction, a conventional content website, or a complete 3D city. Historical maps and satellite images support registration behind the scenes; they are not the default visual surface.
+## 两个来源，一套空间语境
 
-## Run the Phase 1 prototype
+**GitHub 保存公开程序与地图；Google Drive 保存私人正文、图片及其空间挂载关系。** 私有内容经生产服务端验证访客后，在运行时按获准 release 读取，绝不在构建时混入公开站点。公共世界无需登录即可独立载入；登录失败或私有库离线不破坏地图。
 
-Requires Node.js 22+. Run `npm run dev` and open `http://localhost:4173`. No dependency installation is required. `npm test` checks the domain/application seams, `npm run test:outline` checks the selected street scene, and `npm run build` produces the static application in `dist/`.
+同一公共地点可有许多私人回忆，但“谁在何处有何回忆”的关系本身也是私有内容。实际 Drive 文件/目录 ID、账号、凭据、原件和个人锚点不能出现在 Git、PR、CI、构建包或公共清单里。
 
-The runtime has a three-tier illustrated overview and the selected Xinhua/Sanli outline street, including the continuous outline person, restrained motion and the corridor to Qili's west frontage. Enter through a supported Xinhua segment or “到街上走走”, or choose an existing destination through the grouped “想去哪儿” picker for a short direct arrival. Xinhua can be crossed directly, and ground clicks can switch between walking and direct travel. The street adds an approved collapsible minimap and compass to its closed-menu interface; the overview has no avatar. The former GLB student, schoolwear palettes and graybox renderer remain retained modules, with their evidence separated from the current consumer in [STREET_PROTOTYPE](docs/STREET_PROTOTYPE.md). [RUNTIME](docs/RUNTIME.md) and [STATUS](docs/STATUS.md) describe current behavior and its limits.
+## 先读哪份文档
 
-The current design follows **area → street/route → roadside attachment**. All three overview tiers remain orientation views without an avatar. Route entry precedes normal place activation; notes, static image sequences and local exploration use one attachment contract. This documentation revision does not claim that the complete new dispatcher, street-edge editor or private note archive exists.
-
-## Start here
-
-| Question | Canonical document |
+| 问题 | 规范所有者 |
 | --- | --- |
-| How should these documents be read together? | [Documentation and ownership map](docs/README.md) |
-| What may UI, visual engine, geography and memory attachment work change? | [Four-layer scope and shared state](docs/ARCHITECTURE.md#layer-scopes), then [cross-layer changes](docs/ARCHITECTURE.md#cross-layer-changes) |
-| What are we making, and what must not drift? | [Product contract](docs/PRODUCT.md) |
-| What is actually implemented or still unknown? | [Repository status](docs/STATUS.md) |
-| What is the first geographic and experiential scope? | [Phase 1](docs/PHASE_1.md) |
-| How do modules and sources of truth fit together? | [Core architecture](docs/ARCHITECTURE.md) |
-| How are location, time, evidence, and memory represented? | [Data model](docs/DATA_MODEL.md) |
-| How does the application feel and behave? | [Interaction contract](docs/INTERACTION.md) |
-| How are maps, generated images, and scene assets produced? | [Asset pipeline](docs/ASSET_PIPELINE.md) |
-| Which geographic results and uncertainties may the application consume? | [Geographic result contract](docs/GEO_DATA_LINEAGE.md) |
-| How may registered geography change without crossing layer or privacy boundaries? | [Geographic scope and result rules](docs/GEO_DATA_RUNBOOK.md) |
-| Which street scene/person is running, and which character studies are historical? | [Selected street and legacy prototypes](docs/STREET_PROTOTYPE.md), [historical scale review](docs/STREET_VISUAL_CALIBRATION.md) and [outline workflow](docs/research/XINHUA_OUTLINE_WORKFLOW.md) |
-| Where is the future World Labs handoff? | [Marble 2 documentation — no generation](docs/WORLDLABS_HANDOFF.md) |
-| Which bridge/Zhengyang geographic conclusions are available? | [Fengtai bridge conclusions](docs/research/FENGTAI_BRIDGES_ZHENGYANG.md) |
-| How do new recollections become reviewed content? | [Content pipeline](docs/CONTENT_PIPELINE.md) |
-| What demonstrates that work actually succeeded? | [Verification](docs/VERIFICATION.md) |
-| Which architecture choices are settled or deferred? | [Decision register](docs/DECISIONS.md) |
-| How does an Agent start and hand off work? | [AGENTS.md](AGENTS.md), then [attention routing](docs/attention/README.md) |
+| 产品目的、第一阶段范围 | [PRODUCT](docs/PRODUCT.md)、[PHASE_1](docs/PHASE_1.md) |
+| UI/引擎/地理/挂载四层，以及双源边界 | [ARCHITECTURE](docs/ARCHITECTURE.md) |
+| 地点、路线、时间、入口与私有发布字段 | [DATA_MODEL](docs/DATA_MODEL.md) |
+| 原文如何整理、分维度审核、按受众发布 | [CONTENT_PIPELINE](docs/CONTENT_PIPELINE.md) |
+| 当前实际代码、资源策略和未接通项 | [RUNTIME](docs/RUNTIME.md) |
+| Drive 的目录/只读身份/生产启用和恢复 | [PRIVATE_CONTENT_RUNBOOK](docs/PRIVATE_CONTENT_RUNBOOK.md) |
+| 界面、绘画、地图装配与其它专题 | [文档导航](docs/README.md) |
+| 工作纪律、验证与历史交付 | [AGENTS](AGENTS.md)、[VERIFICATION](docs/VERIFICATION.md)、[STATUS](docs/STATUS.md) |
 
-## Initial emphasis
+## 当前可运行的部分
 
-Phase 1 is a compact **walking-memory network**, prioritizing **新华街**, with **南开西里**, **丰台一小旧址**, and **十二中初中旧址** as the other named anchors. These are not a verified sequence of waypoints. Exact historical campuses and walked segments remain to be registered. The high-school cycling extension toward 丰益桥 is outside Phase 1.
+R7 手绘总览、选定 Xinhua/Sanli 轮廓街景、连续轮廓人物、分区目的地直达、可直接横穿的街道、手账入街与纸飞机过场。总览没有人物，旧 GLB 学生/灰盒场景只作历史保留。原有 scope 和美术不因内容存储改造而变化。
 
-Use approximately 2000–2005 as the first base-map reference period. Other periods are separate evidence and memory layers, not fictitious annual snapshots. The project must support sustained ingestion of hundreds of short recollections per month without making Agents or the browsing interface load the entire archive.
+本源码树新增可测试的私有客户端、挂载生命周期、授权 API 核心和 Drive 只读适配器，并收紧公共构建及浏览状态存储。**`main.js` 尚未接入私有阅读器；没有已部署的私有 API、网站登录或真实 Drive 会话。** 私有目录与空 draft 登记仅是初始化，不是已经可在生产浏览个人回忆。具体接口、上线门槛与缺口集中在 RUNTIME/runbook，不把计划写成完成状态。
 
-## Repository and personal archive
+## 本地运行与检查
 
-This repository is public. Keep implementation, architecture, synthetic test fixtures, and publication-cleared manifests here. Do not commit original personal recordings, transcripts, private photos, precise residential coordinates, secrets, or restricted imagery. The private archive and any selected public presentation are separate authorization boundaries; see [content and publication](docs/CONTENT_PIPELINE.md).
+Node.js 22+。`npm run dev` 启动原有公开原型，`npm test` 测应用和私有边界模块，`npm run test:outline` 测选定街景，`npm run check` 合并测试与构建。没有新增浏览器依赖或 Google 密钥要求。
 
-The existing [MIT license](LICENSE) is retained unchanged. It does not establish rights to third-party imagery or permission to expose personal material. Selected assets need usage status and a publication decision. Geographic records contain conclusions, uncertainty and minimum required licence attribution; investigation and source-tracing records must never be published in any repository surface.
+`npm run build` 验证既有 manifest/hash 后，只导出允许的已跟踪生产文件到 `dist/`。新源文件需先纳入 Git index；未跟踪资料、server、私有配置、测试和取证目录不导出。生产只服务 `dist`，不把源码根目录当私有 API。真实秘密和档案始终不能提交，白名单/ignore 也不能替代公开差异审查。
 
-The street remains a bounded working reconstruction, with source and dimensional uncertainty recorded separately from visual approval. It is not a complete historical route or a private content archive. Current implementation, exact verification, merge and deployment provenance belong in [STATUS](docs/STATUS.md). Selected scene operation and licences are in [the scene README](scenes/xinhua-sanli-outline/README.md).
+## 内容、许可与工程纪律
 
-For construction, record or reuse a repository task scope even when working in a sandbox. Read the relevant docs before implementation, align them before validation/CI, and report the actual results with each PR; [AGENTS](AGENTS.md) and [attention guidance](docs/attention/README.md) own that workflow. Trial artifacts remain outside Git.
+原文、时间/地理、视觉、使用权、受众批准互相独立。现有 MIT 许可不赋予第三方图片再用权，也不授权公开个人资料。地理记录只能留许可允许的结论、确定程度与最小署名；**查证/检索/论证/溯源过程在所有仓库表面绝对禁止**。
+
+施工前留有任务 scope，即使在沙盒；每次 PR 推送前读规范、同步相关文档，再进行验证/CI。报告确切的已实现、已验证、已合并、已部署状态。当前双源改动的范围与交付记录见 [任务包](docs/attention/tasks/DM-PRIVATE-CONTENT-MOUNT.md)；无关 PR 不自动合并。
