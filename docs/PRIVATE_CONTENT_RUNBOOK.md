@@ -39,6 +39,8 @@ The API reloads the small release and attachment package as needed; it does not 
 
 All private responses, including errors and images, use no-store headers; configure the hosting CDN/image optimizer/service worker not to cache them. Logs must not record private response bodies, Drive IDs, precise positions, user narratives or bearer tokens. Client `lock()` is local cleanup, not server-session revocation or erasure of copies an authorized reader has saved.
 
+Release authorization denial uses 404 to avoid disclosing archive membership. On the next private read, the client treats 404, 401, 403 and 409 as a lock signal: abort outstanding reads, revoke temporary image URLs and notify the mount's `onClear` callback to remove displayed private text. A missing released object conservatively triggers the same cleanup; this is not continuous polling or server-pushed revocation.
+
 Back up records and assets outside the same mutable working set; restore into a clean private instance and verify hashes/relationships. Withdrawal removes authorized release references and server/client caches under operator control; do not promise to erase third-party copies or existing public Git history.
 
 ## Provider references

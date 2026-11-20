@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 export function isPublicBuildPath(path) {
   if (path.includes('\\') || path.split('/').some(part => !part || part === '..' || part.startsWith('.'))) return false;
   if (/(^|\/)(private|local-archive|raw-inputs|operations|server|tests|evidence|candidates)(\/|$)/i.test(path)) return false;
+  if (path.startsWith('assets/examples/')) return false;
   if (/\.(test|browser)\.[cm]?js$/.test(path)) return false;
   if (path === 'index.html') return true;
   if (/^src\//.test(path)) return /\.(js|css)$/.test(path);

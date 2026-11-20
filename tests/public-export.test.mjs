@@ -21,3 +21,20 @@ test('asset authoring JSON is not published; runtime manifests remain strictly p
     await assert.rejects(() => exportPublicFiles(root, join(root, 'blocked'), paths), /Private data/);
   } finally { await rm(root, { recursive: true, force: true }); }
 });
+
+test('landmark reference examples stay out of the build while production assets are exported', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'dm-reference-assets-'));
+  try {
+    await mkdir(join(root, 'assets/examples/landmark-badges'), { recursive: true });
+    await mkdir(join(root, 'assets/modules/fixture'), { recursive: true });
+    await writeFile(join(root, 'index.html'), 'synthetic entry');
+    await writeFile(join(root, 'assets/examples/landmark-badges/example.png'), 'synthetic reference image');
+    await writeFile(join(root, 'assets/examples/landmark-badges/manifest.json'), '{"privacy":"public"}');
+    await writeFile(join(root, 'assets/modules/fixture/selected.png'), 'synthetic production image');
+    const paths = ['index.html', 'assets/examples/landmark-badges/example.png', 'assets/examples/landmark-badges/manifest.json', 'assets/modules/fixture/selected.png'];
+    assert.deepEqual(await exportPublicFiles(root, join(root, 'dist'), paths), ['index.html', 'assets/modules/fixture/selected.png']);
+    await assert.rejects(() => readFile(join(root, 'dist/assets/examples/landmark-badges/example.png')));
+    await assert.rejects(() => readFile(join(root, 'dist/assets/examples/landmark-badges/manifest.json')));
+    assert.equal(await readFile(join(root, 'dist/assets/modules/fixture/selected.png'), 'utf8'), 'synthetic production image');
+  } finally { await rm(root, { recursive: true, force: true }); }
+});

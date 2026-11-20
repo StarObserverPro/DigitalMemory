@@ -30,7 +30,8 @@ export class PrivateRepository {
       const response = await this.fetcher(url, { credentials: 'same-origin', cache: 'no-store', redirect: 'error', headers, signal: controller.signal });
       this.check(epoch, controller.signal);
       if (!response.ok) {
-        if ([401,403,409].includes(response.status)) this.lock();
+        // Release access denial is intentionally indistinguishable from a missing object.
+        if ([401,403,404,409].includes(response.status)) this.lock();
         throw Error('Private content unavailable');
       }
       if (binary && !['image/png','image/jpeg','image/webp'].includes(response.headers.get('content-type')?.split(';')[0])) throw Error('Invalid display image');

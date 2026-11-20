@@ -62,7 +62,7 @@ PublicRepository 去重请求、克隆返回记录，LRU **24 entries / 8 MiB en
 
 ## Run and implementation seams
 
-Node.js 22+；`npm run dev`、`npm test`、`npm run test:outline`、`npm run build`。生产静态目录为 `dist`。构建维持既有几何/素材哈希，改用 `scripts/public-export.mjs` 的**已跟踪路径白名单**：index/src、公开 content/public/reference、允许的 assets/scenes 文件类型；排除 private/server/tests/evidence/candidates、隐藏路径、symlink、未跟踪文件，并检查 JSON 隐私/凭据字段。它不是免审公开 Git 的安全证明；任何真实私人资料仍禁止提交到任何目录。
+Node.js 22+；`npm run dev`、`npm test`、`npm run test:outline`、`npm run build`。生产静态目录为 `dist`。构建维持既有几何/素材哈希，改用 `scripts/public-export.mjs` 的**已跟踪路径白名单**：index/src、公开 content/public/reference、允许的 assets/scenes 文件类型；排除 private/server/tests/evidence/candidates、`assets/examples/` 参考素材、隐藏路径、symlink、未跟踪文件，并检查 JSON 隐私/凭据字段。它不是免审公开 Git 的安全证明；任何真实私人资料仍禁止提交到任何目录。
 
 新运行时源文件要先纳入 Git index 才进入 build。server 和私有配置不会进入静态包。此构建不抓 Drive，不需要生产密钥；现行地理、图片和街景 manifest 字节未改。
 

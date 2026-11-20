@@ -92,6 +92,23 @@ test('client refuses reads before explicit mount and refuses cross-origin config
 test('client mounts compatible archive; lock aborts access and revokes image URLs',async()=>{
   const {client,revoked}=clientFixture();await client.unlock(compatible);assert.equal((await client.memory('fixture-note')).title,'Synthetic note');const image=await client.media('fixture-image');client.lock();assert.deepEqual(revoked,[image]);assert.equal(client.inspect().unlocked,false);await assert.rejects(()=>client.memory('fixture-note'));client.dispose();
 });
+test('revoked release access clears mounted text and image URLs on the next read',async()=>{
+  let authorized=true,visibleText='',clears=0;
+  const {client,revoked,calls}=clientFixture({authorize:async()=>({...principal,releaseIds:authorized?principal.releaseIds:[]})});
+  const publicRepository={untouched:true};
+  const mount=createContentMount({publicRepository,privateRepository:client,onClear:()=>{visibleText='';clears++;}});
+  try{
+    await mount.mount(compatible);visibleText=(await mount.memory('fixture-note')).text;
+    const image=await client.media('fixture-image'),beforeClear=clears;
+    assert(visibleText);assert.equal(mount.inspect().mounted,true);
+    authorized=false;
+    await assert.rejects(()=>mount.attachments({routeId:'fixture-route'}),/Private content unavailable/);
+    assert.equal(mount.inspect().mounted,false);assert.equal(client.inspect().unlocked,false);
+    assert.equal(visibleText,'');assert(clears>beforeClear);assert.deepEqual(revoked,[image]);
+    assert.equal(client.inspect().objectURLs,0);assert.deepEqual(publicRepository,{untouched:true});
+    const reads=calls.length;await assert.rejects(()=>mount.memory('fixture-note'),/not mounted/);assert.equal(calls.length,reads);
+  }finally{mount.dispose();}
+});
 test('map/frame mismatch and release revision conflicts unmount the private archive',async()=>{
   const first=clientFixture();await assert.rejects(()=>first.client.unlock({...compatible,geometryRevision:'wrong'}));assert.equal(first.client.inspect().unlocked,false);first.client.dispose();
   let revision='r1';const second=clientFixture({changeRelease:()=>({...release,revision})});await second.client.unlock(compatible);revision='r2';await assert.rejects(()=>second.client.memory('fixture-note'));assert.equal(second.client.inspect().unlocked,false);second.client.dispose();

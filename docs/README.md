@@ -33,6 +33,8 @@
 
 地图装配与绘画：[HANDPAINTED_MAP_ART](HANDPAINTED_MAP_ART.md)、[ILLUSTRATION_MAPPING](ILLUSTRATION_MAPPING.md)、[LAYER_COMPOSITION](LAYER_COMPOSITION.md)。总览只用选定 raster 美术；近景轮廓走独立已批准的引擎表达。
 
+地标 badge 的定义、S/L 风格与显示限制统一见 [美术契约](HANDPAINTED_MAP_ART.md#landmark-badges)；[已选画风参考](../assets/examples/landmark-badges-r1/README.md)保留已标记的裁切缺陷，整套尚未准备为生产精灵，也未接入地图。
+
 现行近景：[Xinhua outline workflow](research/XINHUA_OUTLINE_WORKFLOW.md)、[Sanli 集成入口](../scenes/xinhua-sanli-outline/README.md)、[Fourth Ring 模块](../scenes/fengtai-bridges/README.md)。人物原型与历史比例检查在 [STREET_PROTOTYPE](STREET_PROTOTYPE.md)、[STREET_VISUAL_CALIBRATION](STREET_VISUAL_CALIBRATION.md)。[WORLDLABS_HANDOFF](WORLDLABS_HANDOFF.md) 仍是未来交接，不是生成结果。
 
 地理专题仅保留可公开结论/不确定性：[旧校址](research/FENGTAI_PRIMARY_OLD_SITE.md)、[桥梁](research/FENGTAI_BRIDGES_ZHENGYANG.md)、[下穿](research/FENGTAI_UNDERPASS.md)、[空间结果](research/XINHUA_SPATIAL_PIPELINE.md)、[楼体结果](research/XINHUA_BUILDING_SURVEY.md)。不得因专题标题带 research 就恢复调查档案。
@@ -47,4 +49,4 @@
 
 ## 文档修正的完成标准
 
-既有文档修正持续授权不变：在授权范围内定位规范所有者、同步事实/链接/状态，完成适用检查并按 AGENTS 执行。混合代码任务、内容公开和部署仍分别按对应授权处理，不能借“整理文档”扩大副作用。
+既有文档修正按 [AGENTS 的持续授权](../AGENTS.md#文档类修正的持续授权)完成：在授权范围内定位规范所有者、同步事实/链接/状态，完成适用检查与授权合并，并报告实际结果。混合代码任务、内容公开和部署仍分别按对应授权处理，不能借“整理文档”扩大副作用。
