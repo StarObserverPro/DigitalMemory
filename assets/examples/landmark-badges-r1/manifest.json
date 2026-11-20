@@ -2,8 +2,27 @@
   "version": "r1",
   "role": "approved-style-examples",
   "runtimeIntegrated": false,
+  "productionReady": false,
   "background": "opaque warm white; not alpha sprites",
   "sourceType": "AI-generated illustration; not historical evidence",
+  "knownCropIssues": [
+    {
+      "file": "school-one-s.png",
+      "issue": "Right edge of the book silhouette is cropped off."
+    },
+    {
+      "file": "school-one-l.png",
+      "issue": "A neighboring book fragment remains along the left edge."
+    },
+    {
+      "file": "world-park-l.png",
+      "issue": "A neighboring symbol fragment remains along the left edge."
+    },
+    {
+      "file": "railway-hospital-s.png",
+      "issue": "A neighboring building baseline remains at the bottom right."
+    }
+  ],
   "items": [
     {
       "key": "cinema",

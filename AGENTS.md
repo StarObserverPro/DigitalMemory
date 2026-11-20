@@ -104,4 +104,4 @@ Keep implementation, user content/aesthetic approval, merge, and publication sta
 
 ### Selected landmark badge example exception
 
-The explicit 2026-10-30 request authorizes the eighteen selected S/L crops in `assets/examples/landmark-badges-r1/` as reusable style examples. See [the canonical badge contract](docs/HANDPAINTED_MAP_ART.md#landmark-badges). This narrow exception does not authorize other trials/contact sheets, imply runtime integration, or establish geographic facts.
+The explicit 2026-10-30 request authorizes the eighteen selected S/L crops in `assets/examples/landmark-badges-r1/` as style references. The entire set is not production-ready; its README and manifest record four known crop defects. See [the canonical badge contract](docs/HANDPAINTED_MAP_ART.md#landmark-badges). This narrow exception does not authorize other trials/contact sheets, imply runtime integration, or establish geographic facts.
